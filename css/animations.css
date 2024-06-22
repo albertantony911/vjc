@@ -1,0 +1,69 @@
+/**
+ * ----------------------------------------
+ * Hamburger menu animation
+ * ----------------------------------------
+ */
+
+.menudrop {
+  transition: transform 0.5s cubic-bezier(0.9, 0.7, 0.1, 1);
+}
+
+/* Initially hidden */
+.menudrop li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.2s ease-in-out, transform 0s ease-in-out; 
+}
+
+/* Class to fade in */
+.menudrop li.toggled {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+/* Button Aniamtion */
+
+/* Change line color on click */
+#menuButtonContainer.menu-open svg line {
+    stroke: white;
+}
+
+/* Set transform origins to center of respective line */
+#menuButton svg line:nth-of-type(1) {
+    transform-origin: center 6px;
+}
+
+#menuButton svg line:nth-of-type(2) {
+    transform-origin: center 12px;
+}
+
+#menuButton svg line:nth-of-type(3) {
+    transform-origin: center 18px;
+}
+
+
+/* Line animations */
+#menuButton svg line {
+    transition-duration: 0.5s;
+    transition-property: stroke, opacity, transform;
+    transition-timing-function: cubic-bezier(0.9, 0.7, 0.1, 1); /* Updated cubic bezier for stroke color change */
+}
+
+/* Fade out middle line on click */
+#menuButtonContainer.menu-open svg line:nth-of-type(2) {
+    opacity: 0;
+    transform: scale(0.3);
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+}
+
+/* Center top and bottom lines vertically, then rotate by 45 degrees in opposing directions on click */
+#menuButtonContainer.menu-open svg line:nth-of-type(1) {
+    transform: translate(0, 6px) rotate(45deg);
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+}
+
+#menuButtonContainer.menu-open svg line:nth-of-type(3) {
+    transform: translate(0, -6px) rotate(-45deg);
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+}
