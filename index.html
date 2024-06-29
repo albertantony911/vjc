@@ -196,14 +196,7 @@
             </a>
           </li>
 
-          <!-- Pricing -->
-          <li class="relative block">
-            <!-- Navigation Link with ARIA Label -->
-            <a href="./pricing.html"
-              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-              <span>Pricing</span>
-            </a>
-          </li>
+          
 
           <!-- Our Services with Submenu -->
           <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
@@ -216,7 +209,7 @@
               <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
             </a>
             <div
-              class="rounded-3xl absolute left-0 top-auto z-30 w-56 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-md"
+              class=" absolute left-0 top-auto z-30 w-56 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-md"
               x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
               x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
               x-transition:leave="transition ease duration-300 transform"
@@ -224,44 +217,80 @@
               style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
               aria-label="Submenu">
               <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-              <div class="rounded-3xl relative z-10 w-full px-2 py-6 bg-white">
+              <div class="relative z-10 w-full px-2 py-6 bg-white">
                 <ul class="list-reset" role="menu">
                   <!-- Submenu Items -->
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
-                    <a href="./therapy.html"
+                    <a href="./service.html"
                       class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                       role="menuitem">
-                      <span class="flex-1">Therapy</span>
+                      <span class="flex-1">service</span>
                     </a>
                   </li>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
-                    <a href="./diagnosis.html"
+                    <a href="./service.html"
                       class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                       role="menuitem">
-                      <span class="flex-1">Diagnosis</span>
+                      <span class="flex-1">service</span>
                     </a>
                   </li>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
-                    <a href="./couples-counselling.html"
+                    <a href="./service.html"
                       class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                       role="menuitem">
-                      <span class="flex-1">Couple's Counselling</span>
+                      <span class="flex-1">service</span>
                     </a>
                   </li>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
-                    <a href="./workshops.html"
+                    <a href="./service.html"
                       class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
                       role="menuitem">
-                      <span class="flex-1">Workshops</span>
+                      <span class="flex-1">service</span>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
+          </li>
+
+          <!-- Infrastructure -->
+          <li class="relative block">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./infrastructure.html"
+              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+              <span>Infrastructure</span>
+            </a>
+          </li>
+
+          <!-- Pricing -->
+          <li class="relative block">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./pricing.html"
+              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+              <span>Pricing</span>
+            </a>
+          </li>
+
+          <!-- Careers -->
+          <li class="relative block">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./careers.html"
+              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+              <span>Careers</span>
+            </a>
+          </li>
+
+          <!-- Blogs -->
+          <li class="relative block">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./blogs.html"
+              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+              <span>Blogs</span>
+            </a>
           </li>
 
           <!-- FAQ -->

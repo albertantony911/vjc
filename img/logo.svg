@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1203 584" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-881.374,-952.743)">
+<svg width="100%" height="100%" viewBox="0 0 1219 836" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-872.893,-850.615)">
+        <g transform="matrix(0.822416,0,0,0.912684,244.253,16.9819)">
+            <rect x="764.382" y="913.387" width="1481.48" height="915.809" style="fill:white;"/>
+        </g>
         <path d="M1934.51,1211.21L2084.22,1211.21C2084.22,1211.21 2083.83,1004.65 1854.55,1008.18C1640.5,1011.49 1638.53,1211.21 1638.53,1211.21L1638.6,1333.21C1638.6,1333.21 1639.08,1538.38 1862.6,1536.22C2085.97,1534.06 2081.44,1333.21 2081.44,1333.21L1934.49,1333.21C1934.49,1333.21 1932.46,1387.69 1861.6,1387.58C1785.78,1387.46 1786.44,1333.21 1786.44,1333.21L1786.4,1211.21C1786.4,1211.21 1786.38,1157.49 1858.64,1155.71C1932.94,1153.88 1934.51,1211.21 1934.51,1211.21Z" style="fill:rgb(0,48,114);"/>
         <path d="M881.374,1018.24L1036.67,1530.16L1188.37,1530.2L1342.47,1018.19L1211.48,1018.25L1112.51,1345.83L1013.42,1018.2L881.374,1018.24Z" style="fill:rgb(0,48,114);"/>
         <path d="M1444.41,1014.14L1591.43,1119.69C1591.43,1119.69 1591.78,1292.06 1591.78,1350.91C1591.78,1443.95 1511.31,1513.65 1436.38,1528.28C1297.38,1555.42 1241.56,1502.01 1241.56,1502.01L1281.68,1375.27C1281.68,1375.27 1338.77,1401.03 1366.41,1397.49C1400.84,1393.1 1439.66,1381.37 1444.64,1337.91C1444.2,1278.77 1444.41,1014.14 1444.41,1014.14Z" style="fill:rgb(0,48,114);"/>
