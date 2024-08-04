@@ -1,7 +1,3 @@
-
-
-
-
 // Hamburger menu Animation
 
 document.addEventListener("DOMContentLoaded", function () {
