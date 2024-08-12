@@ -1,37 +1,21 @@
 // Hamburger menu Animation
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuButtonContainer = document.getElementById("menuButtonContainer");
+document.addEventListener("DOMContentLoaded", () => {
+  const getEl = (id) => document.getElementById(id);
+  const getEls = (selector) => document.querySelectorAll(selector);
+
+  const menuButtonContainer = getEl("menuButtonContainer");
   const nav = document.querySelector("nav");
-  const mainMenuItems = document.querySelectorAll("#mainMenu li");
-  const serviceMenuItems = document.querySelectorAll("#serviceMenu li");
+  const mainMenuItems = getEls("#mainMenu li");
+  const serviceMenuItems = getEls("#serviceMenu li");
 
-  const mainMenu = document.getElementById("mainMenu");
-  const serviceMenu = document.getElementById("serviceMenu");
-  const serviceButton = document.getElementById("serviceButton");
-  const backButton = document.getElementById("backButton");
-
-  const itemTransitionDelay = 10;
-  const menuTransitionDuration = 0.2;
-
-  const initializeMenuItems = (items) => {
-    items.forEach(item => {
-      item.style.transitionDuration = `${menuTransitionDuration}s`;
-      item.style.opacity = 0;
-      item.style.transform = "translateY(-20px)";
-    });
-  };
-
-  initializeMenuItems(mainMenuItems);
-  initializeMenuItems(serviceMenuItems);
+  const mainMenu = getEl("mainMenu");
+  const serviceMenu = getEl("serviceMenu");
+  const serviceButton = getEl("serviceButton");
+  const backButton = getEl("backButton");
 
   const toggleMenuItems = (items, show) => {
-    items.forEach((item, index) => {
-      setTimeout(() => {
-        item.style.opacity = show ? 1 : 0;
-        item.style.transform = show ? "translateY(0)" : "translateY(-20px)";
-      }, index * itemTransitionDelay);
-    });
+    items.forEach(item => item.classList.toggle("toggled", show));
   };
 
   const toggleMenu = () => {
@@ -40,35 +24,27 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleMenuItems(mainMenuItems, menuButtonContainer.classList.contains("menu-open"));
   };
 
-  const showServiceMenu = () => {
-    toggleMenuItems(mainMenuItems, false);
-    setTimeout(() => {
-      toggleMenuItems(serviceMenuItems, true);
-    }, mainMenuItems.length * itemTransitionDelay);
-    mainMenu.classList.add("hidden");
-    serviceMenu.classList.remove("hidden");
+  const switchMenu = (hideItems, showItems, hideMenu, showMenu) => {
+    toggleMenuItems(hideItems, false);
+    toggleMenuItems(showItems, true);
+    hideMenu.classList.add("hidden");
+    showMenu.classList.remove("hidden");
   };
 
-  const showMainMenu = () => {
-    toggleMenuItems(serviceMenuItems, false);
-    setTimeout(() => {
-      toggleMenuItems(mainMenuItems, true);
-    }, serviceMenuItems.length * itemTransitionDelay);
-    serviceMenu.classList.add("hidden");
-    mainMenu.classList.remove("hidden");
-  };
-
-  menuButtonContainer.addEventListener("click", toggleMenu);
-  serviceButton.addEventListener("click", showServiceMenu);
-  backButton.addEventListener("click", showMainMenu);
-
-  showMainMenu();
   menuButtonContainer.addEventListener("click", () => {
+    toggleMenu();
     if (!menuButtonContainer.classList.contains("menu-open")) {
-      showMainMenu();
+      switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu);
     }
   });
+
+  serviceButton.addEventListener("click", () => switchMenu(mainMenuItems, serviceMenuItems, mainMenu, serviceMenu));
+  backButton.addEventListener("click", () => switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu));
+
+  switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu);
 });
+
+
 
 
 
