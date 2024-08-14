@@ -142,7 +142,6 @@
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./about.html">ABOUT</a></li>
         <li id="serviceButton"><a href="#">SERVICES</a></li>
-        <li><a href="./infrastructre.html">SOLUTIONS</a></li>
         <li><a href="./pricing.html">PRICING</a></li>
 
         <!-- Enquiry Section -->
@@ -291,62 +290,6 @@
         </li>
 
 
-        <!-- Our Solutions with Submenu -->
-        <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
-          @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
-          <a href="#" aria-haspopup="true" aria-expanded="false"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Solutions</span>
-            <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
-          </a>
-          <div class=" absolute left-0 top-auto z-30 w-56 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-md"
-            x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-300 transform" x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 translate-y-4" style="display: none;" @mouseenter="clearTimeout(submenuTimeout)"
-            @mouseleave="showChildren = false" aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-            <div class="relative z-10 w-full px-2 py-6 bg-white">
-              <ul class="list-reset" role="menu">
-                <!-- Submenu Items -->
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./service.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Public Accountants</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./service.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Startups</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./service.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">SMEs</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./service.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Large Coporations</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
 
         <!-- FAQ -->
         <li class="relative block">
@@ -670,11 +613,11 @@
     <!-- Softwares we use Section -->
     <section class=" flex  md:mt-36 mt-24 flex-col  text-center">
       <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10  ">
-        <h1
+        <h2
           class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold  leading-snug"
           aria-label="Main Title">
           Softwares we use
-        </h1>
+        </h2>
         <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[1svh] lg:landscape:mb-[1svh] landscape:mb-[31svh] font-light leading-relaxed "
           aria-label="Hero Description">
           V. Jaiswal and Co, India's leading offshore accounting firm
@@ -699,60 +642,48 @@
     <section class="text-darkBlue">
       <div>
 
-        <h2 class="md:text-3xl text-2xl font-semibold text-center ">
-          Resources
+        <h2 class="md:text-3xl text-2xl font-semibold text-center md:mb-20">
+          Resources to know us better
         </h2>
       </div>
-      <div class="flex md:flex-row flex-col md:px-32 px-10 border">
-        <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full border">
-          <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
+      <div class="flex md:flex-row flex-col justify-center md:px-32 ">
+        <div class="md:w-1/2 max-md:h-[60svh] flex flex-col w-full ">
+          <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60  m-auto bg-white">
           </div>
         </div>
       
-        <div class="flex md:w-1/2 flex-col justify-around border">
-          <div class="flex flex-row rounded-[2rem] drop-shadow-2xl p-5 border">
-            <div class="md:w-1/2   flex flex-col w-full ">
-              <div class="size-[10svw] md:size-[5svh] rounded-[1rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
+        <div class="flex md:w-1/2 flex-col justify-around max-md:px-5 max-md:gap-5 ">
+
+          <div
+            class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="img/icon.svg" alt="">
               </div>
             </div>
-            <div class="flex flex-col border text-left text-darkBlue">
-              <h3 class="md:text-xl text-sm font-bold">Insights</h3>
-              <p class="md:text-base text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod
-                tempor incididunt ut labore et dolore magnaaliqua.</p>
-              <div
-                class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-end   font-normal">
-                <button id="homeHeroBookingTherapy" role="link"
-                  class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                  <a href="./therapy.html">Read more insights</a>
-      
-                </button>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Insights</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> <span class="underline font-bold text-xs">read
+                more</span>
+            </div>
+          </div>
+
+          <div class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="img/icon.svg" alt="">
               </div>
-      
+            </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Case Studies</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> <span class="underline font-bold text-xs">read
+                more</span>
             </div>
           </div>
       
-          <div class="flex flex-row border">
-            <div class="md:w-1/2  flex flex-col w-full ">
-              <div class="size-[10svw] md:size-[5svh] rounded-[1rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
-              </div>
-            </div>
-      
-            <div class="flex flex-col border text-left text-darkBlue">
-              <h3 class="md:text-xl text-sm font-bold">Case Studies</h3>
-              <p class="md:text-base text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magnaaliqua.</p>
-              <div
-                class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-end   font-normal">
-                <button id="homeHeroBookingTherapy" role="link"
-                  class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                  <a href="./therapy.html">Read more insights</a>
-      
-                </button>
-              </div>
-      
-            </div>
-          </div>
+          
       
         </div>
       
@@ -1234,7 +1165,7 @@
 
 
   <footer class=" text-darkBlue flex flex-col text-sm font-normal" role="contentinfo">
-    <div class="md:flex-row flex flex-col justify-center gap-5 text-center">
+    <div class="md:flex-row flex flex-col justify-center gap-7 text-center">
       <div class=" flex flex-col gap-2 px-10">
         <a href="./index.html" aria-label="Home">
           <img class="w-14 ml-0" src="./img/logo.svg" alt="VJC Home" aria-hidden="true">
@@ -1245,10 +1176,13 @@
         </div>
 
       </div>
-      <nav aria-label="Footer Navigation - Sitemap" role="navigation">
-        <div class="md:flex-row md:gap-10 flex flex-col gap-5 px-10">
+      <nav  aria-label="Footer Navigation - Sitemap" role="navigation">
 
-          <div class="md:flex-row max-md:gap-14 md:gap-10 flex gap-5">
+        
+
+        <div class="max-md:hidden md:flex-row md:gap-10 flex flex-col gap-5 px-10">
+
+          <div class=" md:flex-row max-md:gap-14 md:gap-10 flex gap-5">
             <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
               <li><a href="./index.html">Home</a></li>
               <li><a href="./about.html">About</a></li>
@@ -1276,29 +1210,49 @@
               <li><a href="./contact.html">Legal Process Outsourcing</a></li>
             </ul>
 
-            <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
-              <li><a href="./faq.html">Public Accountant</a></li>
-              <li><a href="./career.html">Startups</a></li>
-              <li><a href="./contact.html">SMEs</a></li>
-              <li><a href="./terms-and-conditions.html">Large Corporations</a></li>
-              <li><a href="./privacy-policy.html">Contact Us</a></li>
-            </ul>
+            
           </div>
+
+        </div>
+
+        <div class=" md:hidden">
+          <ul class="flex  flex-row flex-wrap justify-start gap-3 px-10 mx-auto text-xs text-darkBlue">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Legal Process Outsourcing</a></li>
+            <li><a href="#">Cloud Accounting & Bookkeeping</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Audit & Assurance Services</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Virtual Chief Financial Officer</a></li>
+            
+          </ul>
+        </div>
 
       </nav>
 
-      <div class=" max-md:px-8 flex flex-row items-center gap-1 text-base" role="presentation">
-        <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
-          <img class="w-16" src="./img/instagram-icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
-        </a>
-        <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
-          <img class="w-16" src="./img/linkedIn-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
-        </a>
-        <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
-          target="_blank" rel="noopener">
-          <img class="w-16" src="./img/whatsapp-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
-        </a>
-      </div>
+      
+      
+
+        <div class=" max-md:px-8 flex flex-row items-center gap-1 text-base" role="presentation">
+          <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
+            <img class="w-16" src="./img/instagram-icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
+          </a>
+          <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
+            <img class="w-16" src="./img/linkedIn-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
+          </a>
+          <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
+            target="_blank" rel="noopener">
+            <img class="w-16" src="./img/whatsapp-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
+          </a>
+        </div>
+      
     </div>
 
     <div class="md:text-center px-10 text-left">

@@ -720,6 +720,10 @@ html {
   margin-top: 1rem;
 }
 
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -749,6 +753,51 @@ html {
 .size-\[10svw\] {
   width: 10svw;
   height: 10svw;
+}
+
+.size-\[20svw\] {
+  width: 20svw;
+  height: 20svw;
+}
+
+.size-\[15svw\] {
+  width: 15svw;
+  height: 15svw;
+}
+
+.size-\[17svw\] {
+  width: 17svw;
+  height: 17svw;
+}
+
+.size-full {
+  width: 100%;
+  height: 100%;
+}
+
+.size-\[90\%\] {
+  width: 90%;
+  height: 90%;
+}
+
+.size-\[25svw\] {
+  width: 25svw;
+  height: 25svw;
+}
+
+.size-\[30svw\] {
+  width: 30svw;
+  height: 30svw;
+}
+
+.size-\[27svw\] {
+  width: 27svw;
+  height: 27svw;
+}
+
+.size-\[26svw\] {
+  width: 26svw;
+  height: 26svw;
 }
 
 .h-14 {
@@ -813,6 +862,10 @@ html {
 
 .w-full {
   width: 100%;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .min-w-full {
@@ -965,6 +1018,18 @@ html {
   gap: 2vw;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1016,6 +1081,18 @@ html {
   border-radius: 2rem;
 }
 
+.rounded-\[3rem\] {
+  border-radius: 3rem;
+}
+
+.rounded-\[2\.5rem\] {
+  border-radius: 2.5rem;
+}
+
+.rounded-\[2\.9rem\] {
+  border-radius: 2.9rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1032,6 +1109,11 @@ html {
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-lightGreen {
+  --tw-border-opacity: 1;
+  border-color: rgb(126 211 72 / var(--tw-border-opacity));
 }
 
 .bg-darkBlue {
@@ -1054,6 +1136,18 @@ html {
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .px-1 {
@@ -1124,6 +1218,11 @@ html {
 .px-32 {
   padding-left: 8rem;
   padding-right: 8rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 
 .pb-5 {
@@ -1250,8 +1349,20 @@ html {
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .no-underline {
   text-decoration-line: none;
+}
+
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
+.underline-offset-4 {
+  text-underline-offset: 4px;
 }
 
 .antialiased {
@@ -1285,6 +1396,24 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .drop-shadow-2xl {
   --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1292,6 +1421,11 @@ html {
 
 .drop-shadow-md {
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.drop-shadow-xl {
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -1403,6 +1537,14 @@ svg {
 }
 
 @media not all and (min-width: 768px) {
+  .max-md\:visible {
+    visibility: visible;
+  }
+
+  .max-md\:hidden {
+    display: none;
+  }
+
   .max-md\:h-\[40svh\] {
     height: 40svh;
   }
@@ -1423,6 +1565,14 @@ svg {
     gap: 3.5rem;
   }
 
+  .max-md\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .max-md\:p-6 {
+    padding: 1.5rem;
+  }
+
   .max-md\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -1436,6 +1586,11 @@ svg {
   .max-md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .max-md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -1487,6 +1642,18 @@ svg {
     margin-top: 9rem;
   }
 
+  .md\:mb-20 {
+    margin-bottom: 5rem;
+  }
+
+  .md\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:size-\[40svh\] {
     width: 40svh;
     height: 40svh;
@@ -1505,6 +1672,36 @@ svg {
   .md\:size-\[5svh\] {
     width: 5svh;
     height: 5svh;
+  }
+
+  .md\:size-\[90\%\] {
+    width: 90%;
+    height: 90%;
+  }
+
+  .md\:size-\[50\] {
+    width: 50;
+    height: 50;
+  }
+
+  .md\:size-\[20svh\] {
+    width: 20svh;
+    height: 20svh;
+  }
+
+  .md\:size-\[15svh\] {
+    width: 15svh;
+    height: 15svh;
+  }
+
+  .md\:size-\[13svh\] {
+    width: 13svh;
+    height: 13svh;
+  }
+
+  .md\:size-\[45svh\] {
+    width: 45svh;
+    height: 45svh;
   }
 
   .md\:w-1\/2 {
@@ -1547,8 +1744,24 @@ svg {
     gap: 1rem;
   }
 
+  .md\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .md\:whitespace-normal {
     white-space: normal;
+  }
+
+  .md\:rounded-\[4rem\] {
+    border-radius: 4rem;
+  }
+
+  .md\:rounded-\[3\.5rem\] {
+    border-radius: 3.5rem;
+  }
+
+  .md\:rounded-\[3\.3rem\] {
+    border-radius: 3.3rem;
   }
 
   .md\:p-10 {
@@ -1669,6 +1882,14 @@ svg {
 
   .portrait\:text-\[5\.5vw\] {
     font-size: 5.5vw;
+  }
+
+  .portrait\:text-\[5vw\] {
+    font-size: 5vw;
+  }
+
+  .portrait\:text-\[4vw\] {
+    font-size: 4vw;
   }
 
   @media (min-width: 640px) {
@@ -1872,6 +2093,16 @@ svg {
 
     .lg\:landscape\:text-lg {
       font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .lg\:landscape\:text-2xl {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    .lg\:landscape\:text-xl {
+      font-size: 1.25rem;
       line-height: 1.75rem;
     }
   }
