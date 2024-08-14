@@ -1322,6 +1322,10 @@ html {
   font-weight: 600;
 }
 
+.font-thin {
+  font-weight: 100;
+}
+
 .leading-10 {
   line-height: 2.5rem;
 }
