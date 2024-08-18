@@ -1588,6 +1588,14 @@ svg {
   .max-xl\:pb-0 {
     padding-bottom: 0px;
   }
+
+  .max-xl\:pb-16 {
+    padding-bottom: 4rem;
+  }
+
+  .max-xl\:pb-12 {
+    padding-bottom: 3rem;
+  }
 }
 
 @media not all and (min-width: 768px) {
