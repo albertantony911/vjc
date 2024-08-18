@@ -696,7 +696,130 @@
     
 
 
+    <!-- Contact Section -->
+    <section class="xl:flex-row  xl:px-32 py-32   flex flex-col" role="region"
+      aria-labelledby="contactSectionHeading">
+      <!-- Contact Information Section -->
+      <div class="xl:w-[40%]  max-xl:pb-12    flex max-xl:px-10 flex-col justify-center text-darkBlue w-full pb-10 mx-auto"
+        data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
+        <h3 id="contactSectionHeading"
+          class="md:text-3xl landscape:lg:text-4xl landscape:text-sm text-[7.5vw] portrait:sm:text-[3vw] font-bold mt-20 landscape:mt-0 mb-10 text-darkBlue text-left leading-[2.5rem]"
+          aria-label="Contact Section">
+          Partner with the finest
+          <br>Offshore Accounting
+          <br>Service in India!
+        </h3>
     
+        <div class="flex flex-row gap-2 text-sm items-center ">
+          <img class="size-4" src="/img/phone-icon.svg" alt="">
+          <p>91 9847611095</p>
+        </div>
+    
+        <div class="flex flex-row gap-2 text-sm mt-2 items-center ">
+          <img class="size-4 " src="/img/email-icon.svg" alt="">
+          <p>admin@vjcindia.com</p>
+        </div>
+    
+        <div class="mt-5 flex flex-row items-center gap-3 text-base" role="presentation">
+          <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
+            <img class="w-[4rem] " src="./img/icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
+          </a>
+          <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
+            <img class="w-[4rem]" src="./img/icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
+          </a>
+          <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
+            target="_blank" rel="noopener">
+            <img class="w-[4rem]" src="./img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
+          </a>
+        </div>
+    
+    
+      </div>
+      <!-- Contact Form Section -->
+      <div
+        class="bg-light landscape:text-base xl:rounded-[3rem] md:shadow-xl md:border border-[#adf6c4]  landscape:xl:w-[40%]  xl:py-12 flex flex-col items-center w-full py-20 mx-auto text-sm"
+        role="form" aria-labelledby="contactFormHeading">
+        <div class="flex ">
+          <h2 id="contactFormHeading" class="text-darkBlue mb-1 text-2xl font-semibold pb-8" data-aos="fade-in"
+            data-aos-delay="100" data-aos-once="true">SEND US A MESSAGE</h1>
+    
+        </div>
+        <div class="xl:w-[75%] w-[75%] md:w-[35%]  " data-aos="fade-in" data-aos-delay="100" data-aos-once="true">
+          <form action="https://api.web3forms.com/submit" method="POST" id="form">
+            <input type="hidden" name="access_key" value="dd923ac4-c4ca-4668-bd3e-074e10d93a0f" />
+            <input type="hidden" name="subject" value="Home Page" />
+            <input type="hidden" name="from_name" value="General Enquiry">
+            <input type="checkbox" name="botcheck" id="" style="display: none;" />
+            <input type="hidden" name="redirect" value="https://www/message-received.html">
+            <div class="flex flex-row mb-3 gap-3 justify-between">
+              <div class="">
+                <label for="name" class="text-darkBlue block mb-2 text-sm">Full Name</label>
+                <input type="text" name="name" id="name" placeholder="Full Name" required
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+              </div>
+              <div class="">
+                <label for="name" class="text-darkBlue block mb-2 text-sm">Company</label>
+                <input type="text" name="name" id="name" placeholder="Company Name" required
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+              </div>
+            </div>
+    
+            <div class="flex flex-row mb-3 gap-3 justify-between">
+              <div class="">
+                <label for="email" class="text-darkBlue block mb-2 text-sm">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="name@mail.com" required
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4] " />
+              </div>
+              <div class="">
+                <label for="phone" class="text-darkBlue block mb-2 text-sm">Phone Number</label>
+                <input type="text" name="phone" id="phone" placeholder="Phone Number" required
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+              </div>
+            </div>
+    
+            <div class="mb-3">
+              <label for="Country" class="text-darkBlue block mb-2 text-sm">Select your country</label>
+              <div x-data="{ open: false }" class="relative">
+                <select name="Country" id="Country" required
+                  class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]"
+                  @focus="open = true" @blur="open = false" @change="open = false">
+                  <option value="">Choose your country</option>
+                  <option value="United States of America">United States of America</option>
+                  <option value="Australia">Australia</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                </select>
+                <div :class="open ? 'rotate-180' : ''"
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-darkBlue size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+    
+    
+    
+    
+    
+            <div class="mb-4">
+              <label for="message" class="text-darkBlue block mb-2 text-sm">Your Message</label>
+              <textarea rows="4" name="message" id="message" placeholder="Your Message"
+                class=" w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]"
+                required></textarea>
+            </div>
+            <div class="px-auto flex justify-center">
+              <button type="submit"
+                class="hover:text-white  bg-darkBlue hover:bg-lightGreen md:w-[60%] md:py-5 inline-block w-[50%] px-4 py-6 text-white no-underline rounded-full">SEND
+                MESSAGE</button>
+            </div>
+            <!-- Form Submission Result Message -->
+            <p class="text-dark-purple text-base text-center" id="result" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
 
 
     
@@ -704,7 +827,7 @@
 
 
     <!--  FAQ Section -->
-    <section class="bg-light text-darkBlue flex flex-col my-32" role="region" aria-label="Sessions related FAQ">
+    <section class="bg-light text-darkBlue flex flex-col shadow-lg  pb-28 " role="region" aria-label="Sessions related FAQ">
       <div role="heading" aria-level="2">
         <h2 class="md:text-3xl text-2xl font-semibold text-center">
           Frequently Asked Questions
@@ -1160,119 +1283,7 @@
     </section>
 
 
-    <!-- Contact Section -->
-        <section class="xl:flex-row  xl:px-32   xl:py-20   shadow-md flex flex-col" role="region" aria-labelledby="contactSectionHeading">
-          <!-- Contact Information Section -->
-          <div class="xl:w-[40%]  max-xl:pb-12    flex max-xl:px-10 flex-col justify-center text-darkBlue w-full pb-10 mx-auto" data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
-            <h3 id="contactSectionHeading" class="md:text-3xl landscape:lg:text-4xl landscape:text-sm text-[7.5vw] portrait:sm:text-[3vw] font-bold mt-20 landscape:mt-0 mb-10 text-darkBlue text-left leading-[2.5rem]" aria-label="Contact Section">
-                  Partner with the finest
-              <br>Offshore Accounting
-              <br>Service in India!
-            </h3>
-
-            <div class="flex flex-row gap-2 text-sm items-center ">
-              <img class="size-4" src="/img/phone-icon.svg" alt="">
-              <p>91 9847611095</p>
-            </div>
-
-            <div class="flex flex-row gap-2 text-sm mt-2 items-center ">
-              <img class="size-4 " src="/img/email-icon.svg" alt="">
-              <p>admin@vjcindia.com</p>
-            </div>
-
-            <div class="mt-5 flex flex-row items-center gap-3 text-base" role="presentation">
-              <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
-                <img class="w-[4rem] " src="./img/icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
-              </a>
-              <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
-                <img class="w-[4rem]" src="./img/icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
-              </a>
-              <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
-                target="_blank" rel="noopener">
-                <img class="w-[4rem]" src="./img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
-              </a>
-            </div>
-
-            
-          </div>
-          <!-- Contact Form Section -->
-          <div class="bg-light landscape:text-base xl:rounded-[3rem] md:shadow-xl md:border border-[#adf6c4]  landscape:xl:w-[40%]  xl:py-12 flex flex-col items-center w-full py-20 mx-auto text-sm" role="form" aria-labelledby="contactFormHeading">
-            <div class="flex ">
-              <h2 id="contactFormHeading" class="text-darkBlue mb-1 text-2xl font-semibold pb-8" data-aos="fade-in" data-aos-delay="100" data-aos-once="true">SEND US A MESSAGE</h1>
-              
-            </div>
-            <div class="xl:w-[75%] w-[75%] md:w-[35%]  " data-aos="fade-in" data-aos-delay="100" data-aos-once="true">
-              <form action="https://api.web3forms.com/submit" method="POST" id="form">
-                  <input type="hidden" name="access_key" value="dd923ac4-c4ca-4668-bd3e-074e10d93a0f" />
-                  <input type="hidden" name="subject" value="Home Page" />
-                  <input type="hidden" name="from_name" value="General Enquiry">
-                  <input type="checkbox" name="botcheck" id="" style="display: none;" />
-                  <input type="hidden" name="redirect" value="https://www/message-received.html">
-                  <div class="flex flex-row mb-3 gap-3 justify-between">
-                    <div class="">
-                      <label for="name" class="text-darkBlue block mb-2 text-sm">Full Name</label>
-                      <input type="text" name="name" id="name" placeholder="Full Name" required
-                        class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
-                    </div>
-                    <div class="">
-                      <label for="name" class="text-darkBlue block mb-2 text-sm">Company</label>
-                      <input type="text" name="name" id="name" placeholder="Company Name" required
-                        class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
-                    </div>
-                  </div>
-
-                  <div class="flex flex-row mb-3 gap-3 justify-between">
-                    <div class="">
-                      <label for="email" class="text-darkBlue block mb-2 text-sm">Email Address</label>
-                      <input type="email" name="email" id="email" placeholder="name@mail.com" required
-                        class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4] " />
-                    </div>
-                    <div class="">
-                      <label for="phone" class="text-darkBlue block mb-2 text-sm">Phone Number</label>
-                      <input type="text" name="phone" id="phone" placeholder="Phone Number" required
-                        class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
-                    </div>
-                  </div>
-
-                    <div class="mb-3">
-                      <label for="Country" class="text-darkBlue block mb-2 text-sm">Select your country</label>
-                      <div x-data="{ open: false }" class="relative">
-                        <select name="Country" id="Country" required
-                          class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]"
-                          @focus="open = true" @blur="open = false" @change="open = false">
-                          <option value="">Choose your country</option>
-                          <option value="United States of America">United States of America</option>
-                          <option value="Australia">Australia</option>
-                          <option value="United Kingdom">United Kingdom</option>
-                          <option value="Canada">Canada</option>
-                        </select>
-                        <div :class="open ? 'rotate-180' : ''"
-                          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                          <svg class="fill-darkBlue size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-
-
-                  
-
-                
-                <div class="mb-4">
-                    <label for="message" class="text-darkBlue block mb-2 text-sm">Your Message</label>
-                    <textarea rows="4" name="message" id="message" placeholder="Your Message" class=" w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" required></textarea>
-                </div>
-                <div class="px-auto flex justify-center">
-                    <button type="submit" class="hover:text-white  bg-darkBlue hover:bg-lightGreen md:w-[60%] md:py-5 inline-block w-[50%] px-4 py-6 text-white no-underline rounded-full">SEND MESSAGE</button>
-                </div>
-                  <!-- Form Submission Result Message -->
-                <p class="text-dark-purple text-base text-center" id="result" aria-live="polite"></p>
-              </form>
-            </div>
-          </div>
-        </section>
+    
 
 
   </main>
