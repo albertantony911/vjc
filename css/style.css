@@ -975,6 +975,10 @@ html {
   width: 50%;
 }
 
+.w-\[22svw\] {
+  width: 22svw;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1921,12 +1925,20 @@ svg {
     width: 75%;
   }
 
+  .md\:w-\[10\%\] {
+    width: 10%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
 
   .md\:flex-row-reverse {
     flex-direction: row-reverse;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:gap-10 {
@@ -1939,6 +1951,10 @@ svg {
 
   .md\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 
   .md\:whitespace-normal {
@@ -1980,6 +1996,11 @@ svg {
   .md\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+  }
+
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .md\:pl-32 {
