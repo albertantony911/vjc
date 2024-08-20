@@ -74,81 +74,61 @@
 
 
 .marquee {
-            display: flex;
-            block-size: var(--marquee-item-height);
-            margin-block: var(--marquee-item-height);
-            position: relative;
-            overflow-x: hidden;
-            mask-image: linear-gradient(
-                to right,
-                hsl(0 0% 0% / 0),
-                hsl(0 0% 0% / 1) 20%,
-                hsl(0 0% 0% / 1) 80%,
-                hsl(0 0% 0% / 0)
-            );
-        }
+    block-size: var(--marquee-item-height);
+    margin-block: 0;
+    mask-image: linear-gradient(
+        to right,
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) 20%,
+        hsl(0 0% 0% / 1) 80%,
+        hsl(0 0% 0% / 0)
+    );
+}
 
-        .marquee--3 {
-            --marquee-item-width: 125px;
-            --marquee-item-height: 125px;
-            --marquee-duration: 30s;
-            --marquee-items: 6;
-        }
+.marquee--LTR,
+.marquee--RTL {
+    --marquee-item-width: 125px;
+    --marquee-item-height: 125px;
+    --marquee-duration: 30s;
+    --marquee-items: 6;
+}
 
-        .marquee--omega {
-            --marquee-max-width: min(600px, 90vw);
-            max-inline-size: var(--marquee-max-width);
-            margin-inline: auto;
-            mask-image: linear-gradient(
-                to right,
-                hsl(0 0% 0% / 0),
-                hsl(0 0% 0% / 1) 10%,
-                hsl(0 0% 0% / 1) 90%,
-                hsl(0 0% 0% / 0)
-            );
-        }
+.marquee__item {
+    --marquee-item-offset: max(
+        calc(var(--marquee-item-width) * var(--marquee-items)),
+        calc(100% + var(--marquee-item-width))
+    );
+    --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
+    position: absolute;
+    inset-inline-start: var(--marquee-item-offset);
+    transform: translateX(-50%);
+    animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
+}
 
-        .marquee__item {
-            --marquee-item-offset: max(
-                calc(var(--marquee-item-width) * var(--marquee-items)),
-                calc(100% + var(--marquee-item-width))
-            );
-            --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
-            position: absolute;
-            inset-inline-start: var(--marquee-item-offset);
-            transform: translateX(-50%);
-            animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-        }
+/* LTR - Left to Right */
+.marquee--LTR .marquee__item {
+    animation-direction: normal; /* Default direction */
+}
 
+/* RTL - Right to Left */
+.marquee--RTL .marquee__item {
+    animation-direction: reverse; /* Reversed direction */
+}
 
-        .marquee--3 .marquee__item:nth-of-type(1) {
-            --marquee-item-index: 1;
-        }
+/* Keyframes for marquee animation */
+@keyframes go {
+    to {
+        inset-inline-start: calc(var(--marquee-item-width) * -1);
+    }
+}
 
-        .marquee--3 .marquee__item:nth-of-type(2) {
-            --marquee-item-index: 2;
-        }
+/* Apply index for each item */
+.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
+.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
+.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
+.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
+.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
+.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
 
-        .marquee--3 .marquee__item:nth-of-type(3) {
-            --marquee-item-index: 3;
-        }
-        .marquee--3 .marquee__item:nth-of-type(4) {
-        --marquee-item-index: 4;
-        }
-
-        .marquee--3 .marquee__item:nth-of-type(5) {
-            --marquee-item-index: 5;
-        }
-
-        .marquee--3 .marquee__item:nth-of-type(6) {
-            --marquee-item-index: 6;
-        }
-
-
-        @keyframes go {
-            to {
-                inset-inline-start: calc(var(--marquee-item-width) * -1);
-            }
-        }
 
         
