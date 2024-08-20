@@ -38,3 +38,9 @@ animatedCounter(36, 100, 0, "counter3");
 animatedCounter(36, 100, 0, "counter4");
 
 
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(Flip, ScrollTrigger, Observer, ScrollToPlugin, Draggable, MotionPathPlugin, EaselPlugin, PixiPlugin, TextPlugin, RoughEase, ExpoScaleEase, SlowMo, CustomEase);
+  // Your GSAP code here!
+});
