@@ -646,11 +646,6 @@ html {
   margin-right: auto;
 }
 
-.my-32 {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-}
-
 .my-7 {
   margin-top: 1.75rem;
   margin-bottom: 1.75rem;
@@ -753,14 +748,6 @@ html {
   margin-top: 2rem;
 }
 
-.ml-5 {
-  margin-left: 1.25rem;
-}
-
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
 .block {
   display: block;
 }
@@ -784,11 +771,6 @@ html {
 .size-4 {
   width: 1rem;
   height: 1rem;
-}
-
-.size-5 {
-  width: 1.25rem;
-  height: 1.25rem;
 }
 
 .size-\[26svw\] {
@@ -866,8 +848,8 @@ html {
   width: 25%;
 }
 
-.w-\[4\.5rem\] {
-  width: 4.5rem;
+.w-\[4rem\] {
+  width: 4rem;
 }
 
 .w-\[50\%\] {
@@ -892,10 +874,6 @@ html {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[4rem\] {
-  width: 4rem;
 }
 
 .min-w-full {
@@ -1218,6 +1196,11 @@ html {
   padding-bottom: 5rem;
 }
 
+.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1238,13 +1221,12 @@ html {
   padding-bottom: 2vw;
 }
 
-.py-32 {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
+}
+
+.pb-28 {
+  padding-bottom: 7rem;
 }
 
 .pb-5 {
@@ -1273,22 +1255,6 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
-.pb-28 {
-  padding-bottom: 7rem;
-}
-
-.pb-24 {
-  padding-bottom: 6rem;
 }
 
 .text-left {
@@ -1320,8 +1286,8 @@ html {
   font-size: 5vw;
 }
 
-.text-\[6vw\] {
-  font-size: 6vw;
+.text-\[7\.5vw\] {
+  font-size: 7.5vw;
 }
 
 .text-\[7vw\] {
@@ -1345,18 +1311,6 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[6\.5vw\] {
-  font-size: 6.5vw;
-}
-
-.text-\[7\.5vw\] {
-  font-size: 7.5vw;
-}
-
-.font-\[200\] {
-  font-weight: 200;
 }
 
 .font-bold {
@@ -1471,12 +1425,6 @@ html {
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1622,14 +1570,6 @@ svg {
   .max-xl\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-
-  .max-xl\:pb-0 {
-    padding-bottom: 0px;
-  }
-
-  .max-xl\:pb-16 {
-    padding-bottom: 4rem;
   }
 
   .max-xl\:pb-12 {
@@ -1902,16 +1842,6 @@ svg {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
-
-  .xl\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .xl\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
 }
 
 @media (orientation: portrait) {
@@ -2145,6 +2075,11 @@ svg {
       line-height: 2.25rem;
     }
 
+    .landscape\:lg\:text-4xl {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
     .landscape\:lg\:text-sm {
       font-size: 0.875rem;
       line-height: 1.25rem;
@@ -2177,17 +2112,6 @@ svg {
 }
 
 @media (orientation: landscape) {
-  @media (min-width: 1024px) {
-    .landscape\:lg\:text-4xl {
-      font-size: 2.25rem;
-      line-height: 2.5rem;
-    }
-
-    .landscape\:lg\:text-\[3xl\] {
-      color: 3xl;
-    }
-  }
-
   @media (min-width: 1280px) {
     .landscape\:xl\:w-\[40\%\] {
       width: 40%;
