@@ -35,6 +35,23 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Observer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EaselPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/PixiPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+
+
+    <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
 
 
     <!--  Fonts -->
@@ -103,26 +120,25 @@
 </head>
 
 <body class="scroll-smooth mx-auto leading-relaxed">
-    <!-- Google Tag Manager (noscript) -->
-
-    <!-- End Google Tag Manager (noscript) -->
+    
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-md">
-
+    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-2xl">
+    
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
-                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="The Friendly Couch Logo"
+                    aria-label="Home">
             </a>
         </div>
-
+    
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
             id="menuButtonContainer">
             <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
+                    class="icon icon-tabler icon-tabler-menu-2 stroke-dark-purple h-[5svh] sm:h-10 transition-transform transform"
                     viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="4" y1="6" x2="20" y2="6" />
@@ -131,45 +147,47 @@
                 </svg>
             </button>
         </div>
-
+    
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative top-0 transform translate-y-[-100%] menudrop landscape:hidden">
-            <ul
-                class="sm:text-xl bg-darkBlue font-poppins text-white z-20 flex flex-col items-center justify-center h-screen gap-[1vw] text-[4vw] antialiased text-center">
+            class="relative bg-darkBlue top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+            <ul id="mainMenu"
+                class="sm:text-xl  font-medium shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[1vw] text-[7vw] antialiased">
         
                 <!-- Navigation Links -->
                 <li><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
-                <li><a href="./pricing.html">PRICING</a></li>
-        
-                <!-- Services Section -->
-                <li class="mt-7 sm:mt-10 text-light-purple mb-2 text-xs font-medium">
-                    OUR SERVICES
-                </li>
-                <li><a href="./therapy.html">THERAPY</a></li>
-                <li><a href="./diagnosis.html">DIAGNOSIS</a></li>
-                <li><a href="./couples-counselling.html">COUPLE'S COUNSELLING</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <ul class="sm:text-xl   font-light  text-white z-20 flex flex-col items-end   justify-center  gap-[1vw] text-[3.5vw] ">
+                
+                    <li class="mt-1"><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                    <li><a href="./infrastructre.html">Virtual Chief Financial Officer</a></li>
+                    <li><a href="./careers.html">Tax Planning and Compliance</a></li>
+                    <li><a href="./careers.html">Internal Controls & SOX Compliance</a></li>
+                    <li><a href="./careers.html">Transaction Advisory</a></li>
+                    <li><a href="./careers.html">Legal Process Outsourcing</a></li>
+                
+                </ul>
+                <li class="mt-5"><a href="./pricing.html">PRICING</a></li>
         
                 <!-- Enquiry Section -->
-                <li class="mt-7 sm:mt-10 text-light-purple mb-2 text-xs font-medium">
-                    HAVE A QUESTION?
-                </li>
-                <li><a href="./faq.html">FAQ</a></li>
-                <li><a href="./contact.html">CONTACT</a></li>
         
-                <!-- Additional Links -->
-                <li class="mt-10"><a href="./workshops.html">WORKSHOP</a></li>
-                <li><a href="./career.html">CAREER</a></li>
+        
+                <li ><a href="./faq.html">FAQ</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+                <li><a href="./blog.html">RESOURCES</a></li>
+        
             </ul>
+        
+            
         </nav>
-
-
+    
+    
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
-            class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
+            class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-dark-purple">
             <ul class="flex flex-row flex-wrap items-center w-full">
-
+    
                 <!-- Home -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -178,7 +196,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-
+    
                 <!-- About -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -187,80 +205,7 @@
                         <span>About</span>
                     </a>
                 </li>
-
-
-
-                <!-- Our Services with Submenu -->
-                <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
-                    @click.away="showChildren = false; clearTimeout(submenuTimeout)"
-                    @touchstart="showChildren = !showChildren">
-                    <a href="#" aria-haspopup="true" aria-expanded="false"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
-                        @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-                        @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-                        <span>Services</span>
-                        <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
-                    </a>
-                    <div class=" absolute left-0 top-auto z-30 w-56 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-md"
-                        x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease duration-300 transform"
-                        x-transition:leave-start="opacity-100 translate-y-0"
-                        x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-                        aria-label="Submenu">
-                        <span
-                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-                        <div class="relative z-10 w-full px-2 py-6 bg-white">
-                            <ul class="list-reset" role="menu">
-                                <!-- Submenu Items -->
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                                    @mouseleave="showChildren = false">
-                                    <a href="./service.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                                        role="menuitem">
-                                        <span class="flex-1">service</span>
-                                    </a>
-                                </li>
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                                    @mouseleave="showChildren = false">
-                                    <a href="./service.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                                        role="menuitem">
-                                        <span class="flex-1">service</span>
-                                    </a>
-                                </li>
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                                    @mouseleave="showChildren = false">
-                                    <a href="./service.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                                        role="menuitem">
-                                        <span class="flex-1">service</span>
-                                    </a>
-                                </li>
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                                    @mouseleave="showChildren = false">
-                                    <a href="./service.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
-                                        role="menuitem">
-                                        <span class="flex-1">service</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Infrastructure -->
-                <li class="relative block">
-                    <!-- Navigation Link with ARIA Label -->
-                    <a href="./infrastructure.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-                        <span>Solutions</span>
-                    </a>
-                </li>
-
+    
                 <!-- Pricing -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -269,18 +214,67 @@
                         <span>Pricing</span>
                     </a>
                 </li>
-
-                
-
-                <!-- Resources -->
-                <li class="relative block">
-                    <!-- Navigation Link with ARIA Label -->
-                    <a href="./blogs.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-                        <span>Resources</span>
+    
+                <!-- Our Services with Submenu -->
+                <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
+                    @click.away="showChildren = false; clearTimeout(submenuTimeout)"
+                    @touchstart="showChildren = !showChildren">
+                    <a href="#" aria-haspopup="true" aria-expanded="false"
+                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
+                        @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
+                        @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
+                        <span>Our Services</span>
+                        <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
                     </a>
+                    <div class="rounded-3xl absolute left-0 top-auto z-30 w-56 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-md"
+                        x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
+                        x-transition:enter-start="opacity-0 translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease duration-300 transform"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        <div class="rounded-3xl relative z-10 w-full px-2 py-6 bg-white">
+                            <ul class="list-reset" role="menu">
+                                <!-- Submenu Items -->
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./therapy.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Therapy</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./diagnosis.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Diagnosis</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./couples-counselling.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Couple's Counselling</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./workshops.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Workshops</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
-
+    
                 <!-- FAQ -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -289,7 +283,7 @@
                         <span>FAQ</span>
                     </a>
                 </li>
-
+    
                 <!-- Contact Us -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -300,7 +294,7 @@
                 </li>
             </ul>
         </nav>
-
+    
     </header>
 
     
