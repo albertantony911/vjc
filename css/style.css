@@ -1355,6 +1355,10 @@ html {
   line-height: 1rem;
 }
 
+.text-\[4vw\] {
+  font-size: 4vw;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1682,6 +1686,10 @@ svg {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .sm\:h-10 {
     height: 2.5rem;
   }
