@@ -1,48 +1,21 @@
 // Hamburger menu Animation
 
-document.addEventListener("DOMContentLoaded", () => {
-  const getEl = (id) => document.getElementById(id);
-  const getEls = (selector) => document.querySelectorAll(selector);
-
-  const menuButtonContainer = getEl("menuButtonContainer");
+document.addEventListener("DOMContentLoaded", function () {
+  const menuButtonContainer = document.getElementById("menuButtonContainer");
   const nav = document.querySelector("nav");
-  const mainMenuItems = getEls("#mainMenu li");
-  const serviceMenuItems = getEls("#serviceMenu li");
+  const menuItems = document.querySelectorAll(".menudrop li");
 
-  const mainMenu = getEl("mainMenu");
-  const serviceMenu = getEl("serviceMenu");
-  const serviceButton = getEl("serviceButton");
-  const backButton = getEl("backButton");
-
-  const toggleMenuItems = (items, show) => {
-    items.forEach(item => item.classList.toggle("toggled", show));
-  };
-
-  const toggleMenu = () => {
+  menuButtonContainer.addEventListener("click", function() {
+    // Toggle the 'menu-open' class to trigger the animations
     menuButtonContainer.classList.toggle("menu-open");
+
+    // Toggle the 'translate-y-[-100%]' class to open/close the navigation menu
     nav.classList.toggle("translate-y-[-100%]");
-    toggleMenuItems(mainMenuItems, menuButtonContainer.classList.contains("menu-open"));
-  };
 
-  const switchMenu = (hideItems, showItems, hideMenu, showMenu) => {
-    toggleMenuItems(hideItems, false);
-    toggleMenuItems(showItems, true);
-    hideMenu.classList.add("hidden");
-    showMenu.classList.remove("hidden");
-  };
-
-  menuButtonContainer.addEventListener("click", () => {
-    toggleMenu();
-    if (!menuButtonContainer.classList.contains("menu-open")) {
-      switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu);
-    }
+    // Toggle the 'toggled' class on the list items
+    menuItems.forEach(item => item.classList.toggle("toggled"));
   });
-
-  serviceButton.addEventListener("click", () => switchMenu(mainMenuItems, serviceMenuItems, mainMenu, serviceMenu));
-  backButton.addEventListener("click", () => switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu));
-
-  switchMenu(serviceMenuItems, mainMenuItems, serviceMenu, mainMenu);
-});
+   });
 
 
 
@@ -52,6 +25,32 @@ window.addEventListener('load', () => {
   AOS.init();
   AOS.refresh();
 });
+
+// You can also pass an optional settings object
+// below listed default settings
+
+AOS.init({
+  // Global settings:
+  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+  initClassName: 'aos-init', // class applied after initialization
+  animatedClassName: 'aos-animate', // class applied on animation
+  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+  
+
+  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+  offset: 120, // offset (in px) from the original trigger point
+  delay: 0, // values from 0 to 3000, with step 50ms
+  duration: 400, // values from 0 to 3000, with step 50ms
+  easing: 'ease', // default easing for AOS animations
+  once: false, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+});;
 
    
 
