@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
    });
 
 
-   
 window.addEventListener('load', () => {
   AOS.init();
   AOS.refresh();
