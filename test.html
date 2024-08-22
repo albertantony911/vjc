@@ -123,12 +123,12 @@
     
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-2xl">
+    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white shadow-md">
     
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
-                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="The Friendly Couch Logo"
+                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo"
                     aria-label="Home">
             </a>
         </div>
@@ -138,7 +138,7 @@
             id="menuButtonContainer">
             <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-menu-2 stroke-dark-purple h-[5svh] sm:h-10 transition-transform transform"
+                    class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
                     viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="4" y1="6" x2="20" y2="6" />
@@ -150,33 +150,34 @@
     
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative bg-darkBlue top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+            class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
             <ul id="mainMenu"
-                class="sm:text-xl  font-medium shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[1vw] text-[7vw] antialiased">
+                class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[1vw] text-[9vw] antialiased">
         
                 <!-- Navigation Links -->
-                <li><a href="./index.html">HOME</a></li>
-                <li><a href="./about.html">ABOUT</a></li>
-                <li><a href="#">SERVICES</a></li>
-                <ul class="sm:text-xl   font-light  text-white z-20 flex flex-col items-end   justify-center  gap-[1vw] text-[3.5vw] ">
+                <li ><a href="./index.html">HOME</a></li>
+                <li ><a href="./about.html">ABOUT</a></li>
+                <li class="flex flex-row gap-1  items-center" id="servicesMenu"><a href="#">SERVICES</a><img class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
                 
-                    <li class="mt-1"><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                    <li><a href="./infrastructre.html">Virtual Chief Financial Officer</a></li>
-                    <li><a href="./careers.html">Tax Planning and Compliance</a></li>
-                    <li><a href="./careers.html">Internal Controls & SOX Compliance</a></li>
-                    <li><a href="./careers.html">Transaction Advisory</a></li>
-                    <li><a href="./careers.html">Legal Process Outsourcing</a></li>
-                
-                </ul>
-                <li class="mt-5"><a href="./pricing.html">PRICING</a></li>
+                <li><a href="./pricing.html">PRICING</a></li>        
         
-                <!-- Enquiry Section -->
-        
-        
-                <li ><a href="./faq.html">FAQ</a></li>
+                <li class="mt-5"><a href="./faq.html">FAQ</a></li>
                 <li><a href="./contact.html">CONTACT</a></li>
-                <li><a href="./blog.html">RESOURCES</a></li>
+                <li><a href="./contact.html">RESOURCES</a></li>
+                
         
+            </ul>
+
+            <ul id="subMenu" class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
+                <li  class=" text-[9vw] font-thin" ><a href="#">SERVICES</a></li>
+                <li ><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                <li><a href="./infrastructre.html">Virtual Chief Financial Officer</a></li>
+                <li><a href="./careers.html">Tax Planning and Compliance</a></li>
+                <li><a href="./careers.html">Internal Controls & SOX Compliance</a></li>
+                <li><a href="./careers.html">Transaction Advisory</a></li>
+                <li><a href="./careers.html">Legal Process Outsourcing</a></li>
+                <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img class="size-6  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+            
             </ul>
         
             

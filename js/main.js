@@ -1,21 +1,47 @@
-// Hamburger menu Animation
-
 document.addEventListener("DOMContentLoaded", function () {
-  const menuButtonContainer = document.getElementById("menuButtonContainer");
-  const nav = document.querySelector("nav");
-  const menuItems = document.querySelectorAll(".menudrop li");
+    const menuButtonContainer = document.getElementById("menuButtonContainer");
+    const nav = document.querySelector("nav");
+    const menuItems = document.querySelectorAll(".menudrop li");
+    const servicesMenu = document.getElementById("servicesMenu");
+    const subMenu = document.getElementById("subMenu");
+    const mainMenu = document.getElementById("mainMenu");
+    const backButton = document.getElementById("backButton");
 
-  menuButtonContainer.addEventListener("click", function() {
-    // Toggle the 'menu-open' class to trigger the animations
-    menuButtonContainer.classList.toggle("menu-open");
+    // Set initial state
+    subMenu.classList.add("hidden");
 
-    // Toggle the 'translate-y-[-100%]' class to open/close the navigation menu
-    nav.classList.toggle("translate-y-[-100%]");
+    const toggleMenu = () => {
+        const isMenuOpen = nav.classList.toggle("translate-y-[-100%]");
+        menuButtonContainer.classList.toggle("menu-open");
+        menuItems.forEach(item => item.classList.toggle("toggled"));
+        if (isMenuOpen) {
+            mainMenu.classList.remove("hidden");
+            subMenu.classList.add("hidden");
+            subMenu.classList.remove("fade-in", "li-fade-in");
+        }
+    };
 
-    // Toggle the 'toggled' class on the list items
-    menuItems.forEach(item => item.classList.toggle("toggled"));
-  });
-   });
+    const showSubMenu = () => {
+        mainMenu.classList.add("hidden");
+        subMenu.classList.remove("hidden");
+        subMenu.classList.remove("fade-in");
+        void subMenu.offsetWidth; // Trigger reflow
+        subMenu.classList.add("active", "fade-in");
+    };
+
+    const goBack = () => {
+        subMenu.classList.remove("fade-in");
+        subMenu.classList.add("hidden");
+        mainMenu.classList.remove("hidden");
+        mainMenu.classList.remove("fade-in");
+        void mainMenu.offsetWidth; // Trigger reflow
+        mainMenu.classList.add("fade-in");
+    };
+
+    menuButtonContainer.addEventListener("click", toggleMenu);
+    servicesMenu.addEventListener("click", showSubMenu);
+    backButton.addEventListener("click", goBack);
+});
 
 
 window.addEventListener('load', () => {

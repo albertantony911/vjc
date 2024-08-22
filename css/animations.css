@@ -72,6 +72,90 @@
 
 
 
+/* Initially hide the submenu */
+#subMenu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+/* Show the submenu */
+#subMenu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide submenu */
+#subMenu.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* Main menu fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#mainMenu.fade-in {
+    animation: fadeIn 0.20s ease-in-out;
+}
+
+/* Sub-menu fade-in effect */
+@keyframes fadeInSubMenu {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#subMenu.fade-in {
+    animation: fadeInSubMenu 0.20s ease-in-out;
+}
+
+
+
+
+
+@keyframes bounce-right {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+  }
+  50% {
+    transform: translateX(5px); /* Adjust distance as needed */
+    animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+  }
+  100% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+  }
+}
+
+.bounce-right {
+  animation: bounce-right 1s infinite;
+}
+
+@keyframes bounce-left {
+    0% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+  }
+  50% {
+    transform: translateX(-5px); /* Adjust distance as needed */
+    animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+  }
+  100% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+  }
+}
+
+.bounce-left {
+  animation: bounce-left 1s infinite;
+}
+
+
+
 
 .marquee {
     block-size: var(--marquee-item-height);
