@@ -42,6 +42,65 @@ animatedCounter(36, 3000, 0, "counter4");
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(Flip, ScrollTrigger, Observer, ScrollToPlugin, Draggable, MotionPathPlugin, EaselPlugin, PixiPlugin, TextPlugin, RoughEase, ExpoScaleEase, SlowMo, CustomEase);
-  // Your GSAP code here!
+  // Register GSAP plugins
+  gsap.registerPlugin(
+    Flip, 
+    ScrollTrigger, 
+    Observer, 
+    ScrollToPlugin, 
+    Draggable, 
+    MotionPathPlugin, 
+    EaselPlugin, 
+    PixiPlugin, 
+    TextPlugin, 
+    RoughEase, 
+    ExpoScaleEase, 
+    SlowMo, 
+    CustomEase
+  );
+  
+  // Animate .periodBox elements
+gsap.utils.toArray('.periodBox').forEach((box) => {
+  gsap.fromTo(box, 
+    { 
+      filter: "grayscale(100%)",
+      opacity: 0.1,
+    },
+    { 
+      filter: "grayscale(0%)",
+      opacity: 1,
+      duration: 2,
+      scrollTrigger: {
+        trigger: box,        // Trigger the animation when this .periodBox enters the viewport
+        start: "top 80%",    // Adjust start based on your needs
+        end: "top 30%",      // Adjust end based on your needs
+        toggleActions: "play none none none",
+      }
+    }
+  );
+});
+
+// Animate .line elements
+gsap.utils.toArray('.line').forEach((line) => {
+  gsap.from(line, 
+    {
+      height: "0%", // Start with zero height
+      duration: 1,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: line,       // Trigger the animation when this .line enters the viewport
+        start: "top 80%",    // Adjust start based on your needs
+        end: "top 30%",      // Adjust end based on your needs
+        toggleActions: "play none none none",
+      }
+    }
+  );
+});
+
+
+
+    
+    
+    
+    
 });

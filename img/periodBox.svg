@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1242 900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-73522.2,-19993.1)">
+        <g transform="matrix(3.18444,0,0,20.9088,72789.5,17625.8)">
+            <g id="periodBox">
+                <g transform="matrix(0.142416,0,0,0.0157107,-2167.16,-678.405)">
+                    <path d="M19571.2,51051.8L19571.2,52462.1C19571.2,52828.7 19355.6,53126.2 19090.2,53126.2L17313.7,53126.2C17048.2,53126.2 16832.6,52828.7 16832.6,52462.1L16832.6,51051.8C16832.6,50685.3 17048.2,50387.7 17313.7,50387.7L19090.2,50387.7C19355.6,50387.7 19571.2,50685.3 19571.2,51051.8Z" style="fill:rgb(126,211,72);"/>
+                </g>
+                <g transform="matrix(0.136156,0,0,0.0148607,-2053.21,-634.412)">
+                    <path d="M19571.2,51017.8L19571.2,52496.2C19571.2,52843.9 19368.8,53126.2 19119.6,53126.2L17284.2,53126.2C17035,53126.2 16832.6,52843.9 16832.6,52496.2L16832.6,51017.8C16832.6,50670 17035,50387.7 17284.2,50387.7L19119.6,50387.7C19368.8,50387.7 19571.2,50670 19571.2,51017.8Z" style="fill:white;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
