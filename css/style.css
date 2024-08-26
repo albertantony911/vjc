@@ -821,6 +821,14 @@ html {
   margin-right: 0px;
 }
 
+.ml-\[50\%\] {
+  margin-left: 50%;
+}
+
+.ml-\[35\%\] {
+  margin-left: 35%;
+}
+
 .block {
   display: block;
 }
@@ -1160,6 +1168,30 @@ html {
 
 .w-\[55\%\] {
   width: 55%;
+}
+
+.w-\[16\%\] {
+  width: 16%;
+}
+
+.w-\[18\%\] {
+  width: 18%;
+}
+
+.w-\[12\%\] {
+  width: 12%;
+}
+
+.w-\[11\%\] {
+  width: 11%;
+}
+
+.w-\[91\%\] {
+  width: 91%;
+}
+
+.w-\[85\%\] {
+  width: 85%;
 }
 
 .min-w-full {
@@ -1762,6 +1794,10 @@ html {
   padding-bottom: 3rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2332,6 +2368,14 @@ svg {
     height: 11rem;
   }
 
+  .md\:h-12 {
+    height: 3rem;
+  }
+
+  .md\:h-10 {
+    height: 2.5rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -2414,6 +2458,10 @@ svg {
 
   .md\:w-\[9rem\] {
     width: 9rem;
+  }
+
+  .md\:w-\[80\%\] {
+    width: 80%;
   }
 
   .md\:flex-row {
