@@ -213,7 +213,7 @@
                 <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
                     @touchstart="showChildren = !showChildren">
-                    <a href="#" aria-haspopup="true" aria-expanded="false"
+                    <a href="./resources.html" aria-haspopup="true" aria-expanded="false"
                         class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
