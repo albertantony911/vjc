@@ -151,40 +151,40 @@
 
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+      class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
       <ul id="mainMenu"
-        class="sm:text-xl  font-poppins  font-medium shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[1vw] text-[7vw] antialiased">
-
+        class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
+    
         <!-- Navigation Links -->
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./about.html">ABOUT</a></li>
-        <li id="serviceButton"><a href="#">SERVICES</a></li>
+        <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
+            class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
+    
         <li><a href="./pricing.html">PRICING</a></li>
-
-        <!-- Enquiry Section -->
-
-
-        <li class="mt-16"><a href="./faq.html">FAQ</a></li>
+    
+        <li class="mt-5"><a href="./faq.html">FAQ</a></li>
         <li><a href="./contact.html">CONTACT</a></li>
-        <li><a href="./blog.html">RESOURCES</a></li>
-
+        <li><a href="./contact.html">RESOURCES</a></li>
+    
+    
       </ul>
-
-      <ul id="serviceMenu"
-        class="sm:text-xl  font-poppins  font-light shadow-md  text-white z-20 flex flex-col items-end pr-[15vw] justify-center h-screen gap-[2vw] text-[4.5vw] antialiased">
-
-        <!-- Navigation Links -->
-        <li class="text-[8vw] font-bold"><a href="./about.html">SERVICES</a></li>
-
-        <li class="mt-2"><a href="./pricing.html">Cloud Accounting & Bookkeeping</a></li>
+    
+      <ul id="subMenu"
+        class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
+        <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
+        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
         <li><a href="./infrastructre.html">Virtual Chief Financial Officer</a></li>
         <li><a href="./careers.html">Tax Planning and Compliance</a></li>
         <li><a href="./careers.html">Internal Controls & SOX Compliance</a></li>
         <li><a href="./careers.html">Transaction Advisory</a></li>
         <li><a href="./careers.html">Legal Process Outsourcing</a></li>
-        <li id="backButton" class="mt-20"><a href="#">back</a></li>
-
+        <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img class="size-6  bounce-left"
+            src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+    
       </ul>
+    
+    
     </nav>
 
 

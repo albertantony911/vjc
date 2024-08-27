@@ -60,47 +60,59 @@ document.addEventListener("DOMContentLoaded", (event) => {
   );
   
   // Animate .periodBox elements
-gsap.utils.toArray('.periodBox').forEach((box) => {
-  gsap.fromTo(box, 
-    { 
-      filter: "grayscale(100%)",
-      opacity: 0.1,
-    },
-    { 
-      filter: "grayscale(0%)",
-      opacity: 1,
-      duration: 2,
-      scrollTrigger: {
-        trigger: box,        // Trigger the animation when this .periodBox enters the viewport
-        start: "top 80%",    // Adjust start based on your needs
-        end: "top 30%",      // Adjust end based on your needs
-        toggleActions: "play none none none",
+  gsap.utils.toArray('.periodBox').forEach((box) => {
+    gsap.fromTo(box, 
+      { 
+        filter: "grayscale(100%)",
+        opacity: 0.1,
+      },
+      { 
+        filter: "grayscale(0%)",
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          trigger: box,        // Trigger the animation when this .periodBox enters the viewport
+          start: "top 80%",    // Adjust start based on your needs
+          end: "top 30%",      // Adjust end based on your needs
+          toggleActions: "play none none none",
+        }
       }
-    }
-  );
-});
+    );
+  });
 
-// Animate .line elements
-gsap.utils.toArray('.line').forEach((line) => {
-  gsap.from(line, 
-    {
-      height: "0%", // Start with zero height
-      duration: 1,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: line,       // Trigger the animation when this .line enters the viewport
-        start: "top 80%",    // Adjust start based on your needs
-        end: "top 30%",      // Adjust end based on your needs
-        toggleActions: "play none none none",
+  // Animate .line elements
+  gsap.utils.toArray('.line-v').forEach((line) => {
+    gsap.from(line, 
+      {
+        height: "0%", // Start with zero height
+        duration: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: line,       // Trigger the animation when this .line-v enters the viewport
+          start: "top 80%",    // Adjust start based on your needs
+          end: "top 30%",      // Adjust end based on your needs
+          toggleActions: "play none none none",
+        }
       }
-    }
-  );
+    );
+  });
+    
+  // Animate .line-center elements
+  gsap.utils.toArray('.line-center').forEach((line) => {
+    gsap.from(line, 
+      {
+        scaleX: 0, // Start with scaleX of 0 (shrinks horizontally)
+        transformOrigin: "center center", // Expand from the center
+        duration: 1.5,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: line,       // Trigger the animation when this .line-center enters the viewport
+          start: "top 80%",    // Adjust start based on your needs
+          end: "top 30%",      // Adjust end based on your needs
+          toggleActions: "play none none none",
+        }
+      }
+    );
+  });
 });
 
-
-
-    
-    
-    
-    
-});
