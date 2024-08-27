@@ -126,14 +126,14 @@
 
   <!-- Header Section -->
   <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-xl">
-
+  
     <!-- Logo Section -->
     <div class="absolute h-[7svh] sm:h-14 top-0">
       <a class="cursor-pointer" href="./index.html">
         <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
       </a>
     </div>
-
+  
     <!-- Menu Button Section -->
     <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
       id="menuButtonContainer">
@@ -148,51 +148,50 @@
         </svg>
       </button>
     </div>
-
+  
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
       class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
       <ul id="mainMenu"
         class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
-    
+  
         <!-- Navigation Links -->
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./about.html">ABOUT</a></li>
         <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
             class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
-    
+  
         <li><a href="./pricing.html">PRICING</a></li>
-    
+  
         <li class="mt-5"><a href="./faq.html">FAQ</a></li>
         <li><a href="./contact.html">CONTACT</a></li>
-        <li><a href="./contact.html">RESOURCES</a></li>
-    
-    
+        <li><a href="./resources.html">RESOURCES</a></li>
+  
+  
       </ul>
-    
+  
       <ul id="subMenu"
         class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
         <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
         <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-        <li><a href="./infrastructre.html">Virtual Chief Financial Officer</a></li>
-        <li><a href="./careers.html">Tax Planning and Compliance</a></li>
-        <li><a href="./careers.html">Internal Controls & SOX Compliance</a></li>
-        <li><a href="./careers.html">Transaction Advisory</a></li>
-        <li><a href="./careers.html">Legal Process Outsourcing</a></li>
+        <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
+        <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
+        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
         <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img class="size-6  bounce-left"
             src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-    
+  
       </ul>
-    
-    
+  
+  
     </nav>
-
-
+  
+  
     <!-- Landscape Navigation -->
     <nav aria-label="Main Navigation" role="navigation"
       class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
       <ul class="flex flex-row flex-wrap items-center w-full">
-
+  
         <!-- Home -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -201,7 +200,7 @@
             <span>Home</span>
           </a>
         </li>
-
+  
         <!-- About -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -210,9 +209,9 @@
             <span>About</span>
           </a>
         </li>
-
-
-
+  
+  
+  
         <!-- Our Services with Submenu -->
         <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
           @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
@@ -237,7 +236,7 @@
                 <!-- Submenu Items -->
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
-                  <a href="./service.html"
+                  <a href="./cloud-accounting-and-bookkeeping.html"
                     class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                     role="menuitem">
                     <span class="flex-1">Cloud Accounting and Bookkeeping</span>
@@ -245,7 +244,7 @@
                 </li>
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
-                  <a href="./service.html"
+                  <a href="./audit-and-assurancce-services.html"
                     class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                     role="menuitem">
                     <span class="flex-1">Audit and Assurance Services</span>
@@ -253,7 +252,7 @@
                 </li>
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
-                  <a href="./service.html"
+                  <a href="./tax-advisory-and-compliance.html"
                     class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                     role="menuitem">
                     <span class="flex-1">Tax Advisory and Compliance</span>
@@ -261,16 +260,16 @@
                 </li>
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
-                  <a href="./service.html"
+                  <a href="./virtual-chief-financial-officer.html"
                     class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                     role="menuitem">
                     <span class="flex-1">Virtual Chief Financial officer</span>
                   </a>
                 </li>
-                
+  
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
-                  <a href="./service.html"
+                  <a href="./legal-process-outsourcing.html"
                     class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
                     role="menuitem">
                     <span class="flex-1">Legal Processing Outsourcing</span>
@@ -280,12 +279,12 @@
             </div>
           </div>
         </li>
-
-
-        
-
-        
-
+  
+  
+  
+  
+  
+  
         <!-- Pricing -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -294,20 +293,20 @@
             <span>Pricing</span>
           </a>
         </li>
-
-
-
+  
+  
+  
         <!-- Resources -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
-          <a href="./blogs.html"
+          <a href="./resources"
             class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
             <span>Resources</span>
           </a>
         </li>
-
-
-
+  
+  
+  
         <!-- FAQ -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -316,7 +315,7 @@
             <span>FAQ</span>
           </a>
         </li>
-
+  
         <!-- Contact Us -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -327,7 +326,7 @@
         </li>
       </ul>
     </nav>
-
+  
   </header>
 
   <main>
@@ -459,8 +458,6 @@
     </div>
 
 
-
-
     <section class="text-darkBlue max-md:px-10  md:px-32 ">
 
 
@@ -481,12 +478,6 @@
           
         </div>
     </section>
-
-
-    
-
-
-    
 
 
     <section class="text-darkBlue pt-24">

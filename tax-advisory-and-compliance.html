@@ -35,8 +35,9 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Observer.min.js"></script>
@@ -46,14 +47,11 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EaselPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/PixiPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+  
+  
+  <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
-  
-  <!-- Your custom JS file -->
-  <script src="path/to/your/custom-script.js" defer></script>
-
-
-  
 
 
   <!--  Fonts -->
@@ -127,506 +125,477 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header Section -->
-  <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-xl">
-  
+<header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-xl">
+
     <!-- Logo Section -->
     <div class="absolute h-[7svh] sm:h-14 top-0">
-      <a class="cursor-pointer" href="./index.html">
-        <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
-      </a>
+        <a class="cursor-pointer" href="./index.html">
+            <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+        </a>
     </div>
-  
+
     <!-- Menu Button Section -->
     <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
-      id="menuButtonContainer">
-      <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
-        <svg xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
-          viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="18" x2="20" y2="18" />
-        </svg>
-      </button>
+        id="menuButtonContainer">
+        <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
+                viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+            </svg>
+        </button>
     </div>
-  
+
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
-      <ul id="mainMenu"
-        class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
-  
-        <!-- Navigation Links -->
-        <li><a href="./index.html">HOME</a></li>
-        <li><a href="./about.html">ABOUT</a></li>
-        <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
-            class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
-  
-        <li><a href="./pricing.html">PRICING</a></li>
-  
-        <li class="mt-5"><a href="./faq.html">FAQ</a></li>
-        <li><a href="./contact.html">CONTACT</a></li>
-        <li><a href="./resources.html">RESOURCES</a></li>
-  
-  
-      </ul>
-  
-      <ul id="subMenu"
-        class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
-        <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
-        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-        <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
-        <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
-        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img class="size-6  bounce-left"
-            src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-  
-      </ul>
-  
-  
+        class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+        <ul id="mainMenu"
+            class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
+
+            <!-- Navigation Links -->
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+            <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
+                    class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
+
+            <li><a href="./pricing.html">PRICING</a></li>
+
+            <li class="mt-5"><a href="./faq.html">FAQ</a></li>
+            <li><a href="./contact.html">CONTACT</a></li>
+            <li><a href="./resources.html">RESOURCES</a></li>
+
+
+        </ul>
+
+        <ul id="subMenu"
+            class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
+            <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
+            <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+            <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
+            <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
+            <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+            <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+            <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img
+                    class="size-6  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+
+        </ul>
+
+
     </nav>
-  
-  
+
+
     <!-- Landscape Navigation -->
     <nav aria-label="Main Navigation" role="navigation"
-      class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
-  
-        <!-- Home -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./index.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Home</span>
-          </a>
-        </li>
-  
-        <!-- About -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./about.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>About</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- Our Services with Submenu -->
-        <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
-          @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
-          <a href="#" aria-haspopup="true" aria-expanded="false"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Services</span>
-            <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
-          </a>
-          <div
-            class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-sm"
-            x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-300 transform"
-            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
-            style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-            aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-            <div class="relative z-10 w-full px-2 py-6 bg-white">
-              <ul class="list-reset" role="menu">
-                <!-- Submenu Items -->
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./cloud-accounting-and-bookkeeping.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./audit-and-assurancce-services.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Audit and Assurance Services</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./tax-advisory-and-compliance.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Tax Advisory and Compliance</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./virtual-chief-financial-officer.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Virtual Chief Financial officer</span>
-                  </a>
-                </li>
-  
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./legal-process-outsourcing.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Legal Processing Outsourcing</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
-  
-  
-  
-  
-  
-  
-        <!-- Pricing -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./pricing.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Pricing</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- Resources -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./resources"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Resources</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- FAQ -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./faq.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>FAQ</span>
-          </a>
-        </li>
-  
-        <!-- Contact Us -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./contact.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Contact Us</span>
-          </a>
-        </li>
-      </ul>
+        class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
+        <ul class="flex flex-row flex-wrap items-center w-full">
+
+            <!-- Home -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./index.html"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- About -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./about.html"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>About</span>
+                </a>
+            </li>
+
+
+
+            <!-- Our Services with Submenu -->
+            <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
+                @click.away="showChildren = false; clearTimeout(submenuTimeout)"
+                @touchstart="showChildren = !showChildren">
+                <a href="#" aria-haspopup="true" aria-expanded="false"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
+                    @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
+                    @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
+                    <span>Services</span>
+                    <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
+                </a>
+                <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-base bg-white border border-gray-300 shadow-sm"
+                    x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease duration-300 transform"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
+                    @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                    <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                    <div class="relative z-10 w-full px-2 py-6 bg-white">
+                        <ul class="list-reset" role="menu">
+                            <!-- Submenu Items -->
+                            <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                @mouseleave="showChildren = false">
+                                <a href="./cloud-accounting-and-bookkeeping.html"
+                                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                    role="menuitem">
+                                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
+                                </a>
+                            </li>
+                            <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                @mouseleave="showChildren = false">
+                                <a href="./audit-and-assurancce-services.html"
+                                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                    role="menuitem">
+                                    <span class="flex-1">Audit and Assurance Services</span>
+                                </a>
+                            </li>
+                            <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                @mouseleave="showChildren = false">
+                                <a href="./tax-advisory-and-compliance.html"
+                                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                    role="menuitem">
+                                    <span class="flex-1">Tax Advisory and Compliance</span>
+                                </a>
+                            </li>
+                            <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                @mouseleave="showChildren = false">
+                                <a href="./virtual-chief-financial-officer.html"
+                                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                    role="menuitem">
+                                    <span class="flex-1">Virtual Chief Financial officer</span>
+                                </a>
+                            </li>
+
+                            <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                @mouseleave="showChildren = false">
+                                <a href="./legal-process-outsourcing.html"
+                                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                                    role="menuitem">
+                                    <span class="flex-1">Legal Processing Outsourcing</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+
+
+            <!-- Pricing -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./pricing.html"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>Pricing</span>
+                </a>
+            </li>
+
+
+
+            <!-- Resources -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./resources"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>Resources</span>
+                </a>
+            </li>
+
+
+
+            <!-- FAQ -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./faq.html"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>FAQ</span>
+                </a>
+            </li>
+
+            <!-- Contact Us -->
+            <li class="relative block">
+                <!-- Navigation Link with ARIA Label -->
+                <a href="./contact.html"
+                    class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                    <span>Contact Us</span>
+                </a>
+            </li>
+        </ul>
     </nav>
-  
-  </header>
+
+</header>
 
   <main>
     <!-- Hero Section -->
-    <section class="h-[85svh]  md:flex-row flex flex-col-reverse ">
-      <div class="md:w-1/2 max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
-        <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
+    <section>
+      <div class="h-[80svh]  md:flex-row flex flex-col-reverse ">
+        <div
+          class="md:w-1/2 max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
+          
+          <h1
+            class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
+            aria-label="Main Title">
+            Cloud Accounting and Bookkeeping
+          </h1>
+          <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
+            aria-label="Hero Description">
+            V. Jaiswal and Co, India's leading offshore accounting firm, has been driving business success since 1988.
+          </p>
+          
+          <div class=" flex flex-row justify-start  gap-8 md:gap-5 max-md:hidden ">
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+            <div class="flex flex-col w-[20svw] md:w-[13%]">
+              <img class="" src="./img/icon.svg" alt="">
+              <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+                role="header" aria-label="Frequently Asked Questions Header">
+                Title
+              </p>
+            </div>
+          
+          </div>
+
+          <div class="flex justify-start   mt-3 md:mt-10 ">
+            <button
+              class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-white text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+              Partner with Us
+            </button>
+          </div>
+        </div>
+
+        
+        
+        <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
+          <div
+            class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <div class=" flex flex-row justify-center flex-wrap gap-8 md:gap-5 md:hidden my-16">
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+      <div class="flex flex-col w-[20svw] md:w-[13%]">
+        <img class="" src="./img/icon.svg" alt="">
+        <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
+          role="header" aria-label="Frequently Asked Questions Header">
+          Title
+        </p>
+      </div>
+    
+    </div>
+    
+
+    <section class="text-darkBlue max-md:px-10  md:px-32 ">
+
+
+      
+        <div class="flex py-auto   border-l border-lightGreen  md:pl-14 pl-10   ">
+          <div class="flex flex-col gap-5 md:py-12 py-5">
+            <h2
+              class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-4xl  font-bold uppercase leading-snug"
               aria-label="Main Title">
-          36 Years of Trusted Accounting expertise at your service
-        </h1>
-        <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
+              Accuracy in Every Entry,  Foresight in Every Report: VJC's Cloud Mastery
+            </h2>
+            <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg ] font-light leading-relaxed "
               aria-label="Hero Description">
               V. Jaiswal and Co, India's leading offshore accounting firm, has been driving business success since 1988.
-        </p>
-        <div class="flex justify-start   mt-5 ">
-          <button
-            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-white text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
-            Partner with Us
-          </button>
+            </p>
+          </div>
+            
+          
         </div>
-      </div>
-
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">  
-        </div>
-      </div>
     </section>
 
-    <!-- Service Section -->
-    <section class=" flex md:flex-row-reverse flex-col-reverse ">
-      <div class="md:w-1/2  flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pr-32 text-left ">
-        <h1
-          class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
-          aria-label="Main Title">
-          Our Services
-        </h1>
-        <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
+
+    <section class="text-darkBlue pt-24">
+      <div class="mb-20 text-center">
+
+        <h2 class="md:text-3xl text-2xl font-semibold mb-5">
+          Services we provide
+        </h2>
+        <p class=" portrait:text-[3.5vw] max-md:px-10 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
           aria-label="Hero Description">
           V. Jaiswal and Co, India's leading offshore accounting firm
         </p>
-        <div class="flex justify-start w-[95%] ">
-          <div class="relative justify-center antialiased" role="group" x-data="{ openAccordion: null }">
-            <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-              <div class="w-full mx-auto text-center">
-                <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
-    
-                  <!-- FAQ - 1 -->
-                  <div class="py-4">
-                    <h2>
-                      <button id="faq-1" type="button" class="md:text-lg flex items-center justify-start  w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 1 ? null : 1" :aria-expanded="openAccordion === 1 ? 'true' : 'false'"
-                        aria-controls="faq-1">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 1}" alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        <span>Cloud Accounting and Bookkeeping</span>
-                      </button>
+      </div>
+      <div class="flex flex-col justify-center gap-5 md:px-32 ">
+        <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
 
-                    </h2>
-                    <div id="faq-1" role="region" aria-labelledby="faq-1" :aria-hidden="openAccordion !== 1"
-                      :tabindex="openAccordion === 1 ? 0 : -1"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
-                      :class="openAccordion === 1 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1">
-                          Efficient cloud bookkeeping by skilled professionals, tailored to your time zone.
-                          <div
-                            class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                            <button id="homeHeroBookingTherapy" role="link"
-                              class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                              <a href="./therapy.html">Read more</a>
-                            
-                            </button>
-                          </div>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-    
-                  <!-- FAQ Section 2 -->
-                  <div class="py-4">
-                    <h2>
-                      <button id="faq-2" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 2 ? null : 2"
-                        :aria-expanded="openAccordion === 2 ? 'true' : 'false'" aria-controls="faq-2">
-                        
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 2}" alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        <span>Audit and Assurance Services</span>
-                        
-                      </button>
-                    </h2>
-                    <div id="faq-2" role="region" aria-labelledby="faq-2" :aria-hidden="openAccordion !== 2"
-                      :tabindex="openAccordion === 2 ? 0 : -1"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
-                      :class="openAccordion === 2 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1">
-                          Efficient cloud bookkeeping by skilled professionals, tailored to your time zone.
-                        </p>
-                        <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                          <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                            <a href="./therapy.html">Read more</a>
-                        
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-    
-                  <!-- FAQ Section 3 -->
-                  <div class="py-4">
-                    <h2>
-                      <button id="faq-3" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 3 ? null : 3"
-                        :aria-expanded="openAccordion === 3 ? 'true' : 'false'" aria-controls="faq-3-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 3}" alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        <span>Tax Advisory and Compliance</span>
-                        
-                      </button>
-                    </h2>
-                    <div id="faq-3-answer" role="region" aria-labelledby="faq-3" :aria-hidden="openAccordion !== 3"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
-                      :class="openAccordion === 3 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1">
-                          Efficient cloud bookkeeping by skilled professionals, tailored to your time zone.
-                        </p>
-                        <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                          <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                            <a href="./therapy.html">Read more</a>
-                        
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-    
-                  <!-- FAQ Section 4 -->
-                  <div class="py-4">
-                    <h2>
-                      <button id="faq-4" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 4 ? null : 4"
-                        :aria-expanded="openAccordion === 4 ? 'true' : 'false'" aria-controls="faq-4-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 4}" alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        <span>Chief Financial Services</span>
-                        
-                      </button>
-                    </h2>
-                    <div id="faq-4-answer" role="region" aria-labelledby="faq-4"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
-                      :class="openAccordion === 4 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1">
-                          Efficient cloud bookkeeping by skilled professionals, tailored to your time zone.
-                        </p>
-                        <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                          <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                            <a href="./therapy.html">Read more</a>
-                        
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-    
-                  <!-- FAQ Section 5 -->
-                  <div class="py-4">
-                    <h2>
-                      <button id="faq-5" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 5 ? null : 5"
-                        :aria-expanded="openAccordion === 5 ? 'true' : 'false'" aria-controls="faq-5-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 5}" alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        <span>Business Advisory Services</span>
-                        
-                      </button>
-                    </h2>
-                    <div id="faq-5-answer" role="region" aria-labelledby="faq-5" :aria-hidden="openAccordion !== 5"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
-                      :class="openAccordion === 5 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1">
-                          Efficient cloud bookkeeping by skilled professionals, tailored to your time zone.
-                        </p>
-                        <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                          <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                            <a href="./therapy.html">Read more</a>
-                        
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-    
-                </div>
+          <div
+            class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
               </div>
+            </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> 
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div
-          class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
-        </div>
-      </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section class=" flex md:flex-row md:my-36 flex-col-reverse ">
-      <div class="md:w-1/2  flex flex-col text-darkBlue justify-center w-full  md:pl-32 text-left ">
-        
-        <h1
-          class="landscape:text-sm max-md:px-10 portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
-          aria-label="Main Title">
-          About Us
-        </h1>
-        <p class=" portrait:text-[3.5vw] max-md:px-10 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[1svh] lg:landscape:mb-[1svh] landscape:mb-[31svh] font-light leading-relaxed "
-          aria-label="Hero Description">
-          V. Jaiswal and Co, India's leading offshore accounting firm
-        </p>
-        <div
-          class=" text-[2.5vw] max-md:px-10 landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-          <button id="homeHeroBookingTherapy" role="link"
-            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-            <a href="./about.html">About Us</a>
-        
-          </button>
-        </div>
-        
-          
-
-          <div class="text-darkBlue md:gap-4 flex flex-row  flex-wrap justify-between max-md:px-6  mt-10">
-            <!-- Counter 1 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4 justify-center ">
-                <div id="counter1" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
-              </div>
-              
-            </div>
-          
-            <!-- Counter 2 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter2" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+          <div class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
               </div>
             </div>
-          
-            <!-- Counter 3 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter3" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> 
+            </div>
+          </div>        
+      
+        </div>
+
+
+        <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
+        
+          <div
+            class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
               </div>
             </div>
-          
-            <!-- Counter 4 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] bg- shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter4" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
-              </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
             </div>
           </div>
-          
-      </div>
-    
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div
-          class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
+        
+          <div
+            class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
+              </div>
+            </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+            </div>
+          </div>
+        
         </div>
-      </div>
-    </section>
 
+        <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
+        
+          <div
+            class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
+              </div>
+            </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+            </div>
+          </div>
+        
+          <div
+            class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            <div class="flex flex-col w-auto ">
+              <div class="size-[26svw] md:size-[13svh] m-auto ">
+                <img src="./img/icon.svg" alt="">
+              </div>
+            </div>
+            <div class="flex flex-col text-left gap-1 text-darkBlue ">
+              <h3 class="md:text-base text-sm font-bold">Service Title</h3>
+              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+            </div>
+          </div>
+        
+        </div>
+
+        
+        
+        
+      
+      </div>
+
+    </section>
 
     <!-- Softwares we use Section -->
     <section class=" flex  md:mt-36 mt-24 flex-col  text-center">
@@ -640,10 +609,10 @@
           aria-label="Hero Description">
           V. Jaiswal and Co, India's leading offshore accounting firm
         </p>
-        
+    
     
       </div>
-
+    
       <div class="flex flex-col gap-8 mt-8 mb-24">
         <div class="marquee marquee--LTR md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
@@ -653,73 +622,48 @@
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
         </div>
+    
         
-        <div class="marquee marquee--RTL md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-          <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-        </div>
       </div>
-         
+    
     </section>
 
+    
 
-    <section class="text-darkBlue ">
-      <div>
+    
 
-        <h2 class="md:text-3xl text-2xl font-semibold text-center md:mb-20">
-          Resources to know us better
-        </h2>
-      </div>
-      <div class="flex md:flex-row flex-col justify-center md:px-32 ">
-        <div class="md:w-1/2 max-md:h-[60svh] flex flex-col w-full ">
-          <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60  m-auto bg-white">
-          </div>
-        </div>
-      
-        <div class="flex md:w-1/2 flex-col justify-around max-md:px-5 max-md:gap-5 ">
-
-          <div
-            class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-            <div class="flex flex-col w-auto ">
-              <div class="size-[26svw] md:size-[13svh] m-auto ">
-                <img src="./img/icon.svg" alt="">
-              </div>
-            </div>
-            <div class="flex flex-col text-left gap-1 text-darkBlue ">
-              <h3 class="md:text-base text-sm font-bold">Insights</h3>
-              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> <span class="underline font-bold text-xs">read
-                more</span>
-            </div>
-          </div>
-
-          <div class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-            <div class="flex flex-col w-auto ">
-              <div class="size-[26svw] md:size-[13svh] m-auto ">
-                <img src="./img/icon.svg" alt="">
-              </div>
-            </div>
-            <div class="flex flex-col text-left gap-1 text-darkBlue ">
-              <h3 class="md:text-base text-sm font-bold">Case Studies</h3>
-              <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p> <span class="underline font-bold text-xs">read
-                more</span>
-            </div>
-          </div>
-      
+    <!-- Hero Section -->
+    <section>
+      <div class="md:flex-row-reverse flex flex-col-reverse  md:px-32 gap-10 px-10 md:pt-16 pt-0 pb-5 ">
+        <div
+          class="md:w-[60%] max-md:h-[40svh] flex flex-col text-darkBlue gap-5 justify-center w-full text-left ">
+    
+          <h1
+            class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl  font-bold text-left leading-snug"
+            aria-label="Main Title">
+            What makes us stand out
+          </h1>
+          <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
+            aria-label="Hero Description">
+            At VJC, we take pride in our team of elite financial professionals, positioning us as a premier provider of cloud
+            accounting and bookkeeping services in India. By partnering with us, you can reduce your accounting expenses from
+            in-house by up to 50-70% while elevating the quality of your financial management. Our expert accountants and
+            bookkeepers ensure pinpoint accuracy and reliability in your financial data
+          </p>
+    
           
-      
         </div>
-      
-      
+    
+    
+    
+        <div class="md:w-[40%] max-md:h-[40svh]  flex flex-col w-full ">
+          <div
+            class="size-[65svw] md:size-[30svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+          </div>
+        </div>
       </div>
-
+    
     </section>
-
 
     
 
@@ -755,18 +699,18 @@
     
         <div class="mt-8 flex flex-row items-center gap-3 text-base" role="presentation">
           <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
-            <img class="w-[4rem] " src="././img/icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
+            <img class="w-[4rem] " src="./img/icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
           </a>
           <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
-            <img class="w-[4rem]" src="././img/icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
+            <img class="w-[4rem]" src="./img/icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo">
           </a>
           <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
             target="_blank" rel="noopener">
-            <img class="w-[4rem]" src="././img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
+            <img class="w-[4rem]" src="./img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
           </a>
           <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting" title="Contact us on WhatsApp"
             target="_blank" rel="noopener">
-            <img class="w-[4rem]" src="././img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
+            <img class="w-[4rem]" src="./img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
           </a>
           
         </div>
