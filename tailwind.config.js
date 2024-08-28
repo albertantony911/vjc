@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'darkBlue': '#01377D',   
-        'lightGreen': '#7ED348',
+        'lightGreen': '#adf6c4',
         'lightBlue': '#009DD1',
       },
       animation: {
