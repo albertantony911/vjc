@@ -5,21 +5,21 @@
  */
 
 .menudrop {
-  transition: transform 0.5s cubic-bezier(0.9, 0.7, 0.1, 1);
+    transition: transform 0.5s cubic-bezier(0.9, 0.7, 0.1, 1);
 }
 
 /* Initially hidden */
 .menudrop li {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.2s ease-in-out, transform 0s ease-in-out; 
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.2s ease-in-out, transform 0s ease-in-out;
 }
 
 /* Class to fade in */
 .menudrop li.toggled {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
 }
 
 /* Button Aniamtion */
@@ -47,25 +47,29 @@
 #menuButton svg line {
     transition-duration: 0.5s;
     transition-property: stroke, opacity, transform;
-    transition-timing-function: cubic-bezier(0.9, 0.7, 0.1, 1); /* Updated cubic bezier for stroke color change */
+    transition-timing-function: cubic-bezier(0.9, 0.7, 0.1, 1);
+    /* Updated cubic bezier for stroke color change */
 }
 
 /* Fade out middle line on click */
 #menuButtonContainer.menu-open svg line:nth-of-type(2) {
     opacity: 0;
     transform: scale(0.3);
-    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+    /* Updated cubic bezier for rotation animation */
 }
 
 /* Center top and bottom lines vertically, then rotate by 45 degrees in opposing directions on click */
 #menuButtonContainer.menu-open svg line:nth-of-type(1) {
     transform: translate(0, 6px) rotate(45deg);
-    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+    /* Updated cubic bezier for rotation animation */
 }
 
 #menuButtonContainer.menu-open svg line:nth-of-type(3) {
     transform: translate(0, -6px) rotate(-45deg);
-    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* Updated cubic bezier for rotation animation */
+    transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+    /* Updated cubic bezier for rotation animation */
 }
 
 
@@ -94,8 +98,15 @@
 
 /* Main menu fade-in effect */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #mainMenu.fade-in {
@@ -104,8 +115,15 @@
 
 /* Sub-menu fade-in effect */
 @keyframes fadeInSubMenu {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #subMenu.fade-in {
@@ -117,41 +135,47 @@
 
 
 @keyframes bounce-right {
-  0% {
-    transform: translateX(0);
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-  }
-  50% {
-    transform: translateX(5px); /* Adjust distance as needed */
-    animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
-  }
-  100% {
-    transform: translateX(0);
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-  }
+    0% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateX(5px);
+        /* Adjust distance as needed */
+        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+
+    100% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
 }
 
 .bounce-right {
-  animation: bounce-right 1s infinite;
+    animation: bounce-right 1s infinite;
 }
 
 @keyframes bounce-left {
     0% {
-    transform: translateX(0);
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-  }
-  50% {
-    transform: translateX(-5px); /* Adjust distance as needed */
-    animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
-  }
-  100% {
-    transform: translateX(0);
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-  }
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateX(-5px);
+        /* Adjust distance as needed */
+        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+
+    100% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
 }
 
 .bounce-left {
-  animation: bounce-left 1s infinite;
+    animation: bounce-left 1s infinite;
 }
 
 
@@ -160,13 +184,11 @@
 .marquee {
     block-size: var(--marquee-item-height);
     margin-block: 0;
-    mask-image: linear-gradient(
-        to right,
-        hsl(0 0% 0% / 0),
-        hsl(0 0% 0% / 1) 20%,
-        hsl(0 0% 0% / 1) 80%,
-        hsl(0 0% 0% / 0)
-    );
+    mask-image: linear-gradient(to right,
+            hsl(0 0% 0% / 0),
+            hsl(0 0% 0% / 1) 20%,
+            hsl(0 0% 0% / 1) 80%,
+            hsl(0 0% 0% / 0));
 }
 
 .marquee--LTR,
@@ -178,10 +200,8 @@
 }
 
 .marquee__item {
-    --marquee-item-offset: max(
-        calc(var(--marquee-item-width) * var(--marquee-items)),
-        calc(100% + var(--marquee-item-width))
-    );
+    --marquee-item-offset: max(calc(var(--marquee-item-width) * var(--marquee-items)),
+            calc(100% + var(--marquee-item-width)));
     --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
     position: absolute;
     inset-inline-start: var(--marquee-item-offset);
@@ -191,12 +211,14 @@
 
 /* LTR - Left to Right */
 .marquee--LTR .marquee__item {
-    animation-direction: normal; /* Default direction */
+    animation-direction: normal;
+    /* Default direction */
 }
 
 /* RTL - Right to Left */
 .marquee--RTL .marquee__item {
-    animation-direction: reverse; /* Reversed direction */
+    animation-direction: reverse;
+    /* Reversed direction */
 }
 
 /* Keyframes for marquee animation */
@@ -207,14 +229,119 @@
 }
 
 /* Apply index for each item */
-.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
-.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
-.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
-.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
-.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
-.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
+.marquee__item:nth-of-type(1) {
+    --marquee-item-index: 1;
+}
+
+.marquee__item:nth-of-type(2) {
+    --marquee-item-index: 2;
+}
+
+.marquee__item:nth-of-type(3) {
+    --marquee-item-index: 3;
+}
+
+.marquee__item:nth-of-type(4) {
+    --marquee-item-index: 4;
+}
+
+.marquee__item:nth-of-type(5) {
+    --marquee-item-index: 5;
+}
+
+.marquee__item:nth-of-type(6) {
+    --marquee-item-index: 6;
+}
 
 
-        
 
 
+
+
+
+
+
+
+
+
+
+
+.numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    --main-color: rgba(124, 207, 255, 0.692); /* Change to solid for better visibility */
+    --animation-duration: 25s;
+    --font-size: 1.5rem; /* Customize number size */
+}
+
+.numbers li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    bottom: -150px;
+    color: var(--main-color);
+    font-size: var(--font-size);
+    animation: animate var(--animation-duration) linear infinite;
+}
+
+.numbers li:nth-child(1) { --left: 25%; --delay: 0s; --duration: 25s; }
+.numbers li:nth-child(2) { --left: 10%; --delay: 2s; --duration: 12s; }
+.numbers li:nth-child(3) { --left: 70%; --delay: 4s; }
+.numbers li:nth-child(4) { --left: 40%; --delay: 0s; --duration: 18s; }
+.numbers li:nth-child(5) { --left: 65%; --delay: 0s; }
+.numbers li:nth-child(6) { --left: 75%; --delay: 3s; }
+.numbers li:nth-child(7) { --left: 35%; --delay: 7s; }
+.numbers li:nth-child(8) { --left: 50%; --delay: 15s; --duration: 45s; }
+.numbers li:nth-child(9) { --left: 20%; --delay: 2s; --duration: 35s; }
+.numbers li:nth-child(10) { --left: 85%; --delay: 0s; --duration: 11s; }
+
+.numbers li {
+    left: var(--left, 0);
+    animation-delay: var(--delay, 0s);
+    animation-duration: var(--duration, 25s);
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+.gradient-bg {
+  background: linear-gradient(-45deg, rgba(135, 206, 250, 0.6), rgba(102, 205, 170, 0.6), rgba(0, 191, 255, 0.6), rgba(255, 255, 255, 0.6));
+  background-size: 400% 400%;
+  animation: gradient 15s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+
+
+.bg-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
