@@ -322,7 +322,8 @@
 
 
 .gradient-bg {
-  background: linear-gradient(-45deg, rgba(135, 206, 250, 0.6), rgba(102, 205, 170, 0.6), rgba(0, 191, 255, 0.6), rgba(255, 255, 255, 0.6));
+  background: linear-gradient(-45deg, rgba(145, 216, 250, 0.6), rgba(210, 200, 255, 0.6), rgba(120, 169, 237, 0.6), rgba(235, 255, 255, 0.6));
+
   background-size: 400% 400%;
   animation: gradient 15s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
