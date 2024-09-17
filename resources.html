@@ -49,8 +49,16 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js"></script>
+
     <!-- Your custom JS file -->
-    <script src="path/to/your/custom-script.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/animations.js" defer></script>
+
+
+
+
 
 
 
@@ -699,7 +707,15 @@
             </div>
 
             <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-                <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
+                <div class="page">
+                
+                    <div class="globe-wrapper">
+                        <canvas id="globe-3d"></canvas>
+                        <canvas id="globe-2d-overlay"></canvas>
+                        <div id="globe-popup-overlay">
+                            <div class="globe-popup"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1606,5 +1622,7 @@
     </footer>
 
 </body>
+
+
 
 </html>
