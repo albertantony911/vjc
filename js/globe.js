@@ -13,7 +13,7 @@ initScene();
 window.addEventListener("resize", updateSize);
 
 function initScene() {
-    renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true });
+    renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
     renderer.setPixelRatio(2);
 
     scene = new THREE.Scene();
