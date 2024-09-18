@@ -55,6 +55,8 @@
     <!-- Your custom JS file -->
     <script src="./js/main.js" defer></script>
     <script src="./js/animations.js" defer></script>
+        <script type="module" src="./js/globe.js"></script>
+
 
 
 
@@ -706,15 +708,12 @@
 
             </div>
 
-            <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-                <div class="page">
-                
-                    <div class="globe-wrapper">
+            <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full max-md:mt-20">
+                <div class="page ">
+                    <div class="globe-wrapper  m-auto">
                         <canvas id="globe-3d"></canvas>
                         <canvas id="globe-2d-overlay"></canvas>
-                        <div id="globe-popup-overlay">
-                            <div class="globe-popup"></div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

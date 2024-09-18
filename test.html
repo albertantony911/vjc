@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="./css/test.css">
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script type="module" src="./js/test.js"></script>
+    <script type="module" src="./js/globe.js"></script>
     
 
 
@@ -32,57 +32,7 @@
 
     
     
-    <script type="x-shader/x-fragment" id="fragment-shader-map">
-        uniform sampler2D u_map_tex;
-        varying float vOpacity;
-        varying vec2 vUv;
     
-        void main() {
-            vec3 color = texture2D(u_map_tex, vUv).rgb;
-            
-            // Define a more intense blue tint color
-            vec3 lightBlueTint = vec3(0.3, 0.5, 0.8); // A more blue shade
-            
-            // Apply the blue tint by blending it with the texture color
-            color = mix(color, lightBlueTint, 0.5); // Adjust the 0.5 to control the tint strength
-    
-            color -= 0.2 * length(gl_PointCoord.xy - vec2(0.5));
-            float dot = 1.0 - smoothstep(0.38, 0.4, length(gl_PointCoord.xy - vec2(0.5)));
-            if (dot < 0.5) discard;
-            gl_FragColor = vec4(color, dot * vOpacity);
-            
-        }
-    </script>
-
-
-
-    
-    <script type="x-shader/x-vertex" id="vertex-shader-map">
-        uniform sampler2D u_map_tex;
-        uniform float u_dot_size, u_time_since_click;
-        uniform vec3 u_pointer;
-    
-        #define PI 3.14159265359
-        varying float vOpacity;
-        varying vec2 vUv;
-    
-        void main() {
-            vUv = uv;
-            float visibility = step(0.2, texture2D(u_map_tex, uv).r);
-            gl_PointSize = visibility * u_dot_size;
-    
-            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-            vOpacity = clamp(1.0 / length(mvPosition.xyz) - 0.7, 0.03, 1.0);
-    
-            float t = max(0.0, u_time_since_click - 0.1);
-            float dist = 1.0 - 0.5 * length(position - u_pointer);
-            float damping = 1.0 / (1.0 + 20.0 * t);
-            float delta = 0.15 * damping * sin(5.0 * t * (1.0 + 2.0 * dist) - PI);
-            delta *= 1.0 - smoothstep(0.8, 1.0, dist);
-            
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
-        }
-    </script>
 
 
     
