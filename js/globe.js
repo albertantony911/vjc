@@ -1,11 +1,13 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
 
+
+
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
 
 let renderer, scene, camera, rayCaster, controls;
-let clock, mouse, pointer, globe, globeMesh;
+let clock, mouse, globe, globeMesh;
 let earthTexture, mapMaterial;
 let dragged = false;
 
@@ -17,12 +19,11 @@ function initScene() {
     renderer.setPixelRatio(2);
 
     scene = new THREE.Scene();
-    camera = new THREE.OrthographicCamera(-1.1, 1.1, 1.1, -1.1, 0, 3);
-    camera.position.z = 1.1;
+    camera = new THREE.OrthographicCamera(-1.4, 1.4, 1.4, -1.4, 0, 3);
+    camera.position.z = 1.45;
 
-    rayCaster = new THREE.Raycaster();
-    rayCaster.far = 1.15;
-    mouse = new THREE.Vector2(-1, -1);
+    
+    
     clock = new THREE.Clock();
 
     createOrbitControls();
@@ -31,8 +32,6 @@ function initScene() {
         earthTexture = mapTex;
         earthTexture.repeat.set(1, 1);
         createGlobe();
-        createPointer();
-        addCanvasEvents();
         updateSize();
         render();
     });
@@ -57,7 +56,7 @@ function createOrbitControls() {
 }
 
 function createGlobe() {
-    const globeGeometry = new THREE.IcosahedronGeometry(1, 22);
+    const globeGeometry = new THREE.IcosahedronGeometry(1,22);
     mapMaterial = new THREE.ShaderMaterial({
         vertexShader: `
             uniform sampler2D u_map_tex;
@@ -71,7 +70,7 @@ function createGlobe() {
             void main() {
                 vUv = uv;
                 float visibility = step(0.2, texture2D(u_map_tex, uv).r);
-                gl_PointSize = visibility * u_dot_size;
+                gl_PointSize = visibility * u_dot_size * 0.78;
     
                 vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
                 vOpacity = clamp(1.0 / length(mvPosition.xyz) - 0.7, 0.03, 1.0);
@@ -107,7 +106,7 @@ function createGlobe() {
         `,
         uniforms: {
             u_map_tex: { type: "t", value: earthTexture },
-            u_dot_size: { type: "f", value: 0 },
+            u_dot_size: { type: "f", value: 0.02 },
             u_pointer: { type: "v3", value: new THREE.Vector3(0.0, 0.0, 1) },
             u_time_since_click: { value: 0 }
         },
@@ -128,53 +127,14 @@ function createGlobe() {
     scene.add(globeMesh);
 }
 
-function createPointer() {
-    const geometry = new THREE.SphereGeometry(0.04, 16, 16);
-    const material = new THREE.MeshBasicMaterial({
-        color: 0x00000, 
-        transparent: true,
-        opacity: 0
-    });
-    pointer = new THREE.Mesh(geometry, material);
-    scene.add(pointer);
-}
-
-function addCanvasEvents() {
-    containerEl.addEventListener("mousemove", (e) => {
-        updateMousePosition(e.clientX, e.clientY);
-    });
-
-    containerEl.addEventListener("click", (e) => {
-        if (!dragged) {
-            updateMousePosition(e.clientX, e.clientY);
-            const res = checkIntersects();
-            if (res.length) {
-                pointer.position.set(
-                    res[0].face.normal.x,
-                    res[0].face.normal.y,
-                    res[0].face.normal.z
-                );
-                mapMaterial.uniforms.u_pointer.value = res[0].face.normal;
-                clock.start();
-            }
-        }
-    });
-
-    function updateMousePosition(eX, eY) {
-        mouse.x = ((eX - containerEl.offsetLeft) / containerEl.offsetWidth) * 2 - 1;
-        mouse.y = -((eY - containerEl.offsetTop) / containerEl.offsetHeight) * 2 + 1;
-    }
-} 
 
 
-function checkIntersects() {
-    rayCaster.setFromCamera(mouse, camera);
-    return rayCaster.intersectObject(globeMesh);
-}
+
 
 function render() {
     mapMaterial.uniforms.u_time_since_click.value = clock.getElapsedTime();
-    checkIntersects();
+    // Remove the following line
+    // checkIntersects();
     controls.update();
     renderer.render(scene, camera);
     requestAnimationFrame(render);
@@ -183,21 +143,252 @@ function render() {
 let initialSize;
 
 function updateSize() {
-    if (!initialSize) {
-        const minSide = Math.min(window.innerWidth, window.innerHeight);
-        const isPortrait = window.innerHeight > window.innerWidth;
-        initialSize = isPortrait ? 0.8 * minSide : 0.5 * minSide;
-        
-        // Apply the initial size
+    const minSide = Math.min(window.innerWidth, window.innerHeight);
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const newSize = isPortrait ? 0.95 * minSide : 0.45 * window.innerWidth; // Use half of the viewport width in landscape
+
+    // Only update if size has changed
+    if (initialSize !== newSize) {
+        initialSize = newSize;
         containerEl.style.width = initialSize + "px";
         containerEl.style.height = initialSize + "px";
-
-        // Update the renderer size
         renderer.setSize(initialSize, initialSize);
-
-        // Update the dot size in the shader material
         mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
     }
 }
 
+window.addEventListener("resize", updateSize);
 
+
+// Create a static and pulsing circle at a given position
+// Function to align the circles properly on the globe's surface
+function alignCircleToSurface(circle, position, elevation = 0) {
+    // First, normalize the position vector so it's on the globe's surface
+    position.normalize();
+    
+    // Calculate the lifted position by adding the elevation
+    const liftedPosition = position.clone().multiplyScalar(1 + elevation); // Elevation above the globe
+
+    // Set the lifted position of the circle
+    circle.position.copy(liftedPosition);
+    
+    // Create a new direction vector from the lifted position to the globe's center
+    const up = new THREE.Vector3(0, 0, 0); // The center of the globe
+    const direction = new THREE.Vector3().subVectors(circle.position, up).normalize();
+    
+    // Align the circle so that it is perpendicular to the surface at the given point
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);  // Adjust for surface normal
+    circle.setRotationFromQuaternion(quaternion);
+}
+
+
+function createStaticAndPulsingCircles(position) {
+    const elevation = 0.015 // Adjust the elevation as needed
+    
+    // Create the static circle
+    const staticGeometry = new THREE.CircleGeometry(0.04, 32);
+    const staticMaterial = new THREE.MeshBasicMaterial({
+        color: 0x01377D,
+        transparent: true,
+        opacity: 1,  // Static circle opacity
+        side: THREE.DoubleSide,
+        depthWrite: false
+    });
+    const staticCircle = new THREE.Mesh(staticGeometry, staticMaterial);
+
+    // Align the static circle to the globe's surface with elevation
+    alignCircleToSurface(staticCircle, position, elevation);
+
+    // Add static circle to the scene
+    scene.add(staticCircle);
+
+    // Create the pulsing circle
+    const pulsingGeometry = new THREE.CircleGeometry(0.04, 32);
+    const pulsingMaterial = new THREE.MeshBasicMaterial({
+        color: 0x01377D,
+        transparent: true,
+        opacity: 1,  // Initial opacity for pulsing effect
+        side: THREE.DoubleSide
+    });
+    const pulsingCircle = new THREE.Mesh(pulsingGeometry, pulsingMaterial);
+
+    // Align the pulsing circle to the globe's surface with elevation
+    alignCircleToSurface(pulsingCircle, position, elevation);
+
+    // Add pulsing circle to the scene
+    scene.add(pulsingCircle);
+
+    // Animate the pulsing effect (scaling and fading)
+    gsap.to(pulsingCircle.scale, {
+        duration: 2,
+        x: 2.5,  // Pulsing scale factor
+        y: 2.5,  // Pulsing scale factor
+        repeat: -1,
+        yoyo: false,  // Pulsating effect
+        ease: "power1.inOut"
+    });
+
+    // Animate the opacity to fade in and out
+    gsap.to(pulsingMaterial, {
+        duration: 2,
+        opacity: 0,  // Reduced opacity for fade effect
+        repeat: -1,
+        yoyo: false,  // Fading effect
+        ease: "power1.inOut"
+    });
+
+    return { staticCircle, pulsingCircle };
+}
+
+
+
+
+function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor = 1.015) {
+    startPoint.normalize();
+    const liftedStartPoint = startPoint.clone().multiplyScalar(liftFactor);
+    
+    const arcs = [];
+    let colorToggle = false;
+
+
+    endPoints.forEach(endPoint => {
+        endPoint.normalize();
+        const liftedEndPoint = endPoint.clone().multiplyScalar(liftFactor);
+        const points = [];
+        const numPoints = 250;
+
+        // Generate arc points
+        for (let i = 0; i <= numPoints; i++) {
+            const t = i / numPoints;
+            const point = new THREE.Vector3().lerpVectors(liftedStartPoint, liftedEndPoint, t);
+            const elevation = ((1 - t) * t) * 4 * heightAboveGlobe;
+            const pointAboveGlobe = point.normalize().multiplyScalar(point.length() + elevation);
+            points.push(pointAboveGlobe);
+        }
+
+        // Create shader material for thicker arcs
+        const vertexShader = `
+            varying vec3 vPosition;
+            void main() {
+                vPosition = position;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                gl_PointSize = 3.5;
+            }
+        `;
+
+        const fragmentShader = `
+            varying vec3 vPosition;
+            uniform vec3 uColor; // Add color uniform
+            void main() {
+                float thickness = 0.1; 
+                float alpha = smoothstep(0.0, thickness, length(gl_PointCoord - 0.5));
+                gl_FragColor = vec4(uColor, alpha); // Use the color uniform
+            }
+        `;
+
+        const arcMaterial = new THREE.ShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            uniforms: {
+                uColor: { value: new THREE.Color(0x7ED348) }, // Color for the first arc
+            },
+            transparent: true,
+        });
+
+        const arcGeometry = new THREE.BufferGeometry().setFromPoints(points);
+        const arcMesh = new THREE.Points(arcGeometry, arcMaterial);
+        scene.add(arcMesh);
+        arcs.push(arcMesh);
+
+        // Animation function
+        function animateArc() {
+            let drawRange = 0;
+            const totalPoints = points.length;
+
+            const drawAnimation = () => {
+                if (drawRange < totalPoints) {
+                    arcMesh.geometry.setDrawRange(0, drawRange);
+                    drawRange++;
+                    requestAnimationFrame(drawAnimation);
+                } else {
+                    drawOverArc(points);
+                }
+            };
+            drawAnimation();
+        }
+
+        // Function to draw a second arc with different color
+        function drawOverArc(points) {
+            const secondArcMaterial = new THREE.ShaderMaterial({
+                vertexShader,
+                fragmentShader,
+                uniforms: {
+                    uColor: { value: new THREE.Color(colorToggle ? 0xf0f0f0 : 0x7ED348) }, // Toggle color for the second arc
+                },
+                transparent: true,
+            });
+
+            const secondArcMesh = new THREE.Points(arcGeometry.clone(), secondArcMaterial);
+            scene.add(secondArcMesh);
+            colorToggle = !colorToggle;
+
+            let drawRange = 0;
+            const drawAnimation = () => {
+                if (drawRange < points.length) {
+                    secondArcMesh.geometry.setDrawRange(0, drawRange);
+                    drawRange++;
+                    requestAnimationFrame(drawAnimation);
+                } else {
+                    animateArc(); // Restart the animation
+                }
+            };
+            drawAnimation();
+        }
+
+        animateArc(); // Start the initial animation
+        createStaticAndPulsingCircles(liftedEndPoint);
+    });
+
+    const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
+    return { arcs, startCircles };
+}
+
+
+
+
+
+
+// Usage with multiple endpoints
+const point1 = new THREE.Vector3(-0.145, 0.32, 0.6265); // Start point on the globe
+const endPoints = [
+    new THREE.Vector3(0, 1, 5), // First endpoint
+    new THREE.Vector3(2, 1, 6), // Second endpoint
+    new THREE.Vector3(3, 1, 4), // Third endpoint
+    
+    // Add more endpoints as needed
+];
+
+const heightAboveGlobe = 0.3; // Height of the arcs above the globe
+
+// Function to handle intersection
+function handleIntersection(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Set a delay before executing the arc creation
+            setTimeout(() => {
+                createElevatedArcs(point1, endPoints, heightAboveGlobe);
+            }, 500); // Delay in milliseconds (500ms = 0.5 seconds)
+
+            // Unobserve the entry after it has been triggered to prevent multiple calls
+            observer.unobserve(entry.target);
+        }
+    });
+}
+
+// Create an Intersection Observer
+const observer = new IntersectionObserver(handleIntersection);
+
+// Target the element
+const target = document.getElementById('arc-container');
+observer.observe(target);
