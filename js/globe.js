@@ -254,136 +254,77 @@ function createStaticAndPulsingCircles(position) {
 }
 
 
-
-
+// Create elevated arcs with short pulse animation
 function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor = 1.025) {
-    // Normalize and apply lift to the start point
     startPoint.normalize();
     const liftedStartPoint = startPoint.clone().multiplyScalar(liftFactor);
-    
     const arcs = [];
-    let colorToggle = false;
 
     endPoints.forEach(endPoint => {
-        // Normalize and apply lift to the end point
         endPoint.normalize();
         const liftedEndPoint = endPoint.clone().multiplyScalar(liftFactor);
         
         const points = [];
         const numPoints = 250;
 
-        // Generate arc points
         for (let i = 0; i <= numPoints; i++) {
             const t = i / numPoints;
-
-            // Interpolate between the lifted start and end points
             const point = new THREE.Vector3().lerpVectors(liftedStartPoint, liftedEndPoint, t);
-
-            // Apply elevation for the arc
             const elevation = ((1 - t) * t) * 4 * heightAboveGlobe;
-
-            // Apply the elevation without normalization to keep the arc lifted
             const pointAboveGlobe = point.multiplyScalar(1 + elevation / point.length());
-
             points.push(pointAboveGlobe);
         }
 
-        // Flatten points into an array of coordinates for LineGeometry
         const positions = [];
         points.forEach(p => positions.push(p.x, p.y, p.z));
 
-        // Create LineGeometry and set positions
         const arcGeometry = new LineGeometry();
         arcGeometry.setPositions(positions);
 
-        // Create LineMaterial for the arc
+        // Create LineMaterial with initial color
         const arcMaterial = new LineMaterial({
-            color: colorToggle ? 0x7ED348 : 0x01377D,  // Toggle colors
-            linewidth: 1.75,  // Thickness of the line
+            color: 0x01377D, // Initial color (green)
+            linewidth: 1.5,
             transparent: true,
-            opacity: 1,  // Optional transparency
-            dashed: false  // Optionally, you can add dashed lines
+            resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
         });
 
-        arcMaterial.resolution.set(window.innerWidth, window.innerHeight);  // Set the resolution
-
-        // Create Line2 object using LineGeometry and LineMaterial
         const arcLine = new Line2(arcGeometry, arcMaterial);
-
-        // Add the arc line to the scene
         scene.add(arcLine);
         arcs.push(arcLine);
-
-        // Function to animate the arc being drawn
-        function animateArc() {
-            let drawRange = 0;
-            const totalPoints = points.length;
-
-            const drawAnimation = () => {
-                if (drawRange < totalPoints) {
-                    arcLine.geometry.setDrawRange(0, drawRange * 3);  // Increment the draw range (multiplied by 3 for flat coordinates x, y, z)
-                    drawRange++;
-                    requestAnimationFrame(drawAnimation);
-                } else {
-                    drawOverArc(points);
-                }
-            };
-            drawAnimation();
-        }
-
-        // Function to draw a second arc with a different color
-        function drawOverArc(points) {
-            const secondArcMaterial = new LineMaterial({
-                color: colorToggle ? 0x01377D : 0x7ED348,  // Toggle color for the second arc
-                linewidth: 1.75,
-                transparent: true,
-                opacity: 1
-            });
-
-            secondArcMaterial.resolution.set(window.innerWidth, window.innerHeight);
-
-            const secondArcLine = new Line2(arcGeometry.clone(), secondArcMaterial);
-            scene.add(secondArcLine);
-            colorToggle = !colorToggle;
-
-            let drawRange = 0;
-            const drawAnimation = () => {
-                if (drawRange < points.length) {
-                    secondArcLine.geometry.setDrawRange(0, drawRange * 3);
-                    drawRange++;
-                    requestAnimationFrame(drawAnimation);
-                } else {
-                    animateArc();  // Restart the animation
-                }
-            };
-            drawAnimation();
-        }
-
-        animateArc();  // Start the initial animation
-        createStaticAndPulsingCircles(liftedEndPoint);  // Create circles at the end of the arc
+        
+        // Create circles at the end of the arc
+        createStaticAndPulsingCircles(liftedEndPoint);
     });
 
+    // Animate the gradient pulse
+    animateGradientPulse(arcs);
     const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
     return { arcs, startCircles };
 }
 
+// Function to animate gradient pulse using GSAP
+function animateGradientPulse(arcs) {
+    arcs.forEach(arc => {
+        gsap.to(arc.material.color, {
+            r: 0.494, g: 0.829, b: 0.282, // Green color
+            duration: 0.75, // Shorter duration for quicker pulse
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+            onUpdate: function() {
+                arc.material.color.set(`rgb(${Math.floor(arc.material.color.r * 255)}, ${Math.floor(arc.material.color.g * 255)}, ${Math.floor(arc.material.color.b * 255)})`);
+            }
+        });
+    });
+}
 
-
-
-
-
-
-
-
-
-// Usage with multiple endpoints
+// Example usage
 const point1 = new THREE.Vector3(-0.145, 0.32, 0.6265); // Start point on the globe
 const endPoints = [
     new THREE.Vector3(0, 1, 5), // First endpoint
     new THREE.Vector3(2, 1, 6), // Second endpoint
     new THREE.Vector3(3, 1, 4), // Third endpoint
-    
-    // Add more endpoints as needed
 ];
 
 const heightAboveGlobe = 0.3; // Height of the arcs above the globe
