@@ -46,6 +46,7 @@ function createOrbitControls() {
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.enableDamping = true;
+    controls.enableRotate = false;  // Disable manual rotation
     controls.minPolarAngle = 0.4 * Math.PI;
     controls.maxPolarAngle = 0.4 * Math.PI;
     controls.autoRotate = true;
@@ -57,6 +58,7 @@ function createOrbitControls() {
     controls.addEventListener("end", () => {
         dragged = Date.now() - timestamp > 600;
     });
+    controls.domElement.style.pointerEvents = 'none';
 }
 
 function createGlobe() {
