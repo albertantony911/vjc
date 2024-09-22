@@ -113,7 +113,7 @@ function createGlobe() {
 
         uniforms: {
             u_map_tex: { type: "t", value: earthTexture },
-            u_dot_size: { type: "f", value: 0.02 },
+            u_dot_size: { type: "f", value: 0.01 },
             u_pointer: { type: "v3", value: new THREE.Vector3(0.0, 0.0, 1) },
             u_time_since_click: { value: 0 }
         },
@@ -126,7 +126,7 @@ function createGlobe() {
     globeMesh = new THREE.Mesh(
         globeGeometry,
         new THREE.MeshBasicMaterial({
-            color: 0x222222,
+            color: 0x01377D,
             transparent: true,
             opacity: 0.01
         })
@@ -196,7 +196,7 @@ function createStaticAndPulsingCircles(position) {
     const elevation = 0.015; // Adjust the elevation as needed
     
     // Create the static circle
-    const staticGeometry = new THREE.CircleGeometry(0.03, 32);
+    const staticGeometry = new THREE.CircleGeometry(0.027, 32);
     const staticMaterial = new THREE.MeshBasicMaterial({
         color: 0x01377D,
         transparent: true,
@@ -213,7 +213,7 @@ function createStaticAndPulsingCircles(position) {
     scene.add(staticCircle);
 
     // Create the pulsing circle
-    const pulsingGeometry = new THREE.CircleGeometry(0.03, 32);
+    const pulsingGeometry = new THREE.CircleGeometry(0.027, 32);
     const pulsingMaterial = new THREE.MeshBasicMaterial({
         color: 0x01377D,
         transparent: true,
