@@ -1,5 +1,9 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
+import { Line2 } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js';
+import { LineMaterial } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js';
+import { LineGeometry } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js';
+
 
 
 
@@ -85,25 +89,28 @@ function createGlobe() {
             }
         `,
         fragmentShader: `
-            uniform sampler2D u_map_tex;
-            varying float vOpacity;
-            varying vec2 vUv;
-    
-            void main() {
-                vec3 color = texture2D(u_map_tex, vUv).rgb;
-                
-                // Define a more intense blue tint color
-                vec3 lightBlueTint = vec3(0.3, 0.5, 0.8); // A more blue shade
-                
-                // Apply the blue tint by blending it with the texture color
-                color = mix(color, lightBlueTint, 0.5); // Adjust the 0.5 to control the tint strength
+    uniform sampler2D u_map_tex;
+    varying float vOpacity;
+    varying vec2 vUv;
+
+    void main() {
+        vec3 color = texture2D(u_map_tex, vUv).rgb;
         
-                color -= 0.2 * length(gl_PointCoord.xy - vec2(0.5));
-                float dot = 1.0 - smoothstep(0.38, 0.4, length(gl_PointCoord.xy - vec2(0.5)));
-                if (dot < 0.5) discard;
-                gl_FragColor = vec4(color, dot * vOpacity);
-            }
-        `,
+        // Use a very light teal with more blue
+        vec3 lightTealWithMoreBlue = vec3(0.5, 1.0, 1.2); // A very light teal with more blue
+        
+        // Apply the tint by blending it with the texture color
+        color = mix(color, lightTealWithMoreBlue, 0.5); // Adjust the 0.5 to control the tint strength
+        
+        color -= 0.1 * length(gl_PointCoord.xy - vec2(0.5));
+        float dot = 1.0 - smoothstep(0.35, 0.4, length(gl_PointCoord.xy - vec2(0.5)));
+        if (dot < 0.5) discard;
+        gl_FragColor = vec4(color, dot * vOpacity);
+    }
+`,
+
+
+
         uniforms: {
             u_map_tex: { type: "t", value: earthTexture },
             u_dot_size: { type: "f", value: 0.02 },
@@ -176,24 +183,26 @@ function alignCircleToSurface(circle, position, elevation = 0) {
     const up = new THREE.Vector3(0, 0, 0); // The center of the globe
     const direction = new THREE.Vector3().subVectors(circle.position, up).normalize();
     
+    
     // Align the circle so that it is perpendicular to the surface at the given point
     const quaternion = new THREE.Quaternion();
     quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);  // Adjust for surface normal
     circle.setRotationFromQuaternion(quaternion);
+    
 }
 
 
 function createStaticAndPulsingCircles(position) {
-    const elevation = 0.015 // Adjust the elevation as needed
+    const elevation = 0.015; // Adjust the elevation as needed
     
     // Create the static circle
-    const staticGeometry = new THREE.CircleGeometry(0.04, 32);
+    const staticGeometry = new THREE.CircleGeometry(0.03, 32);
     const staticMaterial = new THREE.MeshBasicMaterial({
         color: 0x01377D,
         transparent: true,
         opacity: 1,  // Static circle opacity
         side: THREE.DoubleSide,
-        depthWrite: false
+        depthWrite: true
     });
     const staticCircle = new THREE.Mesh(staticGeometry, staticMaterial);
 
@@ -204,7 +213,7 @@ function createStaticAndPulsingCircles(position) {
     scene.add(staticCircle);
 
     // Create the pulsing circle
-    const pulsingGeometry = new THREE.CircleGeometry(0.04, 32);
+    const pulsingGeometry = new THREE.CircleGeometry(0.03, 32);
     const pulsingMaterial = new THREE.MeshBasicMaterial({
         color: 0x01377D,
         transparent: true,
@@ -216,14 +225,17 @@ function createStaticAndPulsingCircles(position) {
     // Align the pulsing circle to the globe's surface with elevation
     alignCircleToSurface(pulsingCircle, position, elevation);
 
+    // Adjust the position of the pulsing circle slightly below the static circle
+    pulsingCircle.position.z -= 0.003; // Adjust this value as needed
+
     // Add pulsing circle to the scene
     scene.add(pulsingCircle);
 
     // Animate the pulsing effect (scaling and fading)
     gsap.to(pulsingCircle.scale, {
         duration: 2,
-        x: 2.5,  // Pulsing scale factor
-        y: 2.5,  // Pulsing scale factor
+        x: 1.75,  // Pulsing scale factor
+        y: 1.75,  // Pulsing scale factor
         repeat: -1,
         yoyo: false,  // Pulsating effect
         ease: "power1.inOut"
@@ -244,71 +256,72 @@ function createStaticAndPulsingCircles(position) {
 
 
 
-function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor = 1.015) {
+function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor = 1.025) {
+    // Normalize and apply lift to the start point
     startPoint.normalize();
     const liftedStartPoint = startPoint.clone().multiplyScalar(liftFactor);
     
     const arcs = [];
     let colorToggle = false;
 
-
     endPoints.forEach(endPoint => {
+        // Normalize and apply lift to the end point
         endPoint.normalize();
         const liftedEndPoint = endPoint.clone().multiplyScalar(liftFactor);
+        
         const points = [];
         const numPoints = 250;
 
         // Generate arc points
         for (let i = 0; i <= numPoints; i++) {
             const t = i / numPoints;
+
+            // Interpolate between the lifted start and end points
             const point = new THREE.Vector3().lerpVectors(liftedStartPoint, liftedEndPoint, t);
+
+            // Apply elevation for the arc
             const elevation = ((1 - t) * t) * 4 * heightAboveGlobe;
-            const pointAboveGlobe = point.normalize().multiplyScalar(point.length() + elevation);
+
+            // Apply the elevation without normalization to keep the arc lifted
+            const pointAboveGlobe = point.multiplyScalar(1 + elevation / point.length());
+
             points.push(pointAboveGlobe);
         }
 
-        // Create shader material for thicker arcs
-        const vertexShader = `
-            varying vec3 vPosition;
-            void main() {
-                vPosition = position;
-                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                gl_PointSize = 3.5;
-            }
-        `;
+        // Flatten points into an array of coordinates for LineGeometry
+        const positions = [];
+        points.forEach(p => positions.push(p.x, p.y, p.z));
 
-        const fragmentShader = `
-            varying vec3 vPosition;
-            uniform vec3 uColor; // Add color uniform
-            void main() {
-                float thickness = 0.1; 
-                float alpha = smoothstep(0.0, thickness, length(gl_PointCoord - 0.5));
-                gl_FragColor = vec4(uColor, alpha); // Use the color uniform
-            }
-        `;
+        // Create LineGeometry and set positions
+        const arcGeometry = new LineGeometry();
+        arcGeometry.setPositions(positions);
 
-        const arcMaterial = new THREE.ShaderMaterial({
-            vertexShader,
-            fragmentShader,
-            uniforms: {
-                uColor: { value: new THREE.Color(0x7ED348) }, // Color for the first arc
-            },
+        // Create LineMaterial for the arc
+        const arcMaterial = new LineMaterial({
+            color: colorToggle ? 0x7ED348 : 0x01377D,  // Toggle colors
+            linewidth: 1.75,  // Thickness of the line
             transparent: true,
+            opacity: 1,  // Optional transparency
+            dashed: false  // Optionally, you can add dashed lines
         });
 
-        const arcGeometry = new THREE.BufferGeometry().setFromPoints(points);
-        const arcMesh = new THREE.Points(arcGeometry, arcMaterial);
-        scene.add(arcMesh);
-        arcs.push(arcMesh);
+        arcMaterial.resolution.set(window.innerWidth, window.innerHeight);  // Set the resolution
 
-        // Animation function
+        // Create Line2 object using LineGeometry and LineMaterial
+        const arcLine = new Line2(arcGeometry, arcMaterial);
+
+        // Add the arc line to the scene
+        scene.add(arcLine);
+        arcs.push(arcLine);
+
+        // Function to animate the arc being drawn
         function animateArc() {
             let drawRange = 0;
             const totalPoints = points.length;
 
             const drawAnimation = () => {
                 if (drawRange < totalPoints) {
-                    arcMesh.geometry.setDrawRange(0, drawRange);
+                    arcLine.geometry.setDrawRange(0, drawRange * 3);  // Increment the draw range (multiplied by 3 for flat coordinates x, y, z)
                     drawRange++;
                     requestAnimationFrame(drawAnimation);
                 } else {
@@ -318,41 +331,45 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
             drawAnimation();
         }
 
-        // Function to draw a second arc with different color
+        // Function to draw a second arc with a different color
         function drawOverArc(points) {
-            const secondArcMaterial = new THREE.ShaderMaterial({
-                vertexShader,
-                fragmentShader,
-                uniforms: {
-                    uColor: { value: new THREE.Color(colorToggle ? 0xf0f0f0 : 0x7ED348) }, // Toggle color for the second arc
-                },
+            const secondArcMaterial = new LineMaterial({
+                color: colorToggle ? 0x01377D : 0x7ED348,  // Toggle color for the second arc
+                linewidth: 1.75,
                 transparent: true,
+                opacity: 1
             });
 
-            const secondArcMesh = new THREE.Points(arcGeometry.clone(), secondArcMaterial);
-            scene.add(secondArcMesh);
+            secondArcMaterial.resolution.set(window.innerWidth, window.innerHeight);
+
+            const secondArcLine = new Line2(arcGeometry.clone(), secondArcMaterial);
+            scene.add(secondArcLine);
             colorToggle = !colorToggle;
 
             let drawRange = 0;
             const drawAnimation = () => {
                 if (drawRange < points.length) {
-                    secondArcMesh.geometry.setDrawRange(0, drawRange);
+                    secondArcLine.geometry.setDrawRange(0, drawRange * 3);
                     drawRange++;
                     requestAnimationFrame(drawAnimation);
                 } else {
-                    animateArc(); // Restart the animation
+                    animateArc();  // Restart the animation
                 }
             };
             drawAnimation();
         }
 
-        animateArc(); // Start the initial animation
-        createStaticAndPulsingCircles(liftedEndPoint);
+        animateArc();  // Start the initial animation
+        createStaticAndPulsingCircles(liftedEndPoint);  // Create circles at the end of the arc
     });
 
     const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
     return { arcs, startCircles };
 }
+
+
+
+
 
 
 
