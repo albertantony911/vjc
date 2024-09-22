@@ -284,7 +284,7 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
         // Create LineMaterial with initial color
         const arcMaterial = new LineMaterial({
             color: 0x01377D, // Initial color (green)
-            linewidth: 1.5,
+            linewidth: 0.8,
             transparent: true,
             resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
         });
