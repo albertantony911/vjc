@@ -255,7 +255,7 @@ function createStaticAndPulsingCircles(position) {
 
 
 // Create elevated arcs with short pulse animation
-function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor = 1.025) {
+function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor = 0.5, liftFactor = 1.025) {
     startPoint.normalize();
     const liftedStartPoint = startPoint.clone().multiplyScalar(liftFactor);
     const arcs = [];
@@ -263,7 +263,13 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
     endPoints.forEach(endPoint => {
         endPoint.normalize();
         const liftedEndPoint = endPoint.clone().multiplyScalar(liftFactor);
+
+        // Calculate distance between start and end points
+        const distance = liftedStartPoint.distanceTo(liftedEndPoint);
         
+        // Adjust height based on distance
+        const heightAboveGlobe = baseHeightAboveGlobe + distance * heightScaleFactor;
+
         const points = [];
         const numPoints = 250;
 
@@ -275,7 +281,7 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
 
             // Use a sine function for smooth elevation
             const elevationFactor = Math.sin(t * Math.PI); // Smooth rise and fall
-            const elevation = elevationFactor * heightAboveGlobe;
+            const elevation = elevationFactor * heightAboveGlobe; // Use dynamic height
 
             const pointAboveGlobe = point.multiplyScalar(1 + elevation / point.length());
             points.push(pointAboveGlobe);
@@ -289,7 +295,7 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
 
         const arcMaterial = new LineMaterial({
             color: 0x01377D,
-            linewidth: 0.8,
+            linewidth: 0.5,
             transparent: true,
             resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
         });
@@ -305,7 +311,6 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
     const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
     return { arcs, startCircles };
 }
-
 
 // Function to animate gradient pulse using GSAP
 function animateGradientPulse(arcs) {
@@ -323,10 +328,8 @@ function animateGradientPulse(arcs) {
     });
 }
 
-
-
+// Function to convert latitude and longitude to a 3D vector
 function latLonToVector3(lat, lon, radius = 1) {
-    // Adjust the longitude by 180 degrees to handle the antipodal point issue
     lon = lon + 180;
     if (lon > 180) lon = lon - 360; // Keep longitude within [-180, 180] range
 
@@ -340,29 +343,28 @@ function latLonToVector3(lat, lon, radius = 1) {
     return new THREE.Vector3(x, y, z);
 }
 
-
-
-const point1 = latLonToVector3(28.6139, 77.2090); // New Delhi (latitude, longitude)
+// Set up points and endpoint data
+const point1 = latLonToVector3(28.6139, 77.2090); // New Delhi
 const endPoints = [
-    latLonToVector3(53.3498, -6.2603),  // Dublin, Ireland
-    latLonToVector3(51.5074, -0.1278),  // London, UK
+    latLonToVector3(53.3498, -6.2603),  // Dublin
+    latLonToVector3(51.5074, -0.1278),  // London
     latLonToVector3(46.8182, 8.2275),   // Switzerland
     latLonToVector3(25.276987, 55.296249), // Dubai
     latLonToVector3(-37.8136, 144.9631),   // Melbourne
     latLonToVector3(-31.9505, 115.8605),   // Perth
-    latLonToVector3(40.7128, -74.0060),  // New York, USA
-    latLonToVector3(34.0522, -118.2437), // California, USA
-    latLonToVector3(61.3707, -152.4040), // Alaska, USA
-    latLonToVector3(49.2827, -123.1207), // Manitoba, Canada
-    latLonToVector3(-22.9068, -43.1729), // Rio de Janeiro, Brazil
-    latLonToVector3(3.4372, -76.5226),   // Cali, Colombia
-    latLonToVector3(-33.9189, 18.4233),  // Cape Town, South Africa
-    latLonToVector3(30.0444, 31.2357),   // Cairo, Egypt
-    latLonToVector3(-41.2865, 174.7762), // Wellington, NZ
+    latLonToVector3(40.7128, -74.0060),  // New York
+    latLonToVector3(34.0522, -118.2437), // California
+    latLonToVector3(61.3707, -152.4040), // Alaska
+    latLonToVector3(49.2827, -123.1207), // Manitoba
+    latLonToVector3(-22.9068, -43.1729), // Rio de Janeiro
+    latLonToVector3(3.4372, -76.5226),   // Cali
+    latLonToVector3(-33.9189, 18.4233),  // Cape Town
+    latLonToVector3(30.0444, 31.2357),   // Cairo
+    latLonToVector3(-41.2865, 174.7762), // Wellington
 ];
 
-
-const heightAboveGlobe = 0.5; // Height of the arcs above the globe
+const baseHeightAboveGlobe = 0.1; // Base height
+const heightScaleFactor = 0.3; // Height increase per unit distance
 
 
 // Function to handle intersection
@@ -371,7 +373,7 @@ function handleIntersection(entries) {
         if (entry.isIntersecting) {
             // Set a delay before executing the arc creation
             setTimeout(() => {
-                createElevatedArcs(point1, endPoints, heightAboveGlobe);
+                createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
             }, 500); // Delay in milliseconds (500ms = 0.5 seconds)
 
             // Unobserve the entry after it has been triggered to prevent multiple calls
