@@ -362,7 +362,7 @@ const endPoints = [
 ];
 
 
-const heightAboveGlobe = 0.4; // Height of the arcs above the globe
+const heightAboveGlobe = 0.5; // Height of the arcs above the globe
 
 
 // Function to handle intersection
