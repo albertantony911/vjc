@@ -169,33 +169,29 @@ function updateSize() {
 window.addEventListener("resize", updateSize);
 
 
-// Create a static and pulsing circle at a given position
-// Function to align the circles properly on the globe's surface
 function alignCircleToSurface(circle, position, elevation = 0) {
-    // First, normalize the position vector so it's on the globe's surface
-    position.normalize();
+    // Normalize the position vector to ensure it's on the globe's surface
+    const normalizedPosition = position.clone().normalize();
     
-    // Calculate the lifted position by adding the elevation
-    const liftedPosition = position.clone().multiplyScalar(1 + elevation); // Elevation above the globe
+    // Calculate the lifted position with elevation
+    const liftedPosition = normalizedPosition.multiplyScalar(1 + elevation);
 
     // Set the lifted position of the circle
     circle.position.copy(liftedPosition);
     
-    // Create a new direction vector from the lifted position to the globe's center
-    const up = new THREE.Vector3(0, 0, 0); // The center of the globe
-    const direction = new THREE.Vector3().subVectors(circle.position, up).normalize();
-    
-    
-    // Align the circle so that it is perpendicular to the surface at the given point
-    const quaternion = new THREE.Quaternion();
-    quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);  // Adjust for surface normal
+    // Calculate the up direction based on the lifted position
+    const up = new THREE.Vector3(0, 0, 1);  // Assuming Z is up for your globe
+    const direction = liftedPosition.clone().normalize(); // Ensure direction points outward
+
+    // Create the quaternion for rotation
+    const quaternion = new THREE.Quaternion().setFromUnitVectors(up, direction);
     circle.setRotationFromQuaternion(quaternion);
-    
 }
 
 
+
 function createStaticAndPulsingCircles(position) {
-    const elevation = 0.015; // Adjust the elevation as needed
+    const elevation = 0.02; // Adjust the elevation as needed
     
     // Create the static circle
     const staticGeometry = new THREE.CircleGeometry(0.027, 32);
@@ -220,7 +216,9 @@ function createStaticAndPulsingCircles(position) {
         color: 0x01377D,
         transparent: true,
         opacity: 1,  // Initial opacity for pulsing effect
-        side: THREE.DoubleSide
+        side: THREE.DoubleSide,
+        depthWrite: false,  // Disable writing to the depth buffer
+        depthTest: false    // Disable depth testing
     });
     const pulsingCircle = new THREE.Mesh(pulsingGeometry, pulsingMaterial);
 
@@ -271,8 +269,14 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
 
         for (let i = 0; i <= numPoints; i++) {
             const t = i / numPoints;
+
+            // Interpolate between start and end points
             const point = new THREE.Vector3().lerpVectors(liftedStartPoint, liftedEndPoint, t);
-            const elevation = ((1 - t) * t) * 4 * heightAboveGlobe;
+
+            // Use a sine function for smooth elevation
+            const elevationFactor = Math.sin(t * Math.PI); // Smooth rise and fall
+            const elevation = elevationFactor * heightAboveGlobe;
+
             const pointAboveGlobe = point.multiplyScalar(1 + elevation / point.length());
             points.push(pointAboveGlobe);
         }
@@ -283,9 +287,8 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
         const arcGeometry = new LineGeometry();
         arcGeometry.setPositions(positions);
 
-        // Create LineMaterial with initial color
         const arcMaterial = new LineMaterial({
-            color: 0x01377D, // Initial color (blue)
+            color: 0x01377D,
             linewidth: 0.8,
             transparent: true,
             resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
@@ -295,15 +298,14 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
         scene.add(arcLine);
         arcs.push(arcLine);
         
-        // Create circles at the end of the arc
         createStaticAndPulsingCircles(liftedEndPoint);
     });
 
-    // Animate the gradient pulse
     animateGradientPulse(arcs);
     const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
     return { arcs, startCircles };
 }
+
 
 // Function to animate gradient pulse using GSAP
 function animateGradientPulse(arcs) {
@@ -323,18 +325,45 @@ function animateGradientPulse(arcs) {
 
 
 
-// Example usage
-const point1 = new THREE.Vector3(-0.145, 0.32, 0.6265); //  New delhi
+function latLonToVector3(lat, lon, radius = 1) {
+    // Adjust the longitude by 180 degrees to handle the antipodal point issue
+    lon = lon + 180;
+    if (lon > 180) lon = lon - 360; // Keep longitude within [-180, 180] range
+
+    const phi = (90 - lat) * (Math.PI / 180);  // Latitude to radians
+    const theta = (lon + 180) * (Math.PI / 180);  // Longitude to radians
+
+    const x = -radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.cos(phi);
+    const z = radius * Math.sin(phi) * Math.sin(theta);
+
+    return new THREE.Vector3(x, y, z);
+}
+
+
+
+const point1 = latLonToVector3(28.6139, 77.2090); // New Delhi (latitude, longitude)
 const endPoints = [
-    new THREE.Vector3(-60, 55, 0.6265),  // ireland
-    new THREE.Vector3(-47, 55, 0.6265),  // london
-    new THREE.Vector3(-1.7, 1.8, 0.6265), // switzerland
-    new THREE.Vector3(-0.475, 0.4, 0.6265), // Dubai
-    new THREE.Vector3(0.885, -0.732, 0.6265), // Melbourne
-    new THREE.Vector3(0.322, -0.332, 0.6265), // Perth
+    latLonToVector3(53.3498, -6.2603),  // Dublin, Ireland
+    latLonToVector3(51.5074, -0.1278),  // London, UK
+    latLonToVector3(46.8182, 8.2275),   // Switzerland
+    latLonToVector3(25.276987, 55.296249), // Dubai
+    latLonToVector3(-37.8136, 144.9631),   // Melbourne
+    latLonToVector3(-31.9505, 115.8605),   // Perth
+    latLonToVector3(40.7128, -74.0060),  // New York, USA
+    latLonToVector3(34.0522, -118.2437), // California, USA
+    latLonToVector3(61.3707, -152.4040), // Alaska, USA
+    latLonToVector3(49.2827, -123.1207), // Manitoba, Canada
+    latLonToVector3(-22.9068, -43.1729), // Rio de Janeiro, Brazil
+    latLonToVector3(3.4372, -76.5226),   // Cali, Colombia
+    latLonToVector3(-33.9189, 18.4233),  // Cape Town, South Africa
+    latLonToVector3(30.0444, 31.2357),   // Cairo, Egypt
+    latLonToVector3(-41.2865, 174.7762), // Wellington, NZ
 ];
 
-const heightAboveGlobe = 0.35; // Height of the arcs above the globe
+
+const heightAboveGlobe = 0.4; // Height of the arcs above the globe
+
 
 // Function to handle intersection
 function handleIntersection(entries) {
