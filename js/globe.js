@@ -46,7 +46,7 @@ function createOrbitControls() {
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.enableDamping = true;
-    controls.enableRotate = false;  // Disable manual rotation
+    //controls.enableRotate = false;  // Disable manual rotation
     controls.minPolarAngle = 0.4 * Math.PI;
     controls.maxPolarAngle = 0.4 * Math.PI;
     controls.autoRotate = true;
@@ -58,7 +58,7 @@ function createOrbitControls() {
     controls.addEventListener("end", () => {
         dragged = Date.now() - timestamp > 600;
     });
-    controls.domElement.style.pointerEvents = 'none';
+    //controls.domElement.style.pointerEvents = 'none';
 }
 
 function createGlobe() {
@@ -285,7 +285,7 @@ function createElevatedArcs(startPoint, endPoints, heightAboveGlobe, liftFactor 
 
         // Create LineMaterial with initial color
         const arcMaterial = new LineMaterial({
-            color: 0x01377D, // Initial color (green)
+            color: 0x01377D, // Initial color (blue)
             linewidth: 0.8,
             transparent: true,
             resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
@@ -321,15 +321,20 @@ function animateGradientPulse(arcs) {
     });
 }
 
+
+
 // Example usage
-const point1 = new THREE.Vector3(-0.145, 0.32, 0.6265); // Start point on the globe
+const point1 = new THREE.Vector3(-0.145, 0.32, 0.6265); //  New delhi
 const endPoints = [
-    new THREE.Vector3(0, 1, 5), // First endpoint
-    new THREE.Vector3(2, 1, 6), // Second endpoint
-    new THREE.Vector3(3, 1, 4), // Third endpoint
+    new THREE.Vector3(-60, 55, 0.6265),  // ireland
+    new THREE.Vector3(-47, 55, 0.6265),  // london
+    new THREE.Vector3(-1.7, 1.8, 0.6265), // switzerland
+    new THREE.Vector3(-0.475, 0.4, 0.6265), // Dubai
+    new THREE.Vector3(0.885, -0.732, 0.6265), // Melbourne
+    new THREE.Vector3(0.322, -0.332, 0.6265), // Perth
 ];
 
-const heightAboveGlobe = 0.3; // Height of the arcs above the globe
+const heightAboveGlobe = 0.35; // Height of the arcs above the globe
 
 // Function to handle intersection
 function handleIntersection(entries) {
