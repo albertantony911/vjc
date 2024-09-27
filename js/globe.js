@@ -15,86 +15,41 @@ initScene();
 window.addEventListener("resize", updateSize);
 
 function initScene() {
-    // Initialize the WebGL renderer
     renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
-     renderer.setPixelRatio(3); // Use device pixel ratio for better quality
-    renderer.setSize(window.innerWidth, window.innerHeight); // Ensure renderer fits the viewport
+    renderer.setPixelRatio(3);
 
-    // Create the scene and camera
     scene = new THREE.Scene();
     camera = new THREE.OrthographicCamera(-1.4, 1.4, 1.4, -1.4, 0, 3);
-
+    
     // Adjust camera position to the left and a bit above
     camera.position.set(-0.2, -0.2, 1.45);
-    camera.lookAt(0, 0, 0); // Make the camera look at the center of the globe
 
-    // Initialize clock for animations
+    // Make the camera look at the center of the globe
+    camera.lookAt(0, 0, 0); // X, Y, Z
+
     clock = new THREE.Clock();
 
-    // Create orbit controls
     createOrbitControls();
 
-    // Load the texture with enhanced settings
-    new THREE.TextureLoader().load(
-        "./img/map.png",
-        (mapTex) => {
-            // Configure texture properties
-            earthTexture = mapTex;
-            earthTexture.wrapS = THREE.RepeatWrapping;
-            earthTexture.wrapT = THREE.RepeatWrapping;
-            earthTexture.magFilter = THREE.LinearFilter;
-            earthTexture.minFilter = THREE.LinearMipMapLinearFilter;
-            earthTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            earthTexture.repeat.set(1, 1); // Adjust repeat settings if necessary
-
-            // Create the globe after loading the texture
-            createGlobe();
-            updateSize(); // Call this function to handle resizing
-            render(); // Start rendering the scene
-        },
-        undefined, // onProgress callback (optional)
-        (error) => {
-            console.error("An error occurred while loading the texture:", error);
-        }
-    );
-
-    // Add resize event listener
-    window.addEventListener('resize', onWindowResize, false);
+    new THREE.TextureLoader().load("./img/map.png", (mapTex) => {
+        earthTexture = mapTex;
+        earthTexture.repeat.set(1, 1);
+        createGlobe();
+        updateSize();
+        render();
+    });
 }
 
 function createOrbitControls() {
     controls = new OrbitControls(camera, canvas3D);
-    controls.enablePan = false;
-    controls.enableZoom = false; // Disable zoom for better control
+    controls.enablePan = false; // Disable panning
+    controls.enableZoom = false; // Disable zooming
     controls.enableDamping = true; // Smooth controls
-    controls.dampingFactor = 1; // Set damping factor
-    controls.enableRotate = false; // Allow rotation
-    controls.minPolarAngle = 0.4 * Math.PI; // Restrict polar angle
-    controls.maxPolarAngle = 0.4 * Math.PI; // Restrict polar angle
+    controls.enableRotate = false; // Disable manual rotation
     controls.autoRotate = true; // Enable auto-rotation
-    controls.autoRotateSpeed = 2.5; // Set rotation speed
+    controls.autoRotateSpeed = 2; // Set auto-rotation speed
 
-    let timestamp;
-    controls.addEventListener("start", () => {
-        timestamp = Date.now();
-        controls.autoRotate = false; // Disable auto-rotation during manual interaction
-    });
-    controls.addEventListener("end", () => {
-        dragged = Date.now() - timestamp > 600; // Check if dragged
-        controls.autoRotate = true; // Re-enable auto-rotation after interaction
-    });
-
-    controls.domElement.style.pointerEvents = 'none'; // Prevent pointer events
-}
-
-// Handle window resize
-function onWindowResize() {
-    camera.left = -1.4;
-    camera.right = 1.4;
-    camera.top = 1.4;
-    camera.bottom = -1.4;
-    camera.updateProjectionMatrix(); // Update the camera projection matrix
-    renderer.setSize(window.innerWidth, window.innerHeight); // Update renderer size
+    controls.domElement.style.pointerEvents = 'none'; // Disable pointer events
 }
 
 
@@ -188,7 +143,7 @@ let initialSize;
 
 function updateSize() {
     const minSide = Math.min(window.innerWidth, window.innerHeight);
-    const newSize = window.innerHeight > window.innerWidth ? 0.95 * minSide : 0.45 * window.innerWidth;
+    const newSize = window.innerHeight > window.innerWidth ? 1 * minSide : 0.47 * window.innerWidth;
 
     // Update only if the size has changed
     if (initialSize !== newSize) {
