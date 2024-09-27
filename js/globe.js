@@ -200,37 +200,42 @@ function createCircle(geometryParams, materialParams) {
     return new THREE.Mesh(geometry, material);
 }
 
-function createStaticAndPulsingCircles(position) {
-    const elevation = 0.025; // Adjust elevation
+function createStaticAndPulsingCircles(position, isStartingPoint = false) {
+    const baseElevation = 0.015; // Base elevation
+    const startingPointElevation = isStartingPoint ? 0.02 : baseElevation; // Extra elevation for starting point
+
+    // Customize size and color for starting point
+    const circleSize = isStartingPoint ? 0.04 : 0.027; // Larger for starting point
+    const circleColor = isStartingPoint ? 0x01377D : 0x01377D; // Red for starting point
 
     // Create static circle
-    const staticCircle = createCircle([0.027, 32], {
-        color: 0x01377D,
+    const staticCircle = createCircle([circleSize, 32], {
+        color: circleColor,
         transparent: true,
         opacity: 1,
         side: THREE.DoubleSide,
         depthWrite: true,
     });
-    alignCircleToSurface(staticCircle, position, elevation);
+    alignCircleToSurface(staticCircle, position, startingPointElevation); // Apply starting point elevation
     scene.add(staticCircle);
 
     // Create pulsing circle
-    const pulsingCircle = createCircle([0.027, 32], {
-        color: 0x01377D,
+    const pulsingCircle = createCircle([circleSize, 32], {
+        color: circleColor,
         transparent: true,
         opacity: 1,
         side: THREE.DoubleSide,
         depthWrite: false,
         depthTest: false,
     });
-    alignCircleToSurface(pulsingCircle, position, elevation);
-    pulsingCircle.position.z -= 0.003; // Adjust as needed
+    alignCircleToSurface(pulsingCircle, position, startingPointElevation); // Apply starting point elevation
+    pulsingCircle.position.z -= 0.003; // Slight Z-adjustment
     scene.add(pulsingCircle);
 
-    // Initialize gsapOpacity
-    pulsingCircle.userData.gsapOpacity = 1;  // Default to fully opaque
+    // Initialize gsapOpacity for the pulsing circle
+    pulsingCircle.userData.gsapOpacity = 1; // Default to fully opaque
 
-    // Animate scaling and fading
+    // Animate scaling and fading for the pulsing circle
     animatePulsingCircle(pulsingCircle);
 
     // Store references for later use
@@ -250,7 +255,7 @@ function animatePulsingCircle(pulsingCircle) {
         y: 1.75,
         repeat: -1,
         yoyo: true,
-        ease: "power1.inOut"
+        ease: "power1.Out"
     });
 
     // Opacity animation
@@ -259,12 +264,13 @@ function animatePulsingCircle(pulsingCircle) {
         gsapOpacity: 0,
         repeat: -1,
         yoyo: true,
-        ease: "power1.inOut",
+        ease: "power1.Out",
         onUpdate: () => {
             pulsingMaterial.opacity = pulsingCircle.userData.gsapOpacity; // Apply GSAP opacity
         }
     });
 }
+
 
 function updateOpacity() {
     const cameraPosition = new THREE.Vector3();
@@ -458,6 +464,12 @@ const endPoints = [
     applyTilt(latLonToVector3(30.0444, 31.2357, globeRadius), tiltAngle),   // Cairo
     applyTilt(latLonToVector3(-41.2865, 174.7762, globeRadius), tiltAngle), // Wellington
 ];
+
+
+
+// Simplify if not using the returned values
+createStaticAndPulsingCircles(point1, true);
+
 
 const baseHeightAboveGlobe = 0.1; // Base height
 const heightScaleFactor = 0.3; // Height increase per unit distance
