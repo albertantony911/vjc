@@ -1,25 +1,22 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
-import { Line2 } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js';
-import { LineMaterial } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js';
-import { LineGeometry } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js';
-
-
-
+import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
+import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
+import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
 
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
 
 let renderer, scene, camera, controls;
 let clock, globe, globeMesh;
-let earthTexture, mapMaterial;
+let earthTexture;
 
 initScene();
 window.addEventListener("resize", updateSize);
 
 function initScene() {
     renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
-    renderer.setPixelRatio(2);
+    renderer.setPixelRatio(3);
 
     scene = new THREE.Scene();
     camera = new THREE.OrthographicCamera(-1.4, 1.4, 1.4, -1.4, 0, 3);
@@ -109,7 +106,7 @@ function createGlobe() {
                 color = mix(color, lightTealWithMoreBlue, 0.5); // Adjust the 0.5 to control the tint strength
 
         color -= 0.1 * length(gl_PointCoord.xy - vec2(0.5));
-        float dot = 1.0 - smoothstep(0.35, 0.4, length(gl_PointCoord.xy - vec2(0.5)));
+        float dot = 1.0 - smoothstep(0.5, 0.5, length(gl_PointCoord.xy - vec2(0.5)));
         if (dot < 0.5) discard;
         gl_FragColor = vec4(color, dot * vOpacity);
     }
@@ -155,141 +152,152 @@ let initialSize;
 
 function updateSize() {
     const minSide = Math.min(window.innerWidth, window.innerHeight);
-    const isPortrait = window.innerHeight > window.innerWidth;
-    const newSize = isPortrait ? 0.95 * minSide : 0.45 * window.innerWidth; // Use half of the viewport width in landscape
+    const newSize = window.innerHeight > window.innerWidth ? 0.95 * minSide : 0.45 * window.innerWidth;
 
-    // Only update if size has changed
+    // Update only if the size has changed
     if (initialSize !== newSize) {
         initialSize = newSize;
-        containerEl.style.width = initialSize + "px";
-        containerEl.style.height = initialSize + "px";
+        // Set new dimensions
+        containerEl.style.width = containerEl.style.height = `${initialSize}px`;
         renderer.setSize(initialSize, initialSize);
         mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
     }
 }
 
-window.addEventListener("resize", updateSize);
+// Debounce function to limit how often updateSize can be called
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
 
+const debouncedUpdateSize = debounce(updateSize, 100); // Adjust delay as needed
+
+// Attach the debounced updateSize function to the resize event
+window.addEventListener('resize', debouncedUpdateSize);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
-    // Normalize the position vector to ensure it's on the globe's surface
     const normalizedPosition = position.clone().normalize();
-    
-    // Calculate the lifted position with elevation
     const liftedPosition = normalizedPosition.multiplyScalar(1 + elevation);
-
-    // Set the lifted position of the circle
-    circle.position.copy(liftedPosition);
     
-    // Calculate the up direction based on the lifted position
-    const up = new THREE.Vector3(0, 0, 1);  // Assuming Z is up for your globe
-    const direction = liftedPosition.clone().normalize(); // Ensure direction points outward
+    // Set circle position
+    circle.position.copy(liftedPosition);
 
-    // Create the quaternion for rotation
+    // Calculate rotation quaternion
+    const up = new THREE.Vector3(0, 0, 1); // Assuming Z is up
+    const direction = liftedPosition.clone().normalize();
     const quaternion = new THREE.Quaternion().setFromUnitVectors(up, direction);
+    
+    // Apply rotation
     circle.setRotationFromQuaternion(quaternion);
 }
 
+function createCircle(geometryParams, materialParams) {
+    const geometry = new THREE.CircleGeometry(...geometryParams);
+    const material = new THREE.MeshBasicMaterial(materialParams);
+    return new THREE.Mesh(geometry, material);
+}
+
 function createStaticAndPulsingCircles(position) {
-    const elevation = 0.02; // Adjust the elevation as needed
-    
-    // Create the static circle
-    const staticGeometry = new THREE.CircleGeometry(0.027, 32);
-    const staticMaterial = new THREE.MeshBasicMaterial({
+    const elevation = 0.02; // Adjust elevation
+
+    // Create static circle
+    const staticCircle = createCircle([0.027, 32], {
         color: 0x01377D,
         transparent: true,
-        opacity: 1,  // Initial opacity
+        opacity: 1,
         side: THREE.DoubleSide,
-        depthWrite: true
+        depthWrite: true,
     });
-    const staticCircle = new THREE.Mesh(staticGeometry, staticMaterial);
     alignCircleToSurface(staticCircle, position, elevation);
     scene.add(staticCircle);
 
-    // Create the pulsing circle
-    const pulsingGeometry = new THREE.CircleGeometry(0.027, 32);
-    const pulsingMaterial = new THREE.MeshBasicMaterial({
+    // Create pulsing circle
+    const pulsingCircle = createCircle([0.027, 32], {
         color: 0x01377D,
         transparent: true,
-        opacity: 1,  // Initial opacity
+        opacity: 1,
         side: THREE.DoubleSide,
         depthWrite: false,
-        depthTest: false
+        depthTest: false,
     });
-    const pulsingCircle = new THREE.Mesh(pulsingGeometry, pulsingMaterial);
     alignCircleToSurface(pulsingCircle, position, elevation);
     pulsingCircle.position.z -= 0.003; // Adjust as needed
     scene.add(pulsingCircle);
 
-    // Initialize gsapOpacity for blending
+    // Initialize gsapOpacity
     pulsingCircle.userData.gsapOpacity = 1;  // Default to fully opaque
 
-    // Animate the pulsing effect (scaling and fading)
+    // Animate scaling and fading
+    animatePulsingCircle(pulsingCircle);
+
+    // Store references for later use
+    staticCircle.userData = { distanceOpacityControl: staticCircle.material };
+    pulsingCircle.userData.distanceOpacityControl = pulsingCircle.material;
+
+    return { staticCircle, pulsingCircle };
+}
+
+function animatePulsingCircle(pulsingCircle) {
+    const pulsingMaterial = pulsingCircle.material;
+
+    // Scale animation
     gsap.to(pulsingCircle.scale, {
         duration: 2,
         x: 1.75,
         y: 1.75,
         repeat: -1,
-        yoyo: false,
+        yoyo: true,
         ease: "power1.inOut"
     });
 
-    // Animate the opacity to fade in and out using GSAP, store result in userData
+    // Opacity animation
     gsap.to(pulsingCircle.userData, {
         duration: 2,
-        gsapOpacity: 0, 
+        gsapOpacity: 0,
         repeat: -1,
-        yoyo: false,
+        yoyo: true,
         ease: "power1.inOut",
         onUpdate: () => {
             pulsingMaterial.opacity = pulsingCircle.userData.gsapOpacity; // Apply GSAP opacity
         }
     });
-
-    // Add references to the circles for later use (both distance and GSAP effects)
-    staticCircle.userData = { distanceOpacityControl: staticMaterial };
-    pulsingCircle.userData.distanceOpacityControl = pulsingMaterial;
-
-    return { staticCircle, pulsingCircle };
 }
 
 function updateOpacity() {
     const cameraPosition = new THREE.Vector3();
     camera.getWorldPosition(cameraPosition); // Get the camera position
     
-    // Store previous opacity states for comparison
+    // Update opacity based on distance
     scene.traverse((object) => {
         if (object instanceof THREE.Mesh && object.userData.distanceOpacityControl) {
-            const material = object.userData.distanceOpacityControl;
-            const distance = cameraPosition.distanceTo(object.position); // Calculate distance
-
-            // Map the distance to opacity
-            const maxDistance = 2.5; // Maximum distance for full opacity
-            const minDistance = 0.5; // Minimum distance for full opacity
-            const distanceOpacity = THREE.MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
-
-            // Check if it's the pulsing circle (with GSAP-controlled opacity)
-            const newOpacity = object.userData.gsapOpacity !== undefined
-                ? distanceOpacity * object.userData.gsapOpacity // Blend the two opacities
-                : distanceOpacity; // Only distance-based opacity for static circles
-
-            // Update the material opacity only if it has changed
-            if (material.opacity !== newOpacity) {
-                material.opacity = newOpacity;
-                material.needsUpdate = true; // Mark material for update
-            }
-        } else if (object instanceof Line2 && object.material instanceof LineMaterial) {
-            // Remove the opacity update for arcs
-            // Now we're not updating the opacity based on distance
-            // You can add any other logic for Line2 objects if needed
+            updateCircleOpacity(object, cameraPosition);
         }
     });
 }
 
+function updateCircleOpacity(object, cameraPosition) {
+    const material = object.userData.distanceOpacityControl;
+    const distance = cameraPosition.distanceTo(object.position); // Calculate distance
 
+    // Map distance to opacity
+    const maxDistance = 2.5; // Max distance for full opacity
+    const minDistance = 0.5; // Min distance for full opacity
+    const distanceOpacity = THREE.MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
 
+    // Determine new opacity
+    const newOpacity = object.userData.gsapOpacity !== undefined
+        ? distanceOpacity * object.userData.gsapOpacity // Blend the two opacities
+        : distanceOpacity; // Only distance-based opacity for static circles
 
-
+    // Update material opacity if it has changed
+    if (material.opacity !== newOpacity) {
+        material.opacity = newOpacity;
+        material.needsUpdate = true; // Mark material for update
+    }
+}
 
 function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor, liftFactor = 1.025) {
     const liftedStartPoint = startPoint.clone().normalize().multiplyScalar(liftFactor);
@@ -308,88 +316,84 @@ function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightS
             return point.multiplyScalar(1 + elevation / point.length());
         });
 
-        let currentPointIndex = 0;
-        const arcMaterial = new LineMaterial({
-            color: 0x7ED348,
-            linewidth: 1.5,
-            resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
-            depthTest: true,
-            transparent: true,
-            opacity: 1.0, // Opacity for the arc
-            alphaToCoverage: true,
+        animateArc(points, liftedStartPoint, liftedEndPoint);
+    };
+
+    // Validate endPoints and create arcs
+    if (Array.isArray(endPoints) && endPoints.every(ep => ep instanceof THREE.Vector3)) {
+        endPoints.forEach(endPoint => {
+            const liftedEndPoint = endPoint.clone().normalize().multiplyScalar(liftFactor);
+            createArcAnimation(liftedStartPoint, liftedEndPoint);
+            createStaticAndPulsingCircles(liftedEndPoint); // Ensure this function is defined elsewhere
         });
+    } else {
+        console.error("Invalid endPoints: Expected an array of THREE.Vector3.");
+    }
 
-        const line2 = new Line2(new LineGeometry(), arcMaterial); // Create Line2 object here
-
-        const animateArc = () => {
-            if (currentPointIndex < points.length) {
-                const arcGeometry = new LineGeometry().setPositions(
-                    points.slice(0, currentPointIndex + 1).flatMap(p => [p.x, p.y, p.z])
-                );
-                line2.geometry = arcGeometry; // Update the geometry of the Line2 object
-                scene.add(line2);
-                currentPointIndex++;
-                requestAnimationFrame(animateArc);
-            } else {
-                // Delay before starting to fade out
-                setTimeout(() => {
-                    fadeOutArc(line2, arcMaterial);
-                }, 500); // Change delay time as needed
-            }
-        };
-
-        const fadeOutArc = (line, material) => {
-        const fadeDuration = 1000; // Duration of fade in milliseconds
-        const startTime = performance.now();
-
-        const fade = (time) => {
-            const elapsed = time - startTime;
-            const progress = Math.min(elapsed / fadeDuration, 1);
-            const opacityValue = 1 - progress; // Calculate the current opacity value
-
-            // Update the material opacity
-            material.opacity = opacityValue; 
-
-            // Check if the line has vertex colors and update them
-            if (line.geometry.attributes.color) {
-                const colors = line.geometry.attributes.color.array;
-                for (let i = 0; i < colors.length; i += 3) {
-                    colors[i + 0] *= opacityValue; // R
-                    colors[i + 1] *= opacityValue; // G
-                    colors[i + 2] *= opacityValue; // B
-                }
-                line.geometry.attributes.color.needsUpdate = true; // Mark the colors for update
-            }
-
-            // Continue fading until complete
-            if (progress < 1) {
-                requestAnimationFrame(fade);
-            } else {
-                scene.remove(line); // Remove from scene after fade out
-                // Restart animation with a delay
-                setTimeout(() => createArcAnimation(liftedStartPoint, liftedEndPoint), 500);
-            }
-        };
-
-        requestAnimationFrame(fade);
-    };
-
-
-        // Initial call to start animation
-        const randomDelay = Math.random() * 3000; // Between 0 and 3000 milliseconds
-        setTimeout(animateArc, randomDelay);
-    };
-
-    endPoints.forEach(endPoint => {
-        const liftedEndPoint = endPoint.clone().normalize().multiplyScalar(liftFactor);
-        createArcAnimation(liftedStartPoint, liftedEndPoint);
-        createStaticAndPulsingCircles(liftedEndPoint);
-    });
-
-    const startCircles = createStaticAndPulsingCircles(liftedStartPoint);
+    const startCircles = createStaticAndPulsingCircles(liftedStartPoint); // Ensure this function is defined
     return { arcs, startCircles };
 }
 
+function animateArc(points, liftedStartPoint, liftedEndPoint) {
+    let currentPointIndex = 0;
+    const arcMaterial = new LineMaterial({
+        color: 0x7CBA3A,
+        linewidth: 1.5,
+        resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
+        depthTest: true,
+        transparent: true,
+        opacity: 1.0,
+        alphaToCoverage: true,
+    });
+
+    const line2 = new Line2(new LineGeometry(), arcMaterial);
+
+    const drawArcLoop = () => {
+        if (currentPointIndex < points.length) {
+            const arcGeometry = new LineGeometry().setPositions(
+                points.slice(0, currentPointIndex + 1).flatMap(p => [p.x, p.y, p.z])
+            );
+            line2.geometry = arcGeometry;
+            scene.add(line2);
+            currentPointIndex++;
+            requestAnimationFrame(drawArcLoop);
+        } else {
+            // Delay before starting to fade out and restart the animation
+            setTimeout(() => {
+                fadeOutArc(line2, arcMaterial, () => {
+                    animateArc(points, liftedStartPoint, liftedEndPoint); // Restart animation
+                });
+            }, 500);
+        }
+    };
+
+    // Start drawing the arc
+    const randomDelay = Math.random() * 3000; // Random delay between 0 and 3000 milliseconds
+    setTimeout(drawArcLoop, randomDelay);
+}
+
+function fadeOutArc(line, material, onComplete) {
+    const fadeDuration = 1000;
+    const startTime = performance.now();
+
+    const fade = (time) => {
+        const elapsed = time - startTime;
+        const progress = Math.min(elapsed / fadeDuration, 1);
+        material.opacity = 1 - progress; // Fade out
+
+        if (progress < 1) {
+            requestAnimationFrame(fade);
+        } else {
+            scene.remove(line);
+            // Cleanup resources
+            line.geometry.dispose();
+            material.dispose();
+            if (onComplete) onComplete(); // Call onComplete callback
+        }
+    };
+
+    requestAnimationFrame(fade);
+}
 
 
 
@@ -450,37 +454,20 @@ const endPoints = [
     applyTilt(latLonToVector3(-41.2865, 174.7762, globeRadius), tiltAngle), // Wellington
 ];
 
-// Now you can use point1 and endPoints in your application logic
-
 const baseHeightAboveGlobe = 0.1; // Base height
 const heightScaleFactor = 0.3; // Height increase per unit distance
 
-// Function to handle intersection
-function handleIntersection(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Set a delay before executing the arc creation
-            setTimeout(() => {
-                try {
-                    createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
-                } catch (error) {
-                    console.error("Error creating arcs:", error);
-                }
-            }, 500); // Delay in milliseconds (500ms = 0.5 seconds)
-
-            // Unobserve the entry after it has been triggered to prevent multiple calls
-            observer.unobserve(entry.target);
+// Function to create arcs directly without intersection
+function initializeArcs() {
+    // Set a delay before executing the arc creation
+    setTimeout(() => {
+        try {
+            createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
+        } catch (error) {
+            console.error("Error creating arcs:", error);
         }
-    });
+    }, 500); // Delay in milliseconds (500ms = 0.5 seconds)
 }
 
-// Create an Intersection Observer
-const observer = new IntersectionObserver(handleIntersection);
-
-// Target the element
-const target = document.getElementById('arc-container');
-if (target) {
-    observer.observe(target);
-} else {
-    console.error("Target element not found");
-}
+// Call the function to initialize arcs immediately
+initializeArcs();
