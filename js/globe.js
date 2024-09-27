@@ -68,7 +68,7 @@ function createOrbitControls() {
     controls.enableZoom = false; // Disable zoom for better control
     controls.enableDamping = true; // Smooth controls
     controls.dampingFactor = 1; // Set damping factor
-    controls.enableRotate = true; // Allow rotation
+    controls.enableRotate = false; // Allow rotation
     controls.minPolarAngle = 0.4 * Math.PI; // Restrict polar angle
     controls.maxPolarAngle = 0.4 * Math.PI; // Restrict polar angle
     controls.autoRotate = true; // Enable auto-rotation
