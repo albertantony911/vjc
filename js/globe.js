@@ -15,51 +15,87 @@ initScene();
 window.addEventListener("resize", updateSize);
 
 function initScene() {
+    // Initialize the WebGL renderer
     renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
-    renderer.setPixelRatio(3);
+     renderer.setPixelRatio(3); // Use device pixel ratio for better quality
+    renderer.setSize(window.innerWidth, window.innerHeight); // Ensure renderer fits the viewport
 
+    // Create the scene and camera
     scene = new THREE.Scene();
     camera = new THREE.OrthographicCamera(-1.4, 1.4, 1.4, -1.4, 0, 3);
-    
+
     // Adjust camera position to the left and a bit above
     camera.position.set(-0.2, -0.2, 1.45);
+    camera.lookAt(0, 0, 0); // Make the camera look at the center of the globe
 
-    // Make the camera look at the center of the globe
-    camera.lookAt(0, 0, 0); // X, Y, Z
-
+    // Initialize clock for animations
     clock = new THREE.Clock();
 
+    // Create orbit controls
     createOrbitControls();
 
-    new THREE.TextureLoader().load("./img/map.png", (mapTex) => {
-        earthTexture = mapTex;
-        earthTexture.repeat.set(1, 1);
-        createGlobe();
-        updateSize();
-        render();
-    });
+    // Load the texture with enhanced settings
+    new THREE.TextureLoader().load(
+        "./img/map.png",
+        (mapTex) => {
+            // Configure texture properties
+            earthTexture = mapTex;
+            earthTexture.wrapS = THREE.RepeatWrapping;
+            earthTexture.wrapT = THREE.RepeatWrapping;
+            earthTexture.magFilter = THREE.LinearFilter;
+            earthTexture.minFilter = THREE.LinearMipMapLinearFilter;
+            earthTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            earthTexture.repeat.set(1, 1); // Adjust repeat settings if necessary
+
+            // Create the globe after loading the texture
+            createGlobe();
+            updateSize(); // Call this function to handle resizing
+            render(); // Start rendering the scene
+        },
+        undefined, // onProgress callback (optional)
+        (error) => {
+            console.error("An error occurred while loading the texture:", error);
+        }
+    );
+
+    // Add resize event listener
+    window.addEventListener('resize', onWindowResize, false);
 }
 
 function createOrbitControls() {
     controls = new OrbitControls(camera, canvas3D);
     controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.enableDamping = true;
-    controls.enableRotate = true;  // Disable manual rotation
-    controls.minPolarAngle = 0.4 * Math.PI;
-    controls.maxPolarAngle = 0.4 * Math.PI;
-    controls.autoRotate = true;
+    controls.enableZoom = false; // Disable zoom for better control
+    controls.enableDamping = true; // Smooth controls
+    controls.dampingFactor = 1; // Set damping factor
+    controls.enableRotate = true; // Allow rotation
+    controls.minPolarAngle = 0.4 * Math.PI; // Restrict polar angle
+    controls.maxPolarAngle = 0.4 * Math.PI; // Restrict polar angle
+    controls.autoRotate = true; // Enable auto-rotation
+    controls.autoRotateSpeed = 2.5; // Set rotation speed
 
     let timestamp;
     controls.addEventListener("start", () => {
         timestamp = Date.now();
+        controls.autoRotate = false; // Disable auto-rotation during manual interaction
     });
     controls.addEventListener("end", () => {
-        dragged = Date.now() - timestamp > 600;
+        dragged = Date.now() - timestamp > 600; // Check if dragged
+        controls.autoRotate = true; // Re-enable auto-rotation after interaction
     });
-    controls.domElement.style.pointerEvents = 'none';
+
+    controls.domElement.style.pointerEvents = 'none'; // Prevent pointer events
 }
 
+// Handle window resize
+function onWindowResize() {
+    camera.left = -1.4;
+    camera.right = 1.4;
+    camera.top = 1.4;
+    camera.bottom = -1.4;
+    camera.updateProjectionMatrix(); // Update the camera projection matrix
+    renderer.setSize(window.innerWidth, window.innerHeight); // Update renderer size
+}
 
 
 function createGlobe() {
