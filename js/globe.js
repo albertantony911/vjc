@@ -305,6 +305,7 @@ function updateCircleOpacity(object, cameraPosition) {
     }
 }
 
+
 function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor, liftFactor = 1.025) {
     const liftedStartPoint = startPoint.clone().normalize().multiplyScalar(liftFactor);
     const arcs = [];
@@ -357,9 +358,10 @@ function animateArc(points, liftedStartPoint, liftedEndPoint, isReverse = false)
     const drawArcLoop = () => {
         if (currentPointIndex < points.length) {
             const arcGeometry = new LineGeometry().setPositions(
-                points.slice(0, currentPointIndex + 1).flatMap(p => [p.x, p.y, p.z])
-            );
-            line2.geometry = arcGeometry;
+                    points.slice(0, currentPointIndex + 1).flatMap(p => [p.x, p.y, p.z])
+                );
+                if (line2.geometry) line2.geometry.dispose(); // Dispose of previous geometry
+                line2.geometry = arcGeometry;
             scene.add(line2);
             currentPointIndex++;
             requestAnimationFrame(drawArcLoop);
@@ -382,6 +384,7 @@ function animateArc(points, liftedStartPoint, liftedEndPoint, isReverse = false)
     const randomDelay = Math.random() * 3000; // Random delay between 0 and 3000 milliseconds
     setTimeout(drawArcLoop, randomDelay);
 }
+
 
 function fadeOutArc(line, material, onComplete) {
     const fadeDuration = 1000;
