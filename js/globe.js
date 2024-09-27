@@ -201,7 +201,7 @@ function createCircle(geometryParams, materialParams) {
 }
 
 function createStaticAndPulsingCircles(position) {
-    const elevation = 0.02; // Adjust elevation
+    const elevation = 0.025; // Adjust elevation
 
     // Create static circle
     const staticCircle = createCircle([0.027, 32], {
@@ -334,7 +334,7 @@ function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightS
     return { arcs, startCircles };
 }
 
-function animateArc(points, liftedStartPoint, liftedEndPoint) {
+function animateArc(points, liftedStartPoint, liftedEndPoint, isReverse = false) {
     let currentPointIndex = 0;
     const arcMaterial = new LineMaterial({
         color: 0x7CBA3A,
@@ -358,10 +358,15 @@ function animateArc(points, liftedStartPoint, liftedEndPoint) {
             currentPointIndex++;
             requestAnimationFrame(drawArcLoop);
         } else {
-            // Delay before starting to fade out and restart the animation
+            // Delay before starting the reverse animation or fade-out
             setTimeout(() => {
                 fadeOutArc(line2, arcMaterial, () => {
-                    animateArc(points, liftedStartPoint, liftedEndPoint); // Restart animation
+                    // Reverse direction after completing the initial arc
+                    if (!isReverse) {
+                        animateArc(points.reverse(), liftedEndPoint, liftedStartPoint, true); // Reverse direction
+                    } else {
+                        animateArc(points.reverse(), liftedStartPoint, liftedEndPoint, false); // Restart forward direction
+                    }
                 });
             }, 500);
         }
