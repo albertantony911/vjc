@@ -9,7 +9,7 @@ const canvas3D = containerEl.querySelector("#globe-3d");
 
 let renderer, scene, camera, controls;
 let clock, globe, globeMesh;
-let earthTexture;
+let earthTexture, mapMaterial;
 
 initScene();
 window.addEventListener("resize", updateSize);
@@ -47,7 +47,7 @@ function createOrbitControls() {
     controls.enableDamping = true; // Smooth controls
     controls.enableRotate = false; // Disable manual rotation
     controls.autoRotate = true; // Enable auto-rotation
-    controls.autoRotateSpeed = 2; // Set auto-rotation speed
+    controls.autoRotateSpeed = 1.5; // Set auto-rotation speed
 
     controls.domElement.style.pointerEvents = 'none'; // Disable pointer events
 }
@@ -141,21 +141,20 @@ function render() {
 
 let initialSize;
 
+// Update the size of the renderer and material uniform only when necessary
 function updateSize() {
     const minSide = Math.min(window.innerWidth, window.innerHeight);
-    const newSize = window.innerHeight > window.innerWidth ? 1 * minSide : 0.47 * window.innerWidth;
+    const newSize = window.innerHeight > window.innerWidth ? minSide : 0.47 * window.innerWidth;
 
-    // Update only if the size has changed
     if (initialSize !== newSize) {
         initialSize = newSize;
-        // Set new dimensions
         containerEl.style.width = containerEl.style.height = `${initialSize}px`;
         renderer.setSize(initialSize, initialSize);
         mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
     }
 }
 
-// Debounce function to limit how often updateSize can be called
+// Debounce function to limit how often `updateSize` is called
 function debounce(func, delay) {
     let timeout;
     return function(...args) {
@@ -164,110 +163,65 @@ function debounce(func, delay) {
     };
 }
 
-const debouncedUpdateSize = debounce(updateSize, 100); // Adjust delay as needed
-
-// Attach the debounced updateSize function to the resize event
+const debouncedUpdateSize = debounce(updateSize, 200);
 window.addEventListener('resize', debouncedUpdateSize);
 
+// Aligns circles to the surface of the globe
 function alignCircleToSurface(circle, position, elevation = 0) {
-    const normalizedPosition = position.clone().normalize();
-    const liftedPosition = normalizedPosition.multiplyScalar(1 + elevation);
-    
-    // Set circle position
-    circle.position.copy(liftedPosition);
+    const liftedPos = position.clone().normalize().multiplyScalar(1 + elevation);
+    circle.position.copy(liftedPos);
 
-    // Calculate rotation quaternion
-    const up = new THREE.Vector3(0, 0, 1); // Assuming Z is up
-    const direction = liftedPosition.clone().normalize();
+    const up = new THREE.Vector3(0, 0, 1);
+    const direction = liftedPos.clone().normalize();
     const quaternion = new THREE.Quaternion().setFromUnitVectors(up, direction);
-    
-    // Apply rotation
+
     circle.setRotationFromQuaternion(quaternion);
 }
 
+// Function to create a circle with specified geometry and material parameters
 function createCircle(geometryParams, materialParams) {
     const geometry = new THREE.CircleGeometry(...geometryParams);
     const material = new THREE.MeshBasicMaterial(materialParams);
     return new THREE.Mesh(geometry, material);
 }
 
+// Function to create static and pulsing circles
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
-    const baseElevation = 0.015; // Base elevation
-    const startingPointElevation = isStartingPoint ? 0.02 : baseElevation; // Extra elevation for starting point
+    const elevation = isStartingPoint ? 0.02 : 0.015;
+    const circleSize = isStartingPoint ? 0.04 : 0.027;
+    const circleColor = 0x01377D;
 
-    // Customize size and color for starting point
-    const circleSize = isStartingPoint ? 0.04 : 0.027; // Larger for starting point
-    const circleColor = isStartingPoint ? 0x01377D : 0x01377D; // Red for starting point
-
-    // Create static circle
-    const staticCircle = createCircle([circleSize, 32], {
-        color: circleColor,
-        transparent: true,
-        opacity: 1,
-        side: THREE.DoubleSide,
-        depthWrite: true,
-    });
-    alignCircleToSurface(staticCircle, position, startingPointElevation); // Apply starting point elevation
+    // Create and add static circle
+    const staticCircle = createCircle([circleSize, 32], { color: circleColor, transparent: true, opacity: 1, side: THREE.DoubleSide, depthWrite: true });
+    alignCircleToSurface(staticCircle, position, elevation);
     scene.add(staticCircle);
 
-    // Create pulsing circle
-    const pulsingCircle = createCircle([circleSize, 32], {
-        color: circleColor,
-        transparent: true,
-        opacity: 1,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-        depthTest: false,
-    });
-    alignCircleToSurface(pulsingCircle, position, startingPointElevation); // Apply starting point elevation
-    pulsingCircle.position.z -= 0.003; // Slight Z-adjustment
+    // Create and add pulsing circle
+    const pulsingCircle = createCircle([circleSize, 32], { color: circleColor, transparent: true, opacity: 1, side: THREE.DoubleSide, depthWrite: false, depthTest: false });
+    alignCircleToSurface(pulsingCircle, position, elevation);
+    pulsingCircle.position.z -= 0.003; // Small Z-adjustment
     scene.add(pulsingCircle);
 
-    // Initialize gsapOpacity for the pulsing circle
-    pulsingCircle.userData.gsapOpacity = 1; // Default to fully opaque
-
-    // Animate scaling and fading for the pulsing circle
+    pulsingCircle.userData.gsapOpacity = 1;
     animatePulsingCircle(pulsingCircle);
 
-    // Store references for later use
-    staticCircle.userData = { distanceOpacityControl: staticCircle.material };
+    staticCircle.userData.distanceOpacityControl = staticCircle.material;
     pulsingCircle.userData.distanceOpacityControl = pulsingCircle.material;
 
     return { staticCircle, pulsingCircle };
 }
 
+// Animate pulsing effect for the circle
 function animatePulsingCircle(pulsingCircle) {
-    const pulsingMaterial = pulsingCircle.material;
-
-    // Scale animation
-    gsap.to(pulsingCircle.scale, {
-        duration: 2,
-        x: 1.75,
-        y: 1.75,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.Out"
-    });
-
-    // Opacity animation
-    gsap.to(pulsingCircle.userData, {
-        duration: 2,
-        gsapOpacity: 0,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.Out",
-        onUpdate: () => {
-            pulsingMaterial.opacity = pulsingCircle.userData.gsapOpacity; // Apply GSAP opacity
-        }
-    });
+    gsap.to(pulsingCircle.scale, { duration: 2, x: 1.75, y: 1.75, repeat: -1, yoyo: true, ease: "power1.Out" });
+    gsap.to(pulsingCircle.userData, { duration: 2, gsapOpacity: 0, repeat: -1, yoyo: true, ease: "power1.Out", onUpdate: () => pulsingCircle.material.opacity = pulsingCircle.userData.gsapOpacity });
 }
 
-
+// Updates opacity based on camera distance
 function updateOpacity() {
     const cameraPosition = new THREE.Vector3();
-    camera.getWorldPosition(cameraPosition); // Get the camera position
-    
-    // Update opacity based on distance
+    camera.getWorldPosition(cameraPosition);
+
     scene.traverse((object) => {
         if (object instanceof THREE.Mesh && object.userData.distanceOpacityControl) {
             updateCircleOpacity(object, cameraPosition);
@@ -277,63 +231,49 @@ function updateOpacity() {
 
 function updateCircleOpacity(object, cameraPosition) {
     const material = object.userData.distanceOpacityControl;
-    const distance = cameraPosition.distanceTo(object.position); // Calculate distance
+    const distance = cameraPosition.distanceTo(object.position);
+    const maxDistance = 2.5, minDistance = 0.5;
 
-    // Map distance to opacity
-    const maxDistance = 2.5; // Max distance for full opacity
-    const minDistance = 0.5; // Min distance for full opacity
     const distanceOpacity = THREE.MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
+    const newOpacity = object.userData.gsapOpacity !== undefined ? distanceOpacity * object.userData.gsapOpacity : distanceOpacity;
 
-    // Determine new opacity
-    const newOpacity = object.userData.gsapOpacity !== undefined
-        ? distanceOpacity * object.userData.gsapOpacity // Blend the two opacities
-        : distanceOpacity; // Only distance-based opacity for static circles
-
-    // Update material opacity if it has changed
     if (material.opacity !== newOpacity) {
         material.opacity = newOpacity;
-        material.needsUpdate = true; // Mark material for update
+        material.needsUpdate = true;
     }
 }
 
-
-function createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor, liftFactor = 1.025) {
-    const liftedStartPoint = startPoint.clone().normalize().multiplyScalar(liftFactor);
-    const arcs = [];
+// Creates elevated arcs between start and end points
+function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
+    const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
     const numPoints = 50;
 
-    const createArcAnimation = (liftedStartPoint, liftedEndPoint) => {
-        const distance = liftedStartPoint.distanceTo(liftedEndPoint);
-        const heightAboveGlobe = baseHeightAboveGlobe + distance * heightScaleFactor;
+    const createArc = (start, end) => {
+        const distance = start.distanceTo(end);
+        const heightAboveGlobe = baseHeight + distance * heightScale;
 
-        // Generate arc points
         const points = Array.from({ length: numPoints + 1 }, (_, i) => {
             const t = i / numPoints;
-            const point = new THREE.Vector3().lerpVectors(liftedStartPoint, liftedEndPoint, t);
+            const point = new THREE.Vector3().lerpVectors(start, end, t);
             const elevation = Math.sin(t * Math.PI) * heightAboveGlobe;
             return point.multiplyScalar(1 + elevation / point.length());
         });
 
-        animateArc(points, liftedStartPoint, liftedEndPoint);
+        animateArc(points, start, end);
     };
 
-    // Validate endPoints and create arcs
-    if (Array.isArray(endPoints) && endPoints.every(ep => ep instanceof THREE.Vector3)) {
-        endPoints.forEach(endPoint => {
-            const liftedEndPoint = endPoint.clone().normalize().multiplyScalar(liftFactor);
-            createArcAnimation(liftedStartPoint, liftedEndPoint);
-            createStaticAndPulsingCircles(liftedEndPoint); // Ensure this function is defined elsewhere
-        });
-    } else {
-        console.error("Invalid endPoints: Expected an array of THREE.Vector3.");
-    }
+    endPoints.forEach((end) => {
+        const liftedEnd = end.clone().normalize().multiplyScalar(liftFactor);
+        createArc(liftedStart, liftedEnd);
+        createStaticAndPulsingCircles(liftedEnd);
+    });
 
-    const startCircles = createStaticAndPulsingCircles(liftedStartPoint); // Ensure this function is defined
-    return { arcs, startCircles };
+    return createStaticAndPulsingCircles(liftedStart);
 }
 
-function animateArc(points, liftedStartPoint, liftedEndPoint, isReverse = false) {
-    let currentPointIndex = 0;
+// Animate arcs between points
+function animateArc(points, start, end, reverse = false) {
+    let pointIndex = 0;
     const arcMaterial = new LineMaterial({
         color: 0x7CBA3A,
         linewidth: 1.5,
@@ -346,37 +286,23 @@ function animateArc(points, liftedStartPoint, liftedEndPoint, isReverse = false)
 
     const line2 = new Line2(new LineGeometry(), arcMaterial);
 
-    const drawArcLoop = () => {
-        if (currentPointIndex < points.length) {
-            const arcGeometry = new LineGeometry().setPositions(
-                    points.slice(0, currentPointIndex + 1).flatMap(p => [p.x, p.y, p.z])
-                );
-                if (line2.geometry) line2.geometry.dispose(); // Dispose of previous geometry
-                line2.geometry = arcGeometry;
+    const drawArc = () => {
+        if (pointIndex < points.length) {
+            const arcGeometry = new LineGeometry().setPositions(points.slice(0, pointIndex + 1).flatMap(p => [p.x, p.y, p.z]));
+            if (line2.geometry) line2.geometry.dispose(); // Dispose previous geometry
+            line2.geometry = arcGeometry;
             scene.add(line2);
-            currentPointIndex++;
-            requestAnimationFrame(drawArcLoop);
+            pointIndex++;
+            requestAnimationFrame(drawArc);
         } else {
-            // Delay before starting the reverse animation or fade-out
-            setTimeout(() => {
-                fadeOutArc(line2, arcMaterial, () => {
-                    // Reverse direction after completing the initial arc
-                    if (!isReverse) {
-                        animateArc(points.reverse(), liftedEndPoint, liftedStartPoint, true); // Reverse direction
-                    } else {
-                        animateArc(points.reverse(), liftedStartPoint, liftedEndPoint, false); // Restart forward direction
-                    }
-                });
-            }, 500);
+            setTimeout(() => fadeOutArc(line2, arcMaterial, () => reverse ? animateArc(points.reverse(), end, start, false) : animateArc(points.reverse(), start, end, true)), 500);
         }
     };
 
-    // Start drawing the arc
-    const randomDelay = Math.random() * 3000; // Random delay between 0 and 3000 milliseconds
-    setTimeout(drawArcLoop, randomDelay);
+    setTimeout(drawArc, Math.random() * 3000);
 }
 
-
+// Fade out and remove arc
 function fadeOutArc(line, material, onComplete) {
     const fadeDuration = 1000;
     const startTime = performance.now();
@@ -384,29 +310,24 @@ function fadeOutArc(line, material, onComplete) {
     const fade = (time) => {
         const elapsed = time - startTime;
         const progress = Math.min(elapsed / fadeDuration, 1);
-        material.opacity = 1 - progress; // Fade out
+        material.opacity = 1 - progress;
 
         if (progress < 1) {
             requestAnimationFrame(fade);
         } else {
             scene.remove(line);
-            // Cleanup resources
             line.geometry.dispose();
             material.dispose();
-            if (onComplete) onComplete(); // Call onComplete callback
+            if (onComplete) onComplete();
         }
     };
 
     requestAnimationFrame(fade);
 }
-
-
-
-
+// Converts latitude/longitude to a 3D vector (x, y, z) on a sphere
 function latLonToVector3(lat, lon, radius = 1) {
-    // Convert longitude to range [-180, 180]
-    lon = lon + 180;
-    if (lon > 180) lon = lon - 360; 
+    lon += 180;
+    if (lon > 180) lon -= 360;
 
     const phi = (90 - lat) * (Math.PI / 180);  // Latitude to radians
     const theta = (lon + 180) * (Math.PI / 180);  // Longitude to radians
@@ -418,36 +339,33 @@ function latLonToVector3(lat, lon, radius = 1) {
     return new THREE.Vector3(x, y, z);
 }
 
-// Set the radius of the globe
-const globeRadius = 1; // Adjust this to match your globe's actual radius
+// Set the radius and tilt angle for the globe
+const globeRadius = 1;
+const tiltAngle = 23.5; // Earth's axial tilt
 
-// Define tilt angle in degrees
-const tiltAngle = 23.5; // Example: Earth's axial tilt
-
-// Function to rotate a vector by a tilt angle around the X-axis
+// Applies a tilt to a vector (around the X-axis)
 function applyTilt(vector, angle) {
     const radians = THREE.MathUtils.degToRad(angle);
     const cosAngle = Math.cos(radians);
     const sinAngle = Math.sin(radians);
 
-    // Rotate around X-axis
     const y = vector.y * cosAngle - vector.z * sinAngle;
     const z = vector.y * sinAngle + vector.z * cosAngle;
 
     return new THREE.Vector3(vector.x, y, z);
 }
 
+// Define the starting point (New Delhi) with tilt applied
+const point1 = applyTilt(latLonToVector3(28.6139, 77.2090, globeRadius), tiltAngle);
 
-// Set up points and endpoint data with tilt adjustment
-const point1 = applyTilt(latLonToVector3(28.6139, 77.2090, globeRadius), tiltAngle); // New Delhi
-
+// Define a list of end points for arcs with tilt applied
 const endPoints = [
-    applyTilt(latLonToVector3(53.3498, -6.2603, globeRadius), tiltAngle),  // Dublin
-    applyTilt(latLonToVector3(51.5074, -0.1278, globeRadius), tiltAngle),  // London
-    applyTilt(latLonToVector3(46.8182, 8.2275, globeRadius), tiltAngle),   // Switzerland
+    applyTilt(latLonToVector3(53.3498, -6.2603, globeRadius), tiltAngle),   // Dublin
+    applyTilt(latLonToVector3(51.5074, -0.1278, globeRadius), tiltAngle),   // London
+    applyTilt(latLonToVector3(46.8182, 8.2275, globeRadius), tiltAngle),    // Switzerland
     applyTilt(latLonToVector3(25.276987, 55.296249, globeRadius), tiltAngle), // Dubai
-    applyTilt(latLonToVector3(-37.8136, 144.9631, globeRadius), tiltAngle),   // Melbourne
-    applyTilt(latLonToVector3(-31.9505, 115.8605, globeRadius), tiltAngle),   // Perth
+    applyTilt(latLonToVector3(-37.8136, 144.9631, globeRadius), tiltAngle), // Melbourne
+    applyTilt(latLonToVector3(-31.9505, 115.8605, globeRadius), tiltAngle), // Perth
     applyTilt(latLonToVector3(40.7128, -74.0060, globeRadius), tiltAngle),  // New York
     applyTilt(latLonToVector3(34.0522, -118.2437, globeRadius), tiltAngle), // California
     applyTilt(latLonToVector3(61.3707, -152.4040, globeRadius), tiltAngle), // Alaska
@@ -459,26 +377,20 @@ const endPoints = [
     applyTilt(latLonToVector3(-41.2865, 174.7762, globeRadius), tiltAngle), // Wellington
 ];
 
-
-
-// Simplify if not using the returned values
+// Create static and pulsing circles at the start point (New Delhi)
 createStaticAndPulsingCircles(point1, true);
 
+// Set base height and scale factor for arcs
+const baseHeightAboveGlobe = 0.1;  // Base height above the globe
+const heightScaleFactor = 0.3;     // Height scaling factor based on distance
 
-const baseHeightAboveGlobe = 0.1; // Base height
-const heightScaleFactor = 0.3; // Height increase per unit distance
-
-// Function to create arcs directly without intersection
+// Function to initialize and create arcs
 function initializeArcs() {
-    // Set a delay before executing the arc creation
     setTimeout(() => {
-        try {
-            createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
-        } catch (error) {
-            console.error("Error creating arcs:", error);
-        }
-    }, 500); // Delay in milliseconds (500ms = 0.5 seconds)
+        // Create elevated arcs from the start point to all end points
+        createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
+    }, 500); // Delay execution by 500ms
 }
 
-// Call the function to initialize arcs immediately
+// Initialize the arcs immediately
 initializeArcs();
