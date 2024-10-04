@@ -1043,6 +1043,10 @@ html {
   width: 55%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -2204,6 +2208,10 @@ svg {
 
   .md\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .md\:w-\[65\%\] {
+    width: 65%;
   }
 
   .md\:flex-row {

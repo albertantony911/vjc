@@ -259,20 +259,23 @@ let bl = gsap.timeline({
 
 // Animate all bars by scaling down their height using percentages
 bl.to(["#bar1", "#bar2", "#bar3"], {
-    scaleY: (i) => [0.8, 0.7, 0.9][i], // First break: 80%, 70%, and 90% of original height
-    duration: 1, // Duration for the first break
+    scaleY: (i) => [0.8, 0.5, 0.9][i], // First break: 80%, 70%, and 90% of original height
+    duration: 1.5, // Duration for the first break
     transformOrigin: "bottom", // Ensure the bottom of the bars remains fixed
-    ease: "power1.inOut"
+    ease: "power1.inOut",
+    stagger: 0.2
 })
 .to(["#bar1", "#bar2", "#bar3"], {
-    scaleY: (i) => [0.5, 1, 0.6][i], // Second break: Scale to 50%, 100%, and 60% of height
-    duration: 1, // Duration for the second break
-    ease: "power1.inOut"
+    scaleY: (i) => [0.7, 1, 0.6][i], // Second break: Scale to 50%, 100%, and 60% of height
+    duration: 1.5, // Duration for the second break
+    ease: "power1.inOut",
+    stagger: 0.2
 })
 .to(["#bar1", "#bar2", "#bar3"], {
-    scaleY: (i) => [1, 0.4, 1][i], // Third break: Scale back to full height, 40%, and 100%
-    duration: 1, // Duration for the third break
-    ease: "power1.inOut"
+    scaleY: (i) => [1, 0.6, 1][i], // Third break: Scale back to full height, 40%, and 100%
+    duration: 1.5, // Duration for the third break
+    ease: "power1.inOut",
+    stagger: 0.2
 });
 
 
@@ -282,18 +285,18 @@ let cl = gsap.timeline({ repeat: -1, yoyo: true, repeatDelay: 0.5 });
 
 // Animate the y-position of the circles through 3 different positions
 cl.to(["#circle1", "#circle2", "#circle3"], {
-    y: (i) => [10, 15, 20][i], // Move each circle to its first position (different for each circle)
-    duration: 1, // Duration for the first position
+    y: (i) => [-25, 15, 20][i], // Move each circle to its first position (different for each circle)
+    duration: 1.5, // Duration for the first position
     ease: "power1.inOut"
 })
 .to(["#circle1", "#circle2", "#circle3"], {
-    y: (i) => [20, 25, 30][i], // Move each circle to its second position
-    duration: 1, // Duration for the second position
+    y: (i) => [25, 25, 30][i], // Move each circle to its second position
+    duration: 1.5, // Duration for the second position
     ease: "power1.inOut"
 })
 .to(["#circle1", "#circle2", "#circle3"], {
-    y: (i) => [50, 10, 15][i], // Move each circle to its third position
-    duration: 1, // Duration for the third position
+    y: (i) => [0, 30, 30][i], // Move each circle to its third position
+    duration: 1.5, // Duration for the third position
     ease: "power1.inOut"
 });
 
