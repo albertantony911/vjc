@@ -364,27 +364,10 @@
                 </div>
             
                 <div class="relative md:w-1/2 max-md:h-[60svh] flex w-full flex-col  gradient-bg">
-                    <div class="absolute inset-0 hidden">
-                        <ul class="numbers  ">
-                            <!-- Random numbers and symbols -->
-                            <li>@</li>
-                            <li>#</li>
-                            <li>$</li>
-                            <li>1</li>
-                            <li>5</li>
-                            <li>&</li>
-                            <li>%</li>
-                            <li>8</li>
-                            <li>*</li>
-                            <li>2</li>
-                            <!-- Add more if needed -->
-                        </ul>
-                    </div>
-            
                     <div class="relative z-10  my-auto  gradient-bg-transparent h-full">
 
 
-                        <svg class="md:w-[50%] w-[60%] h-full mx-auto" viewBox="0 0 1586 2375" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="md:w-[50%] w-[60%] h-full mx-auto " viewBox="0 0 1586 2375" xmlns="http://www.w3.org/2000/svg"
                             xml:space="preserve"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
                         
@@ -423,7 +406,9 @@
                                 style="fill:#fff" />
                             
                             <!-- Green circle button -->
-                            <circle id="circle1" cx="296.057" cy="1952.98" r="11.816" style="fill:#7ed348" />
+                            <circle id="barDot1" cx="296.057" cy="1952.98" r="17" style="fill:#7ed348" />
+
+                            
                             
                             <!-- Rounded rectangle button -->
                             <path id="bar2"
@@ -431,7 +416,7 @@
                                 style="fill:#fff" />
                             
                             <!-- Blue circle button -->
-                            <circle id="circle2" cx="373.636" cy="1952.98" r="11.816" style="fill:#01377d" />
+                            <circle id="barDot2" cx="373.636" cy="1952.98" r="17" style="fill:#01377d" />
                             
                             <!-- Rounded rectangle button -->
                             <path id="bar3"
@@ -439,7 +424,7 @@
                                 style="fill:#fff" />
                             
                             <!-- Green circle button -->
-                            <circle id="circle3" cx="452.333" cy="1952.98" r="11.816" style="fill:#7ed348" />
+                            <circle id="barDot3" cx="452.333" cy="1952.98" r="17" style="fill:#7ed348" />
                         
                             <!-- Second large box with filter and opacity -->
                             <g style="filter:url(#c)">
@@ -454,14 +439,16 @@
                                 style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:.3;stroke-width:.32px;stroke-linecap:butt" />
                         
                             <!-- White stroke with a checkmark icon -->
-                            <path d="m709.116 2122.11 67.326-71.5 75.161 13.8 47.985-111"
-                                style="fill:none;stroke:#fff;stroke-width:26.67px;stroke-miterlimit:.726744" />
+                            <path id="lineGraph" d="m709.116 2122.11 67.326-71.5 75.161 13.8 47.985-111"
+                                style="fill:none;stroke:#fff;stroke-width:30px;stroke-miterlimit:.726744" />
                         
                             <!-- Green circle near the stroke -->
-                            <circle cx="747.939" cy="2006.19" r="12.127" style="fill:#7ed348" />
+                            <circle id="float" cx="755" cy="1970" r="18" style="fill:#7ed348" />
                         
                             <!-- Blue circle near the stroke -->
-                            <circle cx="834.26" cy="2110.11" r="12.127" style="fill:#01377d" />
+                            <circle id="float" cx="860" cy="2135" r="18" style="fill:#01377d" />
+
+                            
                         
                             <!-- Main content background (another large box with blur) -->
                             <g style="filter:url(#d)">
@@ -476,21 +463,27 @@
                                 style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:.3;stroke-width:.27px" />
                         
                             <!-- White stroke with some curve effect -->
-                            <path 
+                            <path id="lineGraphLarge"
                                 d="M308.168 1402.62s73.482-86.56 121.446-83.58c79.222 4.92 239.136 124.85 353.886 113.12 114.75-11.72 246.5-178.55 334.61-183.48 80.25-4.48 194.1 153.94 194.1 153.94"
                                 style="fill:none;stroke:#fff;stroke-width:26.67px;stroke-miterlimit:.726744" />
+
+                            
+                            
                         
                             <!-- Vertical strokes and lines -->
                             <path 
                                 d="M490.905 1093.34v520.78m301.739-511.87V1623m522.126-107.61H270.514m1044.256-298.95H270.514m1044.256 149.45H270.514m845.396-272.55v520.78"
-                                style="fill:none;stroke:#fff;stroke-width:2.67px;stroke-miterlimit:.726744" />
+                                style="fill:none;stroke:#fff;stroke-width:3.5px;stroke-miterlimit:.726744" />
                         
                             <!-- Ellipses with different colors (dots/icons) -->
-                            <ellipse cx="462.769" cy="1248.59" rx="16.225" ry="17.339" style="fill:#01377d" />
-                            <ellipse cx="627.292" cy="1482.33" rx="16.225" ry="17.339" style="fill:#7ed348" />
-                            <ellipse cx="820.304" cy="1292.59" rx="16.225" ry="17.339" style="fill:#7ed348" />
-                            <ellipse cx="1020.78" cy="1510.93" rx="16.225" ry="17.339" style="fill:#7ed348" />
-                            <ellipse cx="1090.68" cy="1340.78" rx="16.225" ry="17.339" style="fill:#01377d" />
+                            <ellipse id="float" cx="462.769" cy="1248.59" rx="20" ry="20" style="fill:#01377d" />
+                            <ellipse id="float" cx="627.292" cy="1482.33" rx="20" ry="20" style="fill:#7ed348" />
+                            <ellipse id="float" cx="820.304" cy="1292.59" rx="20" ry="20" style="fill:#7ed348" />
+                            <ellipse id="float" cx="1020.78" cy="1510.93" rx="20" ry="20" style="fill:#7ed348" />
+                            <ellipse id="float" cx="1090.68" cy="1340.78" rx="20" ry="20" style="fill:#01377d" />
+
+
+                            
                         
                             <!-- Cloud-like shape with blur effect -->
                             <g style="filter:url(#e)">
@@ -505,14 +498,19 @@
                                 style="fill:#fff" />
                         
                             <!-- Cloud-like shape stroke -->
-                            <path
+                            <path id="cloud"
                                 d="M1043.47 592.012H489.999c-75.007 0-135.9-54.151-135.9-120.846s60.893-120.845 135.9-120.845h.323c6.2-84.82 85.635-152.01 182.583-152.01 15.645 0 30.835 1.75 45.334 5.041 41.061-48.282 106.184-79.505 179.444-79.505 103.367 0 190.527 62.153 216.767 146.681 68.46 24.914 116.74 84.763 116.74 154.559 0 92.126-84.11 166.925-187.72 166.925m0-.133c103.53 0 187.59-74.735 187.59-166.792 0-69.751-48.26-129.558-116.69-154.445-.02-.007-.03-.023-.04-.043-26.21-84.493-113.33-146.618-216.647-146.618-73.234 0-138.333 31.216-179.369 79.488a.07.07 0 0 1-.065.022c-14.502-3.295-29.695-5.047-45.344-5.047-96.898 0-176.294 67.164-182.455 151.949a.064.064 0 0 1-.066.061h-.385c-74.93 0-135.767 54.087-135.767 120.712 0 66.626 60.837 120.713 135.767 120.713z"
                                 style="fill:#fff" />
                         
                             <!-- Vertical lines -->
-                            <path id="transmission"
-                                d="M689.375 641.247v153.011m103.269-153.011v153.011m103.269-153.011v153.011m103.269-153.011v153.011M586.105 641.247v153.011"
-                                style="fill:none;stroke:#fff;stroke-width:13.95px;stroke-miterlimit:.73" />
+                            
+
+
+                            <g id="dottedLine">
+                                <!-- Lines will be dynamically added here -->
+                            </g>
+                                
+
                         
                             <!-- Filters used for various blur effects -->
                             <defs>
@@ -533,17 +531,36 @@
                                 </filter>
                             </defs>
                         </svg>
-
-
-
-            
                     </div>
+
+
+                    <div class="absolute inset-0 z-10">
+                        <svg id="animationContainer" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
+                    </div>
+
+                    <div class=" inset-0 z-20 "></div>
+                        <svg class="absolute transform -translate-x-1/2 -translate-y-[200px]" id="dottedLine" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+
+                            
+                        </svg>
+                    </div>
+
+
+                    
+
+
+                    
+                
+                    
             
             
                 </div>
             
             
         </section>
+
+
+        
         
 
         <!-- Service Section -->
