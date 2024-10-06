@@ -169,7 +169,15 @@ gsap.to("#cog", {
   
   
 gsap.to("#cloud", {
-    y: -30, // Move the cloud up by 30 pixels
+    y: -50, // Move the cloud up by 30 pixels
+    duration: 1, // Duration for the upward movement
+    ease: "power1.inOut", // Smooth easing for gentle floating effect
+    repeat: -1, // Infinite loop
+    yoyo: true, // Makes the cloud come back down to its original position
+});
+  
+gsap.to("#floater", {
+    y: -10, // Move the cloud up by 30 pixels
     duration: 1, // Duration for the upward movement
     ease: "power1.inOut", // Smooth easing for gentle floating effect
     repeat: -1, // Infinite loop
