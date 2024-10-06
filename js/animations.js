@@ -351,16 +351,16 @@ gsap.to(path, {
 
   // Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
   // Immediately create the first set of symbols without delay
+// Immediately create the first set of symbols without delay
 createAndAnimateElement("left");
 createAndAnimateElement("right");
 
-// Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
-// Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
-let intervalId;
+// Set interval to create new elements at a slower rate (every 3 seconds per side)
+let animationInterval;
 
 function startAnimation() {
-  if (!intervalId) {
-    intervalId = setInterval(() => {
+  if (!animationInterval) {
+    animationInterval = setInterval(() => {
       createAndAnimateElement("left");
       createAndAnimateElement("right");
     }, 3000);
@@ -368,24 +368,22 @@ function startAnimation() {
 }
 
 function stopAnimation() {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
+  if (animationInterval) {
+    clearInterval(animationInterval);
+    animationInterval = null;
   }
 }
 
-// Start animation when the container is in the viewport
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      startAnimation();
-    } else {
-      stopAnimation();
-    }
-  });
-}, { threshold: 0 });
+// Use Page Visibility API to control animations based on tab visibility
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopAnimation();
+  } else {
+    startAnimation();
+  }
+});
 
-observer.observe(document.querySelector("#currencyContainer")); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
+startAnimation();
 }
 
 // Call the function to initiate the animation
