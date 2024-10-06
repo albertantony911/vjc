@@ -314,7 +314,7 @@ gsap.to(path, {
     // Create an SVG text element for the currency symbol
     const currencyElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
     currencyElement.textContent = symbol;
-    currencyElement.setAttribute("fill", "#9FE84A");
+    currencyElement.setAttribute("fill", "#C0F079");
     currencyElement.setAttribute("font-family", "Arial");
     container.appendChild(currencyElement);
 
@@ -342,14 +342,21 @@ gsap.to(path, {
   }
 
   // Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
-  setInterval(() => {
-    createAndAnimateElement("left");
-    createAndAnimateElement("right");
-  }, 3000); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
+  // Immediately create the first set of symbols without delay
+createAndAnimateElement("left");
+createAndAnimateElement("right");
+
+// Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
+setInterval(() => {
+  createAndAnimateElement("left");
+  createAndAnimateElement("right");
+}, 3000); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
 }
 
 // Call the function to initiate the animation
 randomFadeAndReposition();
+
+
 
 
 
