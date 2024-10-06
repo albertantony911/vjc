@@ -1067,6 +1067,10 @@ html {
   width: 100%;
 }
 
+.w-\[100\%\] {
+  width: 100%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -2142,6 +2146,16 @@ svg {
     height: 8rem;
   }
 
+  .md\:size-\[80svh\] {
+    width: 80svh;
+    height: 80svh;
+  }
+
+  .md\:size-\[50svh\] {
+    width: 50svh;
+    height: 50svh;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
@@ -2216,6 +2230,10 @@ svg {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-\[80\%\] {
+    width: 80%;
   }
 
   .md\:flex-row {
