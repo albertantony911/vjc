@@ -355,24 +355,37 @@ createAndAnimateElement("left");
 createAndAnimateElement("right");
 
 // Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
-const intervalId = setInterval(() => {
-  createAndAnimateElement("left");
-  createAndAnimateElement("right");
-}, 3000);
+// Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
+let intervalId;
 
-// Pause animation when the tab is inactive
-window.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    clearInterval(intervalId);
-  } else {
-    createAndAnimateElement("left");
-    createAndAnimateElement("right");
-    setInterval(() => {
+function startAnimation() {
+  if (!intervalId) {
+    intervalId = setInterval(() => {
       createAndAnimateElement("left");
       createAndAnimateElement("right");
     }, 3000);
   }
-}); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
+}
+
+function stopAnimation() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+}
+
+// Start animation when the container is in the viewport
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+  });
+}, { threshold: 0 });
+
+observer.observe(document.querySelector("#currencyContainer")); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
 }
 
 // Call the function to initiate the animation
