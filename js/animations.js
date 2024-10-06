@@ -150,197 +150,190 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-  /* 
-  ====================================
-  LANDING ILLUSTRATION BEGINS
-  ====================================
-  */
 
-// Cache Selectors
-const container = document.querySelector("#animationContainer");
-const cogElement = document.querySelector("#cog");
-const cloudElement = document.querySelector("#cloud");
-const floatElement = document.querySelector("#float");
-const lineGraph = document.querySelector("#lineGraph");
-const lineGraphLarge = document.querySelector("#lineGraphLarge");
-const dottedLineGroup = document.querySelector("#dottedLine");
-const barElements = ["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"];
-const graphDotElements = ["#graphDot1", "#graphDot2"];
-const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
 
-// Animation Functions
-function animateCog() {
-  gsap.to(cogElement, {
-    rotation: 360,
-    duration: 4,
-    ease: "none",
-    repeat: -1,
-    transformOrigin: "50% 50%",
-  });
-}
+/*
+============================
+  LANDING ANIMATION BEGINS
+============================
+*/
 
-function animateCloud() {
-  gsap.to(cloudElement, {
-    y: -30,
-    duration: 1,
-    ease: "power1.inOut",
-    repeat: -1,
-    yoyo: true,
-  });
-}
+
+gsap.to("#cog", {
+    rotation: 360, // Rotate 360 degrees for one full rotation
+    duration: 4, // Duration of one full rotation (you can adjust this)
+    ease: "none", // Linear movement, so it rotates continuously without easing
+    repeat: -1, // Repeat infinitely
+    transformOrigin: "50% 50%" // Rotate around the center
+});
+  
+  
+gsap.to("#cloud", {
+    y: -30, // Move the cloud up by 30 pixels
+    duration: 1, // Duration for the upward movement
+    ease: "power1.inOut", // Smooth easing for gentle floating effect
+    repeat: -1, // Infinite loop
+    yoyo: true, // Makes the cloud come back down to its original position
+});
 
 function animateFloat() {
-  gsap.to(floatElement, {
-    x: () => gsap.utils.random(-0.8, 0.8) * floatElement.getBBox().width,
-    y: () => gsap.utils.random(-0.8, 0.8) * floatElement.getBBox().height,
-    duration: gsap.utils.random(1, 1),
-    ease: "power1.inOut",
-    onComplete: animateFloat,
-  });
+    gsap.to("#float", {
+        x: () => gsap.utils.random(-0.8, 0.8) * document.querySelector("#float").getBBox().width, // Random x movement based on object width
+        y: () => gsap.utils.random(-0.8, 0.8) * document.querySelector("#float").getBBox().height, // Random y movement based on object height
+        duration: gsap.utils.random(1, 1), // Random duration for smoother, varied movement
+        ease: "power1.inOut", // Smooth easing for gentle floating effect
+        onComplete: animateFloat, // Recursively call to create a new random animation on completion
+    });
 }
 
-function animateBarsAndDots() {
-  let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
+animateFloat(); 
 
-  bl.to(barElements, {
-    scaleY: (i) => (i < 3 ? [0.6, 0.5, 0.9][i] : 1),
-    y: (i) => (i >= 3 ? [73, 90, 17][i - 3] : 0),
+
+// Define a GSAP timeline for animation
+let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
+
+// Animate all bars by scaling down their height using percentages
+bl.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
+    scaleY: (i) => i < 3 ? [0.6, 0.5, 0.9][i] : 1, // Only scale bars, keep circles unaffected
+    y: (i) => i >= 3 ? [73, 90, 17][i - 3] : 0, // Only move circles, keep bars unaffected
     duration: 1.5,
     transformOrigin: "bottom",
-    ease: "power1.inOut",
-  })
-    .to(barElements, {
-      scaleY: (i) => (i < 3 ? [0.5, 1, 0.6][i] : 1),
-      y: (i) => (i >= 3 ? [90, 0, 73][i - 3] : 0),
-      duration: 1.5,
-      transformOrigin: "bottom",
-      ease: "power1.inOut",
-    })
-    .to(barElements, {
-      scaleY: (i) => (i < 3 ? [1, 0.6, 1][i] : 1),
-      y: (i) => (i >= 3 ? [0, 73, 0][i - 3] : 0),
-      duration: 1.5,
-      transformOrigin: "bottom",
-      ease: "power1.inOut",
-    });
-}
+    ease: "power1.inOut"
+})
+.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
+    scaleY: (i) => i < 3 ? [0.5, 1, 0.6][i] : 1, // Only scale bars, keep circles unaffected
+    y: (i) => i >= 3 ? [90, 0, 73][i - 3] : 0, // Only move circles, keep bars unaffected
+    duration: 1.5,
+    transformOrigin: "bottom",
+    ease: "power1.inOut"
+})
+.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
+    scaleY: (i) => i < 3 ? [1, 0.6, 1][i] : 1, // Only scale bars, keep circles unaffected
+    y: (i) => i >= 3 ? [0, 73, 0][i - 3] : 0, // Only move circles, keep bars unaffected
+    duration: 1.5,
+    transformOrigin: "bottom",
+    ease: "power1.inOut"
+});
 
-function animateGraphDots() {
-  let gl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
+  
+  
+  
+  
+let gl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
 
-  gl.to(graphDotElements, {
+// Animate all bars by scaling down their height using percentages
+gl.to(["#graphDot1", "#graphDot2"], {
     y: (i) => [73, 90][i],
     duration: 1.5,
-    ease: "power1.inOut",
-  })
-    .to(graphDotElements, {
-      y: (i) => [17, 0][i],
-      duration: 1.5,
-      ease: "power1.inOut",
-    })
-    .to(graphDotElements, {
-      y: (i) => [0, 73][i],
-      duration: 1.5,
-      ease: "power1.inOut",
-    });
-}
+    ease: "power1.inOut"
+})
+.to(["#graphDot1", "#graphDot2"], {
+    y: (i) => [17, 0][i],
+    duration: 1.5,
+    ease: "power1.inOut"
+})
+.to(["#graphDot1", "#graphDot2"], {
+    y: (i) => [0, 73][i],
+    duration: 1.5,
+    ease: "power1.inOut"
+});
+  
+  
 
-function animateLineGraph() {
+  // Original path d attribute
+
+
+ // Create a GSAP animation for slight vertex changes
   const originalYValues = [2122.11, -71.5, 13.8, -111];
   const newYValues = [2122.11 - 40, -71.5 + 70, 13.8 - 90, -111 + 100];
 
   const updatePath = (yValues) => {
     const newPath = `m709.116 ${yValues[0]} 67.326 ${yValues[1]} 75.161 ${yValues[2]} 47.985 ${yValues[3]}`;
-    lineGraph.setAttribute("d", newPath);
+    document.getElementById("lineGraph").setAttribute("d", newPath);
   };
 
+  // Animate the path vertices using GSAP
   gsap.to({ progress: 0 }, {
     progress: 1,
-    duration: 1.5,
+    duration: 3,
     repeat: -1,
     yoyo: true,
     ease: "power1.inOut",
     onUpdate: function () {
       const progress = this.progress();
-      const interpolatedYValues = originalYValues.map(
-        (original, index) => original + (newYValues[index] - original) * progress
-      );
+      const interpolatedYValues = originalYValues.map((original, index) => original + (newYValues[index] - original) * progress);
       updatePath(interpolatedYValues);
-    },
-  });
-}
-
-function animateLineGraphLarge() {
-  const pathLength = lineGraphLarge.getTotalLength();
-
-  gsap.set(lineGraphLarge, {
-    strokeDasharray: pathLength,
-    strokeDashoffset: pathLength,
+    }
   });
 
-  gsap.to(lineGraphLarge, {
-    duration: 3,
-    strokeDashoffset: 0,
-    ease: "power1.inOut",
-    repeat: -1,
-    yoyo: true,
-  });
-}
 
-function animateDottedLines() {
-  const lineSpacing = 103;
-  const numberOfLines = 5;
-  const startingX = 586;
-  const startingY = 641;
-  const endingY = 800;
-  const lineColor = "#fff";
-  const lineThickness = 10;
-  const dashPattern = "20, 20";
 
-  for (let i = 0; i < numberOfLines; i++) {
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-    line.setAttribute("x1", startingX + i * lineSpacing);
-    line.setAttribute("y1", startingY);
-    line.setAttribute("x2", startingX + i * lineSpacing);
-    line.setAttribute("y2", endingY);
-    line.setAttribute("stroke", lineColor);
-    line.setAttribute("stroke-width", lineThickness);
-    line.setAttribute("stroke-dasharray", dashPattern);
-    line.setAttribute("stroke-linecap", "round");
+ 
 
-    dottedLineGroup.appendChild(line);
+  
+  
+  
+  const path = document.querySelector("#lineGraphLarge");
 
-    gsap.to(line, {
-      strokeDashoffset: "+=40",
-      duration: 1,
-      ease: "none",
-      repeat: -1,
-    });
-  }
-}
+// Get the length of the path
+const pathLength = path.getTotalLength();
 
-function randomFadeAndReposition() {
+// Set initial values to create an invisible line
+gsap.set(path, {
+  strokeDasharray: pathLength,
+  strokeDashoffset: pathLength
+});
+
+// Animate the path
+gsap.to(path, {
+  duration: 3,
+  strokeDashoffset: 0,
+  ease: "power1.inOut",
+  repeat: -1,
+  yoyo: true
+});
+  
+  
+
+
+  
+  function randomFadeAndReposition() {
+  const container = document.querySelector("#currencyContainer");
+  let symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+
   function createAndAnimateElement(side) {
-    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+    // Select a random currency symbol
+    const randomIndex = Math.floor(Math.random() * symbols.length);
+    const symbol = symbols[randomIndex];
+    symbols.splice(randomIndex, 1);
+    if (symbols.length === 0) {
+      symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+    }
+
+    // Create an SVG text element for the currency symbol
     const currencyElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
     currencyElement.textContent = symbol;
-    currencyElement.setAttribute("font-size", "16");
-    currencyElement.setAttribute("fill", "#7ED348");
+    currencyElement.setAttribute("fill", "#9FE84A");
     currencyElement.setAttribute("font-family", "Arial");
     container.appendChild(currencyElement);
 
-    const sideWidth = container.clientWidth * 0.2;
-    const startX = side === "left" ? Math.random() * sideWidth : container.clientWidth - sideWidth + Math.random() * sideWidth;
-    const startY = -10;
-    const endY = container.clientHeight + 50;
+    // Determine the start and end positions for the animation
+    const sideWidth = container.clientWidth * 0.2; // 20% of the container width
+    const startX = side === "left"
+      ? Math.random() * sideWidth // Random position within the left 20%
+      : container.clientWidth - sideWidth + Math.random() * sideWidth; // Random position within the right 20%
+    const startY = -10; // Start slightly above the container
+    const endY = container.clientHeight + 50; // End slightly below the container
 
+    // Set the initial position of the symbol
     gsap.set(currencyElement, { x: startX, y: startY, opacity: 1 });
 
+    // Animate the symbol with a fade-out effect
     gsap.to(currencyElement, {
       y: endY,
-      opacity: 0,
-      duration: 20,
+      opacity: 0, // Fade out while moving down
+      duration: 20, // Increased duration to slow down the drop
       ease: "none",
       onComplete: () => {
         container.removeChild(currencyElement);
@@ -348,37 +341,69 @@ function randomFadeAndReposition() {
     });
   }
 
+  // Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
   setInterval(() => {
     createAndAnimateElement("left");
     createAndAnimateElement("right");
-  }, 3000);
+  }, 3000); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
 }
 
-// Master function to group all animations together
-function initiateAllAnimations() {
-  animateCog();
-  animateCloud();
-  animateFloat();
-  animateBarsAndDots();
-  animateGraphDots();
-  animateLineGraph();
-  animateLineGraphLarge();
-  animateDottedLines();
-  randomFadeAndReposition();
+// Call the function to initiate the animation
+randomFadeAndReposition();
+
+
+
+  
+
+
+  
+// Set up for creating and animating lines
+const lineGroup = document.querySelector("#dottedLine");
+const lineSpacing = 103;  // Spacing between lines
+const numberOfLines = 5;  // Number of lines to create
+const startingX = 586;    // Starting x-coordinate for the first line
+const startingY = 641;    // Starting y-coordinate
+const endingY = 800;      // Ending y-coordinate (line length)
+const lineColor = "#fff";
+const lineThickness = 10;
+const dashPattern = "20, 20";  // Dash length and spacing
+
+// Create and animate lines
+for (let i = 0; i < numberOfLines; i++) {
+    // Create a line element using the SVG namespace
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+    // Set line attributes
+    line.setAttribute("x1", startingX + i * lineSpacing); // x-position for each line
+    line.setAttribute("y1", startingY);                   // Starting y-coordinate
+    line.setAttribute("x2", startingX + i * lineSpacing); // Same x-position to make it vertical
+    line.setAttribute("y2", endingY);                     // Ending y-coordinate
+    line.setAttribute("stroke", lineColor);               // Line color
+    line.setAttribute("stroke-width", lineThickness);     // Line thickness
+    line.setAttribute("stroke-dasharray", dashPattern);   // Dashed effect
+    line.setAttribute("stroke-linecap", "round");         // Rounded line ends
+
+    // Append line to the <g> group in the SVG
+    lineGroup.appendChild(line);
+
+    // Animate the line using GSAP for continuous dashed movement
+    gsap.to(line, {
+        strokeDashoffset: "+=40",
+        duration: 1,
+        ease: "none",
+        repeat: -1
+    });
 }
 
-// Start all animations
-initiateAllAnimations();
-
-  /* 
-  ====================================
-  LANDING ILLUSTRATION ENDS
-  ====================================
-  */
+  
+  /*
+============================
+  LANDING ANIMATION ENDS
+============================
+*/
 
   
-  
-  
+
   
 });
 
