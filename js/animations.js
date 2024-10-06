@@ -355,14 +355,29 @@ createAndAnimateElement("left");
 createAndAnimateElement("right");
 
 // Set interval to create new elements at a slower rate (e.g., every 1.5 seconds per side)
-setInterval(() => {
+const intervalId = setInterval(() => {
   createAndAnimateElement("left");
   createAndAnimateElement("right");
-}, 3000); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
+}, 3000);
+
+// Pause animation when the tab is inactive
+window.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    clearInterval(intervalId);
+  } else {
+    createAndAnimateElement("left");
+    createAndAnimateElement("right");
+    setInterval(() => {
+      createAndAnimateElement("left");
+      createAndAnimateElement("right");
+    }, 3000);
+  }
+}); // Increased to 3000 ms (1.5 seconds per side) to match the slower drop duration
 }
 
 // Call the function to initiate the animation
 randomFadeAndReposition();
+
 
 
 
