@@ -401,6 +401,10 @@ const validNumbers = [
     20, 22, 23, 24, 25, 26, 27, 28, 29, 30
 ];
 
+// Immediately display the first random number
+const initialIndex = Math.floor(Math.random() * validNumbers.length);
+countElement.textContent = String(validNumbers[initialIndex]).padStart(2, '0');
+
 // GSAP animation to count numbers randomly between 0-30, excluding numbers with '1'
 gsap.to({}, {
     duration: 1.5, // Duration in seconds for each number change
@@ -414,17 +418,15 @@ gsap.to({}, {
         // Fade out the current number, change it, then fade in the new number
         gsap.to(countElement, {
             opacity: 0,
-            duration: 0.5,
+            duration: 0.2,
             onComplete: function() {
                 countElement.textContent = String(randomNumber).padStart(2, '0');
-                gsap.to(countElement, { opacity: 1, duration: 0.5 });
+                gsap.to(countElement, { opacity: 1, duration: 0.2 });
             }
         });
-    },
-    onComplete: function() {
-        console.log("Counting animation completed");
     }
 });
+
 
   
   // GSAP animation to randomly change the color of one of the dots every second
