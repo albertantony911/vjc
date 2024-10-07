@@ -90,11 +90,11 @@ function createGlobe() {
     void main() {
         vec3 color = texture2D(u_map_tex, vUv).rgb;
 
-        // Define a brighter, more saturated blue color
-        vec3 lightTealWithMoreBlue = vec3(0.5, 1.0, 1.2); // A very light teal with more blue
+        // Original color tint with a hue shifted towards lighter blue
+        vec3 originalTint = vec3(0.6, 0.9, 1.3); // Lighter blue tint
                 
-                // Apply the tint by blending it with the texture color
-                color = mix(color, lightTealWithMoreBlue, 0.5); // Adjust the 0.5 to control the tint strength
+        // Apply the tint by blending it with the texture color
+        color = mix(color, originalTint, 0.5); // Adjust the 0.5 to control the tint strength
 
         color -= 0.1 * length(gl_PointCoord.xy - vec2(0.5));
         float dot = 1.0 - smoothstep(0.5, 0.5, length(gl_PointCoord.xy - vec2(0.5)));

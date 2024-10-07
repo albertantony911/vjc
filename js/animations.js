@@ -453,6 +453,65 @@ gsap.to({}, {
     .call(changeRandomCircleColor);
 
   
+// Elements to animate
+const elements = document.querySelectorAll(".circleRotation");
+
+// Common center for circular path
+const centerX = 1026.16;
+const centerY = 1058.29;
+const radius = 750.95; // Radius for circular path
+
+// Precompute initial angles for each element
+const elementData = Array.from(elements).map(element => {
+  const bbox = element.getBBox();
+  const initialX = bbox.x + bbox.width / 2;
+  const initialY = bbox.y + bbox.height / 2;
+
+  // Calculate the initial angle of the element relative to the common center
+  const deltaX = initialX - centerX;
+  const deltaY = initialY - centerY;
+  const initialAngle = Math.atan2(deltaY, deltaX);
+
+  return {
+    element,
+    initialX,
+    initialY,
+    initialAngle
+  };
+});
+
+// Animation parameters
+const duration = 20000; // 20 seconds for one complete circle
+let startTime = null;
+
+// Animation loop
+function animate(time) {
+  if (!startTime) startTime = time;
+  const elapsed = time - startTime;
+
+  // Calculate the progress of the animation (0 to 1)
+  const progress = (elapsed % duration) / duration;
+  const currentAngleOffset = progress * Math.PI * 2;
+
+  // Update each element's position
+  elementData.forEach(({ element, initialX, initialY, initialAngle }) => {
+    const angle = initialAngle + currentAngleOffset;
+    const x = centerX + radius * Math.cos(angle);
+    const y = centerY + radius * Math.sin(angle);
+
+    // Use direct translation to move the element to the calculated position
+    element.setAttribute("transform", `translate(${x - initialX}, ${y - initialY})`);
+  });
+
+  // Request the next frame
+  requestAnimationFrame(animate);
+}
+
+// Start the animation
+requestAnimationFrame(animate);
+
+  
+  
 
   
 });
