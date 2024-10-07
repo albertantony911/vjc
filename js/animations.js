@@ -1,6 +1,6 @@
 // Statistics counter Animation
 
-function animatedCounter(target, duration = 3000, start = 0, elementId) {
+function animatedCounter(target, duration = 3000, start = 0, elementId, suffix = '+') {
     let startTime;
     let current = start;
     const counterElement = document.getElementById(elementId);
@@ -14,10 +14,10 @@ function animatedCounter(target, duration = 3000, start = 0, elementId) {
         current = start + increment;
 
         if (progress < duration) {
-            counterElement.innerHTML = `${Math.round(current)}<span class="text-dark-purple font-normal animate-pulse">+</span>`;
+            counterElement.innerHTML = `${Math.round(current)}<span class="text-darkBlue font-[600] animate-pulse">${suffix}</span>`;
             requestAnimationFrame(updateCounter);
         } else {
-            counterElement.innerHTML = `${target}<span class="text-dark-purple font-normal animate-pulse">+</span>`;
+            counterElement.innerHTML = `${target}<span class="text-darkBlue font-[600] animate-pulse">${suffix}</span>`;
         }
     }
 
@@ -32,11 +32,10 @@ function animatedCounter(target, duration = 3000, start = 0, elementId) {
 }
 
 // Example usage
-animatedCounter(36, 3000, 0, "counter1");
-animatedCounter(36, 3000, 0, "counter2");
-animatedCounter(36, 3000, 0, "counter3");
-animatedCounter(36, 3000, 0, "counter4");
-
+animatedCounter(3000, 3000, 0, "counter1", '+');
+animatedCounter(36, 3000, 0, "counter2", '+');
+animatedCounter(40, 3000, 0, "counter3", '+'); 
+animatedCounter(50, 3000, 0, "counter4", '%');
 
 
 
@@ -295,7 +294,7 @@ function randomFadeAndReposition() {
 
         const currencyElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
         currencyElement.textContent = symbol;
-        currencyElement.setAttribute("fill", "#C0F079");
+        currencyElement.setAttribute("fill", "#89DB55");
         currencyElement.setAttribute("font-family", "Arial");
         container.appendChild(currencyElement);
 

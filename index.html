@@ -30,12 +30,13 @@
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap">
+  <link href="https://fonts.cdnfonts.com/css/noteworthy" rel="stylesheet">
 
   <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -48,11 +49,17 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
-  
-  
 
 
-  
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+
+
+
+
+
+
+
+
 
 
   <!--  Fonts -->
@@ -61,7 +68,7 @@
   <!-- Custom Scripts -->
   <script src="./js/main.js" defer></script>
   <script src="./js/animations.js" defer></script>
-  <script src="./js/globe.js" defer></script>
+  <script type="module" src="./js/globe.js"></script>
 
   <!-- SEO Meta Tags -->
   <meta name="author" content="vjc">
@@ -128,14 +135,14 @@
 
   <!-- Header Section -->
   <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-  
+
     <!-- Logo Section -->
     <div class="absolute h-[7svh] sm:h-14 top-0">
       <a class="cursor-pointer" href="./index.html">
         <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
       </a>
     </div>
-  
+
     <!-- Menu Button Section -->
     <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
       id="menuButtonContainer">
@@ -150,28 +157,28 @@
         </svg>
       </button>
     </div>
-  
+
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
       class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
       <ul id="mainMenu"
         class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
-  
+
         <!-- Navigation Links -->
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./about.html">ABOUT</a></li>
         <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
             class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
-  
+
         <li><a href="./pricing.html">PRICING</a></li>
-  
+
         <li class="mt-5"><a href="./faq.html">FAQ</a></li>
         <li><a href="./contact.html">CONTACT</a></li>
         <li><a href="./resources.html">RESOURCES</a></li>
-  
-  
+
+
       </ul>
-  
+
       <ul id="subMenu"
         class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
         <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
@@ -180,20 +187,20 @@
         <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
         <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
         <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img class="size-6  bounce-left"
-            src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-  
+        <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img
+            class="size-6  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+
       </ul>
-  
-  
+
+
     </nav>
-  
-  
+
+
     <!-- Landscape Navigation -->
     <nav aria-label="Main Navigation" role="navigation"
       class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
       <ul class="flex flex-row flex-wrap items-center w-full">
-  
+
         <!-- Home -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -202,7 +209,7 @@
             <span>Home</span>
           </a>
         </li>
-  
+
         <!-- About -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -211,9 +218,9 @@
             <span>About</span>
           </a>
         </li>
-  
-  
-  
+
+
+
         <!-- Our Services with Submenu -->
         <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
           @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
@@ -268,7 +275,7 @@
                     <span class="flex-1">Virtual Chief Financial officer</span>
                   </a>
                 </li>
-  
+
                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                   @mouseleave="showChildren = false">
                   <a href="./legal-process-outsourcing.html"
@@ -281,12 +288,12 @@
             </div>
           </div>
         </li>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
         <!-- Pricing -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -295,9 +302,9 @@
             <span>Pricing</span>
           </a>
         </li>
-  
-  
-  
+
+
+
         <!-- Resources -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -306,9 +313,9 @@
             <span>Resources</span>
           </a>
         </li>
-  
-  
-  
+
+
+
         <!-- FAQ -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -317,7 +324,7 @@
             <span>FAQ</span>
           </a>
         </li>
-  
+
         <!-- Contact Us -->
         <li class="relative block">
           <!-- Navigation Link with ARIA Label -->
@@ -328,23 +335,26 @@
         </li>
       </ul>
     </nav>
-  
+
   </header>
 
   <main>
     <!-- Hero Section -->
-    <section class="h-[85svh]  md:flex-row flex flex-col-reverse ">
-      <div class="md:w-1/2 max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
-        <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
-              aria-label="Main Title">
-          36 Years of Trusted Accounting expertise at your service
+    <section class="md:h-[70svh] h-[85svh]  md:flex-row flex flex-col-reverse ">
+      <div
+        class="md:w-1/2 max-md:h-[35svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
+        <h1
+          class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
+          aria-label="Main Title">
+          36 Years of Proven Accounting Expertise, Now Powered by Cloud Accounting
         </h1>
         <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
-              aria-label="Hero Description">
-              A leading name in India’s offshore accounting sector. Since 1988, V. Jaiswal and Co has helped businesses with
-              meticulous accounting services, delivering remarkable results for over three decades.
+          aria-label="Hero Description">
+          A leading name in India’s offshore accounting sector, V. Jaiswal & Co. has been delivering meticulous
+          accounting
+          services since 1988, driving remarkable results across industries.
         </p>
-        <div class="flex justify-start   mt-5 ">
+        <div class="flex justify-start   mt-0 ">
           <button
             class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-white text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
             Partner with Us
@@ -352,10 +362,201 @@
         </div>
       </div>
 
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">  
+      <div class="relative md:w-1/2 max-md:h-[65svh] flex w-full flex-col  gradient-bg">
+        <div class="relative z-10  my-auto  gradient-bg-transparent h-full">
+
+
+          <svg id="floater" class="md:w-[50%] w-[60%] h-full mx-auto " viewBox="0 0 1586 2375"
+            xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
+
+            <!-- Outer container shape with very light opacity -->
+            <path
+              d="M1560.09 1143.23v901.91c0 165.07-134.01 299.08-299.07 299.08H324.271c-165.064 0-299.075-134.01-299.075-299.08v-901.91c0-165.063 134.011-299.073 299.075-299.073h936.749c165.06 0 299.07 134.01 299.07 299.073"
+              style="fill:#0b0147;fill-opacity:.025;stroke:#fff;stroke-opacity:1;stroke-width:1px" />
+
+            <!-- Cog icon with filter for blur effect -->
+            <g style="filter:url(#a)">
+              <path
+                d="m1270.71 1872.13-5.8 37.63c6.41 2.11 12.65 4.7 18.67 7.74l22.51-30.71a172.44 172.44 0 0 1 67.75 67.75l-30.71 22.51c3.04 6.02 5.62 12.26 7.73 18.67l37.63-5.8c9.05 31.3 9.05 64.51 0 95.81l-37.63-5.8c-2.11 6.41-4.69 12.65-7.73 18.67l30.71 22.51a172.44 172.44 0 0 1-67.75 67.75l-22.51-30.71c-6.02 3.04-12.26 5.63-18.67 7.73l5.8 37.64c-31.3 9.05-64.52 9.05-95.81 0l5.79-37.64c-6.4-2.1-12.64-4.69-18.66-7.73l-22.52 30.71a172.57 172.57 0 0 1-67.75-67.75l30.71-22.51c-3.04-6.02-5.62-12.26-7.73-18.67l-37.63 5.8c-9.05-31.3-9.05-64.51 0-95.81l37.63 5.8c2.11-6.41 4.69-12.65 7.73-18.67l-30.71-22.51a172.57 172.57 0 0 1 67.75-67.75l22.52 30.71c6.02-3.04 12.26-5.63 18.66-7.74l-5.79-37.63c31.29-9.05 64.51-9.05 95.81 0"
+                style="fill:#006fff;fill-opacity:.13" />
+            </g>
+
+            <!-- Another cog icon (without blur) -->
+            <path id="cog"
+              d="m1270.71 1872.13-5.8 37.63c6.41 2.11 12.65 4.7 18.67 7.74l22.51-30.71a172.44 172.44 0 0 1 67.75 67.75l-30.71 22.51c3.04 6.02 5.62 12.26 7.73 18.67l37.63-5.8c9.05 31.3 9.05 64.51 0 95.81l-37.63-5.8c-2.11 6.41-4.69 12.65-7.73 18.67l30.71 22.51a172.44 172.44 0 0 1-67.75 67.75l-22.51-30.71c-6.02 3.04-12.26 5.63-18.67 7.73l5.8 37.64c-31.3 9.05-64.52 9.05-95.81 0l5.79-37.64c-6.4-2.1-12.64-4.69-18.66-7.73l-22.52 30.71a172.57 172.57 0 0 1-67.75-67.75l30.71-22.51c-3.04-6.02-5.62-12.26-7.73-18.67l-37.63 5.8c-9.05-31.3-9.05-64.51 0-95.81l37.63 5.8c2.11-6.41 4.69-12.65 7.73-18.67l-30.71-22.51a172.57 172.57 0 0 1 67.75-67.75l22.52 30.71c6.02-3.04 12.26-5.63 18.66-7.74l-5.79-37.63c31.29-9.05 64.51-9.05 95.81 0"
+              style="fill:#fff" />
+
+            <!-- Box with light opacity and blur effect -->
+            <g style="filter:url(#b)">
+              <path
+                d="M558.382 1945.73v184.19c0 50.83-41.265 92.09-92.093 92.09H282.101c-50.828 0-92.094-41.26-92.094-92.09v-184.19c0-50.83 41.266-92.09 92.094-92.09h184.188c50.828 0 92.093 41.26 92.093 92.09"
+                style="fill:#006fff;fill-opacity:.13" />
+            </g>
+
+            <!-- Box with white background and borders -->
+            <path
+              d="M558.382 1945.74v184.19c0 50.83-41.265 92.09-92.093 92.09H282.101c-50.828 0-92.094-41.26-92.094-92.09v-184.19c0-50.83 41.266-92.09 92.094-92.09h184.188c50.828 0 92.093 41.26 92.093 92.09"
+              style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:1px" />
+
+            <!-- Rounded rectangle button -->
+            <path id="bar1"
+              d="M324.709 1967.31v152.85c0 7.91-6.42 14.32-14.326 14.32h-28.651c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.906 0 14.326 6.42 14.326 14.33"
+              style="fill:#fff" />
+
+            <!-- Green circle button -->
+            <circle id="barDot1" cx="296.057" cy="1952.98" r="17" style="fill:#7ed348" />
+
+
+
+            <!-- Rounded rectangle button -->
+            <path id="bar2"
+              d="M402.287 1967.31v152.85c0 7.91-6.419 14.32-14.326 14.32H359.31c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.907 0 14.326 6.42 14.326 14.33"
+              style="fill:#fff" />
+
+            <!-- Blue circle button -->
+            <circle id="barDot2" cx="373.636" cy="1952.98" r="17" style="fill:#01377d" />
+
+            <!-- Rounded rectangle button -->
+            <path id="bar3"
+              d="M480.984 1967.31v152.85c0 7.91-6.419 14.32-14.326 14.32h-28.651c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.907 0 14.326 6.42 14.326 14.33"
+              style="fill:#fff" />
+
+            <!-- Green circle button -->
+            <circle id="barDot3" cx="452.333" cy="1952.98" r="17" style="fill:#7ed348" />
+
+            <!-- Second large box with filter and opacity -->
+            <g style="filter:url(#c)">
+              <path
+                d="M988.528 1945.74v184.17c0 50.83-41.263 92.09-92.088 92.09H712.264c-50.825 0-92.088-41.26-92.088-92.09v-184.17c0-50.83 41.263-92.09 92.088-92.09H896.44c50.825 0 92.088 41.26 92.088 92.09"
+                style="fill:#006fff;fill-opacity:.13" />
+            </g>
+
+            <!-- Second large box with white background -->
+            <path
+              d="M988.528 1945.74v184.17c0 50.83-41.263 92.09-92.088 92.09H712.264c-50.825 0-92.088-41.26-92.088-92.09v-184.17c0-50.83 41.263-92.09 92.088-92.09H896.44c50.825 0 92.088 41.26 92.088 92.09Z"
+              style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:1px;stroke-linecap:butt" />
+
+            <!-- White stroke with a checkmark icon -->
+            <path id="lineGraph" d="m709.116 2122.11 67.326-71.5 75.161 13.8 47.985-111"
+              style="fill:none;stroke:#fff;stroke-width:30px;stroke-miterlimit:.726744" />
+
+            <!-- Green circle near the stroke -->
+            <circle id="float" cx="755" cy="1970" r="18" style="fill:#7ed348" />
+
+            <!-- Blue circle near the stroke -->
+            <circle id="float" cx="860" cy="2135" r="18" style="fill:#01377d" />
+
+
+
+            <!-- Main content background (another large box with blur) -->
+            <g style="filter:url(#d)">
+              <path
+                d="M1445.81 1164.76v401.67c0 110.84-89.99 200.83-200.83 200.83H340.311c-110.844 0-200.835-89.99-200.835-200.83v-401.67c0-110.84 89.991-200.835 200.835-200.835h904.669c110.84 0 200.83 89.995 200.83 200.835"
+                style="fill:#006fff;fill-opacity:.13" />
+            </g>
+
+            <!-- Main content background (white box) -->
+            <path
+              d="M1445.81 1164.76v401.67c0 110.84-89.99 200.83-200.83 200.83H340.311c-110.844 0-200.835-89.99-200.835-200.83v-401.67c0-110.84 89.991-200.835 200.835-200.835h904.669c110.84 0 200.83 89.995 200.83 200.835"
+              style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:1px" />
+
+            <!-- White stroke with some curve effect -->
+            <path id="lineGraphLarge"
+              d="M308.168 1402.62s73.482-86.56 121.446-83.58c79.222 4.92 239.136 124.85 353.886 113.12 114.75-11.72 246.5-178.55 334.61-183.48 80.25-4.48 194.1 153.94 194.1 153.94"
+              style="fill:none;stroke:#fff;stroke-width:26.67px;stroke-miterlimit:.726744" />
+
+
+
+
+            <!-- Vertical strokes and lines -->
+            <path
+              d="M490.905 1093.34v520.78m301.739-511.87V1623m522.126-107.61H270.514m1044.256-298.95H270.514m1044.256 149.45H270.514m845.396-272.55v520.78"
+              style="fill:none;stroke:#fff;stroke-width:3.5px;stroke-miterlimit:.726744" />
+
+            <!-- Ellipses with different colors (dots/icons) -->
+            <ellipse id="float" cx="462.769" cy="1248.59" rx="20" ry="20" style="fill:#01377d" />
+            <ellipse id="float" cx="627.292" cy="1482.33" rx="20" ry="20" style="fill:#7ed348" />
+            <ellipse id="float" cx="820.304" cy="1292.59" rx="20" ry="20" style="fill:#7ed348" />
+            <ellipse id="float" cx="1020.78" cy="1510.93" rx="20" ry="20" style="fill:#7ed348" />
+            <ellipse id="float" cx="1090.68" cy="1340.78" rx="20" ry="20" style="fill:#01377d" />
+
+
+
+
+            <!-- Cloud-like shape with blur effect -->
+            <g style="filter:url(#e)">
+              <path
+                d="M1032.35 565.949H503.41c-71.647 0-129.815-47.563-129.815-106.146 0-58.584 58.168-106.146 129.815-106.146h.368c5.89-74.541 81.794-133.593 174.433-133.593 14.96 0 29.485 1.54 43.348 4.437 39.229-42.437 101.461-69.879 171.469-69.879 98.765 0 182.052 54.617 207.112 128.896 65.42 21.88 111.55 74.464 111.55 135.788 0 80.935-80.36 146.643-179.34 146.643"
+                style="fill:#01377d;fill-opacity:.1;stroke:#fff;stroke-opacity:1;stroke-width:1px;stroke-miterlimit:.73" />
+            </g>
+
+            <!-- Another cloud-like shape (similar to above) -->
+            <path id="cloud"
+              d="M1043.47 591.945H489.999c-74.968 0-135.833-54.119-135.833-120.779s60.865-120.779 135.833-120.779l.385.001c6.163-84.817 85.586-152.011 182.521-152.011 15.654 0 30.852 1.753 45.358 5.049 41.048-48.286 106.165-79.512 179.42-79.512 103.347 0 190.487 62.146 216.717 146.665 68.45 24.897 116.72 84.729 116.72 154.508 0 92.092-84.08 166.858-187.65 166.858"
+              style="fill:#fff" />
+
+            <!-- Cloud-like shape stroke -->
+            <path id="cloud"
+              d="M1043.47 592.012H489.999c-75.007 0-135.9-54.151-135.9-120.846s60.893-120.845 135.9-120.845h.323c6.2-84.82 85.635-152.01 182.583-152.01 15.645 0 30.835 1.75 45.334 5.041 41.061-48.282 106.184-79.505 179.444-79.505 103.367 0 190.527 62.153 216.767 146.681 68.46 24.914 116.74 84.763 116.74 154.559 0 92.126-84.11 166.925-187.72 166.925m0-.133c103.53 0 187.59-74.735 187.59-166.792 0-69.751-48.26-129.558-116.69-154.445-.02-.007-.03-.023-.04-.043-26.21-84.493-113.33-146.618-216.647-146.618-73.234 0-138.333 31.216-179.369 79.488a.07.07 0 0 1-.065.022c-14.502-3.295-29.695-5.047-45.344-5.047-96.898 0-176.294 67.164-182.455 151.949a.064.064 0 0 1-.066.061h-.385c-74.93 0-135.767 54.087-135.767 120.712 0 66.626 60.837 120.713 135.767 120.713z"
+              style="fill:#fff" />
+
+            <!-- Vertical lines -->
+
+
+
+            <g id="dottedLine">
+              <!-- Lines will be dynamically added here -->
+            </g>
+
+
+
+            <!-- Filters used for various blur effects -->
+            <defs>
+              <filter id="a" filterUnits="userSpaceOnUse" x="803.034" y="1618.06" width="839.534" height="839.534">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="41.215" />
+              </filter>
+              <filter id="b" filterUnits="userSpaceOnUse" x="-88.945" y="1574.68" width="926.281" height="926.281">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="46.492" />
+              </filter>
+              <filter id="c" filterUnits="userSpaceOnUse" x="314.584" y="1548.06" width="979.536" height="979.536">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="50.932" />
+              </filter>
+              <filter id="d" filterUnits="userSpaceOnUse" x="-139.476" y="684.972" width="1864.24" height="1361.24">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="46.492" />
+              </filter>
+              <filter id="e" filterUnits="userSpaceOnUse" x="64.419" y="-154.555" width="1456.45" height="1029.68">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="51.518" />
+              </filter>
+            </defs>
+          </svg>
         </div>
+
+
+        <div class="absolute inset-0 z-10 text-[3.5vw] md:text-lg">
+          <svg id="currencyContainer" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
+        </div>
+
+        <div class=" inset-0 z-20 "></div>
+        <svg class="absolute transform -translate-x-1/2 -translate-y-[200px]" id="dottedLine"
+          xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+
+
+        </svg>
       </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
     </section>
 
     <!-- Service Section -->
@@ -368,23 +569,27 @@
         </h1>
         <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
           aria-label="Hero Description">
-          Businesses often struggle with maintaining accurate financial records and compliance. At V. Jaiswal and Co, we simplify
-          these accounting hurdles, ensuring compliance and accuracy so you can focus on growing your business.
+          Businesses often struggle with maintaining accurate financial records and compliance. At V. Jaiswal
+          and Co, we simplify
+          these accounting hurdles, ensuring compliance and accuracy so you can focus on growing your
+          business.
         </p>
         <div class="flex justify-start w-[95%] ">
           <div class="relative justify-center antialiased" role="group" x-data="{ openAccordion: null }">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
               <div class="w-full mx-auto text-center">
                 <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
-    
+
                   <!-- FAQ - 1 -->
                   <div class="py-4">
                     <h2>
-                      <button id="faq-1" type="button" class="md:text-lg flex items-center justify-start  w-full text-base font-bold text-left"
-                        @click="openAccordion = openAccordion === 1 ? null : 1" :aria-expanded="openAccordion === 1 ? 'true' : 'false'"
-                        aria-controls="faq-1">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 1}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                      <button id="faq-1" type="button"
+                        class="md:text-lg flex items-center justify-start  w-full text-base font-bold text-left"
+                        @click="openAccordion = openAccordion === 1 ? null : 1"
+                        :aria-expanded="openAccordion === 1 ? 'true' : 'false'" aria-controls="faq-1">
+                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                          src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 1}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
                         <span>Cloud Accounting and Bookkeeping</span>
                       </button>
 
@@ -395,21 +600,23 @@
                       :class="openAccordion === 1 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
-                          Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you
-                          time and reducing stress, all while ensuring accuracy and alignment with your schedule.
-                          <div
-                            class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                            <button id="homeHeroBookingTherapy" role="link"
-                              class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                              <a href="./therapy.html">Read more</a>
-                            
-                            </button>
-                          </div>
+                          Stay on top of your finances with real-time cloud bookkeeping. Our
+                          experts manage your accounts seamlessly, saving you
+                          time and reducing stress, all while ensuring accuracy and alignment
+                          with your schedule.
+                        <div
+                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          <button id="homeHeroBookingTherapy" role="link"
+                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            <a href="./therapy.html">Read more</a>
+
+                          </button>
+                        </div>
                         </p>
                       </div>
                     </div>
                   </div>
-    
+
                   <!-- FAQ Section 2 -->
                   <div class="py-4">
                     <h2>
@@ -417,11 +624,12 @@
                         class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
                         @click="openAccordion = openAccordion === 2 ? null : 2"
                         :aria-expanded="openAccordion === 2 ? 'true' : 'false'" aria-controls="faq-2">
-                        
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 2}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+
+                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                          src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 2}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
                         <span>Audit and Assurance Services</span>
-                        
+
                       </button>
                     </h2>
                     <div id="faq-2" role="region" aria-labelledby="faq-2" :aria-hidden="openAccordion !== 2"
@@ -430,7 +638,8 @@
                       :class="openAccordion === 2 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
-                          Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance
+                          Gain peace of mind with thorough audits that enhance your financial
+                          integrity. Our services help you maintain compliance
                           effortlessly, ensuring your business stands on solid ground.
                         </p>
                         <div
@@ -438,13 +647,13 @@
                           <button id="homeHeroBookingTherapy" role="link"
                             class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
                             <a href="./therapy.html">Read more</a>
-                        
+
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-    
+
                   <!-- FAQ Section 3 -->
                   <div class="py-4">
                     <h2>
@@ -452,10 +661,11 @@
                         class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
                         @click="openAccordion = openAccordion === 3 ? null : 3"
                         :aria-expanded="openAccordion === 3 ? 'true' : 'false'" aria-controls="faq-3-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 3}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                          src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 3}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
                         <span>Tax Advisory and Compliance</span>
-                        
+
                       </button>
                     </h2>
                     <div id="faq-3-answer" role="region" aria-labelledby="faq-3" :aria-hidden="openAccordion !== 3"
@@ -463,21 +673,23 @@
                       :class="openAccordion === 3 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
-                          Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you
-                          compliant, helping you focus on what matters most—growing your business.
+                          Navigate tax complexities with ease. We provide clear, practical
+                          advice to optimize your tax position while keeping you
+                          compliant, helping you focus on what matters most—growing your
+                          business.
                         </p>
                         <div
                           class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
                             class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
                             <a href="./therapy.html">Read more</a>
-                        
+
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-    
+
                   <!-- FAQ Section 4 -->
                   <div class="py-4">
                     <h2>
@@ -485,10 +697,11 @@
                         class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
                         @click="openAccordion = openAccordion === 4 ? null : 4"
                         :aria-expanded="openAccordion === 4 ? 'true' : 'false'" aria-controls="faq-4-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 4}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                          src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 4}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
                         <span>Chief Financial Services</span>
-                        
+
                       </button>
                     </h2>
                     <div id="faq-4-answer" role="region" aria-labelledby="faq-4"
@@ -496,21 +709,23 @@
                       :class="openAccordion === 4 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
-                          Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and
-                          guidance to make informed decisions that drive your business forward.
+                          Access strategic financial leadership without the overhead. Our
+                          virtual CFO service offers you tailored insights and
+                          guidance to make informed decisions that drive your business
+                          forward.
                         </p>
                         <div
                           class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
                             class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
                             <a href="./therapy.html">Read more</a>
-                        
+
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-    
+
                   <!-- FAQ Section 5 -->
                   <div class="py-4">
                     <h2>
@@ -518,10 +733,11 @@
                         class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
                         @click="openAccordion = openAccordion === 5 ? null : 5"
                         :aria-expanded="openAccordion === 5 ? 'true' : 'false'" aria-controls="faq-5-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                          :class="{'!rotate-180': openAccordion === 5}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                          src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 5}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
                         <span>Legal Process Outsourcing</span>
-                        
+
                       </button>
                     </h2>
                     <div id="faq-5-answer" role="region" aria-labelledby="faq-5" :aria-hidden="openAccordion !== 5"
@@ -529,7 +745,8 @@
                       :class="openAccordion === 5 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
-                          Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled
+                          Streamline your legal processes with precision. Our LPO services
+                          ensure your contracts and compliance tasks are handled
                           efficiently, freeing you to focus on your core business activities.
                         </p>
                         <div
@@ -537,13 +754,13 @@
                           <button id="homeHeroBookingTherapy" role="link"
                             class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
                             <a href="./therapy.html">Read more</a>
-                        
+
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-    
+
                 </div>
               </div>
             </div>
@@ -551,17 +768,378 @@
         </div>
       </div>
 
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div
-          class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+      <div class="md:w-1/2 max-md:h-[65svh]  flex flex-col w-full gradient-bg ">
+        <div class=" gradient-bg-transparent  flex flex-col h-full">
+          <svg id="floater" class="md:w-[90%] w-[100%]  m-auto" viewBox="0 0 2011 1960"
+            xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:.73">
+            <g id="circular-background">
+              <!-- Circle 1 -->
+              <path
+                d="M1025.78 539.423c286.83 0 519.69 232.863 519.69 519.687 0 286.82-232.86 519.68-519.69 519.68-286.819 0-519.682-232.86-519.682-519.68 0-286.824 232.863-519.687 519.682-519.687m0 22.597c274.35 0 497.09 222.738 497.09 497.09 0 274.35-222.74 497.09-497.09 497.09-274.348 0-497.085-222.74-497.085-497.09 0-274.352 222.737-497.09 497.085-497.09"
+                style="fill:#fff" />
+
+              <!-- Circle 2 -->
+              <path
+                d="M1026.16 307.434c414.46 0 750.95 336.448 750.95 750.856 0 414.41-336.49 750.86-750.95 750.86-414.455 0-750.943-336.45-750.943-750.86 0-414.408 336.488-750.856 750.943-750.856m0 9.842c409.03 0 741.11 332.038 741.11 741.014 0 408.98-332.08 741.02-741.11 741.02-409.022 0-741.099-332.04-741.099-741.02 0-408.976 332.077-741.014 741.099-741.014"
+                style="fill:#fff" />
+
+
+            </g>
+
+            <!-- Group: Box with Drop Shadow -->
+            <g class="circleRotation">
+              <g id="box-with-shadow" style="filter:url(#a)">
+                <path
+                  d="M424.224 773.696v147.1c0 14.94-12.13 27.07-27.071 27.07h-114.39c-14.94 0-27.07-12.13-27.07-27.07v-147.1c0-14.941 12.13-27.07 27.07-27.07h114.39c14.941 0 27.071 12.129 27.071 27.07"
+                  style="fill:#01377d;fill-opacity:.15" />
+              </g>
+
+              <!-- Group: Box without Shadow -->
+              <g id="box-without-shadow">
+                <path
+                  d="M424.224 773.696v147.1c0 14.94-12.13 27.07-27.071 27.07h-114.39c-14.94 0-27.07-12.13-27.07-27.07v-147.1c0-14.941 12.13-27.07 27.07-27.07h114.39c14.941 0 27.071 12.129 27.071 27.07"
+                  style="fill:#01377d" />
+              </g>
+
+              <!-- Group: Green Controls on Box -->
+              <g id="green-controls">
+                <path
+                  d="M405.969 879.016v.056c0 6.163-5.004 11.167-11.167 11.167h-66.836c-6.162 0-11.166-5.004-11.166-11.167v-.056c0-6.163 5.004-11.166 11.166-11.166h66.836c6.163 0 11.167 5.003 11.167 11.166m0-33.897v.056c0 6.163-5.004 11.166-11.167 11.166h-38.427c-6.163 0-11.167-5.003-11.167-11.166v-.056c0-6.163 5.004-11.167 11.167-11.167h38.427c6.163 0 11.167 5.004 11.167 11.167m-3.504 67.795v.056c0 6.163-5.004 11.166-11.166 11.166h-92.181c-6.163 0-11.166-5.003-11.166-11.166v-.056c0-6.163 5.003-11.167 11.166-11.167h92.181c6.162 0 11.166 5.004 11.166 11.167"
+                  style="fill:#7ed348" />
+              </g>
+
+              <!-- Group: Ellipses with Shadows -->
+              <g id="ellipses-with-shadows">
+                <!-- Shadow Ellipse -->
+                <g style="filter:url(#b)">
+                  <ellipse cx="290.747" cy="790.9" rx="81.156" ry="81.755" style="fill:#01367c;fill-opacity:.15" />
+                </g>
+
+                <!-- Main Ellipse -->
+                <ellipse cx="290.747" cy="790.9" rx="81.676" ry="81.755" style="fill:#fff" />
+              </g>
+
+              <!-- Group: Blue Box with Filter -->
+              <g id="blue-box-with-filter" style="filter:url(#c)">
+                <path style="fill:#139fff;fill-opacity:.32" d="M268.995 761.427h111.324v124.487H268.995z" />
+              </g>
+
+              <!-- Group: Blue Paths with Complex Shapes -->
+              <g id="blue-paths">
+                <path
+                  d="m334.415 765.453.034.059c3.703 6.461 1.483 14.746-4.955 18.49l-64.049 37.253c-6.438 3.744-14.671 1.538-18.374-4.923l-.033-.059c-3.703-6.461-1.483-14.747 4.954-18.491l64.05-37.252c6.437-3.744 14.67-1.538 18.373 4.923m-68.538-17.948c6.43-3.74 14.665-1.517 18.377 4.961s1.506 14.772-4.924 18.512-14.664 1.517-18.377-4.96-1.506-14.773 4.924-18.513m36.288 63.316c6.43-3.74 14.664-1.517 18.376 4.96s1.506 14.773-4.924 18.513-14.664 1.517-18.376-4.961-1.506-14.772 4.924-18.512"
+                  style="fill:#01377d" />
+              </g>
+            </g>
+            <!-- Group: Large Box with Green Details and Shadow -->
+            <g class="circleRotation">
+              <g id="large-box-with-green-details" style="filter:url(#d)">
+                <path
+                  d="M1950 742.848v171.315c0 16.6-13.48 30.077-30.08 30.077h-127.1c-16.6 0-30.08-13.477-30.08-30.077V742.848c0-16.601 13.48-30.078 30.08-30.078h127.1c16.6 0 30.08 13.477 30.08 30.078"
+                  style="fill:#01377d;fill-opacity:0" />
+              </g>
+
+              <!-- Group: White Box with Green Stripes -->
+              <g id="white-box-with-stripes">
+                <path
+                  d="M1829.05 742.848v171.315c0 16.6-13.48 30.077-30.08 30.077h-127.1c-16.6 0-30.08-13.477-30.08-30.077V742.848c0-16.601 13.48-30.078 30.08-30.078h127.1c16.6 0 30.08 13.477 30.08 30.078Z"
+                  style="fill:#fff;stroke:#18cd51;stroke-width:.13px" />
+
+                <!-- Green Stripes -->
+                <path
+                  d="M1792.9 749.436v.012c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.67c.87 0 1.58.704 1.58 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1792.9 761.124v.011c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.011c0-.868.7-1.573 1.57-1.573h55.67c.87 0 1.58.705 1.58 1.573Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1792.9 772.783v.012c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.67c.87 0 1.58.704 1.58 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 812.653v.012c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.68c.86 0 1.57.704 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 824.341v.011c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573v-.011c0-.868.7-1.573 1.57-1.573h55.68c.86 0 1.57.705 1.57 1.573Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 836v.012c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573V836c0-.868.7-1.572 1.57-1.572h55.68c.86 0 1.57.704 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 890.836v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 878.998v.012c0 .868-.71 1.573-1.57 1.573h-89.64c-.87 0-1.58-.705-1.58-1.573v-.012c0-.867.71-1.572 1.58-1.572h89.64c.86 0 1.57.705 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 867.256v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.573 1.58-1.573h89.64c.86 0 1.57.705 1.57 1.573Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 902.523v.012c0 .868-.71 1.573-1.57 1.573h-89.64c-.87 0-1.58-.705-1.58-1.573v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+                <path
+                  d="M1791.66 914.183v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                  style="fill:#7cd24c;strokelightborder-lightGreenstroke-width:.13px" />
+              </g>
+              <g style="filter:url(#e)">
+                <path
+                  d="M1824.01 891.097v6.578c0 13.655-11.08 24.741-24.74 24.741h-44.68v-32.295c0-17.285 14.03-31.319 31.32-31.319h5.81c17.82 0 32.29 14.471 32.29 32.295"
+                  style="fill:#4980ff;fill-opacity:.29" />
+              </g>
+              <path
+                d="M1767.88 850.246c15.87-9.17 36.18-3.72 45.34 12.163 9.15 15.882 3.71 36.222-12.15 45.392s-36.17 3.72-45.33-12.163-3.72-36.222 12.14-45.392m6.38 11.059c9.77-5.646 22.27-2.291 27.91 7.489s2.29 22.302-7.48 27.948c-9.76 5.646-22.27 2.29-27.91-7.489s-2.28-22.302 7.48-27.948"
+                style="fill:#01377d" />
+              <path
+                d="m1807.48 903.616 16.81 29.154c2.1 3.654.85 8.334-2.8 10.445s-8.33.858-10.43-2.796l-16.81-29.154a7.645 7.645 0 0 1 2.8-10.444 7.63 7.63 0 0 1 10.43 2.795M1689.3 744.113v17.016l14.95-8.097a17.1 17.1 0 0 1 2.05 8.097c0 9.392-7.62 17.017-17 17.017s-16.99-7.625-16.99-17.017c0-9.397 7.61-17.016 16.99-17.016"
+                style="fill:#01377d" />
+              <path
+                d="M1689.3 744.113v17.016l14.95-8.097a17.1 17.1 0 0 1 2.05 8.097c0 9.392-7.62 17.017-17 17.017s-16.99-7.625-16.99-17.017c0-9.397 7.61-17.016 16.99-17.016m-8.66 65.985v27.679a2.5 2.5 0 0 1-2.5 2.499h-3.33a2.5 2.5 0 0 1-2.5-2.499v-27.679a2.5 2.5 0 0 1 2.5-2.499h3.33a2.5 2.5 0 0 1 2.5 2.499m12.83 13.82v13.859a2.5 2.5 0 0 1-2.5 2.499h-3.33a2.5 2.5 0 0 1-2.5-2.499v-13.859a2.5 2.5 0 0 1 2.5-2.499h3.33a2.5 2.5 0 0 1 2.5 2.499m12.83-7.049v20.908a2.5 2.5 0 0 1-2.5 2.499h-3.34c-1.37 0-2.49-1.12-2.49-2.499v-20.908a2.5 2.5 0 0 1 2.49-2.499h3.34a2.5 2.5 0 0 1 2.5 2.499"
+                style="fill:#01377d" />
+              <ellipse cx="1686.93" cy="914.189" rx="3.257" ry="3.262" style="fill:#7ed348" />
+              <ellipse cx="1686.93" cy="902.529" rx="3.257" ry="3.262" style="fill:#7ed348" />
+              <ellipse cx="1686.93" cy="890.725" rx="3.257" ry="3.262" style="fill:#7ed348" />
+              <ellipse cx="1686.93" cy="879.004" rx="3.257" ry="3.262" style="fill:#7ed348" />
+              <ellipse cx="1686.93" cy="867.262" rx="3.257" ry="3.262" style="fill:#7ed348" />
+            </g>
+
+
+            <g class="circleRotation">
+
+              <path
+                d="M1041.04 323.211v102.952c0 5.354-4.35 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.35 0 9.7 4.346 9.7 9.7"
+                style="fill:#002f70" />
+              <path
+                d="M1021.64 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-14.96 0 7.48 7.48 0 0 1 7.48-7.477m0 3.738c2.06 0 3.74 1.675 3.74 3.739a3.743 3.743 0 0 1-3.74 3.738 3.743 3.743 0 0 1-3.74-3.738 3.744 3.744 0 0 1 3.74-3.739"
+                style="fill:#fff" />
+              <path
+                d="M1030.36 371.366v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.673v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.658v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633"
+                style="fill:#7ed348" />
+              <path
+                d="M1082.12 323.211v102.952c0 5.354-4.34 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.36 0 9.7 4.346 9.7 9.7"
+                style="fill:#002f70" />
+              <path
+                d="M1062.72 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-7.48 7.476c-4.12 0-7.47-3.35-7.47-7.476 0-4.127 3.35-7.477 7.47-7.477m0 3.738c2.07 0 3.74 1.675 3.74 3.739a3.735 3.735 0 1 1-7.47 0 3.735 3.735 0 0 1 3.73-3.739"
+                style="fill:#fff" />
+              <path
+                d="M1071.44 371.366v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633m0 10.673v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633m0 10.658v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633"
+                style="fill:#7ed348" />
+              <path
+                d="M1122.95 323.211v102.952c0 5.354-4.35 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.35 0 9.7 4.346 9.7 9.7"
+                style="fill:#002f70" />
+              <path
+                d="M1103.55 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-14.96 0 7.48 7.48 0 0 1 7.48-7.477m0 3.738c2.06 0 3.74 1.675 3.74 3.739a3.743 3.743 0 0 1-3.74 3.738 3.743 3.743 0 0 1-3.74-3.738 3.744 3.744 0 0 1 3.74-3.739"
+                style="fill:#fff" />
+              <path
+                d="M1112.27 371.366v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.673v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.658v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633"
+                style="fill:#7ed348" />
+              <g style="filter:url(#f)">
+                <path
+                  d="M1105.24 355.626H930.752c-23.634 0-42.823-18.31-42.823-40.863s19.189-40.863 42.823-40.863h.121c1.943-28.696 26.983-51.429 57.542-51.429 4.935 0 9.727.593 14.305 1.708 12.94-16.337 33.46-26.902 56.56-26.902 32.58 0 60.05 21.026 68.32 49.622 21.58 8.423 36.8 28.666 36.8 52.274 0 31.158-26.51 56.453-59.16 56.453"
+                  style="fill:#01367c;fill-opacity:.15" />
+              </g>
+              <path
+                d="M1105.24 355.626H930.752c-23.634 0-42.823-18.31-42.823-40.863s19.189-40.863 42.823-40.863h.121c1.943-28.696 26.983-51.429 57.542-51.429 4.935 0 9.727.593 14.305 1.708 12.94-16.337 33.46-26.902 56.56-26.902 32.58 0 60.05 21.026 68.32 49.622 21.58 8.423 36.8 28.666 36.8 52.274 0 31.158-26.51 56.453-59.16 56.453"
+                style="fill:#fff;stroke:#fff;stroke-width:.13px;stroke-linecap:round" />
+              <g style="filter:url(#g)">
+                <path style="fill:#139fff;fill-opacity:.32" d="M997.533 292.686h136.302v73.694H997.533z" />
+              </g>
+
+
+            </g>
+
+            <g class="circleRotation">
+              <path
+                d="M1505.78 1733.45v14.6c0 1.91-1.55 3.46-3.45 3.46h-73.29c-1.91 0-3.45-1.55-3.45-3.46v-14.6c0-1.91 1.54-3.45 3.45-3.45h73.29c1.9 0 3.45 1.54 3.45 3.45"
+                style="fill:#01377d" />
+              <path
+                d="M1588.91 1599.61v108.94c0 14.23-11.55 25.78-25.78 25.78h-194.89c-14.23 0-25.78-11.55-25.78-25.78v-108.94c0-14.23 11.55-25.78 25.78-25.78h194.89c14.23 0 25.78 11.55 25.78 25.78"
+                style="fill:#01367c" />
+              <g style="filter:url(#h)">
+                <path
+                  d="M1588.91 1599.61v108.94c0 14.23-11.55 25.78-25.78 25.78h-194.89c-14.23 0-25.78-11.55-25.78-25.78v-108.94c0-14.23 11.55-25.78 25.78-25.78h194.89c14.23 0 25.78 11.55 25.78 25.78"
+                  style="fill:#01367c;fill-opacity:.15" />
+              </g>
+              <path
+                d="M1582.6 1603.25v101.66c0 12.77-10.36 23.13-23.13 23.13h-187.58c-12.76 0-23.13-10.36-23.13-23.13v-101.66c0-12.77 10.37-23.13 23.13-23.13h187.58c12.77 0 23.13 10.36 23.13 23.13"
+                style="fill:#fff" />
+              <path
+                d="M1546.46 1711.98v.07c0 1.53-1.25 2.77-2.77 2.77h-156.01a2.77 2.77 0 0 1-2.77-2.77v-.07c0-1.53 1.24-2.78 2.77-2.78h156.01c1.52 0 2.77 1.25 2.77 2.78"
+                style="fill:#7cd24c" />
+              <path
+                d="M1546.46 1711.98v.07c0 1.53-1.25 2.77-2.77 2.77h-156.01a2.77 2.77 0 0 1-2.77-2.77v-.07c0-1.53 1.24-2.78 2.77-2.78h156.01c1.52 0 2.77 1.25 2.77 2.78"
+                style="fill:#7cd24c" />
+              <path
+                d="M1528.03 1684.7v22.44c0 1.17-.95 2.12-2.12 2.12h-4.23c-1.17 0-2.11-.95-2.11-2.12v-22.44c0-1.17.94-2.12 2.11-2.12h4.23c1.17 0 2.12.95 2.12 2.12"
+                style="fill:#002f70" />
+              <path
+                d="M1523.8 1703.2c.89 0 1.62.73 1.62 1.63s-.73 1.63-1.62 1.63c-.9 0-1.64-.73-1.64-1.63s.74-1.63 1.64-1.63m0 .82c.45 0 .81.36.81.81s-.36.82-.81.82-.82-.37-.82-.82.37-.81.82-.81"
+                style="fill:#fff" />
+              <path
+                d="M1525.7 1695.2v.36c0 .2-.16.36-.36.36h-3.09c-.2 0-.36-.16-.36-.36v-.36c0-.2.16-.36.36-.36h3.09c.2 0 .36.16.36.36m0 2.32v.37c0 .2-.16.36-.36.36h-3.09c-.2 0-.36-.16-.36-.36v-.37c0-.19.16-.35.36-.35h3.09c.2 0 .36.16.36.35m0 2.33v.37c0 .19-.16.35-.36.35h-3.09c-.2 0-.36-.16-.36-.35v-.37c0-.2.16-.36.36-.36h3.09c.2 0 .36.16.36.36"
+                style="fill:#7ed348" />
+              <path
+                d="M1518.38 1684.7v22.44c0 1.17-.94 2.12-2.11 2.12h-4.23c-1.17 0-2.12-.95-2.12-2.12v-22.44c0-1.17.95-2.12 2.12-2.12h4.23c1.17 0 2.11.95 2.11 2.12"
+                style="fill:#002f70" />
+              <path
+                d="M1514.15 1703.2a1.63 1.63 0 1 1 0 3.26 1.63 1.63 0 0 1 0-3.26m0 .82c.45 0 .82.36.82.81s-.37.82-.82.82-.81-.37-.81-.82.36-.81.81-.81"
+                style="fill:#fff" />
+              <path
+                d="M1516.05 1695.2v.36c0 .2-.16.36-.35.36h-3.09c-.2 0-.36-.16-.36-.36v-.36c0-.2.16-.36.36-.36h3.09c.19 0 .35.16.35.36m0 2.32v.37c0 .2-.16.36-.35.36h-3.09c-.2 0-.36-.16-.36-.36v-.37c0-.19.16-.35.36-.35h3.09c.19 0 .35.16.35.35m0 2.33v.37c0 .19-.16.35-.35.35h-3.09c-.2 0-.36-.16-.36-.35v-.37c0-.2.16-.36.36-.36h3.09c.19 0 .35.16.35.36"
+                style="fill:#7ed348" />
+              <g style="filter:url(#i)">
+                <path
+                  d="M1443.37 1600.36H1488c30.05 0 54.45 24.4 54.45 54.45s-24.4 54.45-54.45 54.45h-44.63c-30.05 0-54.45-24.4-54.45-54.45s24.4-54.45 54.45-54.45"
+                  style="fill:#67c1ff;fill-opacity:.29" />
+              </g>
+              <path
+                d="M1499.47 1682.58v26.68h-64.51c-1.69 0-3.07-1.38-3.07-3.07v-23.61c0-14.72 11.96-26.68 26.68-26.68h14.23c14.72 0 26.67 11.96 26.67 26.68"
+                style="fill:#01377d" />
+              <path
+                d="M1499.47 1682.58v26.68h-64.51c-1.69 0-3.07-1.38-3.07-3.07v-23.61c0-14.72 11.96-26.68 26.68-26.68h14.23c14.72 0 26.67 11.96 26.67 26.68"
+                style="fill:#01377d" />
+              <circle cx="1465.68" cy="1643.17" r="14.823" style="fill:#01377d" />
+              <path
+                d="M1488.09 1688.25v15.35c0 3.12-2.54 5.66-5.67 5.66h-33.48c-3.12 0-5.66-2.54-5.66-5.66v-15.35c0-3.13 2.54-5.67 5.66-5.67h33.48c3.13 0 5.67 2.54 5.67 5.67"
+                style="fill:#fff" />
+              <path
+                d="M1488.09 1688.25v15.35c0 3.12-2.54 5.66-5.67 5.66h-33.48c-3.12 0-5.66-2.54-5.66-5.66v-15.35c0-3.13 2.54-5.67 5.66-5.67h33.48c3.13 0 5.67 2.54 5.67 5.67"
+                style="fill:#fff" />
+              <circle cx="1465.68" cy="1695.92" r="4.425" style="fill:#7ed348" />
+            </g>
+
+            <g class="circleRotation">
+
+              <g style="filter:url(#j)">
+                <path
+                  d="M703.386 1619.06v115.53c0 24.46-19.863 44.32-44.328 44.32h-88.656c-24.465 0-44.328-19.86-44.328-44.32v-115.53c0-24.47 19.863-44.33 44.328-44.33h88.656c24.465 0 44.328 19.86 44.328 44.33"
+                  style="fill:#002f70;fill-opacity:.15" />
+              </g>
+              <path
+                d="M703.386 1619.06v115.53c0 24.46-19.863 44.32-44.328 44.32h-88.656c-24.465 0-44.328-19.86-44.328-44.32v-115.53c0-24.47 19.863-44.33 44.328-44.33h88.656c24.465 0 44.328 19.86 44.328 44.33"
+                style="fill:#002f70" />
+              <path style="fill:#7ed348"
+                d="M566.152 1666.2h138.082v6.844H566.152zm-.848-31.87h138.082v21.26H565.304z" />
+              <g style="filter:url(#k)">
+                <path
+                  d="M677.724 1605.93v76.75c0 32.44-26.337 58.78-58.778 58.78h-77.648c-32.44 0-58.778-26.34-58.778-58.78v-76.75c0-32.44 26.338-58.78 58.778-58.78h77.648c32.441 0 58.778 26.34 58.778 58.78"
+                  style="fill:#01367c;fill-opacity:.15" />
+              </g>
+              <path
+                d="M677.724 1605.93v76.75c0 32.44-26.337 58.78-58.778 58.78h-77.648c-32.44 0-58.778-26.34-58.778-58.78v-76.75c0-32.44 26.338-58.78 58.778-58.78h77.648c32.441 0 58.778 26.34 58.778 58.78"
+                style="fill:#fff" />
+              <g style="filter:url(#l)">
+                <path
+                  d="M665.503 1619.97h.565c6.545 0 11.859 5.32 11.859 11.86v103.29c0 6.54-5.314 11.86-11.859 11.86h-88.971c-10.651 0-19.298-8.65-19.298-19.3 0-59.45 48.261-107.71 107.704-107.71"
+                  style="fill:#67c1ff;fill-opacity:.52" />
+              </g>
+              <path
+                d="M642.15 1647.67a2.2 2.2 0 0 0-1.618-.71h-4.312s-14.924-28.39-15.695-29.87c-.828-1.58-2.08-2.96-3.954-2.96-9.117 0-17.625-1.95-23.956-5.48-3.16-1.76-5.542-3.82-6.997-5.99v-6.26a5.496 5.496 0 1 0-10.992 0v6.26c-1.455 2.17-3.837 4.23-6.996 5.99-6.332 3.53-14.84 5.48-23.957 5.48-1.874 0-3.002 1.15-3.954 2.96-2.225 4.24-15.695 29.87-15.695 29.87h-4.311c-.616 0-1.204.26-1.619.71a2.2 2.2 0 0 0-.562 1.68c1.208 13.11 12.235 23.38 25.659 23.38 13.425 0 24.452-10.27 25.659-23.38a2.2 2.2 0 0 0-.562-1.68 2.2 2.2 0 0 0-1.618-.71h-4.312l-13.022-24.81c10.146-.82 19.002-3.79 25.29-8.16v69.99h-24.91a6.866 6.866 0 0 0-6.87 6.87c0 3.79 3.076 6.87 6.87 6.87h59.756c3.794 0 6.87-3.08 6.87-6.87 0-3.8-3.076-6.87-6.87-6.87h-23.854v-69.99c6.289 4.37 15.145 7.35 25.291 8.16l-13.022 24.81h-4.312c-.616 0-1.204.26-1.619.71a2.2 2.2 0 0 0-.562 1.68c1.208 13.11 12.235 23.38 25.66 23.38 13.424 0 24.451-10.27 25.659-23.38a2.2 2.2 0 0 0-.563-1.68m-89.103-.71h-19.712l9.856-18.78zm54.15 0 9.856-18.78 9.857 18.78z"
+                style="fill:#01377d;fill-rule:nonzero" />
+            </g>
+
+            <g style="filter:url(#m)">
+              <path id="floater"
+                d="M911.527 837.316v56.568c0 21.135-17.159 38.294-38.293 38.294-21.135 0-38.294-17.159-38.294-38.294v-56.568z"
+                style="fill:#01207d" />
+            </g>
+            <path id="floater"
+              d="M910.037 823.611v29.875H836.43v-29.875c0-16.489 13.387-29.876 29.875-29.876h13.857c16.488 0 29.875 13.387 29.875 29.876"
+              style="fill:#01377d" />
+            <path id="floater"
+              d="M910.037 823.611v29.875H836.43v-29.875c0-16.489 13.387-29.876 29.875-29.876h13.857c16.488 0 29.875 13.387 29.875 29.876"
+              style="fill:#01377d" />
+            <g style="filter:url(#n)">
+              <path id="floater"
+                d="M1216.62 837.339v56.554c0 21.13-17.15 38.285-38.28 38.285s-38.28-17.155-38.28-38.285v-56.554z"
+                style="fill:#01207d" />
+            </g>
+            <path id="floater"
+              d="M1215.14 823.638v29.868h-73.59v-29.868c0-16.485 13.38-29.868 29.86-29.868h13.86c16.48 0 29.87 13.383 29.87 29.868"
+              style="fill:#01377d" />
+            <path id="floater"
+              d="M1215.14 823.638v29.868h-73.59v-29.868c0-16.485 13.38-29.868 29.86-29.868h13.86c16.48 0 29.87 13.383 29.87 29.868"
+              style="fill:#01377d" />
+            <g style="filter:url(#o)">
+              <path id="floater"
+                d="M1353.48 969.404v231.686c0 63.94-51.91 115.85-115.84 115.85H813.929c-63.936 0-115.844-51.91-115.844-115.85V969.404c0-63.936 51.908-115.844 115.844-115.844h423.711c63.93 0 115.84 51.908 115.84 115.844"
+                style="fill:#01367c;fill-opacity:.15" />
+            </g>
+            <path id="floater"
+              d="M1353.48 969.404v231.686c0 63.94-51.91 115.85-115.84 115.85H813.929c-63.936 0-115.844-51.91-115.844-115.85V969.404c0-63.936 51.908-115.844 115.844-115.844h423.711c63.93 0 115.84 51.908 115.84 115.844"
+              style="fill:#fff;fill-opacity:.3" />
+            <g transform="translate(1013.4 1189.81)scale(221.318)" />
+            <text class="calendarText" id="floater" x="775" y="1170"
+              style="font-family:'Noteworthy-Bold', 'Noteworthy'; font-weight: 700; font-size: 165px; fill: #fff; stroke:lightborder-lightGreen stroke-width: 0.32px; stroke-miterlimit: 2; letter-spacing: 10px;"></text>
+
+
+            <circle id="floater" class="calendarDots" cx="1100" cy="1020" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1165" cy="1020" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1225" cy="1020" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1100" cy="1070" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1165" cy="1070" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1225" cy="1070" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1100" cy="1120" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1165" cy="1120" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1225" cy="1120" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1100" cy="1170" r="15.35" style="fill:#fff" />
+            <circle id="floater" class="calendarDots" cx="1165" cy="1170" r="15.35" style="fill:#fff" />
+            <defs>
+              <filter id="a" filterUnits="userSpaceOnUse" x="-82.569" y="408.364" width="845.054" height="877.764">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="56.377" />
+              </filter>
+              <filter id="b" filterUnits="userSpaceOnUse" x="-209.592" y="289.961" width="1000.68" height="1001.88">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="69.864" />
+              </filter>
+              <filter id="c" filterUnits="userSpaceOnUse" x="194.494" y="686.926" width="260.325" height="273.489">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+              </filter>
+              <filter id="d" filterUnits="userSpaceOnUse" x="1277.9" y="348.875" width="915.046" height="959.261">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="60.649" />
+              </filter>
+              <filter id="e" filterUnits="userSpaceOnUse" x="1680.09" y="784.301" width="218.427" height="212.616">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+              </filter>
+              <filter id="f" filterUnits="userSpaceOnUse" x="493.374" y="-197.277" width="1065.58" height="947.459">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="65.759" />
+              </filter>
+              <filter id="g" filterUnits="userSpaceOnUse" x="923.032" y="218.185" width="285.304" height="222.695">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+              </filter>
+              <filter id="h" filterUnits="userSpaceOnUse" x="928.805" y="1160.18" width="1073.76" height="987.801">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="68.942" />
+              </filter>
+              <filter id="i" filterUnits="userSpaceOnUse" x="1314.42" y="1525.86" width="302.529" height="257.902">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+              </filter>
+              <filter id="j" filterUnits="userSpaceOnUse" x="193.844" y="1242.5" width="841.773" height="868.647">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="55.372" />
+              </filter>
+              <filter id="k" filterUnits="userSpaceOnUse" x="46.751" y="1111.39" width="1066.74" height="1065.85">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="72.628" />
+              </filter>
+              <filter id="l" filterUnits="userSpaceOnUse" x="483.298" y="1545.47" width="269.129" height="276.004">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+              </filter>
+              <filter id="m" filterUnits="userSpaceOnUse" x="774.626" y="777.001" width="197.215" height="215.49">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10.052" />
+              </filter>
+              <filter id="n" filterUnits="userSpaceOnUse" x="1079.74" y="777.025" width="197.196" height="215.467">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10.052" />
+              </filter>
+              <filter id="o" filterUnits="userSpaceOnUse" x="305.038" y="460.513" width="1441.49" height="1249.47">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="65.508" />
+              </filter>
+            </defs>
+          </svg>
+
         </div>
       </div>
     </section>
 
     <!-- About Us Section -->
-    <section class=" flex md:flex-row md:my-36 flex-col-reverse ">
-      <div class="md:w-1/2  flex flex-col text-darkBlue justify-center w-full  md:pl-32 text-left ">
-        
+    <section class=" flex md:flex-row md:my-5  flex-col-reverse ">
+      <div class="md:w-1/2  flex flex-col text-darkBlue justify-center  w-full  md:pl-32 text-left ">
+
         <h1
           class="landscape:text-sm max-md:px-10 portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug uppercase"
           aria-label="Main Title">
@@ -569,75 +1147,93 @@
         </h1>
         <p class=" portrait:text-[3.5vw] max-md:px-10 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[1svh] lg:landscape:mb-[1svh] landscape:mb-[31svh] font-light leading-relaxed "
           aria-label="Hero Description">
-          Founded in 1988 to simplify accounting for Indian businesses, we’ve grown into a global certified public accounting
-          firm, now offering offshore solutions worldwide. <button class="flex flex-row mt-3 text-[2.5vw] hover:bg-darkBlue hover:text-white  landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-darkBlue  border px-2 py-1 rounded-[1rem] border-lightGreen font-normal">about us page <img class="size-4  bounce-right border" src="./img/left-arrow.svg" alt=""></button>
+          Founded in 1988 to simplify accounting for Indian businesses, we’ve grown into a global certified
+          public accounting
+          firm, now offering offshore solutions worldwide. <button
+            class="hidden flex-row mt-3 text-[2.5vw] hover:bg-darkBlue hover:text-white  landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-darkBlue  border px-2 py-1 rounded-[1rem] border-lightGreen font-normal">about
+            us page <img class="size-4  bounce-right border" src="./img/left-arrow.svg" alt=""></button>
         </p>
         <div
-          class=" text-[2.5vw] max-md:px-10 landscape:text-[2vh] hidden landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+          class=" text-[2.5vw] max-md:px-10 landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
           <button id="homeHeroBookingTherapy" role="link"
             class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
             <a href="./about.html">About Us</a>
-        
+
           </button>
         </div>
-        
-          
 
-          <div class="text-darkBlue md:gap-4 flex flex-row  flex-wrap justify-between max-md:px-6  mt-7">
-            <!-- Counter 1 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4 justify-center ">
-                <div id="counter1" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+
+
+        <div class="text-darkBlue md:gap-4 flex flex-row  flex-wrap justify-between max-md:px-6  mt-7">
+          <!-- Counter 1 -->
+          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
+            <div
+              class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4 justify-center ">
+              <div id="counter1" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-              
-            </div>
-          
-            <!-- Counter 2 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter2" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+              <div>
+                <h3 class="md:text-lg text-sm text-center font-normal">Projects</h3>
               </div>
             </div>
-          
-            <!-- Counter 3 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter3" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+
+          </div>
+
+          <!-- Counter 2 -->
+          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+            <div
+              class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4  justify-center ">
+              <div id="counter2" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-            </div>
-          
-            <!-- Counter 4 -->
-            <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-              <div class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-[#adf6c4] bg- shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                <div id="counter4" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0</div>
-                <div>
-                  <h3 class="md:text-lg text-sm text-center font-normal">Counter</h3>
-                </div>
+              <div>
+                <h3 class="md:text-lg text-sm text-center font-normal">Years</h3>
               </div>
             </div>
           </div>
-          
+
+          <!-- Counter 3 -->
+          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+            <div
+              class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4  justify-center ">
+              <div id="counter3" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0
+              </div>
+              <div>
+                <h3 class="md:text-lg text-sm text-center font-normal">Industries</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Counter 4 -->
+          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+            <div
+              class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen bg- shadow-lg rounded-[2.7rem] gap-4  justify-center ">
+              <div id="counter4" class="counter text-2xl font-bold text-center" aria-live="polite" aria-atomic="true">0
+              </div>
+              <div>
+                <h3 class="md:text-lg text-sm text-center font-normal">Women</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-    
-      <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-        <div
-          class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60 m-auto bg-white">
+
+      <div class="md:w-1/2 max-md:h-[52.35svh]  flex flex-col w-full max-md:mt-16">
+        <div class="page ">
+          <div id="arc-container" class="globe-wrapper  m-auto ">
+            <canvas id="globe-3d"></canvas>
+            <canvas id="globe-2d-overlay"></canvas>
+
+          </div>
         </div>
       </div>
     </section>
 
 
+
+
+
     <!-- Softwares we use Section -->
-    <section class=" flex  md:mt-36 mt-24 flex-col  text-center">
+    <section class=" flex  md:mt-10 mt-24 flex-col  text-center">
       <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10  ">
         <h2
           class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold  leading-snug uppercase"
@@ -648,8 +1244,8 @@
           aria-label="Hero Description">
           Industry leading tools we use to deliver exceptional accounting results for you.
         </p>
-        
-    
+
+
       </div>
 
       <div class="flex flex-col gap-8 mt-8 mb-24">
@@ -661,7 +1257,7 @@
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
         </div>
-        
+
         <div class="marquee marquee--RTL md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
@@ -671,7 +1267,7 @@
           <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
         </div>
       </div>
-         
+
     </section>
 
 
@@ -683,15 +1279,16 @@
         </h2>
       </div>
       <div class="flex md:flex-row flex-col justify-center md:px-32 ">
-        <div class="md:w-1/2 max-md:h-[60svh] flex flex-col w-full ">
-          <div class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl  bg-opacity-60  m-auto bg-white">
+        <div class="md:w-1/2 max-md:h-[60svh] flex flex-col w-full m-auto">
+          <div class="     ">
+            <img class=" m-auto" src="./img/bleh.svg" alt="">
           </div>
         </div>
-      
+
         <div class="flex md:w-1/2 flex-col justify-around max-md:px-5 max-md:gap-5 ">
 
           <div
-            class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+            class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-lightGreen bg-white  p-6">
             <div class="flex flex-col w-auto ">
               <div class="size-[26svw] md:size-[13svh] m-auto ">
                 <img src="./img/icon.svg" alt="">
@@ -699,12 +1296,15 @@
             </div>
             <div class="flex flex-col text-left gap-1 text-darkBlue ">
               <h3 class="md:text-base text-sm font-bold">Insights</h3>
-              <p class="md:text-sm text-xs font-normal">Dive into our expert analyses and industry trends to gain valuable knowledge and stay ahead in the ever-evolving financial landscape. </p> <span class="underline font-bold text-xs">read
+              <p class="md:text-sm text-xs font-normal">Dive into our expert analyses and industry trends
+                to gain valuable knowledge and stay ahead in the ever-evolving financial landscape. </p>
+              <span class="underline font-bold text-xs">read
                 more</span>
             </div>
           </div>
 
-          <div class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+          <div
+            class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-lightGreen bg-white  p-6">
             <div class="flex flex-col w-auto ">
               <div class="size-[26svw] md:size-[13svh] m-auto ">
                 <img src="./img/icon.svg" alt="">
@@ -712,29 +1312,31 @@
             </div>
             <div class="flex flex-col text-left gap-1 text-darkBlue ">
               <h3 class="md:text-base text-sm font-bold">Case Studies</h3>
-              <p class="md:text-sm text-xs font-normal">Explore detailed case studies showcasing how our tailored solutions delivered tangible results and success for businesses.</p> <span class="underline font-bold text-xs">read
+              <p class="md:text-sm text-xs font-normal">Explore detailed case studies showcasing how our
+                tailored solutions delivered tangible results and success for businesses.</p> <span
+                class="underline font-bold text-xs">read
                 more</span>
             </div>
           </div>
-      
-          
-      
+
+
+
         </div>
-      
-      
+
+
       </div>
 
     </section>
 
 
-    
+
 
 
     <!-- Contact Section -->
-    <section class="xl:flex-row  xl:px-32 py-32   flex flex-col" role="region"
-      aria-labelledby="contactSectionHeading">
+    <section class="xl:flex-row  xl:px-32 py-32   flex flex-col" role="region" aria-labelledby="contactSectionHeading">
       <!-- Contact Information Section -->
-      <div class="xl:w-[40%]  max-xl:pb-12    flex max-xl:px-10 flex-col justify-center text-darkBlue w-full pb-10 mx-auto"
+      <div
+        class="xl:w-[40%]  max-xl:pb-12    flex max-xl:px-10 flex-col justify-center text-darkBlue w-full pb-10 mx-auto"
         data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
         <h3 id="contactSectionHeading"
           class="md:text-3xl landscape:lg:text-4xl landscape:text-sm text-[7.5vw] portrait:sm:text-[3vw] font-bold mt-20 landscape:mt-0 mb-10 text-darkBlue text-left leading-[2.5rem]"
@@ -743,12 +1345,12 @@
           <br>Offshore Accounting
           <br>Service in India!
         </h3>
-    
+
         <div class="flex flex-row gap-2 ml-2 text-sm items-center ">
           <img class="size-4" src="./img/phone-icon.svg" alt="">
           <p>91 9847611095</p>
         </div>
-    
+
         <div class="flex flex-row gap-2 ml-2 text-sm mt-2 items-center ">
           <img class="size-4 " src="./img/email-icon.svg" alt="">
           <p>admin@vjcindia.com</p>
@@ -758,7 +1360,7 @@
           <img class="size-4 " src="./img/address-icon.svg" alt="">
           <p>Ambikapur, New Delhi, India</p>
         </div>
-    
+
         <div class="mt-8 flex flex-row items-center gap-3 text-base" role="presentation">
           <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
             <img class="w-[4rem] " src="././img/icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
@@ -774,19 +1376,19 @@
             target="_blank" rel="noopener">
             <img class="w-[4rem]" src="././img/icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
           </a>
-          
+
         </div>
-    
-    
+
+
       </div>
       <!-- Contact Form Section -->
       <div
-        class="bg-light landscape:text-base xl:rounded-[3rem] md:shadow-xl md:border border-[#adf6c4]  landscape:xl:w-[40%]  xl:py-12 flex flex-col items-center w-full py-20 mx-auto text-sm"
+        class="bg-light landscape:text-base xl:rounded-[3rem] md:shadow-xl md:border border-lightGreen  landscape:xl:w-[40%]  xl:py-12 flex flex-col items-center w-full py-20 mx-auto text-sm"
         role="form" aria-labelledby="contactFormHeading">
         <div class="flex ">
           <h2 id="contactFormHeading" class="text-darkBlue mb-1 text-2xl font-semibold pb-8" data-aos="fade-in"
             data-aos-delay="100" data-aos-once="true">SEND US A MESSAGE</h1>
-    
+
         </div>
         <div class="xl:w-[75%] w-[75%] md:w-[35%]  " data-aos="fade-in" data-aos-delay="100" data-aos-once="true">
           <form action="https://api.web3forms.com/submit" method="POST" id="form">
@@ -799,33 +1401,33 @@
               <div class="">
                 <label for="name" class="text-darkBlue block mb-2 text-sm">Full Name</label>
                 <input type="text" name="name" id="name" placeholder="Full Name" required
-                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
               </div>
               <div class="">
                 <label for="name" class="text-darkBlue block mb-2 text-sm">Company</label>
                 <input type="text" name="name" id="name" placeholder="Company Name" required
-                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
               </div>
             </div>
-    
+
             <div class="flex flex-row mb-3 gap-3 justify-between">
               <div class="">
                 <label for="email" class="text-darkBlue block mb-2 text-sm">Email Address</label>
                 <input type="email" name="email" id="email" placeholder="name@mail.com" required
-                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4] " />
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen " />
               </div>
               <div class="">
                 <label for="phone" class="text-darkBlue block mb-2 text-sm">Phone Number</label>
                 <input type="text" name="phone" id="phone" placeholder="Phone Number" required
-                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]" />
+                  class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
               </div>
             </div>
-    
+
             <div class="mb-3">
               <label for="Country" class="text-darkBlue block mb-2 text-sm">Select your country</label>
               <div x-data="{ open: false }" class="relative">
                 <select name="Country" id="Country" required
-                  class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]"
+                  class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen"
                   @focus="open = true" @blur="open = false" @change="open = false">
                   <option value="">Choose your country</option>
                   <option value="United States of America">United States of America</option>
@@ -842,15 +1444,15 @@
                 </div>
               </div>
             </div>
-    
-    
-    
-    
-    
+
+
+
+
+
             <div class="mb-4">
               <label for="message" class="text-darkBlue block mb-2 text-sm">Your Message</label>
               <textarea rows="4" name="message" id="message" placeholder="Your Message"
-                class=" w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-[#adf6c4]"
+                class=" w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen"
                 required></textarea>
             </div>
             <div class="px-auto flex justify-center">
@@ -866,12 +1468,15 @@
     </section>
 
 
-    
+
+
+
 
 
 
     <!--  FAQ Section -->
-    <section class="bg-light text-darkBlue flex flex-col shadow-lg  pb-28 " role="region" aria-label="Sessions related FAQ">
+    <section class="bg-light text-darkBlue flex flex-col shadow-lg  pb-28 " role="region"
+      aria-label="Sessions related FAQ">
       <div role="heading" aria-level="2">
         <h2 class="md:text-3xl text-2xl font-semibold text-center">
           Frequently Asked Questions
@@ -891,10 +1496,12 @@
                   <button id="faq-1" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-1-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-1-answer">
                     <span>What services do you offer?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-1-answer" role="region" aria-labelledby="faq-1"
@@ -902,28 +1509,34 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We specialize in a comprehensive range of financial services, including accounting and bookkeeping, auditing and
-                      assurance, tax planning and filing, virtual CFO services, and legal process outsourcing. We have a diverse team
-                      of experts including CAs, ACCAs, CFAs, Accountants, Auditors, and Lawyers who ensure quality work for our range
+                      We specialize in a comprehensive range of financial services, including
+                      accounting and bookkeeping, auditing and
+                      assurance, tax planning and filing, virtual CFO services, and legal process
+                      outsourcing. We have a diverse team
+                      of experts including CAs, ACCAs, CFAs, Accountants, Auditors, and Lawyers
+                      who ensure quality work for our range
                       of services.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact an Expert</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact an
+                        Expert</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 2 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-2" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-2-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-2-answer">
                     <span>How do you ensure the security of our financial data?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-2-answer" role="region" aria-labelledby="faq-2"
@@ -931,28 +1544,35 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We prioritize data security through a multi-layered approach that includes end-to-end encryption, secure VPN
-                      connections, advanced firewall protection, and compliance with international standards such as GDPR, ISO 27001,
-                      and HIPAA. Additionally, our robust IT infrastructure includes regular VAPT and routine security updates.
+                      We prioritize data security through a multi-layered approach that includes
+                      end-to-end encryption, secure VPN
+                      connections, advanced firewall protection, and compliance with international
+                      standards such as GDPR, ISO 27001,
+                      and HIPAA. Additionally, our robust IT infrastructure includes regular VAPT
+                      and routine security updates.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a meeting and learn more about our data
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a meeting
+                        and learn more about our data
                         security measures.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 3 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-3" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-3-answer">
-                    <span>Why should I choose your company for financial services outsourcing?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-3-answer">
+                    <span>Why should I choose your company for financial services
+                      outsourcing?</span>
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-3-answer" role="region" aria-labelledby="faq-3"
@@ -960,27 +1580,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Our company stands out due to our robust engagement framework, our team of experienced professionals, commitment
-                      to quality, and adherence to the highest industry standards. We provide customized solutions to meet your unique
-                      business requirements, ensuring enhanced efficiency and unparalleled cost savings.
+                      Our company stands out due to our robust engagement framework, our team of
+                      experienced professionals, commitment
+                      to quality, and adherence to the highest industry standards. We provide
+                      customized solutions to meet your unique
+                      business requirements, ensuring enhanced efficiency and unparalleled cost
+                      savings.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a personalized quote.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a
+                        personalized quote.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 4 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-4" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-4-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-4-answer">
                     <span>What industries do you serve?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-4-answer" role="region" aria-labelledby="faq-4"
@@ -988,28 +1614,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We serve a diverse range of industries including fintech, SaaS, mining, automobile, petroleum, FMCG, healthcare,
-                      retail, manufacturing, real estate, agriculture, fashion, media and more. Our expertise allows us to tailor our
+                      We serve a diverse range of industries including fintech, SaaS, mining,
+                      automobile, petroleum, FMCG, healthcare,
+                      retail, manufacturing, real estate, agriculture, fashion, media and more.
+                      Our expertise allows us to tailor our
                       financial services to the specific needs and regulations of each industry.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore tailor-made solutions for your industry-specific
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore tailor-made
+                        solutions for your industry-specific
                         requirements.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 5 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-5" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-5-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-5-answer">
                     <span>How do you handle compliance and regulatory requirements?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-5-answer" role="region" aria-labelledby="faq-5"
@@ -1017,27 +1648,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We have a dedicated compliance team that stays up-to-date with the latest regulatory changes. Our processes are
-                      designed to ensure compliance with all relevant regulations, including GDPR, GLBA, SOX, and HIPAA. We also
-                      conduct regular internal audits to maintain the highest standards of compliance.
+                      We have a dedicated compliance team that stays up-to-date with the latest
+                      regulatory changes. Our processes are
+                      designed to ensure compliance with all relevant regulations, including GDPR,
+                      GLBA, SOX, and HIPAA. We also
+                      conduct regular internal audits to maintain the highest standards of
+                      compliance.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Speak with our compliance experts.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Speak with our
+                        compliance experts.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 6 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-6" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-6-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-6-answer">
                     <span>What is your pricing structure?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-6-answer" role="region" aria-labelledby="faq-6"
@@ -1045,27 +1682,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Our pricing is competitive and flexible, designed to fit the unique needs of each client. We offer various
-                      pricing models, including fixed-rate, hourly, and project-based rates, ensuring that you receive the best value
+                      Our pricing is competitive and flexible, designed to fit the unique needs of
+                      each client. We offer various
+                      pricing models, including fixed-rate, hourly, and project-based rates,
+                      ensuring that you receive the best value
                       for your investment.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check our Pricing Page for more.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check our Pricing
+                        Page for more.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 7 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-7" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-7-answer">
-                    <span>How can you ensure round-the-clock support for all the various time zones?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-7-answer">
+                    <span>How can you ensure round-the-clock support for all the various time
+                      zones?</span>
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-7-answer" role="region" aria-labelledby="faq-7"
@@ -1073,28 +1716,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We have dedicated teams working for our clients adhering to all their requirements including the time-schedule
-                      most suitable for their work. Our vast and ever-expanding network of professionals across the globe ensures 24/7
+                      We have dedicated teams working for our clients adhering to all their
+                      requirements including the time-schedule
+                      most suitable for their work. Our vast and ever-expanding network of
+                      professionals across the globe ensures 24/7
                       availability of expert advisory and consultation.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us today to experience our seamless global
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us today to
+                        experience our seamless global
                         support.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 8 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-8" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-8-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-8-answer">
                     <span>How can I get started with your services?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-8-answer" role="region" aria-labelledby="faq-8"
@@ -1102,27 +1750,32 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Easy! Simply reach out to us via our Contact form, Email, or Phone. Our team will schedule a virtual
-                      consultation to understand your needs and develop a customized outsourcing plan for your business post detailed
+                      Easy! Simply reach out to us via our Contact form, Email, or Phone. Our team
+                      will schedule a virtual
+                      consultation to understand your needs and develop a customized outsourcing
+                      plan for your business post detailed
                       discussions of your requirements.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a free initial consultation.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a free
+                        initial consultation.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 9 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-9" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-9-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-9-answer">
                     <span>What technology do you use to support your services?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-9-answer" role="region" aria-labelledby="faq-9"
@@ -1130,27 +1783,32 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We utilize the latest technology and software to ensure high-quality service delivery. This includes Microsoft
-                      365, Sharepoint for data sharing, advanced project management tools, secure VDI solutions, and comprehensive IT
+                      We utilize the latest technology and software to ensure high-quality service
+                      delivery. This includes Microsoft
+                      365, Sharepoint for data sharing, advanced project management tools, secure
+                      VDI solutions, and comprehensive IT
                       infrastructure management systems.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a demo of our solutions.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a demo of
+                        our solutions.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 10 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-10" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-10-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-10-answer">
                     <span>How do you ensure the quality of your services?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-10-answer" role="region" aria-labelledby="faq-10"
@@ -1158,28 +1816,33 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We have a rigorous quality control process that includes standardized processes, regular audits, performance
-                      monitoring, and client feedback mechanisms. Our team is committed to continuous improvement and excellence in
+                      We have a rigorous quality control process that includes standardized
+                      processes, regular audits, performance
+                      monitoring, and client feedback mechanisms. Our team is committed to
+                      continuous improvement and excellence in
                       service delivery.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Reach out for details on our quality assurance
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Reach out for
+                        details on our quality assurance
                         practices.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 11 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-11" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-11-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-11-answer">
                     <span>Can you provide references or case studies from past clients?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-11-answer" role="region" aria-labelledby="faq-11"
@@ -1187,27 +1850,31 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Absolutely! We have a proven track record of delivering high-quality financial services to our clients. You can
+                      Absolutely! We have a proven track record of delivering high-quality
+                      financial services to our clients. You can
                       read our case studies on our Resources page.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check out our Insights Page for detailed Case
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check out our
+                        Insights Page for detailed Case
                         Studies.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 12 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-12" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-12-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-12-answer">
                     <span>How do you manage projects across different time zones?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-12-answer" role="region" aria-labelledby="faq-12"
@@ -1215,29 +1882,36 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      We have a strategic approach to time zone management for our global clients. Our professionals are distributed
-                      across geographies to provide seamless 24/7 service. We align working hours with client time zones, use advanced
-                      communication tools, and operate with dedicated global teams working in shifts to ensure continuous workflow and
+                      We have a strategic approach to time zone management for our global clients.
+                      Our professionals are distributed
+                      across geographies to provide seamless 24/7 service. We align working hours
+                      with client time zones, use advanced
+                      communication tools, and operate with dedicated global teams working in
+                      shifts to ensure continuous workflow and
                       immediate responses.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us to discuss managing your project across time
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us to
+                        discuss managing your project across time
                         zones.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 13 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-13" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-13-answer">
-                    <span>What are your Standard Operating Procedures (SOPs) for managing financial services?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-13-answer">
+                    <span>What are your Standard Operating Procedures (SOPs) for managing financial
+                      services?</span>
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-13-answer" role="region" aria-labelledby="faq-13"
@@ -1245,29 +1919,35 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Our SOPs ensure consistency, quality, and compliance. Each service has detailed process documentation outlining
-                      procedures, responsibilities, and quality checks. Team members undergo extensive SOP training. We regularly
-                      review and update SOPs, incorporating best practices and regulatory changes. SOPs are also customized to client
+                      Our SOPs ensure consistency, quality, and compliance. Each service has
+                      detailed process documentation outlining
+                      procedures, responsibilities, and quality checks. Team members undergo
+                      extensive SOP training. We regularly
+                      review and update SOPs, incorporating best practices and regulatory changes.
+                      SOPs are also customized to client
                       needs.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Learn more about our SOPs ensuring quality and
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Learn more about our
+                        SOPs ensuring quality and
                         efficiency.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 14 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-14" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-14-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-14-answer">
                     <span>Do you partner with local CPA firms or other B2B businesses?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-14-answer" role="region" aria-labelledby="faq-14"
@@ -1275,27 +1955,32 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Yes, we actively partner with local CPA firms and B2B companies to expand offerings and provide comprehensive
-                      solutions. This includes CPA firm collaborations, B2B alliances, client referrals, and co-branding
+                      Yes, we actively partner with local CPA firms and B2B companies to expand
+                      offerings and provide comprehensive
+                      solutions. This includes CPA firm collaborations, B2B alliances, client
+                      referrals, and co-branding
                       opportunities, leveraging mutual strengths and market presence.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore partnering with us to add value.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore partnering
+                        with us to add value.</a>
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               <!-- FAQ Section 15 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-15" type="button"
                     class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()" aria-controls="faq-15-answer">
+                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
+                    aria-controls="faq-15-answer">
                     <span>How do you handle language differences with international clients?</span>
-                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform" src="./img/drop-arrow.svg"
-                      :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                      src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
+                      aria-hidden="true" />
                   </button>
                 </h2>
                 <div id="faq-15-answer" role="region" aria-labelledby="faq-15"
@@ -1303,14 +1988,19 @@
                   :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                   <div class="overflow-hidden">
                     <p><br>
-                      Our team is fluent in English. For other languages, we employ AI translation tools for accurate real-time
-                      translations. Additionally, we provide in-house extensive cultural and linguistic training to our staff, which
-                      ensures they are not only respectful and aware of cultural nuances but also capable of understanding and
-                      addressing the unique needs of clients from diverse backgrounds. We prioritize clear, concise communication
+                      Our team is fluent in English. For other languages, we employ AI translation
+                      tools for accurate real-time
+                      translations. Additionally, we provide in-house extensive cultural and
+                      linguistic training to our staff, which
+                      ensures they are not only respectful and aware of cultural nuances but also
+                      capable of understanding and
+                      addressing the unique needs of clients from diverse backgrounds. We
+                      prioritize clear, concise communication
                       tailored to client preferences, ensuring language is never a barrier.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Connect with us on accommodating language needs.</a>
+                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Connect with us on
+                        accommodating language needs.</a>
                     </p>
                   </div>
                 </div>
@@ -1327,7 +2017,7 @@
     </section>
 
 
-    
+
 
 
   </main>
@@ -1335,7 +2025,7 @@
 
 
   <footer class=" text-darkBlue flex flex-col text-sm font-normal mt-10" role="contentinfo">
-    <div class="border-t border-[#adf6c4] w-[90%] mb-10 mx-auto hidden"></div>
+    <div class="border-t border-lightGreen w-[90%] mb-10 mx-auto hidden"></div>
     <div class="md:flex-row flex flex-col justify-center gap-5 text-center">
       <div class=" flex flex-col gap-2 px-10">
         <a href="./index.html" aria-label="Home">
@@ -1347,7 +2037,7 @@
         </div>
 
       </div>
-      <nav  aria-label="Footer Navigation - Sitemap" role="navigation">
+      <nav aria-label="Footer Navigation - Sitemap" role="navigation">
 
         <div class="max-md:hidden md:flex-row md:gap-10 flex flex-col gap-5 px-10">
 
@@ -1379,7 +2069,7 @@
               <li><a href="./contact.html">Legal Process Outsourcing</a></li>
             </ul>
 
-            
+
           </div>
 
         </div>
@@ -1400,13 +2090,13 @@
             <li><a href="#">Audit & Assurance Services</a></li>
             <li><a href="#">Terms and Conditions</a></li>
             <li><a href="#">Virtual Chief Financial Officer</a></li>
-            
+
           </ul>
         </div>
 
       </nav>
 
-      
+
       <div class=" max-md:px-8 flex flex-row items-center gap-1 text-base" role="presentation">
         <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
           <img class="w-16" src="./img/instagram-icon.svg" alt="Instagram Logo" role="img" aria-label="Instagram Logo">
@@ -1419,7 +2109,7 @@
           <img class="w-16" src="./img/whatsapp-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo">
         </a>
       </div>
-      
+
     </div>
 
     <div class="md:text-center px-10 text-left">
@@ -1431,5 +2121,7 @@
   </footer>
 
 </body>
+
+
 
 </html>
