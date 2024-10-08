@@ -823,6 +823,22 @@ html {
   margin-top: 0.2rem;
 }
 
+.mt-\[10svh\] {
+  margin-top: 10svh;
+}
+
+.mt-\[5svh\] {
+  margin-top: 5svh;
+}
+
+.mt-\[7svh\] {
+  margin-top: 7svh;
+}
+
+.mt-\[3svh\] {
+  margin-top: 3svh;
+}
+
 .block {
   display: block;
 }
@@ -937,6 +953,47 @@ html {
 
 .h-svh {
   height: 100svh;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[20svh\] {
+  height: 20svh;
+}
+
+.h-\[40svh\] {
+  height: 40svh;
+}
+
+.h-\[60svh\] {
+  height: 60svh;
+}
+
+.h-\[66svh\] {
+  height: 66svh;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
+.h-\[65svh\] {
+  height: 65svh;
+}
+
+.h-\[70svh\] {
+  height: 70svh;
+}
+
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .w-14 {
@@ -1487,6 +1544,11 @@ html {
   padding-bottom: 2vw;
 }
 
+.px-36 {
+  padding-left: 9rem;
+  padding-right: 9rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1559,6 +1621,10 @@ html {
   text-align: center;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1628,6 +1694,10 @@ html {
   line-height: 1rem;
 }
 
+.font-\[600\] {
+  font-weight: 600;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1650,10 +1720,6 @@ html {
 
 .font-thin {
   font-weight: 100;
-}
-
-.font-\[600\] {
-  font-weight: 600;
 }
 
 .uppercase {
@@ -1941,37 +2007,8 @@ svg {
 }
 
 @media not all and (min-width: 768px) {
-  .max-md\:m-5 {
-    margin: 1.25rem;
-  }
-
-  .max-md\:my-5 {
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .max-md\:mt-20 {
-    margin-top: 5rem;
-  }
-
-  .max-md\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
-  .max-md\:mt-10 {
-    margin-top: 2.5rem;
-  }
-
-  .max-md\:mb-5 {
-    margin-bottom: 1.25rem;
-  }
-
   .max-md\:mt-0 {
     margin-top: 0px;
-  }
-
-  .max-md\:mt-16 {
-    margin-top: 4rem;
   }
 
   .max-md\:hidden {
@@ -1986,6 +2023,10 @@ svg {
     height: 40svh;
   }
 
+  .max-md\:h-\[52\.35svh\] {
+    height: 52.35svh;
+  }
+
   .max-md\:h-\[60svh\] {
     height: 60svh;
   }
@@ -1998,36 +2039,8 @@ svg {
     height: 100%;
   }
 
-  .max-md\:h-\[50svh\] {
-    height: 50svh;
-  }
-
-  .max-md\:h-\[55svh\] {
-    height: 55svh;
-  }
-
-  .max-md\:h-\[53svh\] {
-    height: 53svh;
-  }
-
-  .max-md\:h-\[53\.5svh\] {
-    height: 53.5svh;
-  }
-
-  .max-md\:h-\[52\.5svh\] {
-    height: 52.5svh;
-  }
-
-  .max-md\:h-\[52\.3svh\] {
-    height: 52.3svh;
-  }
-
-  .max-md\:h-\[52\.4svh\] {
-    height: 52.4svh;
-  }
-
-  .max-md\:h-\[52\.35svh\] {
-    height: 52.35svh;
+  .max-md\:h-\[75svh\] {
+    height: 75svh;
   }
 
   .max-md\:gap-10 {
@@ -2106,14 +2119,14 @@ svg {
     margin-right: auto;
   }
 
-  .md\:my-36 {
-    margin-top: 9rem;
-    margin-bottom: 9rem;
-  }
-
   .md\:my-5 {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+  }
+
+  .md\:my-10 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .md\:mb-20 {
@@ -2134,6 +2147,14 @@ svg {
 
   .md\:mt-36 {
     margin-top: 9rem;
+  }
+
+  .md\:mt-\[5svh\] {
+    margin-top: 5svh;
+  }
+
+  .md\:mt-\[7svh\] {
+    margin-top: 7svh;
   }
 
   .md\:hidden {
@@ -2160,11 +2181,6 @@ svg {
     height: 45svh;
   }
 
-  .md\:size-\[50svh\] {
-    width: 50svh;
-    height: 50svh;
-  }
-
   .md\:size-\[8rem\] {
     width: 8rem;
     height: 8rem;
@@ -2184,6 +2200,14 @@ svg {
 
   .md\:h-\[70svh\] {
     height: 70svh;
+  }
+
+  .md\:h-full {
+    height: 100%;
+  }
+
+  .md\:h-\[75svh\] {
+    height: 75svh;
   }
 
   .md\:w-1\/2 {
@@ -2246,6 +2270,14 @@ svg {
     width: 100%;
   }
 
+  .md\:w-\[45\%\] {
+    width: 45%;
+  }
+
+  .md\:w-\[47\%\] {
+    width: 47%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2278,6 +2310,10 @@ svg {
     gap: 2rem;
   }
 
+  .md\:gap-16 {
+    gap: 4rem;
+  }
+
   .md\:whitespace-normal {
     white-space: normal;
   }
@@ -2296,6 +2332,11 @@ svg {
 
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .md\:px-28 {
@@ -2341,6 +2382,16 @@ svg {
   .md\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+  }
+
+  .md\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .md\:pb-32 {

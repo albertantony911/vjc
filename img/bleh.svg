@@ -1,83 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1482 1110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+<svg width="100%" height="100%" viewBox="0 0 1010 1192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
     <g>
         <g>
-            <g opacity="0.51">
-                <path d="M777.101,246.557L777.101,879.638C777.101,928.308 737.588,967.821 688.919,967.821L90.182,967.821C41.513,967.821 2,928.308 2,879.638L2,246.557C2,197.887 41.513,158.374 90.182,158.374L688.919,158.374C737.588,158.374 777.101,197.887 777.101,246.557Z" style="fill-opacity:0.04;stroke:rgb(173,246,196);stroke-opacity:0.04;stroke-width:4px;"/>
-                <g transform="matrix(80.8077,0,0,80.8077,484.031,310.316)">
+            <g>
+                <g style="filter:url(#_Effect1);">
+                    <path d="M185.909,319.456L225.637,319.456L225.637,867.091L185.909,867.091L185.909,319.456Z" style="fill:rgb(1,32,125);"/>
                 </g>
-                <text x="111.265px" y="310.316px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:80.808px;fill:rgb(1,55,125);">Blog Title</text>
-                <g transform="matrix(30.2549,0,0,30.2549,590.996,388.369)">
-                </g>
-                <text x="115.752px" y="388.369px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:30.255px;fill:rgb(1,55,125);">Jason Smith, Chief Accountant</text>
-                <g transform="matrix(22.4523,0,0,22.4523,506.145,438.446)">
-                </g>
-                <text x="388.159px" y="438.446px" style="font-family:'Poppins-Regular', 'Poppins';font-size:22.452px;fill:rgb(1,55,125);">01/01/2024</text>
-                <g transform="matrix(0.32,0,0,0.32,-15545.4,-3859.25)">
-                    <text x="48944.6px" y="13609.4px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">Lorem ipsum dolor sit amet, consectetur</text>
-                    <text x="48944.6px" y="13795.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">adipiscing elit. Nam interdum, nulla a</text>
-                    <text x="48944.6px" y="13981.1px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">pulvinar volutpat, lorem ex pharetra mi,</text>
-                    <text x="48944.6px" y="14166.9px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">id eleifend quam mauris at quam.</text>
-                    <text x="48944.6px" y="14352.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">Integer a porttitor nunc. Quisque vel</text>
-                </g>
-                <circle cx="130.746" cy="431.245" r="13.905" style="fill:rgb(1,55,125);"/>
-                <circle cx="181.358" cy="431.245" r="13.905" style="fill:rgb(1,55,125);"/>
-                <circle cx="231.97" cy="431.245" r="13.905" style="fill:rgb(1,55,125);"/>
-                <circle cx="282.582" cy="431.245" r="13.905" style="fill:rgb(126,211,72);fill-opacity:0.5;"/>
-                <circle cx="333.194" cy="431.245" r="13.905" style="fill:rgb(126,211,72);fill-opacity:0.5;"/>
-                <path d="M316.867,823.171L316.867,841.48C316.867,856.145 304.961,868.051 290.296,868.051L146.308,868.051C131.643,868.051 119.737,856.145 119.737,841.48L119.737,823.171C119.737,808.506 131.643,796.6 146.308,796.6L290.296,796.6C304.961,796.6 316.867,808.506 316.867,823.171Z" style="fill:white;stroke:rgb(173,246,196);stroke-width:1.33px;stroke-miterlimit:0.726744;"/>
-                <text x="152.025px" y="837.784px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:20.754px;fill:rgb(1,55,125);stroke:rgb(173,246,196);stroke-width:1.33px;stroke-linecap:butt;stroke-miterlimit:2;">Outsourcing</text>
-                <path d="M500.336,823.171L500.336,841.48C500.336,856.145 488.43,868.051 473.765,868.051L366.69,868.051C352.025,868.051 340.119,856.145 340.119,841.48L340.119,823.171C340.119,808.506 352.025,796.6 366.69,796.6L473.765,796.6C488.43,796.6 500.336,808.506 500.336,823.171Z" style="fill:white;stroke:rgb(173,246,196);stroke-width:1.33px;stroke-miterlimit:0.726744;"/>
-                <g transform="matrix(20.7536,0,0,20.7536,460.417,836.954)">
-                </g>
-                <text x="379.748px" y="836.954px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:20.754px;fill:rgb(1,55,125);stroke:rgb(173,246,196);stroke-width:0.67px;stroke-linecap:butt;stroke-miterlimit:2;">Startup</text>
+                <path d="M196.013,325.928L196.013,859.564C173.401,859.564 155.042,841.205 155.042,818.593L155.042,366.898C155.042,344.286 173.401,325.928 196.013,325.928Z" style="fill:rgb(1,55,125);"/>
+                <path d="M196.013,325.928L196.013,859.564C173.401,859.564 155.042,841.205 155.042,818.593L155.042,366.898C155.042,344.286 173.401,325.928 196.013,325.928Z" style="fill:rgb(1,55,125);"/>
             </g>
             <g>
-                <path d="M1201.63,165.236L1201.63,992.34C1201.63,1055.92 1150.01,1107.55 1086.42,1107.55L304.187,1107.55C240.602,1107.55 188.979,1055.92 188.979,992.34L188.979,165.236C188.979,101.651 240.602,50.028 304.187,50.028L1086.42,50.028C1150.01,50.028 1201.63,101.651 1201.63,165.236Z" style="fill:white;stroke:rgb(173,246,196);stroke-width:4px;"/>
-                <g transform="matrix(105.573,0,0,105.573,818.74,248.536)">
-                </g>
-                <text x="331.731px" y="248.536px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:105.573px;fill:rgb(1,55,125);">Blog Title</text>
-                <g transform="matrix(39.5272,0,0,39.5272,958.486,350.509)">
-                </g>
-                <text x="337.592px" y="350.509px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:39.527px;fill:rgb(1,55,125);">Jason Smith, Chief Accountant</text>
-                <g transform="matrix(29.3333,0,0,29.3333,847.632,415.934)">
-                </g>
-                <text x="693.485px" y="415.934px" style="font-family:'Poppins-Regular', 'Poppins';font-size:29.333px;fill:rgb(1,55,125);">01/01/2024</text>
-                <g transform="matrix(0.32,0,0,0.32,-15323.3,-3870.24)">
-                    <text x="48944.6px" y="13609.4px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">Lorem ipsum dolor sit amet, consectetur adipiscing</text>
-                    <text x="48944.6px" y="13795.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">elit. Nam interdum, nulla a pulvinar volutpat, lorem ex</text>
-                    <text x="48944.6px" y="13981.1px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">pharetra mi, id eleifend quam mauris at quam.</text>
-                    <text x="48944.6px" y="14166.9px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">Integer a porttitor nunc. Quisque vel interdum lorem.</text>
-                    <text x="48944.6px" y="14352.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">Ut bibendum, purus quis fermentum sodales, turpis</text>
-                    <g transform="matrix(83.3333,0,0,83.3333,50912,14538.6)">
+                <g>
+                    <g style="filter:url(#_Effect2);">
+                        <path d="M823.713,468.544L776.003,468.544L776.003,379.932L823.713,379.932L823.713,468.544Z" style="fill:rgb(124,210,76);"/>
                     </g>
-                    <text x="48944.6px" y="14538.6px" style="font-family:'Poppins-Regular', 'Poppins';font-size:83.333px;fill:rgb(1,55,125);">nisl convallis sem, sed hendrerit nisl elit in nibh.</text>
+                    <path d="M831.661,467.412L812.394,467.412L812.394,381.065L831.661,381.065C835.206,381.065 838.084,383.943 838.084,387.487L838.084,460.989C838.084,464.534 835.206,467.412 831.661,467.412Z" style="fill:rgb(124,210,76);"/>
                 </g>
-                <circle cx="357.182" cy="406.527" r="18.166" style="fill:rgb(1,55,125);"/>
-                <circle cx="423.305" cy="406.527" r="18.166" style="fill:rgb(1,55,125);"/>
-                <circle cx="489.428" cy="406.527" r="18.166" style="fill:rgb(1,55,125);"/>
-                <circle cx="555.552" cy="406.527" r="18.166" style="fill:rgb(122,209,79);"/>
-                <circle cx="621.675" cy="406.527" r="18.166" style="fill:rgb(126,211,72);"/>
-                <path d="M600.344,918.567L600.344,942.488C600.344,961.647 584.79,977.202 565.63,977.202L377.513,977.202C358.354,977.202 342.799,961.647 342.799,942.488L342.799,918.567C342.799,899.408 358.354,883.853 377.513,883.853L565.63,883.853C584.79,883.853 600.344,899.408 600.344,918.567Z" style="fill:white;stroke:rgb(173,246,196);stroke-width:1.33px;stroke-miterlimit:0.726744;"/>
-                <text x="384.983px" y="937.658px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:27.114px;fill:rgb(1,55,125);stroke:rgb(173,246,196);stroke-width:1.33px;stroke-linecap:butt;stroke-miterlimit:2;">Outsourcing</text>
-                <path d="M840.042,918.567L840.042,942.488C840.042,961.647 824.487,977.202 805.328,977.202L665.436,977.202C646.277,977.202 630.722,961.647 630.722,942.488L630.722,918.567C630.722,899.408 646.277,883.853 665.436,883.853L805.328,883.853C824.487,883.853 840.042,899.408 840.042,918.567Z" style="fill:white;stroke:rgb(173,246,196);stroke-width:1.33px;stroke-miterlimit:0.726744;"/>
-                <g transform="matrix(27.1141,0,0,27.1141,787.888,936.574)">
-                </g>
-                <text x="682.496px" y="936.574px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:27.114px;fill:rgb(1,55,125);stroke:rgb(173,246,196);stroke-width:0.67px;stroke-linecap:butt;stroke-miterlimit:2;">Startup</text>
+                <path d="M831.661,467.412L812.394,467.412L812.394,381.065L831.661,381.065C835.206,381.065 838.084,383.943 838.084,387.487L838.084,460.989C838.084,464.534 835.206,467.412 831.661,467.412Z" style="fill:rgb(124,210,76);"/>
             </g>
+            <g style="filter:url(#_Effect3);">
+                <path d="M350.672,196.524L658.97,196.524C744.047,196.524 813.118,265.595 813.118,350.672L813.118,840.953C813.118,926.03 744.047,995.102 658.97,995.102L350.672,995.102C265.595,995.102 196.524,926.03 196.524,840.953L196.524,350.672C196.524,265.595 265.595,196.524 350.672,196.524Z" style="fill:rgb(1,54,124);fill-opacity:0.15;"/>
+            </g>
+            <path d="M341.552,196.545L666.184,196.545C746.509,196.545 811.723,261.759 811.723,342.084L811.723,844.463C811.723,924.788 746.509,990.002 666.184,990.002L341.552,990.002C261.227,990.002 196.013,924.788 196.013,844.463L196.013,342.084C196.013,261.759 261.227,196.545 341.552,196.545Z" style="fill:white;fill-opacity:0.4;stroke:white;stroke-opacity:0.4;stroke-width:1.33px;"/>
+            <g transform="matrix(0.32,-3.9443e-33,-3.9443e-33,0.32,-15374.8,-3700.58)">
+                <text x="48944.6px" y="13584.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">Lorem <tspan x="49118.9px " y="13584.8px ">i</tspan>psum <tspan x="49294.1px " y="13584.8px ">d</tspan>olor <tspan x="49442.3px " y="13584.8px ">s</tspan>it <tspan x="49518.4px " y="13584.8px ">a</tspan>met, <tspan x="49682.3px " y="13584.8px ">c</tspan>onsectetur <tspan x="50001.7px " y="13584.8px ">a</tspan>dipiscing <tspan x="50281.7px " y="13584.8px ">e</tspan>lit.</text>
+                <text x="48944.6px" y="13696.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">Nam <tspan x="49105.6px " y="13696.3px ">i</tspan>nterdum, <tspan x="49385.5px " y="13696.3px ">n</tspan>ulla <tspan x="49548.5px 49582.3px 49622.8px " y="13696.3px 13696.3px 13696.3px ">a p</tspan>ulvinar <tspan x="49866.3px " y="13696.3px ">v</tspan>olutpat, <tspan x="50125.1px " y="13696.3px ">l</tspan>orem <tspan x="50311.1px " y="13696.3px ">e</tspan>x</text>
+                <text x="48944.6px" y="13807.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">pharetra <tspan x="49179.2px " y="13807.8px ">m</tspan>i, <tspan x="49267.6px " y="13807.8px ">i</tspan>d <tspan x="49328.3px " y="13807.8px ">e</tspan>leifend <tspan x="49542.8px " y="13807.8px ">q</tspan>uam <tspan x="49708.6px " y="13807.8px ">m</tspan>auris <tspan x="49897.6px " y="13807.8px ">a</tspan>t <tspan x="49964.3px " y="13807.8px ">q</tspan>uam. <tspan x="50140.6px " y="13807.8px ">I</tspan>nteger <tspan x="50332.2px " y="13807.8px ">a</tspan></text>
+                <text x="48944.6px" y="13919.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">porttitor <tspan x="49160.5px " y="13919.3px ">n</tspan>unc. <tspan x="49311.2px " y="13919.3px ">Q</tspan>uisque <tspan x="49531.7px " y="13919.3px ">v</tspan>el <tspan x="49616.9px " y="13919.3px ">i</tspan>nterdum <tspan x="49860.3px " y="13919.3px ">l</tspan>orem. <tspan x="50030.1px " y="13919.3px ">U</tspan>t <tspan x="50095.9px " y="13919.3px ">b</tspan>ibendum,</text>
+                <text x="48944.6px" y="14030.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">purus <tspan x="49105.1px " y="14030.8px ">q</tspan>uis <tspan x="49227.3px " y="14030.8px ">f</tspan>ermentum <tspan x="49527.6px " y="14030.8px ">s</tspan>odales, <tspan x="49750.6px " y="14030.8px ">t</tspan>urpis <tspan x="49909.6px " y="14030.8px ">n</tspan>isl <tspan x="50010.3px " y="14030.8px ">c</tspan>onvallis <tspan x="50247.5px " y="14030.8px ">s</tspan>em,</text>
+                <text x="48944.6px" y="14142.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">sed <tspan x="49067.1px " y="14142.3px ">h</tspan>endrerit <tspan x="49326.2px " y="14142.3px ">n</tspan>isl <tspan x="49440.5px " y="14142.3px ">e</tspan>lit <tspan x="49545.8px " y="14142.3px ">i</tspan>n <tspan x="49621.7px " y="14142.3px ">n</tspan>ibh. <tspan x="49773.8px " y="14142.3px ">p</tspan>urus <tspan x="49948px " y="14142.3px ">q</tspan>uis <tspan x="50083.7px " y="14142.3px ">f</tspan>ermentum</text>
+                <text x="48944.6px" y="14253.8px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">sodales, <tspan x="49167.6px " y="14253.8px ">t</tspan>urpis <tspan x="49326.6px " y="14253.8px ">n</tspan>isl <tspan x="49427.3px " y="14253.8px ">c</tspan>onvallis <tspan x="49664.5px " y="14253.8px ">s</tspan>em, <tspan x="49801px " y="14253.8px ">p</tspan>urus <tspan x="49961.5px " y="14253.8px ">q</tspan>uis <tspan x="50083.7px " y="14253.8px ">f</tspan>ermentum</text>
+                <g transform="matrix(50,0,0,50,49765.1,14365.3)">
+                </g>
+                <text x="48944.6px" y="14365.3px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:rgb(1,55,125);">sodales, turpis nisl convallis sem.</text>
+            </g>
+            <g transform="matrix(46.1118,0,0,46.1118,497.017,543.41)">
+            </g>
+            <text x="284.303px" y="543.41px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:46.112px;fill:rgb(1,55,125);">Blog Title</text>
+            <g transform="matrix(17.2645,0,0,17.2645,558.055,590.533)">
+            </g>
+            <text x="286.864px" y="590.533px" style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:17.265px;fill:rgb(1,55,125);">Jason Smith, Chief Accountant</text>
         </g>
         <g>
-            <g style="filter:url(#_Effect1);">
-                <path d="M1291.67,190.072L1292.41,190.852C1307.2,206.282 1306.72,230.857 1291.34,245.696L1150.12,381.915C1134.74,396.754 1110.24,396.274 1095.45,380.844L1094.7,380.064C1079.91,364.634 1080.39,340.059 1095.77,325.22L1236.99,189.001C1252.38,174.162 1276.88,174.642 1291.67,190.072Z" style="fill:rgb(19,159,255);fill-opacity:0.25;"/>
-            </g>
-            <path d="M1350.63,130.991C1374.82,155.181 1374.82,194.458 1350.63,218.648L1329.71,239.56L1241.77,151.619L1262.4,130.991C1286.75,106.645 1326.28,106.645 1350.63,130.991Z" style="fill:white;"/>
-            <path d="M1181.24,388.036C1174.48,394.792 1166.13,399.73 1156.95,402.394C1132.23,409.571 1083.38,423.752 1083.38,423.752C1075.75,425.967 1067.83,424.084 1062.54,418.795C1057.26,413.506 1055.37,405.593 1057.59,397.963C1057.59,397.963 1071.77,349.111 1078.94,324.384C1081.61,315.209 1086.55,306.856 1093.3,300.101C1128.49,264.914 1241.78,151.624 1241.78,151.624L1329.71,239.56C1329.71,239.56 1216.42,352.85 1181.24,388.036Z" style="fill:rgb(1,55,125);"/>
+            <circle cx="538.699" cy="315.623" r="20.98" style="fill:white;"/>
+            <circle cx="614.93" cy="315.623" r="20.98" style="fill:white;"/>
+            <circle cx="310.008" cy="315.623" r="20.98" style="fill:white;"/>
+            <circle cx="386.238" cy="315.623" r="20.98" style="fill:white;"/>
+            <circle cx="462.469" cy="315.623" r="20.98" style="fill:white;"/>
+        </g>
+        <g>
+            <circle cx="538.699" cy="379.932" r="20.98" style="fill:white;"/>
+            <circle cx="310.008" cy="379.932" r="20.98" style="fill:white;"/>
+            <circle cx="386.238" cy="379.932" r="20.98" style="fill:white;"/>
+            <circle cx="462.469" cy="379.932" r="20.98" style="fill:white;"/>
+        </g>
+        <g>
+            <circle cx="538.699" cy="444.241" r="20.98" style="fill:white;"/>
+            <circle cx="614.93" cy="444.241" r="20.98" style="fill:white;"/>
+            <circle cx="310.008" cy="444.241" r="20.98" style="fill:white;"/>
+            <circle cx="386.238" cy="444.241" r="20.98" style="fill:white;"/>
+            <circle cx="462.469" cy="444.241" r="20.98" style="fill:white;"/>
         </g>
     </g>
     <defs>
-        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="638.183" y="-268.392" width="1110.75" height="1107.7">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="59.3927"/>
+        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="125.594" y="259.142" width="160.357" height="668.263">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10.0524"/>
+        </filter>
+        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="726.746" y="330.676" width="146.223" height="187.125">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8.20942"/>
+        </filter>
+        <filter id="_Effect3" filterUnits="userSpaceOnUse" x="-196.524" y="-196.524" width="1402.69" height="1584.67">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="65.5079"/>
         </filter>
     </defs>
 </svg>
