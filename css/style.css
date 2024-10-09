@@ -596,6 +596,10 @@ html {
   pointer-events: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -823,22 +827,6 @@ html {
   margin-top: 0.2rem;
 }
 
-.mt-\[10svh\] {
-  margin-top: 10svh;
-}
-
-.mt-\[5svh\] {
-  margin-top: 5svh;
-}
-
-.mt-\[7svh\] {
-  margin-top: 7svh;
-}
-
-.mt-\[3svh\] {
-  margin-top: 3svh;
-}
-
 .block {
   display: block;
 }
@@ -953,47 +941,6 @@ html {
 
 .h-svh {
   height: 100svh;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[20svh\] {
-  height: 20svh;
-}
-
-.h-\[40svh\] {
-  height: 40svh;
-}
-
-.h-\[60svh\] {
-  height: 60svh;
-}
-
-.h-\[66svh\] {
-  height: 66svh;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-20 {
-  height: 5rem;
-}
-
-.h-\[65svh\] {
-  height: 65svh;
-}
-
-.h-\[70svh\] {
-  height: 70svh;
-}
-
-.h-min {
-  height: -moz-min-content;
-  height: min-content;
 }
 
 .w-14 {
@@ -1275,10 +1222,6 @@ html {
   gap: 4vw;
 }
 
-.gap-0 {
-  gap: 0px;
-}
-
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1544,11 +1487,6 @@ html {
   padding-bottom: 2vw;
 }
 
-.px-36 {
-  padding-left: 9rem;
-  padding-right: 9rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1619,10 +1557,6 @@ html {
 
 .text-center {
   text-align: center;
-}
-
-.align-middle {
-  vertical-align: middle;
 }
 
 .text-2xl {
@@ -2039,10 +1973,6 @@ svg {
     height: 100%;
   }
 
-  .max-md\:h-\[75svh\] {
-    height: 75svh;
-  }
-
   .max-md\:gap-10 {
     gap: 2.5rem;
   }
@@ -2124,11 +2054,6 @@ svg {
     margin-bottom: 1.25rem;
   }
 
-  .md\:my-10 {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-
   .md\:mb-20 {
     margin-bottom: 5rem;
   }
@@ -2147,14 +2072,6 @@ svg {
 
   .md\:mt-36 {
     margin-top: 9rem;
-  }
-
-  .md\:mt-\[5svh\] {
-    margin-top: 5svh;
-  }
-
-  .md\:mt-\[7svh\] {
-    margin-top: 7svh;
   }
 
   .md\:hidden {
@@ -2206,16 +2123,16 @@ svg {
     height: 100%;
   }
 
-  .md\:h-\[75svh\] {
-    height: 75svh;
-  }
-
   .md\:w-1\/2 {
     width: 50%;
   }
 
   .md\:w-1\/6 {
     width: 16.666667%;
+  }
+
+  .md\:w-\[1\/2\] {
+    width: 1/2;
   }
 
   .md\:w-\[10\%\] {
@@ -2232,6 +2149,10 @@ svg {
 
   .md\:w-\[40\%\] {
     width: 40%;
+  }
+
+  .md\:w-\[45\%\] {
+    width: 45%;
   }
 
   .md\:w-\[50\%\] {
@@ -2270,14 +2191,6 @@ svg {
     width: 100%;
   }
 
-  .md\:w-\[45\%\] {
-    width: 45%;
-  }
-
-  .md\:w-\[47\%\] {
-    width: 47%;
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2310,10 +2223,6 @@ svg {
     gap: 2rem;
   }
 
-  .md\:gap-16 {
-    gap: 4rem;
-  }
-
   .md\:whitespace-normal {
     white-space: normal;
   }
@@ -2332,11 +2241,6 @@ svg {
 
   .md\:p-10 {
     padding: 2.5rem;
-  }
-
-  .md\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
   }
 
   .md\:px-28 {
@@ -2382,16 +2286,6 @@ svg {
   .md\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-  }
-
-  .md\:px-24 {
-    padding-left: 6rem;
-    padding-right: 6rem;
-  }
-
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .md\:pb-32 {

@@ -296,6 +296,8 @@ function randomFadeAndReposition() {
         currencyElement.textContent = symbol;
         currencyElement.setAttribute("fill", "#89DB55");
         currencyElement.setAttribute("font-family", "Arial");
+        currencyElement.setAttribute("stroke", "white");
+        currencyElement.setAttribute("stroke-width", "0");
         container.appendChild(currencyElement);
 
         const sideWidth = container.clientWidth * 0.2;
@@ -355,7 +357,9 @@ function randomFadeAndReposition() {
 
     startAnimation();
 }
-randomFadeAndReposition();
+  randomFadeAndReposition();
+  
+
 
 // Optimized line creation and animation
 const lineGroup = document.querySelector("#dottedLine");
@@ -513,7 +517,41 @@ requestAnimationFrame(animate);
 
   
   
+// Set initial visibility for the groups
+gsap.set("#group1", { opacity: 1, visibility: 'visible' }); // Ensure group1 starts visible
+gsap.set("#group2", { opacity: 0, visibility: 'hidden' }); // Ensure group2 starts hidden
 
+// Animation for group1 to fade out, and group2 to fade in simultaneously
+const timeline = gsap.timeline({ repeat: -1 });
+
+timeline.to("#group1", {
+  opacity: 0, // fade out group1 to opacity 0
+  duration: 1, // fade out duration
+  delay: 1, // start fading out after 1 second
+  onComplete: function() {
+    gsap.set("#group1", { visibility: 'hidden' }); // hide group1 immediately after fading out
+    gsap.set("#group2", { visibility: 'visible', opacity: 0 }); // make group2 visible and set opacity to 0 before fading in
+    gsap.to("#group2", {
+      opacity: 1, // fade in group2 to full opacity
+      duration: 1, // fade in duration
+      ease: "power1.inOut" // add easing for a smoother fade in
+    });
+  }
+}).to("#group2", {
+  opacity: 0, // fade out group2 to opacity 0
+  duration: 1, // fade out duration
+  delay: 2, // wait for 2 seconds before starting fade out
+  onComplete: function() {
+    gsap.set("#group2", { visibility: 'hidden' }); // hide group2 immediately after fading out
+    gsap.set("#group1", { visibility: 'visible', opacity: 0 }); // make group1 visible and set opacity to 0 before fading in
+    gsap.to("#group1", {
+      opacity: 1, // fade in group1 to full opacity
+      duration: 1, // fade in duration
+      ease: "power2.inOut" // add a stronger easing for a smoother fade in
+    });
+  }
+});
+  
   
 });
 
