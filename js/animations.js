@@ -517,40 +517,98 @@ requestAnimationFrame(animate);
 
   
   
-// Set initial visibility for the groups
-gsap.set("#group1", { opacity: 1, visibility: 'visible' }); // Ensure group1 starts visible
-gsap.set("#group2", { opacity: 0, visibility: 'hidden' }); // Ensure group2 starts hidden
+// Function to create fade-in/fade-out animations between two sets of elements
+function createSeamlessFadeAnimation(blog1Elements, blog2Elements) {
+  // Convert NodeLists to arrays for better manipulation
+  const blog1Array = Array.from(blog1Elements);
+  const blog2Array = Array.from(blog2Elements);
 
-// Animation for group1 to fade out, and group2 to fade in simultaneously
-const timeline = gsap.timeline({ repeat: -1 });
+  // Initial setup: Make sure blog1 is visible and blog2 is hidden
+  gsap.set(blog1Array, { opacity: 1, visibility: 'visible' });
+  gsap.set(blog2Array, { opacity: 0, visibility: 'hidden' });
 
-timeline.to("#group1", {
-  opacity: 0, // fade out group1 to opacity 0
-  duration: 1, // fade out duration
-  delay: 1, // start fading out after 1 second
-  onComplete: function() {
-    gsap.set("#group1", { visibility: 'hidden' }); // hide group1 immediately after fading out
-    gsap.set("#group2", { visibility: 'visible', opacity: 0 }); // make group2 visible and set opacity to 0 before fading in
-    gsap.to("#group2", {
-      opacity: 1, // fade in group2 to full opacity
-      duration: 1, // fade in duration
-      ease: "power1.inOut" // add easing for a smoother fade in
+  // Main timeline controlling the whole animation cycle
+  const mainTimeline = gsap.timeline({ repeat: -1 });
+
+  // Timeline for fading out blog1 and fading in blog2
+  mainTimeline
+    .to(blog1Array, {
+      opacity: 0,
+      duration: 1,
+      delay: 1,
+      ease: "power1.inOut",
+      stagger: 0.1, // Staggered delay of 100ms between each element
+    })
+    .set(blog1Array, { visibility: 'hidden' }) // Set blog1 to hidden after fade-out
+    .set(blog2Array, { visibility: 'visible', opacity: 0 }) // Make blog2 visible before fading in
+    .to(blog2Array, {
+      opacity: 1,
+      duration: 1,
+      ease: "power1.inOut",
+      stagger: 0.1, // Staggered delay of 100ms for fade-in
+    })
+    .to(blog2Array, {
+      opacity: 0,
+      duration: 1,
+      delay: 2,
+      ease: "power1.inOut",
+      stagger: 0.1, // Staggered delay of 100ms for fade-out
+    })
+    .set(blog2Array, { visibility: 'hidden' }) // Set blog2 to hidden after fade-out
+    .set(blog1Array, { visibility: 'visible', opacity: 0 }) // Make blog1 visible before fading in
+    .to(blog1Array, {
+      opacity: 1,
+      duration: 1,
+      ease: "power1.inOut",
+      stagger: 0.1 // Staggered delay of 100ms for fade-in
     });
-  }
-}).to("#group2", {
-  opacity: 0, // fade out group2 to opacity 0
-  duration: 1, // fade out duration
-  delay: 2, // wait for 2 seconds before starting fade out
-  onComplete: function() {
-    gsap.set("#group2", { visibility: 'hidden' }); // hide group2 immediately after fading out
-    gsap.set("#group1", { visibility: 'visible', opacity: 0 }); // make group1 visible and set opacity to 0 before fading in
-    gsap.to("#group1", {
-      opacity: 1, // fade in group1 to full opacity
-      duration: 1, // fade in duration
-      ease: "power2.inOut" // add a stronger easing for a smoother fade in
+}
+
+// Apply the animation to all elements with the class `.blog1` and `.blog2`
+const blog1Elements = document.querySelectorAll('.blog1');
+const blog2Elements = document.querySelectorAll('.blog2');
+
+// Only create animation if both blog1 and blog2 elements exist
+if (blog1Elements.length > 0 && blog2Elements.length > 0) {
+  createSeamlessFadeAnimation(blog1Elements, blog2Elements);
+}
+
+
+
+
+// Function to randomly fade out and fade in elements with repeating animation
+function circleFadeRandom(elements, { duration = 2, minDelay = 1, maxDelay = 3, stagger = 2 } = {}) {
+  elements.forEach(element => {
+    const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
+    gsap.to(element, {
+      opacity: 0,
+      duration: duration,
+      delay: randomDelay,
+      ease: "power1.inOut",
+      repeat: -1, // Repeat infinitely
+      yoyo: true, // Fade back in after fading out
+      stagger: stagger // Stagger to keep the animation continuous
     });
-  }
+  });
+}
+
+// Example usage for multiple circles with the class `.circleFade`
+const circleFadeElements = document.querySelectorAll('.circleFade');
+circleFadeRandom(circleFadeElements, {
+  duration: 2, // Duration of the fade-out
+  minDelay: 1, // Minimum delay before starting the fade-out
+  maxDelay: 3, // Maximum delay before starting the fade-out (randomized)
+  stagger: 2 // Stagger between the elements to keep them animating continuously
 });
+
+
+  
+  
+
+  
+  
+  
+  
   
   
 });
