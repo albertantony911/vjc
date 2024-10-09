@@ -605,9 +605,41 @@ circleFadeRandom(circleFadeElements, {
   
   
 
-  
-  
-  
+  window.onload = function() {
+        gsap.to(".bouncerRight", {
+            x: 30,                        // Move to the right by 50px
+            duration: 1,                   // Duration of the animation
+            ease: "elastic.out(0.9, 0.5)",   // Elastic bounce effect
+            yoyo: true,                    // Returns back to its original position
+            repeat: -1                      // Repeats once
+        });
+    };
+
+  window.addEventListener('load', function() {
+    gsap.to(".rotateRight", {
+        rotate: 10,                     // Rotate to the right by 10 degrees
+        duration: 1,                    // Duration of the rotation animation
+        ease: "elastic.out(0.9, 0.5)",  // Elastic bounce effect for rotation
+        transformOrigin: "50% 100%",    // Set the rotation origin to the bottom center point
+        yoyo: true,                     // Returns back to its original position
+        repeat: -1,                     // Infinite repetition
+        repeatDelay: 1                  // Delay of 1 second between each repeat
+    });
+});
+
+window.addEventListener('load', function() {
+    gsap.to(".rotateLeft", {
+        rotate: -5,
+        x:10,
+        duration: 1,                    // Duration of the rotation animation
+        ease: "elastic.out(0.9, 0.5)",  // Elastic bounce effect for rotation
+        transformOrigin: "50% 100%",    // Set the rotation origin to the bottom center point
+        yoyo: true,                     // Returns back to its original position
+        repeat: -1,                     // Infinite repetition
+        repeatDelay: 1                  // Delay of 1 second between each repeat
+    });
+});
+
   
   
   
