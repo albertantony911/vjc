@@ -195,8 +195,8 @@
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 125px;
-    --marquee-item-height: 125px;
+    --marquee-item-width: 60px;
+    --marquee-item-height: 60px;
     --marquee-duration: 30s;
     --marquee-items: 6;
 }
@@ -371,3 +371,8 @@
   filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
 }
 
+
+
+.blur-effect {
+  filter: blur(5px);
+}

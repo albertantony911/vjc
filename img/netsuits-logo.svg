@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.04,0,0,0.04,62.5,62.5)">
+        <g id="netsuite" transform="matrix(1,0,0,1,-1250,-1204.5)">
+            <path d="M1654.93,125.364L2382.04,125.364L2387.05,1744.57L1895.88,1744.57L1895.88,576.676L1654.93,576.676L1654.93,125.364Z" style="fill:rgb(177,194,210);fill-rule:nonzero;"/>
+            <path d="M1554.63,1341.4L1554.63,0L0.118,0L0.118,572.163L934.333,572.163L1554.63,1341.4Z" style="fill:rgb(1,67,114);fill-rule:nonzero;"/>
+            <path d="M845.073,2283.64L117.961,2283.64L112.946,664.431L604.249,664.431L604.249,1832.32L845.073,1832.32L845.073,2283.64Z" style="fill:rgb(177,194,210);fill-rule:nonzero;"/>
+            <path d="M945.365,1067.6L945.365,2409L2499.88,2409L2499.88,1836.84L1565.67,1836.84L945.365,1067.6Z" style="fill:rgb(1,67,114);fill-rule:nonzero;"/>
+        </g>
+        <g id="netsuite1" serif:id="netsuite">
+        </g>
+    </g>
+</svg>

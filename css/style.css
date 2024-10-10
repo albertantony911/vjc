@@ -2196,6 +2196,26 @@ svg {
     height: 17svh;
   }
 
+  .md\:size-\[12svh\] {
+    width: 12svh;
+    height: 12svh;
+  }
+
+  .md\:size-\[11svh\] {
+    width: 11svh;
+    height: 11svh;
+  }
+
+  .md\:size-\[10svh\] {
+    width: 10svh;
+    height: 10svh;
+  }
+
+  .md\:size-\[8svh\] {
+    width: 8svh;
+    height: 8svh;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
@@ -2294,6 +2314,10 @@ svg {
 
   .md\:w-\[17svh\] {
     width: 17svh;
+  }
+
+  .md\:w-\[80\%\] {
+    width: 80%;
   }
 
   .md\:flex-row {
