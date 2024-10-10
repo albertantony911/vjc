@@ -170,15 +170,6 @@ gsap.to("#cog", {
 
 
 
-// Optimized floater animation (batching cloud and floater animation to improve efficiency)
-gsap.to(["#cloud", "#floater", ], {
-    y: (i) => i === 0 ? -50 : -10, // Different y values for each element
-    duration: 1,
-    ease: "power1.inOut",
-    repeat: -1,
-    yoyo: true,
-    useFrames: true
-});
 
 function animateFloat() {
     gsap.to("#float", {
