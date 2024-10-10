@@ -168,18 +168,10 @@ gsap.to("#cog", {
     useFrames: true
 });
 
-// Optimized cloud floating animation
-gsap.to("#cloud", {
-    y: -50, // Move the cloud up by 30 pixels
-    duration: 1, // Duration for the upward movement
-    ease: "power1.inOut", // Smooth easing for gentle floating effect
-    repeat: -1, // Infinite loop
-    yoyo: true, // Makes the cloud come back down to its original position
-    useFrames: true // Less frequent recalculation
-});
+
 
 // Optimized floater animation (batching cloud and floater animation to improve efficiency)
-gsap.to(["#cloud", "#floater"], {
+gsap.to(["#cloud", "#floater", ], {
     y: (i) => i === 0 ? -50 : -10, // Different y values for each element
     duration: 1,
     ease: "power1.inOut",
@@ -641,6 +633,21 @@ window.addEventListener('load', function() {
 });
 
   
+
+
+  function iconFloat() {
+  gsap.to("#iconFloat", {
+    y: -5, // Move up by 1 pixel
+    duration: 1, // Duration of movement
+    repeat: -1, // Infinite loop
+    yoyo: true // Return to original position
+  });
+}
+
+// Activate the animation when the document is ready
+  document.addEventListener("DOMContentLoaded", iconFloat);
+  
+
   
   
 });
