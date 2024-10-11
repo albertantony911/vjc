@@ -966,6 +966,10 @@ html {
   height: auto;
 }
 
+.h-\[10rem\] {
+  height: 10rem;
+}
+
 .w-14 {
   width: 3.5rem;
 }
@@ -1068,6 +1072,18 @@ html {
 
 .w-\[4\.3rem\] {
   width: 4.3rem;
+}
+
+.w-\[8rem\] {
+  width: 8rem;
+}
+
+.w-\[40\%\] {
+  width: 40%;
+}
+
+.w-\[45\%\] {
+  width: 45%;
 }
 
 .min-w-full {
@@ -1437,6 +1453,10 @@ html {
   padding: 1.75rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1540,6 +1560,11 @@ html {
 .py-\[2vw\] {
   padding-top: 2vw;
   padding-bottom: 2vw;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pb-10 {
@@ -2097,6 +2122,10 @@ svg {
     gap: 2rem;
   }
 
+  .sm\:gap-6 {
+    gap: 1.5rem;
+  }
+
   .sm\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -2236,6 +2265,10 @@ svg {
     height: 100%;
   }
 
+  .md\:h-\[10rem\] {
+    height: 10rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -2320,6 +2353,30 @@ svg {
     width: 80%;
   }
 
+  .md\:w-\[8rem\] {
+    width: 8rem;
+  }
+
+  .md\:w-\[18\%\] {
+    width: 18%;
+  }
+
+  .md\:w-\[30\%\] {
+    width: 30%;
+  }
+
+  .md\:w-1\/5 {
+    width: 20%;
+  }
+
+  .md\:w-1\/4 {
+    width: 25%;
+  }
+
+  .md\:w-\[65\%\] {
+    width: 65%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2352,6 +2409,10 @@ svg {
     gap: 2rem;
   }
 
+  .md\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .md\:whitespace-normal {
     white-space: normal;
   }
@@ -2370,6 +2431,14 @@ svg {
 
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:p-7 {
+    padding: 1.75rem;
+  }
+
+  .md\:p-0 {
+    padding: 0px;
   }
 
   .md\:px-28 {
