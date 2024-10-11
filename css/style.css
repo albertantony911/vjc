@@ -1708,6 +1708,14 @@ html {
   line-height: 1rem;
 }
 
+.text-\[0\.7rem\] {
+  font-size: 0.7rem;
+}
+
+.text-\[0\.8rem\] {
+  font-size: 0.8rem;
+}
+
 .font-\[600\] {
   font-weight: 600;
 }
