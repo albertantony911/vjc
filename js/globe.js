@@ -217,26 +217,19 @@ function updateCircleOpacity(object, cameraPosition) {
     }
 }
 
-
-
 function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
     const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
     const numPoints = 50;
-
-    // Preallocate a temporary vector for reuse
-    const tempPoint = new THREE.Vector3();
 
     const createArc = (start, end) => {
         const distance = start.distanceTo(end);
         const heightAboveGlobe = baseHeight + distance * heightScale;
 
-        // Use a pre-calculated vector for point interpolation and reuse it
         const points = Array.from({ length: numPoints + 1 }, (_, i) => {
             const t = i / numPoints;
-            // Reuse tempPoint to avoid creating a new vector on each iteration
-            tempPoint.lerpVectors(start, end, t);
+            const point = new THREE.Vector3().lerpVectors(start, end, t);
             const elevation = Math.sin(t * Math.PI) * heightAboveGlobe;
-            return tempPoint.clone().multiplyScalar(1 + elevation / tempPoint.length());
+            return point.multiplyScalar(1 + elevation / point.length());
         });
 
         animateArc(points, start, end);
@@ -250,7 +243,6 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
 
     return createStaticAndPulsingCircles(liftedStart);
 }
-
 
 function animateArc(points, start, end, reverse = false) {
     let pointIndex = 0;
@@ -266,125 +258,101 @@ function animateArc(points, start, end, reverse = false) {
 
     const line2 = new Line2(new LineGeometry(), arcMaterial);
 
-    // Pre-flatten points array for performance
-    const flatPoints = points.flatMap(p => [p.x, p.y, p.z]);
-
-    // Add the line to the scene only once
-    scene.add(line2);
-
     const drawArc = () => {
         if (pointIndex < points.length) {
-            const arcGeometry = new LineGeometry();
-
-            // Update geometry's positions directly without slicing and flat-mapping every time
-            arcGeometry.setPositions(flatPoints.slice(0, (pointIndex + 1) * 3)); // Multiply by 3 because we're dealing with x, y, z
-
-            // Update the geometry of line2 without disposing
+            const arcGeometry = new LineGeometry().setPositions(points.slice(0, pointIndex + 1).flatMap(p => [p.x, p.y, p.z]));
+            if (line2.geometry) line2.geometry.dispose();
             line2.geometry = arcGeometry;
+            scene.add(line2);
             pointIndex++;
             requestAnimationFrame(drawArc);
         } else {
-            // Reverse or repeat animation
             setTimeout(() => fadeOutArc(line2, arcMaterial, () => reverse ? animateArc(points.reverse(), end, start, false) : animateArc(points.reverse(), start, end, true)), 500);
         }
     };
 
-    // Add a random delay for the arc to start drawing
     setTimeout(drawArc, Math.random() * 3000);
 }
 
-
 function fadeOutArc(line, material, onComplete) {
-    const fadeDuration = 1; // 1 second fade-out duration
+    const fadeDuration = 1000;
+    const startTime = performance.now();
 
-    gsap.to(material, {
-        opacity: 0,
-        duration: fadeDuration,
-        ease: "power1.out",
-        onComplete: () => {
-            scene.remove(line); // Remove the line from the scene
-            line.geometry.dispose(); // Dispose of the geometry to free resources
-            material.dispose(); // Dispose of the material
+    const fade = (time) => {
+        const elapsed = time - startTime;
+        const progress = Math.min(elapsed / fadeDuration, 1);
+        material.opacity = 1 - progress;
 
-            if (onComplete) {
-                onComplete(); // Call the provided onComplete callback if any
-            }
+        if (progress < 1) {
+            requestAnimationFrame(fade);
+        } else {
+            scene.remove(line);
+            line.geometry.dispose();
+            material.dispose();
+            if (onComplete) onComplete();
         }
-    });
+    };
+
+    requestAnimationFrame(fade);
 }
 
+function latLonToVector3(lat, lon, radius = 1) {
+    lon += 180;
+    if (lon > 180) lon -= 360;
 
-// Precompute conversion factors
-const DEG_TO_RAD = Math.PI / 180;
-
-function latLonToVector3(lat, lon, radius = 1, vector = new THREE.Vector3()) {
-    const phi = (90 - lat) * DEG_TO_RAD;  // Convert latitude to radians
-    const theta = lon * DEG_TO_RAD;  // Convert longitude to radians
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
 
     const x = -radius * Math.sin(phi) * Math.cos(theta);
     const y = radius * Math.cos(phi);
     const z = radius * Math.sin(phi) * Math.sin(theta);
 
-    // Update and return the passed vector for reuse
-    return vector.set(x, y, z);
+    return new THREE.Vector3(x, y, z);
 }
 
 const globeRadius = 1;
 const tiltAngle = 23.5;
 
-function applyTilt(vector, angle, resultVector = vector) {
+function applyTilt(vector, angle) {
     const radians = THREE.MathUtils.degToRad(angle);
     const cosAngle = Math.cos(radians);
     const sinAngle = Math.sin(radians);
 
-    // Apply tilt transformation directly on the vector or result vector
     const y = vector.y * cosAngle - vector.z * sinAngle;
     const z = vector.y * sinAngle + vector.z * cosAngle;
 
-    // Update the resultVector with the transformed values
-    return resultVector.set(vector.x, y, z);
+    return new THREE.Vector3(vector.x, y, z);
 }
 
-// Coordinates for different locations
-const locations = [
-    [53.3498, -6.2603],  // Dublin
-    [51.5074, -0.1278],  // London
-    [46.8182, 8.2275],   // Switzerland
-    [25.276987, 55.296249],  // Dubai
-    [-37.8136, 144.9631], // Melbourne
-    [-31.9505, 115.8605], // Perth
-    [40.7128, -74.0060],  // New York
-    [34.0522, -118.2437], // Los Angeles
-    [61.3707, -152.4040], // Alaska
-    [49.2827, -123.1207], // Vancouver
-    [-22.9068, -43.1729], // Rio de Janeiro
-    [3.4372, -76.5226],   // Cali, Colombia
-    [-33.9189, 18.4233],  // Cape Town
-    [30.0444, 31.2357],   // Cairo
-    [-41.2865, 174.7762], // Wellington
+const point1 = applyTilt(latLonToVector3(28.6139, 77.2090, globeRadius), tiltAngle);
+
+const endPoints = [
+    applyTilt(latLonToVector3(53.3498, -6.2603, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(51.5074, -0.1278, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(46.8182, 8.2275, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(25.276987, 55.296249, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(-37.8136, 144.9631, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(-31.9505, 115.8605, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(40.7128, -74.0060, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(34.0522, -118.2437, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(61.3707, -152.4040, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(49.2827, -123.1207, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(-22.9068, -43.1729, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(3.4372, -76.5226, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(-33.9189, 18.4233, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(30.0444, 31.2357, globeRadius), tiltAngle),
+    applyTilt(latLonToVector3(-41.2865, 174.7762, globeRadius), tiltAngle),
 ];
 
-// Apply latLonToVector3 and applyTilt to each location
-const endPoints = locations.map(([lat, lon]) => {
-    const vector = latLonToVector3(lat, lon, globeRadius);
-    return applyTilt(vector, tiltAngle);
-});
-
-// Example usage
-const point1 = applyTilt(latLonToVector3(28.6139, 77.2090, globeRadius), tiltAngle);
-const baseHeightAboveGlobe = 0.1;
-const heightScaleFactor = 0.3;
-const arcDelay = 500;  // Configurable delay
-
-// Function to initialize and create arcs
-function initializeArcs(delay = arcDelay) {
-    setTimeout(() => {
-        createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
-    }, delay);
-}
-
-// Create static and pulsing circles at point1 (starting point)
 createStaticAndPulsingCircles(point1, true);
 
-// Initialize arcs after a delay
+const baseHeightAboveGlobe = 0.1;
+const heightScaleFactor = 0.3;
+
+function initializeArcs() {
+    setTimeout(() => {
+        createElevatedArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);
+    }, 500);
+}
+
 initializeArcs();
