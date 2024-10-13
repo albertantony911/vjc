@@ -1,42 +1,3 @@
-// Statistics counter Animation
-
-function animatedCounter(target, duration = 3000, start = 0, elementId, suffix = '+') {
-    let startTime;
-    let current = start;
-    const counterElement = document.getElementById(elementId);
-
-    if (!counterElement) return;
-
-    function updateCounter(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const increment = (target - start) * (progress / duration);
-        current = start + increment;
-
-        if (progress < duration) {
-            counterElement.innerHTML = `${Math.round(current)}<span class="text-darkBlue font-[600] animate-pulse">${suffix}</span>`;
-            requestAnimationFrame(updateCounter);
-        } else {
-            counterElement.innerHTML = `${target}<span class="text-darkBlue font-[600] animate-pulse">${suffix}</span>`;
-        }
-    }
-
-    const observer = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-            requestAnimationFrame(updateCounter);
-            observer.unobserve(counterElement);
-        }
-    });
-
-    observer.observe(counterElement);
-}
-
-// Example usage
-animatedCounter(3000, 3000, 0, "counter1", '+');
-animatedCounter(36, 3000, 0, "counter2", '+');
-animatedCounter(40, 3000, 0, "counter3", '+'); 
-animatedCounter(50, 3000, 0, "counter4", '%');
-
 
 
 
@@ -57,62 +18,98 @@ document.addEventListener("DOMContentLoaded", (event) => {
     SlowMo, 
     CustomEase
   );
-  
-  // Animate .periodBox elements
-  gsap.utils.toArray('.periodBox').forEach((box) => {
-    gsap.fromTo(box, 
-      { 
-        filter: "grayscale(100%)",
-        opacity: 0.1,
-      },
-      { 
-        filter: "grayscale(0%)",
-        opacity: 1,
-        duration: 2,
-        scrollTrigger: {
-          trigger: box,        // Trigger the animation when this .periodBox enters the viewport
-          start: "top 80%",    // Adjust start based on your needs
-          end: "top 30%",      // Adjust end based on your needs
-          toggleActions: "play none none none",
-        }
-      }
-    );
-  });
 
-  // Animate .line elements
-  gsap.utils.toArray('.line-v').forEach((line) => {
-    gsap.from(line, 
-      {
-        height: "0%", // Start with zero height
-        duration: 1,
-        ease: "power1.inOut",
+ 
+
+function gsapCounter(target, duration = 3, start = 0, elementId, suffix = '+') {
+    const counterElement = document.getElementById(elementId);
+
+    if (!counterElement) return;
+
+    // GSAP animation setup
+    gsap.fromTo(counterElement, {
+        textContent: start // Start from initial value
+    }, {
+        textContent: target, // End at the target value
+        duration: duration, // Duration for the animation
         scrollTrigger: {
-          trigger: line,       // Trigger the animation when this .line-v enters the viewport
-          start: "top 80%",    // Adjust start based on your needs
-          end: "top 30%",      // Adjust end based on your needs
-          toggleActions: "play none none none",
-        }
+            trigger: counterElement, // Trigger when the counter is in the viewport
+            start: "top 80%", // Adjust this based on your scroll point
+            toggleActions: "play none none none" // Play the animation only once
+        },
+        snap: { textContent: 1 }, // Snap to integers
+        onUpdate: function () {
+            // Update the text content with rounded values and suffix
+            counterElement.textContent = `${Math.round(counterElement.textContent)}${suffix}`;
+        },
+        ease: "power1.inOut" // Smooth ease for the counter
+    });
+}
+
+// Example usage
+gsapCounter(3000, 3, 0, "counter1", '+');
+gsapCounter(36, 3, 0, "counter2", '+');
+gsapCounter(40, 3, 0, "counter3", '+');
+gsapCounter(50, 3, 0, "counter4", '%');
+gsap.utils.toArray('.periodBox').forEach((box) => {
+  gsap.fromTo(box, 
+    { 
+      opacity: 0.1,
+      color: "#999",
+    },
+    { 
+      opacity: 1,
+      color: "#000",
+      duration: 2,
+      scrollTrigger: {
+        trigger: box,
+        start: "top 80%",
+        end: "top 30%",
+        toggleActions: "play none none none",
+        once: true // Trigger the animation once when the box enters the viewport
       }
-    );
-  });
+    }
+  );
+});
+
+
+ gsap.utils.toArray('.line-v').forEach((line) => {
+  gsap.from(line, 
+    {
+      scaleY: 0,                  // Start with scaleY at 0 (no height)
+      transformOrigin: "top",     // Scale from the top
+      duration: 1,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: line,       // Trigger the animation when this .line-v enters the viewport
+        start: "top 80%",    // Adjust start based on your needs
+        end: "top 30%",      // Adjust end based on your needs
+        toggleActions: "play none none none",
+      }
+    }
+  );
+});
+
+  
     
-  // Animate .line-center elements
   gsap.utils.toArray('.line-center').forEach((line) => {
-    gsap.from(line, 
-      {
-        scaleX: 0, // Start with scaleX of 0 (shrinks horizontally)
-        transformOrigin: "center center", // Expand from the center
-        duration: 1.5,
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: line,       // Trigger the animation when this .line-center enters the viewport
-          start: "top 80%",    // Adjust start based on your needs
-          end: "top 30%",      // Adjust end based on your needs
-          toggleActions: "play none none none",
-        }
+  gsap.from(line, 
+    {
+      scaleX: 0, // Start with scaleX of 0 (shrinks horizontally)
+      transformOrigin: "center center", // Expand from the center
+      duration: 1.5,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: line,       // Trigger the animation when this .line-center enters the viewport
+        start: "top 80%",    // Adjust start based on your needs
+        end: "top 30%",      // Adjust end based on your needs
+        toggleActions: "play none none none",
+        once: true // Animation plays only once when it enters the viewport
       }
-    );
-  });
+    }
+  );
+});
+
     
 
 
@@ -125,78 +122,105 @@ document.addEventListener("DOMContentLoaded", (event) => {
 */
 // Optimized GSAP animations for better performance
 
-// Optimized cog rotation (added 'use frames' to minimize recalculations)
-gsap.to("#cog", {
-    rotation: 360, // Rotate 360 degrees for one full rotation
-    duration: 4, // Duration of one full rotation (you can adjust this)
-    ease: "none", // Linear movement, so it rotates continuously without easing
-    repeat: -1, // Repeat infinitely
-    transformOrigin: "50% 50%", // Rotate around the center
-    useFrames: true
+// Add will-change in JS (if not using CSS directly)
+gsap.set("#cog", {
+  willChange: "transform"
 });
+
+gsap.to("#cog", {
+  rotation: 360, // Rotate 360 degrees for one full rotation
+  duration: 4, // Duration of one full rotation (adjust as needed)
+  ease: "none", // Linear movement, no easing
+  repeat: -1, // Repeat infinitely
+  transformOrigin: "50% 50%" // Rotate around the center
+});
+
 
 
 
 
 function animateFloat() {
-    gsap.to("#float", {
-        x: () => gsap.utils.random(-0.8, 0.8) * document.querySelector("#float").getBBox().width, // Random x movement based on object width
-        y: () => gsap.utils.random(-0.8, 0.8) * document.querySelector("#float").getBBox().height, // Random y movement based on object height
-        duration: gsap.utils.random(1, 1), // Random duration for smoother, varied movement
-        ease: "power1.inOut", // Smooth easing for gentle floating effect
-        onComplete: animateFloat, // Recursively call to create a new random animation on completion
+    // Cache float element and its dimensions
+    const floatElement = document.querySelector("#float");
+    const width = floatElement.getBBox().width;
+    const height = floatElement.getBBox().height;
+
+    // Precompute 6 random positions (X and Y)
+    const positions = Array.from({ length: 6 }, () => ({
+        x: gsap.utils.random(-0.8, 0.8) * width,
+        y: gsap.utils.random(-0.8, 0.8) * height
+    }));
+
+    // Function to animate a given element using precomputed positions
+    function animatePrecomputedFloat(element, startIndex = 0) {
+        let index = startIndex;
+
+        function moveElement() {
+            gsap.to(element, {
+                x: positions[index].x,
+                y: positions[index].y,
+                duration: 1, // Fixed duration
+                ease: "power1.inOut",
+                onComplete: () => {
+                    index = (index + 1) % positions.length; // Cycle through positions
+                    moveElement(); // Recursively call to continue animation
+                }
+            });
+        }
+
+        moveElement(); // Start the animation
+    }
+
+    // Cache the float elements array once
+    const floatElements = gsap.utils.toArray("#float");
+
+    // Apply the animation to each float element
+    floatElements.forEach((element, idx) => {
+        animatePrecomputedFloat(element, idx % positions.length); // Different starting position for each
     });
 }
 
 animateFloat();
 
-  
 
-// Optimized GSAP timeline for bars and dots (batch operations)
+// Single timeline for bars and dots using batch operation and keyframes
 let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
-bl.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
-    scaleY: (i) => i < 3 ? [0.6, 0.5, 0.9][i] : 1, // Only scale bars, keep circles unaffected
-    y: (i) => i >= 3 ? [73, 90, 17][i - 3] : 0, // Only move circles, keep bars unaffected
-    duration: 1.5,
-    transformOrigin: "bottom",
-    ease: "power1.inOut"
-})
-.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
-    scaleY: (i) => i < 3 ? [0.5, 1, 0.6][i] : 1,
-    y: (i) => i >= 3 ? [90, 0, 73][i - 3] : 0,
-    duration: 1.5,
-    transformOrigin: "bottom",
-    ease: "power1.inOut"
-})
-.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3"], {
-    scaleY: (i) => i < 3 ? [1, 0.6, 1][i] : 1,
-    y: (i) => i >= 3 ? [0, 73, 0][i - 3] : 0,
-    duration: 1.5,
-    transformOrigin: "bottom",
-    ease: "power1.inOut"
+
+// Cache transform origin outside to avoid recalculating
+gsap.set(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"], {
+    transformOrigin: "bottom"
 });
 
-// Optimized graph dot animation (reuse instead of repeating timelines)
-let gl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
-gl.to(["#graphDot1", "#graphDot2"], {
-    y: (i) => [73, 90][i],
-    duration: 1.5,
-    ease: "power1.inOut"
-})
-.to(["#graphDot1", "#graphDot2"], {
-    y: (i) => [17, 0][i],
-    duration: 1.5,
-    ease: "power1.inOut"
-})
-.to(["#graphDot1", "#graphDot2"], {
-    y: (i) => [0, 73][i],
-    duration: 1.5,
-    ease: "power1.inOut"
+// Use keyframes to define all animations in a single batch
+bl.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"], {
+    keyframes: [
+        {
+            scaleY: (i) => i < 3 ? [0.6, 0.5, 0.9][i] : 1, // Only scale bars
+            y: (i) => i >= 3 ? [73, 90, 17, 73, 90][i - 3] : 0, // Move dots and graph dots
+            duration: 1.5,
+            ease: "power1.inOut"
+        },
+        {
+            scaleY: (i) => i < 3 ? [0.5, 1, 0.6][i] : 1,
+            y: (i) => i >= 3 ? [90, 0, 73, 17, 0][i - 3] : 0,
+            duration: 1.5,
+            ease: "power1.inOut"
+        },
+        {
+            scaleY: (i) => i < 3 ? [1, 0.6, 1][i] : 1,
+            y: (i) => i >= 3 ? [0, 73, 0, 0, 73][i - 3] : 0,
+            duration: 1.5,
+            ease: "power1.inOut"
+        }
+    ]
 });
 
-// Optimized path animation with less recalculations (simplified vertex changes)
 const originalYValues = [2122.11, -71.5, 13.8, -111];
 const newYValues = [2122.11 - 40, -71.5 + 70, 13.8 - 90, -111 + 100];
+const deltaYValues = newYValues.map((newVal, index) => newVal - originalYValues[index]);
+
+// Cache the line graph element to avoid repeated DOM lookups
+const lineGraph = document.getElementById("lineGraph");
 
 gsap.to({ progress: 0 }, {
     progress: 1,
@@ -206,64 +230,81 @@ gsap.to({ progress: 0 }, {
     ease: "power1.inOut",
     onUpdate: function () {
         const progress = this.progress();
-        const interpolatedYValues = originalYValues.map((original, index) => original + (newYValues[index] - original) * progress);
+        const interpolatedYValues = originalYValues.map((original, index) => original + deltaYValues[index] * progress);
+        
         const newPath = `m709.116 ${interpolatedYValues[0]} 67.326 ${interpolatedYValues[1]} 75.161 ${interpolatedYValues[2]} 47.985 ${interpolatedYValues[3]}`;
-        document.getElementById("lineGraph").setAttribute("d", newPath);
+        
+        // Update the path attribute only once after all calculations
+        lineGraph.setAttribute("d", newPath);
     }
 });
-
-// Optimized stroke path animation
+  
+  
 const path = document.querySelector("#lineGraphLarge");
 const pathLength = path.getTotalLength();
 
-// Set initial values to create an invisible line
+// Set initial strokeDash properties to hide the path
 gsap.set(path, {
     strokeDasharray: pathLength,
     strokeDashoffset: pathLength
 });
 
-// Animate the path with lower recalculation frequency
+// Animate the stroke path
 gsap.to(path, {
-    duration: 3,
-    strokeDashoffset: 0,
-    ease: "power1.inOut",
-    repeat: -1,
+    duration: 3,           // Animation duration
+    strokeDashoffset: 0,    // Reveal the stroke
+    ease: "power1.inOut",   // Smooth easing
+    repeat: -1,             // Infinite loop
     yoyo: true,
-    useFrames: true
+    useFrames: false
+    
 });
 
-// Optimized random currency symbol animation (reuse elements to avoid DOM thrashing)
+  
+  
 function randomFadeAndReposition() {
     const container = document.querySelector("#currencyContainer");
     let symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+    let pooledElements = []; // Pool of reused SVG text elements
 
-    function createAndAnimateElement(side) {
-        const randomIndex = Math.floor(Math.random() * symbols.length);
-        const symbol = symbols.splice(randomIndex, 1)[0];
-        if (symbols.length === 0) symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+    function getRandomSymbol() {
+        return symbols[Math.floor(Math.random() * symbols.length)];
+    }
 
-        const currencyElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        currencyElement.textContent = symbol;
-        currencyElement.setAttribute("fill", "#89DB55");
-        currencyElement.setAttribute("font-family", "Arial");
-        currencyElement.setAttribute("stroke", "white");
-        currencyElement.setAttribute("stroke-width", "0");
-        container.appendChild(currencyElement);
+    function createOrReuseElement() {
+        // Reuse existing element if available, else create a new one
+        let currencyElement = pooledElements.length ? pooledElements.pop() : document.createElementNS("http://www.w3.org/2000/svg", "text");
+        
+        // Set static attributes if this is a new element
+        if (!currencyElement.hasAttribute("data-initialized")) {
+            currencyElement.setAttribute("fill", "#89DB55");
+            currencyElement.setAttribute("font-family", "Arial");
+            currencyElement.setAttribute("stroke", "white");
+            currencyElement.setAttribute("stroke-width", "0");
+            currencyElement.setAttribute("data-initialized", "true"); // Mark as initialized
+            container.appendChild(currencyElement); // Add it to DOM only once
+        }
+
+        return currencyElement;
+    }
+
+    function animateElement(element, side) {
+        element.textContent = getRandomSymbol();
 
         const sideWidth = container.clientWidth * 0.2;
         const startX = side === "left" ? Math.random() * sideWidth : container.clientWidth - sideWidth + Math.random() * sideWidth;
         const startY = -10;
         const endY = container.clientHeight + 50;
 
-        gsap.set(currencyElement, { x: startX, y: startY, opacity: 1 });
+        gsap.set(element, { x: startX, y: startY, opacity: 1 });
 
-        gsap.to(currencyElement, {
+        gsap.to(element, {
             y: endY,
             opacity: 0,
             duration: 20,
             ease: "none",
             onComplete: () => {
-                currencyElement.remove();
+                pooledElements.push(element); // Return the element to the pool
             },
         });
     }
@@ -271,13 +312,13 @@ function randomFadeAndReposition() {
     let animationInterval;
     function startAnimation() {
         if (!animationInterval) {
-            // Immediately create the first set of symbols without delay
-            createAndAnimateElement("left");
-            createAndAnimateElement("right");
-            
+            // Start immediately with two elements
+            animateElement(createOrReuseElement(), "left");
+            animateElement(createOrReuseElement(), "right");
+
             animationInterval = setInterval(() => {
-                createAndAnimateElement("left");
-                createAndAnimateElement("right");
+                animateElement(createOrReuseElement(), "left");
+                animateElement(createOrReuseElement(), "right");
             }, 3000);
         }
     }
@@ -289,20 +330,27 @@ function randomFadeAndReposition() {
         }
     }
 
-    // Remove elements on stop to prevent accumulation
+    // Remove elements on stop to prevent accumulation (empty pool)
     function removeAllSymbols() {
+        gsap.killTweensOf(container.querySelectorAll("text")); // Stop any active animations
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
+        pooledElements = []; // Clear the element pool
     }
 
+    // Throttling visibility change event handling
+    let visibilityThrottleTimeout;
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            stopAnimation();
-            removeAllSymbols();
-        } else {
-            startAnimation();
-        }
+        if (visibilityThrottleTimeout) clearTimeout(visibilityThrottleTimeout);
+        visibilityThrottleTimeout = setTimeout(() => {
+            if (document.hidden) {
+                stopAnimation();
+                removeAllSymbols();
+            } else {
+                startAnimation();
+            }
+        }, 100);
     });
 
     startAnimation();
@@ -311,7 +359,6 @@ function randomFadeAndReposition() {
   
 
 
-// Optimized line creation and animation
 const lineGroup = document.querySelector("#dottedLine");
 const lineSpacing = 103;
 const numberOfLines = 5;
@@ -319,28 +366,40 @@ const startingX = 586;
 const startingY = 641;
 const endingY = 800;
 
+const fragment = document.createDocumentFragment(); // Batch DOM manipulations
+
 for (let i = 0; i < numberOfLines; i++) {
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", startingX + i * lineSpacing);
-    line.setAttribute("y1", startingY);
-    line.setAttribute("x2", startingX + i * lineSpacing);
-    line.setAttribute("y2", endingY);
-    line.setAttribute("stroke", "#fff");
-    line.setAttribute("stroke-width", 10);
-    line.setAttribute("stroke-dasharray", "20, 20");
-    line.setAttribute("stroke-linecap", "round");
 
-    lineGroup.appendChild(line);
+    // Set initial attributes using GSAP.set for better performance
+    gsap.set(line, {
+        attr: {
+            x1: startingX + i * lineSpacing,
+            y1: startingY,
+            x2: startingX + i * lineSpacing,
+            y2: endingY
+        },
+        strokeDasharray: "20, 20",
+        strokeWidth: 10,
+        strokeLinecap: "round",
+        stroke: "#fff"
+    });
 
+    fragment.appendChild(line);
+
+    // Animate strokeDashoffset using frame-based animation for smooth performance
     gsap.to(line, {
         strokeDashoffset: "+=40",
         duration: 1,
         ease: "none",
         repeat: -1,
-        useFrames: true // Lower recalculation frequency
+        useFrames: false // Stick with frame-based animation for reduced recalculations
     });
 }
-  
+
+// Append all lines at once to the DOM
+lineGroup.appendChild(fragment);
+
   /*
 ============================
   LANDING ANIMATION ENDS
@@ -355,59 +414,76 @@ const validNumbers = [
     20, 22, 23, 24, 25, 26, 27, 28, 29, 30
 ];
 
-// Immediately display the first random number
-const initialIndex = Math.floor(Math.random() * validNumbers.length);
-countElement.textContent = String(validNumbers[initialIndex]).padStart(2, '0');
+let shuffledNumbers = [...validNumbers]; // Clone the array for shuffling
+let currentIndex = 0;
 
-// GSAP animation to count numbers randomly between 0-30, excluding numbers with '1'
+// Function to shuffle the array using Fisher-Yates algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Initialize with the first shuffled number
+shuffleArray(shuffledNumbers);
+countElement.textContent = String(shuffledNumbers[currentIndex]).padStart(2, '0');
+currentIndex++;
+
+// GSAP animation for the random number change
 gsap.to({}, {
-    duration: 1.5, // Duration in seconds for each number change
+    duration: 1.5, // Duration of each number change
     repeat: -1, // Infinite loop
-    ease: "power2.inOut", // Smooth ease for fading effect
-    onRepeat: function () {
-        // Generate a random index from the valid numbers array
-        const randomIndex = Math.floor(Math.random() * validNumbers.length);
-        const randomNumber = validNumbers[randomIndex];
-        
-        // Fade out the current number, change it, then fade in the new number
+    ease: "power2.inOut", // Smooth easing effect
+    onRepeat: () => {
+        if (currentIndex >= shuffledNumbers.length) {
+            shuffleArray(shuffledNumbers); // Reshuffle when all numbers are used
+            currentIndex = 0; // Reset the index
+        }
+        const randomNumber = shuffledNumbers[currentIndex];
+        currentIndex++;
+
+        // Combine fade out, text change, and fade in into a single animation
         gsap.to(countElement, {
-            opacity: 0,
-            duration: 0.2,
-            onComplete: function() {
-                countElement.textContent = String(randomNumber).padStart(2, '0');
-                gsap.to(countElement, { opacity: 1, duration: 0.2 });
-            }
+            keyframes: [
+                { autoAlpha: 0, duration: 0.2 }, // Fade out
+                {
+                    autoAlpha: 1, duration: 0.2, delay: 0, // Fade back in
+                    onStart: () => {
+                        countElement.textContent = String(randomNumber).padStart(2, '0'); // Update number
+                    }
+                }
+            ]
         });
     }
 });
 
 
-  
-  // GSAP animation to randomly change the color of one of the dots every second
-  const circles = document.querySelectorAll('circle.calendarDots');
-  
-  function changeRandomCircleColor() {
-    /// Reset all circles to white
-    circles.forEach(circle => {
-      circle.style.fill = '#fff';
-      circle.style.stroke = 'none';
-    });
-    
-    // Select a random circle
-    const randomIndex = Math.floor(Math.random() * circles.length);
-    const randomCircle = circles[randomIndex];
-    
-    // Change the color of the selected circle
-    randomCircle.style.fill = '#7ED348'; // Change to red for visibility
-    randomCircle.style.stroke = '#fff';
-    randomCircle.style.strokeWidth = '1px'; // Change to red for visibility
-  }
+const circles = document.querySelectorAll('circle.calendarDots');
+let circleIndex = 0; // To keep track of the current circle
 
-  // GSAP timeline to repeat the color change every second
-  gsap.timeline({ repeat: -1, repeatDelay: 1.5 })
-    .call(changeRandomCircleColor);
+// Function to change the color of the next circle and reset the previous one
+function changeNextCircleColor() {
+  // Reset the previous circle
+  const prevCircle = circles[(circleIndex - 1 + circles.length) % circles.length];
+  gsap.to(prevCircle, { fill: '#fff', stroke: 'none', duration: 0.5 });
+
+  // Change the color of the current circle
+  const nextCircle = circles[circleIndex];
+  gsap.to(nextCircle, { fill: '#7ED348', stroke: '#fff', duration: 0.5 });
+
+  // Increment circleIndex, reset if we've reached the end
+  circleIndex = (circleIndex + 1) % circles.length;
+}
+
+// GSAP timeline to repeat the color change every 1.5 seconds
+gsap.timeline({ repeat: -1, repeatDelay: 1.5 })
+  .call(changeNextCircleColor);
+
 
   
+
+
 // Elements to animate
 const elements = document.querySelectorAll(".circleRotation");
 
@@ -448,14 +524,14 @@ function animate(time) {
   const progress = (elapsed % duration) / duration;
   const currentAngleOffset = progress * Math.PI * 2;
 
-  // Update each element's position
+  // Update each element's position using CSS transform (hardware accelerated)
   elementData.forEach(({ element, initialX, initialY, initialAngle }) => {
     const angle = initialAngle + currentAngleOffset;
     const x = centerX + radius * Math.cos(angle);
     const y = centerY + radius * Math.sin(angle);
 
-    // Use direct translation to move the element to the calculated position
-    element.setAttribute("transform", `translate(${x - initialX}, ${y - initialY})`);
+    // Use CSS transform to translate the element (hardware-accelerated)
+    element.style.transform = `translate(${x - initialX}px, ${y - initialY}px)`;
   });
 
   // Request the next frame
@@ -468,7 +544,10 @@ requestAnimationFrame(animate);
   
   
 // Function to create fade-in/fade-out animations between two sets of elements
-function createSeamlessFadeAnimation(blog1Elements, blog2Elements) {
+function createSeamlessFadeAnimation(blog1Elements, blog2Elements, options = {}) {
+  // Default options for timing and staggering
+  const { fadeDuration = 1, delayBetween = .2, staggerDelay = 0.1 } = options;
+
   // Convert NodeLists to arrays for better manipulation
   const blog1Array = Array.from(blog1Elements);
   const blog2Array = Array.from(blog2Elements);
@@ -480,38 +559,29 @@ function createSeamlessFadeAnimation(blog1Elements, blog2Elements) {
   // Main timeline controlling the whole animation cycle
   const mainTimeline = gsap.timeline({ repeat: -1 });
 
-  // Timeline for fading out blog1 and fading in blog2
-  mainTimeline
-    .to(blog1Array, {
-      opacity: 0,
-      duration: 1,
-      delay: 1,
-      ease: "power1.inOut",
-      stagger: 0.1, // Staggered delay of 100ms between each element
-    })
-    .set(blog1Array, { visibility: 'hidden' }) // Set blog1 to hidden after fade-out
-    .set(blog2Array, { visibility: 'visible', opacity: 0 }) // Make blog2 visible before fading in
-    .to(blog2Array, {
-      opacity: 1,
-      duration: 1,
-      ease: "power1.inOut",
-      stagger: 0.1, // Staggered delay of 100ms for fade-in
-    })
-    .to(blog2Array, {
-      opacity: 0,
-      duration: 1,
-      delay: 2,
-      ease: "power1.inOut",
-      stagger: 0.1, // Staggered delay of 100ms for fade-out
-    })
-    .set(blog2Array, { visibility: 'hidden' }) // Set blog2 to hidden after fade-out
-    .set(blog1Array, { visibility: 'visible', opacity: 0 }) // Make blog1 visible before fading in
-    .to(blog1Array, {
-      opacity: 1,
-      duration: 1,
-      ease: "power1.inOut",
-      stagger: 0.1 // Staggered delay of 100ms for fade-in
-    });
+  // Reusable function to create fade transition between two element arrays
+  function createFadeTransition(fromElements, toElements) {
+    return mainTimeline
+      .to(fromElements, {
+        opacity: 0,
+        duration: fadeDuration,
+        ease: "power1.inOut",
+        stagger: staggerDelay
+      })
+      .set(fromElements, { visibility: 'hidden' }) // Hide the "from" elements
+      .set(toElements, { visibility: 'visible', opacity: 0 }) // Show the "to" elements but keep opacity 0
+      .to(toElements, {
+        opacity: 1,
+        duration: fadeDuration,
+        ease: "power1.inOut",
+        stagger: staggerDelay,
+        delay: delayBetween // Delay before starting fade-in
+      });
+  }
+
+  // Fade transitions between blog1 -> blog2, and then blog2 -> blog1
+  createFadeTransition(blog1Array, blog2Array);
+  createFadeTransition(blog2Array, blog1Array);
 }
 
 // Apply the animation to all elements with the class `.blog1` and `.blog2`
@@ -520,7 +590,11 @@ const blog2Elements = document.querySelectorAll('.blog2');
 
 // Only create animation if both blog1 and blog2 elements exist
 if (blog1Elements.length > 0 && blog2Elements.length > 0) {
-  createSeamlessFadeAnimation(blog1Elements, blog2Elements);
+  createSeamlessFadeAnimation(blog1Elements, blog2Elements, {
+    fadeDuration: 1,  // Customize fade duration if needed
+    delayBetween: .2,  // Delay between transitions
+    staggerDelay: 0.1 // Staggered delay for smoother animations
+  });
 }
 
 
