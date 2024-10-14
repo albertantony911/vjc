@@ -965,6 +965,21 @@ html {
   height: 1.15rem;
 }
 
+.size-\[75svw\] {
+  width: 75svw;
+  height: 75svw;
+}
+
+.size-\[80svw\] {
+  width: 80svw;
+  height: 80svw;
+}
+
+.size-\[85svw\] {
+  width: 85svw;
+  height: 85svw;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -2167,6 +2182,18 @@ svg {
     height: 100%;
   }
 
+  .max-md\:h-\[50svh\] {
+    height: 50svh;
+  }
+
+  .max-md\:h-\[45svh\] {
+    height: 45svh;
+  }
+
+  .max-md\:w-\[45svh\] {
+    width: 45svh;
+  }
+
   .max-md\:gap-10 {
     gap: 2.5rem;
   }
@@ -2347,6 +2374,11 @@ svg {
   .md\:size-\[8svh\] {
     width: 8svh;
     height: 8svh;
+  }
+
+  .md\:size-\[35svh\] {
+    width: 35svh;
+    height: 35svh;
   }
 
   .md\:h-14 {

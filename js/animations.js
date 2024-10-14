@@ -682,5 +682,45 @@ window.addEventListener('load', function() {
 
   
   
+
+
+
+
+
+
+
+
+
+
+
+
+// The binary sequence controlling opacity
+        const sequence = '01111101101110101';
+        const element = document.getElementById('popper');
+
+        // Function to handle flashing based on sequence using GSAP
+        function playFlashingSequence() {
+            let index = 0;
+
+            function updateOpacity() {
+                // Set opacity based on the current value in the sequence using GSAP
+                gsap.to(element, { duration: 0.1, opacity: sequence[index] === '1' ? 1 : 0 });
+                
+                // Move to the next value in the sequence
+                index = (index + 1) % sequence.length;
+
+                // Set timeout for next update
+                setTimeout(updateOpacity, 100); // 100ms per step
+            }
+
+            // Start the flashing
+            updateOpacity();
+        }
+
+        // Start the animation
+        playFlashingSequence();
+
+
+
 });
 
