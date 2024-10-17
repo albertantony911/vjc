@@ -21,36 +21,49 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
  
 
-function gsapCounter(target, duration = 3, start = 0, elementId, suffix = '+') {
+function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+') {
     const counterElement = document.getElementById(elementId);
-
     if (!counterElement) return;
 
-    // GSAP animation setup
-    gsap.fromTo(counterElement, {
-        textContent: start // Start from initial value
-    }, {
-        textContent: target, // End at the target value
-        duration: duration, // Duration for the animation
-        scrollTrigger: {
-            trigger: counterElement, // Trigger when the counter is in the viewport
-            start: "top 80%", // Adjust this based on your scroll point
-            toggleActions: "play none none none" // Play the animation only once
-        },
-        snap: { textContent: 1 }, // Snap to integers
-        onUpdate: function () {
-            // Update the text content with rounded values and suffix
-            counterElement.textContent = `${Math.round(counterElement.textContent)}${suffix}`;
-        },
-        ease: "power1.inOut" // Smooth ease for the counter
+    // Variables for manual interpolation
+    const frameRate = 60; // Approximate frames per second
+    const totalFrames = Math.round(duration * frameRate);
+    const increment = (target - start) / totalFrames;
+    let currentValue = start;
+
+    // Create ScrollTrigger to initiate the animation
+    ScrollTrigger.create({
+        trigger: counterElement,
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+            // Use GSAP's built-in timeline to smoothly animate counter
+            gsap.to({ value: start }, {
+                value: target,
+                duration: duration,
+                ease: "power1.inOut",
+                onUpdate: function () {
+                    currentValue += increment;
+                    counterElement.textContent = `${Math.round(currentValue)}${suffix}`;
+                },
+                onComplete: function () {
+                    // Ensure final value is set correctly
+                    counterElement.textContent = `${Math.round(target)}${suffix}`;
+                }
+            });
+        }
     });
 }
 
 // Example usage
-gsapCounter(3000, 3, 0, "counter1", '+');
-gsapCounter(36, 3, 0, "counter2", '+');
-gsapCounter(40, 3, 0, "counter3", '+');
-gsapCounter(50, 3, 0, "counter4", '%');
+gsapCounterOptimized(3000, 3, 0, "counter1", '+');
+gsapCounterOptimized(36, 3, 0, "counter2", '+');
+gsapCounterOptimized(40, 3, 0, "counter3", '+');
+gsapCounterOptimized(50, 3, 0, "counter4", '%');
+
+  
+  
+  
 gsap.utils.toArray('.periodBox').forEach((box) => {
   gsap.fromTo(box, 
     { 
