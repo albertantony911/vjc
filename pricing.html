@@ -122,15 +122,15 @@
 
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white drop-shadow-xl">
-
+    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
+    
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
                 <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
             </a>
         </div>
-
+    
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
             id="menuButtonContainer">
@@ -145,28 +145,27 @@
                 </svg>
             </button>
         </div>
-
+    
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
             class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
             <ul id="mainMenu"
                 class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
-
+    
                 <!-- Navigation Links -->
                 <li><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
                         class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
-
+    
                 <li><a href="./pricing.html">PRICING</a></li>
-
-                <li class="mt-5"><a href="./faq.html">FAQ</a></li>
-                <li><a href="./contact.html">CONTACT</a></li>
+    
+                <li class="mt-5"><a href="./contact.html">CONTACT</a></li>
                 <li><a href="./resources.html">RESOURCES</a></li>
-
-
+    
+    
             </ul>
-
+    
             <ul id="subMenu"
                 class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
                 <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
@@ -177,18 +176,18 @@
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img
                         class="size-6  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-
+    
             </ul>
-
-
+    
+    
         </nav>
-
-
+    
+    
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
             class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
-
+    
                 <!-- Home -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -197,7 +196,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-
+    
                 <!-- About -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -206,9 +205,9 @@
                         <span>About</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Our Services with Submenu -->
                 <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
@@ -227,10 +226,8 @@
                         x-transition:leave="transition ease duration-300 transform"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-                        aria-label="Submenu">
-                        <span
-                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
                         <div class="relative z-10 w-full px-2 py-6 bg-white">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
@@ -266,7 +263,7 @@
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
-
+    
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
@@ -279,12 +276,12 @@
                         </div>
                     </div>
                 </li>
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
                 <!-- Pricing -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -293,9 +290,9 @@
                         <span>Pricing</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Resources -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -304,18 +301,9 @@
                         <span>Resources</span>
                     </a>
                 </li>
-
-
-
-                <!-- FAQ -->
-                <li class="relative block">
-                    <!-- Navigation Link with ARIA Label -->
-                    <a href="./faq.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-                        <span>FAQ</span>
-                    </a>
-                </li>
-
+    
+    
+    
                 <!-- Contact Us -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -326,7 +314,7 @@
                 </li>
             </ul>
         </nav>
-
+    
     </header>
 
     <main>

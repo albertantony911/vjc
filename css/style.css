@@ -2502,6 +2502,11 @@ svg {
     padding-bottom: 7rem;
   }
 
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
   .md\:pb-32 {
     padding-bottom: 8rem;
   }
@@ -2560,6 +2565,10 @@ svg {
 
   .md\:pt-14 {
     padding-top: 3.5rem;
+  }
+
+  .md\:pb-20 {
+    padding-bottom: 5rem;
   }
 
   .md\:text-left {

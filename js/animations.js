@@ -1,19 +1,7 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
   // Register GSAP plugins
   gsap.registerPlugin(
-    Flip, 
-    ScrollTrigger, 
-    Observer, 
-    ScrollToPlugin, 
-    Draggable, 
-    MotionPathPlugin, 
-    EaselPlugin, 
-    PixiPlugin, 
-    TextPlugin, 
-    RoughEase, 
-    ExpoScaleEase, 
-    SlowMo, 
-    CustomEase
+    ScrollTrigger
   );
 
  
