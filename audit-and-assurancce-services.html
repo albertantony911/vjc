@@ -30,14 +30,17 @@
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap">
+    <link href="https://fonts.cdnfonts.com/css/noteworthy" rel="stylesheet">
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- Include Motion One using a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@motionone/dom@latest/dist/motion.min.js"></script>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Observer.min.js"></script>
@@ -47,11 +50,19 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EaselPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/PixiPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
-
-
-    <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+
+
+
+
+
+
+
+
 
 
     <!--  Fonts -->
@@ -60,6 +71,7 @@
     <!-- Custom Scripts -->
     <script src="./js/main.js" defer></script>
     <script src="./js/animations.js" defer></script>
+    <script type="module" src="./js/globe.js"></script>
 
     <!-- SEO Meta Tags -->
     <meta name="author" content="vjc">
@@ -126,14 +138,14 @@
 
     <!-- Header Section -->
     <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-    
+
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
                 <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
             </a>
         </div>
-    
+
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
             id="menuButtonContainer">
@@ -148,27 +160,27 @@
                 </svg>
             </button>
         </div>
-    
+
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
             class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
             <ul id="mainMenu"
                 class="sm:text-xl font-thin shadow-md  text-white z-20 flex flex-col items-end px-[15vw] justify-center h-screen gap-[4vw] text-[7vw] antialiased">
-    
+
                 <!-- Navigation Links -->
                 <li><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
                         class="size-8 bounce-right" src="./img/right-arrow.svg" alt=""></li>
-    
+
                 <li><a href="./pricing.html">PRICING</a></li>
-    
+
                 <li class="mt-5"><a href="./contact.html">CONTACT</a></li>
                 <li><a href="./resources.html">RESOURCES</a></li>
-    
-    
+
+
             </ul>
-    
+
             <ul id="subMenu"
                 class="sm:text-xl   font-thin  text-white z-20 flex flex-col items-end pr-[15vw]  justify-center h-screen gap-[1vw] text-[4.5vw] ">
                 <li class=" text-[9vw] font-thin"><a href="#">SERVICES</a></li>
@@ -179,18 +191,18 @@
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-24 text-[6vw] font-thin flex flex-row items-center"><img
                         class="size-6  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-    
+
             </ul>
-    
-    
+
+
         </nav>
-    
-    
+
+
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
             class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
-    
+
                 <!-- Home -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -199,7 +211,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-    
+
                 <!-- About -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -208,9 +220,9 @@
                         <span>About</span>
                     </a>
                 </li>
-    
-    
-    
+
+
+
                 <!-- Our Services with Submenu -->
                 <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
@@ -229,8 +241,10 @@
                         x-transition:leave="transition ease duration-300 transform"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
-                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
+                        aria-label="Submenu">
+                        <span
+                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
                         <div class="relative z-10 w-full px-2 py-6 bg-white">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
@@ -266,7 +280,7 @@
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
-    
+
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
@@ -279,12 +293,12 @@
                         </div>
                     </div>
                 </li>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
                 <!-- Pricing -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -293,9 +307,9 @@
                         <span>Pricing</span>
                     </a>
                 </li>
-    
-    
-    
+
+
+
                 <!-- Resources -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -304,9 +318,9 @@
                         <span>Resources</span>
                     </a>
                 </li>
-    
-    
-    
+
+
+
                 <!-- Contact Us -->
                 <li class="relative block">
                     <!-- Navigation Link with ARIA Label -->
@@ -317,15 +331,15 @@
                 </li>
             </ul>
         </nav>
-    
+
     </header>
 
     <main>
         <!-- Hero Section -->
         <section>
-            <div class="h-[80svh]  md:flex-row flex flex-col-reverse ">
+            <div class="h-[90svh]  md:flex-row flex flex-col-reverse ">
                 <div
-                    class="md:w-1/2 max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
+                    class="md:w-[60%] max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
 
                     <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
                         aria-label="Main Title">
@@ -333,51 +347,47 @@
                     </h1>
                     <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
                         aria-label="Hero Description">
-                        V. Jaiswal and Co, India's leading offshore accounting firm, has been driving business success
-                        since 1988.
+                        In today's fast-paced business world, instant financial insights are crucial. VJC's Cloud
+                        Accounting services offer
+                        secure, efficient solutions using advanced cloud technology to help your business thrive.
                     </p>
 
-                    <div class=" flex flex-row justify-start  gap-8 md:gap-5 max-md:hidden ">
+                    <div
+                        class=" flex flex-row justify-start  gap-8 md:gap-5 max-md:hidden md:text-3xl landscape:lg:text-xs landscape:text-xs text-[3vw] portrait:sm:text-[3vw] font-semibold text-center">
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Immediacy
                             </p>
                         </div>
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Collaborate
                             </p>
                         </div>
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Efficiency
                             </p>
                         </div>
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Adaptable
                             </p>
                         </div>
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Protected
                             </p>
                         </div>
                         <div class="flex flex-col w-[20svw] md:w-[13%]">
                             <img class="" src="./img/icon.svg" alt="">
-                            <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                                role="header" aria-label="Frequently Asked Questions Header">
-                                Title
+                            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                                Accessible
                             </p>
                         </div>
 
@@ -393,77 +403,453 @@
 
 
 
-                <div class="md:w-1/2 max-md:h-[60svh]  flex flex-col w-full ">
-                    <div
-                        class="size-[65svw] md:size-[40svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+                <div class="md:w-[40%] max-md:h-[65svh]  flex flex-col w-full gradient-bg ">
+                    <div class=" gradient-bg-transparent  flex flex-col h-full">
+                        <svg id="floater" class="md:w-[90%] w-[100%]  m-auto" viewBox="0 0 2011 1960"
+                            xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:.73">
+                            <g id="circular-background">
+                                <!-- Circle 1 -->
+                                <path
+                                    d="M1025.78 539.423c286.83 0 519.69 232.863 519.69 519.687 0 286.82-232.86 519.68-519.69 519.68-286.819 0-519.682-232.86-519.682-519.68 0-286.824 232.863-519.687 519.682-519.687m0 22.597c274.35 0 497.09 222.738 497.09 497.09 0 274.35-222.74 497.09-497.09 497.09-274.348 0-497.085-222.74-497.085-497.09 0-274.352 222.737-497.09 497.085-497.09"
+                                    style="fill:#fff" />
+
+                                <!-- Circle 2 -->
+                                <path
+                                    d="M1026.16 307.434c414.46 0 750.95 336.448 750.95 750.856 0 414.41-336.49 750.86-750.95 750.86-414.455 0-750.943-336.45-750.943-750.86 0-414.408 336.488-750.856 750.943-750.856m0 9.842c409.03 0 741.11 332.038 741.11 741.014 0 408.98-332.08 741.02-741.11 741.02-409.022 0-741.099-332.04-741.099-741.02 0-408.976 332.077-741.014 741.099-741.014"
+                                    style="fill:#fff" />
+
+
+                            </g>
+
+                            <!-- Group: Box with Drop Shadow -->
+                            <g class="circleRotation">
+                                <g id="box-with-shadow" style="filter:url(#a)">
+                                    <path
+                                        d="M424.224 773.696v147.1c0 14.94-12.13 27.07-27.071 27.07h-114.39c-14.94 0-27.07-12.13-27.07-27.07v-147.1c0-14.941 12.13-27.07 27.07-27.07h114.39c14.941 0 27.071 12.129 27.071 27.07"
+                                        style="fill:#01377d;fill-opacity:.15" />
+                                </g>
+
+                                <!-- Group: Box without Shadow -->
+                                <g id="box-without-shadow">
+                                    <path
+                                        d="M424.224 773.696v147.1c0 14.94-12.13 27.07-27.071 27.07h-114.39c-14.94 0-27.07-12.13-27.07-27.07v-147.1c0-14.941 12.13-27.07 27.07-27.07h114.39c14.941 0 27.071 12.129 27.071 27.07"
+                                        style="fill:#01377d" />
+                                </g>
+
+                                <!-- Group: Green Controls on Box -->
+                                <g id="green-controls">
+                                    <path
+                                        d="M405.969 879.016v.056c0 6.163-5.004 11.167-11.167 11.167h-66.836c-6.162 0-11.166-5.004-11.166-11.167v-.056c0-6.163 5.004-11.166 11.166-11.166h66.836c6.163 0 11.167 5.003 11.167 11.166m0-33.897v.056c0 6.163-5.004 11.166-11.167 11.166h-38.427c-6.163 0-11.167-5.003-11.167-11.166v-.056c0-6.163 5.004-11.167 11.167-11.167h38.427c6.163 0 11.167 5.004 11.167 11.167m-3.504 67.795v.056c0 6.163-5.004 11.166-11.166 11.166h-92.181c-6.163 0-11.166-5.003-11.166-11.166v-.056c0-6.163 5.003-11.167 11.166-11.167h92.181c6.162 0 11.166 5.004 11.166 11.167"
+                                        style="fill:#7ed348" />
+                                </g>
+
+                                <!-- Group: Ellipses with Shadows -->
+                                <g id="ellipses-with-shadows">
+                                    <!-- Shadow Ellipse -->
+                                    <g style="filter:url(#b)">
+                                        <ellipse cx="290.747" cy="790.9" rx="81.156" ry="81.755"
+                                            style="fill:#01367c;fill-opacity:.15" />
+                                    </g>
+
+                                    <!-- Main Ellipse -->
+                                    <ellipse cx="290.747" cy="790.9" rx="81.676" ry="81.755" style="fill:#fff" />
+                                </g>
+
+                                <!-- Group: Blue Box with Filter -->
+                                <g id="blue-box-with-filter" style="filter:url(#c)">
+                                    <path style="fill:#139fff;fill-opacity:.32"
+                                        d="M268.995 761.427h111.324v124.487H268.995z" />
+                                </g>
+
+                                <!-- Group: Blue Paths with Complex Shapes -->
+                                <g id="blue-paths">
+                                    <path
+                                        d="m334.415 765.453.034.059c3.703 6.461 1.483 14.746-4.955 18.49l-64.049 37.253c-6.438 3.744-14.671 1.538-18.374-4.923l-.033-.059c-3.703-6.461-1.483-14.747 4.954-18.491l64.05-37.252c6.437-3.744 14.67-1.538 18.373 4.923m-68.538-17.948c6.43-3.74 14.665-1.517 18.377 4.961s1.506 14.772-4.924 18.512-14.664 1.517-18.377-4.96-1.506-14.773 4.924-18.513m36.288 63.316c6.43-3.74 14.664-1.517 18.376 4.96s1.506 14.773-4.924 18.513-14.664 1.517-18.376-4.961-1.506-14.772 4.924-18.512"
+                                        style="fill:#01377d" />
+                                </g>
+                            </g>
+                            <!-- Group: Large Box with Green Details and Shadow -->
+                            <g class="circleRotation">
+                                <g id="large-box-with-green-details" style="filter:url(#d)">
+                                    <path
+                                        d="M1950 742.848v171.315c0 16.6-13.48 30.077-30.08 30.077h-127.1c-16.6 0-30.08-13.477-30.08-30.077V742.848c0-16.601 13.48-30.078 30.08-30.078h127.1c16.6 0 30.08 13.477 30.08 30.078"
+                                        style="fill:#01377d;fill-opacity:0" />
+                                </g>
+
+                                <!-- Group: White Box with Green Stripes -->
+                                <g id="white-box-with-stripes">
+                                    <path
+                                        d="M1829.05 742.848v171.315c0 16.6-13.48 30.077-30.08 30.077h-127.1c-16.6 0-30.08-13.477-30.08-30.077V742.848c0-16.601 13.48-30.078 30.08-30.078h127.1c16.6 0 30.08 13.477 30.08 30.078Z"
+                                        style="fill:#fff;stroke:#18cd51;stroke-width:.13px" />
+
+                                    <!-- Green Stripes -->
+                                    <path
+                                        d="M1792.9 749.436v.012c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.67c.87 0 1.58.704 1.58 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1792.9 761.124v.011c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.011c0-.868.7-1.573 1.57-1.573h55.67c.87 0 1.58.705 1.58 1.573Z"
+                                        style="fill:#7cd24c;stroke:light border-c;stroke-width:.13px" />
+                                    <path
+                                        d="M1792.9 772.783v.012c0 .868-.71 1.573-1.58 1.573h-55.67a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.67c.87 0 1.58.704 1.58 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 812.653v.012c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573v-.012c0-.868.7-1.572 1.57-1.572h55.68c.86 0 1.57.704 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 824.341v.011c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573v-.011c0-.868.7-1.573 1.57-1.573h55.68c.86 0 1.57.705 1.57 1.573Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 836v.012c0 .868-.71 1.573-1.57 1.573h-55.68a1.57 1.57 0 0 1-1.57-1.573V836c0-.868.7-1.572 1.57-1.572h55.68c.86 0 1.57.704 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 890.836v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 878.998v.012c0 .868-.71 1.573-1.57 1.573h-89.64c-.87 0-1.58-.705-1.58-1.573v-.012c0-.867.71-1.572 1.58-1.572h89.64c.86 0 1.57.705 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 867.256v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.573 1.58-1.573h89.64c.86 0 1.57.705 1.57 1.573Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 902.523v.012c0 .868-.71 1.573-1.57 1.573h-89.64c-.87 0-1.58-.705-1.58-1.573v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                    <path
+                                        d="M1791.66 914.183v.012c0 .868-.71 1.572-1.57 1.572h-89.64c-.87 0-1.58-.704-1.58-1.572v-.012c0-.868.71-1.572 1.58-1.572h89.64c.86 0 1.57.704 1.57 1.572Z"
+                                        style="fill:#7cd24c;stroke:light border-lightGreen;stroke-width:.13px" />
+                                </g>
+                                <g style="filter:url(#e)">
+                                    <path
+                                        d="M1824.01 891.097v6.578c0 13.655-11.08 24.741-24.74 24.741h-44.68v-32.295c0-17.285 14.03-31.319 31.32-31.319h5.81c17.82 0 32.29 14.471 32.29 32.295"
+                                        style="fill:#4980ff;fill-opacity:.29" />
+                                </g>
+                                <path
+                                    d="M1767.88 850.246c15.87-9.17 36.18-3.72 45.34 12.163 9.15 15.882 3.71 36.222-12.15 45.392s-36.17 3.72-45.33-12.163-3.72-36.222 12.14-45.392m6.38 11.059c9.77-5.646 22.27-2.291 27.91 7.489s2.29 22.302-7.48 27.948c-9.76 5.646-22.27 2.29-27.91-7.489s-2.28-22.302 7.48-27.948"
+                                    style="fill:#01377d" />
+                                <path
+                                    d="m1807.48 903.616 16.81 29.154c2.1 3.654.85 8.334-2.8 10.445s-8.33.858-10.43-2.796l-16.81-29.154a7.645 7.645 0 0 1 2.8-10.444 7.63 7.63 0 0 1 10.43 2.795M1689.3 744.113v17.016l14.95-8.097a17.1 17.1 0 0 1 2.05 8.097c0 9.392-7.62 17.017-17 17.017s-16.99-7.625-16.99-17.017c0-9.397 7.61-17.016 16.99-17.016"
+                                    style="fill:#01377d" />
+                                <path
+                                    d="M1689.3 744.113v17.016l14.95-8.097a17.1 17.1 0 0 1 2.05 8.097c0 9.392-7.62 17.017-17 17.017s-16.99-7.625-16.99-17.017c0-9.397 7.61-17.016 16.99-17.016m-8.66 65.985v27.679a2.5 2.5 0 0 1-2.5 2.499h-3.33a2.5 2.5 0 0 1-2.5-2.499v-27.679a2.5 2.5 0 0 1 2.5-2.499h3.33a2.5 2.5 0 0 1 2.5 2.499m12.83 13.82v13.859a2.5 2.5 0 0 1-2.5 2.499h-3.33a2.5 2.5 0 0 1-2.5-2.499v-13.859a2.5 2.5 0 0 1 2.5-2.499h3.33a2.5 2.5 0 0 1 2.5 2.499m12.83-7.049v20.908a2.5 2.5 0 0 1-2.5 2.499h-3.34c-1.37 0-2.49-1.12-2.49-2.499v-20.908a2.5 2.5 0 0 1 2.49-2.499h3.34a2.5 2.5 0 0 1 2.5 2.499"
+                                    style="fill:#01377d" />
+                                <ellipse cx="1686.93" cy="914.189" rx="3.257" ry="3.262" style="fill:#7ed348" />
+                                <ellipse cx="1686.93" cy="902.529" rx="3.257" ry="3.262" style="fill:#7ed348" />
+                                <ellipse cx="1686.93" cy="890.725" rx="3.257" ry="3.262" style="fill:#7ed348" />
+                                <ellipse cx="1686.93" cy="879.004" rx="3.257" ry="3.262" style="fill:#7ed348" />
+                                <ellipse cx="1686.93" cy="867.262" rx="3.257" ry="3.262" style="fill:#7ed348" />
+                            </g>
+
+
+                            <g class="circleRotation">
+
+                                <path
+                                    d="M1041.04 323.211v102.952c0 5.354-4.35 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.35 0 9.7 4.346 9.7 9.7"
+                                    style="fill:#002f70" />
+                                <path
+                                    d="M1021.64 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-14.96 0 7.48 7.48 0 0 1 7.48-7.477m0 3.738c2.06 0 3.74 1.675 3.74 3.739a3.743 3.743 0 0 1-3.74 3.738 3.743 3.743 0 0 1-3.74-3.738 3.744 3.744 0 0 1 3.74-3.739"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1030.36 371.366v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.673v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.658v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633"
+                                    style="fill:#7ed348" />
+                                <path
+                                    d="M1082.12 323.211v102.952c0 5.354-4.34 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.36 0 9.7 4.346 9.7 9.7"
+                                    style="fill:#002f70" />
+                                <path
+                                    d="M1062.72 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-7.48 7.476c-4.12 0-7.47-3.35-7.47-7.476 0-4.127 3.35-7.477 7.47-7.477m0 3.738c2.07 0 3.74 1.675 3.74 3.739a3.735 3.735 0 1 1-7.47 0 3.735 3.735 0 0 1 3.73-3.739"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1071.44 371.366v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633m0 10.673v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633m0 10.658v1.688c0 .901-.73 1.633-1.63 1.633h-14.17c-.9 0-1.63-.732-1.63-1.633v-1.688c0-.901.73-1.633 1.63-1.633h14.17c.9 0 1.63.732 1.63 1.633"
+                                    style="fill:#7ed348" />
+                                <path
+                                    d="M1122.95 323.211v102.952c0 5.354-4.35 9.7-9.7 9.7h-19.4c-5.35 0-9.7-4.346-9.7-9.7V323.211c0-5.354 4.35-9.7 9.7-9.7h19.4c5.35 0 9.7 4.346 9.7 9.7"
+                                    style="fill:#002f70" />
+                                <path
+                                    d="M1103.55 408.084a7.48 7.48 0 0 1 7.48 7.477 7.48 7.48 0 0 1-14.96 0 7.48 7.48 0 0 1 7.48-7.477m0 3.738c2.06 0 3.74 1.675 3.74 3.739a3.743 3.743 0 0 1-3.74 3.738 3.743 3.743 0 0 1-3.74-3.738 3.744 3.744 0 0 1 3.74-3.739"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1112.27 371.366v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.673v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633m0 10.658v1.688a1.64 1.64 0 0 1-1.64 1.633h-14.16c-.9 0-1.64-.732-1.64-1.633v-1.688c0-.901.74-1.633 1.64-1.633h14.16c.9 0 1.64.732 1.64 1.633"
+                                    style="fill:#7ed348" />
+                                <g style="filter:url(#f)">
+                                    <path
+                                        d="M1105.24 355.626H930.752c-23.634 0-42.823-18.31-42.823-40.863s19.189-40.863 42.823-40.863h.121c1.943-28.696 26.983-51.429 57.542-51.429 4.935 0 9.727.593 14.305 1.708 12.94-16.337 33.46-26.902 56.56-26.902 32.58 0 60.05 21.026 68.32 49.622 21.58 8.423 36.8 28.666 36.8 52.274 0 31.158-26.51 56.453-59.16 56.453"
+                                        style="fill:#01367c;fill-opacity:.15" />
+                                </g>
+                                <path
+                                    d="M1105.24 355.626H930.752c-23.634 0-42.823-18.31-42.823-40.863s19.189-40.863 42.823-40.863h.121c1.943-28.696 26.983-51.429 57.542-51.429 4.935 0 9.727.593 14.305 1.708 12.94-16.337 33.46-26.902 56.56-26.902 32.58 0 60.05 21.026 68.32 49.622 21.58 8.423 36.8 28.666 36.8 52.274 0 31.158-26.51 56.453-59.16 56.453"
+                                    style="fill:#fff;stroke:#fff;stroke-width:.13px;stroke-linecap:round" />
+                                <g style="filter:url(#g)">
+                                    <path style="fill:#139fff;fill-opacity:.32"
+                                        d="M997.533 292.686h136.302v73.694H997.533z" />
+                                </g>
+
+
+                            </g>
+
+                            <g class="circleRotation">
+                                <path
+                                    d="M1505.78 1733.45v14.6c0 1.91-1.55 3.46-3.45 3.46h-73.29c-1.91 0-3.45-1.55-3.45-3.46v-14.6c0-1.91 1.54-3.45 3.45-3.45h73.29c1.9 0 3.45 1.54 3.45 3.45"
+                                    style="fill:#01377d" />
+                                <path
+                                    d="M1588.91 1599.61v108.94c0 14.23-11.55 25.78-25.78 25.78h-194.89c-14.23 0-25.78-11.55-25.78-25.78v-108.94c0-14.23 11.55-25.78 25.78-25.78h194.89c14.23 0 25.78 11.55 25.78 25.78"
+                                    style="fill:#01367c" />
+                                <g style="filter:url(#h)">
+                                    <path
+                                        d="M1588.91 1599.61v108.94c0 14.23-11.55 25.78-25.78 25.78h-194.89c-14.23 0-25.78-11.55-25.78-25.78v-108.94c0-14.23 11.55-25.78 25.78-25.78h194.89c14.23 0 25.78 11.55 25.78 25.78"
+                                        style="fill:#01367c;fill-opacity:.15" />
+                                </g>
+                                <path
+                                    d="M1582.6 1603.25v101.66c0 12.77-10.36 23.13-23.13 23.13h-187.58c-12.76 0-23.13-10.36-23.13-23.13v-101.66c0-12.77 10.37-23.13 23.13-23.13h187.58c12.77 0 23.13 10.36 23.13 23.13"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1546.46 1711.98v.07c0 1.53-1.25 2.77-2.77 2.77h-156.01a2.77 2.77 0 0 1-2.77-2.77v-.07c0-1.53 1.24-2.78 2.77-2.78h156.01c1.52 0 2.77 1.25 2.77 2.78"
+                                    style="fill:#7cd24c" />
+                                <path
+                                    d="M1546.46 1711.98v.07c0 1.53-1.25 2.77-2.77 2.77h-156.01a2.77 2.77 0 0 1-2.77-2.77v-.07c0-1.53 1.24-2.78 2.77-2.78h156.01c1.52 0 2.77 1.25 2.77 2.78"
+                                    style="fill:#7cd24c" />
+                                <path
+                                    d="M1528.03 1684.7v22.44c0 1.17-.95 2.12-2.12 2.12h-4.23c-1.17 0-2.11-.95-2.11-2.12v-22.44c0-1.17.94-2.12 2.11-2.12h4.23c1.17 0 2.12.95 2.12 2.12"
+                                    style="fill:#002f70" />
+                                <path
+                                    d="M1523.8 1703.2c.89 0 1.62.73 1.62 1.63s-.73 1.63-1.62 1.63c-.9 0-1.64-.73-1.64-1.63s.74-1.63 1.64-1.63m0 .82c.45 0 .81.36.81.81s-.36.82-.81.82-.82-.37-.82-.82.37-.81.82-.81"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1525.7 1695.2v.36c0 .2-.16.36-.36.36h-3.09c-.2 0-.36-.16-.36-.36v-.36c0-.2.16-.36.36-.36h3.09c.2 0 .36.16.36.36m0 2.32v.37c0 .2-.16.36-.36.36h-3.09c-.2 0-.36-.16-.36-.36v-.37c0-.19.16-.35.36-.35h3.09c.2 0 .36.16.36.35m0 2.33v.37c0 .19-.16.35-.36.35h-3.09c-.2 0-.36-.16-.36-.35v-.37c0-.2.16-.36.36-.36h3.09c.2 0 .36.16.36.36"
+                                    style="fill:#7ed348" />
+                                <path
+                                    d="M1518.38 1684.7v22.44c0 1.17-.94 2.12-2.11 2.12h-4.23c-1.17 0-2.12-.95-2.12-2.12v-22.44c0-1.17.95-2.12 2.12-2.12h4.23c1.17 0 2.11.95 2.11 2.12"
+                                    style="fill:#002f70" />
+                                <path
+                                    d="M1514.15 1703.2a1.63 1.63 0 1 1 0 3.26 1.63 1.63 0 0 1 0-3.26m0 .82c.45 0 .82.36.82.81s-.37.82-.82.82-.81-.37-.81-.82.36-.81.81-.81"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1516.05 1695.2v.36c0 .2-.16.36-.35.36h-3.09c-.2 0-.36-.16-.36-.36v-.36c0-.2.16-.36.36-.36h3.09c.19 0 .35.16.35.36m0 2.32v.37c0 .2-.16.36-.35.36h-3.09c-.2 0-.36-.16-.36-.36v-.37c0-.19.16-.35.36-.35h3.09c.19 0 .35.16.35.35m0 2.33v.37c0 .19-.16.35-.35.35h-3.09c-.2 0-.36-.16-.36-.35v-.37c0-.2.16-.36.36-.36h3.09c.19 0 .35.16.35.36"
+                                    style="fill:#7ed348" />
+                                <g style="filter:url(#i)">
+                                    <path
+                                        d="M1443.37 1600.36H1488c30.05 0 54.45 24.4 54.45 54.45s-24.4 54.45-54.45 54.45h-44.63c-30.05 0-54.45-24.4-54.45-54.45s24.4-54.45 54.45-54.45"
+                                        style="fill:#67c1ff;fill-opacity:.29" />
+                                </g>
+                                <path
+                                    d="M1499.47 1682.58v26.68h-64.51c-1.69 0-3.07-1.38-3.07-3.07v-23.61c0-14.72 11.96-26.68 26.68-26.68h14.23c14.72 0 26.67 11.96 26.67 26.68"
+                                    style="fill:#01377d" />
+                                <path
+                                    d="M1499.47 1682.58v26.68h-64.51c-1.69 0-3.07-1.38-3.07-3.07v-23.61c0-14.72 11.96-26.68 26.68-26.68h14.23c14.72 0 26.67 11.96 26.67 26.68"
+                                    style="fill:#01377d" />
+                                <circle cx="1465.68" cy="1643.17" r="14.823" style="fill:#01377d" />
+                                <path
+                                    d="M1488.09 1688.25v15.35c0 3.12-2.54 5.66-5.67 5.66h-33.48c-3.12 0-5.66-2.54-5.66-5.66v-15.35c0-3.13 2.54-5.67 5.66-5.67h33.48c3.13 0 5.67 2.54 5.67 5.67"
+                                    style="fill:#fff" />
+                                <path
+                                    d="M1488.09 1688.25v15.35c0 3.12-2.54 5.66-5.67 5.66h-33.48c-3.12 0-5.66-2.54-5.66-5.66v-15.35c0-3.13 2.54-5.67 5.66-5.67h33.48c3.13 0 5.67 2.54 5.67 5.67"
+                                    style="fill:#fff" />
+                                <circle cx="1465.68" cy="1695.92" r="4.425" style="fill:#7ed348" />
+                            </g>
+
+                            <g class="circleRotation">
+
+                                <g style="filter:url(#j)">
+                                    <path
+                                        d="M703.386 1619.06v115.53c0 24.46-19.863 44.32-44.328 44.32h-88.656c-24.465 0-44.328-19.86-44.328-44.32v-115.53c0-24.47 19.863-44.33 44.328-44.33h88.656c24.465 0 44.328 19.86 44.328 44.33"
+                                        style="fill:#002f70;fill-opacity:.15" />
+                                </g>
+                                <path
+                                    d="M703.386 1619.06v115.53c0 24.46-19.863 44.32-44.328 44.32h-88.656c-24.465 0-44.328-19.86-44.328-44.32v-115.53c0-24.47 19.863-44.33 44.328-44.33h88.656c24.465 0 44.328 19.86 44.328 44.33"
+                                    style="fill:#002f70" />
+                                <path style="fill:#7ed348"
+                                    d="M566.152 1666.2h138.082v6.844H566.152zm-.848-31.87h138.082v21.26H565.304z" />
+                                <g style="filter:url(#k)">
+                                    <path
+                                        d="M677.724 1605.93v76.75c0 32.44-26.337 58.78-58.778 58.78h-77.648c-32.44 0-58.778-26.34-58.778-58.78v-76.75c0-32.44 26.338-58.78 58.778-58.78h77.648c32.441 0 58.778 26.34 58.778 58.78"
+                                        style="fill:#01367c;fill-opacity:.15" />
+                                </g>
+                                <path
+                                    d="M677.724 1605.93v76.75c0 32.44-26.337 58.78-58.778 58.78h-77.648c-32.44 0-58.778-26.34-58.778-58.78v-76.75c0-32.44 26.338-58.78 58.778-58.78h77.648c32.441 0 58.778 26.34 58.778 58.78"
+                                    style="fill:#fff" />
+                                <g style="filter:url(#l)">
+                                    <path
+                                        d="M665.503 1619.97h.565c6.545 0 11.859 5.32 11.859 11.86v103.29c0 6.54-5.314 11.86-11.859 11.86h-88.971c-10.651 0-19.298-8.65-19.298-19.3 0-59.45 48.261-107.71 107.704-107.71"
+                                        style="fill:#67c1ff;fill-opacity:.52" />
+                                </g>
+                                <path
+                                    d="M642.15 1647.67a2.2 2.2 0 0 0-1.618-.71h-4.312s-14.924-28.39-15.695-29.87c-.828-1.58-2.08-2.96-3.954-2.96-9.117 0-17.625-1.95-23.956-5.48-3.16-1.76-5.542-3.82-6.997-5.99v-6.26a5.496 5.496 0 1 0-10.992 0v6.26c-1.455 2.17-3.837 4.23-6.996 5.99-6.332 3.53-14.84 5.48-23.957 5.48-1.874 0-3.002 1.15-3.954 2.96-2.225 4.24-15.695 29.87-15.695 29.87h-4.311c-.616 0-1.204.26-1.619.71a2.2 2.2 0 0 0-.562 1.68c1.208 13.11 12.235 23.38 25.659 23.38 13.425 0 24.452-10.27 25.659-23.38a2.2 2.2 0 0 0-.562-1.68 2.2 2.2 0 0 0-1.618-.71h-4.312l-13.022-24.81c10.146-.82 19.002-3.79 25.29-8.16v69.99h-24.91a6.866 6.866 0 0 0-6.87 6.87c0 3.79 3.076 6.87 6.87 6.87h59.756c3.794 0 6.87-3.08 6.87-6.87 0-3.8-3.076-6.87-6.87-6.87h-23.854v-69.99c6.289 4.37 15.145 7.35 25.291 8.16l-13.022 24.81h-4.312c-.616 0-1.204.26-1.619.71a2.2 2.2 0 0 0-.562 1.68c1.208 13.11 12.235 23.38 25.66 23.38 13.424 0 24.451-10.27 25.659-23.38a2.2 2.2 0 0 0-.563-1.68m-89.103-.71h-19.712l9.856-18.78zm54.15 0 9.856-18.78 9.857 18.78z"
+                                    style="fill:#01377d;fill-rule:nonzero" />
+                            </g>
+
+                            <g style="filter:url(#m)">
+                                <path id="floater"
+                                    d="M911.527 837.316v56.568c0 21.135-17.159 38.294-38.293 38.294-21.135 0-38.294-17.159-38.294-38.294v-56.568z"
+                                    style="fill:#01207d" />
+                            </g>
+                            <path id="floater"
+                                d="M910.037 823.611v29.875H836.43v-29.875c0-16.489 13.387-29.876 29.875-29.876h13.857c16.488 0 29.875 13.387 29.875 29.876"
+                                style="fill:#01377d" />
+                            <path id="floater"
+                                d="M910.037 823.611v29.875H836.43v-29.875c0-16.489 13.387-29.876 29.875-29.876h13.857c16.488 0 29.875 13.387 29.875 29.876"
+                                style="fill:#01377d" />
+                            <g style="filter:url(#n)">
+                                <path id="floater"
+                                    d="M1216.62 837.339v56.554c0 21.13-17.15 38.285-38.28 38.285s-38.28-17.155-38.28-38.285v-56.554z"
+                                    style="fill:#01207d" />
+                            </g>
+                            <path id="floater"
+                                d="M1215.14 823.638v29.868h-73.59v-29.868c0-16.485 13.38-29.868 29.86-29.868h13.86c16.48 0 29.87 13.383 29.87 29.868"
+                                style="fill:#01377d" />
+                            <path id="floater"
+                                d="M1215.14 823.638v29.868h-73.59v-29.868c0-16.485 13.38-29.868 29.86-29.868h13.86c16.48 0 29.87 13.383 29.87 29.868"
+                                style="fill:#01377d" />
+                            <g style="filter:url(#o)">
+                                <path id="floater"
+                                    d="M1353.48 969.404v231.686c0 63.94-51.91 115.85-115.84 115.85H813.929c-63.936 0-115.844-51.91-115.844-115.85V969.404c0-63.936 51.908-115.844 115.844-115.844h423.711c63.93 0 115.84 51.908 115.84 115.844"
+                                    style="fill:#01367c;fill-opacity:.15" />
+                            </g>
+                            <path id="floater"
+                                d="M1353.48 969.404v231.686c0 63.94-51.91 115.85-115.84 115.85H813.929c-63.936 0-115.844-51.91-115.844-115.85V969.404c0-63.936 51.908-115.844 115.844-115.844h423.711c63.93 0 115.84 51.908 115.84 115.844"
+                                style="fill:#fff; fill-opacity:.3; stroke: #fff; stroke-width: 1px;" />
+
+                            <g transform="translate(1013.4 1189.81)scale(221.318)" />
+                            <text class="calendarText" id="floater" x="775" y="1170"
+                                style="font-family:'Noteworthy-Bold', 'Noteworthy'; font-weight: 700; font-size: 165px; fill: #fff; letter-spacing: 10px;"></text>
+
+
+                            <circle id="floater" class="calendarDots" cx="1100" cy="1020" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1165" cy="1020" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1225" cy="1020" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1100" cy="1070" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1165" cy="1070" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1225" cy="1070" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1100" cy="1120" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1165" cy="1120" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1225" cy="1120" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1100" cy="1170" r="15.35" style="fill:#fff" />
+                            <circle id="floater" class="calendarDots" cx="1165" cy="1170" r="15.35" style="fill:#fff" />
+                            <defs>
+                                <filter id="a" filterUnits="userSpaceOnUse" x="-82.569" y="408.364" width="845.054"
+                                    height="877.764">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="56.377" />
+                                </filter>
+                                <filter id="b" filterUnits="userSpaceOnUse" x="-209.592" y="289.961" width="1000.68"
+                                    height="1001.88">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="69.864" />
+                                </filter>
+                                <filter id="c" filterUnits="userSpaceOnUse" x="194.494" y="686.926" width="260.325"
+                                    height="273.489">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+                                </filter>
+                                <filter id="d" filterUnits="userSpaceOnUse" x="1277.9" y="348.875" width="915.046"
+                                    height="959.261">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="60.649" />
+                                </filter>
+                                <filter id="e" filterUnits="userSpaceOnUse" x="1680.09" y="784.301" width="218.427"
+                                    height="212.616">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+                                </filter>
+                                <filter id="f" filterUnits="userSpaceOnUse" x="493.374" y="-197.277" width="1065.58"
+                                    height="947.459">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="65.759" />
+                                </filter>
+                                <filter id="g" filterUnits="userSpaceOnUse" x="923.032" y="218.185" width="285.304"
+                                    height="222.695">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+                                </filter>
+                                <filter id="h" filterUnits="userSpaceOnUse" x="928.805" y="1160.18" width="1073.76"
+                                    height="987.801">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="68.942" />
+                                </filter>
+                                <filter id="i" filterUnits="userSpaceOnUse" x="1314.42" y="1525.86" width="302.529"
+                                    height="257.902">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+                                </filter>
+                                <filter id="j" filterUnits="userSpaceOnUse" x="193.844" y="1242.5" width="841.773"
+                                    height="868.647">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="55.372" />
+                                </filter>
+                                <filter id="k" filterUnits="userSpaceOnUse" x="46.751" y="1111.39" width="1066.74"
+                                    height="1065.85">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="72.628" />
+                                </filter>
+                                <filter id="l" filterUnits="userSpaceOnUse" x="483.298" y="1545.47" width="269.129"
+                                    height="276.004">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.417" />
+                                </filter>
+                                <filter id="m" filterUnits="userSpaceOnUse" x="774.626" y="777.001" width="197.215"
+                                    height="215.49">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="10.052" />
+                                </filter>
+                                <filter id="n" filterUnits="userSpaceOnUse" x="1079.74" y="777.025" width="197.196"
+                                    height="215.467">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="10.052" />
+                                </filter>
+                                <filter id="o" filterUnits="userSpaceOnUse" x="305.038" y="460.513" width="1441.49"
+                                    height="1249.47">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="65.508" />
+                                </filter>
+                            </defs>
+                        </svg>
+
                     </div>
                 </div>
             </div>
 
         </section>
 
-        <div class=" flex flex-row justify-center flex-wrap gap-8 md:gap-5 md:hidden my-16">
+        <div class=" flex flex-row justify-center flex-wrap gap-8 md:gap-5 md:hidden my-16 text-darkBlue">
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Immediacy
                 </p>
             </div>
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Collaborate
                 </p>
             </div>
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Efficiency
                 </p>
             </div>
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Adaptable
                 </p>
             </div>
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Security
                 </p>
             </div>
             <div class="flex flex-col w-[20svw] md:w-[13%]">
                 <img class="" src="./img/icon.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Title
+                    Accessible
                 </p>
             </div>
 
         </div>
 
 
-        <section class="text-darkBlue max-md:px-10  md:px-32 ">
+        <section class="text-darkBlue max-md:px-10  md:px-36 ">
 
 
 
-            <div class="flex py-auto   border-l border-lightGreen  md:pl-14 pl-10   ">
-                <div class="flex flex-col gap-5 md:py-12 py-5">
+            <div class="flex py-auto  border-l border-lightGreen  md:pl-14 pl-10   ">
+                <div class="flex flex-col gap-5 md:py-16 py-5">
                     <h2 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-4xl  font-bold uppercase leading-snug"
                         aria-label="Main Title">
-                        Accuracy in Every Entry, Foresight in Every Report: VJC's Cloud Mastery
+                        Accuracy in Every Entry, Foresight in Every Report
                     </h2>
-                    <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg ] font-light leading-relaxed "
-                        aria-label="Hero Description">
-                        V. Jaiswal and Co, India's leading offshore accounting firm, has been driving business success
-                        since 1988.
-                    </p>
+
                 </div>
 
 
@@ -477,112 +863,138 @@
                 <h2 class="md:text-3xl text-2xl font-semibold mb-5">
                     Services we provide
                 </h2>
-                <p class=" portrait:text-[3.5vw] max-md:px-10 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
+                <p class=" portrait:text-[3.5vw] max-md:px-10 md:px-32 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
                     aria-label="Hero Description">
-                    V. Jaiswal and Co, India's leading offshore accounting firm
+                    Elevate your business with customized cloud accounting solutions, ideal for startups and established
+                    companies alike. We
+                    manage your financials with precision, allowing you to focus on growth, while our expert team
+                    ensures secure, flexible
+                    bookkeeping.
                 </p>
             </div>
-            <div class="flex flex-col justify-center gap-5 md:px-32 ">
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
+            <div class="flex flex-col justify-center md:gap-8 gap-6 md:px-32 ">
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
 
                     <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-5 md:p-6">
                         <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
                                 <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+                            <h3 class="md:text-base text-sm font-bold">General Ledger & Reconciliation</h3>
+                            <p class="md:text-sm text-xs font-normal">Comprehensive clean-up, account reconciliation,
+                                and financial reporting to ensure accuracy, compliance, and up-to-date financial data
+                                for informed decisions.</p>
                         </div>
                     </div>
 
                     <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-5 md:p-6">
                         <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
                                 <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
-
-                    <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
-                                <img src="./img/icon.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
-                                <img src="./img/icon.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+                            <h3 class="md:text-base text-sm font-bold">Payables Management</h3>
+                            <p class="md:text-sm text-xs font-normal">Efficient invoice processing, supplier
+                                coordination, and reconciliation to streamline payments, improve accuracy, and enhance
+                                financial record-keeping.</p>
                         </div>
                     </div>
 
                 </div>
 
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Receivables Services</h3>
+                            <p class="md:text-sm text-xs font-normal">Complete billing, invoicing, collections, and
+                                reconciliation to optimize cash flow and maintain accurate financial records for better
+                                cash management.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Inventory & Asset Control</h3>
+                            <p class="md:text-sm text-xs font-normal">Accurate tracking of inventory and fixed assets,
+                                ensuring compliance, proper depreciation, and precise asset reporting
+                                for financial management.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Payroll Compliance</h3>
+                            <p class="md:text-sm text-xs font-normal">Seamless payroll processing, tax filings, and
+                                benefits management to ensure timely payments, compliance with labor laws, and wage
+                                accuracy.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Reporting & Analytics</h3>
+                            <p class="md:text-sm text-xs font-normal">Detailed financial reporting, cash flow
+                                forecasting, and variance analysis to track performance and support data-driven business
+                                decisions.</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
                 <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-5 max-md:gap-5 ">
 
                     <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
                         <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
                                 <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
+                            <h3 class="md:text-base text-sm font-bold">Payroll Compliance</h3>
+                            <p class="md:text-sm text-xs font-normal">Detailed financial reporting, cash flow
+                                forecasting, and variance analysis to track performance and support data-driven business
+                                decisions.</p>
                         </div>
                     </div>
 
-                    <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md gap-5 bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto ">
-                                <img src="./img/icon.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Service Title</h3>
-                            <p class="md:text-sm text-xs font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magnaaliqua. </p>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -611,12 +1023,12 @@
 
             <div class="flex flex-col gap-8 mt-8 mb-24">
                 <div class="marquee marquee--LTR md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
-                    <img class="marquee__item" src="./img/icon.svg" width="125" height="125" alt="">
+                    <img class="marquee__item" src="./img/microsoft365-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/quickbooks-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/turbotax-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/sage-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/netsuite-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/zoho-logo.svg" width="60" height="60" alt="">
                 </div>
 
 
@@ -640,13 +1052,11 @@
                     </h1>
                     <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
                         aria-label="Hero Description">
-                        At VJC, we take pride in our team of elite financial professionals, positioning us as a premier
-                        provider of cloud
-                        accounting and bookkeeping services in India. By partnering with us, you can reduce your
-                        accounting expenses from
-                        in-house by up to 50-70% while elevating the quality of your financial management. Our expert
-                        accountants and
-                        bookkeepers ensure pinpoint accuracy and reliability in your financial data
+                        At VJC, our elite financial team offers top-tier cloud accounting and bookkeeping services in
+                        India. Partnering with us
+                        can cut your accounting costs by 50-70% while improving financial management quality. Our expert
+                        professionals ensure
+                        accuracy and reliability in your financial data.
                     </p>
 
 

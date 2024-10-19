@@ -608,6 +608,10 @@ html {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -898,6 +902,16 @@ html {
   height: 9rem;
 }
 
+.size-\[24svw\] {
+  width: 24svw;
+  height: 24svw;
+}
+
+.size-\[20svw\] {
+  width: 20svw;
+  height: 20svw;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -948,6 +962,10 @@ html {
 
 .h-svh {
   height: 100svh;
+}
+
+.h-\[90svh\] {
+  height: 90svh;
 }
 
 .w-16 {
@@ -1271,6 +1289,14 @@ html {
   white-space: nowrap;
 }
 
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -1325,6 +1351,10 @@ html {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-l-2 {
+  border-left-width: 2px;
 }
 
 .border-\[\#adf6c4\] {
@@ -1412,6 +1442,14 @@ html {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-1 {
@@ -1514,6 +1552,11 @@ html {
   padding-bottom: 2vw;
 }
 
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1600,6 +1643,10 @@ html {
 
 .text-center {
   text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 .text-2xl {
@@ -2018,6 +2065,14 @@ svg {
     gap: 1.25rem;
   }
 
+  .max-md\:gap-7 {
+    gap: 1.75rem;
+  }
+
+  .max-md\:gap-6 {
+    gap: 1.5rem;
+  }
+
   .max-md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2252,6 +2307,10 @@ svg {
     gap: 1.25rem;
   }
 
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
   .md\:rounded-\[1\.5rem\] {
     border-radius: 1.5rem;
   }
@@ -2266,6 +2325,10 @@ svg {
 
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:p-6 {
+    padding: 1.5rem;
   }
 
   .md\:px-16 {
@@ -2321,6 +2384,16 @@ svg {
   .md\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+  }
+
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .md\:px-36 {
+    padding-left: 9rem;
+    padding-right: 9rem;
   }
 
   .md\:pb-16 {
