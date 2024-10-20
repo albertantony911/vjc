@@ -481,7 +481,6 @@ gsap.timeline({ repeat: -1, repeatDelay: 1.5 })
 
   
 
-
 // Elements to animate
 const elements = document.querySelectorAll(".circleRotation");
 
@@ -490,7 +489,7 @@ const centerX = 1026.16;
 const centerY = 1058.29;
 const radius = 750.95; // Radius for circular path
 
-// Precompute initial angles for each element
+// Precompute initial angles and trigonometric values for each element
 const elementData = Array.from(elements).map(element => {
   const bbox = element.getBBox();
   const initialX = bbox.x + bbox.width / 2;
@@ -501,17 +500,23 @@ const elementData = Array.from(elements).map(element => {
   const deltaY = initialY - centerY;
   const initialAngle = Math.atan2(deltaY, deltaX);
 
+  // Precompute the cosine and sine of the initial angle to save on recalculating
+  const cosInitialAngle = Math.cos(initialAngle);
+  const sinInitialAngle = Math.sin(initialAngle);
+
   return {
     element,
     initialX,
     initialY,
-    initialAngle
+    cosInitialAngle,
+    sinInitialAngle
   };
 });
 
 // Animation parameters
-const duration = 20000; // 20 seconds for one complete circle
+const duration = 40000; // 20 seconds for one complete circle
 let startTime = null;
+const pi2 = Math.PI * 2;
 
 // Animation loop
 function animate(time) {
@@ -520,24 +525,31 @@ function animate(time) {
 
   // Calculate the progress of the animation (0 to 1)
   const progress = (elapsed % duration) / duration;
-  const currentAngleOffset = progress * Math.PI * 2;
+  const angleOffset = progress * pi2;
 
-  // Update each element's position using CSS transform (hardware accelerated)
-  elementData.forEach(({ element, initialX, initialY, initialAngle }) => {
-    const angle = initialAngle + currentAngleOffset;
-    const x = centerX + radius * Math.cos(angle);
-    const y = centerY + radius * Math.sin(angle);
+  // Batch update: request the next frame before calculations are done
+  requestAnimationFrame(animate);
+
+  // Update each element's position using precomputed trigonometric values
+  for (let i = 0; i < elementData.length; i++) {
+    const { element, initialX, initialY, cosInitialAngle, sinInitialAngle } = elementData[i];
+
+    // Reuse the precomputed cos/sin and just offset with the animation angle
+    const angleCos = Math.cos(angleOffset);
+    const angleSin = Math.sin(angleOffset);
+
+    // Calculate the new x and y positions
+    const x = centerX + radius * (cosInitialAngle * angleCos - sinInitialAngle * angleSin);
+    const y = centerY + radius * (sinInitialAngle * angleCos + cosInitialAngle * angleSin);
 
     // Use CSS transform to translate the element (hardware-accelerated)
-    element.style.transform = `translate(${x - initialX}px, ${y - initialY}px)`;
-  });
-
-  // Request the next frame
-  requestAnimationFrame(animate);
+    element.style.transform = `translate3d(${x - initialX}px, ${y - initialY}px, 0)`;
+  }
 }
 
 // Start the animation
 requestAnimationFrame(animate);
+
 
   
   
