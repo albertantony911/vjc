@@ -1013,59 +1013,58 @@
                     </div>
 
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
 
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer"
-                            id="dropdown closed">
+                </div>
 
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/icon.svg" alt="">
-                                </div>
-                            </div>
 
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Year-End Closing</h3>
-                                <p class="md:text-sm text-xs font-normal">Thorough reconciliation, error correction, and
-                                    financial statement
-                                    preparation to ensure compliance and accurate
-                                    year-end financial closing.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
+                <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
+                    class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
+                    x-init="height = $refs.content.scrollHeight">
+                
+                    <!-- Header / Toggle Button -->
+                    <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
+                        @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
+                        @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer" id="dropdown closed">
+                
+                        <div class="flex flex-col w-auto">
+                            <div class="size-[20svw] md:size-[13svh] m-auto">
+                                <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
-
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden"
-                            style="opacity: 0; height: 0;">
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                We ensure accurate year-end closing by meticulously matching records, identifying
-                                discrepancies, and reconciling
-                                accounts. This includes verifying transaction accuracy, reconciling control accounts,
-                                scrutinizing financial
-                                statements
-                                and the general ledger, and calculating accruals, advanced payments, amortization, and
-                                depreciation. We also
-                                handle
-                                AR/AP reconciliation and prepare final financial statements to complete all aspects of
-                                the fiscal year’s closing.
-                                <span class="font-bold">...collapse</span>
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                            <h3 class="md:text-base text-sm font-bold">Year-End Closing</h3>
+                            <p class="md:text-sm text-xs font-normal">Thorough reconciliation, error correction, and
+                                financial statement
+                                preparation to ensure compliance and accurate
+                                year-end financial closing.
+                                <!-- Conditionally show 'read more' -->
+                                <span x-show="!expanded" class="font-bold">...read more</span>
                             </p>
-
                         </div>
                     </div>
-
-
+                
+                    <!-- Dropdown Content (With Dynamic Height Calculation) -->
+                    <div @click="expanded = false" x-ref="content"
+                        x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
+                        class="transition-all duration-300 ease-in-out overflow-hidden" style="opacity: 0; height: 0;">
+                
+                        <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
+                            We ensure accurate year-end closing by meticulously matching records, identifying
+                            discrepancies, and reconciling
+                            accounts. This includes verifying transaction accuracy, reconciling control accounts,
+                            scrutinizing financial
+                            statements
+                            and the general ledger, and calculating accruals, advanced payments, amortization, and
+                            depreciation. We also
+                            handle
+                            AR/AP reconciliation and prepare final financial statements to complete all aspects of
+                            the fiscal year’s closing.
+                            <span class="font-bold">...collapse</span>
+                        </p>
+                
+                    </div>
                 </div>
 
 
