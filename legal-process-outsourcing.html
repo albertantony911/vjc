@@ -337,7 +337,7 @@
     <main>
         <!-- Hero Section -->
         <section>
-            <div class="md:h-[70svh] h-[90svh]  md:flex-row flex flex-col-reverse ">
+            <div class="md:h-[70svh] h-[87svh]  md:flex-row flex flex-col-reverse ">
                 <div
                     class="md:w-[50%] max-md:h-[40svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ">
 
@@ -347,9 +347,9 @@
                     </h1>
                     <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
                         aria-label="Hero Description">
-                        At VJC, we deliver regulatory-compliant offshore audit support, providing thorough financial
-                        evaluations and uncovering growth opportunities to enhance your financial processes and drive
-                        business success
+                        At VJC, we simplify legal complexities so you can focus on growing your business. From contract negotiations to
+                        regulatory compliance, our expert team manages your legal needs efficiently, without the cost of a full in-house team.
+                        Stay compliant and protected with our tailored, cost-effective legal support solutions.
                     </p>
 
 
@@ -364,7 +364,7 @@
 
 
 
-                <div class="md:w-[50%] max-md:h-[65svh]  flex flex-col w-full gradient-bg ">
+                <div class="md:w-[50%] max-md:h-[60svh]  flex flex-col w-full gradient-bg ">
                     <div class=" gradient-bg-transparent  flex flex-col h-full">
                         <svg id="floater" class="md:w-[90%] w-[100%]  m-auto" viewBox="0 0 2011 1960"
                             xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
@@ -764,7 +764,7 @@
                 <div class="flex flex-col gap-5 md:py-16 py-5">
                     <h2 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-4xl  font-bold uppercase leading-snug"
                         aria-label="Main Title">
-                        Transparent and Improved Finances through Precise Offshore Audit Support.
+                        Seamless Compliance and Operations through Legal Process Expertise.
                     </h2>
 
                 </div>
@@ -782,116 +782,38 @@
                 </h2>
                 <p class=" portrait:text-[3.5vw] max-md:px-10 md:px-48 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
                     aria-label="Hero Description">
-                    We offer precise, secure bookkeeping for startups and established companies, allowing you to focus
-                    on growth. Our
-                    tailored audit and assurance services build investor confidence and help businesses of all sizes
-                    stay ahead of
-                    regulatory challenges with comprehensive support.
+                Our skilled legal team delivers comprehensive compliance and expert contract services, keeping your business protected
+                and ahead of regulatory challenges, while you focus on growth.
                 </p>
             </div>
             <div class="flex flex-col justify-center md:gap-8 gap-6 md:px-48 ">
                 <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
-
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer"
-                            id="dropdown closed">
-
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/icon.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Pre-Audit Services</h3>
-                                <p class="md:text-sm text-xs font-normal">Comprehensive review to ensure accurate
-                                    financial statements,
-                                    legal compliance, and identify accounting errors for a reliable audit foundation.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
-
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden"
-                            style="opacity: 0; height: 0;">
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Our pre-audit process ensures financial statements are accurate, compliant, and
-                                reliable. We perform cut-off procedures
-                                to verify proper recording of all transactions, such as supplier and sales invoices, and
-                                expenses, in the appropriate
-                                period. Year-end legal compliance is thoroughly checked, and ledgers are reviewed to
-                                identify accounting errors. We also
-                                inspect key entries like deferred and unbilled revenue and prepaid expenses. Finally, we
-                                provide a draft set of
-                                financial statements, incorporating all necessary adjustments identified during the
-                                review.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Contract Review and Drafting</h3>
+                            <p class="md:text-sm text-xs font-normal">We review, draft, and negotiate contracts, ensuring compliance with laws while protecting your business interests and
+                            mitigating potential risks in agreements.</p>
                         </div>
                     </div>
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
-
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer"
-                            id="dropdown closed">
-
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/icon.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Internal Audit Review</h3>
-                                <p class="md:text-sm text-xs font-normal">Tailored audits to enhance internal controls,
-                                    improve financial accuracy, and ensure compliance with regulatory
-                                    standards and governance.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
-
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden"
-                            style="opacity: 0; height: 0;">
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Partner with us for Internal Auditing to elevate corporate performance and governance.
-                                Internal auditing is crucial for
-                                strengthening internal controls, corporate governance, and ensuring compliance with
-                                legal and regulatory requirements.
-                                Our tailored audit approach ensures accurate and timely financial reporting, improves
-                                operational efficiency, and
-                                safeguards company assets. We work closely with executives and board members to manage
-                                performance, assess risks, and
-                                enhance employee productivity. By monitoring the company's financial health, we aim to
-                                boost overall efficiency,
-                                effectiveness, and organizational quality.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Legal Research and Analysis</h3>
+                            <p class="md:text-sm text-xs font-normal">We provide thorough legal research, offering insights on relevant laws, advising on business decisions, and developing
+                            strategies to mitigate potential legal risks.</p>
                         </div>
                     </div>
 
@@ -905,59 +827,153 @@
 
                 <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
-
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer"
-                            id="dropdown closed">
-
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/icon.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Compliance Audit Help</h3>
-                                <p class="md:text-sm text-xs font-normal">Detailed audits to identify compliance gaps,
-                                    ensure adherence to regulations, and prepare your business for future
-                                    challenges.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
                             </div>
                         </div>
-
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden"
-                            style="opacity: 0; height: 0;">
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance
-                                from a headache into a strategic
-                                asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's
-                                about fortifying your business
-                                against risks and building stakeholder confidence.
-                                Our compliance audit assistance procedure engages us in your operations, comparing them
-                                against the latest regulatory
-                                standards. Our goal? To uncover hidden compliance gaps and transform them into
-                                opportunities for improvement. With VJC,
-                                you're not just meeting today's rules—you're preparing for tomorrow's challenges.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Compliance Oversight</h3>
+                            <p class="md:text-sm text-xs font-normal">We ensure your business aligns with industry regulations by developing compliance frameworks, avoiding regulatory
+                            issues, and maintaining smooth operational processes.</p>
                         </div>
                     </div>
 
 
 
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Litigation Support</h3>
+                            <p class="md:text-sm text-xs font-normal">Our team offers document review, evidence gathering, and case preparation, working with external counsel to protect your
+                            interests in legal disputes.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Intellectual Property (IP)</h3>
+                            <p class="md:text-sm text-xs font-normal">We safeguard your intellectual property, managing trademarks, patents, copyrights, and conducting due diligence to
+                            ensure IP rights are protected and enforced.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Corporate Governance</h3>
+                            <p class="md:text-sm text-xs font-normal">We ensure corporate governance adherence, managing records, minutes, and coordinating board meetings while maintaining
+                            legal standards and best practices.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+                
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Risk Management</h3>
+                            <p class="md:text-sm text-xs font-normal">We identify legal risks, conduct due diligence, and develop strategies to minimize risks in business operations and
+                            transactions.</p>
+                        </div>
+                    </div>
+                
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Legal Training and Awareness</h3>
+                            <p class="md:text-sm text-xs font-normal">We offer tailored training programs to educate your team on compliance, regulations, and company policies, fostering a
+                            culture of legal awareness.</p>
+                        </div>
+                    </div>
+                
+                </div>
+
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+                
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Cross-Border Expertise</h3>
+                            <p class="md:text-sm text-xs font-normal">We provide legal guidance for international transactions, navigating legal complexities across jurisdictions with
+                            expertise in cross-border operations.</p>
+                        </div>
+                    </div>
+                
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Legal Collaboration</h3>
+                            <p class="md:text-sm text-xs font-normal">We collaborate with departments like HR and finance to ensure legal compliance aligns with your company’s strategic
+                            goals.</p>
+                        </div>
+                    </div>
+                
+                </div>
+
+
+
+                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+                
+                    <div
+                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
+                        <div class="flex flex-col w-auto ">
+                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                                <img src="./img/icon.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="md:text-base text-sm font-bold">Data Breach Compliance</h3>
+                            <p class="md:text-sm text-xs font-normal">We ensure GDPR compliance, performing checks and implementing measures to prevent data breaches and maintain data
+                            protection standards.</p>
+                        </div>
+                    </div>
+                
                     <div
                         class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
                         <div class="flex flex-col w-auto ">
@@ -967,95 +983,11 @@
                         </div>
                         <div class="flex flex-col text-left gap-1 text-darkBlue ">
                             <h3 class="md:text-base text-sm font-bold">Forensic Audit Support</h3>
-                            <p class="md:text-sm text-xs font-normal">Expert analysis to uncover financial
-                                irregularities, support legal proceedings, and maintain financial integrity.</p>
+                            <p class="md:text-sm text-xs font-normal">We ensure GDPR compliance, conducting thorough checks and implementing security measures to protect against data
+                            breaches and ensure adherence to data protection regulations.</p>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
-
-                    <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[20svw] md:size-[13svh] m-auto ">
-                                <img src="./img/icon.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Due Diligence Advice</h3>
-                            <p class="md:text-sm text-xs font-normal">Thorough financial analysis for mergers,
-                                acquisitions, and transactions to ensure informed, strategic business decisions.</p>
-                        </div>
-                    </div>
-
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
-
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer"
-                            id="dropdown closed">
-
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/icon.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Statutory Audit Support</h3>
-                                <p class="md:text-sm text-xs font-normal">Comprehensive planning, execution, and
-                                    compliance to ensure accurate financial statements, audit readiness, and
-                                    regulatory adherence.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden"
-                            style="opacity: 0; height: 0;">
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                We offer a comprehensive statutory audit support process, covering planning, execution,
-                                and finalization.
-                            </p>
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>1. Planning:</strong>
-                                Prepare a requirement list, review prior audits, verify opening balances, select
-                                samples, and calculate materiality.
-
-                            </p>
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>2. Execution:</strong>
-                                Prepare and review working papers, test internal controls, gather and verify evidence,
-                                summarize audit observations,
-                                perform casting procedures, assess risks, and assist with balance confirmations.
-
-                            </p>
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>3. Finalization:</strong>
-
-                                Review and prepare financial statements, ensure audit file completeness, draft
-                                management letters, develop internal
-                                control procedures, check compliance with standards, and draft notes for proper
-                                disclosures.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-
-                        </div>
-                    </div>
-
+                
                 </div>
 
             </div>
@@ -1106,42 +1038,88 @@
 
 
 
-        <!-- Hero Section -->
-        <section>
-            <div class="md:flex-row-reverse flex flex-col-reverse  md:px-32 gap-10 px-10 md:pt-16 pt-0 pb-5 ">
-                <div
-                    class="md:w-[60%] max-md:h-[40svh] flex flex-col text-darkBlue gap-5 justify-center w-full text-left ">
-
-                    <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl  font-bold text-left leading-snug"
-                        aria-label="Main Title">
-                        Where VJC Takes the Lead
-                    </h1>
-                    <div class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
-                        aria-label="Hero Description">
-
-                        <p class=" font-bold">Assurance for Flawless Financial Compliance</p>
-                        <p class=" mt-2">At VJC, we believe one size doesn’t fit all in auditing. That’s why we take a
-                            bespoke approach to every engagement,
-                            aligning our expertise with your specific needs. Beyond audit support, we provide a tailored
-                            roadmap for improvement,
-                            streamlining the audit process while uncovering valuable insights to drive your business
-                            growth.</p>
-
-                    </div>
-
-
+    <!-- Hero Section -->
+    <section>
+        <div class="md:flex-row-reverse flex flex-col-reverse  md:px-32 gap-10 px-10 md:pt-16 pt-0 pb-5 ">
+            <div class="md:w-[60%] max-md:h-auto flex flex-col text-darkBlue gap-5 justify-center w-full text-left ">
+    
+                <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl  font-bold text-left leading-snug"
+                    aria-label="Main Title">
+                    Where VJC Takes the Lead
+                </h1>
+                <div class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
+                    aria-label="Hero Description">
+    
+                    <p class=" font-bold">Simplifying tax complexity and fueling your business growth.</p>
+                    <p class=" mt-2">At VJC, we believe one size doesn’t fit all in auditing. That’s why we take a bespoke
+                        approach to every engagement,
+                        aligning our expertise with your specific needs. Beyond audit support, we provide a tailored roadmap
+                        for
+                        improvement,
+                        streamlining the audit process while uncovering valuable insights to drive your business growth.</p>
+    
                 </div>
-
-
-
-                <div class="md:w-[40%] max-md:h-[40svh]  flex flex-col w-full ">
-                    <div
-                        class="size-[65svw] md:size-[30svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+                <div class="flex flex-col divide-y divide-slate-200 md:text-base text-sm font-bold w-full gap-3">
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Expertise Across Legal Domains: <span class="font-medium">Our team of seasoned legal professionals brings extensive knowledge across various legal fields, offering comprehensive
+                        solutions tailored to your business’s specific needs.</span></div>
                     </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Cost Efficiency: <span class="font-medium">Outsource your legal processes to VJC and reduce the overhead costs associated with maintaining an in-house legal team,
+                        while gaining top-tier expertise.</span>
+                        </div>
+                    </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Flexible Engagement Models: <span class="font-medium">We provide scalable solutions, whether
+                                you need peak-season support or year-round compliance, tailored to meet your
+                                business needs.</span></div>
+                    </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Seamless Integration: <span class="font-medium">We integrate seamlessly with your business operations, acting as a true partner to ensure legal compliance and effective
+                        risk mitigation at every stage.</span></div>
+                    </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Cross-Border Capabilities: <span class="font-medium">With deep expertise across multiple jurisdictions, VJC provides smooth handling of international legal matters, ensuring
+                        compliance and reducing complexities.</span></div>
+                    </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Flexible Engagement Models: <span class="font-medium">Whether you require short-term legal support or long-term services, VJC tailors solutions to meet your needs, offering
+                        adaptable models for any legal project or extended partnership.</span></div>
+                    </div>
+    
+                    <div class=" flex items-center justify-start w-full text-left gap-2 pt-3">
+                        <img class="shrink-0 size-5 md:size-6 -rotate-90 mb-auto" src="./img/drop-arrow.svg" />
+                        <div>Technology-Driven Solutions: <span class="font-medium">We harness the latest technology to streamline legal processes, ensuring accuracy, compliance, and efficiency for
+                        optimal results in all your legal operations.</span></div>
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+    
+    
+            <div class="md:w-[40%] max-md:h-[40svh]  flex flex-col w-full ">
+                <div
+                    class="size-[65svw] md:size-[30svh] rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
                 </div>
             </div>
-
-        </section>
+        </div>
+    
+    </section>
 
 
 
