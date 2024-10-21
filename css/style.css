@@ -657,14 +657,6 @@ html {
   top: auto;
 }
 
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
-.bottom-0 {
-  bottom: 0px;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -717,11 +709,6 @@ html {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .-mt-1 {
@@ -844,30 +831,6 @@ html {
   margin-top: 0.2rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
-.mb-0 {
-  margin-bottom: 0px;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.mt-auto {
-  margin-top: auto;
-}
-
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
 .block {
   display: block;
 }
@@ -948,6 +911,11 @@ html {
   height: 9rem;
 }
 
+.size-\[30svw\] {
+  width: 30svw;
+  height: 30svw;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -988,6 +956,10 @@ html {
   height: 85svh;
 }
 
+.h-\[87svh\] {
+  height: 87svh;
+}
+
 .h-\[90svh\] {
   height: 90svh;
 }
@@ -1002,18 +974,6 @@ html {
 
 .h-svh {
   height: 100svh;
-}
-
-.h-\[70svh\] {
-  height: 70svh;
-}
-
-.h-\[87svh\] {
-  height: 87svh;
-}
-
-.max-h-full {
-  max-height: 100%;
 }
 
 .w-16 {
@@ -1114,6 +1074,10 @@ html {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[70\%\] {
+  width: 70%;
 }
 
 .min-w-full {
@@ -1310,6 +1274,10 @@ html {
   gap: 4vw;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1484,8 +1452,8 @@ html {
   padding: 1.5rem;
 }
 
-.p-4 {
-  padding: 1rem;
+.p-8 {
+  padding: 2rem;
 }
 
 .px-1 {
@@ -1668,36 +1636,12 @@ html {
   padding-top: 1.25rem;
 }
 
-.pr-5 {
-  padding-right: 1.25rem;
-}
-
-.pl-5 {
-  padding-left: 1.25rem;
-}
-
-.pr-0 {
-  padding-right: 0px;
-}
-
-.pb-0 {
-  padding-bottom: 0px;
-}
-
 .text-left {
   text-align: left;
 }
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.align-text-bottom {
-  vertical-align: text-bottom;
 }
 
 .text-2xl {
@@ -1763,14 +1707,6 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[0\.5rem\] {
-  font-size: 0.5rem;
-}
-
-.text-\[0\.6rem\] {
-  font-size: 0.6rem;
 }
 
 .font-bold {
@@ -2080,6 +2016,10 @@ svg {
     margin-top: 0.75rem;
   }
 
+  .max-md\:mt-16 {
+    margin-top: 4rem;
+  }
+
   .max-md\:hidden {
     display: none;
   }
@@ -2110,10 +2050,6 @@ svg {
 
   .max-md\:h-full {
     height: 100%;
-  }
-
-  .max-md\:h-\[50svh\] {
-    height: 50svh;
   }
 
   .max-md\:gap-10 {
@@ -2197,6 +2133,10 @@ svg {
     margin-bottom: 1.25rem;
   }
 
+  .md\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
   .md\:mt-10 {
     margin-top: 2.5rem;
   }
@@ -2205,28 +2145,20 @@ svg {
     margin-top: 9rem;
   }
 
-  .md\:mb-2 {
-    margin-bottom: 0.5rem;
-  }
-
   .md\:mt-4 {
     margin-top: 1rem;
   }
 
-  .md\:mb-1 {
-    margin-bottom: 0.25rem;
+  .md\:mt-16 {
+    margin-top: 4rem;
   }
 
-  .md\:mr-3 {
-    margin-right: 0.75rem;
+  .md\:mt-24 {
+    margin-top: 6rem;
   }
 
-  .md\:mt-2 {
-    margin-top: 0.5rem;
-  }
-
-  .md\:mt-20 {
-    margin-top: 5rem;
+  .md\:mt-28 {
+    margin-top: 7rem;
   }
 
   .md\:hidden {
@@ -2258,6 +2190,11 @@ svg {
     height: 8rem;
   }
 
+  .md\:size-\[15svh\] {
+    width: 15svh;
+    height: 15svh;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
@@ -2276,6 +2213,14 @@ svg {
 
   .md\:h-full {
     height: 100%;
+  }
+
+  .md\:h-\[90svh\] {
+    height: 90svh;
+  }
+
+  .md\:h-\[80svh\] {
+    height: 80svh;
   }
 
   .md\:w-1\/2 {
@@ -2354,6 +2299,10 @@ svg {
     width: 100%;
   }
 
+  .md\:w-1\/3 {
+    width: 33.333333%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2394,6 +2343,10 @@ svg {
     gap: 2rem;
   }
 
+  .md\:gap-3 {
+    gap: 0.75rem;
+  }
+
   .md\:rounded-\[1\.5rem\] {
     border-radius: 1.5rem;
   }
@@ -2412,6 +2365,10 @@ svg {
 
   .md\:p-6 {
     padding: 1.5rem;
+  }
+
+  .md\:p-8 {
+    padding: 2rem;
   }
 
   .md\:px-16 {
@@ -2484,6 +2441,11 @@ svg {
     padding-bottom: 1.25rem;
   }
 
+  .md\:px-28 {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+
   .md\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -2528,6 +2490,10 @@ svg {
     padding-top: 5rem;
   }
 
+  .md\:pt-24 {
+    padding-top: 6rem;
+  }
+
   .md\:text-center {
     text-align: center;
   }
@@ -2555,6 +2521,19 @@ svg {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .md\:text-\[0\.6rem\] {
+    font-size: 0.6rem;
+  }
+
+  .md\:text-\[0\.65rem\] {
+    font-size: 0.65rem;
   }
 
   .md\:shadow-xl {
