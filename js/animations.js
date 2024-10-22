@@ -1,9 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Register GSAP plugins
-  gsap.registerPlugin(
-    ScrollTrigger
-  );
+// Main Entry Point on DOMContentLoaded
+// This function is the orchestrator for all the animations
 
+document.addEventListener("DOMContentLoaded", () => {
+  main();
+});
+
+// Main Function to coordinate everything
+function main() {
+  initializeGSAP();
+  initializeCounters();
+  scrollTriggeredAnimation();
+  animateFloat();
+  animateCog();
+  iconFloat();
+  randomFadeAndReposition();
+  animateBarsAndDots();
+  animateLineGraph();
+  animateLineGraphLarge();
+  seamlessFadeAnimation();
+  circleFadeAnimation();
+  bouncerAndRotator();
+  flashingSequence();
+}
+
+// Initialize GSAP Plugins and Configuration
+function initializeGSAP() {
+  gsap.registerPlugin(ScrollTrigger);
+  console.log("GSAP Plugins Registered");
+}
  
 
 function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+') {
@@ -731,6 +755,4 @@ window.addEventListener('load', function() {
         playFlashingSequence();
 
 
-
-});
 
