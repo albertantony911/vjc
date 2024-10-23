@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 804 830" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
+    <g>
+        <g>
+            <g style="filter:url(#_Effect1);">
+                <path d="M404.319,366.384C396.216,358.282 383.06,358.282 374.958,366.384L110.714,630.628C102.612,638.73 102.612,651.886 110.714,659.988C118.816,668.091 131.972,668.091 140.075,659.988L404.319,395.744C412.421,387.642 412.421,374.486 404.319,366.384Z" style="fill:#fff;"/>
+            </g>
+            <g style="filter:url(#_Effect2);">
+                <path d="M692.588,659.988C700.69,651.886 700.69,638.73 692.588,630.628L428.344,366.384C420.241,358.282 407.085,358.282 398.983,366.384C390.881,374.486 390.881,387.642 398.983,395.744L663.227,659.988C671.329,668.091 684.485,668.091 692.588,659.988Z" style="fill:#fff;"/>
+            </g>
+        </g>
+        <g>
+            <g style="filter:url(#_Effect3);">
+                <path d="M404.346,630.438C396.16,638.624 382.869,638.624 374.683,630.438L107.714,363.469C99.528,355.283 99.528,341.991 107.714,333.805C115.899,325.62 129.191,325.62 137.377,333.805L404.346,600.775C412.532,608.96 412.532,622.252 404.346,630.438Z" style="fill:#fff;"/>
+            </g>
+            <g style="filter:url(#_Effect4);">
+                <path d="M695.588,333.805C703.774,341.991 703.774,355.283 695.588,363.469L428.619,630.438C420.433,638.624 407.141,638.624 398.956,630.438C390.77,622.252 390.77,608.96 398.956,600.775L665.925,333.805C674.111,325.62 687.402,325.62 695.588,333.805Z" style="fill:#fff;"/>
+            </g>
+        </g>
+        <g style="filter:url(#_Effect5);">
+            <path d="M700.18,230.374C717.844,245.403 731.63,264.854 739.822,287.008C745.263,301.723 748.235,317.63 748.235,334.226L748.235,638.279C748.235,713.513 687.155,774.592 611.922,774.592L191.38,774.592C116.146,774.592 55.067,713.513 55.067,638.279L55.067,334.226C55.067,317.63 58.039,301.723 63.48,287.008C71.671,264.854 85.458,245.403 103.121,230.374L329.507,77.182C373.083,47.695 430.219,47.695 473.795,77.182L700.18,230.374Z" style="fill:none;stroke:#01377d;stroke-opacity:0.04;stroke-width:33.33px;"/>
+        </g>
+        <path d="M700.18,230.374C717.844,245.403 731.63,264.854 739.822,287.008C745.263,301.723 748.235,317.63 748.235,334.226L748.235,638.279C748.235,713.513 687.155,774.592 611.922,774.592L191.38,774.592C116.146,774.592 55.067,713.513 55.067,638.279L55.067,334.226C55.067,317.63 58.039,301.723 63.48,287.008C71.671,264.854 85.458,245.403 103.121,230.374L329.507,77.182C373.083,47.695 430.219,47.695 473.795,77.182L700.18,230.374Z" style="fill:#fff;fill-opacity:0.4;stroke:#fff;stroke-opacity:0.4;stroke-width:1.33px;"/>
+        <g style="filter:url(#_Effect6);">
+            <path d="M218.773,507.27C172.97,483.891 173.105,464.135 173.105,444.659L173.105,363.561C173.105,332.497 198.326,307.277 229.39,307.277L573.912,307.277C604.976,307.277 630.196,332.497 630.196,363.561L630.196,444.659C630.196,464.135 629.852,484.136 584.528,507.27L445.846,563.566C419.151,574.402 384.15,574.402 357.456,563.566L218.773,507.27Z" style="fill:none;stroke:#01377d;stroke-opacity:0.3;stroke-width:17.44px;"/>
+        </g>
+        <path d="M218.773,507.27C172.97,483.891 173.105,464.135 173.105,444.659L173.105,363.561C173.105,332.497 198.326,307.277 229.39,307.277L573.912,307.277C604.976,307.277 630.196,332.497 630.196,363.561L630.196,444.659C630.196,464.135 629.852,484.136 584.528,507.27L445.846,563.566C419.151,574.402 384.15,574.402 357.456,563.566L218.773,507.27Z" style="fill:#01377d;"/>
+        <circle cx="401.651" cy="608.859" r="22.152" style="fill:#7cd24c;"/>
+        <circle cx="401.651" cy="109.391" r="12.25" style="fill:#7cd24c;"/>
+    </g>
+    <defs>
+        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="6.91673" y="262.587" width="501.199" height="501.199">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12.3045"/>
+        </filter>
+        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="295.187" y="262.588" width="501.197" height="501.197">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12.3043"/>
+        </filter>
+        <filter id="_Effect3" filterUnits="userSpaceOnUse" x="2.84568" y="228.937" width="506.368" height="506.368">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12.4314"/>
+        </filter>
+        <filter id="_Effect4" filterUnits="userSpaceOnUse" x="294.089" y="228.939" width="506.366" height="506.366">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12.4312"/>
+        </filter>
+        <filter id="_Effect5" filterUnits="userSpaceOnUse" x="-38.4" y="-38.4" width="880.102" height="906.459">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12.8"/>
+        </filter>
+        <filter id="_Effect6" filterUnits="userSpaceOnUse" x="106.784" y="240.956" width="589.733" height="397.058">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="9.6"/>
+        </filter>
+    </defs>
+</svg>
