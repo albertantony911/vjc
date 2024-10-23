@@ -980,6 +980,10 @@ html {
   height: 100svh;
 }
 
+.h-\[50svh\] {
+  height: 50svh;
+}
+
 .w-16 {
   width: 4rem;
 }
@@ -1086,6 +1090,10 @@ html {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
 }
 
 .min-w-full {
@@ -1571,6 +1579,11 @@ html {
 .py-\[2vw\] {
   padding-top: 2vw;
   padding-bottom: 2vw;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .pb-10 {
@@ -2350,6 +2363,10 @@ svg {
     width: 100%;
   }
 
+  .md\:w-\[55\%\] {
+    width: 55%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2388,6 +2405,14 @@ svg {
 
   .md\:gap-8 {
     gap: 2rem;
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+
+  .md\:gap-2 {
+    gap: 0.5rem;
   }
 
   .md\:rounded-\[1\.5rem\] {
@@ -2484,6 +2509,16 @@ svg {
     padding-bottom: 1.25rem;
   }
 
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
   .md\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -2528,6 +2563,10 @@ svg {
     padding-top: 5rem;
   }
 
+  .md\:text-left {
+    text-align: left;
+  }
+
   .md\:text-center {
     text-align: center;
   }
@@ -2563,6 +2602,10 @@ svg {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-\[0\.6rem\] {
+    font-size: 0.6rem;
   }
 
   .md\:shadow-xl {
