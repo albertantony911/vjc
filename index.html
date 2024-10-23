@@ -137,206 +137,207 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header Section -->
-  <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-  
-    <!-- Logo Section -->
-    <div class="absolute h-[7svh] sm:h-14 top-0">
-      <a class="cursor-pointer" href="./index.html">
-        <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
-      </a>
-    </div>
-  
-    <!-- Menu Button Section -->
-    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
-      id="menuButtonContainer">
-      <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
-        <svg xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
-          viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="18" x2="20" y2="18" />
-        </svg>
-      </button>
-    </div>
-  
-    <!-- Mobile Navigation -->
-    <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
-      <div class="absolute w-full text-center text-white text-[3vw] uppercase">
-        <img class="w-20  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
-        <p>finest in accounting since 1988</p>
-        <p>Chhattisgarh, IN</p>
-      </div>
-  
-      <ul id="mainMenu"
-        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] antialiased">
-  
-        <!-- Navigation Links -->
-  
-        <li class="mt-20"><a href="./index.html">HOME</a></li>
-        <li><a href="./about.html">ABOUT</a></li>
-        <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
-            class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
-  
-        <li><a href="./pricing.html">PRICING</a></li>
-  
-        <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
-        <li><a href="./resources.html">RESOURCES</a></li>
-  
-  
-      </ul>
-  
-      <ul id="subMenu"
-        class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
-        <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
-        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-        <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
-        <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
-        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4  bounce-left"
-            src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-  
-      </ul>
-  
-  
-    </nav>
-  
-  
-    <!-- Landscape Navigation -->
-    <nav aria-label="Main Navigation" role="navigation"
-      class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
-  
-        <!-- Home -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./index.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Home</span>
-          </a>
-        </li>
-  
-        <!-- About -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./about.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>About</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- Our Services with Submenu -->
-        <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
-          @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
-          <a href="#" aria-haspopup="true" aria-expanded="false"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Services</span>
-            <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
-          </a>
-          <div
-            class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white border border-gray-300 shadow-sm"
-            x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-300 transform"
-            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
-            style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-            aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-            <div class="relative z-10 w-full px-2 py-6 bg-white">
-              <ul class="list-reset" role="menu">
-                <!-- Submenu Items -->
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./cloud-accounting-and-bookkeeping.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./audit-and-assurancce-services.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Audit and Assurance Services</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./tax-advisory-and-compliance.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Tax Advisory and Compliance</span>
-                  </a>
-                </li>
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./virtual-chief-financial-officer.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Virtual Chief Financial officer</span>
-                  </a>
-                </li>
-  
-                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
-                  @mouseleave="showChildren = false">
-                  <a href="./legal-process-outsourcing.html"
-                    class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
-                    role="menuitem">
-                    <span class="flex-1">Legal Processing Outsourcing</span>
-                  </a>
-                </li>
-              </ul>
+    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
+    
+        <!-- Logo Section -->
+        <div class="absolute h-[7svh] sm:h-14 top-0">
+            <a class="cursor-pointer" href="./index.html">
+                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+            </a>
+        </div>
+    
+        <!-- Menu Button Section -->
+        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
+            id="menuButtonContainer">
+            <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
+                    viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+            </button>
+        </div>
+    
+        <!-- Mobile Navigation -->
+        <nav role="navigation" aria-label="Mobile Navigation Menu"
+            class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+            <div class="absolute w-full text-center text-white text-[3vw] uppercase">
+                <img class="w-20  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
+                <p>finest in accounting since 1988</p>
+                <p>Chhattisgarh, IN</p>
             </div>
-          </div>
-        </li>
-  
-  
-  
-  
-  
-  
-        <!-- Pricing -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./pricing.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Pricing</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- Resources -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./resources.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Resources</span>
-          </a>
-        </li>
-  
-  
-  
-        <!-- Contact Us -->
-        <li class="relative block">
-          <!-- Navigation Link with ARIA Label -->
-          <a href="./contact.html"
-            class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
-            <span>Contact Us</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  
-  </header>
+    
+            <ul id="mainMenu"
+                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] antialiased">
+    
+                <!-- Navigation Links -->
+    
+                <li class="mt-20"><a href="./index.html">HOME</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
+                        class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
+    
+                <li><a href="./pricing.html">PRICING</a></li>
+    
+                <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+                <li><a href="./resources.html">RESOURCES</a></li>
+    
+    
+            </ul>
+    
+            <ul id="subMenu"
+                class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
+                <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
+                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
+                <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
+                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
+                        class="size-4  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+    
+            </ul>
+    
+    
+        </nav>
+    
+    
+        <!-- Landscape Navigation -->
+        <nav aria-label="Main Navigation" role="navigation"
+            class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
+            <ul class="flex flex-row flex-wrap items-center w-full">
+    
+                <!-- Home -->
+                <li class="relative block rounded-xl">
+                    <!-- Navigation Link with ARIA Label -->
+                    <a href="./index.html"
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        <span>Home</span>
+                    </a>
+                </li>
+    
+                <!-- About -->
+                <li class="relative block rounded-xl">
+                    <!-- Navigation Link with ARIA Label -->
+                    <a href="./about.html"
+                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
+                        <span>About</span>
+                    </a>
+                </li>
+    
+    
+    
+                <!-- Our Services with Submenu -->
+                <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
+                    @click.away="showChildren = false; clearTimeout(submenuTimeout)"
+                    @touchstart="showChildren = !showChildren">
+                    <a href="#" aria-haspopup="true" aria-expanded="false"
+                        class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
+                        @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
+                        @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
+                        <span>Services</span>
+                        
+                    </a>
+                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
+                        x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
+                        x-transition:enter-start="opacity-0 translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease duration-300 transform"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
+                            <ul class="list-reset" role="menu">
+                                <!-- Submenu Items -->
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./cloud-accounting-and-bookkeeping.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Cloud Accounting and Bookkeeping</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./audit-and-assurance-services.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Audit and Assurance Services</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./tax-advisory-and-compliance.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Tax Advisory and Compliance</span>
+                                    </a>
+                                </li>
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./virtual-chief-financial-officer.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Virtual Chief Financial officer</span>
+                                    </a>
+                                </li>
+    
+                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                    @mouseleave="showChildren = false">
+                                    <a href="./legal-process-outsourcing.html"
+                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                                        role="menuitem">
+                                        <span class="flex-1">Legal Processing Outsourcing</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+    
+    
+    
+    
+    
+    
+                <!-- Pricing -->
+                <li class="relative block rounded-xl">
+                    <!-- Navigation Link with ARIA Label -->
+                    <a href="./pricing.html"
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        <span>Pricing</span>
+                    </a>
+                </li>
+    
+    
+    
+                <!-- Resources -->
+                <li class="relative block rounded-xl">
+                    <!-- Navigation Link with ARIA Label -->
+                    <a href="./resources.html"
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        <span>Resources</span>
+                    </a>
+                </li>
+    
+    
+    
+                <!-- Contact Us -->
+                <li class="relative block rounded-xl">
+                    <!-- Navigation Link with ARIA Label -->
+                    <a href="./contact.html"
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    
+    </header>
 
   <main>
     <!-- Hero Section -->
@@ -1756,27 +1757,26 @@
 
 
 
-    <!--  FAQ Section -->
-    <section class="bg-light text-darkBlue flex flex-col shadow-lg  mt-28 pb-28" role="region"
+    <!-- FAQ Section -->
+    <section class="bg-light text-darkBlue flex flex-col shadow-lg mt-28 pb-28" role="region"
       aria-label="Sessions related FAQ">
       <div role="heading" aria-level="2">
         <h2 class="md:text-3xl text-2xl font-semibold text-center">
           Frequently Asked Questions
         </h2>
       </div>
-
+    
       <div class="relative justify-center antialiased" role="group">
         <div class="relative flex flex-col justify-center overflow-hidden" role="group">
           <div class="md:pt-16 w-3/4 pt-10 mx-auto text-center">
             <!-- Accordion component -->
             <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
-              <!-- FAQ - 1 -->
-              <!-- FAQ Section  -->
+    
               <!-- FAQ Section 1 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-1" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-1-answer">
@@ -1800,18 +1800,17 @@
                       of services.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact an
-                        Expert</a>
+                      <a href="./contact.html" class="text-blue-600">Contact an Expert</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 2 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-2" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-2-answer">
@@ -1834,24 +1833,22 @@
                       and routine security updates.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a meeting
-                        and learn more about our data
-                        security measures.</a>
+                      <a href="./contact.html" class="text-blue-600">Schedule a meeting and learn more about our data security
+                        measures.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 3 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-3" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-3-answer">
-                    <span>Why should I choose your company for financial services
-                      outsourcing?</span>
+                    <span>Why should I choose your company for financial services outsourcing?</span>
                     <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
                       src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
                       aria-hidden="true" />
@@ -1870,18 +1867,17 @@
                       savings.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a
-                        personalized quote.</a>
+                      <a href="./contact.html" class="text-blue-600">Request a personalized quote.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 4 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-4" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-4-answer">
@@ -1903,19 +1899,18 @@
                       financial services to the specific needs and regulations of each industry.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore tailor-made
-                        solutions for your industry-specific
+                      <a href="./contact.html" class="text-blue-600">Explore tailor-made solutions for your industry-specific
                         requirements.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 5 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-5" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-5-answer">
@@ -1938,18 +1933,17 @@
                       compliance.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Speak with our
-                        compliance experts.</a>
+                      <a href="./contact.html" class="text-blue-600">Speak with our compliance experts.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 6 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-6" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-6-answer">
@@ -1971,23 +1965,21 @@
                       for your investment.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check our Pricing
-                        Page for more.</a>
+                      <a href="./pricing.html" class="text-blue-600">Check our Pricing Page for more.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 7 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-7" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-7-answer">
-                    <span>How can you ensure round-the-clock support for all the various time
-                      zones?</span>
+                    <span>How can you ensure round-the-clock support for all the various time zones?</span>
                     <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
                       src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
                       aria-hidden="true" />
@@ -2005,19 +1997,17 @@
                       availability of expert advisory and consultation.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us today to
-                        experience our seamless global
-                        support.</a>
+                      <a href="./contact.html" class="text-blue-600">Contact us today to experience our seamless global support.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 8 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-8" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-8-answer">
@@ -2039,18 +2029,17 @@
                       discussions of your requirements.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a free
-                        initial consultation.</a>
+                      <a href="./contact.html" class="text-blue-600">Schedule a free initial consultation.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 9 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-9" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-9-answer">
@@ -2072,18 +2061,17 @@
                       infrastructure management systems.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a demo of
-                        our solutions.</a>
+                      <a href="./contact.html" class="text-blue-600">Request a demo of our solutions.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 10 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-10" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-10-answer">
@@ -2105,19 +2093,17 @@
                       service delivery.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Reach out for
-                        details on our quality assurance
-                        practices.</a>
+                      <a href="./contact.html" class="text-blue-600">Reach out for details on our quality assurance practices.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 11 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-11" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-11-answer">
@@ -2137,19 +2123,17 @@
                       read our case studies on our Resources page.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Check out our
-                        Insights Page for detailed Case
-                        Studies.</a>
+                      <a href="#" class="text-blue-600">Check out our Insights Page for detailed Case Studies.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 12 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-12" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-12-answer">
@@ -2173,24 +2157,21 @@
                       immediate responses.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us to
-                        discuss managing your project across time
-                        zones.</a>
+                      <a href="./contact.html" class="text-blue-600">Contact us to discuss managing your project across time zones.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 13 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-13" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-13-answer">
-                    <span>What are your Standard Operating Procedures (SOPs) for managing financial
-                      services?</span>
+                    <span>What are your Standard Operating Procedures (SOPs) for managing financial services?</span>
                     <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
                       src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}" alt="Expand or collapse FAQ content"
                       aria-hidden="true" />
@@ -2210,19 +2191,17 @@
                       needs.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Learn more about our
-                        SOPs ensuring quality and
-                        efficiency.</a>
+                      <a href="./contact.html" class="text-blue-600">Learn more about our SOPs ensuring quality and efficiency.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 14 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-14" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-14-answer">
@@ -2244,18 +2223,17 @@
                       opportunities, leveraging mutual strengths and market presence.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore partnering
-                        with us to add value.</a>
+                      <a href="./contact.html" class="text-blue-600">Explore partnering with us to add value.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
+    
               <!-- FAQ Section 15 -->
               <div x-data="{ expanded: false }" class="py-4">
                 <h2>
                   <button id="faq-15" type="button"
-                    class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                     aria-controls="faq-15-answer">
@@ -2281,22 +2259,19 @@
                       tailored to client preferences, ensuring language is never a barrier.
                     </p>
                     <p class="mt-4">
-                      <strong>CTA:</strong> <a href="#" class="text-blue-600">Connect with us on
-                        accommodating language needs.</a>
+                      <a href="./contact.html" class="text-blue-600">Connect with us on accommodating language needs.</a>
                     </p>
                   </div>
                 </div>
               </div>
-
-
-
-
+    
             </div>
-
+    
           </div>
         </div>
       </div>
     </section>
+
 
 
 

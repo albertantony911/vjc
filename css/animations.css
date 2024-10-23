@@ -416,7 +416,7 @@
 /* Base float animation */
 .float {
   animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
-  animation-delay: 0s;
+  animation-delay: calc(0.5s * var(--n));
 }
 
 @keyframes floatAnimation {
@@ -430,3 +430,5 @@
     transform: translate(-30px, 30px);
   }
 }
+
+

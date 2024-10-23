@@ -138,14 +138,14 @@
 
     <!-- Header Section -->
     <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-
+    
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
                 <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
             </a>
         </div>
-
+    
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
             id="menuButtonContainer">
@@ -160,99 +160,97 @@
                 </svg>
             </button>
         </div>
-
+    
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
             class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
             <div class="absolute w-full text-center text-white text-[3vw] uppercase">
                 <img class="w-20  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
-                <p>finest in accounting since  1988</p>
+                <p>finest in accounting since 1988</p>
                 <p>Chhattisgarh, IN</p>
             </div>
-            
+    
             <ul id="mainMenu"
                 class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] antialiased">
-                
+    
                 <!-- Navigation Links -->
-
+    
                 <li class="mt-20"><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
                         class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
-
+    
                 <li><a href="./pricing.html">PRICING</a></li>
-
+    
                 <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
                 <li><a href="./resources.html">RESOURCES</a></li>
-
-
+    
+    
             </ul>
-
+    
             <ul id="subMenu"
                 class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
                 <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
+                <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
                 <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
                         class="size-4  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-
+    
             </ul>
-
-
+    
+    
         </nav>
-
-
+    
+    
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
             class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
-
+    
                 <!-- Home -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./index.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Home</span>
                     </a>
                 </li>
-
+    
                 <!-- About -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./about.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
                         <span>About</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Our Services with Submenu -->
-                <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
+                <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
                     @touchstart="showChildren = !showChildren">
                     <a href="#" aria-haspopup="true" aria-expanded="false"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
+                        class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
                         <span>Services</span>
-                        <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
+                        
                     </a>
-                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white border border-gray-300 shadow-sm"
+                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
                         x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
                         x-transition:enter-start="opacity-0 translate-y-2"
                         x-transition:enter-end="opacity-100 translate-y-0"
                         x-transition:leave="transition ease duration-300 transform"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-                        aria-label="Submenu">
-                        <span
-                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-                        <div class="relative z-10 w-full px-2 py-6 bg-white">
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
@@ -265,7 +263,7 @@
                                 </li>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
-                                    <a href="./audit-and-assurancce-services.html"
+                                    <a href="./audit-and-assurance-services.html"
                                         class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                                         role="menuitem">
                                         <span class="flex-1">Audit and Assurance Services</span>
@@ -287,7 +285,7 @@
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
-
+    
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
@@ -300,45 +298,45 @@
                         </div>
                     </div>
                 </li>
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
                 <!-- Pricing -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./pricing.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Pricing</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Resources -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./resources.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Resources</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Contact Us -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./contact.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Contact Us</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
+    
     </header>
 
     <main>
@@ -353,7 +351,7 @@
         
                     <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold  leading-snug"
                         aria-label="Main Title">
-                        Get in touch with us
+                        Connect with us
                     </h1>
                     <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
                         aria-label="Hero Description">
@@ -428,21 +426,20 @@
                     <div class=" gradient-bg-transparent  flex flex-col h-[50svh] md:h-full">
                         
 
-                        
-
-                        <svg id="floater" class="md:w-[75%] w-[80%]  m-auto" width="100%" height="100%" viewBox="0 0 804 830" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                        <svg id="floater" class="md:w-[75%] w-[80%]  m-auto" width="100%" height="100%" viewBox="0 0 804 830" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+                            xmlns:serif="http://www.serif.com/"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
                             <g>
                                 <g>
                                     <g style="filter:url(#_Effect1);">
                                         <path
-                                            d="M404.319,366.384C396.216,358.282 383.06,358.282 374.958,366.384L110.714,630.628C102.612,638.73 102.612,651.886 110.714,659.988C118.816,668.091 131.972,668.091 140.075,659.988L404.319,395.744C412.421,387.642 412.421,374.486 404.319,366.384Z"
+                                            d="M279.977,490.725C271.875,482.623 258.719,482.623 250.617,490.725L110.714,630.628C102.612,638.73 102.612,651.886 110.714,659.988C118.816,668.091 131.972,668.091 140.075,659.988L279.977,520.086C288.08,511.983 288.08,498.827 279.977,490.725Z"
                                             style="fill:#fff;" />
                                     </g>
                                     <g style="filter:url(#_Effect2);">
                                         <path
-                                            d="M692.588,659.988C700.69,651.886 700.69,638.73 692.588,630.628L428.344,366.384C420.241,358.282 407.085,358.282 398.983,366.384C390.881,374.486 390.881,387.642 398.983,395.744L663.227,659.988C671.329,668.091 684.485,668.091 692.588,659.988Z"
+                                            d="M692.588,659.988C700.69,651.886 700.69,638.73 692.588,630.628L558.761,496.802C550.659,488.7 537.503,488.7 529.401,496.802C521.299,504.904 521.299,518.06 529.401,526.162L663.227,659.988C671.329,668.091 684.485,668.091 692.588,659.988Z"
                                             style="fill:#fff;" />
                                     </g>
                                 </g>
@@ -465,39 +462,41 @@
                                 </g>
                                 <path
                                     d="M700.18,230.374C717.844,245.403 731.63,264.854 739.822,287.008C745.263,301.723 748.235,317.63 748.235,334.226L748.235,638.279C748.235,713.513 687.155,774.592 611.922,774.592L191.38,774.592C116.146,774.592 55.067,713.513 55.067,638.279L55.067,334.226C55.067,317.63 58.039,301.723 63.48,287.008C71.671,264.854 85.458,245.403 103.121,230.374L329.507,77.182C373.083,47.695 430.219,47.695 473.795,77.182L700.18,230.374Z"
-                                    style="fill:#fff;fill-opacity:0.4;stroke:#fff;stroke-opacity:1;stroke-width:10px;" />
+                                    style="fill:#fff;fill-opacity:0.4;stroke:#fff;stroke-opacity:1;stroke-width:5px;" />
                                 <g style="filter:url(#_Effect6);">
                                     <path
-                                        d="M218.773,507.27C172.97,483.891 173.105,464.135 173.105,444.659L173.105,363.561C173.105,332.497 198.326,307.277 229.39,307.277L573.912,307.277C604.976,307.277 630.196,332.497 630.196,363.561L630.196,444.659C630.196,464.135 629.852,484.136 584.528,507.27L445.846,563.566C419.151,574.402 384.15,574.402 357.456,563.566L218.773,507.27Z"
+                                        d="M218.773,396.297C172.97,382.543 173.105,370.92 173.105,359.462L173.105,311.749C173.105,293.473 198.326,278.635 229.39,278.635L573.912,278.635C604.976,278.635 630.196,293.473 630.196,311.749L630.196,359.462C630.196,370.92 629.852,382.687 584.528,396.297L445.846,429.418C419.151,435.793 384.15,435.793 357.456,429.418L218.773,396.297Z"
                                         style="fill:none;stroke:#01377d;stroke-opacity:0.3;stroke-width:17.44px;" />
                                 </g>
                                 <path
-                                    d="M218.773,507.27C172.97,483.891 173.105,464.135 173.105,444.659L173.105,363.561C173.105,332.497 198.326,307.277 229.39,307.277L573.912,307.277C604.976,307.277 630.196,332.497 630.196,363.561L630.196,444.659C630.196,464.135 629.852,484.136 584.528,507.27L445.846,563.566C419.151,574.402 384.15,574.402 357.456,563.566L218.773,507.27Z"
-                                    style="fill:#01377d;stroke:#fff;stroke-width:2px;" />
-                                <circle cx="401.651" cy="615" r="22.152" style="fill:#7cd24c;" />
+                                    d="M218.773,396.297C172.97,382.543 173.105,370.92 173.105,359.462L173.105,311.749C173.105,293.473 198.326,278.635 229.39,278.635L573.912,278.635C604.976,278.635 630.196,293.473 630.196,311.749L630.196,359.462C630.196,370.92 629.852,382.687 584.528,396.297L445.846,429.418C419.151,435.793 384.15,435.793 357.456,429.418L218.773,396.297Z"
+                                    style="fill:#01377d;stroke:#fff;stroke-opacity:1;stroke-width:2px;" />
+                                <circle cx="401.651" cy="640.985" r="22.152" style="fill:#7cd24c;" />
                                 <circle cx="401.651" cy="109.391" r="12.25" style="fill:#7cd24c;" />
                             </g>
                             <defs>
-                                <filter id="_Effect1" filterUnits="userSpaceOnUse" x="61.2692" y="316.939" width="392.494" height="392.494">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="4.8" />
+                                <filter id="_Effect1" filterUnits="userSpaceOnUse" x="6.91673" y="386.928" width="376.858" height="376.858">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.3045" />
                                 </filter>
-                                <filter id="_Effect2" filterUnits="userSpaceOnUse" x="349.538" y="316.939" width="392.494" height="392.494">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="4.8" />
+                                <filter id="_Effect2" filterUnits="userSpaceOnUse" x="425.605" y="393.006" width="370.779" height="370.779">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.3043" />
                                 </filter>
-                                <filter id="_Effect3" filterUnits="userSpaceOnUse" x="58.1173" y="284.209" width="395.825" height="395.825">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="4.8" />
+                                <filter id="_Effect3" filterUnits="userSpaceOnUse" x="2.84568" y="228.937" width="506.368" height="506.368">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.4314" />
                                 </filter>
-                                <filter id="_Effect4" filterUnits="userSpaceOnUse" x="349.359" y="284.209" width="395.825" height="395.825">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="4.8" />
+                                <filter id="_Effect4" filterUnits="userSpaceOnUse" x="294.089" y="228.939" width="506.366" height="506.366">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="12.4312" />
                                 </filter>
                                 <filter id="_Effect5" filterUnits="userSpaceOnUse" x="-38.4" y="-38.4" width="880.102" height="906.459">
                                     <feGaussianBlur in="SourceGraphic" stdDeviation="12.8" />
                                 </filter>
-                                <filter id="_Effect6" filterUnits="userSpaceOnUse" x="106.784" y="240.956" width="589.733" height="397.058">
+                                <filter id="_Effect6" filterUnits="userSpaceOnUse" x="106.784" y="212.314" width="589.733" height="288.206">
                                     <feGaussianBlur in="SourceGraphic" stdDeviation="9.6" />
                                 </filter>
                             </defs>
                         </svg>
+
+
         
                     </div>
                 </div>

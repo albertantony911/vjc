@@ -166,37 +166,56 @@ document.querySelectorAll('.float').forEach((element, index) => {
 
 
 
-// Single timeline for bars and dots using batch operation and keyframes
-let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
 
-// Cache transform origin outside to avoid recalculating
-gsap.set(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"], {
+
+// Precompute the transform origins and target positions for better efficiency
+const barElements = ["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"];
+gsap.set(barElements, {
     transformOrigin: "bottom"
 });
 
+// Predefine the scale and y values to avoid recalculating every time
+const scaleYValues = [
+    [0.6, 0.5, 0.9], // First keyframe
+    [0.5, 1.0, 0.6], // Second keyframe
+    [1.0, 0.6, 1.0]  // Third keyframe
+];
+
+const yValues = [
+    [73, 90, 17, 73, 90],  // First keyframe
+    [90, 0, 73, 17, 0],    // Second keyframe
+    [0, 73, 0, 0, 73]      // Third keyframe
+];
+
+// Single timeline for bars and dots using precomputed values
+let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
+
 // Use keyframes to define all animations in a single batch
-bl.to(["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"], {
+bl.to(barElements, {
     keyframes: [
         {
-            scaleY: (i) => i < 3 ? [0.6, 0.5, 0.9][i] : 1, // Only scale bars
-            y: (i) => i >= 3 ? [73, 90, 17, 73, 90][i - 3] : 0, // Move dots and graph dots
+            scaleY: (i) => i < 3 ? scaleYValues[0][i] : 1, // Only scale bars
+            y: (i) => i >= 3 ? yValues[0][i - 3] : 0,      // Move dots and graph dots
             duration: 1.5,
             ease: "power1.inOut"
         },
         {
-            scaleY: (i) => i < 3 ? [0.5, 1, 0.6][i] : 1,
-            y: (i) => i >= 3 ? [90, 0, 73, 17, 0][i - 3] : 0,
+            scaleY: (i) => i < 3 ? scaleYValues[1][i] : 1,
+            y: (i) => i >= 3 ? yValues[1][i - 3] : 0,
             duration: 1.5,
             ease: "power1.inOut"
         },
         {
-            scaleY: (i) => i < 3 ? [1, 0.6, 1][i] : 1,
-            y: (i) => i >= 3 ? [0, 73, 0, 0, 73][i - 3] : 0,
+            scaleY: (i) => i < 3 ? scaleYValues[2][i] : 1,
+            y: (i) => i >= 3 ? yValues[2][i - 3] : 0,
             duration: 1.5,
             ease: "power1.inOut"
         }
     ]
 });
+
+
+
 
 const originalYValues = [2122.11, -71.5, 13.8, -111];
 const newYValues = [2122.11 - 40, -71.5 + 70, 13.8 - 90, -111 + 100];
