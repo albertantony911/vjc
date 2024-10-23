@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   main();
 });
 
+
+
+// Initialize GSAP Plugins and Configuration
+function initializeGSAP() {
+  gsap.registerPlugin(ScrollTrigger);
+  console.log("GSAP Plugins Registered");
+}
+ 
 // Main Function to coordinate everything
 function main() {
   initializeGSAP();
@@ -23,12 +31,7 @@ function main() {
   flashingSequence();
 }
 
-// Initialize GSAP Plugins and Configuration
-function initializeGSAP() {
-  gsap.registerPlugin(ScrollTrigger);
-  console.log("GSAP Plugins Registered");
-}
- 
+
 
 function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+') {
     const counterElement = document.getElementById(elementId);
@@ -218,49 +221,50 @@ bl.to(barElements, {
 
 
 const originalYValues = [2122.11, -71.5, 13.8, -111];
-const newYValues = [2122.11 - 40, -71.5 + 70, 13.8 - 90, -111 + 100];
-const deltaYValues = newYValues.map((newVal, index) => newVal - originalYValues[index]);
+const deltaYValues = [-40, 70, -90, 100];
 
-// Cache the line graph element to avoid repeated DOM lookups
+// Cache DOM element lookup
 const lineGraph = document.getElementById("lineGraph");
 
+// Function to generate path with interpolation (optimized)
+const generatePath = (progress) => {
+    // Interpolating Y values in one go and returning the full path string
+    const interpolatedYValues = originalYValues.map((original, index) => original + deltaYValues[index] * progress);
+    return `m709.116 ${interpolatedYValues[0]} 67.326 ${interpolatedYValues[1]} 75.161 ${interpolatedYValues[2]} 47.985 ${interpolatedYValues[3]}`;
+};
+
+// Line graph animation
 gsap.to({ progress: 0 }, {
     progress: 1,
     duration: 3,
     repeat: -1,
     yoyo: true,
     ease: "power1.inOut",
+    overwrite: true,
     onUpdate: function () {
-        const progress = this.progress();
-        const interpolatedYValues = originalYValues.map((original, index) => original + deltaYValues[index] * progress);
-        
-        const newPath = `m709.116 ${interpolatedYValues[0]} 67.326 ${interpolatedYValues[1]} 75.161 ${interpolatedYValues[2]} 47.985 ${interpolatedYValues[3]}`;
-        
-        // Update the path attribute only once after all calculations
-        lineGraph.setAttribute("d", newPath);
+        const newPath = generatePath(this.progress());
+        gsap.set(lineGraph, { attr: { d: newPath } });
     }
 });
-  
-  
+
+// Path reveal animation
 const path = document.querySelector("#lineGraphLarge");
 const pathLength = path.getTotalLength();
 
-// Set initial strokeDash properties to hide the path
 gsap.set(path, {
     strokeDasharray: pathLength,
     strokeDashoffset: pathLength
 });
 
-// Animate the stroke path
 gsap.to(path, {
     duration: 3,           // Animation duration
     strokeDashoffset: 0,    // Reveal the stroke
     ease: "power1.inOut",   // Smooth easing
     repeat: -1,             // Infinite loop
     yoyo: true,
-    useFrames: false
-    
+    overwrite: true         // Prevent any memory buildup
 });
+
 
   
   
