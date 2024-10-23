@@ -160,49 +160,10 @@ gsap.to("#cog", {
 
 
 
+document.querySelectorAll('.float').forEach((element, index) => {
+  element.style.setProperty('--n', index + 1);
+});
 
-function animateFloat() {
-    // Cache float element and its dimensions
-    const floatElement = document.querySelector("#float");
-    const width = floatElement.getBBox().width;
-    const height = floatElement.getBBox().height;
-
-    // Precompute 6 random positions (X and Y)
-    const positions = Array.from({ length: 6 }, () => ({
-        x: gsap.utils.random(-0.8, 0.8) * width,
-        y: gsap.utils.random(-0.8, 0.8) * height
-    }));
-
-    // Function to animate a given element using precomputed positions
-    function animatePrecomputedFloat(element, startIndex = 0) {
-        let index = startIndex;
-
-        function moveElement() {
-            gsap.to(element, {
-                x: positions[index].x,
-                y: positions[index].y,
-                duration: 1, // Fixed duration
-                ease: "power1.inOut",
-                onComplete: () => {
-                    index = (index + 1) % positions.length; // Cycle through positions
-                    moveElement(); // Recursively call to continue animation
-                }
-            });
-        }
-
-        moveElement(); // Start the animation
-    }
-
-    // Cache the float elements array once
-    const floatElements = gsap.utils.toArray("#float");
-
-    // Apply the animation to each float element
-    floatElements.forEach((element, idx) => {
-        animatePrecomputedFloat(element, idx % positions.length); // Different starting position for each
-    });
-}
-
-animateFloat();
 
 
 // Single timeline for bars and dots using batch operation and keyframes

@@ -413,6 +413,20 @@
 
 
 
-  
+/* Base float animation */
+.float {
+  animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
+  animation-delay: 0s;
+}
 
- 
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -30px);
+  }
+  100% {
+    transform: translate(-30px, 30px);
+  }
+}
