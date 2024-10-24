@@ -1761,6 +1761,10 @@ html {
   line-height: 1rem;
 }
 
+.text-\[1\.4rem\] {
+  font-size: 1.4rem;
+}
+
 .font-\[100\] {
   font-weight: 100;
 }
@@ -2188,6 +2192,14 @@ svg {
     gap: 2rem;
   }
 
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .sm\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .sm\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -2433,6 +2445,10 @@ svg {
     gap: 2rem;
   }
 
+  .md\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .md\:rounded-\[1\.5rem\] {
     border-radius: 1.5rem;
   }
@@ -2631,6 +2647,11 @@ svg {
 
   .md\:text-\[0\.6rem\] {
     font-size: 0.6rem;
+  }
+
+  .md\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 
   .md\:shadow-xl {
