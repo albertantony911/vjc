@@ -13,54 +13,31 @@ function initializeGSAP() {
   console.log("GSAP Plugins Registered");
 }
  
-// Main Function to coordinate everything
-function main() {
-  initializeGSAP();
-  initializeCounters();
-  scrollTriggeredAnimation();
-  animateFloat();
-  animateCog();
-  iconFloat();
-  randomFadeAndReposition();
-  animateBarsAndDots();
-  animateLineGraph();
-  animateLineGraphLarge();
-  seamlessFadeAnimation();
-  circleFadeAnimation();
-  bouncerAndRotator();
-  flashingSequence();
-}
 
 
 
-function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+') {
+function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+', updateFrequency = 2) {
     const counterElement = document.getElementById(elementId);
     if (!counterElement) return;
 
-    // Variables for manual interpolation
-    const frameRate = 60; // Approximate frames per second
-    const totalFrames = Math.round(duration * frameRate);
-    const increment = (target - start) / totalFrames;
-    let currentValue = start;
-
-    // Create ScrollTrigger to initiate the animation
     ScrollTrigger.create({
         trigger: counterElement,
         start: "top 80%",
         once: true,
         onEnter: () => {
-            // Use GSAP's built-in timeline to smoothly animate counter
             gsap.to({ value: start }, {
                 value: target,
                 duration: duration,
                 ease: "power1.inOut",
                 onUpdate: function () {
-                    currentValue += increment;
-                    counterElement.textContent = `${Math.round(currentValue)}${suffix}`;
+                    // Directly set the text content every `updateFrequency` frames
+                    if (gsap.ticker.frame % updateFrequency === 0) {
+                        counterElement.textContent = `${Math.floor(this.targets()[0].value)}${suffix}`;
+                    }
                 },
                 onComplete: function () {
-                    // Ensure final value is set correctly
-                    counterElement.textContent = `${Math.round(target)}${suffix}`;
+                    // Ensure final value is accurate
+                    counterElement.textContent = `${target}${suffix}`;
                 }
             });
         }
@@ -68,12 +45,11 @@ function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix
 }
 
 // Example usage
-gsapCounterOptimized(3000, 3, 0, "counter1", '+');
-gsapCounterOptimized(36, 3, 0, "counter2", '+');
-gsapCounterOptimized(40, 3, 0, "counter3", '+');
-gsapCounterOptimized(50, 3, 0, "counter4", '%');
+gsapCounterOptimized(3000, 3, 0, "counter1", '+', 2);  // Update every 2 frames
+gsapCounterOptimized(36, 3, 0, "counter2", '+', 3);    // Update every 3 frames
+gsapCounterOptimized(40, 3, 0, "counter3", '+', 2);
+gsapCounterOptimized(50, 3, 0, "counter4", '%', 3);
 
-  
   
   
 gsap.utils.toArray('.periodBox').forEach((box) => {
@@ -740,3 +716,13 @@ window.addEventListener('load', function() {
 
 
 
+gsap.to("#scaler", {
+      scale: 0.5, 
+      duration: 1, 
+      transformOrigin: "center",
+      scrollTrigger: {
+        trigger: "#scaler",   // The element that triggers the animation
+        start: "top 80%",         // When the top of the element reaches 80% of the viewport
+        toggleActions: "play none none none"
+      }
+    });
