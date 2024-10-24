@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   html {
-    font-family: 'poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif; 
   }
 }
 
@@ -14,22 +13,23 @@
   touch-action: manipulation;
 }
 
-img {
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  cursor: default;
-  backface-visibility: hidden; 
-}
-
+img,
 svg {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   cursor: default;
   backface-visibility: hidden; 
+}
+
+
+svg {
   overflow: hidden;
 }
 
 .header {
-  position: -webkit-sticky;
-  position:
+  position: sticky; /* Adjusted to 'sticky' for better browser support */
+  top: 0; /* Add this to define where the sticky effect starts */
+  z-index: 10; /* Optional: Adjust the stacking context */
 }
+
+

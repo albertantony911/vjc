@@ -195,11 +195,21 @@
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 65px;
-    --marquee-item-height: 65px;
+    --marquee-item-width: 75px;
+    --marquee-item-height: 75px;
     --marquee-duration: 30s;
     --marquee-items: 9;
 }
+
+.marquee--LTR-M,
+.marquee--RTL-M {
+    --marquee-item-width: 75px;
+    --marquee-item-height: 75px;
+    --marquee-duration: 30s;
+    --marquee-items: 7;
+}
+
+
 
 .marquee__item {
     --marquee-item-offset: max(calc(var(--marquee-item-width) * var(--marquee-items)),
@@ -212,16 +222,25 @@
 }
 
 /* LTR - Left to Right */
-.marquee--LTR .marquee__item {
-    animation-direction: normal;
-    /* Default direction */
+.marquee--LTR  .marquee__item {
+    animation-direction: normal; /* Default direction for LTR */
 }
 
 /* RTL - Right to Left */
-.marquee--RTL .marquee__item {
-    animation-direction: reverse;
-    /* Reversed direction */
+.marquee--RTL  .marquee__item {
+    animation-direction: reverse; /* Reversed direction for RTL */
 }
+
+/* LTR - Left to Right */
+.marquee--LTR-M  .marquee__item {
+    animation-direction: normal; /* Default direction for LTR */
+}
+
+/* RTL - Right to Left */
+.marquee--RTL-M  .marquee__item {
+    animation-direction: reverse; /* Reversed direction for RTL */
+}
+
 
 /* Keyframes for marquee animation */
 @keyframes go {
