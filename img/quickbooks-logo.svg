@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(0.04,0,0,0.04,62.5,62.5)">
-        <g id="quickbooks-1" transform="matrix(1,0,0,1,-1250,-1250)">
+    <g transform="matrix(0.032,0,0,0.032,22.5,22.5)">
+        <g id="quickbooks-1">
             <circle cx="1250" cy="1250" r="1250" style="fill:rgb(44,160,28);"/>
             <path d="M301.3,1249.6C301.4,1532.2 529.3,1762 811.9,1764.5L884.2,1764.5L884.2,1575.6L811.9,1575.6C636.7,1623.4 456,1520.1 408.3,1344.9C407.9,1343.5 407.6,1342.1 407.2,1340.7C358.1,1163.2 460.9,979.3 637.8,928.2L673.9,928.2C719.2,918.3 766.1,918.3 811.4,928.2L987,928.2L987,1931.1C986.1,2037.2 1071.4,2124 1177.5,2125L1177.5,729.6L813,729.6C528.4,731.1 299,963 300.5,1247.6L300.5,1247.7L301.3,1249.6ZM1688.8,729.8L1616.5,729.8L1616.5,928.7L1688.8,928.7C1863.6,881 2043.9,984 2091.6,1158.7C2092,1160 2092.3,1161.4 2092.7,1162.7C2141.5,1339.6 2039,1522.8 1862.8,1573.8L1826.7,1573.8C1781.4,1583.7 1734.5,1583.7 1689.2,1573.8L1513.6,1573.8L1513.6,571C1514.5,464.9 1429.2,378.1 1323.1,377.1L1323.1,1774.5L1687.6,1774.5C1974.7,1770 2203.8,1533.7 2199.4,1246.6C2195,965.8 1968.5,739.2 1687.6,734.8L1688.8,729.8Z" style="fill:white;fill-rule:nonzero;"/>
-        </g>
-        <g id="quickbooks-11" serif:id="quickbooks-1">
         </g>
     </g>
 </svg>

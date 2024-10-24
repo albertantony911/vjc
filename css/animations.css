@@ -195,10 +195,10 @@
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 60px;
-    --marquee-item-height: 60px;
+    --marquee-item-width: 65px;
+    --marquee-item-height: 65px;
     --marquee-duration: 30s;
-    --marquee-items: 6;
+    --marquee-items: 9;
 }
 
 .marquee__item {
@@ -253,6 +253,18 @@
 
 .marquee__item:nth-of-type(6) {
     --marquee-item-index: 6;
+}
+
+.marquee__item:nth-of-type(7) {
+    --marquee-item-index: 7;
+}
+
+.marquee__item:nth-of-type(8) {
+    --marquee-item-index: 8;
+}
+
+.marquee__item:nth-of-type(9) {
+    --marquee-item-index: 9;
 }
 
 
