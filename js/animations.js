@@ -147,51 +147,33 @@ document.querySelectorAll('.float').forEach((element, index) => {
 
 
 
-// Precompute the transform origins and target positions for better efficiency
-const barElements = ["#bar1", "#bar2", "#bar3", "#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"];
-gsap.set(barElements, {
-    transformOrigin: "bottom"
-});
+// Precompute the transform origins for bars
+const barElements = ["#bar1", "#bar2", "#bar3"];
+const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"];
 
-// Predefine the scale and y values to avoid recalculating every time
-const scaleYValues = [
-    [0.6, 0.5, 0.9], // First keyframe
-    [0.5, 1.0, 0.6], // Second keyframe
-    [1.0, 0.6, 1.0]  // Third keyframe
-];
+gsap.set(barElements, { transformOrigin: "bottom" });
 
-const yValues = [
-    [73, 90, 17, 73, 90],  // First keyframe
-    [90, 0, 73, 17, 0],    // Second keyframe
-    [0, 73, 0, 0, 73]      // Third keyframe
-];
-
-// Single timeline for bars and dots using precomputed values
-let bl = gsap.timeline({ repeat: -1, yoyo: true, yoyoEase: "power1.inOut" });
-
-// Use keyframes to define all animations in a single batch
-bl.to(barElements, {
+// Single timeline for bars and dots
+gsap.timeline({
+    repeat: -1, 
+    yoyo: true, 
+    yoyoEase: "power1.inOut"
+})
+.to(barElements, {
     keyframes: [
-        {
-            scaleY: (i) => i < 3 ? scaleYValues[0][i] : 1, // Only scale bars
-            y: (i) => i >= 3 ? yValues[0][i - 3] : 0,      // Move dots and graph dots
-            duration: 1.5,
-            ease: "power1.inOut"
-        },
-        {
-            scaleY: (i) => i < 3 ? scaleYValues[1][i] : 1,
-            y: (i) => i >= 3 ? yValues[1][i - 3] : 0,
-            duration: 1.5,
-            ease: "power1.inOut"
-        },
-        {
-            scaleY: (i) => i < 3 ? scaleYValues[2][i] : 1,
-            y: (i) => i >= 3 ? yValues[2][i - 3] : 0,
-            duration: 1.5,
-            ease: "power1.inOut"
-        }
+        { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },  // First keyframe for each bar with explicit duration
+        { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },  // Second keyframe
+        { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }   // Third keyframe
     ]
-});
+})
+.to(dotElements, {
+    keyframes: [
+        { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },  // First keyframe for each dot with explicit duration
+        { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },    // Second keyframe
+        { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }      // Third keyframe
+    ]
+}, 0);  // Sync with bars animation
+
 
 
 
@@ -199,34 +181,62 @@ bl.to(barElements, {
 const originalYValues = [2122.11, -71.5, 13.8, -111];
 const deltaYValues = [-40, 70, -90, 100];
 
-// Cache DOM element lookup
 const lineGraph = document.getElementById("lineGraph");
 
-// Function to generate path with interpolation (optimized)
-const generatePath = (progress) => {
-    // Interpolating Y values in one go and returning the full path string
-    const interpolatedYValues = originalYValues.map((original, index) => original + deltaYValues[index] * progress);
-    return `m709.116 ${interpolatedYValues[0]} 67.326 ${interpolatedYValues[1]} 75.161 ${interpolatedYValues[2]} 47.985 ${interpolatedYValues[3]}`;
+let previousPath = "";
+let frameCount = 0;
+
+// Precompute static path segments
+const staticSegments = ['67.326', '75.161', '47.985'];
+
+// Precompute all possible Y values for each step
+const totalSteps = 60; // Define number of steps per animation loop (60 steps = 60 frames per second)
+const precomputedYValues = Array.from({ length: totalSteps }, (_, i) => {
+    const progress = i / (totalSteps - 1);
+    return originalYValues.map((y, index) => y + deltaYValues[index] * progress);
+});
+
+// RequestAnimationFrame-based rendering loop for efficient animations
+const render = () => {
+    const progressIndex = Math.floor(progressObject.progress * (totalSteps - 1));
+    const newYValues = precomputedYValues[progressIndex];
+
+    // Generate new path based on precomputed Y values
+    const newPath = `m709.116 ${newYValues[0]} ${staticSegments[0]} ${newYValues[1]} ${staticSegments[1]} ${newYValues[2]} ${staticSegments[2]} ${newYValues[3]}`;
+
+    // Only update if the path has changed
+    if (newPath !== previousPath) {
+        lineGraph.setAttribute('d', newPath); // Direct DOM update, no need for GSAP here
+        previousPath = newPath;
+    }
+
+    // Request the next animation frame
+    requestAnimationFrame(render);
 };
 
-// Line graph animation
-gsap.to({ progress: 0 }, {
+// Start the render loop
+requestAnimationFrame(render);
+
+// Progress tracking object for GSAP
+const progressObject = { progress: 0 };
+
+// GSAP animation to update progress
+gsap.to(progressObject, {
     progress: 1,
     duration: 3,
     repeat: -1,
     yoyo: true,
     ease: "power1.inOut",
-    overwrite: true,
-    onUpdate: function () {
-        const newPath = generatePath(this.progress());
-        gsap.set(lineGraph, { attr: { d: newPath } });
-    }
+    overwrite: true
 });
 
-// Path reveal animation
-const path = document.querySelector("#lineGraphLarge");
-const pathLength = path.getTotalLength();
 
+
+// Cache the path and its length outside the animation code
+const path = document.querySelector("#lineGraphLarge");
+const pathLength = path.getTotalLength();  // Get and cache path length once
+
+// Set strokeDasharray and strokeDashoffset once
 gsap.set(path, {
     strokeDasharray: pathLength,
     strokeDashoffset: pathLength
@@ -242,41 +252,44 @@ gsap.to(path, {
 });
 
 
+
   
   
 function randomFadeAndReposition() {
     const container = document.querySelector("#currencyContainer");
-    let symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
-    let pooledElements = []; // Pool of reused SVG text elements
+    const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+    const pooledElements = [];
+    const sideWidth = container.clientWidth * 0.2;
+    const containerHeight = container.clientHeight;
 
-    function getRandomSymbol() {
-        return symbols[Math.floor(Math.random() * symbols.length)];
-    }
+    // Adjusting to a smaller pool size
+    const poolSize = symbols.length; // Use the length of symbols array
+    const precomputedPositionsLeft = Array.from({ length: poolSize }, () => Math.random() * sideWidth);
+    const precomputedPositionsRight = Array.from({ length: poolSize }, () => container.clientWidth - sideWidth + Math.random() * sideWidth);
+    
+    let animationInterval;
+    let currentSymbolIndex = 0; // Track the current symbol index
 
     function createOrReuseElement() {
-        // Reuse existing element if available, else create a new one
         let currencyElement = pooledElements.length ? pooledElements.pop() : document.createElementNS("http://www.w3.org/2000/svg", "text");
-        
-        // Set static attributes if this is a new element
+
         if (!currencyElement.hasAttribute("data-initialized")) {
             currencyElement.setAttribute("fill", "#89DB55");
             currencyElement.setAttribute("font-family", "Arial");
             currencyElement.setAttribute("stroke", "white");
             currencyElement.setAttribute("stroke-width", "0");
-            currencyElement.setAttribute("data-initialized", "true"); // Mark as initialized
-            container.appendChild(currencyElement); // Add it to DOM only once
+            currencyElement.setAttribute("data-initialized", "true");
+            container.appendChild(currencyElement);
         }
 
         return currencyElement;
     }
 
-    function animateElement(element, side) {
-        element.textContent = getRandomSymbol();
-
-        const sideWidth = container.clientWidth * 0.2;
-        const startX = side === "left" ? Math.random() * sideWidth : container.clientWidth - sideWidth + Math.random() * sideWidth;
+    function animateElement(element, index, side) {
+        element.textContent = symbols[index]; // Use the sequential symbol
+        const startX = side === "left" ? precomputedPositionsLeft[index] : precomputedPositionsRight[index];
         const startY = -10;
-        const endY = container.clientHeight + 50;
+        const endY = containerHeight + 50;
 
         gsap.set(element, { x: startX, y: startY, opacity: 1 });
 
@@ -286,21 +299,29 @@ function randomFadeAndReposition() {
             duration: 20,
             ease: "none",
             onComplete: () => {
-                pooledElements.push(element); // Return the element to the pool
+                pooledElements.push(element);
             },
         });
     }
 
-    let animationInterval;
     function startAnimation() {
         if (!animationInterval) {
-            // Start immediately with two elements
-            animateElement(createOrReuseElement(), "left");
-            animateElement(createOrReuseElement(), "right");
+            for (let i = 0; i < 2; i++) {
+                const side = i === 0 ? "left" : "right";
+                animateElement(createOrReuseElement(), currentSymbolIndex, side);
+
+                // Update the symbol index and loop back if necessary
+                currentSymbolIndex = (currentSymbolIndex + 1) % poolSize;
+            }
 
             animationInterval = setInterval(() => {
-                animateElement(createOrReuseElement(), "left");
-                animateElement(createOrReuseElement(), "right");
+                for (let i = 0; i < 2; i++) {
+                    const side = i === 0 ? "left" : "right";
+                    animateElement(createOrReuseElement(), currentSymbolIndex, side);
+
+                    // Update the symbol index and loop back if necessary
+                    currentSymbolIndex = (currentSymbolIndex + 1) % poolSize;
+                }
             }, 3000);
         }
     }
@@ -312,33 +333,31 @@ function randomFadeAndReposition() {
         }
     }
 
-    // Remove elements on stop to prevent accumulation (empty pool)
     function removeAllSymbols() {
-        gsap.killTweensOf(container.querySelectorAll("text")); // Stop any active animations
+        gsap.killTweensOf(container.querySelectorAll("text"));
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
-        pooledElements = []; // Clear the element pool
+        pooledElements.length = 0;
     }
 
-    // Throttling visibility change event handling
-    let visibilityThrottleTimeout;
     document.addEventListener('visibilitychange', () => {
-        if (visibilityThrottleTimeout) clearTimeout(visibilityThrottleTimeout);
-        visibilityThrottleTimeout = setTimeout(() => {
-            if (document.hidden) {
-                stopAnimation();
-                removeAllSymbols();
-            } else {
-                startAnimation();
-            }
-        }, 100);
+        if (document.hidden) {
+            stopAnimation();
+            removeAllSymbols();
+        } else {
+            startAnimation();
+        }
     });
 
     startAnimation();
 }
-  randomFadeAndReposition();
-  
+
+randomFadeAndReposition();
+
+
+
+
 
 
 const lineGroup = document.querySelector("#dottedLine");
