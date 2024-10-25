@@ -974,6 +974,10 @@ html {
   height: ;
 }
 
+.h-\[80svh\] {
+  height: 80svh;
+}
+
 .w-12 {
   width: 3rem;
 }
