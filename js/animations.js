@@ -1,16 +1,8 @@
-// Main Entry Point on DOMContentLoaded
-// This function is the orchestrator for all the animations
-
-document.addEventListener("DOMContentLoaded", () => {
-  main();
-});
-
 
 
 // Initialize GSAP Plugins and Configuration
 function initializeGSAP() {
   gsap.registerPlugin(ScrollTrigger);
-  console.log("GSAP Plugins Registered");
 }
  
 
@@ -50,8 +42,66 @@ gsapCounterOptimized(36, 3, 0, "counter2", '+', 3);    // Update every 3 frames
 gsapCounterOptimized(40, 3, 0, "counter3", '+', 2);
 gsapCounterOptimized(50, 3, 0, "counter4", '%', 3);
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
   
+  // Common ScrollTrigger function for scaling animations
+  function createScalingAnimation(element, scaleXValue, scaleYValue, opacityValue, durationValue) {
+    gsap.to(element, {
+      scaleX: scaleXValue,               // Scale on the X-axis
+      scaleY: scaleYValue,               // Scale on the Y-axis
+      opacity: opacityValue,             // Change opacity
+      duration: durationValue,           // Duration of the animation
+      ease: "power2.inOut",              // Smooth ease effect
+      transformOrigin: "50% 50%",        // Scale from the center of the element
+      scrollTrigger: {
+        trigger: element,                // The element that triggers the animation
+        start: "top 60%",                // Start a little before center (when the top of the element is at 60% of the viewport)
+        end: "bottom 10%",               // End when the center leaves the viewport
+        toggleActions: "play reverse play reverse",  // Play on enter, reverse on leave
+        markers: false                   // Set to true if you want debugging markers
+      }
+    });
+  }
+
+  // Apply animations using the common function
+  createScalingAnimation(".scaler", 0.7, 0.7, 0.2, 0.5);       // Animation for .scaler
+  createScalingAnimation(".scaler-big", 1.4, 1.4, 1, 0.5);     // Animation for .scaler-big (focuses on scaling bigger)
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
   
+  // Function for creating scaleY animation for elements with a given class
+  function createScaleYAnimation(element, scaleYValue, durationValue) {
+    gsap.to(element, {
+      scaleY: scaleYValue,               // Only scale on the Y-axis
+      duration: durationValue,           // Duration of the animation
+      ease: "power2.inOut",              // Smooth ease effect
+      transformOrigin: "50% 50%",        // Scale from the center of the element
+      scrollTrigger: {
+        trigger: element,                // The element that triggers the animation
+        start: "top 60%",                // Start when the top of the element reaches 60% of the viewport
+        end: "center 10%",               // End when the center of the element leaves the viewport
+        toggleActions: "play reverse play reverse",  // Play on enter, reverse on leave
+        markers: false                   // Set to true if you want debugging markers
+      }
+    });
+  }
+
+  // Select all elements with the class .rect-scaleY and apply the animation
+  document.querySelectorAll(".rect-scaleY").forEach(function (rect) {
+    createScaleYAnimation(rect, 1.5, 0.7);  // Increase scaleY to 1.5 over 0.7 seconds
+  });
+
+});
+
+
+
+
+
+
 gsap.utils.toArray('.periodBox').forEach((box) => {
   gsap.fromTo(box, 
     { 
@@ -124,18 +174,26 @@ gsap.utils.toArray('.periodBox').forEach((box) => {
 // Optimized GSAP animations for better performance
 
 // Add will-change in JS (if not using CSS directly)
+// Set any pre-animation styles
 gsap.set("#cog", {
   willChange: "transform"
 });
 
+// Animate the #cog only when it's in the viewport
 gsap.to("#cog", {
-  rotation: 360, // Rotate 360 degrees for one full rotation
-  duration: 4, // Duration of one full rotation (adjust as needed)
-  ease: "none", // Linear movement, no easing
-  repeat: -1, // Repeat infinitely
-  transformOrigin: "50% 50%" // Rotate around the center
+  rotation: 360,               // Rotate 360 degrees for one full rotation
+  duration: 4,                 // Duration of one full rotation (adjust as needed)
+  ease: "none",                // Linear movement, no easing
+  repeat: -1,                  // Repeat infinitely
+  transformOrigin: "50% 50%",  // Rotate around the center
+  scrollTrigger: {
+    trigger: "#cog",           // The element that triggers the animation
+    start: "top 90%",          // Start the animation when #cog is 80% in the viewport
+    end: "bottom 10%",         // End the animation when the bottom of #cog is 20% out of the viewport
+    toggleActions: "play pause resume pause", // Play when in view, pause when out
+    markers: false             // Set to true if you want to see visual markers for debugging
+  }
 });
-
 
 
 
@@ -401,6 +459,7 @@ for (let i = 0; i < numberOfLines; i++) {
 // Append all lines at once to the DOM
 lineGroup.appendChild(fragment);
 
+
   /*
 ============================
   LANDING ANIMATION ENDS
@@ -458,6 +517,7 @@ gsap.to({}, {
         });
     }
 });
+
 
 
 const circles = document.querySelectorAll('circle.calendarDots');
@@ -744,4 +804,7 @@ gsap.to("#scaler", {
         start: "top 80%",         // When the top of the element reaches 80% of the viewport
         toggleActions: "play none none none"
       }
-    });
+});
+    
+
+

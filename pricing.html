@@ -346,9 +346,62 @@
                     </p>
                 </div>
 
-                <div class="md:w-[90%] max-md:h-full  flex flex-col mx-auto w-full ">
-                    <div
-                        class="h-[55svh] w-full md:h-[50svh] md:w-full rounded-[5rem] drop-shadow-2xl backdrop-blur-lg bg-opacity-60 m-auto bg-white">
+                <div class="md:w-full max-md:size-full h-[90svh] flex flex-col w-full gradient-bg">
+                    <div class=" gradient-bg-transparent  flex flex-col  md:h-full">
+                
+                
+                        <svg width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:bevel;stroke-miterlimit:0.348837;">
+                        
+                            <!-- Define the blur filter for the strokes -->
+                            <defs>
+                                <filter id="blur" x="-30%" y="-90%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="9" />
+                                </filter>
+                            </defs>
+                        
+                            <defs>
+                                <mask id="fade-out">
+                                    <linearGradient id="fadeGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0.9" stop-color="white" />
+                                        <stop offset="1" stop-color="black" />
+                                    </linearGradient>
+                                    <rect x="0" y="0" width="100%" height="100%" fill="url(#fadeGradient)" />
+                                </mask>
+                            </defs>
+                        
+                            <!-- Group of rectangles with duplicates behind -->
+                            <g mask="url(#fade-out)">
+                                <!-- Duplicates (behind the originals) with blur effect on strokes -->
+                                <rect class="rect-scaleY" x="50" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="350" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="650" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="950" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="1250" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="1550" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                                <rect class="rect-scaleY" x="1750" y="600" width="150" height="150" fill="transparent" stroke="#01377d"
+                                    stroke-width="5" rx="20" ry="20" filter="url(#blur)" />
+                        
+                                <!-- Originals (in front of the duplicates) -->
+                                <rect class="rect-scaleY" x="50" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="350" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="650" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="950" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="1250" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="1550" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                                <rect class="rect-scaleY" x="1750" y="600" width="150" height="150" style="fill:#ffffff;" rx="20" ry="20" />
+                            </g>
+                        </svg>
+
+
+                
                     </div>
                 </div>
 
