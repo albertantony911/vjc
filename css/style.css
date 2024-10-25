@@ -1315,6 +1315,10 @@ html {
   overflow: hidden;
 }
 
+.overflow-visible {
+  overflow: visible;
+}
+
 .overflow-x-hidden {
   overflow-x: hidden;
 }
@@ -2365,6 +2369,10 @@ svg {
 
   .md\:w-\[9rem\] {
     width: 9rem;
+  }
+
+  .md\:w-\[85\%\] {
+    width: 85%;
   }
 
   .md\:flex-row {

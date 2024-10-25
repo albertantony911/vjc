@@ -288,60 +288,89 @@
 
 
 
+/* Marquee Container Styling */
+.marquee {
+    block-size: var(--marquee-item-height);
+    margin-block: 0;
+    mask-image: linear-gradient(to right,
+            hsl(0 0% 0% / 0),
+            hsl(0 0% 0% / 1) 20%,
+            hsl(0 0% 0% / 1) 80%,
+            hsl(0 0% 0% / 0));
+}
 
-.numbers {
+/* Common settings for Left-to-Right and Right-to-Left marquees */
+.marquee--LTR,
+.marquee--RTL,
+.marquee--LTR-M,
+.marquee--RTL-M {
+    --marquee-item-width: 75px;
+    --marquee-item-height: 75px;
+    --marquee-duration: 30s;
+    --marquee-items: 9;
+}
+
+/* Settings for smaller marquee with fewer items */
+.marquee--LTR-M,
+.marquee--RTL-M {
+    --marquee-items: 7;
+}
+
+/* Marquee Items with Active Class for Triggering Animation */
+.marquee__item {
+    --marquee-item-offset: max(calc(var(--marquee-item-width) * var(--marquee-items)),
+            calc(100% + var(--marquee-item-width)));
+    --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 45%; /* Reduced height to half */
-    overflow: hidden;
-    --main-color: rgba(0, 24, 182, 0.692); /* Change to solid for better visibility */
-    --animation-duration: 25s;
-    --font-size: 1.5rem; /* Customize number size */
+    inset-inline-start: var(--marquee-item-offset);
+    transform: translateX(-50%);
 }
 
-.numbers li {
-    position: absolute;
-    list-style: none;
-    display: block;
-    top: -150px;
-    color: var(--main-color);
-    font-size: var(--font-size);
-    animation: animate var(--animation-duration) linear infinite;
+/* Animation triggered only when the active class is applied */
+.marquee__item.active {
+    animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
 }
 
-.numbers li:nth-child(1) { --left: 25%; --delay: 0s; --duration: 25s; }
-.numbers li:nth-child(2) { --left: 10%; --delay: 2s; --duration: 12s; }
-.numbers li:nth-child(3) { --left: 70%; --delay: 4s; }
-.numbers li:nth-child(4) { --left: 40%; --delay: 0s; --duration: 18s; }
-.numbers li:nth-child(5) { --left: 65%; --delay: 0s; }
-.numbers li:nth-child(6) { --left: 75%; --delay: 3s; }
-.numbers li:nth-child(7) { --left: 35%; --delay: 7s; }
-.numbers li:nth-child(8) { --left: 50%; --delay: 15s; --duration: 45s; }
-.numbers li:nth-child(9) { --left: 20%; --delay: 2s; --duration: 35s; }
-.numbers li:nth-child(10) { --left: 85%; --delay: 0s; --duration: 11s; }
-
-.numbers li {
-    left: var(--left, 0);
-    animation-delay: var(--delay, 0s);
-    animation-duration: var(--duration, 25s);
-}
-
-@keyframes animate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(500px) rotate(720deg); /* Reduced height to half */
-        opacity: 0;
+/* Keyframes for marquee animation */
+@keyframes go {
+    to {
+        inset-inline-start: calc(var(--marquee-item-width) * -1);
     }
 }
+
+/* Directional Settings */
+
+/* LTR - Left to Right */
+.marquee--LTR .marquee__item.active {
+    animation-direction: normal; /* Default direction for LTR */
+}
+
+/* RTL - Right to Left */
+.marquee--RTL .marquee__item.active {
+    animation-direction: reverse; /* Reversed direction for RTL */
+}
+
+/* LTR - Left to Right for smaller marquee */
+.marquee--LTR-M .marquee__item.active {
+    animation-direction: normal; /* Default direction for LTR */
+}
+
+/* RTL - Right to Left for smaller marquee */
+.marquee--RTL-M .marquee__item.active {
+    animation-direction: reverse; /* Reversed direction for RTL */
+}
+
+/* Assigning unique index to each marquee item for delay */
+.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
+.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
+.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
+.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
+.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
+.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
+.marquee__item:nth-of-type(7) { --marquee-item-index: 7; }
+.marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
+.marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
+
 
 
 
@@ -411,36 +440,36 @@
 
 
 
-  /* Floater Animation for Multiple Elements */
-  #cloud, #floater {
-    animation: float 1s ease-in-out infinite alternate;
-  }
+/* Floater Animation for Multiple Elements */
+.floater.active {
+  animation: floatFloater 1s ease-in-out infinite alternate;
+}
 
-  #cloud {
-    animation: floatCloud 1s ease-in-out infinite alternate;
-  }
+.cloud.active {
+  animation: floatCloud 1s ease-in-out infinite alternate;
+}
 
-  @keyframes floatCloud {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-50px);
-    }
+/* Keyframes for floating animations */
+@keyframes floatCloud {
+  0% {
+    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-50px);
+  }
+}
 
-  #floater {
-    animation: floatFloater 1s ease-in-out infinite alternate;
+@keyframes floatFloater {
+  0% {
+    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-10px);
+  }
+}
 
-  @keyframes floatFloater {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-10px);
-    }
-  }
+
+
 
 
 
@@ -464,4 +493,57 @@
 
 
 
+/* General rotation animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
 
+@keyframes rotate-group {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply rotation only when active */
+.rotating-icon-1.active,
+.rotating-icon-2.active,
+.rotating-icon-3.active,
+.rotating-icon-4.active,
+.rotating-icon-5.active {
+  animation: rotate 30s linear infinite;
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-1 {
+  transform-origin: 140px 690px;
+}
+
+.rotating-icon-2 {
+  transform-origin: 1560px 690px;
+}
+
+.rotating-icon-3 {
+  transform-origin: 830px 160px;
+}
+
+.rotating-icon-4 {
+  transform-origin: 1285px 1475px;
+}
+
+.rotating-icon-5 {
+  transform-origin: 450px 1500px;
+}
+
+/* Rotating group animation */
+.rotating-group.active {
+  animation: rotate-group 30s linear infinite;
+  transform-origin: center;
+}
