@@ -71,31 +71,51 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  
-  // Function for creating scaleY animation for elements with a given class
-  function createScaleYAnimation(element, scaleYValue, durationValue) {
-    gsap.to(element, {
-      scaleY: scaleYValue,               // Only scale on the Y-axis
-      duration: durationValue,           // Duration of the animation
-      ease: "power2.inOut",              // Smooth ease effect
-      transformOrigin: "50% 50%",        // Scale from the center of the element
-      scrollTrigger: {
-        trigger: element,                // The element that triggers the animation
-        start: "top 60%",                // Start when the top of the element reaches 60% of the viewport
-        end: "center 10%",               // End when the center of the element leaves the viewport
-        toggleActions: "play reverse play reverse",  // Play on enter, reverse on leave
-        markers: false                   // Set to true if you want debugging markers
-      }
+
+  // Function to create a translation and fade-in animation with stagger for the elements
+  function pricingBarDesk(elements, yValue, durationValue, staggerValue) {
+    gsap.from(elements, {
+      y: yValue,                 // Translate vertically by yValue pixels
+      opacity: 0,                // Start from 0 opacity for fade-in effect
+      duration: durationValue,   // Duration of the animation
+      ease: "power2.inOut",
+      stagger: staggerValue      // Stagger time between each element's animation
     });
   }
 
-  // Select all elements with the class .rect-scaleY and apply the animation
-  document.querySelectorAll(".rect-scaleY").forEach(function (rect) {
-    createScaleYAnimation(rect, 1.5, 0.7);  // Increase scaleY to 1.5 over 0.7 seconds
+  // Select all elements with the class .priceBar and apply the animation with stagger
+  const priceBars = document.querySelectorAll(".priceBar");
+  pricingBarDesk(priceBars, 100, 1, 0.1); // 0.2s stagger between each element
+
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Function to create a basic translation and fade-in animation for each element
+  function pricingBarMob(element, yValue, durationValue) {
+    gsap.from(element, {
+      y: yValue,                 // Translate vertically by yValue pixels
+      opacity: 0,                // Start from 0 opacity for fade-in effect
+      duration: durationValue,   // Duration of the animation
+      ease: "power2.inOut"
+    });
+  }
+
+  // Select all elements with the class .priceBar and apply the animation individually
+  document.querySelectorAll(".priceBarMob").forEach((bar) => {
+    pricingBarMob(bar, 100, 1); // Translate 100px on the y-axis and fade in over 1 second
   });
 
 });
+
+
 
 
 
