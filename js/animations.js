@@ -135,29 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-1, .rotating-icon-2, .rotating-icon-3, .rotating-icon-4, .rotating-icon-5, .rotating-group");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
 
 
 
@@ -696,187 +673,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  let circleIndex = 0; // To keep track of the current circle
-
-  // Function to change the color of the next circle and reset the previous one
-  function changeNextCircleColor() {
-    const circles = document.querySelectorAll('circle.calendarDots'); // Dynamically select circles
-    if (circles.length === 0) return; // Check if any circles are present
-
-    // Reset the previous circle
-    const prevCircle = circles[(circleIndex - 1 + circles.length) % circles.length];
-    gsap.to(prevCircle, { fill: '#fff', stroke: 'none', duration: 0.5 });
-
-    // Change the color of the current circle
-    const nextCircle = circles[circleIndex];
-    gsap.to(nextCircle, { fill: '#7ED348', stroke: '#fff', duration: 0.5 });
-
-    // Increment circleIndex, reset if we've reached the end
-    circleIndex = (circleIndex + 1) % circles.length;
-  }
-
-  // GSAP timeline to repeat the color change every 1.5 seconds
-  gsap.timeline({ repeat: -1, repeatDelay: 1.5 })
-    .call(changeNextCircleColor);
-});
-
-
-
 
   
 
 
   
   
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to create fade-in/fade-out animations between two sets of elements
-  function createSeamlessFadeAnimation(blog1Elements, blog2Elements, options = {}) {
-    // Default options for timing and staggering
-    const { fadeDuration = 1, delayBetween = .2, staggerDelay = 0.1 } = options;
 
-    // Convert NodeLists to arrays for better manipulation
-    const blog1Array = Array.from(blog1Elements);
-    const blog2Array = Array.from(blog2Elements);
-
-    // Initial setup: Make sure blog1 is visible and blog2 is hidden
-    gsap.set(blog1Array, { opacity: 1, visibility: 'visible' });
-    gsap.set(blog2Array, { opacity: 0, visibility: 'hidden' });
-
-    // Main timeline controlling the whole animation cycle
-    const mainTimeline = gsap.timeline({ repeat: -1 });
-
-    // Reusable function to create fade transition between two element arrays
-    function createFadeTransition(fromElements, toElements) {
-      return mainTimeline
-        .to(fromElements, {
-          opacity: 0,
-          duration: fadeDuration,
-          ease: "power1.inOut",
-          stagger: staggerDelay
-        })
-        .set(fromElements, { visibility: 'hidden' }) // Hide the "from" elements
-        .set(toElements, { visibility: 'visible', opacity: 0 }) // Show the "to" elements but keep opacity 0
-        .to(toElements, {
-          opacity: 1,
-          duration: fadeDuration,
-          ease: "power1.inOut",
-          stagger: staggerDelay,
-          delay: delayBetween // Delay before starting fade-in
-        });
-    }
-
-    // Fade transitions between blog1 -> blog2, and then blog2 -> blog1
-    createFadeTransition(blog1Array, blog2Array);
-    createFadeTransition(blog2Array, blog1Array);
-  }
-
-  // Apply the animation to all elements with the class `.blog1` and `.blog2`
-  const blog1Elements = document.querySelectorAll('.blog1');
-  const blog2Elements = document.querySelectorAll('.blog2');
-
-  // Only create animation if both blog1 and blog2 elements exist
-  if (blog1Elements.length > 0 && blog2Elements.length > 0) {
-    createSeamlessFadeAnimation(blog1Elements, blog2Elements, {
-      fadeDuration: 1,  // Customize fade duration if needed
-      delayBetween: .2,  // Delay between transitions
-      staggerDelay: 0.1 // Staggered delay for smoother animations
-    });
-  }
-});
 
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to randomly fade out and fade in elements with repeating animation
-  function circleFadeRandom(elements, { duration = 2, minDelay = 1, maxDelay = 3, stagger = 2 } = {}) {
-    elements.forEach(element => {
-      const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
-      gsap.to(element, {
-        opacity: 0,
-        duration: duration,
-        delay: randomDelay,
-        ease: "power1.inOut",
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Fade back in after fading out
-        stagger: stagger // Stagger to keep the animation continuous
-      });
+  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
     });
   }
 
-  // Example usage for multiple circles with the class `.circleFade`
-  const circleFadeElements = document.querySelectorAll('.circleFade');
-  circleFadeRandom(circleFadeElements, {
-    duration: 2, // Duration of the fade-out
-    minDelay: 1, // Minimum delay before starting the fade-out
-    maxDelay: 3, // Maximum delay before starting the fade-out (randomized)
-    stagger: 2 // Stagger between the elements to keep them animating continuously
-  });
+  // Select the rotating group to be used as the trigger
+  const rotatingGroup = document.querySelector(".rotating-group");
+  // Select the icons and the rotating group itself as targets
+  const rotatingElements = document.querySelectorAll(".rotating-icon-1, .rotating-icon-2, .rotating-icon-3, .rotating-icon-4, .rotating-icon-5, .rotating-group");
+
+  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
+  if (rotatingGroup && rotatingElements.length > 0) {
+    activateScrollTrigger(rotatingGroup, rotatingElements);
+  }
 });
-
-
-  
-  
-
-document.addEventListener("DOMContentLoaded", function () {
-    gsap.to(".bouncerRight", {
-        x: 30,                         // Move to the right by 30px
-        duration: 1,                   // Duration of the animation
-        ease: "elastic.out(0.9, 0.5)", // Elastic bounce effect
-        yoyo: true,                    // Returns back to its original position
-        repeat: -1                     // Repeats infinitely
-    });
-});
-
-    
-
-
-
- document.addEventListener("DOMContentLoaded", function () {
-    gsap.to(".rotateRight", {
-        rotate: 10,                     // Rotate to the right by 10 degrees
-        duration: 1,                    // Duration of the rotation animation
-        ease: "elastic.out(0.9, 0.5)",  // Elastic bounce effect for rotation
-        transformOrigin: "50% 100%",    // Set the rotation origin to the bottom center point
-        yoyo: true,                     // Returns back to its original position
-        repeat: -1,                     // Infinite repetition
-        repeatDelay: 1                  // Delay of 1 second between each repeat
-    });
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    gsap.to(".rotateLeft", {
-        rotate: -5,
-        x: 10,
-        duration: 1,                    // Duration of the rotation animation
-        ease: "elastic.out(0.9, 0.5)",  // Elastic bounce effect for rotation
-        transformOrigin: "50% 100%",    // Set the rotation origin to the bottom center point
-        yoyo: true,                     // Returns back to its original position
-        repeat: -1,                     // Infinite repetition
-        repeatDelay: 1                  // Delay of 1 second between each repeat
-    });
-});
-
-  
-
-
- 
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-

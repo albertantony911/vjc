@@ -15,9 +15,28 @@ const canvas3D = containerEl.querySelector("#globe-3d");
 let renderer, scene, camera, controls;
 let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
+let animationFrameId; // Track the animation frame ID
+
+// Create the observer to detect when the globe is in the viewport
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Start rendering when in view
+                render();
+            } else {
+                // Stop rendering when out of view
+                cancelAnimationFrame(animationFrameId);
+            }
+        });
+    },
+    { threshold: 0.1 } // Adjust threshold as needed
+);
+
+// Observe the container element
+observer.observe(containerEl);
 
 initScene();
-
 
 function initScene() {
     renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
@@ -36,9 +55,22 @@ function initScene() {
         earthTexture = mapTex;
         createGlobe();
         updateSize();
-        render();
+        render(); // Initial render call to start animation
     });
 }
+
+// Simplified render function without conditions
+function render() {
+    mapMaterial.uniforms.u_time_since_click.value = clock.getElapsedTime();
+    controls.update();
+    updateOpacity();
+    renderer.render(scene, camera);
+
+    // Save the animation frame ID for pausing
+    animationFrameId = requestAnimationFrame(render);
+}
+
+let initialSize;
 
 
 
@@ -138,15 +170,7 @@ function createGlobe() {
     scene.add(globeMesh);
 }
 
-function render() {
-    mapMaterial.uniforms.u_time_since_click.value = clock.getElapsedTime();
-    controls.update();
-    updateOpacity();
-    renderer.render(scene, camera);
-    requestAnimationFrame(render);
-}
 
-let initialSize;
 
 function updateSize() {
     // Cache window dimensions to avoid repeated recalculation
