@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 494 494" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
+    <g>
+        <g>
+            <g style="filter:url(#_Effect1);">
+                <path d="M435.953,152.488L435.953,341.465C435.953,393.614 393.614,435.953 341.465,435.953L152.488,435.953C100.339,435.953 58,393.614 58,341.465L58,152.488C58,100.339 100.339,58 152.488,58L341.465,58C393.614,58 435.953,100.339 435.953,152.488Z" style="fill:none;stroke:#01377d;stroke-opacity:0.2;stroke-width:20px;"/>
+            </g>
+            <path d="M433.79,152.368L433.79,341.344C433.79,393.494 391.451,435.832 339.302,435.832L150.325,435.832C98.176,435.832 55.837,393.494 55.837,341.344L55.837,152.368C55.837,100.218 98.176,57.88 150.325,57.88L339.302,57.88C391.451,57.88 433.79,100.218 433.79,152.368Z" style="fill:#fff;stroke:#fff;stroke-width:0.46px;"/>
+        </g>
+        <g>
+            <ellipse cx="279.078" cy="278.6" rx="73.382" ry="75.468" style="fill:#7cd24c;"/>
+            <path d="M304.183,180.977L304.183,268.09C304.183,290.836 285.716,309.303 262.97,309.303L180.544,309.303C157.797,309.303 139.33,290.836 139.33,268.09L139.33,180.977C139.33,158.231 157.797,139.764 180.544,139.764L262.97,139.764C285.716,139.764 304.183,158.231 304.183,180.977Z" style="fill:#01377d;"/>
+            <clipPath id="_clip2">
+                <path d="M304.183,180.977L304.183,268.09C304.183,290.836 285.716,309.303 262.97,309.303L180.544,309.303C157.797,309.303 139.33,290.836 139.33,268.09L139.33,180.977C139.33,158.231 157.797,139.764 180.544,139.764L262.97,139.764C285.716,139.764 304.183,158.231 304.183,180.977Z"/>
+            </clipPath>
+            <g clip-path="url(#_clip2)">
+                <g>
+                    <g style="filter:url(#_Effect3);">
+                        <ellipse cx="279.078" cy="278.6" rx="73.382" ry="75.468" style="fill:#9dafff;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <circle cx="178.524" cy="177.292" r="13.204" style="fill:#fff;"/>
+    </g>
+    <defs>
+        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="-48" y="-48" width="589.953" height="589.953">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="16"/>
+        </filter>
+        <filter id="_Effect3" filterUnits="userSpaceOnUse" x="152.502" y="149.939" width="253.151" height="257.323">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8.86567"/>
+        </filter>
+    </defs>
+</svg>
