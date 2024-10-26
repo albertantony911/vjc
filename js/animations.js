@@ -642,7 +642,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // GSAP animation for the random number change
     gsap.to({}, {
-        duration: 1.5, // Duration of each number change
+        duration: 1.9, // Duration of each number change
         repeat: -1, // Infinite loop
         ease: "power2.inOut", // Smooth easing effect
         onRepeat: () => {
