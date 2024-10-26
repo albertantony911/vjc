@@ -518,7 +518,7 @@
 .rotating-icon-3.active,
 .rotating-icon-4.active,
 .rotating-icon-5.active {
-  animation: rotate 30s linear infinite;
+  animation: rotate 45s linear infinite;
 }
 
 /* Individual transform-origin settings */
@@ -544,6 +544,137 @@
 
 /* Rotating group animation */
 .rotating-group.active {
-  animation: rotate-group 30s linear infinite;
+  animation: rotate-group 45s linear infinite;
   transform-origin: center;
+}
+
+
+
+
+
+
+/* Cloud rotation animations with bouncy cubic-bezier effect */
+@keyframes rotate-scale-down {
+  from {
+    transform: rotate(0deg) scale(1); /* Start at original size */
+    opacity: 1; /* Start fully opaque */
+  }
+  to {
+    transform: rotate(-230deg) scale(0.8); /* Rotate and scale down to 0.8 */
+    opacity: 0.5; /* Slightly reduced opacity */
+  }
+}
+
+@keyframes rotate-group-cloud {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(230deg);
+  }
+}
+
+/* Scale-up and reverse animation */
+@keyframes scale-up-reverse {
+  0%, 100% {
+    transform: rotate(-230deg) scale(1); /* Start and end at original size */
+  }
+  50% {
+    transform: rotate(-230deg) scale(1.2); /* Scale up to 1.2 at midpoint */
+  }
+}
+
+/* Apply rotation and scale-down on load with bouncy cubic-bezier */
+.rotating-icon-1-cloud,
+.rotating-icon-2-cloud,
+.rotating-icon-4-cloud,
+.rotating-icon-5-cloud {
+  animation: rotate-scale-down 3s cubic-bezier(0.6, 0.05, 0.1, 1.25) forwards;
+}
+
+/* Apply scale-up and reverse animation to rotating-icon-3-cloud */
+.rotating-icon-3-cloud {
+  transform-origin: 830px 160px;
+  animation: scale-up-reverse 2s ease-in-out infinite; /* Continuous pulsing effect */
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-1-cloud {
+  transform-origin: 140px 690px;
+}
+
+.rotating-icon-2-cloud {
+  transform-origin: 1560px 690px;
+}
+
+.rotating-icon-4-cloud {
+  transform-origin: 1285px 1475px;
+}
+
+.rotating-icon-5-cloud {
+  transform-origin: 450px 1500px;
+}
+
+/* Rotating group animation with bouncy cubic-bezier */
+.rotating-group-cloud {
+  animation: rotate-group-cloud 3s cubic-bezier(0.6, 0.05, 0.1, 1.25) forwards;
+  transform-origin: center;
+}
+
+
+
+
+
+
+
+/* Base state for `.scaler` only (opacity change) */
+.scaler {
+  opacity: 0.8;
+  transform-origin: center;
+}
+
+/* Base state for `.scaler-big` (no opacity change) */
+.scaler-big {
+  transform-origin: center;
+}
+
+/* Animation when `active` class is added */
+.scaler.active {
+  animation: scaleDown 1s ease-in-out forwards;
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+}
+
+/* Active class triggers scale-up, followed by pulsing */
+.scaler-big.active {
+  animation: scaleUp 1s ease-in-out forwards, pulsing 1.5s ease-in-out infinite 1s;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+
+/* Pulsing effect after scale-up */
+@keyframes pulsing {
+  0%, 100% {
+    transform: scale(1.5); /* Final scale from scaleUp */
+  }
+  50% {
+    transform: scale(1.6); /* Slightly larger for pulse */
+  }
 }

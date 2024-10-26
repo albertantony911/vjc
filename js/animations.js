@@ -1,80 +1,96 @@
-function initializeGSAP() {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-// Ensure GSAP is initialized first
-initializeGSAP();
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  function gsapCounterOptimized(target, duration = 3, start = 0, elementId, suffix = '+', updateFrequency = 2) {
+  // Reusable IntersectionObserver for all counters
+  const observer = new IntersectionObserver((entries, observerInstance) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counterElement = entry.target;
+        const { target, duration, start, suffix } = counterElement.dataset;
+
+        // Start counter animation using requestAnimationFrame
+        animateCounter(counterElement, Number(start), Number(target), Number(duration), suffix || '+');
+        
+        observerInstance.unobserve(counterElement); // Stop observing this element
+      }
+    });
+  }, { threshold: 0.5 }); // Trigger closer to center of viewport
+
+  // Core animation function
+  function animateCounter(element, startValue, targetValue, duration, suffix) {
+    const frameRate = 20;  // Reduced frame rate to save CPU
+    const increment = (targetValue - startValue) / (duration * frameRate);
+    let currentValue = startValue;
+    let frameCount = 0;
+
+    function updateCounter() {
+      currentValue += increment;
+      frameCount++;
+
+      // Stop animation if target is reached or exceeded
+      if (currentValue >= targetValue || frameCount >= duration * frameRate) {
+        element.textContent = `${targetValue}${suffix}`; // Set final value
+      } else {
+        element.textContent = `${Math.floor(currentValue)}${suffix}`;
+        requestAnimationFrame(updateCounter);
+      }
+    }
+
+    requestAnimationFrame(updateCounter); // Start the animation loop
+  }
+
+  // Initialize counters by assigning data attributes
+  function initializeCounter(elementId, target, duration = 3, start = 0, suffix = '+') {
     const counterElement = document.getElementById(elementId);
-    if (!counterElement) return;
+    if (!counterElement || counterElement.dataset.initialized) return;
 
-    // Define the counter animation
-    const startAnimation = () => {
-      gsap.to({ value: start }, {
-        value: target,
-        duration: duration,
-        ease: "power1.inOut",
-        onUpdate: function () {
-          if (gsap.ticker.frame % updateFrequency === 0) {
-            counterElement.textContent = `${Math.floor(this.targets()[0].value)}${suffix}`;
-          }
-        },
-        onComplete: function () {
-          counterElement.textContent = `${target}${suffix}`;
-        }
-      });
-    };
-
-    // Create an IntersectionObserver to trigger animation on view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          startAnimation();
-          observer.unobserve(entry.target); // Stop observing once animation starts
-        }
-      });
-    }, { threshold: 0.8 }); // Trigger when 80% of the element is in view
+    // Store parameters on the element for reuse in the observer
+    counterElement.dataset.target = target;
+    counterElement.dataset.duration = duration;
+    counterElement.dataset.start = start;
+    counterElement.dataset.suffix = suffix;
+    counterElement.dataset.initialized = 'true'; // Mark as initialized
 
     observer.observe(counterElement); // Start observing the element
   }
 
   // Example usage
-  gsapCounterOptimized(3000, 3, 0, "counter1", '+', 2);
-  gsapCounterOptimized(36, 3, 0, "counter2", '+', 3);
-  gsapCounterOptimized(40, 3, 0, "counter3", '+', 2);
-  gsapCounterOptimized(50, 3, 0, "counter4", '%', 3);
+  initializeCounter("counter1", 3000, 3, 0, '+');
+  initializeCounter("counter2", 36, 3, 0, '+');
+  initializeCounter("counter3", 40, 3, 0, '+');
+  initializeCounter("counter4", 50, 3, 0, '%');
 });
 
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to activate ScrollTrigger for elements
-  function activateScrollAnimation(className, triggerPosition = "top 80%") {
-    // Select all elements with the specified class
-    const elements = document.querySelectorAll(`.${className}`);
-    
-    elements.forEach((element) => {
-      ScrollTrigger.create({
-        trigger: element,
-        start: triggerPosition, // Start animation when element reaches viewport
-        onEnter: () => element.classList.add("active"), // Add 'active' class
-        onLeave: () => element.classList.remove("active"), // Remove 'active' class when leaving
-        onEnterBack: () => element.classList.add("active"),
-        onLeaveBack: () => element.classList.remove("active"),
-      });
-    });
+  // Function to activate IntersectionObserver for elements by class
+  function activateScrollAnimation(className, threshold = 0.8) {
+    const options = {
+      root: null, // Observes the viewport
+      rootMargin: "0px",
+      threshold: threshold // Trigger when 80% of the element is visible
+    };
 
-    // Ensure all ScrollTriggers are up-to-date
-    ScrollTrigger.refresh();
+    // IntersectionObserver callback
+    const observerCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active"); // Add 'active' class on enter
+        } else {
+          entry.target.classList.remove("active"); // Remove 'active' class on leave
+        }
+      });
+    };
+
+    // Create the IntersectionObserver with the specified options
+    const observer = new IntersectionObserver(observerCallback, options);
+
+    // Select all elements with the specified class and observe them
+    const elements = document.querySelectorAll(`.${className}`);
+    elements.forEach(element => observer.observe(element));
   }
 
-  // Activate ScrollTrigger for both 'cloud' and 'floater' animations
+  // Activate IntersectionObserver for 'cloud' and 'floater' animations
   activateScrollAnimation("cloud");
   activateScrollAnimation("floater");
 });
@@ -85,31 +101,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to activate ScrollTrigger for marquee items
-  function activateMarqueeScrollTrigger() {
-    const marqueeItems = document.querySelectorAll(".marquee__item");
+  // Function to activate IntersectionObserver for marquee items
+  function activateMarqueeObserver() {
+    const options = {
+      root: null, // Observes the viewport
+      rootMargin: "0px",
+      threshold: 0.8 // Trigger when 80% of the element is visible
+    };
 
-    marqueeItems.forEach((item) => {
-      ScrollTrigger.create({
-        trigger: item,
-        start: "top 80%", // Adjust based on when you want animation to start
-        onEnter: () => item.classList.add("active"), // Start animation
-        onLeave: () => item.classList.remove("active"), // Stop animation if desired
-        onEnterBack: () => item.classList.add("active"),
-        onLeaveBack: () => item.classList.remove("active")
+    // IntersectionObserver callback
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        } else {
+          entry.target.classList.remove("active");
+        }
       });
-    });
+    };
 
-    // Ensure ScrollTriggers are up-to-date
-    ScrollTrigger.refresh();
+    // Create the IntersectionObserver with the specified options
+    const observer = new IntersectionObserver(observerCallback, options);
+
+    // Observe each marquee item
+    const marqueeItems = document.querySelectorAll(".marquee__item");
+    marqueeItems.forEach(item => observer.observe(item));
   }
 
-  // Activate ScrollTrigger for marquee items
-  activateMarqueeScrollTrigger();
+  // Activate IntersectionObserver for marquee items
+  activateMarqueeObserver();
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -139,77 +162,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  
-  // Common ScrollTrigger function for scaling animations
-  function createScalingAnimation(element, scaleXValue, scaleYValue, opacityValue, durationValue) {
-    gsap.to(element, {
-      scaleX: scaleXValue,               // Scale on the X-axis
-      scaleY: scaleYValue,               // Scale on the Y-axis
-      opacity: opacityValue,             // Change opacity
-      duration: durationValue,           // Duration of the animation
-      ease: "power2.inOut",              // Smooth ease effect
-      transformOrigin: "50% 50%",        // Scale from the center of the element
-      scrollTrigger: {
-        trigger: element,                // The element that triggers the animation
-        start: "top 60%",                // Start a little before center (when the top of the element is at 60% of the viewport)
-        end: "bottom 10%",               // End when the center leaves the viewport
-        toggleActions: "play reverse play reverse",  // Play on enter, reverse on leave
-        markers: false                   // Set to true if you want debugging markers
-      }
-    });
-  }
-
-  // Apply animations using the common function
-  createScalingAnimation(".scaler", 0.7, 0.7, 0.2, 0.5);       // Animation for .scaler
-  createScalingAnimation(".scaler-big", 1.4, 1.4, 1, 0.5);     // Animation for .scaler-big (focuses on scaling bigger)
-});
 
 
+// Select all elements with the triggering class
+const elementsToAnimate = document.querySelectorAll('.scaler, .scaler-big');
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  // Function to create a translation and fade-in animation with stagger for the elements
-  function pricingBarDesk(elements, yValue, durationValue, staggerValue) {
-    gsap.from(elements, {
-      y: yValue,                 // Translate vertically by yValue pixels
-      opacity: 0,                // Start from 0 opacity for fade-in effect
-      duration: durationValue,   // Duration of the animation
-      ease: "power2.inOut",
-      stagger: staggerValue      // Stagger time between each element's animation
-    });
-  }
-
-  // Select all elements with the class .priceBar and apply the animation with stagger
-  const priceBars = document.querySelectorAll(".priceBar");
-  pricingBarDesk(priceBars, 100, 1, 0.1); // 0.2s stagger between each element
-
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  // Function to create a basic translation and fade-in animation for each element
-  function pricingBarMob(element, yValue, durationValue) {
-    gsap.from(element, {
-      y: yValue,                 // Translate vertically by yValue pixels
-      opacity: 0,                // Start from 0 opacity for fade-in effect
-      duration: durationValue,   // Duration of the animation
-      ease: "power2.inOut"
-    });
-  }
-
-  // Select all elements with the class .priceBar and apply the animation individually
-  document.querySelectorAll(".priceBarMob").forEach((bar) => {
-    pricingBarMob(bar, 100, 1); // Translate 100px on the y-axis and fade in over 1 second
+// Create the Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add the `active` class to trigger the animation
+      entry.target.classList.add('active');
+      
+      // Optional: Unobserve the element if the animation should only happen once
+      observer.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.5 }); // Trigger when 50% of the element is visible
 
-});
+// Observe each element with `.scaler` or `.scaler-big` class
+elementsToAnimate.forEach(element => observer.observe(element));
 
+
+
+
+document.addEventListener("DOMContentLoaded", initAnimation, { once: true });
+
+// Initialize animation
+function initAnimation() {
+   const priceBars = document.querySelectorAll(".priceBar");
+   animatePricingBars(priceBars, 100, 1, 0.1);
+}
+
+// Function to create translation and fade-in animation with stagger for elements
+function animatePricingBars(elements, yValue, durationValue, staggerValue) {
+   // Kill any existing tweens on the elements to prevent memory buildup
+   gsap.killTweensOf(elements);
+
+   // Define the animation with GSAP
+   gsap.from(elements, {
+      y: yValue,                   // Translate vertically by yValue pixels
+      opacity: 0,                  // Start from 0 opacity for fade-in effect
+      duration: durationValue,     // Duration of the animation
+      ease: "power2.inOut",
+      stagger: staggerValue        // Stagger time between each element's animation
+   });
+}
+
+
+document.addEventListener("DOMContentLoaded", initMobileAnimation, { once: true });
+
+// Initialize mobile animation
+function initMobileAnimation() {
+   const priceBars = document.querySelectorAll(".priceBarMob");
+   priceBars.forEach((bar) => {
+      animatePricingBar(bar, 100, 1); // Translate 100px on the y-axis and fade in over 1 second
+   });
+}
+
+// Function to create a translation and fade-in animation for a single element
+function animatePricingBar(element, yValue, durationValue) {
+   // Clear any existing animation on the element to avoid overlap or memory leaks
+   gsap.killTweensOf(element);
+
+   // Animate the element with GSAP
+   gsap.from(element, {
+      y: yValue,
+      opacity: 0,
+      duration: durationValue,
+      ease: "power2.inOut"
+   });
+}
 
 
 
@@ -674,11 +697,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const circles = document.querySelectorAll('circle.calendarDots');
   let circleIndex = 0; // To keep track of the current circle
 
   // Function to change the color of the next circle and reset the previous one
   function changeNextCircleColor() {
+    const circles = document.querySelectorAll('circle.calendarDots'); // Dynamically select circles
+    if (circles.length === 0) return; // Check if any circles are present
+
     // Reset the previous circle
     const prevCircle = circles[(circleIndex - 1 + circles.length) % circles.length];
     gsap.to(prevCircle, { fill: '#fff', stroke: 'none', duration: 0.5 });
@@ -695,6 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.timeline({ repeat: -1, repeatDelay: 1.5 })
     .call(changeNextCircleColor);
 });
+
 
 
 

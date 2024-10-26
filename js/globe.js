@@ -1,9 +1,13 @@
-
-import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
+// threeModules.js
+import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module.js";
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js";
 import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
+
+export { THREE, OrbitControls, Line2, LineMaterial, LineGeometry };
+
+    
 
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
