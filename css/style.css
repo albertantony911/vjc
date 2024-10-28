@@ -2301,6 +2301,16 @@ svg {
     height: 100%;
   }
 
+  .md\:size-\[15vh\] {
+    width: 15vh;
+    height: 15vh;
+  }
+
+  .md\:size-\[13vh\] {
+    width: 13vh;
+    height: 13vh;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
