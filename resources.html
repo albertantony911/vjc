@@ -34,31 +34,12 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <!-- Include Motion One using a CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@motionone/dom@latest/dist/motion.min.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Observer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EaselPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/PixiPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 
 
 
@@ -192,7 +173,7 @@
                 class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
                 <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                <li><a href="./audit-and-assurancce-services.html">Audit and Assurance Services</a></li>
+                <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
                 <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
@@ -211,19 +192,19 @@
             <ul class="flex flex-row flex-wrap items-center w-full">
 
                 <!-- Home -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./index.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Home</span>
                     </a>
                 </li>
 
                 <!-- About -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./about.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
                         <span>About</span>
                     </a>
                 </li>
@@ -231,17 +212,17 @@
 
 
                 <!-- Our Services with Submenu -->
-                <li class="relative block" x-data="{ showChildren: false, submenuTimeout: null }"
+                <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
                     @touchstart="showChildren = !showChildren">
                     <a href="#" aria-haspopup="true" aria-expanded="false"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer"
+                        class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
                         <span>Services</span>
-                        <span class="ml-2"> <i class="mdi mdi-chevron-down"></i> </span>
+
                     </a>
-                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white border border-gray-300 shadow-sm"
+                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
                         x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
                         x-transition:enter-start="opacity-0 translate-y-2"
                         x-transition:enter-end="opacity-100 translate-y-0"
@@ -252,7 +233,7 @@
                         aria-label="Submenu">
                         <span
                             class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-                        <div class="relative z-10 w-full px-2 py-6 bg-white">
+                        <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
@@ -265,7 +246,7 @@
                                 </li>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
-                                    <a href="./audit-and-assurancce-services.html"
+                                    <a href="./audit-and-assurance-services.html"
                                         class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                                         role="menuitem">
                                         <span class="flex-1">Audit and Assurance Services</span>
@@ -307,10 +288,10 @@
 
 
                 <!-- Pricing -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./pricing.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Pricing</span>
                     </a>
                 </li>
@@ -318,10 +299,10 @@
 
 
                 <!-- Resources -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./resources.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Resources</span>
                     </a>
                 </li>
@@ -329,10 +310,10 @@
 
 
                 <!-- Contact Us -->
-                <li class="relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./contact.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 rounded cursor-pointer">
+                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
                         <span>Contact Us</span>
                     </a>
                 </li>
@@ -342,376 +323,8 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="md:h-[70svh] h-[85svh]  md:flex-row flex flex-col-reverse">
-            <div
-                class="md:w-1/2 max-md:h-[35svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ]">
-                <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
-                    aria-label="Main Title">
-                    36 Years of Proven Accounting Expertise, Now Powered by Cloud Accounting
-                </h1>
-                <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
-                    aria-label="Hero Description">
-                    A leading name in India’s offshore accounting sector, V. Jaiswal & Co. has been delivering
-                    meticulous
-                    accounting
-                    services since 1988, driving remarkable results across industries.
-                </p>
-                <div class="flex justify-start   mt-0 ">
-                    <button
-                        class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-white text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
-                        Partner with Us
-                    </button>
-                </div>
-            </div>
-
-            <div class="relative md:w-1/2 max-md:h-[65svh] flex w-full flex-col  gradient-bg">
-                <div class="relative z-10  my-auto  gradient-bg-transparent h-full">
-
-                    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                    <svg id="floater" class="md:w-[50%] w-[60%] h-full mx-auto animationControl" viewBox="0 0 1586 2375"
-                        xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
-                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
-
-                        <!-- Outer container shape with very light opacity -->
-                        <path
-                            d="M1560.09 1143.23v901.91c0 165.07-134.01 299.08-299.07 299.08H324.271c-165.064 0-299.075-134.01-299.075-299.08v-901.91c0-165.063 134.011-299.073 299.075-299.073h936.749c165.06 0 299.07 134.01 299.07 299.073"
-                            style="fill:#0b0147;fill-opacity:.025;stroke:#fff;stroke-opacity:1;stroke-width:2px" />
-
-                        <!-- Cog icon with filter for blur effect -->
-                        <g style="filter:url(#a)">
-                            <path
-                                d="m1270.71 1872.13-5.8 37.63c6.41 2.11 12.65 4.7 18.67 7.74l22.51-30.71a172.44 172.44 0 0 1 67.75 67.75l-30.71 22.51c3.04 6.02 5.62 12.26 7.73 18.67l37.63-5.8c9.05 31.3 9.05 64.51 0 95.81l-37.63-5.8c-2.11 6.41-4.69 12.65-7.73 18.67l30.71 22.51a172.44 172.44 0 0 1-67.75 67.75l-22.51-30.71c-6.02 3.04-12.26 5.63-18.67 7.73l5.8 37.64c-31.3 9.05-64.52 9.05-95.81 0l5.79-37.64c-6.4-2.1-12.64-4.69-18.66-7.73l-22.52 30.71a172.57 172.57 0 0 1-67.75-67.75l30.71-22.51c-3.04-6.02-5.62-12.26-7.73-18.67l-37.63 5.8c-9.05-31.3-9.05-64.51 0-95.81l37.63 5.8c2.11-6.41 4.69-12.65 7.73-18.67l-30.71-22.51a172.57 172.57 0 0 1 67.75-67.75l22.52 30.71c6.02-3.04 12.26-5.63 18.66-7.74l-5.79-37.63c31.29-9.05 64.51-9.05 95.81 0"
-                                style="fill:#006fff;fill-opacity:.13" />
-                        </g>
-
-                        <!-- Another cog icon (without blur) -->
-                        <g id="cog">
-                            <path
-                                d="m1270.71 1872.13-5.8 37.63c6.41 2.11 12.65 4.7 18.67 7.74l22.51-30.71a172.44 172.44 0 0 1 67.75 67.75l-30.71 22.51c3.04 6.02 5.62 12.26 7.73 18.67l37.63-5.8c9.05 31.3 9.05 64.51 0 95.81l-37.63-5.8c-2.11 6.41-4.69 12.65-7.73 18.67l30.71 22.51a172.44 172.44 0 0 1-67.75 67.75l-22.51-30.71c-6.02 3.04-12.26 5.63-18.67 7.73l5.8 37.64c-31.3 9.05-64.52 9.05-95.81 0l5.79-37.64c-6.4-2.1-12.64-4.69-18.66-7.73l-22.52 30.71a172.57 172.57 0 0 1-67.75-67.75l30.71-22.51c-3.04-6.02-5.62-12.26-7.73-18.67l-37.63 5.8c-9.05-31.3-9.05-64.51 0-95.81l37.63 5.8c2.11-6.41 4.69-12.65 7.73-18.67l-30.71-22.51a172.57 172.57 0 0 1 67.75-67.75l22.52 30.71c6.02-3.04 12.26-5.63 18.66-7.74l-5.79-37.63c31.29-9.05 64.51-9.05 95.81 0"
-                                style="fill:#fff" />
-                        </g>
-
-
-                        <!-- Box with light opacity and blur effect -->
-                        <g style="filter:url(#b)">
-                            <path
-                                d="M558.382 1945.73v184.19c0 50.83-41.265 92.09-92.093 92.09H282.101c-50.828 0-92.094-41.26-92.094-92.09v-184.19c0-50.83 41.266-92.09 92.094-92.09h184.188c50.828 0 92.093 41.26 92.093 92.09"
-                                style="fill:#006fff;fill-opacity:.13" />
-                        </g>
-
-                        <!-- Box with white background and borders -->
-                        <path
-                            d="M558.382 1945.74v184.19c0 50.83-41.265 92.09-92.093 92.09H282.101c-50.828 0-92.094-41.26-92.094-92.09v-184.19c0-50.83 41.266-92.09 92.094-92.09h184.188c50.828 0 92.093 41.26 92.093 92.09"
-                            style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:2px" />
-
-                        <!-- Rounded rectangle button -->
-                        <path id="bar1"
-                            d="M324.709 1967.31v152.85c0 7.91-6.42 14.32-14.326 14.32h-28.651c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.906 0 14.326 6.42 14.326 14.33"
-                            style="fill:#fff" />
-
-                        <!-- Green circle button -->
-                        <circle id="barDot1" cx="296.057" cy="1952.98" r="17" style="fill:#7ed348" />
-
-
-
-                        <!-- Rounded rectangle button -->
-                        <path id="bar2"
-                            d="M402.287 1967.31v152.85c0 7.91-6.419 14.32-14.326 14.32H359.31c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.907 0 14.326 6.42 14.326 14.33"
-                            style="fill:#fff" />
-
-                        <!-- Blue circle button -->
-                        <circle id="barDot2" cx="373.636" cy="1952.98" r="17" style="fill:#01377d" />
-
-                        <!-- Rounded rectangle button -->
-                        <path id="bar3"
-                            d="M480.984 1967.31v152.85c0 7.91-6.419 14.32-14.326 14.32h-28.651c-7.907 0-14.326-6.41-14.326-14.32v-152.85c0-7.91 6.419-14.33 14.326-14.33h28.651c7.907 0 14.326 6.42 14.326 14.33"
-                            style="fill:#fff" />
-
-                        <!-- Green circle button -->
-                        <circle id="barDot3" cx="452.333" cy="1952.98" r="17" style="fill:#7ed348" />
-
-                        <!-- Second large box with filter and opacity -->
-                        <g style="filter:url(#c)">
-                            <path
-                                d="M988.528 1945.74v184.17c0 50.83-41.263 92.09-92.088 92.09H712.264c-50.825 0-92.088-41.26-92.088-92.09v-184.17c0-50.83 41.263-92.09 92.088-92.09H896.44c50.825 0 92.088 41.26 92.088 92.09"
-                                style="fill:#006fff;fill-opacity:.13" />
-                        </g>
-
-                        <!-- Second large box with white background -->
-                        <path
-                            d="M988.528 1945.74v184.17c0 50.83-41.263 92.09-92.088 92.09H712.264c-50.825 0-92.088-41.26-92.088-92.09v-184.17c0-50.83 41.263-92.09 92.088-92.09H896.44c50.825 0 92.088 41.26 92.088 92.09Z"
-                            style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:2px;stroke-linecap:butt" />
-
-                        <!-- White stroke with a checkmark icon -->
-                        <path id="lineGraph" d="m709.116 2122.11 67.326-71.5 75.161 13.8 47.985-111"
-                            style="fill:none;stroke:#fff;stroke-width:30px;stroke-miterlimit:.726744" />
-
-                        <!-- Green circle near the stroke -->
-                        <circle class="float" cx="755" cy="1970" r="18" style="fill:#7ed348" />
-
-                        <!-- Blue circle near the stroke -->
-                        <circle class="float" cx="860" cy="2135" r="18" style="fill:#01377d" />
-
-
-
-                        <!-- Main content background (another large box with blur) -->
-                        <g style="filter:url(#d)">
-                            <path
-                                d="M1445.81 1164.76v401.67c0 110.84-89.99 200.83-200.83 200.83H340.311c-110.844 0-200.835-89.99-200.835-200.83v-401.67c0-110.84 89.991-200.835 200.835-200.835h904.669c110.84 0 200.83 89.995 200.83 200.835"
-                                style="fill:#006fff;fill-opacity:.13" />
-                        </g>
-
-                        <!-- Main content background (white box) -->
-                        <path
-                            d="M1445.81 1164.76v401.67c0 110.84-89.99 200.83-200.83 200.83H340.311c-110.844 0-200.835-89.99-200.835-200.83v-401.67c0-110.84 89.991-200.835 200.835-200.835h904.669c110.84 0 200.83 89.995 200.83 200.835"
-                            style="fill:#fff;fill-opacity:.3;stroke:#fff;stroke-opacity:1;stroke-width:2px" />
-
-                        <!-- White stroke with some curve effect -->
-                        <path id="lineGraphLarge"
-                            d="M308.168 1402.62s73.482-86.56 121.446-83.58c79.222 4.92 239.136 124.85 353.886 113.12 114.75-11.72 246.5-178.55 334.61-183.48 80.25-4.48 194.1 153.94 194.1 153.94"
-                            style="fill:none;stroke:#fff;stroke-width:26.67px;stroke-miterlimit:.726744" />
-
-
-
-
-                        <!-- Vertical strokes and lines -->
-                        <path
-                            d="M490.905 1093.34v520.78m301.739-511.87V1623m522.126-107.61H270.514m1044.256-298.95H270.514m1044.256 149.45H270.514m845.396-272.55v520.78"
-                            style="fill:none;stroke:#fff;stroke-width:3.5px;stroke-miterlimit:.726744" />
-
-                        <!-- Ellipses with different colors (dots/icons) -->
-                        <ellipse class="float" cx="462.769" cy="1248.59" rx="20" ry="20" style="fill:#01377d" />
-                        <ellipse class="float" cx="627.292" cy="1482.33" rx="20" ry="20" style="fill:#7ed348" />
-                        <ellipse class="float" cx="820.304" cy="1292.59" rx="20" ry="20" style="fill:#7ed348" />
-                        <ellipse class="float" cx="1020.78" cy="1510.93" rx="20" ry="20" style="fill:#7ed348" />
-                        <ellipse class="float" cx="1090.68" cy="1340.78" rx="20" ry="20" style="fill:#01377d" />
-
-
-
-
-                        <!-- Cloud-like shape with blur effect -->
-                        <g style="filter:url(#e)">
-                            <path
-                                d="M1032.35 565.949H503.41c-71.647 0-129.815-47.563-129.815-106.146 0-58.584 58.168-106.146 129.815-106.146h.368c5.89-74.541 81.794-133.593 174.433-133.593 14.96 0 29.485 1.54 43.348 4.437 39.229-42.437 101.461-69.879 171.469-69.879 98.765 0 182.052 54.617 207.112 128.896 65.42 21.88 111.55 74.464 111.55 135.788 0 80.935-80.36 146.643-179.34 146.643"
-                                style="fill:#01377d;fill-opacity:.1;stroke:#fff;stroke-opacity:1;stroke-width:1px;stroke-miterlimit:.73" />
-                        </g>
-
-                        <!-- Another cloud-like shape (similar to above) -->
-                        <path id="cloud"
-                            d="M1043.47 591.945H489.999c-74.968 0-135.833-54.119-135.833-120.779s60.865-120.779 135.833-120.779l.385.001c6.163-84.817 85.586-152.011 182.521-152.011 15.654 0 30.852 1.753 45.358 5.049 41.048-48.286 106.165-79.512 179.42-79.512 103.347 0 190.487 62.146 216.717 146.665 68.45 24.897 116.72 84.729 116.72 154.508 0 92.092-84.08 166.858-187.65 166.858"
-                            style="fill:#fff" />
-
-                        <!-- Cloud-like shape stroke -->
-                        <path id="cloud"
-                            d="M1043.47 592.012H489.999c-75.007 0-135.9-54.151-135.9-120.846s60.893-120.845 135.9-120.845h.323c6.2-84.82 85.635-152.01 182.583-152.01 15.645 0 30.835 1.75 45.334 5.041 41.061-48.282 106.184-79.505 179.444-79.505 103.367 0 190.527 62.153 216.767 146.681 68.46 24.914 116.74 84.763 116.74 154.559 0 92.126-84.11 166.925-187.72 166.925m0-.133c103.53 0 187.59-74.735 187.59-166.792 0-69.751-48.26-129.558-116.69-154.445-.02-.007-.03-.023-.04-.043-26.21-84.493-113.33-146.618-216.647-146.618-73.234 0-138.333 31.216-179.369 79.488a.07.07 0 0 1-.065.022c-14.502-3.295-29.695-5.047-45.344-5.047-96.898 0-176.294 67.164-182.455 151.949a.064.064 0 0 1-.066.061h-.385c-74.93 0-135.767 54.087-135.767 120.712 0 66.626 60.837 120.713 135.767 120.713z"
-                            style="fill:#fff" />
-
-                        <!-- Vertical lines -->
-
-
-
-                        <g id="dottedLine">
-                            <!-- Lines will be dynamically added here -->
-                        </g>
-
-
-
-                        <!-- Filters used for various blur effects -->
-                        <defs>
-                            <filter id="a" filterUnits="userSpaceOnUse" x="803.034" y="1618.06" width="839.534"
-                                height="839.534">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="41.215" />
-                            </filter>
-                            <filter id="b" filterUnits="userSpaceOnUse" x="-88.945" y="1574.68" width="926.281"
-                                height="926.281">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="46.492" />
-                            </filter>
-                            <filter id="c" filterUnits="userSpaceOnUse" x="314.584" y="1548.06" width="979.536"
-                                height="979.536">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="50.932" />
-                            </filter>
-                            <filter id="d" filterUnits="userSpaceOnUse" x="-139.476" y="684.972" width="1864.24"
-                                height="1361.24">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="46.492" />
-                            </filter>
-                            <filter id="e" filterUnits="userSpaceOnUse" x="64.419" y="-154.555" width="1456.45"
-                                height="1029.68">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="51.518" />
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
-
-
-                <div class="absolute inset-0 z-10 text-[3.5vw] md:text-lg">
-                    <svg id="currencyContainer" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
-                </div>
-
-                <div class=" inset-0 z-20 "></div>
-                <svg class="absolute transform -translate-x-1/2 -translate-y-[200px]" id="dottedLine"
-                    xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-
-
-                </svg>
-            </div>
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-
-        </section>
-
         
 
-        <!-- About Us Section -->
-        <section class=" flex md:flex-row md:my-5  flex-col-reverse ">
-            <div class="md:w-1/2  flex flex-col text-darkBlue justify-center  w-full  md:pl-32 text-left ">
-
-                <h1 class="landscape:text-sm max-md:px-10 portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug uppercase"
-                    aria-label="Main Title">
-                    About Us
-                </h1>
-                <p class=" portrait:text-[3.5vw] max-md:px-10 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg portrait:mb-[1svh] lg:landscape:mb-[1svh] landscape:mb-[31svh] font-light leading-relaxed "
-                    aria-label="Hero Description">
-                    Founded in 1988 to simplify accounting for Indian businesses, we’ve grown into a global certified
-                    public accounting
-                    firm, now offering offshore solutions worldwide. <button
-                        class="hidden flex-row mt-3 text-[2.5vw] hover:bg-darkBlue hover:text-white  landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-darkBlue  border px-2 py-1 rounded-[1rem] border-lightGreen font-normal">about
-                        us page <img class="size-4  bounce-right border" src="./img/left-arrow.svg" alt=""></button>
-                </p>
-                <div
-                    class=" text-[2.5vw] max-md:px-10 landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
-                    <button id="homeHeroBookingTherapy" role="link"
-                        class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-                        <a href="./about.html">About Us</a>
-
-                    </button>
-                </div>
-
-
-
-                <div class="text-darkBlue md:gap-4 flex flex-row  flex-wrap justify-between max-md:px-6  mt-7">
-                    <!-- Counter 1 -->
-                    <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
-                        <div
-                            class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4 justify-center ">
-                            <div id="counter1" class="counter text-2xl font-bold text-center" aria-live="polite"
-                                aria-atomic="true">0
-                            </div>
-                            <div>
-                                <h3 class="md:text-lg text-sm text-center font-normal">Projects</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Counter 2 -->
-                    <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-                        <div
-                            class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                            <div id="counter2" class="counter text-2xl font-bold text-center" aria-live="polite"
-                                aria-atomic="true">0
-                            </div>
-                            <div>
-                                <h3 class="md:text-lg text-sm text-center font-normal">Years</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Counter 3 -->
-                    <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-                        <div
-                            class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                            <div id="counter3" class="counter text-2xl font-bold text-center" aria-live="polite"
-                                aria-atomic="true">0
-                            </div>
-                            <div>
-                                <h3 class="md:text-lg text-sm text-center font-normal">Industries</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Counter 4 -->
-                    <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
-                        <div
-                            class="flex flex-col sm:gap-4 size-[9rem] md:size-[8rem] border border-lightGreen bg- shadow-lg rounded-[2.7rem] gap-4  justify-center ">
-                            <div id="counter4" class="counter text-2xl font-bold text-center" aria-live="polite"
-                                aria-atomic="true">0
-                            </div>
-                            <div>
-                                <h3 class="md:text-lg text-sm text-center font-normal">Women</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="md:w-1/2 max-md:h-[52.35svh]  flex flex-col w-full max-md:mt-0 ">
-
-                <div class="page ">
-                    <div id="arc-container" class="globe-wrapper  m-auto ">
-                        <canvas id="globe-3d"></canvas>
-                        <canvas id="globe-2d-overlay"></canvas>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- Softwares we use Section -->
-        <section class=" flex  md:mt-10 mt-24 flex-col  text-center">
-            <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10  ">
-                <h2 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold  leading-snug uppercase"
-                    aria-label="Main Title">
-                    Softwares we use
-                </h2>
-                <p class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg   font-light leading-relaxed "
-                    aria-label="Hero Description">
-                    We utilize the latest and trending softwares to ensure high-quality service delivery, conforming to
-                    each client’s
-                    standards.
-                </p>
-
-
-            </div>
-
-            <div class="flex flex-col gap-8 mt-8 mb-24 ">
-                <div class="marquee marquee--LTR md:w-[80%] md:mx-auto flex relative overflow-x-hidden ">
-                    <img class="marquee__item" src="./img/microsoft365-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/quickbooks-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/turbotax-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/sage-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/netsuite-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/zoho-logo.svg" width="60" height="60" alt="">
-                </div>
-
-                <div class="marquee marquee--RTL md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
-                    <img class="marquee__item" src="./img/xero-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/cisco-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/nagios-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/solarwinds-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/slack-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/notion-logo.svg" width="60" height="60" alt="">
-                </div>
-            </div>
-
-        </section>
 
 
         <section class="text-darkBlue ">
@@ -729,111 +342,104 @@
             <div class="flex md:flex-row flex-col  justify-center md:px-32 md:gap-10 mx-auto">
                 <div class="md:w-[50%] max-md:h-[65svh] flex flex-col w-full md:h-full gradient-bg">
                     <div class="gradient-bg-transparent ">
-                        <svg id="floater" class=" m-auto md:h-full max-md:h-[65svh] animationControl" width="100%"
-                            height="100%" viewBox="0 0 1010 1192" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
-                            xmlns:serif="http://www.serif.com/"
+                        <svg class="m-auto md:h-full max-md:h-[65svh] floater animationControl overflow-visible"
+                            width="100%" height="100%" viewBox="0 0 1010 1192" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xml:space="preserve" xmlns:serif="http://www.serif.com/"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
                             <g>
                                 <g>
                                     <g>
                                         <g style="filter:url(#_Effect1);">
-                                            <path
-                                                d="M185.909,319.456L225.637,319.456L225.637,867.091L185.909,867.091L185.909,319.456Z"
-                                                style="fill:rgb(1,32,125);" />
+                                            <path d="M185.909,319.456l39.728,0l-0,547.635l-39.728,-0l-0,-547.635Z"
+                                                style="fill:#01207d;" />
                                         </g>
                                         <path
-                                            d="M196.013,325.928L196.013,859.564C173.401,859.564 155.042,841.205 155.042,818.593L155.042,366.898C155.042,344.286 173.401,325.928 196.013,325.928Z"
-                                            style="fill:rgb(1,55,125);" />
-                                        <path
-                                            d="M196.013,325.928L196.013,859.564C173.401,859.564 155.042,841.205 155.042,818.593L155.042,366.898C155.042,344.286 173.401,325.928 196.013,325.928Z"
-                                            style="fill:rgb(1,55,125);" />
+                                            d="M196.013,325.928l-0,533.636c-22.612,-0 -40.971,-18.359 -40.971,-40.971l0,-451.695c0,-22.612 18.359,-40.97 40.971,-40.97Z"
+                                            style="fill:#01377d;" />
                                     </g>
                                     <g>
                                         <g>
                                             <g style="filter:url(#_Effect2);">
-                                                <path
-                                                    d="M823.713,468.544L776.003,468.544L776.003,379.932L823.713,379.932L823.713,468.544Z"
+                                                <path d="M823.713,468.544l-47.71,0l0,-88.612l47.71,0l0,88.612Z"
                                                     style="fill:#7cd24c;" />
                                             </g>
                                             <path
-                                                d="M815.832,467.412L812.394,467.412L812.394,381.065L814.108,381.065C827.34,381.065 838.084,391.808 838.084,405.041L838.084,445.16C838.084,457.441 828.113,467.412 815.832,467.412Z"
+                                                d="M815.832,467.412l-3.438,-0l0,-86.347l1.714,-0c13.232,-0 23.976,10.743 23.976,23.976l-0,40.119c-0,12.281 -9.971,22.252 -22.252,22.252Z"
                                                 style="fill:#7cd24c;" />
                                         </g>
-                                        <path class="bounceRight"
-                                            d="M815.832,467.412L812.394,467.412L812.394,381.065L814.108,381.065C827.34,381.065 838.084,391.808 838.084,405.041L838.084,445.16C838.084,457.441 828.113,467.412 815.832,467.412Z"
+                                        <path
+                                            d="M815.832,467.412l-3.438,-0l0,-86.347l1.714,-0c13.232,-0 23.976,10.743 23.976,23.976l-0,40.119c-0,12.281 -9.971,22.252 -22.252,22.252Z"
                                             style="fill:#7cd24c;" />
                                     </g>
                                     <g style="filter:url(#_Effect3);">
                                         <path
-                                            d="M341.552,196.545L666.184,196.545C746.509,196.545 811.723,261.759 811.723,342.084L811.723,844.463C811.723,924.788 746.509,990.002 666.184,990.002L341.552,990.002C261.227,990.002 196.013,924.788 196.013,844.463L196.013,342.084C196.013,261.759 261.227,196.545 341.552,196.545Z"
+                                            d="M350.672,196.524l308.298,-0c85.077,-0 154.148,69.071 154.148,154.148l0,490.281c0,85.077 -69.071,154.149 -154.148,154.149l-308.298,0c-85.077,0 -154.148,-69.072 -154.148,-154.149l-0,-490.281c-0,-85.077 69.071,-154.148 154.148,-154.148Z"
                                             style="fill:#01367c;fill-opacity:0.15;" />
                                     </g>
                                     <path
-                                        d="M341.552,196.545L666.184,196.545C746.509,196.545 811.723,261.759 811.723,342.084L811.723,844.463C811.723,924.788 746.509,990.002 666.184,990.002L341.552,990.002C261.227,990.002 196.013,924.788 196.013,844.463L196.013,342.084C196.013,261.759 261.227,196.545 341.552,196.545Z"
-                                        style="fill:white;fill-opacity:0.4;stroke:white;stroke-opacity:0.4;stroke-width:2px;" />
-
-                                    <g class="blog1" transform="matrix(0.32,0,0,0.32,-15374.8,-3700.58)">
+                                        d="M341.552,196.545l324.632,0c80.325,0 145.539,65.214 145.539,145.539l0,502.379c0,80.325 -65.214,145.539 -145.539,145.539l-324.632,-0c-80.325,-0 -145.539,-65.214 -145.539,-145.539l-0,-502.379c-0,-80.325 65.214,-145.539 145.539,-145.539Z"
+                                        style="fill:#fff;fill-opacity:0.4;stroke:#fff;stroke-opacity:0.4;stroke-width:1.33px;" />
+                                    <g transform="matrix(0.32,-3.9443e-33,-3.9443e-33,0.32,-15374.8,-3700.58)">
                                         <text x="48944.6px" y="13584.8px"
-                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">
-                                            <tspan x="48944.6px" y="13584.8px">Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing .</tspan>
-                                            <tspan x="48944.6px" y="13704.8px">Nam interdum, nulla a pulvinar volutpat,
-                                                lorem ex mi,</tspan>
-                                            <tspan x="48944.6px" y="13824.8px">id eleifend quam mauris at quam. Integer
-                                                a nunc.</tspan>
-                                            <tspan x="48944.6px" y="13944.8px">Quisque vel interdum lorem. Ut bibendum,
-                                                purus quis,</tspan>
-                                            <tspan x="48944.6px" y="14064.8px">turpis nisl convallis sem, sed hendrerit
-                                                sed in nibh.</tspan>
-                                            <tspan x="48944.6px" y="14184.8px">Purus quis fermentum sodales, turpis nisl
-                                                at sem,</tspan>
-                                            <tspan x="48944.6px" y="14304.8px">purus quis fermentum sodales, turpis
-                                                convallis sem.</tspan>
-                                        </text>
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">Lorem
+                                            ipsum <tspan x="49294.1px " y="13584.8px ">d</tspan>olor sit <tspan
+                                                x="49518.4px " y="13584.8px ">a</tspan>met,
+                                            consectetur <tspan x="50001.7px " y="13584.8px ">a</tspan>dipiscing
+                                            elit.</text>
+                                        <text x="48944.6px" y="13696.3px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">Nam
+                                            <tspan x="49105.6px " y="13696.3px ">i</tspan>nterdum, <tspan x="49385.5px "
+                                                y="13696.3px ">n</tspan>ulla <tspan x="49548.5px 49582.3px 49622.8px "
+                                                y="13696.3px 13696.3px 13696.3px ">a p</tspan>ulvinar <tspan
+                                                x="49866.3px " y="13696.3px ">v</tspan>olutpat, <tspan x="50125.1px "
+                                                y="13696.3px ">l</tspan>orem <tspan x="50311.1px " y="13696.3px ">e
+                                            </tspan>x</text>
+                                        <text x="48944.6px" y="13807.8px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">pharetra
+                                            mi, id eleifend quam
+                                            mauris at quam. <tspan x="50140.6px " y="13807.8px ">I</tspan>nteger
+                                            a</text>
+                                        <text x="48944.6px" y="13919.3px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">porttitor
+                                            nunc. Quisque vel
+                                            interdum lorem. Ut bibendum,</text>
+                                        <text x="48944.6px" y="14030.8px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">purus
+                                            quis fermentum <tspan x="49527.6px " y="14030.8px ">s</tspan>odales, turpis
+                                            nisl <tspan x="50010.3px " y="14030.8px ">c</tspan>
+                                            onvallis sem,</text>
+                                        <text x="48944.6px" y="14142.3px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">sed
+                                            <tspan x="49067.1px " y="14142.3px ">h</tspan>endrerit <tspan x="49326.2px "
+                                                y="14142.3px ">n</tspan>isl <tspan x="49440.5px " y="14142.3px ">e
+                                            </tspan>lit <tspan x="49545.8px " y="14142.3px ">i</tspan>n <tspan
+                                                x="49621.7px " y="14142.3px ">n</tspan>ibh. <tspan x="49773.8px "
+                                                y="14142.3px ">p</tspan>urus <tspan x="49948px " y="14142.3px ">q
+                                            </tspan>uis <tspan x="50083.7px " y="14142.3px ">f</tspan>ermentum</text>
+                                        <text x="48944.6px" y="14253.8px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">sodales,
+                                            turpis nisl <tspan x="49427.3px " y="14253.8px ">c</tspan>onvallis sem,
+                                            purus <tspan x="49961.5px " y="14253.8px ">q</tspan>uis
+                                            fermentum</text>
+                                        <g transform="matrix(50,0,0,50,49765.1,14365.3)">
+                                        </g>
+                                        <text x="48944.6px" y="14365.3px"
+                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">sodales,
+                                            turpis nisl convallis
+                                            sem.</text>
                                     </g>
-
-                                    <g class="blog2" transform="matrix(0.32,0,0,0.32,-15374.8,-3700.58)">
-                                        <text x="48944.6px" y="13584.8px"
-                                            style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:#01377d;">
-                                            <tspan x="48944.6px" y="13584.8px">Lorum ipsum dolor sit amet, consectetur
-                                                adipiscing .</tspan>
-                                            <tspan x="48944.6px" y="13704.8px">Nam interdum, nulla a pulvinar volutpat,
-                                                lorem ex mi,</tspan>
-                                            <tspan x="48944.6px" y="13824.8px">id eleifend quam mauris at quam. Integer
-                                                a nunc.</tspan>
-                                            <tspan x="48944.6px" y="13944.8px">Quisque vel interdum lorem. Ut bibendum,
-                                                purus quis,</tspan>
-                                            <tspan x="48944.6px" y="14064.8px">turpis nisl convallis sem, sed hendrerit
-                                                sed in nibh.</tspan>
-                                            <tspan x="48944.6px" y="14184.8px">Purus quis fermentum sodales, turpis nisl
-                                                at sem,</tspan>
-                                            <tspan x="48944.6px" y="14304.8px">purus quis fermentum sodales, turpis
-                                                convallis sem.</tspan>
-                                        </text>
+                                    <g transform="matrix(46.1118,0,0,46.1118,497.017,543.41)">
                                     </g>
-
-                                    <g transform="matrix(17.2645,0,0,17.2645,558.055,587.97)" />
-                                    <text class="blog1" x="286.864px" y="587.97px"
-                                        style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:17.265px;fill:#01377d;">Jason
-                                        Smith, Chief Accountant</text>
-
-                                    <g transform="matrix(46.1118,0,0,46.1118,497.017,543.41)" />
-                                    <text class="blog1" x="284.303px" y="543.41px"
+                                    <text x="284.303px" y="543.41px"
                                         style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:46.112px;fill:#01377d;">Blog
                                         Title</text>
-
-
-
-                                    <g transform="matrix(17.2645,0,0,17.2645,558.055,587.97)" />
-                                    <text class="blog2" x="286.864px" y="587.97px"
+                                    <g transform="matrix(17.2645,0,0,17.2645,558.055,587.97)">
+                                    </g>
+                                    <text x="286.864px" y="587.97px"
                                         style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:17.265px;fill:#01377d;">Jason
-                                        Smith, Chief Accountant</text>
-
-                                    <g transform="matrix(46.1118,0,0,46.1118,497.017,543.41)" />
-                                    <text class="blog2" x="284.303px" y="543.41px"
-                                        style="font-family:'Poppins-SemiBold', 'Poppins';font-weight:600;font-size:46.112px;fill:#01377d;">Blog
-                                        Title</text>
+                                        Smith,
+                                        Chief Accountant</text>
                                 </g>
                                 <g>
                                     <circle class="circleFade" cx="538.699" cy="315.623" r="20.98" style="fill:#fff;" />
@@ -849,8 +455,7 @@
                                     <circle class="circleFade" cx="462.469" cy="379.932" r="20.98" style="fill:#fff;" />
                                 </g>
                                 <g>
-                                    <circle class="circleFade" class="circleFade" cx="538.699" cy="444.241" r="20.98"
-                                        style="fill:#fff;" />
+                                    <circle class="circleFade" cx="538.699" cy="444.241" r="20.98" style="fill:#fff;" />
                                     <circle class="circleFade" cx="614.93" cy="444.241" r="20.98" style="fill:#fff;" />
                                     <circle class="circleFade" cx="310.008" cy="444.241" r="20.98" style="fill:#fff;" />
                                     <circle class="circleFade" cx="386.238" cy="444.241" r="20.98" style="fill:#fff;" />
@@ -883,103 +488,66 @@
                     <div
                         class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] border shadow-md gap-5 bg-opacity-60   border-lightGreen bg-white  p-6">
                         <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto  drop-shadow-xl">
-                                <svg width="100%" height="100%" viewBox="0 0 1279 1187" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xml:space="preserve" xmlns:serif="http://www.serif.com/"
-                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                            <div class="size-[26svw] md:size-[13svh] m-auto  drop-shadow-xl floater">
+                                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                <svg width="100%" height="100%" viewBox="0 0 1067 1095" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.726744;">
                                     <g>
                                         <g>
-                                            <g style="filter:url(#_Effect1);">
-                                                <path class="rotateRight"
-                                                    d="M1127.65,496.614L1127.65,871.226C1127.65,952.243 1061.88,1018.02 980.857,1018.02L687.272,1018.02C606.255,1018.02 540.479,952.243 540.479,871.226L540.479,496.614C540.479,415.597 606.255,349.821 687.272,349.821L980.857,349.821C1061.88,349.821 1127.65,415.597 1127.65,496.614Z"
-                                                    style="fill:rgb(0,47,112);fill-opacity:0.2;" />
-                                            </g>
-                                            <path class="rotateRight"
-                                                d="M1127.65,267.587L1127.65,840.025C1127.65,938.263 1047.89,1018.02 949.656,1018.02L593.669,1018.02C495.432,1018.02 415.675,938.263 415.675,840.025L415.675,267.587C415.675,169.35 495.432,89.594 593.669,89.594L949.656,89.594C1047.89,89.594 1127.65,169.35 1127.65,267.587Z"
+                                            <path
+                                                d="M1066.39,177.994L1066.39,750.432C1066.39,848.669 986.634,928.425 888.397,928.425L532.409,928.425C434.172,928.425 354.415,848.669 354.415,750.432L354.415,177.994C354.415,79.756 434.172,-0 532.409,-0L888.397,-0C986.634,-0 1066.39,79.756 1066.39,177.994Z"
                                                 style="fill:rgb(0,47,112);" />
-                                            <g class="rotateRight">
-                                                <circle class="circleFade" cx="590.756" cy="273.119" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="771.624" cy="273.119" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="952.57" cy="273.119" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="590.756" cy="460.244" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="771.624" cy="460.244" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="952.57" cy="460.244" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="590.756" cy="647.369" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="771.624" cy="647.369" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="952.57" cy="647.369" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="590.756" cy="834.493" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="771.624" cy="834.493" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
-                                                <circle class="circleFade" cx="952.57" cy="834.493" r="34.016"
-                                                    style="fill:rgb(126,211,72);" />
+                                            <g>
+                                                <circle cx="529.496" cy="183.526" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="710.364" cy="183.526" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="891.31" cy="183.526" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="529.496" cy="370.65" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="710.364" cy="370.65" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="891.31" cy="370.65" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="529.496" cy="557.775" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="710.364" cy="557.775" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="891.31" cy="557.775" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="529.496" cy="744.9" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="710.364" cy="744.9" r="34.016" style="fill:rgb(126,211,72);" />
+                                                <circle cx="891.31" cy="744.9" r="34.016" style="fill:rgb(126,211,72);" />
                                             </g>
-                                            <g style="filter:url(#_Effect2);">
-                                                <path class="rotateLeft"
-                                                    d="M833.723,295.482L833.723,929.522C833.723,1009.07 769.142,1073.65 689.597,1073.65L257.216,1073.65C177.67,1073.65 113.089,1009.07 113.089,929.522L113.089,295.482C113.089,215.936 177.67,151.355 257.216,151.355L689.597,151.355C769.142,151.355 833.723,215.936 833.723,295.482Z"
-                                                    style="fill:rgb(1,54,124);fill-opacity:0.3;" />
-                                            </g>
-                                            <path class="rotateLeft"
-                                                d="M833.723,295.482L833.723,929.522C833.723,1009.07 769.142,1073.65 689.597,1073.65L257.216,1073.65C177.67,1073.65 113.089,1009.07 113.089,929.522L113.089,295.482C113.089,215.936 177.67,151.355 257.216,151.355L689.597,151.355C769.142,151.355 833.723,215.936 833.723,295.482Z"
-                                                style="fill:white;" />
-                                            <g class="rotateLeft">
-                                                <circle class="circleFade" cx="304.057" cy="349.747" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="473.37" cy="349.747" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="642.756" cy="349.747" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="304.057" cy="524.917" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="473.37" cy="524.917" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="642.756" cy="524.917" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="304.057" cy="700.087" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="473.37" cy="700.087" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="642.756" cy="700.087" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="304.057" cy="875.257" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="473.37" cy="875.257" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
-                                                <circle class="circleFade" cx="642.756" cy="875.257" r="36.585"
-                                                    style="fill:rgb(1,54,124);" />
+                                            <g style="filter:url(#_Effect1);">
+                                                <path
+                                                    d="M771.406,263.33L774.159,897.347C774.505,976.899 710.199,1041.77 630.646,1042.11L198.23,1043.99C118.677,1044.34 53.811,980.029 53.465,900.476L50.712,266.459C50.367,186.907 114.673,122.04 194.225,121.695L626.642,119.817C706.194,119.472 771.061,183.778 771.406,263.33Z"
+                                                    style="fill:none;stroke:rgb(1,55,124);stroke-opacity:0.3;stroke-width:18.99px;" />
                                             </g>
                                             <path
-                                                d="M833.79,295.482L833.79,929.522C833.79,1009.11 769.179,1073.72 689.597,1073.72L257.216,1073.72C177.633,1073.72 113.022,1009.11 113.022,929.522L113.022,295.482C113.022,215.899 177.633,151.288 257.216,151.288L689.597,151.288C769.179,151.288 833.79,215.899 833.79,295.482ZM833.657,295.482C833.657,215.973 769.106,151.421 689.597,151.421L257.216,151.421C177.707,151.421 113.156,215.973 113.156,295.482L113.156,929.522C113.156,1009.03 177.707,1073.58 257.216,1073.58L689.597,1073.58C769.106,1073.58 833.657,1009.03 833.657,929.522L833.657,295.482Z"
-                                                style="fill:rgb(126,211,72);" />
-                                            <g style="filter:url(#_Effect3);">
-                                                <path class="rotateRight"
-                                                    d="M983.03,288.421L983.03,865.824C983.03,941.51 921.583,1002.96 845.897,1002.96L571.63,1002.96C495.944,1002.96 434.497,941.51 434.497,865.824L434.497,288.421C434.497,212.735 495.944,151.288 571.63,151.288L845.897,151.288C921.583,151.288 983.03,212.735 983.03,288.421Z"
+                                                d="M772.463,263.318L772.463,897.359C772.463,976.905 707.882,1041.49 628.337,1041.49L195.956,1041.49C116.41,1041.49 51.829,976.905 51.829,897.359L51.829,263.318C51.829,183.772 116.41,119.191 195.956,119.191L628.337,119.191C707.882,119.191 772.463,183.772 772.463,263.318Z"
+                                                style="fill:white;" />
+                                            <g>
+                                                <circle cx="242.797" cy="317.583" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="412.11" cy="317.583" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="581.496" cy="317.583" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="242.797" cy="492.753" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="412.11" cy="492.753" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="581.496" cy="492.753" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="242.797" cy="667.923" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="412.11" cy="667.923" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="581.496" cy="667.923" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="242.797" cy="843.093" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="412.11" cy="843.093" r="36.585" style="fill:rgb(1,54,124);" />
+                                                <circle cx="581.496" cy="843.093" r="36.585" style="fill:rgb(1,54,124);" />
+                                            </g>
+                                            <g style="filter:url(#_Effect2);">
+                                                <path
+                                                    d="M774.161,224.752L774.161,823.489C774.161,881.405 727.14,928.425 669.224,928.425L459.352,928.425C401.436,928.425 354.415,881.405 354.415,823.489L354.415,224.752C354.415,166.836 401.436,119.816 459.352,119.816L669.224,119.816C727.14,119.816 774.161,166.836 774.161,224.752Z"
                                                     style="fill:rgb(0,102,255);fill-opacity:0.33;" />
                                             </g>
                                         </g>
                                     </g>
                                     <defs>
-                                        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="238.909" y="48.2507"
-                                            width="1190.31" height="1271.34">
-                                            <feGaussianBlur in="SourceGraphic" stdDeviation="50.2618" />
+                                        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="-42.0588" y="27.046" width="908.989" height="1109.71">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="13.7382" />
                                         </filter>
-                                        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="-113.089" y="-74.8234"
-                                            width="1172.99" height="1374.65">
-                                            <feGaussianBlur in="SourceGraphic" stdDeviation="37.6963" />
-                                        </filter>
-                                        <filter id="_Effect3" filterUnits="userSpaceOnUse" x="131.921" y="-151.288"
-                                            width="1153.69" height="1456.82">
-                                            <feGaussianBlur in="SourceGraphic" stdDeviation="50.4293" />
+                                        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="154.876" y="-79.7236" width="818.824" height="1207.69">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="33.2565" />
                                         </filter>
                                     </defs>
                                 </svg>
@@ -1002,7 +570,7 @@
                     <div
                         class="flex flex-row rounded-[3rem] md:rounded-[3.3rem] border shadow-md gap-3 bg-opacity-60   border-lightGreen bg-white  p-6">
                         <div class="flex flex-col w-auto ">
-                            <div class="size-[26svw] md:size-[13svh] m-auto  drop-shadow-xl">
+                            <div class="size-[26svw] md:size-[13svh] m-auto  floater">
 
                                 <svg width="100%" height="100%" viewBox="0 0 1279 1250" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1086,150 +654,7 @@
 
 
 
-        <!-- Contact Section -->
-        <section class="xl:flex-row  xl:px-32 mt-10  flex flex-col" role="region"
-            aria-labelledby="contactSectionHeading">
-            <!-- Contact Information Section -->
-            <div class="xl:w-[40%]  max-xl:pb-12    flex max-xl:px-10 flex-col justify-center text-darkBlue w-full pb-10 mx-auto"
-                data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
-                <h3 id="contactSectionHeading"
-                    class="md:text-3xl landscape:lg:text-4xl landscape:text-sm text-[7.5vw] portrait:sm:text-[3vw] font-bold mt-20 landscape:mt-0 mb-10 text-darkBlue text-left leading-[2.5rem]"
-                    aria-label="Contact Section">
-                    Partner with the finest
-                    <br>Offshore Accounting
-                    <br>Service in India!
-                </h3>
-
-                <div class="flex flex-row gap-2 ml-2 text-sm items-center ">
-                    <img class="size-4" src="./img/phone-icon.svg" alt="">
-                    <p>91 9847611095</p>
-                </div>
-
-                <div class="flex flex-row gap-2 ml-2 text-sm mt-2 items-center ">
-                    <img class="size-4 " src="./img/email-icon.svg" alt="">
-                    <p>admin@vjcindia.com</p>
-                </div>
-
-                <div class="flex flex-row gap-2 ml-2 text-sm mt-2 items-center ">
-                    <img class="size-4 " src="./img/address-icon.svg" alt="">
-                    <p>Ambikapur, New Delhi, India</p>
-                </div>
-
-                <div class="mt-8 flex flex-row items-center gap-0  text-base" role="presentation">
-                    <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank"
-                        rel="noopener">
-                        <img class="w-[4.5rem] " src="./img/whatsapp-icon.svg" alt="Instagram Logo" role="img"
-                            aria-label="Instagram Logo">
-                    </a>
-                    <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting"
-                        title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                        <img class="w-[4.5rem] " src="./img/linkedin-icon.svg" alt="WhatsApp Logo" role="img"
-                            aria-label="WhatsApp Logo">
-                    </a>
-
-                    <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank"
-                        rel="noopener">
-                        <img class="w-[4.5rem]" src="./img/instagram-icon.svg" alt="LinkedIn Logo" role="img"
-                            aria-label="LinkedIn Logo">
-                    </a>
-
-                    <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting"
-                        title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                        <img class="w-[4.5rem]" src="./img/mail-icon.svg" alt="WhatsApp Logo" role="img"
-                            aria-label="WhatsApp Logo">
-                    </a>
-
-                </div>
-
-
-            </div>
-            <div class="md:hidden border-t w-[85%] border-lightGreen mx-auto border-1"></div>
-            <!-- Contact Form Section -->
-            <div class="bg-light landscape:text-base xl:rounded-[4rem]  md:shadow-xl md:border border-lightGreen  landscape:xl:w-[40%]  xl:py-12 flex flex-col items-center w-full py-20 mx-auto text-sm"
-                role="form" aria-labelledby="contactFormHeading">
-                <div class="flex ">
-                    <h2 id="contactFormHeading" class="text-darkBlue mb-1 text-2xl font-semibold pb-8"
-                        data-aos="fade-in" data-aos-delay="100" data-aos-once="true">SEND US A MESSAGE</h1>
-
-                </div>
-                <div class="xl:w-[75%] w-[75%] md:w-[35%]  " data-aos="fade-in" data-aos-delay="100"
-                    data-aos-once="true">
-                    <form action="https://api.web3forms.com/submit" method="POST" id="form">
-                        <input type="hidden" name="access_key" value="dd923ac4-c4ca-4668-bd3e-074e10d93a0f" />
-                        <input type="hidden" name="subject" value="Home Page" />
-                        <input type="hidden" name="from_name" value="General Enquiry">
-                        <input type="checkbox" name="botcheck" id="" style="display: none;" />
-                        <input type="hidden" name="redirect" value="https://www/message-received.html">
-                        <div class="flex flex-row mb-3 gap-3 justify-between">
-                            <div class="">
-                                <label for="name" class="text-darkBlue block mb-2 text-sm">Full Name</label>
-                                <input type="text" name="name" id="name" placeholder="Full Name" required
-                                    class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
-                            </div>
-                            <div class="">
-                                <label for="name" class="text-darkBlue block mb-2 text-sm">Company</label>
-                                <input type="text" name="name" id="name" placeholder="Company Name" required
-                                    class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
-                            </div>
-                        </div>
-
-                        <div class="flex flex-row mb-3 gap-3 justify-between">
-                            <div class="">
-                                <label for="email" class="text-darkBlue block mb-2 text-sm">Email Address</label>
-                                <input type="email" name="email" id="email" placeholder="name@mail.com" required
-                                    class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen " />
-                            </div>
-                            <div class="">
-                                <label for="phone" class="text-darkBlue block mb-2 text-sm">Phone Number</label>
-                                <input type="text" name="phone" id="phone" placeholder="Phone Number" required
-                                    class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="Country" class="text-darkBlue block mb-2 text-sm">Select your country</label>
-                            <div x-data="{ open: false }" class="relative">
-                                <select name="Country" id="Country" required
-                                    class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen"
-                                    @focus="open = true" @blur="open = false" @change="open = false">
-                                    <option value="">Choose your country</option>
-                                    <option value="United States of America">United States of America</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Canada">Canada</option>
-                                </select>
-                                <div :class="open ? 'rotate-180' : ''"
-                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-darkBlue size-4" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="mb-4">
-                            <label for="message" class="text-darkBlue block mb-2 text-sm">Your Message</label>
-                            <textarea rows="4" name="message" id="message" placeholder="Your Message"
-                                class=" w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-none focus:ring-1 focus:ring-lightborder-lightGreen"
-                                required></textarea>
-                        </div>
-                        <div class="px-auto flex justify-center">
-                            <button type="submit"
-                                class="hover:text-white  bg-darkBlue hover:bg-lightGreen md:w-[60%] md:py-5 inline-block w-[50%] px-4 py-6 text-white no-underline rounded-full">SEND
-                                MESSAGE</button>
-                        </div>
-                        <!-- Form Submission Result Message -->
-                        <p class="text-dark-purple text-base text-center" id="result" aria-live="polite"></p>
-                    </form>
-                </div>
-            </div>
-        </section>
+     
 
         <div class="md:hidden border-t w-[85%] border-lightGreen mx-auto border-1"></div>
 
@@ -1240,8 +665,8 @@
 
 
 
-        <!--  FAQ Section -->
-        <section class="bg-light text-darkBlue flex flex-col shadow-lg  mt-28 pb-28" role="region"
+        <!-- FAQ Section -->
+        <section class=" text-darkBlue flex flex-col shadow-lg mt-28 pb-28" role="region"
             aria-label="Sessions related FAQ">
             <div role="heading" aria-level="2">
                 <h2 class="md:text-3xl text-2xl font-semibold text-center">
@@ -1254,13 +679,12 @@
                     <div class="md:pt-16 w-3/4 pt-10 mx-auto text-center">
                         <!-- Accordion component -->
                         <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
-                            <!-- FAQ - 1 -->
-                            <!-- FAQ Section  -->
+
                             <!-- FAQ Section 1 -->
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-1" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-1-answer">
@@ -1284,8 +708,7 @@
                                             of services.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact an
-                                                Expert</a>
+                                            <a href="./contact.html" class="text-blue-600">Contact an Expert</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1295,7 +718,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-2" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-2-answer">
@@ -1318,9 +741,9 @@
                                             and routine security updates.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a meeting
-                                                and learn more about our data
-                                                security measures.</a>
+                                            <a href="./contact.html" class="text-blue-600">Schedule a meeting and learn
+                                                more about our data security
+                                                measures.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1330,7 +753,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-3" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-3-answer">
@@ -1354,8 +777,8 @@
                                             savings.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a
-                                                personalized quote.</a>
+                                            <a href="./contact.html" class="text-blue-600">Request a personalized
+                                                quote.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1365,7 +788,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-4" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-4-answer">
@@ -1387,8 +810,8 @@
                                             financial services to the specific needs and regulations of each industry.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore tailor-made
-                                                solutions for your industry-specific
+                                            <a href="./contact.html" class="text-blue-600">Explore tailor-made solutions
+                                                for your industry-specific
                                                 requirements.</a>
                                         </p>
                                     </div>
@@ -1399,7 +822,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-5" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-5-answer">
@@ -1422,8 +845,8 @@
                                             compliance.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Speak with our
-                                                compliance experts.</a>
+                                            <a href="./contact.html" class="text-blue-600">Speak with our compliance
+                                                experts.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1433,7 +856,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-6" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-6-answer">
@@ -1455,8 +878,8 @@
                                             for your investment.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Check our Pricing
-                                                Page for more.</a>
+                                            <a href="./pricing.html" class="text-blue-600">Check our Pricing Page for
+                                                more.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1466,7 +889,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-7" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-7-answer">
@@ -1489,9 +912,8 @@
                                             availability of expert advisory and consultation.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us today to
-                                                experience our seamless global
-                                                support.</a>
+                                            <a href="./contact.html" class="text-blue-600">Contact us today to
+                                                experience our seamless global support.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1501,7 +923,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-8" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-8-answer">
@@ -1523,8 +945,8 @@
                                             discussions of your requirements.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Schedule a free
-                                                initial consultation.</a>
+                                            <a href="./contact.html" class="text-blue-600">Schedule a free initial
+                                                consultation.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1534,7 +956,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-9" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-9-answer">
@@ -1556,8 +978,8 @@
                                             infrastructure management systems.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Request a demo of
-                                                our solutions.</a>
+                                            <a href="./contact.html" class="text-blue-600">Request a demo of our
+                                                solutions.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1567,7 +989,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-10" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-10-answer">
@@ -1589,9 +1011,8 @@
                                             service delivery.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Reach out for
-                                                details on our quality assurance
-                                                practices.</a>
+                                            <a href="./contact.html" class="text-blue-600">Reach out for details on our
+                                                quality assurance practices.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1601,7 +1022,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-11" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-11-answer">
@@ -1621,9 +1042,8 @@
                                             read our case studies on our Resources page.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Check out our
-                                                Insights Page for detailed Case
-                                                Studies.</a>
+                                            <a href="#" class="text-blue-600">Check out our Insights Page for detailed
+                                                Case Studies.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1633,7 +1053,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-12" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-12-answer">
@@ -1657,9 +1077,8 @@
                                             immediate responses.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Contact us to
-                                                discuss managing your project across time
-                                                zones.</a>
+                                            <a href="./contact.html" class="text-blue-600">Contact us to discuss
+                                                managing your project across time zones.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1669,7 +1088,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-13" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-13-answer">
@@ -1694,9 +1113,8 @@
                                             needs.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Learn more about our
-                                                SOPs ensuring quality and
-                                                efficiency.</a>
+                                            <a href="./contact.html" class="text-blue-600">Learn more about our SOPs
+                                                ensuring quality and efficiency.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1706,7 +1124,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-14" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-14-answer">
@@ -1728,8 +1146,8 @@
                                             opportunities, leveraging mutual strengths and market presence.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Explore partnering
-                                                with us to add value.</a>
+                                            <a href="./contact.html" class="text-blue-600">Explore partnering with us to
+                                                add value.</a>
                                         </p>
                                     </div>
                                 </div>
@@ -1739,7 +1157,7 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="faq-15" type="button"
-                                        class="md:text-lg flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded"
                                         :aria-expanded="expanded.toString()" aria-controls="faq-15-answer">
@@ -1765,15 +1183,12 @@
                                             tailored to client preferences, ensuring language is never a barrier.
                                         </p>
                                         <p class="mt-4">
-                                            <strong>CTA:</strong> <a href="#" class="text-blue-600">Connect with us on
+                                            <a href="./contact.html" class="text-blue-600">Connect with us on
                                                 accommodating language needs.</a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
-
-
 
                         </div>
 
@@ -1781,6 +1196,7 @@
                 </div>
             </div>
         </section>
+
 
 
 
@@ -1795,11 +1211,12 @@
         <div class="md:flex-row flex flex-col justify-center gap-5 text-center">
             <div class=" flex flex-col gap-2 px-10">
                 <a href="./index.html" aria-label="Home">
-                    <img class="w-16 ml-0" src="./img/logo.svg" alt="VJC Home" aria-hidden="true">
+                    <img class="w-12 ml-0 mt-2" src="./img/logo_t.svg" alt="VJC Home" aria-hidden="true">
                 </a>
-                <div class="text-xs font-semibold text-left">
+                <div class="text-xs font-light text-left uppercase max-md:mt-3 max-md:mb-3 ml-[0.15rem]">
                     <p>VJC India, the finest in accounting since 1988.</p>
-                    <p class="mt-1 font-light">Ambikapur, New Delhi, India</p>
+                    <p>An Affiliate of V.Jaiswal and Co.</p>
+                    <p class="mt-1 font-light">CHHATTISGARH, IN, 497001</p>
                 </div>
 
             </div>
@@ -1819,7 +1236,7 @@
                         <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
                             <li><a href="./pricing.html">Insights</a></li>
                             <li><a href="./faq.html">Case Studies</a></li>
-                            <li><a href="./career.html">Careers</a></li>
+                            <li><a href="./about.html">Careers</a></li>
                             <li><a href="./terms-and-conditions.html">Terms & Conditions</a></li>
                             <li><a href="./privacy-policy.html">Privacy Policy</a></li>
                         </ul>
@@ -1845,9 +1262,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="#">FAQ</a></li>
                         <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Careers</a></li>
                         <li><a href="#">Insights</a></li>
                         <li><a href="#">Case Studies</a></li>
                         <li><a href="#">Legal Process Outsourcing</a></li>
@@ -1863,7 +1278,7 @@
             </nav>
 
 
-            <div class=" max-md:px-8 flex flex-row items-center gap-1 text-base" role="presentation">
+            <div class=" max-md:px-8 flex flex-row items-center  text-base max-md:mt-3" role="presentation">
                 <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
                     <img class="w-16" src="./img/instagram-icon.svg" alt="Instagram Logo" role="img"
                         aria-label="Instagram Logo">
@@ -1875,6 +1290,11 @@
                 <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting"
                     title="Contact us on WhatsApp" target="_blank" rel="noopener">
                     <img class="w-16" src="./img/whatsapp-icon.svg" alt="WhatsApp Logo" role="img"
+                        aria-label="WhatsApp Logo">
+                </a>
+                <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting"
+                    title="Contact us on WhatsApp" target="_blank" rel="noopener">
+                    <img class="w-16" src="./img/mail-icon.svg" alt="WhatsApp Logo" role="img"
                         aria-label="WhatsApp Logo">
                 </a>
             </div>
