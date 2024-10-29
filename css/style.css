@@ -711,6 +711,16 @@ html {
   margin-bottom: auto;
 }
 
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -837,6 +847,18 @@ html {
 
 .mt-\[0\.2rem\] {
   margin-top: 0.2rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
 .block {
@@ -1099,6 +1121,18 @@ html {
   width: 55%;
 }
 
+.w-\[23svw\] {
+  width: 23svw;
+}
+
+.w-\[25svw\] {
+  width: 25svw;
+}
+
+.w-\[24svw\] {
+  width: 24svw;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1330,6 +1364,10 @@ html {
 
 .gap-\[4vw\] {
   gap: 4vw;
+}
+
+.gap-7 {
+  gap: 1.75rem;
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1707,6 +1745,10 @@ html {
   padding-top: 1.25rem;
 }
 
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1794,6 +1836,34 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[2vw\] {
+  font-size: 2vw;
+}
+
+.text-\[2\.4vw\] {
+  font-size: 2.4vw;
+}
+
+.text-\[2\.3vw\] {
+  font-size: 2.3vw;
+}
+
+.text-\[7\.4vw\] {
+  font-size: 7.4vw;
+}
+
+.text-\[7\.2vw\] {
+  font-size: 7.2vw;
+}
+
+.text-\[6\/8vw\] {
+  font-size: 6/8vw;
+}
+
+.text-\[6\.8vw\] {
+  font-size: 6.8vw;
 }
 
 .font-\[100\] {
@@ -2044,6 +2114,12 @@ svg {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:bg-darkBlue:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(1 55 125 / var(--tw-bg-opacity));
@@ -2072,6 +2148,12 @@ svg {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.focus\:scale-105:focus {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .focus\:bg-white:focus {
@@ -2121,6 +2203,10 @@ svg {
 
   .max-md\:mt-3 {
     margin-top: 0.75rem;
+  }
+
+  .max-md\:mb-16 {
+    margin-bottom: 4rem;
   }
 
   .max-md\:hidden {
@@ -2259,6 +2345,10 @@ svg {
 
   .md\:mt-5 {
     margin-top: 1.25rem;
+  }
+
+  .md\:mt-24 {
+    margin-top: 6rem;
   }
 
   .md\:hidden {
@@ -2602,6 +2692,11 @@ svg {
     padding-right: 5rem;
   }
 
+  .md\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
   .md\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -2652,6 +2747,10 @@ svg {
 
   .md\:pt-32 {
     padding-top: 8rem;
+  }
+
+  .md\:pb-10 {
+    padding-bottom: 2.5rem;
   }
 
   .md\:text-left {
