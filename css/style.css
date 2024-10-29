@@ -2712,6 +2712,14 @@ svg {
     font-size: 0.97rem;
   }
 
+  .md\:text-\[0\.65rem\] {
+    font-size: 0.65rem;
+  }
+
+  .md\:text-\[0\.67rem\] {
+    font-size: 0.67rem;
+  }
+
   .md\:shadow-xl {
     --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
