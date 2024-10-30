@@ -851,3 +851,10 @@ circle.calendarDots:nth-child(10) { animation-delay: 18s; }
 circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
+
+
+.shadow {
+        fill: rgba(0, 0, 0, 0.2);
+        filter: blur(30px);
+        transform: translate(3px, 3px);
+    }
