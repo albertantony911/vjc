@@ -375,7 +375,11 @@
 
 
 .gradient-bg {
-  background: linear-gradient(-45deg, rgba(140, 205, 245, 0.6), rgba(149, 127, 255, 0.6), rgba(102, 162, 251, 0.6), rgba(230, 236, 250, 0.6));
+  background: linear-gradient(-45deg, rgba(135, 170, 245, 0.7), rgba(155, 130, 255, 0.7), rgba(125, 150, 240, 0.7), rgba(175, 180, 250, 0.7));
+
+
+
+
 
 
   background-size: 400% 400%;
@@ -399,9 +403,17 @@
 
 .gradient-bg-transparent {
   background:
-    linear-gradient(to right, white 0%, transparent 50%, white 100%), /* Horizontal gradient */
-    linear-gradient(to bottom, white 0%, transparent 50%, white 100%); /* Vertical gradient */
+    linear-gradient(to right, white 0%, transparent 45%, transparent 65%, white 100%), /* Horizontal gradient */
+    linear-gradient(to bottom, white 0%, transparent 45%, transparent 65%, white 100%); /* Vertical gradient */
 }
+
+.gradient-bg-transparent-cta {
+  background:
+    linear-gradient(to right, white 0%, transparent 15%, transparent 85%, white 100%), /* Horizontal gradient */
+    linear-gradient(to bottom, white 0%, transparent 45%, transparent 55%, white 100%); /* Vertical gradient */
+}
+
+
 
 
 

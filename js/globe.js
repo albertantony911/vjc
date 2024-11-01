@@ -81,7 +81,7 @@ function createOrbitControls() {
     controls.enableDamping = true;
     controls.enableRotate = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1.1;
+    controls.autoRotateSpeed = 1;
     controls.domElement.style.pointerEvents = 'none';
 }
 
