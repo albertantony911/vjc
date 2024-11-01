@@ -1627,11 +1627,6 @@ html {
   padding-bottom: 2vw;
 }
 
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1714,14 +1709,6 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
 }
 
 .text-left {
@@ -2178,11 +2165,6 @@ svg {
     height: auto;
   }
 
-  .max-md\:w-max {
-    width: -moz-max-content;
-    width: max-content;
-  }
-
   .max-md\:gap-10 {
     gap: 2.5rem;
   }
@@ -2228,21 +2210,12 @@ svg {
     padding-right: 2rem;
   }
 
-  .max-md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .max-md\:pb-14 {
-    padding-bottom: 3.5rem;
+  .max-md\:pb-10 {
+    padding-bottom: 2.5rem;
   }
 
   .max-md\:pt-20 {
     padding-top: 5rem;
-  }
-
-  .max-md\:pb-10 {
-    padding-bottom: 2.5rem;
   }
 
   .max-md\:text-\[3\.5vw\] {
@@ -2284,24 +2257,14 @@ svg {
     margin-right: auto;
   }
 
-  .md\:my-24 {
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-  }
-
-  .md\:my-5 {
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
   .md\:my-10 {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
   }
 
-  .md\:my-16 {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+  .md\:my-5 {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
   }
 
   .md\:mb-16 {
@@ -2354,10 +2317,6 @@ svg {
 
   .md\:mt-8 {
     margin-top: 2rem;
-  }
-
-  .md\:mb-10 {
-    margin-bottom: 2.5rem;
   }
 
   .md\:hidden {
@@ -2657,6 +2616,11 @@ svg {
     padding-right: 4rem;
   }
 
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .md\:px-24 {
     padding-left: 6rem;
     padding-right: 6rem;
@@ -2702,11 +2666,6 @@ svg {
     padding-bottom: 0.5rem;
   }
 
-  .md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
   .md\:py-28 {
     padding-top: 7rem;
     padding-bottom: 7rem;
@@ -2725,20 +2684,6 @@ svg {
   .md\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-  }
-
-  .md\:px-28 {
-    padding-left: 7rem;
-    padding-right: 7rem;
-  }
-
-  .md\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  .md\:pb-10 {
-    padding-bottom: 2.5rem;
   }
 
   .md\:pb-16 {
@@ -2775,10 +2720,6 @@ svg {
 
   .md\:pr-32 {
     padding-right: 8rem;
-  }
-
-  .md\:pt-0 {
-    padding-top: 0px;
   }
 
   .md\:pt-10 {
@@ -2851,33 +2792,15 @@ svg {
     line-height: 2.5rem;
   }
 
-  .md\:shadow-xl {
-    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  .md\:shadow-2xl {
-    --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  .md\:shadow-\[0px_4px_15px_rgba\(155\2c 130\2c 255\2c 0\.7\)\] {
-    --tw-shadow: 0px 4px 15px rgba(155,130,255,0.7);
-    --tw-shadow-colored: 0px 4px 15px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
   .md\:shadow-\[0px_4px_25px_rgba\(155\2c 130\2c 255\2c 0\.3\)\] {
     --tw-shadow: 0px 4px 25px rgba(155,130,255,0.3);
     --tw-shadow-colored: 0px 4px 25px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
-  .md\:shadow-\[0px_4px_5px_rgba\(155\2c 130\2c 255\2c 0\.3\)\] {
-    --tw-shadow: 0px 4px 5px rgba(155,130,255,0.3);
-    --tw-shadow-colored: 0px 4px 5px var(--tw-shadow-color);
+  .md\:shadow-xl {
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
