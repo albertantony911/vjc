@@ -524,6 +524,8 @@
   }
 }
 
+
+
 /* Apply rotation only when active */
 .rotating-icon-1.active,
 .rotating-icon-2.active,
@@ -555,7 +557,70 @@
 }
 
 /* Rotating group animation */
-.rotating-group.active {
+.rotating-group-landing.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: center;
+}
+
+
+
+
+
+
+/* Apply rotation only when active */
+.rotating-icon-cloud-1.active,
+.rotating-icon-cloud-2.active,
+.rotating-icon-cloud-3.active,
+.rotating-icon-cloud-4.active,
+.rotating-icon-cloud-5.active,
+.rotating-icon-cloud-6.active,
+.rotating-icon-cloud-7.active,
+.rotating-icon-cloud-main.active {
+  animation: rotate 45s linear infinite;
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-cloud-1 {
+  transform-origin: 1277.875px 246.9165px;
+}
+
+.rotating-icon-cloud-2 {
+  transform-origin: 2324.375px 1522.355px;
+}
+
+.rotating-icon-cloud-3 {
+  transform-origin: 2103.055px 627.8995px;
+}
+
+.rotating-icon-cloud-4 {
+  transform-origin: 811.776px 2247.195px;
+}
+
+
+.rotating-icon-cloud-5 {
+  transform-origin: 1750.305px 2255.555px;
+}
+
+.rotating-icon-cloud-6 {
+  transform-origin: 461.9355px 648.005px;
+}
+
+
+.rotating-icon-cloud-7 {
+  transform-origin: 246.9765px 1478.465px;
+}
+
+.rotating-icon-cloud-main {
+  transform-origin: 1271.68px 1304.16px;
+
+}
+
+
+
+
+
+/* Rotating group animation */
+.rotating-group-cloud.active {
   animation: rotate-group 45s linear infinite;
   transform-origin: center;
 }
@@ -645,10 +710,7 @@
   transform-origin: center;
 }
 
-/* Base state for `.scaler-big` (no opacity change) */
-.scaler-big {
-  transform-origin: center;
-}
+
 
 /* Animation when `active` class is added */
 .scaler.active {
@@ -667,8 +729,8 @@
 }
 
 /* Active class triggers scale-up, followed by pulsing */
-.scaler-big.active {
-  animation: scaleUp 1s ease-in-out forwards, pulsing 1.5s ease-in-out infinite 1s;
+.scaler-big {
+  animation: pulsing 1.5s ease-in-out infinite 1s;
 }
 
 @keyframes scaleUp {
@@ -681,15 +743,25 @@
 }
 
 
-/* Pulsing effect after scale-up */
+
+
 @keyframes pulsing {
   0%, 100% {
-    transform: scale(1.5); /* Final scale from scaleUp */
+    transform: scale(1); /* Final scale from initial scale-up */
   }
   50% {
-    transform: scale(1.6); /* Slightly larger for pulse */
+    transform: scale(1.05); /* Slightly larger for pulse */
   }
 }
+
+
+/* Apply smooth pulsing effect with centered transform origin */
+.pulser {
+  animation: pulsing 1.2s infinite ease-in-out; /* Smooth easing */
+  transform-origin: center;
+}
+
+
 
 
 

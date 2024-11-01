@@ -699,9 +699,36 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group");
+  const rotatingGroup = document.querySelector(".rotating-group-landing");
   // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-1, .rotating-icon-2, .rotating-icon-3, .rotating-icon-4, .rotating-icon-5, .rotating-group");
+  const rotatingElements = document.querySelectorAll(".rotating-icon-1, .rotating-icon-2, .rotating-icon-3, .rotating-icon-4, .rotating-icon-5, .rotating-group-landing");
+
+  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
+  if (rotatingGroup && rotatingElements.length > 0) {
+    activateScrollTrigger(rotatingGroup, rotatingElements);
+  }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
+    });
+  }
+
+  // Select the rotating group to be used as the trigger
+  const rotatingGroup = document.querySelector(".rotating-group-cloud");
+  // Select the icons and the rotating group itself as targets
+  const rotatingElements = document.querySelectorAll(".rotating-icon-cloud-1, .rotating-icon-cloud-2, .rotating-icon-cloud-3, .rotating-icon-cloud-4, .rotating-icon-cloud-5, .rotating-icon-cloud-6, .rotating-icon-cloud-7, .rotating-icon-cloud-main, .rotating-group-cloud ");
 
   // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
   if (rotatingGroup && rotatingElements.length > 0) {
