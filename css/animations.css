@@ -407,6 +407,16 @@
     linear-gradient(to bottom, white 0%, transparent 45%, transparent 65%, white 100%); /* Vertical gradient */
 }
 
+.gradient-bg-transparent-service {
+  background: radial-gradient(circle, transparent 10%, white 70%);
+}
+
+
+
+
+
+
+
 .gradient-bg-transparent-cta {
   background:
     linear-gradient(to right, white 0%, transparent 15%, transparent 85%, white 100%), /* Horizontal gradient */
@@ -627,76 +637,6 @@
 
 
 
-
-
-
-/* Cloud rotation animations with bouncy cubic-bezier effect */
-@keyframes rotate-scale-down {
-  from {
-    transform: rotate(0deg) scale(1); /* Start at original size */
-    opacity: 1; /* Start fully opaque */
-  }
-  to {
-    transform: rotate(-230deg) scale(0.8); /* Rotate and scale down to 0.8 */
-    opacity: 0.5; /* Slightly reduced opacity */
-  }
-}
-
-@keyframes rotate-group-cloud {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(230deg);
-  }
-}
-
-/* Scale-up and reverse animation */
-@keyframes scale-up-reverse {
-  0%, 100% {
-    transform: rotate(-230deg) scale(1); /* Start and end at original size */
-  }
-  50% {
-    transform: rotate(-230deg) scale(1.2); /* Scale up to 1.2 at midpoint */
-  }
-}
-
-/* Apply rotation and scale-down on load with bouncy cubic-bezier */
-.rotating-icon-1-cloud,
-.rotating-icon-2-cloud,
-.rotating-icon-4-cloud,
-.rotating-icon-5-cloud {
-  animation: rotate-scale-down 3s cubic-bezier(0.6, 0.05, 0.1, 1.25) forwards;
-}
-
-/* Apply scale-up and reverse animation to rotating-icon-3-cloud */
-.rotating-icon-3-cloud {
-  transform-origin: 830px 160px;
-  animation: scale-up-reverse 2s ease-in-out infinite; /* Continuous pulsing effect */
-}
-
-/* Individual transform-origin settings */
-.rotating-icon-1-cloud {
-  transform-origin: 140px 690px;
-}
-
-.rotating-icon-2-cloud {
-  transform-origin: 1560px 690px;
-}
-
-.rotating-icon-4-cloud {
-  transform-origin: 1285px 1475px;
-}
-
-.rotating-icon-5-cloud {
-  transform-origin: 450px 1500px;
-}
-
-/* Rotating group animation with bouncy cubic-bezier */
-.rotating-group-cloud {
-  animation: rotate-group-cloud 3s cubic-bezier(0.6, 0.05, 0.1, 1.25) forwards;
-  transform-origin: center;
-}
 
 
 
