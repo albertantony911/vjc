@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // IntersectionObserver callback
-    const observerCallback = (entries, observer) => {
+    const observerCallback = (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active"); // Add 'active' class on enter
@@ -214,86 +214,66 @@ function animatePricingBar(element, yValue, durationValue) {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to handle animation for each element
-  function animatePeriodBox(box) {
-    gsap.fromTo(box, 
-      { 
-        opacity: 0.1,
-        color: "#999",
-      },
-      { 
-        opacity: 1,
-        color: "#000",
-        duration: 2,
-        onComplete: () => observer.unobserve(box) // Stop observing once animation completes
-      }
-    );
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  // Function to handle adding the visible class
+  const revealBox = (box) => box.classList.add("visible");
 
-  // Set up IntersectionObserver to trigger animations on view
-  const observer = new IntersectionObserver((entries) => {
+  // Set up IntersectionObserver
+  const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animatePeriodBox(entry.target); // Start animation
+        revealBox(entry.target);  // Add the visible class
+        observer.unobserve(entry.target);  // Stop observing after reveal
       }
     });
-  }, { threshold: 0.8 }); // Trigger when 80% of the box is visible
+  }, { threshold: 0.8 });  // Trigger when 80% of the box is visible
 
   // Apply observer to each `.periodBox` element
-  gsap.utils.toArray('.periodBox').forEach((box) => {
-    observer.observe(box); // Start observing the element
-  });
+  document.querySelectorAll('.periodBox').forEach((box) => observer.observe(box));
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  function animateLine(line) {
-    gsap.from(line, {
-      scaleY: 0,                  // Start with scaleY at 0 (no height)
-      transformOrigin: "top",     // Scale from the top
-      duration: 1,
-      ease: "power1.inOut",
-      onComplete: () => observer.unobserve(line) // Stop observing once animation completes
-    });
-  }
 
-  // Set up IntersectionObserver to trigger animations on view
-  const observer = new IntersectionObserver((entries) => {
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Function to handle adding the visible class
+  const revealLine = (line) => line.classList.add("visible");
+
+  // Set up IntersectionObserver
+  const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateLine(entry.target); // Start animation
+        revealLine(entry.target);      // Add the visible class
+        observer.unobserve(entry.target); // Stop observing after animation
       }
     });
-  }, { threshold: 0.8 }); // Trigger when 80% of the line is visible
+  }, { threshold: 0.8 });  // Trigger when 80% of the line is visible
 
   // Apply observer to each `.line-v` element
-  gsap.utils.toArray('.line-v').forEach((line) => {
-    observer.observe(line); // Start observing the element
-  });
+  document.querySelectorAll('.line-v').forEach((line) => observer.observe(line));
 });
 
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  gsap.utils.toArray('.line-center').forEach((line) => {
-    gsap.from(line, 
-      {
-        scaleX: 0, // Start with scaleX of 0 (shrinks horizontally)
-        transformOrigin: "center center", // Expand from the center
-        duration: 1.5,
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: line,       // Trigger the animation when this .line-center enters the viewport
-          start: "top 80%",    // Adjust start based on your needs
-          end: "top 30%",      // Adjust end based on your needs
-          toggleActions: "play none none none",
-          once: true // Animation plays only once when it enters the viewport
-        }
+document.addEventListener("DOMContentLoaded", () => {
+  // Function to add the 'visible' class
+  const revealLine = (line) => line.classList.add("visible");
+
+  // Set up IntersectionObserver with specified start and end thresholds
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        revealLine(entry.target); // Trigger the animation by adding the class
+        observer.unobserve(entry.target); // Stop observing after animation
       }
-    );
-  });
+    });
+  }, { threshold: 0.8 });  // Adjust threshold to control when animation starts (80% in view)
+
+  // Apply observer to each `.line-center` element
+  document.querySelectorAll('.line-center').forEach((line) => observer.observe(line));
 });
 
 
