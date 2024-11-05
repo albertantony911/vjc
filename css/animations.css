@@ -711,7 +711,7 @@
 
 /* Apply smooth pulsing effect with centered transform origin */
 .pulser {
-  animation: pulsing 1.2s infinite ease-in-out; /* Smooth easing */
+  animation: pulsing 2.5s infinite ease-in-out; /* Smooth easing */
   transform-origin: center;
 }
 
