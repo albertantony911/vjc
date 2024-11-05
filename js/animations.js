@@ -715,3 +715,5 @@ document.addEventListener("DOMContentLoaded", function () {
     activateScrollTrigger(rotatingGroup, rotatingElements);
   }
 });
+
+
