@@ -419,9 +419,23 @@
 
 .gradient-bg-transparent-cta {
   background:
-    linear-gradient(to right, white 0%, transparent 15%, transparent 85%, white 100%), /* Horizontal gradient */
-    linear-gradient(to bottom, white 0%, transparent 45%, transparent 55%, white 100%); /* Vertical gradient */
+    linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, white 100%), /* Horizontal gradient */
+    linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, white 100%); /* Vertical gradient */
 }
+
+.gradient-bg-transparent-pricebar {
+  background:
+    linear-gradient(
+      to top,
+      white 0%,                           /* Fully white at the bottom */
+      rgba(255, 255, 255, 0.9) 15%,       /* Light transition to transparency */
+      rgba(255, 255, 255, 0.7) 50%,       /* Softer transparency in the middle */
+      rgba(255, 255, 255, 0.9) 75%,       /* Gradual fade back to white */
+      white 100%                          /* Fully white at the top */
+    );
+}
+
+
 
 
 

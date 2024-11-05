@@ -1252,6 +1252,10 @@ html {
   width: 100%;
 }
 
+.w-\[0\.2rem\] {
+  width: 0.2rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1631,6 +1635,11 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-darkGreen {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 211 72 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }
@@ -1650,6 +1659,12 @@ html {
 .from-transparent {
   --tw-gradient-from: transparent var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-darkGreen {
+  --tw-gradient-from: #7ED348 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(126 211 72 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -2769,6 +2784,18 @@ svg {
     width: 100svw;
   }
 
+  .md\:w-\[9\%\] {
+    width: 9%;
+  }
+
+  .md\:w-\[12\%\] {
+    width: 12%;
+  }
+
+  .md\:w-\[11\%\] {
+    width: 11%;
+  }
+
   .md\:max-w-\[110rem\] {
     max-width: 110rem;
   }
@@ -2991,6 +3018,11 @@ svg {
     padding-bottom: 2svh;
   }
 
+  .md\:px-28 {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+
   .md\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -3123,6 +3155,10 @@ svg {
 
   .md\:text-\[3\.5svh\] {
     font-size: 3.5svh;
+  }
+
+  .md\:text-\[1\.8svh\] {
+    font-size: 1.8svh;
   }
 
   .md\:leading-\[2\.5rem\] {
