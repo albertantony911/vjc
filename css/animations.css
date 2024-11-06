@@ -889,7 +889,7 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .line-v {
   transform: scaleY(0);             /* Start with scaleY at 0 (collapsed) */
   transform-origin: top;            /* Scale from the top */
-  transition: transform 1s ease-in-out; /* Smooth scaling effect */
+  transition: transform 2s ease-in-out; /* Smooth scaling effect */
 }
 
 .line-v.visible {
@@ -901,7 +901,7 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .line-center {
   transform: scaleX(0);                /* Start with scaleX at 0 (collapsed) */
   transform-origin: center center;     /* Scale from the center */
-  transition: transform 1.5s ease-in-out; /* Smooth scaling effect */
+  transition: transform 2s ease-in-out; /* Smooth scaling effect */
 }
 
 .line-center.visible {
