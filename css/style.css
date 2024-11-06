@@ -3605,6 +3605,22 @@ svg {
     font-size: 1svh;
   }
 
+  .md\:text-\[3\.7svh\] {
+    font-size: 3.7svh;
+  }
+
+  .md\:text-\[2\.1svh\] {
+    font-size: 2.1svh;
+  }
+
+  .md\:text-\[3\.6vh\] {
+    font-size: 3.6vh;
+  }
+
+  .md\:text-\[3\.6svh\] {
+    font-size: 3.6svh;
+  }
+
   .md\:leading-\[2\.5rem\] {
     line-height: 2.5rem;
   }
