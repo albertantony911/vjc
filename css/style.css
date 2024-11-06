@@ -1113,6 +1113,31 @@ html {
   height: 90%;
 }
 
+.size-\[40sv\] {
+  width: 40sv;
+  height: 40sv;
+}
+
+.size-\[40svh\] {
+  width: 40svh;
+  height: 40svh;
+}
+
+.size-\[50svh\] {
+  width: 50svh;
+  height: 50svh;
+}
+
+.size-\[60svh\] {
+  width: 60svh;
+  height: 60svh;
+}
+
+.size-\[55svh\] {
+  width: 55svh;
+  height: 55svh;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -1984,6 +2009,11 @@ html {
 .py-\[3vw\] {
   padding-top: 3vw;
   padding-bottom: 3vw;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pb-10 {
@@ -2921,6 +2951,21 @@ svg {
     height: 33svh;
   }
 
+  .md\:size-\[50svh\] {
+    width: 50svh;
+    height: 50svh;
+  }
+
+  .md\:size-\[45svh\] {
+    width: 45svh;
+    height: 45svh;
+  }
+
+  .md\:size-\[47svh\] {
+    width: 47svh;
+    height: 47svh;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
@@ -3145,6 +3190,14 @@ svg {
 
   .md\:w-\[15svh\] {
     width: 15svh;
+  }
+
+  .md\:w-\[50svw\] {
+    width: 50svw;
+  }
+
+  .md\:w-\[50svh\] {
+    width: 50svh;
   }
 
   .md\:max-w-\[110rem\] {
@@ -3493,6 +3546,14 @@ svg {
 
   .md\:pt-5 {
     padding-top: 1.25rem;
+  }
+
+  .md\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
+  .md\:pb-0 {
+    padding-bottom: 0px;
   }
 
   .md\:text-center {
@@ -3898,6 +3959,11 @@ svg {
     .portrait\:md\:size-\[30svw\] {
       width: 30svw;
       height: 30svw;
+    }
+
+    .portrait\:md\:size-auto {
+      width: auto;
+      height: auto;
     }
 
     .portrait\:md\:h-\[\] {
