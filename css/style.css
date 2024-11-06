@@ -2831,6 +2831,10 @@ svg {
     margin-bottom: 2.5rem;
   }
 
+  .md\:mb-12 {
+    margin-bottom: 3rem;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -3585,6 +3589,10 @@ svg {
 
   .md\:pb-0 {
     padding-bottom: 0px;
+  }
+
+  .md\:pb-7 {
+    padding-bottom: 1.75rem;
   }
 
   .md\:text-center {
