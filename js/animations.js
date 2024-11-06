@@ -717,3 +717,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition,
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
+    });
+  }
+
+  const infrastructureTrigger = document.querySelector(".infrastructure-trigger");
+  const scalingElements = document.querySelectorAll(".scaler");
+
+  if (infrastructureTrigger && scalingElements.length > 0) {
+    activateScrollTrigger(infrastructureTrigger, scalingElements);
+  }
+});
+
+
+
+
