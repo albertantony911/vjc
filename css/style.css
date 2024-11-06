@@ -2603,6 +2603,10 @@ svg {
     margin-top: 0.75rem;
   }
 
+  .max-md\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .max-md\:hidden {
     display: none;
   }
