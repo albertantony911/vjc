@@ -2559,6 +2559,22 @@ svg {
     margin-bottom: 10svh;
   }
 
+  .md\:mb-\[7svh\] {
+    margin-bottom: 7svh;
+  }
+
+  .md\:mt-\[8svh\] {
+    margin-top: 8svh;
+  }
+
+  .md\:mb-\[6svh\] {
+    margin-bottom: 6svh;
+  }
+
+  .md\:mb-\[5svh\] {
+    margin-bottom: 5svh;
+  }
+
   .md\:hidden {
     display: none;
   }
