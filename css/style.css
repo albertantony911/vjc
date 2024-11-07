@@ -3045,6 +3045,22 @@ svg {
     height: 21svh;
   }
 
+  .md\:h-\[23svw\] {
+    height: 23svw;
+  }
+
+  .md\:h-\[18svw\] {
+    height: 18svw;
+  }
+
+  .md\:h-\[17svw\] {
+    height: 17svw;
+  }
+
+  .md\:h-\[16svw\] {
+    height: 16svw;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -3247,6 +3263,86 @@ svg {
     width: 19svh;
   }
 
+  .md\:w-\[\] {
+    width: ;
+  }
+
+  .md\:w-\[10svw\] {
+    width: 10svw;
+  }
+
+  .md\:w-\[15svw\] {
+    width: 15svw;
+  }
+
+  .md\:w-\[12svw\] {
+    width: 12svw;
+  }
+
+  .md\:w-\[14svw\] {
+    width: 14svw;
+  }
+
+  .md\:w-\[13svw\] {
+    width: 13svw;
+  }
+
+  .md\:w-\[13\.5svw\] {
+    width: 13.5svw;
+  }
+
+  .md\:w-\[5rem\] {
+    width: 5rem;
+  }
+
+  .md\:w-\[10rem\] {
+    width: 10rem;
+  }
+
+  .md\:w-\[14rem\] {
+    width: 14rem;
+  }
+
+  .md\:w-\[13rem\] {
+    width: 13rem;
+  }
+
+  .md\:w-\[12rem\] {
+    width: 12rem;
+  }
+
+  .md\:w-\[12rsvh\] {
+    width: 12rsvh;
+  }
+
+  .md\:w-\[22svh\] {
+    width: 22svh;
+  }
+
+  .md\:w-\[21svh\] {
+    width: 21svh;
+  }
+
+  .md\:w-auto {
+    width: auto;
+  }
+
+  .md\:w-\[100\%\] {
+    width: 100%;
+  }
+
+  .md\:w-\[20svh\] {
+    width: 20svh;
+  }
+
+  .md\:w-\[20svw\] {
+    width: 20svw;
+  }
+
+  .md\:w-\[19svw\] {
+    width: 19svw;
+  }
+
   .md\:max-w-\[110rem\] {
     max-width: 110rem;
   }
@@ -3269,6 +3365,30 @@ svg {
 
   .md\:max-w-\[95rem\] {
     max-width: 95rem;
+  }
+
+  .md\:max-w-\[25rem\] {
+    max-width: 25rem;
+  }
+
+  .md\:max-w-\[30rem\] {
+    max-width: 30rem;
+  }
+
+  .md\:max-w-\[35rem\] {
+    max-width: 35rem;
+  }
+
+  .md\:max-w-\[40rem\] {
+    max-width: 40rem;
+  }
+
+  .md\:max-w-\[47rem\] {
+    max-width: 47rem;
+  }
+
+  .md\:max-w-\[30svw\] {
+    max-width: 30svw;
   }
 
   .md\:translate-x-\[10\%\] {
@@ -3389,6 +3509,14 @@ svg {
 
   .md\:rounded-\[4\.5svh\] {
     border-radius: 4.5svh;
+  }
+
+  .md\:rounded-\[4\.7svh\] {
+    border-radius: 4.7svh;
+  }
+
+  .md\:rounded-\[5svh\] {
+    border-radius: 5svh;
   }
 
   .md\:border {
@@ -3605,6 +3733,10 @@ svg {
 
   .md\:pb-7 {
     padding-bottom: 1.75rem;
+  }
+
+  .md\:pr-20 {
+    padding-right: 5rem;
   }
 
   .md\:text-center {
@@ -4388,6 +4520,42 @@ svg {
 
     .landscape\:md\:w-\[53\%\] {
       width: 53%;
+    }
+
+    .landscape\:md\:max-w-\[30svw\] {
+      max-width: 30svw;
+    }
+
+    .landscape\:md\:max-w-\[40svw\] {
+      max-width: 40svw;
+    }
+
+    .landscape\:md\:max-w-\[50svw\] {
+      max-width: 50svw;
+    }
+
+    .landscape\:md\:max-w-\[55svw\] {
+      max-width: 55svw;
+    }
+
+    .landscape\:md\:max-w-\[60svw\] {
+      max-width: 60svw;
+    }
+
+    .landscape\:md\:max-w-\[54svw\] {
+      max-width: 54svw;
+    }
+
+    .landscape\:md\:max-w-\[53svw\] {
+      max-width: 53svw;
+    }
+
+    .landscape\:md\:max-w-\[52svw\] {
+      max-width: 52svw;
+    }
+
+    .landscape\:md\:max-w-\[48svw\] {
+      max-width: 48svw;
     }
 
     .landscape\:md\:flex-row {
