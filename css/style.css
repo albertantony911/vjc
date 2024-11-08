@@ -869,6 +869,14 @@ html {
   margin-bottom: 10svh;
 }
 
+.mb-\[2svh\] {
+  margin-bottom: 2svh;
+}
+
+.mb-\[2\.5svh\] {
+  margin-bottom: 2.5svh;
+}
+
 .block {
   display: block;
 }
@@ -1125,6 +1133,14 @@ html {
   width: 100%;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1365,10 +1381,32 @@ html {
   gap: 4vw;
 }
 
+.gap-\[2svh\] {
+  gap: 2svh;
+}
+
+.gap-\[5svh\] {
+  gap: 5svh;
+}
+
+.gap-\[10svh\] {
+  gap: 10svh;
+}
+
+.gap-\[7svh\] {
+  gap: 7svh;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
+.divide-x > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
 }
 
 .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
@@ -1478,6 +1516,10 @@ html {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-l-2 {
+  border-left-width: 2px;
 }
 
 .border-\[\#adf6c4\] {
@@ -1846,6 +1888,22 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pl-\[2svh\] {
+  padding-left: 2svh;
+}
+
+.pl-\[3svh\] {
+  padding-left: 3svh;
+}
+
+.pl-\[4svh\] {
+  padding-left: 4svh;
+}
+
+.pl-\[5svh\] {
+  padding-left: 5svh;
 }
 
 .text-left {
@@ -2397,6 +2455,10 @@ svg {
     gap: 1.5rem;
   }
 
+  .max-md\:gap-1 {
+    gap: 0.25rem;
+  }
+
   .max-md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2428,6 +2490,10 @@ svg {
 
   .max-md\:pt-0 {
     padding-top: 0px;
+  }
+
+  .max-md\:pb-3 {
+    padding-bottom: 0.75rem;
   }
 
   .max-md\:text-\[3\.5vw\] {
@@ -2575,6 +2641,46 @@ svg {
     margin-bottom: 5svh;
   }
 
+  .md\:mb-\[2\.5svh\] {
+    margin-bottom: 2.5svh;
+  }
+
+  .md\:mb-\[2\.3svh\] {
+    margin-bottom: 2.3svh;
+  }
+
+  .md\:mb-\[2svh\] {
+    margin-bottom: 2svh;
+  }
+
+  .md\:mb-\[2\.2svh\] {
+    margin-bottom: 2.2svh;
+  }
+
+  .md\:mb-\[1svh\] {
+    margin-bottom: 1svh;
+  }
+
+  .md\:mb-\[0\.8svh\] {
+    margin-bottom: 0.8svh;
+  }
+
+  .md\:mb-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .md\:mb-3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .md\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
+
+  .md\:mb-\[3svh\] {
+    margin-bottom: 3svh;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -2627,6 +2733,61 @@ svg {
   .md\:size-auto {
     width: auto;
     height: auto;
+  }
+
+  .md\:size-\[2svw\] {
+    width: 2svw;
+    height: 2svw;
+  }
+
+  .md\:size-\[1svw\] {
+    width: 1svw;
+    height: 1svw;
+  }
+
+  .md\:size-\[1\.5svw\] {
+    width: 1.5svw;
+    height: 1.5svw;
+  }
+
+  .md\:size-full {
+    width: 100%;
+    height: 100%;
+  }
+
+  .md\:size-\[50svh\] {
+    width: 50svh;
+    height: 50svh;
+  }
+
+  .md\:size-\[70svh\] {
+    width: 70svh;
+    height: 70svh;
+  }
+
+  .md\:size-\[65svh\] {
+    width: 65svh;
+    height: 65svh;
+  }
+
+  .md\:size-\[65\%\] {
+    width: 65%;
+    height: 65%;
+  }
+
+  .md\:size-\[1svh\] {
+    width: 1svh;
+    height: 1svh;
+  }
+
+  .md\:size-\[2svh\] {
+    width: 2svh;
+    height: 2svh;
+  }
+
+  .md\:size-\[2\.5svh\] {
+    width: 2.5svh;
+    height: 2.5svh;
   }
 
   .md\:h-\[16svw\] {
@@ -2767,6 +2928,58 @@ svg {
     width: 100svw;
   }
 
+  .md\:w-\[50svw\] {
+    width: 50svw;
+  }
+
+  .md\:w-\[60svw\] {
+    width: 60svw;
+  }
+
+  .md\:w-\[20svw\] {
+    width: 20svw;
+  }
+
+  .md\:w-\[40svw\] {
+    width: 40svw;
+  }
+
+  .md\:w-\[85svw\] {
+    width: 85svw;
+  }
+
+  .md\:w-\[30svw\] {
+    width: 30svw;
+  }
+
+  .md\:w-\[35svw\] {
+    width: 35svw;
+  }
+
+  .md\:w-\[80svw\] {
+    width: 80svw;
+  }
+
+  .md\:w-\[min\] {
+    width: min;
+  }
+
+  .md\:w-\[55\%\] {
+    width: 55%;
+  }
+
+  .md\:w-\[20svh\] {
+    width: 20svh;
+  }
+
+  .md\:w-\[50svh\] {
+    width: 50svh;
+  }
+
+  .md\:w-\[65\%\] {
+    width: 65%;
+  }
+
   .md\:max-w-\[110rem\] {
     max-width: 110rem;
   }
@@ -2791,6 +3004,70 @@ svg {
     max-width: 95rem;
   }
 
+  .md\:max-w-\[105rem\] {
+    max-width: 105rem;
+  }
+
+  .md\:max-w-\[120rem\] {
+    max-width: 120rem;
+  }
+
+  .md\:max-w-\[50svw\] {
+    max-width: 50svw;
+  }
+
+  .md\:max-w-\[80svw\] {
+    max-width: 80svw;
+  }
+
+  .md\:max-w-\[70svw\] {
+    max-width: 70svw;
+  }
+
+  .md\:max-w-\[90\%\] {
+    max-width: 90%;
+  }
+
+  .md\:max-w-\[60svw\] {
+    max-width: 60svw;
+  }
+
+  .md\:max-w-\[85svw\] {
+    max-width: 85svw;
+  }
+
+  .md\:max-w-\[85rem\] {
+    max-width: 85rem;
+  }
+
+  .md\:max-w-\[40rem\] {
+    max-width: 40rem;
+  }
+
+  .md\:max-w-\[50rem\] {
+    max-width: 50rem;
+  }
+
+  .md\:max-w-\[60rem\] {
+    max-width: 60rem;
+  }
+
+  .md\:max-w-\[55rem\] {
+    max-width: 55rem;
+  }
+
+  .md\:max-w-\[200rem\] {
+    max-width: 200rem;
+  }
+
+  .md\:max-w-\[97rem\] {
+    max-width: 97rem;
+  }
+
+  .md\:max-w-\[100rem\] {
+    max-width: 100rem;
+  }
+
   .md\:translate-x-\[10\%\] {
     --tw-translate-x: 10%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2808,6 +3085,46 @@ svg {
 
   .md\:translate-y-\[-9rem\] {
     --tw-translate-y: -9rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[8\%\] {
+    --tw-translate-x: 8%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[7\%\] {
+    --tw-translate-x: 7%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[12\%\] {
+    --tw-translate-x: 12%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[15\%\] {
+    --tw-translate-x: 15%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[20\%\] {
+    --tw-translate-x: 20%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-y-\[-20\%\] {
+    --tw-translate-y: -20%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[23\%\] {
+    --tw-translate-x: 23%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:translate-x-\[2\%\] {
+    --tw-translate-x: 2%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -2859,6 +3176,34 @@ svg {
     gap: 2rem;
   }
 
+  .md\:gap-12 {
+    gap: 3rem;
+  }
+
+  .md\:gap-\[0\.5svh\] {
+    gap: 0.5svh;
+  }
+
+  .md\:gap-\[1svh\] {
+    gap: 1svh;
+  }
+
+  .md\:gap-\[0\.8svh\] {
+    gap: 0.8svh;
+  }
+
+  .md\:gap-\[0\.6svh\] {
+    gap: 0.6svh;
+  }
+
+  .md\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .md\:gap-\[1\.5svh\] {
+    gap: 1.5svh;
+  }
+
   .md\:rounded-\[2\.5svh\] {
     border-radius: 2.5svh;
   }
@@ -2885,6 +3230,10 @@ svg {
 
   .md\:rounded-\[5svw\] {
     border-radius: 5svw;
+  }
+
+  .md\:rounded-\[4svw\] {
+    border-radius: 4svw;
   }
 
   .md\:border {
@@ -3027,6 +3376,51 @@ svg {
     padding-bottom: 1.9svh;
   }
 
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .md\:py-\[5svh\] {
+    padding-top: 5svh;
+    padding-bottom: 5svh;
+  }
+
+  .md\:py-\[7svh\] {
+    padding-top: 7svh;
+    padding-bottom: 7svh;
+  }
+
+  .md\:py-\[6svh\] {
+    padding-top: 6svh;
+    padding-bottom: 6svh;
+  }
+
+  .md\:py-\[1\.7svh\] {
+    padding-top: 1.7svh;
+    padding-bottom: 1.7svh;
+  }
+
+  .md\:py-\[16\] {
+    padding-top: 16;
+    padding-bottom: 16;
+  }
+
+  .md\:py-\[3svh\] {
+    padding-top: 3svh;
+    padding-bottom: 3svh;
+  }
+
+  .md\:py-\[1svh\] {
+    padding-top: 1svh;
+    padding-bottom: 1svh;
+  }
+
+  .md\:py-\[1\.5svh\] {
+    padding-top: 1.5svh;
+    padding-bottom: 1.5svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3073,6 +3467,30 @@ svg {
 
   .md\:pt-5 {
     padding-top: 1.25rem;
+  }
+
+  .md\:pt-\[10svh\] {
+    padding-top: 10svh;
+  }
+
+  .md\:pl-\[12svw\] {
+    padding-left: 12svw;
+  }
+
+  .md\:pl-\[10svw\] {
+    padding-left: 10svw;
+  }
+
+  .md\:pl-\[9svw\] {
+    padding-left: 9svw;
+  }
+
+  .md\:pl-\[8svw\] {
+    padding-left: 8svw;
+  }
+
+  .md\:pb-12 {
+    padding-bottom: 3rem;
   }
 
   .md\:text-center {
@@ -3160,8 +3578,96 @@ svg {
     line-height: 1rem;
   }
 
+  .md\:text-\[1\.45svh\] {
+    font-size: 1.45svh;
+  }
+
+  .md\:text-\[3vh\] {
+    font-size: 3vh;
+  }
+
+  .md\:text-\[2\.7vh\] {
+    font-size: 2.7vh;
+  }
+
+  .md\:text-\[2\.8vh\] {
+    font-size: 2.8vh;
+  }
+
+  .md\:text-\[1\.2svh\] {
+    font-size: 1.2svh;
+  }
+
+  .md\:text-\[1\.1svh\] {
+    font-size: 1.1svh;
+  }
+
+  .md\:text-\[1svh\] {
+    font-size: 1svh;
+  }
+
+  .md\:text-\[1svw\] {
+    font-size: 1svw;
+  }
+
+  .md\:text-\[1\.5svw\] {
+    font-size: 1.5svw;
+  }
+
+  .md\:text-\[3svh\] {
+    font-size: 3svh;
+  }
+
+  .md\:text-\[2\.5vh\] {
+    font-size: 2.5vh;
+  }
+
+  .md\:text-\[2\.8svh\] {
+    font-size: 2.8svh;
+  }
+
+  .md\:text-\[2\.8svw\] {
+    font-size: 2.8svw;
+  }
+
+  .md\:text-\[10svw\] {
+    font-size: 10svw;
+  }
+
+  .md\:text-\[3svw\] {
+    font-size: 3svw;
+  }
+
+  .md\:text-\[2svw\] {
+    font-size: 2svw;
+  }
+
+  .md\:text-\[1\.8svw\] {
+    font-size: 1.8svw;
+  }
+
+  .md\:text-\[1\.7svw\] {
+    font-size: 1.7svw;
+  }
+
+  .md\:text-\[1\.6svw\] {
+    font-size: 1.6svw;
+  }
+
+  .md\:text-\[1\.4svw\] {
+    font-size: 1.4svw;
+  }
+
   .md\:leading-\[2\.5rem\] {
     line-height: 2.5rem;
+  }
+
+  .md\:text-\[1\.svh\] {
+    color: 1.svh;
+  }
+
+  .md\:text-\[1\.svw\] {
+    color: 1.svw;
   }
 
   .md\:shadow-\[0px_4px_25px_rgba\(155\2c 130\2c 255\2c 0\.3\)\] {
@@ -3422,6 +3928,21 @@ svg {
       transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     }
 
+    .portrait\:md\:translate-x-\[50\%\] {
+      --tw-translate-x: 50%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
+    .portrait\:md\:translate-x-\[60\%\] {
+      --tw-translate-x: 60%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
+    .portrait\:md\:translate-x-\[70\%\] {
+      --tw-translate-x: 70%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
     .portrait\:md\:flex-col {
       flex-direction: column;
     }
@@ -3522,6 +4043,10 @@ svg {
     .portrait\:md\:text-\[3\.3svw\] {
       font-size: 3.3svw;
     }
+
+    .portrait\:md\:text-\[1\.8svh\] {
+      font-size: 1.8svh;
+    }
   }
 }
 
@@ -3600,12 +4125,49 @@ svg {
       display: none;
     }
 
+    .landscape\:md\:size-\[47\%\] {
+      width: 47%;
+      height: 47%;
+    }
+
+    .landscape\:md\:size-\[65svh\] {
+      width: 65svh;
+      height: 65svh;
+    }
+
+    .landscape\:md\:size-\[60svh\] {
+      width: 60svh;
+      height: 60svh;
+    }
+
+    .landscape\:md\:size-\[61svh\] {
+      width: 61svh;
+      height: 61svh;
+    }
+
+    .landscape\:md\:size-\[57svh\] {
+      width: 57svh;
+      height: 57svh;
+    }
+
     .landscape\:md\:w-\[47\%\] {
       width: 47%;
     }
 
     .landscape\:md\:w-\[53\%\] {
       width: 53%;
+    }
+
+    .landscape\:md\:w-\[55\%\] {
+      width: 55%;
+    }
+
+    .landscape\:md\:w-\[57\%\] {
+      width: 57%;
+    }
+
+    .landscape\:md\:w-\[60\%\] {
+      width: 60%;
     }
 
     .landscape\:md\:max-w-\[55svw\] {

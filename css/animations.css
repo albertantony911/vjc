@@ -408,8 +408,12 @@
 }
 
 .gradient-bg-transparent-service {
-  background: radial-gradient(circle, transparent 10%, white 70%);
+  background: radial-gradient(circle at 50% center, transparent 10%, white 70%);
+  overflow: visible; /* Ensure overflow content is visible */
 }
+
+
+
 
 
 
