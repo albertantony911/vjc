@@ -1631,6 +1631,10 @@ html {
   padding: 2.5rem;
 }
 
+.p-7 {
+  padding: 1.75rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -2697,6 +2701,10 @@ svg {
     margin-top: 2svh;
   }
 
+  .md\:mb-\[16\] {
+    margin-bottom: 16;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -2804,6 +2812,21 @@ svg {
   .md\:size-\[2\.5svh\] {
     width: 2.5svh;
     height: 2.5svh;
+  }
+
+  .md\:size-\[10svh\] {
+    width: 10svh;
+    height: 10svh;
+  }
+
+  .md\:size-\[9svh\] {
+    width: 9svh;
+    height: 9svh;
+  }
+
+  .md\:size-\[2\.3svh\] {
+    width: 2.3svh;
+    height: 2.3svh;
   }
 
   .md\:h-\[16svw\] {
@@ -3514,6 +3537,14 @@ svg {
     padding-bottom: 3rem;
   }
 
+  .md\:pb-\[2svh\] {
+    padding-bottom: 2svh;
+  }
+
+  .md\:pt-\[3svh\] {
+    padding-top: 3svh;
+  }
+
   .md\:text-center {
     text-align: center;
   }
@@ -3695,6 +3726,14 @@ svg {
 
   .md\:text-\[2\.5rem\] {
     font-size: 2.5rem;
+  }
+
+  .md\:text-\[1\.9svh\] {
+    font-size: 1.9svh;
+  }
+
+  .md\:text-\[1\.85svh\] {
+    font-size: 1.85svh;
   }
 
   .md\:leading-\[2\.5rem\] {
@@ -3919,6 +3958,26 @@ svg {
       height: auto;
     }
 
+    .portrait\:md\:size-\[2\.5svh\] {
+      width: 2.5svh;
+      height: 2.5svh;
+    }
+
+    .portrait\:md\:size-\[2\.5svw\] {
+      width: 2.5svw;
+      height: 2.5svw;
+    }
+
+    .portrait\:md\:size-\[2svw\] {
+      width: 2svw;
+      height: 2svw;
+    }
+
+    .portrait\:md\:size-\[2\.2svw\] {
+      width: 2.2svw;
+      height: 2.2svw;
+    }
+
     .portrait\:md\:h-\[18svw\] {
       height: 18svw;
     }
@@ -4085,6 +4144,14 @@ svg {
 
     .portrait\:md\:text-\[1\.8svh\] {
       font-size: 1.8svh;
+    }
+
+    .portrait\:md\:text-\[1\.6svw\] {
+      font-size: 1.6svw;
+    }
+
+    .portrait\:md\:text-\[1\.7svw\] {
+      font-size: 1.7svw;
     }
   }
 }
