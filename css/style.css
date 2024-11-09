@@ -2685,6 +2685,18 @@ svg {
     margin-bottom: 3svh;
   }
 
+  .md\:mt-\[5svh\] {
+    margin-top: 5svh;
+  }
+
+  .md\:mt-\[6svh\] {
+    margin-top: 6svh;
+  }
+
+  .md\:mt-\[2svh\] {
+    margin-top: 2svh;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -3425,6 +3437,11 @@ svg {
     padding-bottom: 1.5svh;
   }
 
+  .md\:py-\[4svh\] {
+    padding-top: 4svh;
+    padding-bottom: 4svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3660,6 +3677,24 @@ svg {
 
   .md\:text-\[1\.4svw\] {
     font-size: 1.4svw;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-\[2rem\] {
+    font-size: 2rem;
+  }
+
+  .md\:text-\[2\.5rem\] {
+    font-size: 2.5rem;
   }
 
   .md\:leading-\[2\.5rem\] {

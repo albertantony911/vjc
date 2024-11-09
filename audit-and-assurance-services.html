@@ -891,104 +891,127 @@
         </section>
 
 
-        <section class="text-darkBlue pt-24">
-            <div class="mb-20 text-center">
+        <section class="text-darkBlue pt-16 pb-16">
+            <div class="mb-16 text-center">
 
-                <h2 class="md:text-3xl text-2xl font-semibold mb-5">
+                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold md:mb-5 mb-3">
                     Services we provide
                 </h2>
-                <p class=" portrait:text-[3.5vw] max-md:px-10 md:px-48 portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
+                <p class="text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw] max-md:px-10 md:px-48   font-light leading-relaxed "
                     aria-label="Hero Description">
                     We offer precise, secure bookkeeping for startups and established companies, allowing you to focus on growth. Our
                     tailored audit and assurance services build investor confidence and help businesses of all sizes stay ahead of
                     regulatory challenges with comprehensive support.
                 </p>
             </div>
-            <div class="flex flex-col justify-center md:gap-8 gap-6 md:px-48 ">
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+            <div class="flex flex-col justify-center md:gap-8 xl:gap-10 gap-6  md:px-16 ">
+                <div class="flex  xl:flex-row flex-col portrait:flex-col  portrait:w-full landscape:max-xl:w-full  mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
+                    
+
+                    <div x-data="{ expanded: false, collapseTimeout: null, contentHeight: '6em', toggleExpand() { 
+                                                                  this.expanded = !this.expanded; 
+                                                                  clearTimeout(this.collapseTimeout); 
+                                                                  if (this.expanded) { 
+                                                                      this.contentHeight = this.$refs.content.scrollHeight + 'px';
+                                                                      this.collapseTimeout = setTimeout(() => { this.expanded = false; this.contentHeight = '6em'; }, 20000); 
+                                                                  } else {
+                                                                      this.contentHeight = '6em';
+                                                                  }
+                                                              } }"
+                        class="flex landscape:xl:w-1/2 flex-col xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto border bg-white p-5 md:p-6 xl:p-[2.5svh]">
                     
                         <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer" id="dropdown closed">
+                        <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
                     
                             <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/audit_service_icon_1.svg" alt="">
+                                <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                                    <img src="./img/audit_service_icon_1.svg" alt="Service Icon">
                                 </div>
                             </div>
                     
                             <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Pre-Audit Services</h3>
-                                <p class="md:text-sm text-xs font-normal">Comprehensive review to ensure accurate financial statements,
-                                    legal compliance, and identify accounting errors for a reliable audit foundation.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
+                                <h3 class="text-[3.2vw] md:text-[1.8svh] leading-snug portrait:md:text-[1.3svw] font-bold">
+                                    Pre-Audit Review
+                                </h3>
+                    
+                                <!-- Combined Paragraph with Expand/Collapse and Smooth Height Transition -->
+                                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                                    class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                                    Pre-audit comprehensive review and validation of financial statements to ensure accuracy, compliance, and reliability;
+                                    Perform cut-off procedures to ensure that all supplier invoices, sales invoices, expenses, etc. are recorded
+                                    appropriately; Ensuring that all year-end procedures including legal compliance are properly complied with;
+                                    Identification of accounting errors through detailed ledgers scrutiny; Inspection of all entries related to deferred
+                                    revenue, unbilled revenue, prepaid expenses and others; Finalizing and providing a draft set of financial statements
+                                    after considering the adjustments identified during the pre-audit review.
+                                    
                                 </p>
+                    
+                                <!-- Read More / Collapse Toggle -->
+                                <span @click.stop="toggleExpand"
+                                    class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                                    <span x-show="!expanded" x-transition>...read more</span>
+                                    <span x-show="expanded" x-transition>...collapse</span>
+                                </span>
                             </div>
-                        </div>
-                    
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content" x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden" style="opacity: 0; height: 0;">
-                    
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Our pre-audit process ensures financial statements are accurate, compliant, and reliable. We perform cut-off procedures
-                                to verify proper recording of all transactions, such as supplier and sales invoices, and expenses, in the appropriate
-                                period. Year-end legal compliance is thoroughly checked, and ledgers are reviewed to identify accounting errors. We also
-                                inspect key entries like deferred and unbilled revenue and prepaid expenses. Finally, we provide a draft set of
-                                financial statements, incorporating all necessary adjustments identified during the review.
-                            <span class="font-bold">...collapse</span></p>
-                            
                         </div>
                     </div>
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
+                    
+                    <div x-data="{ expanded: false, collapseTimeout: null, contentHeight: '6em', toggleExpand() { 
+                                                                                      this.expanded = !this.expanded; 
+                                                                                      clearTimeout(this.collapseTimeout); 
+                                                                                      if (this.expanded) { 
+                                                                                          this.contentHeight = this.$refs.content.scrollHeight + 'px';
+                                                                                          this.collapseTimeout = setTimeout(() => { this.expanded = false; this.contentHeight = '6em'; }, 20000); 
+                                                                                      } else {
+                                                                                          this.contentHeight = '6em';
+                                                                                      }
+                                                                                  } }"
+                        class="flex landscape:xl:w-1/2 flex-col xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto border bg-white p-5 md:p-6 xl:p-[2.5svh]">
                     
                         <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer" id="dropdown closed">
+                        <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
                     
                             <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/audit_service_icon_2.svg" alt="">
+                                <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                                    <img src="./img/audit_service_icon_2.svg" alt="Service Icon">
                                 </div>
                             </div>
                     
                             <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Internal Audit Review</h3>
-                                <p class="md:text-sm text-xs font-normal">Tailored audits to enhance internal controls, improve financial accuracy, and ensure compliance with regulatory
-                                standards and governance.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
+                                <h3 class="text-[3.2vw] md:text-[1.8svh] leading-snug portrait:md:text-[1.3svw] font-bold">
+                                    Internal Audits
+                                </h3>
+                    
+                                <!-- Combined Paragraph with Expand/Collapse and Smooth Height Transition -->
+                                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                                    class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                                    Partner with us for Internal Auditing: Enhance Corporate Performance and Governance
+                                    Internal auditing plays a crucial role in assessing and fortifying a company's internal control systems, corporate
+                                    governance structures, and adherence to legal and regulatory requirements. Its primary goal is to ensure that financial
+                                    reporting is both accurate and timely, to boost operational efficiency, and to protect company assets.
+
+
+                                    <br><br><span class=" px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">We understand that each company is unique, and therefore, our internal audit approach is tailored to the specific scope
+                                    of work and goals of the audit.
+                                    Our internal audit services are designed to assist executives and board members in efficiently managing performance,
+                                    assessing risks, and improving employee productivity. We focus on monitoring the firm’s financial health while aiming to
+                                    enhance overall efficiency, effectiveness, and quality within the organization.
+
+                                    </span>
+
                                 </p>
+                    
+                                <!-- Read More / Collapse Toggle -->
+                                <span @click.stop="toggleExpand"
+                                    class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                                    <span x-show="!expanded" x-transition>...read more</span>
+                                    <span x-show="expanded" x-transition>...collapse</span>
+                                </span>
                             </div>
-                        </div>
-                    
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden" style="opacity: 0; height: 0;">
-                    
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Partner with us for Internal Auditing to elevate corporate performance and governance. Internal auditing is crucial for
-                                strengthening internal controls, corporate governance, and ensuring compliance with legal and regulatory requirements.
-                                Our tailored audit approach ensures accurate and timely financial reporting, improves operational efficiency, and
-                                safeguards company assets. We work closely with executives and board members to manage performance, assess risks, and
-                                enhance employee productivity. By monitoring the company's financial health, we aim to boost overall efficiency,
-                                effectiveness, and organizational quality.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-                    
                         </div>
                     </div>
 
@@ -1000,142 +1023,161 @@
                 
 
 
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+                <div class="flex  xl:flex-row flex-col portrait:flex-col  portrait:w-full landscape:max-xl:w-full  mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6">
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
+                    
+
+                    <div x-data="{ expanded: false, collapseTimeout: null, contentHeight: '6em', toggleExpand() { 
+                                                                                                          this.expanded = !this.expanded; 
+                                                                                                          clearTimeout(this.collapseTimeout); 
+                                                                                                          if (this.expanded) { 
+                                                                                                              this.contentHeight = this.$refs.content.scrollHeight + 'px';
+                                                                                                              this.collapseTimeout = setTimeout(() => { this.expanded = false; this.contentHeight = '6em'; }, 20000); 
+                                                                                                          } else {
+                                                                                                              this.contentHeight = '6em';
+                                                                                                          }
+                                                                                                      } }"
+                        class="flex landscape:xl:w-1/2 flex-col xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto border bg-white p-5 md:p-6 xl:p-[2.5svh]">
                     
                         <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer" id="dropdown closed">
+                        <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
                     
                             <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/audit_service_icon_3.svg" alt="">
+                                <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                                    <img src="./img/audit_service_icon_3.svg" alt="Service Icon">
                                 </div>
                             </div>
                     
                             <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Compliance Audit Help</h3>
-                                <p class="md:text-sm text-xs font-normal">Detailed audits to identify compliance gaps, ensure adherence to regulations, and prepare your business for future
-                                challenges.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
+                                <h3 class="text-[3.2vw] md:text-[1.8svh] leading-snug portrait:md:text-[1.3svw] font-bold">
+                                    Compliance Audit Assistance
+                                </h3>
+                    
+                                <!-- Combined Paragraph with Expand/Collapse and Smooth Height Transition -->
+                                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                                    class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                                    Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance from a headache into a strategic
+                                    asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's about fortifying your business
+                                    against risks and building stakeholder confidence.
+
+                                    
+                                    <br><br><span class=" px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">Our compliance audit assistance procedure engages us in your operations, comparing them against the latest regulatory
+                                    standards. Our goal? To uncover hidden compliance gaps and transform them into opportunities for improvement. With VJC,
+                                    you're not just meeting today's rules—you're preparing for tomorrow's challenges.
+                                    </span>
                                 </p>
+                    
+                                <!-- Read More / Collapse Toggle -->
+                                <span @click.stop="toggleExpand"
+                                    class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                                    <span x-show="!expanded" x-transition>...read more</span>
+                                    <span x-show="expanded" x-transition>...collapse</span>
+                                </span>
                             </div>
-                        </div>
-                    
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden" style="opacity: 0; height: 0;">
-                    
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance from a headache into a strategic
-                                asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's about fortifying your business
-                                against risks and building stakeholder confidence.
-                                Our compliance audit assistance procedure engages us in your operations, comparing them against the latest regulatory
-                                standards. Our goal? To uncover hidden compliance gaps and transform them into opportunities for improvement. With VJC,
-                                you're not just meeting today's rules—you're preparing for tomorrow's challenges.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-                    
                         </div>
                     </div>
 
                     
 
-                    <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[20svw] md:size-[13svh] m-auto ">
-                                <img src="./img/audit_service_icon_4.svg" alt="">
+                    <div x-data="{ expanded: false, collapseTimeout: null, contentHeight: '6em', toggleExpand() { 
+                                                                  this.expanded = !this.expanded; 
+                                                                  clearTimeout(this.collapseTimeout); 
+                                                                  if (this.expanded) { 
+                                                                      this.contentHeight = this.$refs.content.scrollHeight + 'px';
+                                                                      this.collapseTimeout = setTimeout(() => { this.expanded = false; this.contentHeight = '6em'; }, 20000); 
+                                                                  } else {
+                                                                      this.contentHeight = '6em';
+                                                                  }
+                                                              } }"
+                        class="flex landscape:xl:w-1/2 flex-col xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto border bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                    
+                        <!-- Header / Toggle Button -->
+                        <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                    
+                            <div class="flex flex-col w-auto">
+                                <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                                    <img src="./img/audit_service_icon_6.svg" alt="Service Icon">
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Forensic Audit Support</h3>
-                            <p class="md:text-sm text-xs font-normal">Expert analysis to uncover financial irregularities, support legal proceedings, and maintain financial integrity.</p>
+                    
+                            <div class="flex flex-col text-left gap-1 text-darkBlue">
+                                <h3 class="text-[3.2vw] md:text-[1.8svh] leading-snug portrait:md:text-[1.3svw] font-bold">
+                                    Statutory Audit Support
+                                </h3>
+                    
+                                <!-- Combined Paragraph with Expand/Collapse and Smooth Height Transition -->
+                                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                                    class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                                    Comprehensive planning, execution, and compliance to ensure accurate financial statements, audit
+                                    readiness, and regulatory adherence. We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.
+
+                                    <br><br><span class=" px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.
+                                    </span>
+                                    <br><br><span class=" px-2 md:mb-2  mb-2 text-left">
+                                        <strong>1. Planning:</strong>
+                                        Prepare a requirement list, review prior audits, verify opening balances, select samples, and calculate materiality.
+                                    </span>
+                                    
+                                    <br><br><span class=" px-2 md:mb-2  mb-2 text-left">
+                                        <strong>2. Execution:</strong>
+                                        Prepare and review working papers, test internal controls, gather and verify evidence, summarize audit observations,
+                                        perform casting procedures, assess risks, and assist with balance confirmations.
+                                    </span>
+                                    
+                                    <br><br><span class=" px-2 md:mb-2  mb-2 text-left">
+                                        <strong>3. Finalization:</strong>
+                                        Review and prepare financial statements, ensure audit file completeness, draft management letters, develop internal
+                                        control procedures, check compliance with standards, and draft notes for proper disclosures.
+                                    </span>
+                                </p>
+
+                                
+                                <!-- Read More / Collapse Toggle -->
+                                <span @click.stop="toggleExpand"
+                                    class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                                    <span x-show="!expanded" x-transition>...read more</span>
+                                    <span x-show="expanded" x-transition>...collapse</span>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
+                <div class="flex  xl:flex-row flex-col portrait:flex-col  portrait:w-full landscape:max-xl:w-full  mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
 
                     <div
-                        class="flex md:w-1/2 flex-row rounded-[3rem] md:rounded-[3.3rem] shadow-md md:gap-5 gap-4  bg-opacity-60 m-auto border border-[#adf6c4] bg-white  p-6">
-                        <div class="flex flex-col w-auto ">
-                            <div class="size-[20svw] md:size-[13svh] m-auto ">
+                        class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
+                        <div class="flex flex-col size-auto ">
+                            <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto">
                                 <img src="./img/audit_service_icon_5.svg" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="md:text-base text-sm font-bold">Due Diligence Advice</h3>
-                            <p class="md:text-sm text-xs font-normal">Thorough financial analysis for mergers, acquisitions, and transactions to ensure informed, strategic business decisions.</p>
+                            <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Due Diligence and Transaction Advisory</h3>
+                            <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">Financial and operational analysis to support mergers, acquisitions, and other business transactions.</p>
                         </div>
                     </div>
 
-                    <div x-data="{ expanded: false, height: 0, collapseTimeout: null }"
-                        class="flex md:w-1/2 flex-col rounded-[3rem] md:rounded-[3.3rem] shadow-md bg-opacity-60 m-auto border border-[#adf6c4] bg-white p-5 md:p-6"
-                        x-init="height = $refs.content.scrollHeight">
+
                     
-                        <!-- Header / Toggle Button -->
-                        <div @click="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.space.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            @keydown.enter.prevent="expanded = !expanded; clearTimeout(collapseTimeout); if (expanded) collapseTimeout = setTimeout(() => expanded = false, 30000)"
-                            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-5 gap-4 cursor-pointer" id="dropdown closed">
-                    
-                            <div class="flex flex-col w-auto">
-                                <div class="size-[20svw] md:size-[13svh] m-auto">
-                                    <img src="./img/audit_service_icon_6.svg" alt="">
-                                </div>
-                            </div>
-                    
-                            <div class="flex flex-col text-left gap-1 text-darkBlue">
-                                <h3 class="md:text-base text-sm font-bold">Statutory Audit Support</h3>
-                                <p class="md:text-sm text-xs font-normal">Comprehensive planning, execution, and compliance to ensure accurate financial statements, audit readiness, and
-                                regulatory adherence.
-                                    <!-- Conditionally show 'read more' -->
-                                    <span x-show="!expanded" class="font-bold">...read more</span>
-                                </p>
+
+                    <div
+                        class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
+                        <div class="flex flex-col size-auto ">
+                            <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto">
+                                <img src="./img/audit_service_icon_4.svg" alt="">
                             </div>
                         </div>
-                    
-                        <!-- Dropdown Content (With Dynamic Height Calculation) -->
-                        <div @click="expanded = false" x-ref="content"
-                            x-bind:style="expanded ? `height: ${height}px; opacity: 1;` : 'height: 0; opacity: 0;'"
-                            class="transition-all duration-300 ease-in-out overflow-hidden" style="opacity: 0; height: 0;">
-                    
-                            <p class="md:text-sm text-xs font-normal px-2 md:mt-4 md:mb-2 mt-3 mb-2 text-left">
-                                We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.                                
-                            </p>
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>1. Planning:</strong>
-                                Prepare a requirement list, review prior audits, verify opening balances, select samples, and calculate materiality.
-                            
-                            </p>
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>2. Execution:</strong>
-                                Prepare and review working papers, test internal controls, gather and verify evidence, summarize audit observations,
-                                perform casting procedures, assess risks, and assist with balance confirmations.
-                            
-                            </p>
-
-                            <p class="md:text-sm text-xs font-normal px-2 md:mb-2  mb-2 text-left">
-                                <strong>3. Finalization:</strong>
-                               
-                                Review and prepare financial statements, ensure audit file completeness, draft management letters, develop internal
-                                control procedures, check compliance with standards, and draft notes for proper disclosures.
-                                <span class="font-bold">...collapse</span>
-                            </p>
-                    
+                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
+                            <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Forensic Accounting and Fraud Investigations</h3>
+                            <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">Expert analysis and reporting to uncover financial irregularities and support legal proceedings.</p>
                         </div>
                     </div>
 
+                    
                 </div>
 
             </div>
@@ -1145,44 +1187,45 @@
         
 
 
+        <section class=" text-darkBlue" role="region" aria-labelledby="contactSectionHeading">
+    
+      <div class="gradient-bg-transparent-cta md:py-[3svh] md:px-32 px-7 py-7 ">
+        <div class="">
+          <div 
+            class="md:w-[90%] md:max-w-[90rem] border-darkGreen border-2 flex p-6 md:p-14 flex-col gap-2 justify-center  w-full text-center   md:rounded-[3.5rem] rounded-[3.5rem] bg-white   shadow-xl mx-auto"
+            data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
+            <h1 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold text-center leading-snug"
+              aria-label="Main Title">
+              Where VJC Takes the Lead
+            </h1>
+            <p class=" text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw]  leading-relaxed font-bold">Assurance for Flawless Financial Compliance</p>
+            <p class=" text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw]  font-light leading-relaxed mt-10 md:mt-[2svh]">At VJC, we believe one size doesn’t fit all in auditing. That’s why we take a bespoke approach to every engagement,
+            aligning our expertise with your specific needs. Beyond audit support, we provide a tailored roadmap for improvement,
+            streamlining the audit process while uncovering valuable insights to drive your business growth.</p>
+    
+            
+    
+    
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    
+    
+    
+    </section>
 
-
-
-        <!-- Hero Section -->
-        <section>
-            <div class="md:flex-row-reverse flex flex-col-reverse  md:px-32 gap-10 px-10 md:pt-32 pt-0 pb-5 ">
-                <div
-                    class=" max-md:h-[40svh] flex flex-col text-darkBlue gap-5 justify-center w-full text-center ">
-
-                    <h1 class="landscape:text-sm portrait:text-[5.5vw] portrait:sm:text-[3vw] lg:landscape:text-3xl  font-bold text-center leading-snug"
-                        aria-label="Main Title">
-                        Where VJC Takes the Lead
-                    </h1>
-                    <div class=" portrait:text-[3.5vw] portrait:sm:text-[2vw] lg:portrait:text-[1.75vw] landscape:text-xs lg:landscape:text-lg  font-light leading-relaxed "
-                        aria-label="Hero Description">
-
-                        <p class=" font-bold">Assurance for Flawless Financial Compliance</p>
-                        <p class=" mt-10">At VJC, we believe one size doesn’t fit all in auditing. That’s why we take a bespoke approach to every engagement,
-                        aligning our expertise with your specific needs. Beyond audit support, we provide a tailored roadmap for improvement,
-                        streamlining the audit process while uncovering valuable insights to drive your business growth.</p>
-                        
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
 
 
 
 
     <!-- New FAQ Section -->
-    <section class="bg-light text-darkBlue flex flex-col shadow-lg mt-28 pb-28" role="region"
+    <section class="bg-light text-darkBlue flex flex-col shadow-lg md:mt-20 mt-5   md:pb-5 pb-16" role="region"
         aria-label="Audit-related FAQ">
         <div role="heading" aria-level="2">
-            <h2 class="md:text-3xl text-2xl font-semibold text-center">
+            <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] font-bold px-10 md:px-24 text-center uppercase">
                 Frequently Asked Questions
             </h2>
         </div>
@@ -1197,19 +1240,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-1" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-1-answer">
                                     <span>How do you handle regulatory requirements needing a local professional's signature
                                         as an offshore provider?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-1-answer" role="region" aria-labelledby="audit-faq-1"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1227,19 +1270,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-2" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-2-answer">
                                     <span>How do you ensure the confidentiality and security of our financial data during
                                         the audit process?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-2-answer" role="region" aria-labelledby="audit-faq-2"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1255,19 +1298,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-3" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-3-answer">
                                     <span>Can you explain your approach to tailoring audit services to our specific industry
                                         and company needs?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-3-answer" role="region" aria-labelledby="audit-faq-3"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1284,18 +1327,18 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-4" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-4-answer">
                                     <span>What qualifications and experience do your auditors have?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-4-answer" role="region" aria-labelledby="audit-faq-4"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1312,18 +1355,18 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-5" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-5-answer">
                                     <span>How do you maintain consistency and quality in your audit processes?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-5-answer" role="region" aria-labelledby="audit-faq-5"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1339,18 +1382,18 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-6" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-6-answer">
                                     <span>Can your team work as an extension of our in-house audit department?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-6-answer" role="region" aria-labelledby="audit-faq-6"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1369,19 +1412,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-7" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-7-answer">
                                     <span>What technologies do you use to enhance the efficiency and accuracy of your
                                         audits?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-7-answer" role="region" aria-labelledby="audit-faq-7"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1397,19 +1440,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-8" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-8-answer">
                                     <span>How do you handle potential conflicts of interest or maintain independence in your
                                         audit work?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-8-answer" role="region" aria-labelledby="audit-faq-8"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1426,18 +1469,18 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-9" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-9-answer">
                                     <span>What is your process for communicating audit findings and recommendations?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-9-answer" role="region" aria-labelledby="audit-faq-9"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1454,18 +1497,18 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-10" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-10-answer">
                                     <span>How do you stay updated with changing audit standards and regulations?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-10-answer" role="region" aria-labelledby="audit-faq-10"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1481,19 +1524,19 @@
                         <div x-data="{ expanded: false }" class="py-4">
                             <h2>
                                 <button id="audit-faq-11" type="button"
-                                    class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                     @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                     @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                     aria-controls="audit-faq-11-answer">
                                     <span>Can you provide references or case studies from clients similar to our
                                         business?</span>
-                                    <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                    <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                         src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                                 </button>
                             </h2>
                             <div id="audit-faq-11-answer" role="region" aria-labelledby="audit-faq-11"
-                                class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                 :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                 <div class="overflow-hidden">
                                     <p><br>
@@ -1525,7 +1568,7 @@
                 <div class="md:w-[90%] md:max-w-[90rem]  flex px-10 flex-col justify-center  w-full text-center md:rounded-[3.5rem] rounded-[3.5rem] backdrop-blur-xl  bg-white   shadow-xl mx-auto"
                     data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
                     <h3 id="contactSectionHeading"
-                        class="md:text-3xl  uppercase text-[6vw] font-bold md:mt-20 mt-10 mb-5  md:mb-5   md:leading-[2.5rem] leading-snug"
+                        class="md:text-3xl  uppercase text-[6vw] font-bold md:mt-[6svh] mt-10 mb-5  md:mb-5   md:leading-[2.5rem] leading-snug"
                         aria-label="Contact Section">
                         CONNECT WITH US
                     </h3>
@@ -1539,7 +1582,7 @@
     
     
     
-                    <div class="flex justify-center md:mt-8 mt-7 mb-12 md:mb-16">
+                    <div class="flex justify-center md:mt-8 mt-7 mb-12  md:mb-[6svh]">
                         <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                             aria-label="Link to Schedule a Meeting"
                             class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-darkBlue text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
