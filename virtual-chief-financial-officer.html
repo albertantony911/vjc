@@ -1243,9 +1243,9 @@
 
 
         <!-- vCFO Services FAQ Section -->
-        <section class="bg-light text-darkBlue flex flex-col shadow-lg mt-28 pb-28" role="region" aria-label="vCFO-related FAQ">
+        <section class="bg-light text-darkBlue flex flex-col shadow-lg md:mt-20 mt-5   md:pb-5 pb-16" role="region" aria-label="vCFO-related FAQ">
             <div role="heading" aria-level="2">
-                <h2 class="md:text-3xl text-2xl font-semibold text-center">
+                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] font-bold px-10 md:px-24 text-center uppercase">
                     Frequently Asked Questions
                 </h2>
             </div>
@@ -1260,18 +1260,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-1" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-1-answer">
                                         <span>How quickly can a vCFO start making an impact on my business?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-1-answer" role="region" aria-labelledby="vcfo-faq-1"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1288,18 +1288,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-2" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-2-answer">
                                         <span>Will my business data and financial information be secure?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-2-answer" role="region" aria-labelledby="vcfo-faq-2"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1316,18 +1316,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-3" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-3-answer">
                                         <span>Can the vCFO work with my existing finance team and systems?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-3-answer" role="region" aria-labelledby="vcfo-faq-3"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1344,19 +1344,19 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-4" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-4-answer">
                                         <span>What’s the difference between a part-time and interim vCFO, and how do I choose
                                             which one suits my business?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-4-answer" role="region" aria-labelledby="vcfo-faq-4"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1373,19 +1373,19 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-5" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-5-answer">
                                         <span>How do you ensure that the vCFO understands the specific needs of my
                                             industry?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-5-answer" role="region" aria-labelledby="vcfo-faq-5"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1402,18 +1402,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-6" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-6-answer">
                                         <span>How often will I receive financial reports and updates from the vCFO?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-6-answer" role="region" aria-labelledby="vcfo-faq-6"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1429,18 +1429,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-7" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-7-answer">
                                         <span>Will the vCFO be involved in decision-making beyond just finances?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-7-answer" role="region" aria-labelledby="vcfo-faq-7"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
@@ -1457,18 +1457,18 @@
                             <div x-data="{ expanded: false }" class="py-4">
                                 <h2>
                                     <button id="vcfo-faq-8" type="button"
-                                        class="md:text-base flex items-center justify-between w-full text-sm font-medium text-left"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
                                         @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
                                         aria-controls="vcfo-faq-8-answer">
                                         <span>What commitment level is required when hiring a vCFO?</span>
-                                        <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] mb-auto ml-8 transition duration-200 origin-center transform"
                                             src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
                                 <div id="vcfo-faq-8-answer" role="region" aria-labelledby="vcfo-faq-8"
-                                    class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 ease-in-out"
+                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
                                     :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden">
                                         <p><br>
