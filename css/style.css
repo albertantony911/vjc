@@ -982,6 +982,46 @@ html {
   height: 100%;
 }
 
+.size-\[\] {
+  width: ;
+  height: ;
+}
+
+.size-\[10svw\] {
+  width: 10svw;
+  height: 10svw;
+}
+
+.size-\[30rem\] {
+  width: 30rem;
+  height: 30rem;
+}
+
+.size-\[35rem\] {
+  width: 35rem;
+  height: 35rem;
+}
+
+.size-\[50svw\] {
+  width: 50svw;
+  height: 50svw;
+}
+
+.size-\[100svw\] {
+  width: 100svw;
+  height: 100svw;
+}
+
+.size-\[50rem\] {
+  width: 50rem;
+  height: 50rem;
+}
+
+.size-\[70rem\] {
+  width: 70rem;
+  height: 70rem;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -1935,6 +1975,10 @@ html {
   padding-left: 5svh;
 }
 
+.pt-7 {
+  padding-top: 1.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2403,6 +2447,12 @@ svg {
 .hover\:shadow-2xl:hover {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-sm:hover {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -3588,6 +3638,11 @@ svg {
     padding-bottom: 4svh;
   }
 
+  .md\:py-\[8svh\] {
+    padding-top: 8svh;
+    padding-bottom: 8svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3670,6 +3725,14 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
+  }
+
+  .md\:pt-12 {
+    padding-top: 3rem;
+  }
+
+  .md\:pt-10 {
+    padding-top: 2.5rem;
   }
 
   .md\:text-center {
@@ -4117,6 +4180,11 @@ svg {
       height: 2.2svw;
     }
 
+    .portrait\:md\:size-\[14svw\] {
+      width: 14svw;
+      height: 14svw;
+    }
+
     .portrait\:md\:h-\[18svw\] {
       height: 18svw;
     }
@@ -4465,6 +4533,16 @@ svg {
 
     .landscape\:md\:max-w-\[55svw\] {
       max-width: 55svw;
+    }
+
+    .landscape\:md\:translate-x-\[23\%\] {
+      --tw-translate-x: 23%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
+    .landscape\:md\:translate-y-\[-20\%\] {
+      --tw-translate-y: -20%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     }
 
     .landscape\:md\:flex-row {
