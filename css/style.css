@@ -1138,6 +1138,10 @@ html {
   width: 100%;
 }
 
+.w-\[20svw\] {
+  width: 20svw;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -2598,6 +2602,14 @@ svg {
     margin-top: 7svh;
   }
 
+  .md\:mt-\[14\] {
+    margin-top: 14;
+  }
+
+  .md\:mt-\[8svh\] {
+    margin-top: 8svh;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -2886,6 +2898,10 @@ svg {
 
   .md\:w-\[80svh\] {
     width: 80svh;
+  }
+
+  .md\:w-\[23svw\] {
+    width: 23svw;
   }
 
   .md\:max-w-\[100rem\] {
@@ -3377,6 +3393,11 @@ svg {
     padding-bottom: 8svh;
   }
 
+  .md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3431,6 +3452,18 @@ svg {
 
   .md\:pt-\[3svh\] {
     padding-top: 3svh;
+  }
+
+  .md\:pt-\[5svh\] {
+    padding-top: 5svh;
+  }
+
+  .md\:pt-\[0svh\] {
+    padding-top: 0svh;
+  }
+
+  .md\:pb-\[0svh\] {
+    padding-bottom: 0svh;
   }
 
   .md\:text-center {
