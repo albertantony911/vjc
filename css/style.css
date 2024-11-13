@@ -3405,6 +3405,10 @@ svg {
       margin-top: 1svh;
     }
 
+    .portrait\:md\:mt-\[10svh\] {
+      margin-top: 10svh;
+    }
+
     .portrait\:md\:size-\[1\.8svw\] {
       width: 1.8svw;
       height: 1.8svw;
@@ -3706,6 +3710,22 @@ svg {
       margin-bottom: 2svh;
     }
 
+    .landscape\:md\:mt-\[10svh\] {
+      margin-top: 10svh;
+    }
+
+    .landscape\:md\:mb-\[4svh\] {
+      margin-bottom: 4svh;
+    }
+
+    .landscape\:md\:mt-\[4svh\] {
+      margin-top: 4svh;
+    }
+
+    .landscape\:md\:mt-\[1svh\] {
+      margin-top: 1svh;
+    }
+
     .landscape\:md\:hidden {
       display: none;
     }
@@ -3735,6 +3755,11 @@ svg {
 
     .landscape\:md\:flex-row {
       flex-direction: row;
+    }
+
+    .landscape\:md\:py-\[4svh\] {
+      padding-top: 4svh;
+      padding-bottom: 4svh;
     }
 
     .landscape\:md\:pl-\[13svh\] {
