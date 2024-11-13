@@ -1142,6 +1142,10 @@ html {
   flex-shrink: 0;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 .origin-center {
   transform-origin: center;
 }
@@ -1350,6 +1354,18 @@ html {
 
 .gap-\[5svh\] {
   gap: 5svh;
+}
+
+.gap-\[1svh\] {
+  gap: 1svh;
+}
+
+.gap-\[0\.5svh\] {
+  gap: 0.5svh;
+}
+
+.gap-\[0\.3svh\] {
+  gap: 0.3svh;
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -2656,6 +2672,16 @@ svg {
     height: 9svh;
   }
 
+  .md\:size-\[85\%\] {
+    width: 85%;
+    height: 85%;
+  }
+
+  .md\:size-full {
+    width: 100%;
+    height: 100%;
+  }
+
   .md\:h-\[16svw\] {
     height: 16svw;
   }
@@ -2834,6 +2860,54 @@ svg {
     max-width: 95rem;
   }
 
+  .md\:max-w-\[50rem\] {
+    max-width: 50rem;
+  }
+
+  .md\:max-w-\[55rem\] {
+    max-width: 55rem;
+  }
+
+  .md\:max-w-\[40rem\] {
+    max-width: 40rem;
+  }
+
+  .md\:max-w-\[10rem\] {
+    max-width: 10rem;
+  }
+
+  .md\:max-w-\[5rem\] {
+    max-width: 5rem;
+  }
+
+  .md\:max-w-\[7rem\] {
+    max-width: 7rem;
+  }
+
+  .md\:max-w-\[8rem\] {
+    max-width: 8rem;
+  }
+
+  .md\:max-w-\[12rem\] {
+    max-width: 12rem;
+  }
+
+  .md\:max-w-\[60rem\] {
+    max-width: 60rem;
+  }
+
+  .md\:max-w-\[80rem\] {
+    max-width: 80rem;
+  }
+
+  .md\:max-w-\[70rem\] {
+    max-width: 70rem;
+  }
+
+  .md\:max-w-\[75rem\] {
+    max-width: 75rem;
+  }
+
   .md\:translate-x-\[9rem\] {
     --tw-translate-x: 9rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2898,6 +2972,14 @@ svg {
 
   .md\:gap-\[3svh\] {
     gap: 3svh;
+  }
+
+  .md\:gap-\[2svh\] {
+    gap: 2svh;
+  }
+
+  .md\:gap-\[5svh\] {
+    gap: 5svh;
   }
 
   .md\:rounded-\[2\.5svh\] {
@@ -3086,6 +3168,11 @@ svg {
     padding-bottom: 8svh;
   }
 
+  .md\:py-\[15svh\] {
+    padding-top: 15svh;
+    padding-bottom: 15svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3221,6 +3308,10 @@ svg {
   .md\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+
+  .md\:text-\[1\.2svh\] {
+    font-size: 1.2svh;
   }
 
   .md\:leading-\[2\.5rem\] {
@@ -3631,6 +3722,14 @@ svg {
 
     .portrait\:md\:text-\[3\.3svw\] {
       font-size: 3.3svw;
+    }
+
+    .portrait\:md\:text-\[1svw\] {
+      font-size: 1svw;
+    }
+
+    .portrait\:md\:text-\[0\.8svw\] {
+      font-size: 0.8svw;
     }
   }
 }
