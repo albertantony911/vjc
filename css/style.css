@@ -4431,6 +4431,14 @@ svg {
       width: 35%;
     }
 
+    .landscape\:md\:w-\[557\%\] {
+      width: 557%;
+    }
+
+    .landscape\:md\:w-\[57\%\] {
+      width: 57%;
+    }
+
     .landscape\:md\:max-w-\[55svw\] {
       max-width: 55svw;
     }
