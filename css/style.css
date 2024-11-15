@@ -3077,6 +3077,16 @@ svg {
     height: 155%;
   }
 
+  .md\:size-\[145\%\] {
+    width: 145%;
+    height: 145%;
+  }
+
+  .md\:size-\[147\%\] {
+    width: 147%;
+    height: 147%;
+  }
+
   .md\:h-\[16svw\] {
     height: 16svw;
   }
