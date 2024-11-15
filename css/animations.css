@@ -600,8 +600,7 @@
 .rotating-icon-cloud-4.active,
 .rotating-icon-cloud-5.active,
 .rotating-icon-cloud-6.active,
-.rotating-icon-cloud-7.active,
-.rotating-icon-cloud-main.active {
+.rotating-icon-cloud-7.active {
   animation: rotate 45s linear infinite;
 }
 
@@ -636,10 +635,7 @@
   transform-origin: 246.9765px 1478.465px;
 }
 
-.rotating-icon-cloud-main {
-  transform-origin: 1271.68px 1304.16px;
 
-}
 
 
 
@@ -662,8 +658,7 @@
 .rotating-icon-vcfo-2.active,
 .rotating-icon-vcfo-3.active,
 .rotating-icon-vcfo-4.active,
-.rotating-icon-vcfo-5.active,
-.rotating-icon-vcfo-main.active {
+.rotating-icon-vcfo-5.active {
   animation: rotate 45s linear infinite;
 }
 
@@ -695,10 +690,6 @@
 
 
 
-.rotating-icon-vcfo-main {
-  transform-origin: 1271.68px 1304.16px;
-
-}
 
 
 
@@ -723,8 +714,7 @@
 .rotating-icon-audit-3.active,
 .rotating-icon-audit-4.active,
 .rotating-icon-audit-5.active,
-.rotating-icon-audit-6.active,
-.rotating-icon-audit-main.active {
+.rotating-icon-audit-6.active {
   animation: rotate 45s linear infinite;
 }
 
@@ -754,15 +744,6 @@
 .rotating-icon-audit-6 {
   transform-origin: 1148.3205px 222.1165px;
 }
-
-
-
-.rotating-icon-audit-main {
-  transform-origin: 1271.68px 1304.16px;
-
-}
-
-
 
 
 

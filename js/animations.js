@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Select the rotating group to be used as the trigger
   const rotatingGroup = document.querySelector(".rotating-group-cloud");
   // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-cloud-1, .rotating-icon-cloud-2, .rotating-icon-cloud-3, .rotating-icon-cloud-4, .rotating-icon-cloud-5, .rotating-icon-cloud-6, .rotating-icon-cloud-7, .rotating-icon-cloud-main, .rotating-group-cloud ");
+  const rotatingElements = document.querySelectorAll(".rotating-icon-cloud-1, .rotating-icon-cloud-2, .rotating-icon-cloud-3, .rotating-icon-cloud-4, .rotating-icon-cloud-5, .rotating-icon-cloud-6, .rotating-icon-cloud-7, .rotating-group-cloud ");
 
   // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
   if (rotatingGroup && rotatingElements.length > 0) {
@@ -735,7 +735,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Select the rotating group to be used as the trigger
   const rotatingGroup = document.querySelector(".rotating-group-vcfo");
   // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-vcfo-1, .rotating-icon-vcfo-2, .rotating-icon-vcfo-3, .rotating-icon-vcfo-4, .rotating-icon-vcfo-5, .rotating-icon-vcfo-main, .rotating-group-vcfo ");
+  const rotatingElements = document.querySelectorAll(".rotating-icon-vcfo-1, .rotating-icon-vcfo-2, .rotating-icon-vcfo-3, .rotating-icon-vcfo-4, .rotating-icon-vcfo-5, .rotating-group-vcfo ");
 
   // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
   if (rotatingGroup && rotatingElements.length > 0) {
