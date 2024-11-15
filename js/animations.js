@@ -776,6 +776,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
+    });
+  }
+
+  // Select the rotating group to be used as the trigger
+  const rotatingGroup = document.querySelector(".rotating-group-legal");
+  // Select the icons and the rotating group itself as targets
+  const rotatingElements = document.querySelectorAll(".rotating-icon-legal-1, .rotating-icon-legal-2, .rotating-icon-legal-3, .rotating-icon-legal-4, .rotating-icon-legal-5, .rotating-icon-legal-6, .rotating-icon-legal-7, .rotating-icon-legal-8, .rotating-icon-legal-9, .rotating-icon-legal-10, .rotating-icon-legal-11, .rotating-group-legal ");
+
+  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
+  if (rotatingGroup && rotatingElements.length > 0) {
+    activateScrollTrigger(rotatingGroup, rotatingElements);
+  }
+});
+
+
+
+
+
+
 
 
 

@@ -759,6 +759,88 @@
 
 
 
+/* Apply rotation only when active */
+.rotating-icon-legal-1.active,
+.rotating-icon-legal-2.active,
+.rotating-icon-legal-3.active,
+.rotating-icon-legal-4.active,
+.rotating-icon-legal-4.active,
+.rotating-icon-legal-5.active,
+.rotating-icon-legal-6.active,
+.rotating-icon-legal-7.active,
+.rotating-icon-legal-8.active,
+.rotating-icon-legal-9.active,
+.rotating-icon-legal-10.active,
+.rotating-icon-legal-11.active {
+  animation: rotate 45s linear infinite;
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-legal-1 {
+  transform-origin: 1280.87px 222.1165px;
+}
+
+.rotating-icon-legal-2 {
+  transform-origin: 702.6525px 392.1955px;
+}
+
+.rotating-icon-legal-3 {
+  transform-origin: 222.2785px 1444.165px;
+}
+
+.rotating-icon-legal-4 {
+  transform-origin: 1859.07px 392.1955px;
+}
+
+.rotating-icon-legal-5 {
+  transform-origin: 2339.455px 1444.105px;
+}
+
+
+.rotating-icon-legal-6 {
+  transform-origin: 979.56px 2318.055px;
+}
+
+
+.rotating-icon-legal-7 {
+  transform-origin: 2253.695px 847.6795px;
+}
+
+
+.rotating-icon-legal-8 {
+  transform-origin: 472.611px 1992.315px;
+}
+
+.rotating-icon-legal-9 {
+  transform-origin: 1582.17px 2318.11px;
+}
+
+.rotating-icon-legal-10 {
+  transform-origin: 2089.125px 1992.68px;
+}
+
+
+.rotating-icon-legal-11 {
+  transform-origin: 308.0225px 847.6695px;
+}
+
+
+
+
+
+
+/* Rotating group animation */
+.rotating-group-legal.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: center;
+}
+
+
+
+
+
+
+
 
 @keyframes pulsing {
   0%, 100% {
