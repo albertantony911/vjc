@@ -657,6 +657,65 @@
 
 
 
+/* Apply rotation only when active */
+.rotating-icon-vcfo-1.active,
+.rotating-icon-vcfo-2.active,
+.rotating-icon-vcfo-3.active,
+.rotating-icon-vcfo-4.active,
+.rotating-icon-vcfo-5.active,
+.rotating-icon-vcfo-main.active {
+  animation: rotate 45s linear infinite;
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-vcfo-1 {
+  transform-origin: 1239.445px 222.1165px;
+}
+
+
+.rotating-icon-vcfo-2 {
+  transform-origin: 2256.61px 961.1025px;
+}
+
+
+.rotating-icon-vcfo-3 {
+  transform-origin: 610.8015px 2142.69px;
+}
+
+
+.rotating-icon-vcfo-4 {
+  transform-origin: 1869.11px 2156.72px;
+}
+
+
+
+.rotating-icon-vcfo-5 {
+  transform-origin: 222.2785px 961.1025px;
+}
+
+
+
+.rotating-icon-vcfo-main {
+  transform-origin: 1271.68px 1304.16px;
+
+}
+
+
+
+
+
+/* Rotating group animation */
+.rotating-group-vcfo.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: center;
+}
+
+
+
+
+
+
+
 
 
 
