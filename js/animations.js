@@ -747,6 +747,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
+    });
+  }
+
+  // Select the rotating group to be used as the trigger
+  const rotatingGroup = document.querySelector(".rotating-group-audit");
+  // Select the icons and the rotating group itself as targets
+  const rotatingElements = document.querySelectorAll(".rotating-icon-audit-1, .rotating-icon-audit-2, .rotating-icon-audit-3, .rotating-icon-audit-4, .rotating-icon-audit-5, .rotating-icon-audit-6, .rotating-group-audit ");
+
+  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
+  if (rotatingGroup && rotatingElements.length > 0) {
+    activateScrollTrigger(rotatingGroup, rotatingElements);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {

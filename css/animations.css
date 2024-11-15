@@ -717,6 +717,65 @@
 
 
 
+/* Apply rotation only when active */
+.rotating-icon-audit-1.active,
+.rotating-icon-audit-2.active,
+.rotating-icon-audit-3.active,
+.rotating-icon-audit-4.active,
+.rotating-icon-audit-5.active,
+.rotating-icon-audit-6.active,
+.rotating-icon-audit-main.active {
+  animation: rotate 45s linear infinite;
+}
+
+/* Individual transform-origin settings */
+.rotating-icon-audit-1 {
+  transform-origin: 2074.36px 756.806px;
+}
+
+.rotating-icon-audit-2 {
+  transform-origin: 222.2785px 1826.08px;
+}
+
+.rotating-icon-audit-3 {
+  transform-origin: 1148.3205px 2360.7px;
+}
+
+
+.rotating-icon-audit-4 {
+  transform-origin: 2071.98px 1826.44px;
+}
+
+.rotating-icon-audit-5 {
+  transform-origin: 222.2785px 757.9585px;
+}
+
+
+.rotating-icon-audit-6 {
+  transform-origin: 1148.3205px 222.1165px;
+}
+
+
+
+.rotating-icon-audit-main {
+  transform-origin: 1271.68px 1304.16px;
+
+}
+
+
+
+
+
+/* Rotating group animation */
+.rotating-group-audit.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: 1148.318px 1291.436px;
+}
+
+
+
+
+
 
 
 
