@@ -1418,6 +1418,10 @@ html {
   gap: 5svh;
 }
 
+.gap-\[3svh\] {
+  gap: 3svh;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -4254,6 +4258,10 @@ svg {
       height: auto;
     }
 
+    .landscape\:md\:h-\[40\%\] {
+      height: 40%;
+    }
+
     .landscape\:md\:w-\[40\%\] {
       width: 40%;
     }
@@ -4264,6 +4272,18 @@ svg {
 
     .landscape\:md\:w-\[45\%\] {
       width: 45%;
+    }
+
+    .landscape\:md\:w-\[43\%\] {
+      width: 43%;
+    }
+
+    .landscape\:md\:w-\[50\%\] {
+      width: 50%;
+    }
+
+    .landscape\:md\:w-\[30\%\] {
+      width: 30%;
     }
 
     .landscape\:md\:max-w-\[55svw\] {
@@ -4313,6 +4333,10 @@ svg {
 
     .lg\:landscape\:mb-\[3svh\] {
       margin-bottom: 3svh;
+    }
+
+    .lg\:landscape\:mb-\[1\.5svh\] {
+      margin-bottom: 1.5svh;
     }
   }
 }
