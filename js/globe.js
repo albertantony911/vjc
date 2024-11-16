@@ -43,7 +43,7 @@ function initScene() {
     renderer.setPixelRatio(3);
 
     scene = new THREE.Scene();
-    camera = new THREE.OrthographicCamera(-1.3, 1.3, 1.3, -1.3, 0, 3);
+    camera = new THREE.OrthographicCamera(-1.2, 1.2, 1.2, -1.2, 0, 3);
     camera.position.set(-0.2, -0.2, 1.45);
     camera.lookAt(0, 0, 0);
 
@@ -81,7 +81,7 @@ function createOrbitControls() {
     controls.enableDamping = true;
     controls.enableRotate = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
+    controls.autoRotateSpeed = 0.8;
     controls.domElement.style.pointerEvents = 'none';
 }
 

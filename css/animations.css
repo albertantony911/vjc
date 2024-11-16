@@ -195,8 +195,7 @@
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 10rem;
-    --marquee-item-height: 10rem;
+    
     --marquee-duration: 30s;
     --marquee-items: 9;
 }
@@ -463,12 +462,6 @@
     z-index: 3; /* Ensure it's above other elements */
     touch-action: pan-y; /* Allow vertical panning on touch devices */
 }
-
-
-.svg-shadow {
-  filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
-}
-
 
 
 .blur-effect {

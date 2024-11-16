@@ -870,6 +870,14 @@ html {
   margin-top: 0.2rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
 .block {
   display: block;
 }
@@ -998,6 +1006,16 @@ html {
 .size-\[90\%\] {
   width: 90%;
   height: 90%;
+}
+
+.size-\[105\%\] {
+  width: 105%;
+  height: 105%;
+}
+
+.size-\[110\%\] {
+  width: 110%;
+  height: 110%;
 }
 
 .h-12 {
@@ -2478,6 +2496,11 @@ svg {
     height: 35rem;
   }
 
+  .max-md\:size-\[25rem\] {
+    width: 25rem;
+    height: 25rem;
+  }
+
   .max-md\:h-\[35svh\] {
     height: 35svh;
   }
@@ -2769,6 +2792,14 @@ svg {
     margin-top: 8svh;
   }
 
+  .md\:mt-\[3svh\] {
+    margin-top: 3svh;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -2936,6 +2967,21 @@ svg {
   .md\:size-\[60svh\] {
     width: 60svh;
     height: 60svh;
+  }
+
+  .md\:size-\[calc\(var\(--svh\)\*1\)\] {
+    width: calc(var(--svh) * 1);
+    height: calc(var(--svh) * 1);
+  }
+
+  .md\:size-\[calc\(var\(--svh\)\*0\.01\)\] {
+    width: calc(var(--svh) * 0.01);
+    height: calc(var(--svh) * 0.01);
+  }
+
+  .md\:size-\[svh\] {
+    width: svh;
+    height: svh;
   }
 
   .md\:h-\[16svw\] {
@@ -3122,6 +3168,34 @@ svg {
 
   .md\:w-\[35svh\] {
     width: 35svh;
+  }
+
+  .md\:w-\[calc\(var\(--svh\)\*5\)\] {
+    width: calc(var(--svh) * 5);
+  }
+
+  .md\:w-\[calc\(var\(--svh\)\*10\)\] {
+    width: calc(var(--svh) * 10);
+  }
+
+  .md\:w-\[calc\(var\(--svh\)\*20\)\] {
+    width: calc(var(--svh) * 20);
+  }
+
+  .md\:w-\[calc\(var\(--svh\)\*1\)\] {
+    width: calc(var(--svh) * 1);
+  }
+
+  .md\:w-\[45svh\] {
+    width: 45svh;
+  }
+
+  .md\:w-\[60svh\] {
+    width: 60svh;
+  }
+
+  .md\:w-\[50svh\] {
+    width: 50svh;
   }
 
   .md\:max-w-\[100rem\] {
@@ -3687,6 +3761,10 @@ svg {
 }
 
 @media (min-width: 1024px) {
+  .lg\:w-\[calc\(var\(--svh\)\*7\.5\)\] {
+    width: calc(var(--svh) * 7.5);
+  }
+
   .lg\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -4286,8 +4364,25 @@ svg {
       width: 30%;
     }
 
+    .landscape\:md\:w-min {
+      width: -moz-min-content;
+      width: min-content;
+    }
+
     .landscape\:md\:max-w-\[55svw\] {
       max-width: 55svw;
+    }
+
+    .landscape\:md\:max-w-\[30rem\] {
+      max-width: 30rem;
+    }
+
+    .landscape\:md\:max-w-\[60rem\] {
+      max-width: 60rem;
+    }
+
+    .landscape\:md\:max-w-\[65rem\] {
+      max-width: 65rem;
     }
 
     .landscape\:md\:flex-row {
