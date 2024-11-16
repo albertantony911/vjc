@@ -1,3 +1,93 @@
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  function activateScrollAnimations(configurations) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
+          entry.target.classList.add(targetClass); // Add the respective class
+          if (entry.target.dataset.observeOnce === "true") {
+            observer.unobserve(entry.target); // Optional: Unobserve if animation should happen once
+          }
+        } else {
+          if (!entry.target.dataset.observeOnce) {
+            const targetClass = entry.target.dataset.revealClass || "active";
+            entry.target.classList.remove(targetClass); // Remove the class on leave
+          }
+        }
+      });
+    });
+
+    configurations.forEach(({ className, observeOnce = false, customClass }) => {
+      const elements = document.querySelectorAll(`.${className}`);
+      elements.forEach(element => {
+        element.dataset.observeOnce = observeOnce.toString(); // Set observe-once flag
+        if (customClass) element.dataset.revealClass = customClass; // Set custom class if provided
+        observer.observe(element); // Start observing
+      });
+    });
+  }
+
+  // Activate animations for various classes with configurations
+  activateScrollAnimations([
+    { className: "cloud", threshold: 0.8 }, // Default 'active' class
+    { className: "floater", threshold: 0.8 }, // Default 'active' class
+    { className: "marquee__item", threshold: 0.8 }, // Default 'active' class
+    { className: "periodBox", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
+    { className: "line-v", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
+    { className: "line-center", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
+    { className: "flasher", threshold: 0.8 }, // Include flasher class
+    { className: "calendarDots", threshold: 0.8 } // Added control for calendarDots
+  ]);
+
+  // Additional setup for elements with 'float' class
+  document.querySelectorAll('.float').forEach((element, index) => {
+    element.style.setProperty('--n', index + 1); // Add index-based custom property
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
+  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+    if (!triggerElement || targetElements.length === 0) return; // Guard clause
+    ScrollTrigger.create({
+      trigger: triggerElement,
+      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
+      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
+      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
+      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
+    });
+  }
+
+  // Group configurations
+  const groups = [
+    { trigger: ".rotating-group-landing", targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"] },
+    { trigger: ".rotating-group-cloud", targets: [".rotating-icon-cloud-1", ".rotating-icon-cloud-2", ".rotating-icon-cloud-3", ".rotating-icon-cloud-4", ".rotating-icon-cloud-5", ".rotating-icon-cloud-6", ".rotating-icon-cloud-7", ".rotating-group-cloud"] },
+    { trigger: ".rotating-group-vcfo", targets: [".rotating-icon-vcfo-1", ".rotating-icon-vcfo-2", ".rotating-icon-vcfo-3", ".rotating-icon-vcfo-4", ".rotating-icon-vcfo-5", ".rotating-group-vcfo"] },
+    { trigger: ".rotating-group-audit", targets: [".rotating-icon-audit-1", ".rotating-icon-audit-2", ".rotating-icon-audit-3", ".rotating-icon-audit-4", ".rotating-icon-audit-5", ".rotating-icon-audit-6", ".rotating-group-audit"] },
+    { trigger: ".rotating-group-legal", targets: [".rotating-icon-legal-1", ".rotating-icon-legal-2", ".rotating-icon-legal-3", ".rotating-icon-legal-4", ".rotating-icon-legal-5", ".rotating-icon-legal-6", ".rotating-icon-legal-7", ".rotating-icon-legal-8", ".rotating-icon-legal-9", ".rotating-icon-legal-10", ".rotating-icon-legal-11", ".rotating-group-legal"] }
+  ];
+
+  // Loop through each group and initialize ScrollTrigger
+  groups.forEach(({ trigger, targets }) => {
+    const triggerElement = document.querySelector(trigger);
+    const targetElements = document.querySelectorAll(targets.join(", "));
+    activateScrollTrigger(triggerElement, targetElements);
+  });
+});
+
+
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // Reusable IntersectionObserver for all counters
   const observer = new IntersectionObserver((entries, observerInstance) => {
@@ -61,108 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to activate IntersectionObserver for elements by class
-  function activateScrollAnimation(className, threshold = 0.8) {
-    const options = {
-      root: null, // Observes the viewport
-      rootMargin: "0px",
-      threshold: threshold // Trigger when 80% of the element is visible
-    };
-
-    // IntersectionObserver callback
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active"); // Add 'active' class on enter
-        } else {
-          entry.target.classList.remove("active"); // Remove 'active' class on leave
-        }
-      });
-    };
-
-    // Create the IntersectionObserver with the specified options
-    const observer = new IntersectionObserver(observerCallback, options);
-
-    // Select all elements with the specified class and observe them
-    const elements = document.querySelectorAll(`.${className}`);
-    elements.forEach(element => observer.observe(element));
-  }
-
-  // Activate IntersectionObserver for 'cloud' and 'floater' animations
-  activateScrollAnimation("cloud");
-  activateScrollAnimation("floater");
-});
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to activate IntersectionObserver for marquee items
-  function activateMarqueeObserver() {
-    const options = {
-      root: null, // Observes the viewport
-      rootMargin: "0px",
-      threshold: 0.8 // Trigger when 80% of the element is visible
-    };
-
-    // IntersectionObserver callback
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-        } else {
-          entry.target.classList.remove("active");
-        }
-      });
-    };
-
-    // Create the IntersectionObserver with the specified options
-    const observer = new IntersectionObserver(observerCallback, options);
-
-    // Observe each marquee item
-    const marqueeItems = document.querySelectorAll(".marquee__item");
-    marqueeItems.forEach(item => observer.observe(item));
-  }
-
-  // Activate IntersectionObserver for marquee items
-  activateMarqueeObserver();
-});
-
-
-
-
-
-
-
-
-
-// Select all elements with the triggering class
-const elementsToAnimate = document.querySelectorAll('.scaler, .scaler-big');
-
-// Create the Intersection Observer
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Add the `active` class to trigger the animation
-      entry.target.classList.add('active');
-      
-      // Optional: Unobserve the element if the animation should only happen once
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 }); // Trigger when 50% of the element is visible
-
-// Observe each element with `.scaler` or `.scaler-big` class
-elementsToAnimate.forEach(element => observer.observe(element));
-
-
-
-
 document.addEventListener("DOMContentLoaded", initAnimation, { once: true });
 
 // Initialize animation
@@ -214,70 +202,6 @@ function animatePricingBar(element, yValue, durationValue) {
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Function to handle adding the visible class
-  const revealBox = (box) => box.classList.add("visible");
-
-  // Set up IntersectionObserver
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        revealBox(entry.target);  // Add the visible class
-        observer.unobserve(entry.target);  // Stop observing after reveal
-      }
-    });
-  }, { threshold: 0.8 });  // Trigger when 80% of the box is visible
-
-  // Apply observer to each `.periodBox` element
-  document.querySelectorAll('.periodBox').forEach((box) => observer.observe(box));
-});
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Function to handle adding the visible class
-  const revealLine = (line) => line.classList.add("visible");
-
-  // Set up IntersectionObserver
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        revealLine(entry.target);      // Add the visible class
-        observer.unobserve(entry.target); // Stop observing after animation
-      }
-    });
-  }, { threshold: 0.8 });  // Trigger when 80% of the line is visible
-
-  // Apply observer to each `.line-v` element
-  document.querySelectorAll('.line-v').forEach((line) => observer.observe(line));
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Function to add the 'visible' class
-  const revealLine = (line) => line.classList.add("visible");
-
-  // Set up IntersectionObserver with specified start and end thresholds
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        revealLine(entry.target); // Trigger the animation by adding the class
-        observer.unobserve(entry.target); // Stop observing after animation
-      }
-    });
-  }, { threshold: 0.8 });  // Adjust threshold to control when animation starts (80% in view)
-
-  // Apply observer to each `.line-center` element
-  document.querySelectorAll('.line-center').forEach((line) => observer.observe(line));
-});
-
-
-
 /*
 ============================
   LANDING ANIMATION BEGINS
@@ -311,11 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('.float').forEach((element, index) => {
-    element.style.setProperty('--n', index + 1);
-  });
-});
+
 
 
 
@@ -455,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
           let currencyElement = pooledElements.length ? pooledElements.pop() : document.createElementNS("http://www.w3.org/2000/svg", "text");
 
           if (!currencyElement.hasAttribute("data-initialized")) {
-              currencyElement.setAttribute("fill", "#89DB55");
+              currencyElement.setAttribute("fill", "#01377D");
               currencyElement.setAttribute("font-family", "Arial");
               currencyElement.setAttribute("stroke", "white");
               currencyElement.setAttribute("stroke-width", "0");
@@ -598,7 +518,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Exit if countElement is not found
     if (!countElement) return;
 
-    // Predefine valid numbers (0-30 excluding numbers with '1')
+    // Predefine valid numbers (02-30, excluding numbers with '1')
     const validNumbers = [
         2, 3, 4, 5, 6, 7, 8, 9,
         20, 22, 23, 24, 25, 26, 27, 28, 29, 30
@@ -615,223 +535,32 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Initialize with the first shuffled number
+    // Initial shuffle
     shuffleArray(shuffledNumbers);
+
+    // Initialize the element with the first formatted number
     countElement.textContent = String(shuffledNumbers[currentIndex]).padStart(2, '0');
     currentIndex++;
 
-    // GSAP animation for the random number change
+    // Efficient GSAP animation for the random number change
     gsap.to({}, {
         duration: 1.9, // Duration of each number change
         repeat: -1, // Infinite loop
-        ease: "power2.inOut", // Smooth easing effect
         onRepeat: () => {
+            // Update the number if all have been used, reshuffle
             if (currentIndex >= shuffledNumbers.length) {
-                shuffleArray(shuffledNumbers); // Reshuffle when all numbers are used
-                currentIndex = 0; // Reset the index
+                shuffleArray(shuffledNumbers);
+                currentIndex = 0;
             }
+
             const randomNumber = shuffledNumbers[currentIndex];
             currentIndex++;
 
-            // Combine fade out, text change, and fade in into a single animation
-            gsap.to(countElement, {
-                keyframes: [
-                    { autoAlpha: 0, duration: 0.2 }, // Fade out
-                    {
-                        autoAlpha: 1, duration: 0.2, delay: 0, // Fade back in
-                        onStart: () => {
-                            countElement.textContent = String(randomNumber).padStart(2, '0'); // Update number
-                        }
-                    }
-                ]
-            });
+            // Update the number with minimal DOM manipulation
+            gsap.timeline()
+                .to(countElement, { autoAlpha: 0, duration: 0.1 }) // Quick fade out
+                .set({}, { onUpdate: () => countElement.textContent = String(randomNumber).padStart(2, '0') }) // Update content with leading zero
+                .to(countElement, { autoAlpha: 1, duration: 0.1 }); // Quick fade in
         }
     });
 });
-
-
-
-
-
-
-  
-
-
-  
-  
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group-landing");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-1, .rotating-icon-2, .rotating-icon-3, .rotating-icon-4, .rotating-icon-5, .rotating-group-landing");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group-cloud");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-cloud-1, .rotating-icon-cloud-2, .rotating-icon-cloud-3, .rotating-icon-cloud-4, .rotating-icon-cloud-5, .rotating-icon-cloud-6, .rotating-icon-cloud-7, .rotating-group-cloud ");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group-vcfo");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-vcfo-1, .rotating-icon-vcfo-2, .rotating-icon-vcfo-3, .rotating-icon-vcfo-4, .rotating-icon-vcfo-5, .rotating-group-vcfo ");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group-audit");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-audit-1, .rotating-icon-audit-2, .rotating-icon-audit-3, .rotating-icon-audit-4, .rotating-icon-audit-5, .rotating-icon-audit-6, .rotating-group-audit ");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to toggle 'active' class based on a single scroll trigger for multiple elements
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition, // Start when triggerElement reaches 80% of the viewport
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  // Select the rotating group to be used as the trigger
-  const rotatingGroup = document.querySelector(".rotating-group-legal");
-  // Select the icons and the rotating group itself as targets
-  const rotatingElements = document.querySelectorAll(".rotating-icon-legal-1, .rotating-icon-legal-2, .rotating-icon-legal-3, .rotating-icon-legal-4, .rotating-icon-legal-5, .rotating-icon-legal-6, .rotating-icon-legal-7, .rotating-icon-legal-8, .rotating-icon-legal-9, .rotating-icon-legal-10, .rotating-icon-legal-11, .rotating-group-legal ");
-
-  // Apply ScrollTrigger with rotating group as the single trigger for all rotating elements
-  if (rotatingGroup && rotatingElements.length > 0) {
-    activateScrollTrigger(rotatingGroup, rotatingElements);
-  }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition,
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
-
-  const infrastructureTrigger = document.querySelector(".infrastructure-trigger");
-  const scalingElements = document.querySelectorAll(".scaler");
-
-  if (infrastructureTrigger && scalingElements.length > 0) {
-    activateScrollTrigger(infrastructureTrigger, scalingElements);
-  }
-});
-
-
-
-

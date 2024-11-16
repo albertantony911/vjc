@@ -195,8 +195,8 @@
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 75px;
-    --marquee-item-height: 75px;
+    --marquee-item-width: 10rem;
+    --marquee-item-height: 10rem;
     --marquee-duration: 30s;
     --marquee-items: 9;
 }
@@ -919,27 +919,6 @@
 
 
 
-
-
-.bouncerRight {
-  animation: bounceRight 1s ease-in-out infinite alternate;
-}
-
-/* Keyframes for bouncing effect */
-@keyframes bounceRight {
-  0% {
-    transform: translateX(0);
-  }
-  60% {
-    transform: translateX(30px); /* Move to the right by 30px */
-  }
-  100% {
-    transform: translateX(0); /* Return to the starting point */
-  }
-}
-
-
-
 .rotateRight {
   animation: rotateBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
   transform-origin: 50% 100%; /* Bottom center */
@@ -1048,12 +1027,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-
-.shadow {
-        fill: rgba(0, 0, 0, 0.2);
-        filter: blur(30px);
-        transform: translate(3px, 3px);
-    }
 
 
 
@@ -1173,4 +1146,7 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .scaler:nth-child(18) { animation-duration: 3.7s; animation-delay: 0.7s; }
 .scaler:nth-child(19) { animation-duration: 2.6s; animation-delay: 0.9s; }
 .scaler:nth-child(20) { animation-duration: 3.5s; animation-delay: 0.4s; }
+
+
+
 

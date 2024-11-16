@@ -322,11 +322,11 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="md:h-[80svh] h-[85svh]  md:flex-row flex flex-col-reverse ">
+    <section class="landscape:md:h-[65svh] h-[90svh] portrait:h-[80svh] justify-center landscape:md:flex-row flex flex-col-reverse mx-auto ">
       <div
-        class="md:w-1/2 max-md:h-[35svh] flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pl-32 text-left ]">
+        class="landscape:md:w-[45%]  max-md:h-[45svh] portrait:md:h-[35svh] flex flex-col text-darkBlue justify-center w-full portrait:px-10 portrait:md:px-24  text-left ">
         <h1
-          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug"
+          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug uppercase"
           aria-label="Main Title">
           36 Years of Proven Accounting Expertise, Now Powered by Cloud Accounting
         </h1>
@@ -338,17 +338,23 @@
         </p>
         <div class="flex justify-start   mt-0 ">
           <button
-            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-lightGreen hover:text-white text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[4vw] md:text-[1.8svh] portrait:md:text-[1.3svw] py-[4vw] px-[6vw]  md:px-[2svh] md:py-[2svh] portrait:md:px-[2svw] portrait:md:py-[2svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
             Partner with Us
           </button>
         </div>
       </div>
 
-      <div class="relative md:w-1/2 max-md:h-[65svh] flex w-full flex-col  gradient-bg">
-        <div class="relative z-10  my-auto  gradient-bg-transparent h-full">
+      <div class="relative landscape:md:w-[40%] max-md:h-[50svh] portrait:md:h-[40svh] flex w-full flex-col  ">
+        <div class=" absolute gradient-bg size-full flex ">
+          <div class=" gradient-bg-transparent size-full flex ">
+        
+          </div>
+        
+        </div>
+        <div class="relative z-10  my-auto  h-full">
 
 
-          <svg  class="md:w-[50%] w-[60%] h-full mx-auto  animationControl" viewBox="0 0 1586 2375"
+          <svg  class="md:w-[60%] w-[60%] portrait:md:w-[40%] h-full mx-auto  animationControl floater" viewBox="0 0 1586 2375"
             xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
 
@@ -517,7 +523,7 @@
         </div>
 
 
-        <div class="absolute inset-0 z-10 text-[3.5vw] md:text-lg">
+        <div class="absolute inset-0 z-10 text-[3.5vw] md:text-[2svh]">
           <svg id="currencyContainer" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
         </div>
 
@@ -546,21 +552,21 @@
     
 
     <!-- Service Section -->
-    <section class=" flex md:flex-row-reverse flex-col-reverse ">
-      <div class="md:w-1/2  flex flex-col text-darkBlue justify-center w-full max-md:px-10 md:pr-32 text-left ">
+    <section class=" flex md:flex-row-reverse flex-col-reverse mx-auto justify-center">
+      <div class="md:w-[47%]  flex flex-col text-darkBlue justify-center w-full  md:pr-32 text-left mx-auto">
         <h1
-          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug uppercase"
+          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] max-md:px-10 portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[2svh] font-bold text-left leading-snug uppercase"
           aria-label="Main Title">
           Our Services
         </h1>
-        <p class=" text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw] portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
+        <p class=" text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw] max-md:px-10 portrait:mb-[3svh] lg:landscape:mb-[3svh] landscape:mb-[31svh] font-light leading-relaxed "
           aria-label="Hero Description">
           Businesses often struggle with maintaining accurate financial records and compliance. At V. Jaiswal
           and Co, we simplify
           these accounting hurdles, ensuring compliance and accuracy so you can focus on growing your
           business.
         </p>
-        <div class="flex justify-start w-[95%] ">
+        <div class="flex justify-start w-full max-md:px-8">
           <div class="relative justify-center antialiased" role="group" x-data="{ openAccordion: null }">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
               <div class="w-full mx-auto text-center">
@@ -568,21 +574,21 @@
     
                   <!-- Service - 1 -->
                   <div class="py-4">
-                    <h2>
+                    <h2 >
                       <button id="Service-1" type="button"
-                        class="md:text-lg flex items-center justify-start  w-full text-base font-bold text-left"
+                        class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.7svw] flex items-center justify-start w-full font-bold text-left"
                         @click="openAccordion = openAccordion === 1 ? null : 1"
                         :aria-expanded="openAccordion === 1 ? 'true' : 'false'" aria-controls="Service-1">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] transition duration-200 origin-center transform"
                           src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 1}"
                           alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span>Cloud Accounting and Bookkeeping</span>
+                        <span class="uppercase">Cloud Accounting and Bookkeeping</span>
                       </button>
     
                     </h2>
                     <div id="Service-1" role="region" aria-labelledby="Service-1" :aria-hidden="openAccordion !== 1"
                       :tabindex="openAccordion === 1 ? 0 : -1"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
+                      class="text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] grid overflow-hidden  leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
                       :class="openAccordion === 1 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
@@ -591,12 +597,14 @@
                           time and reducing stress, all while ensuring accuracy and alignment
                           with your schedule.
                         <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          class="my-2 md:my-[1svh] text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex  justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             <a href="./cloud-accounting-and-bookkeeping.html">Read more</a>
     
                           </button>
+
+                          
                         </div>
                         </p>
                       </div>
@@ -607,20 +615,20 @@
                   <div class="py-4">
                     <h2>
                       <button id="Service-2" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left "
+                        class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.7svw] flex items-center justify-start w-full font-bold text-left"
                         @click="openAccordion = openAccordion === 2 ? null : 2"
                         :aria-expanded="openAccordion === 2 ? 'true' : 'false'" aria-controls="Service-2">
     
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform "
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] transition duration-200 origin-center transform "
                           src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 2}"
                           alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span>Audit and Assurance Services</span>
+                        <span class="uppercase">Audit and Assurance Services</span>
     
                       </button>
                     </h2>
                     <div id="Service-2" role="region" aria-labelledby="Service-2" :aria-hidden="openAccordion !== 2"
                       :tabindex="openAccordion === 2 ? 0 : -1"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
+                      class="text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] grid overflow-hidden  leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
                       :class="openAccordion === 2 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
@@ -629,9 +637,9 @@
                           effortlessly, ensuring your business stands on solid ground.
                         </p>
                         <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          class="my-2 md:my-[1svh] text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex  justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             <a href="./audit-and-assurance-services.html">Read more</a>
     
                           </button>
@@ -644,18 +652,18 @@
                   <div class="py-4">
                     <h2>
                       <button id="Service-3" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
+                        class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.7svw] flex items-center justify-start w-full font-bold text-left"
                         @click="openAccordion = openAccordion === 3 ? null : 3"
                         :aria-expanded="openAccordion === 3 ? 'true' : 'false'" aria-controls="Service-3-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] transition duration-200 origin-center transform"
                           src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 3}"
                           alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span>Tax Advisory and Compliance</span>
+                        <span class="uppercase">Tax Advisory and Compliance</span>
     
                       </button>
                     </h2>
                     <div id="Service-3-answer" role="region" aria-labelledby="Service-3" :aria-hidden="openAccordion !== 3"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
+                      class="text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] grid overflow-hidden  leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
                       :class="openAccordion === 3 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
@@ -665,9 +673,9 @@
                           business.
                         </p>
                         <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          class="my-2 md:my-[1svh] text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex  justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             <a href="./tax-advisory-and-compliance.html">Read more</a>
     
                           </button>
@@ -680,18 +688,18 @@
                   <div class="py-4">
                     <h2>
                       <button id="Service-4" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
+                        class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.7svw] flex items-center justify-start w-full font-bold text-left"
                         @click="openAccordion = openAccordion === 4 ? null : 4"
                         :aria-expanded="openAccordion === 4 ? 'true' : 'false'" aria-controls="Service-4-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] transition duration-200 origin-center transform"
                           src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 4}"
                           alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span>Virtual Chief Financial Officer</span>
+                        <span class="uppercase">Virtual Chief Financial Officer</span>
     
                       </button>
                     </h2>
                     <div id="Service-4-answer" role="region" aria-labelledby="Service-4"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
+                      class="text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] grid overflow-hidden  leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
                       :class="openAccordion === 4 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
@@ -701,9 +709,9 @@
                           forward.
                         </p>
                         <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          class="my-2 md:my-[1svh] text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex  justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             <a href="./virtual-chief-financial-officer.html">Read more</a>
     
                           </button>
@@ -716,18 +724,18 @@
                   <div class="py-4">
                     <h2>
                       <button id="Service-5" type="button"
-                        class="md:text-lg flex items-center justify-start w-full text-base font-bold text-left"
+                        class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.7svw] flex items-center justify-start w-full font-bold text-left"
                         @click="openAccordion = openAccordion === 5 ? null : 5"
                         :aria-expanded="openAccordion === 5 ? 'true' : 'false'" aria-controls="Service-5-answer">
-                        <img class="shrink-0 h-5 my-auto mx-2 transition duration-200 origin-center transform"
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] transition duration-200 origin-center transform"
                           src="./img/drop-arrow.svg" :class="{'!rotate-180': openAccordion === 5}"
                           alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span>Legal Process Outsourcing</span>
+                        <span class="uppercase">Legal Process Outsourcing</span>
     
                       </button>
                     </h2>
                     <div id="Service-5-answer" role="region" aria-labelledby="Service-5" :aria-hidden="openAccordion !== 5"
-                      class="md:text-base lg:text-sm grid overflow-hidden text-sm leading-relaxed text-left transition-all pl-9 duration-300 ease-in-out"
+                      class="text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] grid overflow-hidden  leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
                       :class="openAccordion === 5 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1">
@@ -736,9 +744,9 @@
                           efficiently, freeing you to focus on your core business activities.
                         </p>
                         <div
-                          class="mt-3 text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
+                          class="my-2 md:my-[1svh] text-[2.5vw] landscape:text-[2vh] landscape:lg:text-xs md:text-sm  text-white  flex  justify-start   font-normal">
                           <button id="homeHeroBookingTherapy" role="link"
-                            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             <a href="./legal-process-outsourcing.html">Read more</a>
     
                           </button>
@@ -754,9 +762,15 @@
         </div>
       </div>
     
-      <div class="md:w-1/2 max-md:h-[65svh]  flex flex-col w-full gradient-bg ">
-        <div class=" gradient-bg-transparent  flex flex-col h-full ">
-          <svg class="md:w-[80%] w-[90%]  m-auto  overflow-visible" width="100%" height="100%" viewBox="0 0 1678 1761" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      <div class="relative md:w-1/2 max-md:h-[65svh]  flex flex-col w-full ">
+        <div class=" absolute gradient-bg size-full flex ">
+          <div class=" gradient-bg-transparent size-full flex ">
+        
+          </div>
+        
+        </div>
+        <div class="   flex flex-col h-full ">
+          <svg class="md:size-[80%] size-[90%]  m-auto  overflow-visible" width="100%" height="100%" viewBox="0 0 1678 1761" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
             <g >
@@ -1182,8 +1196,8 @@
         <div
           class=" text-[2.5vw] max-md:px-10 landscape:text-[2vh]  landscape:lg:text-xs md:text-sm  text-white  flex py-1 justify-start   font-normal">
           <button id="homeHeroBookingTherapy" role="link"
-            class="hover:text-white hover:bg-lightGreen hover:scale-105 hover:shadow-2xl  px-[3vw] landscape:lg:px-4 landscape:px-2 md:px-4 md:py-2 landscape:py-[0.05rem] landscape:lg:py-2 py-[2vw] transition bg-darkBlue rounded-full">
-            <a href="./about.html">About Us</a>
+            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[2.6vw] md:text-[1.2svh] portrait:md:text-[1.1svw] py-[1.5vw] px-[3vw]  md:px-[1.5svh] md:py-[1svh] portrait:md:px-[1svw] portrait:md:py-[1vw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none>
+            <a href="./about.html">read more</a>
 
           </button>
         </div>
@@ -1194,12 +1208,11 @@
           <!-- Counter 1 -->
           <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-2  justify-center ">
-              <div id="counter1" class="counter text-[1.4rem] font-bold text-center" aria-live="polite" aria-atomic="true">0
+              class="flex flex-col md:gap-2 size-[9rem] md:size-[13.9svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center ">
+              <div id="counter1" class="counter text-[5.5vw] md:text-[2.5svh] font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-              <div class="md:text-xs text-xs text-center font-normal uppercase">
-                <p>Projects</p>
-                <p>Completed</p>
+              <div class="md:text-[1.2svh]  text-xs text-center flex flex-col font-normal leading-relaxed uppercase">
+                <p>Projects  <br> Completed</p>
               </div>
             </div>
 
@@ -1208,12 +1221,11 @@
           <!-- Counter 2 -->
           <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-2  justify-center ">
-              <div id="counter2" class="counter text-[1.4rem] font-bold text-center" aria-live="polite" aria-atomic="true">0
+              class="flex flex-col md:gap-2 size-[9rem] md:size-[13.9svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter2" class="counter text-[5.5vw] md:text-[2.5svh] font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-              <div class="md:text-xs text-xs text-center font-normal uppercase">
-                <p>Years</p>
-                <p>Experience</p>
+              <div class="md:text-[1.2svh]  text-xs text-center flex flex-col font-normal leading-relaxed uppercase">
+                <p>Years <br> Experience</p>
               </div>
             </div>
           </div>
@@ -1221,12 +1233,11 @@
           <!-- Counter 3 -->
           <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-2  justify-center ">
-              <div id="counter3" class="counter text-[1.4rem] font-bold text-center" aria-live="polite" aria-atomic="true">0
+              class="flex flex-col md:gap-2 size-[9rem] md:size-[13.9svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter3" class="counter text-[5.5vw] md:text-[2.5svh] font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-              <div class="md:text-xs text-xs text-center font-normal uppercase">
-                <p>Industries</p>
-                <p>Served</p>
+              <div class="md:text-[1.2svh]  text-xs text-center flex flex-col font-normal leading-relaxed uppercase">
+                <p>Industries <br> Served</p>
               </div>
             </div>
           </div>
@@ -1234,12 +1245,11 @@
           <!-- Counter 4 -->
           <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[8rem] border border-lightGreen shadow-lg rounded-[2.7rem] gap-2  justify-center ">
-              <div id="counter4" class="counter text-[1.4rem] font-bold text-center" aria-live="polite" aria-atomic="true">0
+              class="flex flex-col md:gap-2 size-[9rem] md:size-[13.9svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter4" class="counter text-[5.5vw] md:text-[2.5svh] font-bold text-center" aria-live="polite" aria-atomic="true">0
               </div>
-                <div class="md:text-xs text-xs text-center font-normal uppercase">
-                  <p>Women</p>
-                  <p>Workforce</p>
+                <div class="md:text-[1.2svh]  text-xs text-center flex flex-col font-normal leading-relaxed uppercase">
+                  <p>Women <br> Workforce</p>
                 </div>
             </div>
           </div>
@@ -1247,7 +1257,7 @@
 
       </div>
 
-      <div class="md:w-1/2 max-md:h-[52.35svh]  flex flex-col w-full max-md:mt-0 ">
+      <div class="md:w-1/3 max-md:h-[52.35svh]  flex flex-col w-full max-md:mt-0 ">
 
         <div class="page ">
           <div id="arc-container" class="globe-wrapper  m-auto ">
@@ -1311,28 +1321,28 @@
 
       <div class="flex flex-col gap-8 mt-8 mb-24  max-md:hidden">
         <div class="marquee marquee--LTR md:w-[80%] md:mx-auto flex relative overflow-x-hidden ">
-          <img class="marquee__item" src="./img/netsuite-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/freshbooks-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/quickbooks-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/drake-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/turbotax-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/taxcalc-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/sage-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/lightyear-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/zoho-logo.svg" width="75" height="75" alt="">
+          <img class="marquee__item size-full" src="./img/netsuite-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/freshbooks-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/quickbooks-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/drake-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/turbotax-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/taxcalc-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/sage-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/lightyear-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/zoho-logo.svg" alt="">
       
         </div>
       
         <div class="marquee marquee--RTL md:w-[80%] md:mx-auto flex relative overflow-x-hidden ">
-          <img class="marquee__item" src="./img/microsoft365-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/hubdoc-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/bills-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/myob-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/xero-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/dext-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/iris-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/odoo-logo.svg" width="75" height="75" alt="">
-          <img class="marquee__item" src="./img/neat-logo.svg" width="75" height="75" alt="">
+          <img class="marquee__item size-full" src="./img/microsoft365-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/hubdoc-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/bills-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/myob-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/xero-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/dext-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/iris-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/odoo-logo.svg" alt="">
+          <img class="marquee__item size-full" src="./img/neat-logo.svg" alt="">
       
         </div>
       </div>
@@ -1356,9 +1366,11 @@
       </div>
 
       <div class="flex md:flex-row flex-col  justify-center md:px-32 md:gap-[5svh] mx-auto">
-        <div class="size-full flex flex-col md:w-[50%] md:max-w-[60rem] gradient-bg">
-          <div class="gradient-bg-transparent ">
-            <svg class=" m-auto md:h-full max-md:h-[65svh] md:size-full floater animationControl overflow-visible" width="100%" height="100%" viewBox="0 0 1010 1192"
+        <div class="gradient-bg size-full flex w-full md:w-[45%] md:max-w-[65rem] mx-auto">
+          
+          <div class="gradient-bg-transparent  size-full flex m-auto">
+
+            <svg class=" md:h-full max-md:size-[30rem] m-auto  md:size-full floater animationControl overflow-visible" width="100%" height="100%" viewBox="0 0 1010 1192"
               version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
               xmlns:serif="http://www.serif.com/"
               style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
@@ -1486,7 +1498,7 @@
           </div>
         </div>
 
-        <div class="flex md:w-[45%] md:max-w-[55rem] flex-col justify-center md:gap-10  max-md:px-5 max-md:gap-5  ">
+        <div class="flex md:w-[45%] md:max-w-[70rem] flex-col justify-center md:gap-10  max-md:px-5 max-md:gap-5  ">
 
 
 
@@ -1581,7 +1593,7 @@
             </div>
             <div class="flex flex-col text-left gap-[0.3svh] text-darkBlue ">
               <h3 class="text-[3.5vw] md:text-[1.6svh] portrait:md:text-[1.2svw] font-bold">Insights</h3>
-              <p class="text-[3.5vw] md:text-[1.5svh] portrait:md:text-[1svw]">Dive into our expert analyses and industry trends
+              <p class="text-[3vw] md:text-[1.5svh] portrait:md:text-[1svw]">Dive into our expert analyses and industry trends
                 to gain valuable knowledge and stay ahead in the ever-evolving financial landscape. </p>
               <span class="underline font-bold text-[3vw] md:text-[1.2svh] portrait:md:text-[0.8svw]">read
                 more</span>
@@ -1591,7 +1603,7 @@
           <div
             class="flex flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] gap-5 md:gap-[2svh]   p-6">
             <div class="flex flex-col w-auto ">
-              <div class="size-[28svw] md:size-[13svh] md:max-w-[12rem] m-auto  overflow-visible">
+              <div class="size-[26svw] md:size-[13svh] md:max-w-[12rem] m-auto  overflow-visible">
 
                 <svg class="overflow-visible" width="100%" height="100%" viewBox="0 0 1135 1187" version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
@@ -1636,7 +1648,7 @@
             </div>
             <div class="flex flex-col text-left gap-[0.3svh] text-darkBlue ">
               <h3 class="text-[3.5vw] md:text-[1.6svh] portrait:md:text-[1.2svw] font-bold">Case Studies</h3>
-              <p class="text-[3.5vw] md:text-[1.5svh] portrait:md:text-[1svw]">Explore detailed case studies showcasing how our
+              <p class="text-[3vw] md:text-[1.5svh] portrait:md:text-[1svw]">Explore detailed case studies showcasing how our
                 tailored solutions delivered tangible results and success for businesses.</p> <span
                 class="underline font-bold text-[3vw] md:text-[1.2svh] portrait:md:text-[0.8svw]">read
                 more</span>
