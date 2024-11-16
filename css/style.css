@@ -4340,6 +4340,15 @@ svg {
       height: 40%;
     }
 
+    .landscape\:md\:h-\[58svh\] {
+      height: 58svh;
+    }
+
+    .landscape\:md\:h-min {
+      height: -moz-min-content;
+      height: min-content;
+    }
+
     .landscape\:md\:w-\[40\%\] {
       width: 40%;
     }

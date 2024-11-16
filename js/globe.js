@@ -43,7 +43,7 @@ function initScene() {
     renderer.setPixelRatio(3);
 
     scene = new THREE.Scene();
-    camera = new THREE.OrthographicCamera(-1.2, 1.2, 1.2, -1.2, 0, 3);
+    camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
     camera.position.set(-0.2, -0.2, 1.45);
     camera.lookAt(0, 0, 0);
 
