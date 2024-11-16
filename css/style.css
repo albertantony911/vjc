@@ -1056,6 +1056,14 @@ html {
   height: 50svh;
 }
 
+.h-\[95svh\] {
+  height: 95svh;
+}
+
+.h-\[100svh\] {
+  height: 100svh;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -2896,6 +2904,16 @@ svg {
     height: 5090%;
   }
 
+  .md\:size-\[full\] {
+    width: full;
+    height: full;
+  }
+
+  .md\:size-\[50\%\] {
+    width: 50%;
+    height: 50%;
+  }
+
   .md\:h-\[16svw\] {
     height: 16svw;
   }
@@ -3876,6 +3894,10 @@ svg {
 
     .portrait\:md\:h-\[35svh\] {
       height: 35svh;
+    }
+
+    .portrait\:md\:h-\[80svh\] {
+      height: 80svh;
     }
 
     .portrait\:md\:w-\[15\%\] {
