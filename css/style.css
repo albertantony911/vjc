@@ -2992,6 +2992,11 @@ svg {
     height: svh;
   }
 
+  .md\:size-\[65svh\] {
+    width: 65svh;
+    height: 65svh;
+  }
+
   .md\:h-\[16svw\] {
     height: 16svw;
   }
@@ -3204,6 +3209,10 @@ svg {
 
   .md\:w-\[50svh\] {
     width: 50svh;
+  }
+
+  .md\:w-\[37svh\] {
+    width: 37svh;
   }
 
   .md\:max-w-\[100rem\] {
