@@ -1098,12 +1098,13 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-
-
-/* Apply the scaler animation only when .active is present */
+/* Only apply the scaler animation when the .active class is present */
 .scaler {
-  animation-name: scaler;
   transform-origin: center;
+}
+
+.scaler.active {
+  animation-name: scaler;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
@@ -1132,14 +1133,23 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .scaler:nth-child(11) { animation-duration: 3.3s; animation-delay: 0.2s; }
 .scaler:nth-child(12) { animation-duration: 2.7s; animation-delay: 0.4s; }
 .scaler:nth-child(13) { animation-duration: 3.4s; animation-delay: 0.6s; }
-.scaler:nth-child(14) { animation-duration: 3.0s; animation-delay: 0.8s; }
+.scaler:nth-child(14) { animation-duration: 3s; animation-delay: 0.8s; }
 .scaler:nth-child(15) { animation-duration: 2.4s; animation-delay: 0.1s; }
 .scaler:nth-child(16) { animation-duration: 3.2s; animation-delay: 0.3s; }
 .scaler:nth-child(17) { animation-duration: 2.3s; animation-delay: 0.5s; }
 .scaler:nth-child(18) { animation-duration: 3.7s; animation-delay: 0.7s; }
 .scaler:nth-child(19) { animation-duration: 2.6s; animation-delay: 0.9s; }
 .scaler:nth-child(20) { animation-duration: 3.5s; animation-delay: 0.4s; }
-
+.scaler:nth-child(21) { animation-duration: 2.8s; animation-delay: 0.2s; }
+.scaler:nth-child(22) { animation-duration: 3.1s; animation-delay: 0.5s; }
+.scaler:nth-child(23) { animation-duration: 2.5s; animation-delay: 0.3s; }
+.scaler:nth-child(24) { animation-duration: 3.6s; animation-delay: 0.8s; }
+.scaler:nth-child(25) { animation-duration: 3s; animation-delay: 0.6s; }
+.scaler:nth-child(26) { animation-duration: 2.7s; animation-delay: 0.1s; }
+.scaler:nth-child(27) { animation-duration: 3.4s; animation-delay: 0.4s; }
+.scaler:nth-child(28) { animation-duration: 2.9s; animation-delay: 0.7s; }
+.scaler:nth-child(29) { animation-duration: 3.2s; animation-delay: 0.9s; }
+.scaler:nth-child(30) { animation-duration: 3.8s; animation-delay: 0.2s; }
 
 
 

@@ -38,8 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "line-v", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "line-center", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "flasher", threshold: 0.8 }, // Include flasher class
-    { className: "calendarDots", threshold: 0.8 } // Added control for calendarDots
+    { className: "calendarDots", threshold: 0.8 }, // Added control for calendarDots
+    { className: "scaler", threshold: 0.1 }
   ]);
+
+
 
   // Additional setup for elements with 'float' class
   document.querySelectorAll('.float').forEach((element, index) => {
