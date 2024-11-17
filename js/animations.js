@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollAnimations(configurations) {
     const observer = new IntersectionObserver((entries, observer) => {
@@ -38,8 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "line-v", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "line-center", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "flasher", threshold: 0.8 }, // Include flasher class
-    { className: "calendarDots", threshold: 0.8 } // Added control for calendarDots
+    { className: "calendarDots", threshold: 0.8 }// Add configuration for priceBar
   ]);
+});
 
 
 
@@ -49,34 +48,28 @@ const triggerSections = document.querySelectorAll('.infrastructure-trigger');
 // Function to handle Intersection Observer events
 function handleIntersection(entries) {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Add 'active' class to all child .scaler elements of the current section
-      const scalers = entry.target.querySelectorAll('.scaler');
-      scalers.forEach(scaler => scaler.classList.add('active'));
-    } else {
-      // Remove 'active' class from all child .scaler elements of the current section
-      const scalers = entry.target.querySelectorAll('.scaler');
-      scalers.forEach(scaler => scaler.classList.remove('active'));
-    }
+    const scalers = entry.target.querySelectorAll('.scaler'); // Get child .scaler elements once
+    scalers.forEach(scaler => {
+      scaler.classList.toggle('active', entry.isIntersecting); // Add or remove 'active' based on visibility
+    });
   });
 }
 
 // Create the Intersection Observer
 const observer = new IntersectionObserver(handleIntersection, {
   root: null, // Use the viewport as the root
-  threshold: 0.8 // Trigger when 10% of the section is visible
+  threshold: 0.8 // Trigger when 80% of the section is visible
 });
 
 // Start observing each trigger section
 triggerSections.forEach(section => observer.observe(section));
 
 
-
   // Additional setup for elements with 'float' class
   document.querySelectorAll('.float').forEach((element, index) => {
     element.style.setProperty('--n', index + 1); // Add index-based custom property
   });
-});
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -113,14 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Reusable IntersectionObserver for all counters
   const observer = new IntersectionObserver((entries, observerInstance) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -137,21 +123,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Core animation function
   function animateCounter(element, startValue, targetValue, duration, suffix) {
-    const frameRate = 20;  // Reduced frame rate to save CPU
-    const increment = (targetValue - startValue) / (duration * frameRate);
+    const totalFrames = Math.round(duration * 60); // Fixed 60 FPS
+    const increment = (targetValue - startValue) / totalFrames;
     let currentValue = startValue;
-    let frameCount = 0;
+    let frame = 0;
 
     function updateCounter() {
-      currentValue += increment;
-      frameCount++;
+      // Directly set precomputed value without additional math
+      element.textContent = `${Math.round(currentValue)}${suffix}`;
 
-      // Stop animation if target is reached or exceeded
-      if (currentValue >= targetValue || frameCount >= duration * frameRate) {
-        element.textContent = `${targetValue}${suffix}`; // Set final value
-      } else {
-        element.textContent = `${Math.floor(currentValue)}${suffix}`;
+      // Increment precomputed value
+      currentValue += increment;
+      frame++;
+
+      // Stop animation if target is reached
+      if (frame < totalFrames) {
         requestAnimationFrame(updateCounter);
+      } else {
+        // Set final value explicitly
+        element.textContent = `${targetValue}${suffix}`;
       }
     }
 
@@ -182,28 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", initAnimation, { once: true });
 
-// Initialize animation
-function initAnimation() {
-   const priceBars = document.querySelectorAll(".priceBar");
-   animatePricingBars(priceBars, 100, 1, 0.1);
-}
 
-// Function to create translation and fade-in animation with stagger for elements
-function animatePricingBars(elements, yValue, durationValue, staggerValue) {
-   // Kill any existing tweens on the elements to prevent memory buildup
-   gsap.killTweensOf(elements);
 
-   // Define the animation with GSAP
-   gsap.from(elements, {
-      y: yValue,                   // Translate vertically by yValue pixels
-      opacity: 0,                  // Start from 0 opacity for fade-in effect
-      duration: durationValue,     // Duration of the animation
-      ease: "power2.inOut",
-      stagger: staggerValue        // Stagger time between each element's animation
-   });
-}
 
 
 document.addEventListener("DOMContentLoaded", initMobileAnimation, { once: true });
