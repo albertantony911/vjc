@@ -38,9 +38,37 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "line-v", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "line-center", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
     { className: "flasher", threshold: 0.8 }, // Include flasher class
-    { className: "calendarDots", threshold: 0.8 }, // Added control for calendarDots
-    { className: "scaler", threshold: 0.1 }
+    { className: "calendarDots", threshold: 0.8 } // Added control for calendarDots
   ]);
+
+
+
+// Select all sections with the .infrastructure-trigger class
+const triggerSections = document.querySelectorAll('.infrastructure-trigger');
+
+// Function to handle Intersection Observer events
+function handleIntersection(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add 'active' class to all child .scaler elements of the current section
+      const scalers = entry.target.querySelectorAll('.scaler');
+      scalers.forEach(scaler => scaler.classList.add('active'));
+    } else {
+      // Remove 'active' class from all child .scaler elements of the current section
+      const scalers = entry.target.querySelectorAll('.scaler');
+      scalers.forEach(scaler => scaler.classList.remove('active'));
+    }
+  });
+}
+
+// Create the Intersection Observer
+const observer = new IntersectionObserver(handleIntersection, {
+  root: null, // Use the viewport as the root
+  threshold: 0.8 // Trigger when 10% of the section is visible
+});
+
+// Start observing each trigger section
+triggerSections.forEach(section => observer.observe(section));
 
 
 
