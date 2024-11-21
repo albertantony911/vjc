@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollAnimations(configurations) {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
-          entry.target.classList.add(targetClass); // Add the respective class
-          if (entry.target.dataset.observeOnce === "true") {
-            observer.unobserve(entry.target); // Optional: Unobserve if animation should happen once
+    configurations.forEach(({ className, observeOnce = false, customClass, threshold = 0.5 }) => {
+      // Create a new observer for each configuration with the specified threshold
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
+            entry.target.classList.add(targetClass); // Add the respective class
+            if (observeOnce) {
+              observer.unobserve(entry.target); // Unobserve if animation should happen once
+            }
+          } else {
+            if (!observeOnce) {
+              const targetClass = entry.target.dataset.revealClass || "active";
+              entry.target.classList.remove(targetClass); // Remove the class on leave
+            }
           }
-        } else {
-          if (!entry.target.dataset.observeOnce) {
-            const targetClass = entry.target.dataset.revealClass || "active";
-            entry.target.classList.remove(targetClass); // Remove the class on leave
-          }
-        }
-      });
-    });
+        });
+      }, { threshold }); // Apply the threshold
 
-    configurations.forEach(({ className, observeOnce = false, customClass }) => {
+      // Query and observe all elements with the specified class
       const elements = document.querySelectorAll(`.${className}`);
       elements.forEach(element => {
         element.dataset.observeOnce = observeOnce.toString(); // Set observe-once flag
@@ -29,14 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Activate animations for various classes with configurations
   activateScrollAnimations([
-    { className: "cloud", threshold: 0.8 }, // Default 'active' class
-    { className: "floater", threshold: 0.8 }, // Default 'active' class
-    { className: "marquee__item", threshold: 0.8 }, // Default 'active' class
-    { className: "periodBox", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
-    { className: "line-v", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
-    { className: "line-center", threshold: 0.8, customClass: "visible" }, // Custom 'visible' class
-    { className: "flasher", threshold: 0.8 }, // Include flasher class
-    { className: "calendarDots", threshold: 0.8 }// Add configuration for priceBar
+    { className: "cloud", threshold: 0.8 },
+    { className: "floater", threshold: 0.8 },
+    { className: "marquee__item", threshold: 0.8 },
+    { className: "periodBox", threshold: 0.8, customClass: "visible" },
+    { className: "line-v", threshold: 0.8, customClass: "visible" },
+    { className: "line-center", threshold: 0.8, customClass: "visible" },
+    { className: "flasher", threshold: 0.8 },
+    { className: "calendarDots", threshold: 0.8 }
   ]);
 });
 
@@ -64,11 +66,6 @@ const observer = new IntersectionObserver(handleIntersection, {
 // Start observing each trigger section
 triggerSections.forEach(section => observer.observe(section));
 
-
-  // Additional setup for elements with 'float' class
-  document.querySelectorAll('.float').forEach((element, index) => {
-    element.style.setProperty('--n', index + 1); // Add index-based custom property
-  });
 
 
 
