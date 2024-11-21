@@ -874,6 +874,10 @@ html {
   margin-top: 0.2rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1610,6 +1614,10 @@ html {
   padding: 2rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1964,6 +1972,18 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[2vw\] {
+  font-size: 2vw;
+}
+
+.text-\[2\.8vw\] {
+  font-size: 2.8vw;
+}
+
+.text-\[2\.7vw\] {
+  font-size: 2.7vw;
 }
 
 .font-\[100\] {
