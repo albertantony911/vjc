@@ -123,14 +123,14 @@
 
     <!-- Header Section -->
     <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-
+    
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
             <a class="cursor-pointer" href="./index.html">
                 <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
             </a>
         </div>
-
+    
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
             id="menuButtonContainer">
@@ -145,56 +145,56 @@
                 </svg>
             </button>
         </div>
-
+    
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
             class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
-            <div class="absolute w-full text-center text-white text-[3vw] uppercase">
-                <img class="w-20  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
+            <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
+                <img class="w-20 md:w-32  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
                 <p>finest in accounting since 1988</p>
                 <p>Chhattisgarh, IN</p>
             </div>
-
+    
             <ul id="mainMenu"
-                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] antialiased">
-
+                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] md:text-[3vw] antialiased">
+    
                 <!-- Navigation Links -->
-
+    
                 <li class="mt-20"><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
                         class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
-
+    
                 <li><a href="./pricing.html">PRICING</a></li>
-
+    
                 <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
                 <li><a href="./resources.html">RESOURCES</a></li>
-
-
+    
+    
             </ul>
-
+    
             <ul id="subMenu"
                 class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
                 <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
                 <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
-                <li><a href="./tax-advisory-and-compliance.html">Tax Advisory and Compliance</a></li>
+                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
                         class="size-4  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-
+    
             </ul>
-
-
+    
+    
         </nav>
-
-
+    
+    
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
             class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
-
+    
                 <!-- Home -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
@@ -203,7 +203,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-
+    
                 <!-- About -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
@@ -212,9 +212,9 @@
                         <span>About</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Our Services with Submenu -->
                 <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
@@ -224,7 +224,7 @@
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
                         <span>Services</span>
-
+    
                     </a>
                     <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
                         x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
@@ -233,10 +233,8 @@
                         x-transition:leave="transition ease duration-300 transform"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-                        aria-label="Submenu">
-                        <span
-                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
                         <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
@@ -258,10 +256,10 @@
                                 </li>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
-                                    <a href="./tax-advisory-and-compliance.html"
+                                    <a href="./tax-planning-and-compliance.html"
                                         class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
                                         role="menuitem">
-                                        <span class="flex-1">Tax Advisory and Compliance</span>
+                                        <span class="flex-1">Tax Planning and Compliance</span>
                                     </a>
                                 </li>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
@@ -272,7 +270,7 @@
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
-
+    
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
@@ -285,12 +283,12 @@
                         </div>
                     </div>
                 </li>
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
                 <!-- Pricing -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
@@ -299,9 +297,9 @@
                         <span>Pricing</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Resources -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
@@ -310,9 +308,9 @@
                         <span>Resources</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Contact Us -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
@@ -323,7 +321,7 @@
                 </li>
             </ul>
         </nav>
-
+    
     </header>
 
 
@@ -1250,96 +1248,100 @@
 
 
     <footer class=" text-darkBlue flex flex-col text-sm font-normal mt-10" role="contentinfo">
-        <div class="border-t border-[#adf6c4] w-[90%] mb-10 mx-auto hidden"></div>
+        <div class="border-t border-lightGreen w-[90%] mb-10 mx-auto hidden"></div>
         <div class="md:flex-row flex flex-col justify-center gap-5 text-center">
             <div class=" flex flex-col gap-2 px-10">
                 <a href="./index.html" aria-label="Home">
-                    <img class="w-16 ml-0" src="./img/logo.svg" alt="VJC Home" aria-hidden="true">
+                    <img class="w-12 ml-0 mt-2" src="./img/logo_t.svg" alt="VJC Home" aria-hidden="true">
                 </a>
-                <div class="text-xs font-semibold text-left">
+                <div class="text-xs font-light text-left uppercase max-md:mt-3 max-md:mb-3 ml-[0.15rem]">
                     <p>VJC India, the finest in accounting since 1988.</p>
-                    <p class="mt-1 font-light">Ambikapur, New Delhi, India</p>
+                    <p>An Affiliate of V.Jaiswal and Co.</p>
+                    <p class="mt-1 font-light">CHHATTISGARH, IN, 497001</p>
                 </div>
-
+    
             </div>
             <nav aria-label="Footer Navigation - Sitemap" role="navigation">
-
+    
                 <div class="max-md:hidden md:flex-row md:gap-10 flex flex-col gap-5 px-10">
-
+    
                     <div class=" md:flex-row max-md:gap-14 md:gap-10 flex gap-5">
                         <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
                             <li><a href="./index.html">Home</a></li>
                             <li><a href="./about.html">About</a></li>
                             <li><a href="./pricing.html">Pricing</a></li>
                             <li><a href="./faq.html">FAQ</a></li>
-                            <li><a href="./career.html">Contact Us</a></li>
+                            <li><a href="./contact.html">Contact Us</a></li>
                         </ul>
-
+    
                         <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
-                            <li><a href="./pricing.html">Insights</a></li>
-                            <li><a href="./faq.html">Case Studies</a></li>
-                            <li><a href="./career.html">Careers</a></li>
+                            <li><a href="#">Insights</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="./about.html">Careers</a></li>
                             <li><a href="./terms-and-conditions.html">Terms & Conditions</a></li>
                             <li><a href="./privacy-policy.html">Privacy Policy</a></li>
                         </ul>
                     </div>
-
+    
                     <div class="md:flex-row md:gap-10 flex flex-col gap-5">
-
+    
                         <ul class="text-darkBlue flex flex-col justify-center gap-1 ml-0 text-xs text-left">
-                            <li><a href="./index.html">Cloud Accounting and Bookkeeping</a></li>
-                            <li><a href="./about.html">Audit and Assurance services</a></li>
-                            <li><a href="./pricing.html">Tax Advisory and Compliance</a></li>
-                            <li><a href="./career.html">Virtual Chief Financial Officer</a></li>
-                            <li><a href="./contact.html">Legal Process Outsourcing</a></li>
+                            <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a></li>
+                            <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
+                            <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                            <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                            <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                         </ul>
-
-
+    
+    
                     </div>
-
+    
                 </div>
-
+    
                 <div class=" md:hidden">
                     <ul class="flex  flex-row flex-wrap justify-start gap-3 px-10 mx-auto text-xs text-darkBlue">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./pricing.html">Pricing</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
                         <li><a href="#">Insights</a></li>
                         <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Legal Process Outsourcing</a></li>
-                        <li><a href="#">Cloud Accounting & Bookkeeping</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Audit & Assurance Services</a></li>
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Virtual Chief Financial Officer</a></li>
-
+                        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
+                        <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
+                        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+    
                     </ul>
                 </div>
-
+    
             </nav>
-
-
-            <div class=" max-md:px-8 flex flex-row items-center gap-1 text-base" role="presentation">
-                <a href="https://www.instagram.com/" title="Visit our Instagram profile" target="_blank" rel="noopener">
-                    <img class="w-16" src="./img/instagram-icon.svg" alt="Instagram Logo" role="img"
-                        aria-label="Instagram Logo">
+    
+    
+            <div class=" max-md:px-8 flex flex-row items-center  text-base max-md:mt-3" role="presentation">
+                <a href="tel:+919009934303" title="Call us" target="_blank" rel="noopener">
+                    <img class="w-16" src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon">
                 </a>
-                <a href="https://www.linkedin.com/" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
+    
+                <a href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
+                    rel="noopener">
                     <img class="w-16" src="./img/linkedin-icon.svg" alt="LinkedIn Logo" role="img"
                         aria-label="LinkedIn Logo">
                 </a>
-                <a href="https://wa.me/916282174585?text=I%20want%20to%20book%20a%20meeting"
+                <a href="https://wa.me/919009934303?text=I%20want%20to%20schedule%20a%20meeting"
                     title="Contact us on WhatsApp" target="_blank" rel="noopener">
                     <img class="w-16" src="./img/whatsapp-icon.svg" alt="WhatsApp Logo" role="img"
                         aria-label="WhatsApp Logo">
                 </a>
+                <a href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
+                    <img class="w-16" src="./img/mail-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo">
+                </a>
+    
             </div>
-
+    
         </div>
-
+    
         <div class="md:text-center px-10 text-left">
             <div class="text-darkBlue font-white my-7 text-xs">
                 <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
