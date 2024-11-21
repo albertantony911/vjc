@@ -3174,6 +3174,11 @@ svg {
     padding-bottom: 8svh;
   }
 
+  .md\:py-\[3\.7svh\] {
+    padding-top: 3.7svh;
+    padding-bottom: 3.7svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3236,6 +3241,14 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
+  }
+
+  .md\:pb-\[2\.5svh\] {
+    padding-bottom: 2.5svh;
+  }
+
+  .md\:pb-\[3svh\] {
+    padding-bottom: 3svh;
   }
 
   .md\:text-center {
