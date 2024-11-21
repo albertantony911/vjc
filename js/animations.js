@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Additional setup for elements with 'float' class
+  document.querySelectorAll('.float').forEach((element, index) => {
+    element.style.setProperty('--n', index + 1); // Add index-based custom property
+  });
+
 
 // Select all sections with the .infrastructure-trigger class
 const triggerSections = document.querySelectorAll('.infrastructure-trigger');

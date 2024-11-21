@@ -492,22 +492,10 @@
 
 /* Base float animation */
 .float {
-  --n: 0; /* Default fallback value */
   animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
   animation-delay: calc(0.5s * var(--n));
 }
 
-
-/* Dynamically set --n based on the element's position */
-.float:nth-child(1) { --n: 1; }
-.float:nth-child(2) { --n: 2; }
-.float:nth-child(3) { --n: 3; }
-.float:nth-child(4) { --n: 4; }
-.float:nth-child(5) { --n: 5; }
-.float:nth-child(6) { --n: 6; }
-.float:nth-child(7) { --n: 7; }
-
-/* Keyframes for animation */
 @keyframes floatAnimation {
   0% {
     transform: translate(0, 0);
