@@ -40,7 +40,7 @@ initScene();
 
 function initScene() {
     renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
-    renderer.setPixelRatio(3);
+    renderer.setPixelRatio(2);
 
     scene = new THREE.Scene();
     camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
@@ -86,7 +86,7 @@ function createOrbitControls() {
 }
 
 function createGlobe() {
-    const globeGeometry = new THREE.IcosahedronGeometry(1, 22);
+    const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
     mapMaterial = new THREE.ShaderMaterial({
         vertexShader: `
     uniform sampler2D u_map_tex;
@@ -101,7 +101,7 @@ function createGlobe() {
 
         // Fetch visibility once
         float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
-        gl_PointSize = visibility * u_dot_size * 0.78;
+        gl_PointSize = visibility * u_dot_size * 0.65;
 
         // Calculate model-view position
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
