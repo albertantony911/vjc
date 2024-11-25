@@ -782,6 +782,10 @@ html {
   margin-left: 0px;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -872,10 +876,6 @@ html {
 
 .mt-\[0\.2rem\] {
   margin-top: 0.2rem;
-}
-
-.ml-1 {
-  margin-left: 0.25rem;
 }
 
 .block {
@@ -1614,10 +1614,6 @@ html {
   padding: 2rem;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1974,18 +1970,6 @@ html {
   line-height: 1rem;
 }
 
-.text-\[2vw\] {
-  font-size: 2vw;
-}
-
-.text-\[2\.8vw\] {
-  font-size: 2.8vw;
-}
-
-.text-\[2\.7vw\] {
-  font-size: 2.7vw;
-}
-
 .font-\[100\] {
   font-weight: 100;
 }
@@ -2296,19 +2280,9 @@ svg {
   background-color: rgb(150 242 165 / var(--tw-bg-opacity));
 }
 
-.hover\:text-darkBlue:hover {
-  --tw-text-opacity: 1;
-  color: rgb(1 55 125 / var(--tw-text-opacity));
-}
-
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-darkGreen:hover {
-  --tw-text-opacity: 1;
-  color: rgb(126 211 72 / var(--tw-text-opacity));
 }
 
 .hover\:no-underline:hover {
@@ -2845,10 +2819,6 @@ svg {
     width: 80%;
   }
 
-  .md\:w-\[85\%\] {
-    width: 85%;
-  }
-
   .md\:w-\[90\%\] {
     width: 90%;
   }
@@ -3174,6 +3144,11 @@ svg {
     padding-bottom: 3.5svh;
   }
 
+  .md\:py-\[3\.7svh\] {
+    padding-top: 3.7svh;
+    padding-bottom: 3.7svh;
+  }
+
   .md\:py-\[3svh\] {
     padding-top: 3svh;
     padding-bottom: 3svh;
@@ -3194,11 +3169,6 @@ svg {
     padding-bottom: 8svh;
   }
 
-  .md\:py-\[3\.7svh\] {
-    padding-top: 3.7svh;
-    padding-bottom: 3.7svh;
-  }
-
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3217,6 +3187,10 @@ svg {
 
   .md\:pb-\[0svh\] {
     padding-bottom: 0svh;
+  }
+
+  .md\:pb-\[2\.5svh\] {
+    padding-bottom: 2.5svh;
   }
 
   .md\:pb-\[2svh\] {
@@ -3261,14 +3235,6 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
-  }
-
-  .md\:pb-\[2\.5svh\] {
-    padding-bottom: 2.5svh;
-  }
-
-  .md\:pb-\[3svh\] {
-    padding-bottom: 3svh;
   }
 
   .md\:text-center {
@@ -3916,13 +3882,13 @@ svg {
       height: 58svh;
     }
 
+    .landscape\:md\:h-\[65svh\] {
+      height: 65svh;
+    }
+
     .landscape\:md\:h-min {
       height: -moz-min-content;
       height: min-content;
-    }
-
-    .landscape\:md\:h-\[65svh\] {
-      height: 65svh;
     }
 
     .landscape\:md\:w-\[40\%\] {

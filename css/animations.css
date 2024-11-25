@@ -2,7 +2,7 @@
 
 /**
  * ----------------------------------------
- * Hamburger menu animation
+ * Hamburger menu animation starts
  * ----------------------------------------
  */
 
@@ -76,8 +76,6 @@
 
 
 
-
-
 /* Initially hide the submenu */
 #subMenu {
     opacity: 0;
@@ -133,55 +131,20 @@
 }
 
 
+/**
+ * ----------------------------------------
+ * Hamburger menu animation ends
+ * ----------------------------------------
+ */
 
 
 
-@keyframes bounce-right {
-    0% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
 
-    50% {
-        transform: translateX(5px);
-        /* Adjust distance as needed */
-        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
-    }
-
-    100% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
-}
-
-.bounce-right {
-    animation: bounce-right 1s infinite;
-}
-
-@keyframes bounce-left {
-    0% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
-
-    50% {
-        transform: translateX(-5px);
-        /* Adjust distance as needed */
-        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
-    }
-
-    100% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
-}
-
-.bounce-left {
-    animation: bounce-left 1s infinite;
-}
-
-
-
+ /**
+ * ----------------------------------------
+ * Logo carousel animation starts
+ * ----------------------------------------
+ */
 
 .marquee {
     block-size: var(--marquee-item-height);
@@ -371,16 +334,26 @@
 .marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
 
 
+ /**
+ * ----------------------------------------
+ * Logo carousel animation ends
+ * ----------------------------------------
+ */
+
+
+
+
+  /**
+ * --------------------------------------------------
+ * Background Gradient and Transparency Mask starts
+ * --------------------------------------------------
+ */
 
 
 .gradient-bg {
   background: linear-gradient(-45deg, rgba(135, 170, 245, 0.7), rgba(155, 130, 255, 0.7), rgba(125, 150, 240, 0.7), rgba(175, 180, 250, 0.7));
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
 }
-
-
-
-
 
 .gradient-bg-transparent {
   background-color: white;
@@ -394,14 +367,6 @@
   background: radial-gradient(circle at 50% center, transparent 10%, white 70%);
   overflow: visible; /* Ensure overflow content is visible */
 }
-
-
-
-
-
-
-
-
 
 
 .gradient-bg-transparent-cta {
@@ -423,11 +388,20 @@
 }
 
 
+ /**
+ * --------------------------------------------------
+ * Background Gradient and Transparency Mask ends
+ * --------------------------------------------------
+ */
 
 
 
 
-
+/**
+ * --------------------------------------------------
+ * Globe wrapper starts
+ * --------------------------------------------------
+ */
 
 .globe-wrapper {
     position: relative;
@@ -449,12 +423,20 @@
     touch-action: pan-y; /* Allow vertical panning on touch devices */
 }
 
+/**
+ * --------------------------------------------------
+ * Globe wrapper ends
+ * --------------------------------------------------
+ */
 
-.blur-effect {
-  filter: blur(5px);
-}
 
 
+
+/**
+ * --------------------------------------------------
+ * Infinite Floater Animation starts
+ * --------------------------------------------------
+ */
 
 
 /* Floater Animation for Multiple Elements */
@@ -485,30 +467,21 @@
   }
 }
 
+/**
+ * --------------------------------------------------
+ * Infinite Floater Animation ends
+ * --------------------------------------------------
+ */
 
 
 
 
 
-/* Base float animation */
-.float {
-  animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
-  animation-delay: calc(0.5s * var(--n));
-}
-
-@keyframes floatAnimation {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(30px, -30px);
-  }
-  100% {
-    transform: translate(-30px, 30px);
-  }
-}
-
-
+/**
+ * --------------------------------------------------
+ * Rotator Animation Main starts + Key Animation
+ * --------------------------------------------------
+ */
 
 /* General rotation animations */
 @keyframes rotate {
@@ -526,6 +499,22 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/* Apply animation only when .active class is present */
+.pulser {
+  animation: pulsing 2.5s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes pulsing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
 
@@ -568,8 +557,22 @@
 }
 
 
+/**
+ * --------------------------------------------------
+ * Rotator Animation Main ends
+ * --------------------------------------------------
+ */
 
 
+
+
+
+
+ /**
+ * --------------------------------------------------
+ * Rotator Animation Cloud starts
+ * --------------------------------------------------
+ */
 
 
 /* Apply rotation only when active */
@@ -615,11 +618,6 @@
 }
 
 
-
-
-
-
-
 /* Rotating group animation */
 .rotating-group-cloud.active {
   animation: rotate-group 45s linear infinite;
@@ -628,6 +626,21 @@
 
 
 
+ /**
+ * --------------------------------------------------
+ * Rotator Animation Cloud ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+ /**
+ * --------------------------------------------------
+ * Rotator Animation VCFO starts
+ * --------------------------------------------------
+ */
 
 
 
@@ -668,12 +681,6 @@
 }
 
 
-
-
-
-
-
-
 /* Rotating group animation */
 .rotating-group-vcfo.active {
   animation: rotate-group 45s linear infinite;
@@ -683,8 +690,21 @@
 
 
 
+ /**
+ * --------------------------------------------------
+ * Rotator Animation VCFO ends
+ * --------------------------------------------------
+ */
 
 
+
+
+
+ /**
+ * --------------------------------------------------
+ * Rotator Animation Audit starts
+ * --------------------------------------------------
+ */
 
 
 /* Apply rotation only when active */
@@ -725,7 +745,6 @@
 }
 
 
-
 /* Rotating group animation */
 .rotating-group-audit.active {
   animation: rotate-group 45s linear infinite;
@@ -735,6 +754,21 @@
 
 
 
+ /**
+ * --------------------------------------------------
+ * Rotator Animation Audit ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+  /**
+ * --------------------------------------------------
+ * Rotator Animation Legal starts
+ * --------------------------------------------------
+ */
 
 
 
@@ -804,10 +838,6 @@
 }
 
 
-
-
-
-
 /* Rotating group animation */
 .rotating-group-legal.active {
   animation: rotate-group 45s linear infinite;
@@ -815,30 +845,152 @@
 }
 
 
+  /**
+ * --------------------------------------------------
+ * Rotator Animation Legal ends
+ * --------------------------------------------------
+ */
 
 
 
 
 
 
-@keyframes pulsing {
-  0%, 100% {
-    transform: scale(1); /* Final scale from initial scale-up */
-  }
-  50% {
-    transform: scale(1.05); /* Slightly larger for pulse */
-  }
-}
+ /**
+ * --------------------------------------------------
+ * Random Scaling Animation starts
+ * --------------------------------------------------
+ */
 
-
-/* Apply smooth pulsing effect with centered transform origin */
-.pulser {
-  animation: pulsing 2.5s infinite ease-in-out; /* Smooth easing */
+/* Only apply the scaler animation when the .active class is present */
+.scaler {
   transform-origin: center;
 }
 
+.scaler.active {
+  animation-name: scaler;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Keyframe animation for scaling up and down */
+@keyframes scaler {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+/* Different durations and delays for each scaler element */
+.scaler:nth-child(1)  { animation-duration: 2s; animation-delay: 0s; }
+.scaler:nth-child(2)  { animation-duration: 2.5s; animation-delay: 0.2s; }
+.scaler:nth-child(3)  { animation-duration: 3s; animation-delay: 0.4s; }
+.scaler:nth-child(4)  { animation-duration: 3.5s; animation-delay: 0.6s; }
+.scaler:nth-child(5)  { animation-duration: 2.8s; animation-delay: 0.8s; }
+.scaler:nth-child(6)  { animation-duration: 3.2s; animation-delay: 0.1s; }
+.scaler:nth-child(7)  { animation-duration: 2.6s; animation-delay: 0.3s; }
+.scaler:nth-child(8)  { animation-duration: 3.1s; animation-delay: 0.5s; }
+.scaler:nth-child(9)  { animation-duration: 3.6s; animation-delay: 0.7s; }
+.scaler:nth-child(10) { animation-duration: 2.9s; animation-delay: 0.9s; }
+.scaler:nth-child(11) { animation-duration: 3.3s; animation-delay: 0.2s; }
+.scaler:nth-child(12) { animation-duration: 2.7s; animation-delay: 0.4s; }
+.scaler:nth-child(13) { animation-duration: 3.4s; animation-delay: 0.6s; }
+.scaler:nth-child(14) { animation-duration: 3s; animation-delay: 0.8s; }
+.scaler:nth-child(15) { animation-duration: 2.4s; animation-delay: 0.1s; }
+.scaler:nth-child(16) { animation-duration: 3.2s; animation-delay: 0.3s; }
+.scaler:nth-child(17) { animation-duration: 2.3s; animation-delay: 0.5s; }
+.scaler:nth-child(18) { animation-duration: 3.7s; animation-delay: 0.7s; }
+.scaler:nth-child(19) { animation-duration: 2.6s; animation-delay: 0.9s; }
+.scaler:nth-child(20) { animation-duration: 3.5s; animation-delay: 0.4s; }
+.scaler:nth-child(21) { animation-duration: 2.8s; animation-delay: 0.2s; }
+.scaler:nth-child(22) { animation-duration: 3.1s; animation-delay: 0.5s; }
+.scaler:nth-child(23) { animation-duration: 2.5s; animation-delay: 0.3s; }
+.scaler:nth-child(24) { animation-duration: 3.6s; animation-delay: 0.8s; }
+.scaler:nth-child(25) { animation-duration: 3s; animation-delay: 0.6s; }
+.scaler:nth-child(26) { animation-duration: 2.7s; animation-delay: 0.1s; }
+.scaler:nth-child(27) { animation-duration: 3.4s; animation-delay: 0.4s; }
+.scaler:nth-child(28) { animation-duration: 2.9s; animation-delay: 0.7s; }
+.scaler:nth-child(29) { animation-duration: 3.2s; animation-delay: 0.9s; }
+.scaler:nth-child(30) { animation-duration: 3.8s; animation-delay: 0.2s; }
 
 
+
+ /**
+ * --------------------------------------------------
+ * Random Scaling Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+
+@keyframes bounce-right {
+    0% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateX(5px);
+        /* Adjust distance as needed */
+        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+
+    100% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+}
+
+.bounce-right {
+    animation: bounce-right 1s infinite;
+}
+
+@keyframes bounce-left {
+    0% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateX(-5px);
+        /* Adjust distance as needed */
+        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+
+    100% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+    }
+}
+
+.bounce-left {
+    animation: bounce-left 1s infinite;
+}
+
+
+
+/* Base float animation */
+.float {
+  animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
+  animation-delay: calc(0.5s * var(--n));
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -30px);
+  }
+  100% {
+    transform: translate(-30px, 30px);
+  }
+}
 
 
 
@@ -1009,7 +1161,7 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-    .periodBox {
+.periodBox {
   opacity: 0;
   transition: opacity 1.5s ease-out; /* Adjust duration as needed */
 }
@@ -1017,7 +1169,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .periodBox.visible {
   opacity: 1;
 }
-
 
 
 
@@ -1048,23 +1199,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-.wheel {
-  will-change: transform;
-  transform-origin: 1257px 2040px; /* Manually set the center of rotation */
-  animation: rotate-clockwise 4s linear infinite; /* Infinite rotation */
-}
-
-@keyframes rotate-clockwise {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
 
 
 
@@ -1080,63 +1214,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 .flasher {
     animation: blink 2s infinite; /* Adjust duration as needed */
 }
-
-
-
-
-/* Only apply the scaler animation when the .active class is present */
-.scaler {
-  transform-origin: center;
-}
-
-.scaler.active {
-  animation-name: scaler;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-
-/* Keyframe animation for scaling up and down */
-@keyframes scaler {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.04);
-  }
-}
-
-/* Different durations and delays for each scaler element */
-.scaler:nth-child(1)  { animation-duration: 2s; animation-delay: 0s; }
-.scaler:nth-child(2)  { animation-duration: 2.5s; animation-delay: 0.2s; }
-.scaler:nth-child(3)  { animation-duration: 3s; animation-delay: 0.4s; }
-.scaler:nth-child(4)  { animation-duration: 3.5s; animation-delay: 0.6s; }
-.scaler:nth-child(5)  { animation-duration: 2.8s; animation-delay: 0.8s; }
-.scaler:nth-child(6)  { animation-duration: 3.2s; animation-delay: 0.1s; }
-.scaler:nth-child(7)  { animation-duration: 2.6s; animation-delay: 0.3s; }
-.scaler:nth-child(8)  { animation-duration: 3.1s; animation-delay: 0.5s; }
-.scaler:nth-child(9)  { animation-duration: 3.6s; animation-delay: 0.7s; }
-.scaler:nth-child(10) { animation-duration: 2.9s; animation-delay: 0.9s; }
-.scaler:nth-child(11) { animation-duration: 3.3s; animation-delay: 0.2s; }
-.scaler:nth-child(12) { animation-duration: 2.7s; animation-delay: 0.4s; }
-.scaler:nth-child(13) { animation-duration: 3.4s; animation-delay: 0.6s; }
-.scaler:nth-child(14) { animation-duration: 3s; animation-delay: 0.8s; }
-.scaler:nth-child(15) { animation-duration: 2.4s; animation-delay: 0.1s; }
-.scaler:nth-child(16) { animation-duration: 3.2s; animation-delay: 0.3s; }
-.scaler:nth-child(17) { animation-duration: 2.3s; animation-delay: 0.5s; }
-.scaler:nth-child(18) { animation-duration: 3.7s; animation-delay: 0.7s; }
-.scaler:nth-child(19) { animation-duration: 2.6s; animation-delay: 0.9s; }
-.scaler:nth-child(20) { animation-duration: 3.5s; animation-delay: 0.4s; }
-.scaler:nth-child(21) { animation-duration: 2.8s; animation-delay: 0.2s; }
-.scaler:nth-child(22) { animation-duration: 3.1s; animation-delay: 0.5s; }
-.scaler:nth-child(23) { animation-duration: 2.5s; animation-delay: 0.3s; }
-.scaler:nth-child(24) { animation-duration: 3.6s; animation-delay: 0.8s; }
-.scaler:nth-child(25) { animation-duration: 3s; animation-delay: 0.6s; }
-.scaler:nth-child(26) { animation-duration: 2.7s; animation-delay: 0.1s; }
-.scaler:nth-child(27) { animation-duration: 3.4s; animation-delay: 0.4s; }
-.scaler:nth-child(28) { animation-duration: 2.9s; animation-delay: 0.7s; }
-.scaler:nth-child(29) { animation-duration: 3.2s; animation-delay: 0.9s; }
-.scaler:nth-child(30) { animation-duration: 3.8s; animation-delay: 0.2s; }
-
 
 
 
@@ -1207,4 +1284,43 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 }
 .priceBar:nth-child(16) {
    animation-delay: 1.6s;
+}
+
+
+
+.lineGraphLarge,
+.lineGraph {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 26.67px;
+    stroke-miterlimit: 0.726744;
+    stroke-dasharray: 2000; /* Path total length */
+    stroke-dashoffset: 2000; /* Initially hidden */
+    animation: none; /* No animation by default */
+}
+
+/* Triggered animation for .lineGraphLarge */
+.lineGraphLarge {
+    animation: drawPath 3s linear infinite alternate;
+}
+
+/* Triggered animation for .lineGraph */
+.lineGraph {
+    animation: drawReverse 6s ease-in-out infinite alternate;
+}
+
+/* Keyframes for the stroke animations */
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawReverse {
+    0% {
+        stroke-dashoffset: 2000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
 }

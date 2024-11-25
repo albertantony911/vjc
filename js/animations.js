@@ -1,19 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollAnimations(configurations) {
-    configurations.forEach(({ className, observeOnce = false, customClass, threshold = 0.5 }) => {
+    configurations.forEach(({ className, observeOnce = false, customClass, threshold = 0.5, childSelector }) => {
       // Create a new observer for each configuration with the specified threshold
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
-            entry.target.classList.add(targetClass); // Add the respective class
+            if (childSelector) {
+              // Handle child elements if childSelector is specified
+              entry.target.querySelectorAll(childSelector).forEach(child => {
+                child.classList.add(customClass || "active");
+              });
+            } else {
+              const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
+              entry.target.classList.add(targetClass); // Add the respective class
+            }
             if (observeOnce) {
               observer.unobserve(entry.target); // Unobserve if animation should happen once
             }
           } else {
             if (!observeOnce) {
-              const targetClass = entry.target.dataset.revealClass || "active";
-              entry.target.classList.remove(targetClass); // Remove the class on leave
+              if (childSelector) {
+                // Handle child elements if childSelector is specified
+                entry.target.querySelectorAll(childSelector).forEach(child => {
+                  child.classList.remove(customClass || "active");
+                });
+              } else {
+                const targetClass = entry.target.dataset.revealClass || "active";
+                entry.target.classList.remove(targetClass); // Remove the class on leave
+              }
             }
           }
         });
@@ -33,46 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
   activateScrollAnimations([
     { className: "cloud", threshold: 0.8 },
     { className: "floater", threshold: 0.8 },
+    { className: "pulser", threshold: 0.8 },
     { className: "marquee__item", threshold: 0.8 },
     { className: "periodBox", threshold: 0.8, customClass: "visible" },
     { className: "line-v", threshold: 0.8, customClass: "visible" },
     { className: "line-center", threshold: 0.8, customClass: "visible" },
     { className: "flasher", threshold: 0.8 },
-    { className: "calendarDots", threshold: 0.8 }
+    { className: "calendarDots", threshold: 0.8 },
+    { className: "infrastructure-trigger", threshold: 0.8, childSelector: ".scaler", customClass: "active"}
   ]);
 });
 
 
-// Additional setup for elements with 'float' class
-  document.querySelectorAll('.float').forEach((element, index) => {
-    element.style.setProperty('--n', index + 1); // Add index-based custom property
-  });
 
 
-// Select all sections with the .infrastructure-trigger class
-const triggerSections = document.querySelectorAll('.infrastructure-trigger');
-
-// Function to handle Intersection Observer events
-function handleIntersection(entries) {
-  entries.forEach(entry => {
-    const scalers = entry.target.querySelectorAll('.scaler'); // Get child .scaler elements once
-    scalers.forEach(scaler => {
-      scaler.classList.toggle('active', entry.isIntersecting); // Add or remove 'active' based on visibility
-    });
-  });
-}
-
-// Create the Intersection Observer
-const observer = new IntersectionObserver(handleIntersection, {
-  root: null, // Use the viewport as the root
-  threshold: 0.8 // Trigger when 80% of the section is visible
-});
-
-// Start observing each trigger section
-triggerSections.forEach(section => observer.observe(section));
-
-
-
+// Rotating animation control
 
 document.addEventListener("DOMContentLoaded", function () {
   // Function to toggle 'active' class based on a single scroll trigger for multiple elements
@@ -104,6 +93,15 @@ document.addEventListener("DOMContentLoaded", function () {
     activateScrollTrigger(triggerElement, targetElements);
   });
 });
+
+
+
+// Additional setup for elements with 'float' class
+  document.querySelectorAll('.float').forEach((element, index) => {
+    element.style.setProperty('--n', index + 1); // Add index-based custom property
+  });
+
+
 
 
 
@@ -206,15 +204,6 @@ function animatePricingBar(element, yValue, durationValue) {
 
 
 
-/*
-============================
-  LANDING ANIMATION BEGINS
-============================
-*/
-// Optimized GSAP animations for better performance
-
-// Add will-change in JS (if not using CSS directly)
-// Set any pre-animation styles
 document.addEventListener("DOMContentLoaded", function () {
   gsap.set("#cog", {
     willChange: "transform"
@@ -278,187 +267,118 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const originalYValues = [2122.11, -71.5, 13.8, -111];
-  const deltaYValues = [-40, 70, -90, 100];
 
-  const lineGraph = document.getElementById("lineGraph");
-
-  let previousPath = "";
-
-  // Precompute static path segments
-  const staticSegments = ['67.326', '75.161', '47.985'];
-
-  // Precompute all possible Y values for each step
-  const totalSteps = 60; // Define number of steps per animation loop (60 steps = 60 frames per second)
-  const precomputedYValues = Array.from({ length: totalSteps }, (_, i) => {
-      const progress = i / (totalSteps - 1);
-      return originalYValues.map((y, index) => y + deltaYValues[index] * progress);
-  });
-
-  // RequestAnimationFrame-based rendering loop for efficient animations
-  const render = () => {
-      const progressIndex = Math.floor(progressObject.progress * (totalSteps - 1));
-      const newYValues = precomputedYValues[progressIndex];
-
-      // Generate new path based on precomputed Y values
-      const newPath = `m709.116 ${newYValues[0]} ${staticSegments[0]} ${newYValues[1]} ${staticSegments[1]} ${newYValues[2]} ${staticSegments[2]} ${newYValues[3]}`;
-
-      // Only update if the path has changed
-      if (newPath !== previousPath) {
-          lineGraph.setAttribute('d', newPath); // Direct DOM update, no need for GSAP here
-          previousPath = newPath;
-      }
-
-      // Request the next animation frame
-      requestAnimationFrame(render);
-  };
-
-  // Start the render loop
-  requestAnimationFrame(render);
-
-  // Progress tracking object for GSAP
-  const progressObject = { progress: 0 };
-
-  // GSAP animation to update progress
-  gsap.to(progressObject, {
-      progress: 1,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      overwrite: true
-  });
-});
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Cache the path and its length outside the animation code
-  const path = document.querySelector("#lineGraphLarge");
-  const pathLength = path.getTotalLength();  // Get and cache path length once
-
-  // Set strokeDasharray and strokeDashoffset once
-  gsap.set(path, {
-      strokeDasharray: pathLength,
-      strokeDashoffset: pathLength
-  });
-
-  gsap.to(path, {
-      duration: 3,           // Animation duration
-      strokeDashoffset: 0,    // Reveal the stroke
-      ease: "power1.inOut",   // Smooth easing
-      repeat: -1,             // Infinite loop
-      yoyo: true,
-      overwrite: true         // Prevent any memory buildup
-  });
-});
 
 
   
- document.addEventListener("DOMContentLoaded", function () {
-  function randomFadeAndReposition() {
-      const container = document.querySelector("#currencyContainer");
-      const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
-      const pooledElements = [];
-      const sideWidth = container.clientWidth * 0.2;
-      const containerHeight = container.clientHeight;
+document.addEventListener("DOMContentLoaded", function () {
+    function randomFadeAndReposition() {
+        const container = document.querySelector("#currencyContainer");
+        const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+        const pooledElements = [];
+        let containerWidth = container.clientWidth;
+        let containerHeight = container.clientHeight;
+        const sideWidth = containerWidth * 0.2;
 
-      // Adjusting to a smaller pool size
-      const poolSize = symbols.length; // Use the length of symbols array
-      const precomputedPositionsLeft = Array.from({ length: poolSize }, () => Math.random() * sideWidth);
-      const precomputedPositionsRight = Array.from({ length: poolSize }, () => container.clientWidth - sideWidth + Math.random() * sideWidth);
-      
-      let animationInterval;
-      let currentSymbolIndex = 0; // Track the current symbol index
+        const precomputedRandoms = Array.from({ length: 50 }, () => Math.random());
+        let randomIndex = 0;
+        const getRandom = () => precomputedRandoms[(randomIndex++) % precomputedRandoms.length];
 
-      function createOrReuseElement() {
-          let currencyElement = pooledElements.length ? pooledElements.pop() : document.createElementNS("http://www.w3.org/2000/svg", "text");
+        const precomputePositions = () => ({
+            left: Array.from({ length: symbols.length }, () => getRandom() * sideWidth),
+            right: Array.from({ length: symbols.length }, () => containerWidth - sideWidth + getRandom() * sideWidth),
+        });
 
-          if (!currencyElement.hasAttribute("data-initialized")) {
-              currencyElement.setAttribute("fill", "#01377D");
-              currencyElement.setAttribute("font-family", "Arial");
-              currencyElement.setAttribute("stroke", "white");
-              currencyElement.setAttribute("stroke-width", "0");
-              currencyElement.setAttribute("data-initialized", "true");
-              container.appendChild(currencyElement);
-          }
+        let positions = precomputePositions();
+        const startY = -10;
+        const endY = containerHeight + 50;
 
-          return currencyElement;
-      }
+        const updateDimensions = () => {
+            containerWidth = container.clientWidth;
+            containerHeight = container.clientHeight;
+            positions = precomputePositions();
+        };
 
-      function animateElement(element, index, side) {
-          element.textContent = symbols[index]; // Use the sequential symbol
-          const startX = side === "left" ? precomputedPositionsLeft[index] : precomputedPositionsRight[index];
-          const startY = -10;
-          const endY = containerHeight + 50;
+        const throttle = (func, limit) => {
+            let lastFunc, lastRan;
+            return function () {
+                const context = this;
+                const args = arguments;
+                if (!lastRan) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                } else {
+                    clearTimeout(lastFunc);
+                    lastFunc = setTimeout(() => {
+                        if (Date.now() - lastRan >= limit) {
+                            func.apply(context, args);
+                            lastRan = Date.now();
+                        }
+                    }, limit - (Date.now() - lastRan));
+                }
+            };
+        };
+        window.addEventListener("resize", throttle(updateDimensions, 200));
 
-          gsap.set(element, { x: startX, y: startY, opacity: 1 });
+        const createOrReuseElement = () => {
+            const element = pooledElements.pop() || document.createElementNS("http://www.w3.org/2000/svg", "text");
+            if (!element.parentNode) {
+                element.setAttribute("text-anchor", "middle");
+                element.style.willChange = "transform, opacity";
+                container.appendChild(element);
+            }
+            return element;
+        };
 
-          gsap.to(element, {
-              y: endY,
-              opacity: 0,
-              duration: 20,
-              ease: "none",
-              onComplete: () => {
-                  pooledElements.push(element);
-              },
-          });
-      }
+        const animateElement = (element, index, side) => {
+            element.textContent = symbols[index];
+            const startX = side === "left" ? positions.left[index] : positions.right[index];
 
-      function startAnimation() {
-          if (!animationInterval) {
-              for (let i = 0; i < 2; i++) {
-                  const side = i === 0 ? "left" : "right";
-                  animateElement(createOrReuseElement(), currentSymbolIndex, side);
+            gsap.set(element, { x: startX, y: startY, opacity: 1 });
 
-                  // Update the symbol index and loop back if necessary
-                  currentSymbolIndex = (currentSymbolIndex + 1) % poolSize;
-              }
+            gsap.to(element, {
+                y: endY,
+                opacity: 0,
+                duration: 15,
+                ease: "none",
+                onComplete: () => {
+                    pooledElements.push(element);
+                },
+            });
+        };
 
-              animationInterval = setInterval(() => {
-                  for (let i = 0; i < 2; i++) {
-                      const side = i === 0 ? "left" : "right";
-                      animateElement(createOrReuseElement(), currentSymbolIndex, side);
+        const animateBatch = () => {
+            for (let i = 0; i < 2; i++) {
+                const side = i === 0 ? "left" : "right";
+                const element = createOrReuseElement();
+                const symbolIndex = Math.floor(getRandom() * symbols.length);
+                animateElement(element, symbolIndex, side);
+            }
+        };
 
-                      // Update the symbol index and loop back if necessary
-                      currentSymbolIndex = (currentSymbolIndex + 1) % poolSize;
-                  }
-              }, 3000);
-          }
-      }
+        const startAnimation = () => {
+            animateBatch();
+            setTimeout(() => {
+                requestAnimationFrame(startAnimation);
+            }, 3000); // Match the interval
+        };
 
-      function stopAnimation() {
-          if (animationInterval) {
-              clearInterval(animationInterval);
-              animationInterval = null;
-          }
-      }
+        let visibilityTimeout;
+        document.addEventListener("visibilitychange", () => {
+            clearTimeout(visibilityTimeout);
+            visibilityTimeout = setTimeout(() => {
+                if (document.hidden) {
+                    gsap.globalTimeline.pause();
+                } else {
+                    gsap.globalTimeline.resume();
+                }
+            }, 100);
+        });
 
-      function removeAllSymbols() {
-          gsap.killTweensOf(container.querySelectorAll("text"));
-          while (container.firstChild) {
-              container.removeChild(container.firstChild);
-          }
-          pooledElements.length = 0;
-      }
+        startAnimation();
+    }
 
-      document.addEventListener('visibilitychange', () => {
-          if (document.hidden) {
-              stopAnimation();
-              removeAllSymbols();
-          } else {
-              startAnimation();
-          }
-      });
-
-      startAnimation();
-  }
-
-  randomFadeAndReposition();
+    randomFadeAndReposition();
 });
 
 
@@ -466,47 +386,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
-  const lineGroup = document.querySelector("#dottedLine");
-  const lineSpacing = 103;
-  const numberOfLines = 5;
-  const startingX = 586;
-  const startingY = 641;
-  const endingY = 800;
+    const lineGroup = document.querySelector("#dottedLine");
+    const lineSpacing = 103;
+    const numberOfLines = 5;
+    const startingX = 586;
+    const startingY = 641;
+    const endingY = 800;
 
-  const fragment = document.createDocumentFragment(); // Batch DOM manipulations
+    const fragment = document.createDocumentFragment(); // Batch DOM manipulations
 
-  for (let i = 0; i < numberOfLines; i++) {
-      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    // Create lines without individual animations
+    for (let i = 0; i < numberOfLines; i++) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-      // Set initial attributes using GSAP.set for better performance
-      gsap.set(line, {
-          attr: {
-              x1: startingX + i * lineSpacing,
-              y1: startingY,
-              x2: startingX + i * lineSpacing,
-              y2: endingY
-          },
-          strokeDasharray: "20, 20",
-          strokeWidth: 10,
-          strokeLinecap: "round",
-          stroke: "#fff"
-      });
+        // Set line attributes
+        line.setAttribute("x1", startingX + i * lineSpacing);
+        line.setAttribute("y1", startingY);
+        line.setAttribute("x2", startingX + i * lineSpacing);
+        line.setAttribute("y2", endingY);
+        line.setAttribute("stroke-dasharray", "20, 20");
+        line.setAttribute("stroke-width", "10");
+        line.setAttribute("stroke-linecap", "round");
+        line.setAttribute("stroke", "#fff");
 
-      fragment.appendChild(line);
+        fragment.appendChild(line);
+    }
 
-      // Animate strokeDashoffset using frame-based animation for smooth performance
-      gsap.to(line, {
-          strokeDashoffset: "+=40",
-          duration: 1,
-          ease: "none",
-          repeat: -1,
-          useFrames: false // Stick with frame-based animation for reduced recalculations
-      });
-  }
+    // Append all lines at once to the DOM
+    lineGroup.appendChild(fragment);
 
-  // Append all lines at once to the DOM
-  lineGroup.appendChild(fragment);
+    // Animate the entire group instead of individual lines
+    const animation = gsap.to(lineGroup, {
+        strokeDashoffset: "+=40",
+        duration: 1,
+        ease: "none",
+        repeat: -1,
+        useFrames: false // Frame-based animation is unnecessary now
+    });
+
+    // Pause and resume animation based on visibility
+    const handleVisibilityChange = () => {
+        if (document.visibilityState === "hidden") {
+            animation.pause();
+        } else {
+            animation.resume();
+        }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 });
 
 
