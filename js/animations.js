@@ -1,49 +1,64 @@
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollAnimations(configurations) {
-    configurations.forEach(({ className, observeOnce = false, customClass, threshold = 0.5, childSelector }) => {
-      // Create a new observer for each configuration with the specified threshold
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (childSelector) {
-              // Handle child elements if childSelector is specified
-              entry.target.querySelectorAll(childSelector).forEach(child => {
-                child.classList.add(customClass || "active");
-              });
-            } else {
-              const targetClass = entry.target.dataset.revealClass || "active"; // Default to 'active' if no custom class
-              entry.target.classList.add(targetClass); // Add the respective class
-            }
-            if (observeOnce) {
-              observer.unobserve(entry.target); // Unobserve if animation should happen once
-            }
-          } else {
-            if (!observeOnce) {
+    // Map to store IntersectionObservers based on thresholds
+    const observerMap = new Map();
+
+    // Function to get or create an observer for a given threshold
+    const getObserver = (threshold) => {
+      if (!observerMap.has(threshold)) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const config = entry.target.dataset.config;
+            if (!config) return;
+
+            const { observeOnce, childSelector, customClass } = JSON.parse(config);
+
+            if (entry.isIntersecting) {
               if (childSelector) {
-                // Handle child elements if childSelector is specified
-                entry.target.querySelectorAll(childSelector).forEach(child => {
-                  child.classList.remove(customClass || "active");
-                });
+                const children = entry.target.querySelectorAll(childSelector);
+                if (children.length) {
+                  children.forEach(child => child.classList.add(customClass || "active"));
+                }
               } else {
-                const targetClass = entry.target.dataset.revealClass || "active";
-                entry.target.classList.remove(targetClass); // Remove the class on leave
+                entry.target.classList.add(customClass || "active");
+              }
+
+              if (observeOnce) {
+                observer.unobserve(entry.target);
+              }
+            } else if (!observeOnce) {
+              if (childSelector) {
+                const children = entry.target.querySelectorAll(childSelector);
+                if (children.length) {
+                  children.forEach(child => child.classList.remove(customClass || "active"));
+                }
+              } else {
+                entry.target.classList.remove(customClass || "active");
               }
             }
-          }
-        });
-      }, { threshold }); // Apply the threshold
+          });
+        }, { threshold });
 
-      // Query and observe all elements with the specified class
+        observerMap.set(threshold, observer);
+      }
+      return observerMap.get(threshold);
+    };
+
+    // Initialize observers and observe elements
+    configurations.forEach(({ className, threshold = 0.5, observeOnce = false, customClass, childSelector }) => {
       const elements = document.querySelectorAll(`.${className}`);
       elements.forEach(element => {
-        element.dataset.observeOnce = observeOnce.toString(); // Set observe-once flag
-        if (customClass) element.dataset.revealClass = customClass; // Set custom class if provided
-        observer.observe(element); // Start observing
+        // Store configuration in the element's dataset
+        element.dataset.config = JSON.stringify({ observeOnce, customClass, childSelector });
+
+        // Observe the element with the appropriate observer
+        const observer = getObserver(threshold);
+        observer.observe(element);
       });
     });
   }
 
-  // Activate animations for various classes with configurations
+  // Activate animations with configurations
   activateScrollAnimations([
     { className: "cloud", threshold: 0.8 },
     { className: "floater", threshold: 0.8 },
@@ -54,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "line-center", threshold: 0.8, customClass: "visible" },
     { className: "flasher", threshold: 0.8 },
     { className: "calendarDots", threshold: 0.8 },
-    { className: "infrastructure-trigger", threshold: 0.8, childSelector: ".scaler", customClass: "active"}
+    { className: "infrastructure-trigger", threshold: 0.8, childSelector: ".scaler", customClass: "active" }
   ]);
 });
 
