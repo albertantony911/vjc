@@ -59,6 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+   const priceBars = document.querySelectorAll(".priceBarMob");
+
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+         if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+         }
+      });
+   }, {
+      threshold: 0.1, // Adjust as needed for how much of the element needs to be visible
+   });
+
+   priceBars.forEach((bar) => observer.observe(bar));
+});
+
+
 
 
 // Rotating animation control
@@ -177,29 +194,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", initMobileAnimation, { once: true });
 
-// Initialize mobile animation
-function initMobileAnimation() {
-   const priceBars = document.querySelectorAll(".priceBarMob");
-   priceBars.forEach((bar) => {
-      animatePricingBar(bar, 100, 1); // Translate 100px on the y-axis and fade in over 1 second
-   });
-}
 
-// Function to create a translation and fade-in animation for a single element
-function animatePricingBar(element, yValue, durationValue) {
-   // Clear any existing animation on the element to avoid overlap or memory leaks
-   gsap.killTweensOf(element);
 
-   // Animate the element with GSAP
-   gsap.from(element, {
-      y: yValue,
-      opacity: 0,
-      duration: durationValue,
-      ease: "power2.inOut"
-   });
-}
 
 
 
@@ -387,113 +384,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const lineGroup = document.querySelector("#dottedLine");
-    const lineSpacing = 103;
-    const numberOfLines = 5;
-    const startingX = 586;
-    const startingY = 641;
-    const endingY = 800;
-
-    const fragment = document.createDocumentFragment(); // Batch DOM manipulations
-
-    // Create lines without individual animations
-    for (let i = 0; i < numberOfLines; i++) {
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
-        // Set line attributes
-        line.setAttribute("x1", startingX + i * lineSpacing);
-        line.setAttribute("y1", startingY);
-        line.setAttribute("x2", startingX + i * lineSpacing);
-        line.setAttribute("y2", endingY);
-        line.setAttribute("stroke-dasharray", "20, 20");
-        line.setAttribute("stroke-width", "10");
-        line.setAttribute("stroke-linecap", "round");
-        line.setAttribute("stroke", "#fff");
-
-        fragment.appendChild(line);
-    }
-
-    // Append all lines at once to the DOM
-    lineGroup.appendChild(fragment);
-
-    // Animate the entire group instead of individual lines
-    const animation = gsap.to(lineGroup, {
-        strokeDashoffset: "+=40",
-        duration: 1,
-        ease: "none",
-        repeat: -1,
-        useFrames: false // Frame-based animation is unnecessary now
-    });
-
-    // Pause and resume animation based on visibility
-    const handleVisibilityChange = () => {
-        if (document.visibilityState === "hidden") {
-            animation.pause();
-        } else {
-            animation.resume();
-        }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-});
-
-
-
   /*
 ============================
   LANDING ANIMATION ENDS
 ============================
 */
-document.addEventListener("DOMContentLoaded", function () {
-    const countElement = document.querySelector('.calendarText');
 
-    // Exit if countElement is not found
-    if (!countElement) return;
 
-    // Predefine valid numbers (02-30, excluding numbers with '1')
-    const validNumbers = [
-        2, 3, 4, 5, 6, 7, 8, 9,
-        20, 22, 23, 24, 25, 26, 27, 28, 29, 30
-    ];
+const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
+const textElement = document.getElementById('calendarText');
+let currentIndex = 0;
+let intervalId = null; // Store the interval ID to control it
+let isInView = false; // Track if the element is in the viewport
 
-    let shuffledNumbers = [...validNumbers]; // Clone the array for shuffling
-    let currentIndex = 0;
+// Function to update text
+function updateText() {
+  textElement.textContent = numbers[currentIndex];
+  textElement.style.opacity = '1';
+  setTimeout(() => {
+    textElement.style.opacity = '0';
+  }, 1000); // Visible for 1 second
+  currentIndex = (currentIndex + 1) % numbers.length;
+}
 
-    // Function to shuffle the array using Fisher-Yates algorithm
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+// Start the interval
+function startUpdates() {
+  if (!intervalId) {
+    intervalId = setInterval(updateText, 2000);
+    updateText(); // Start immediately
+  }
+}
+
+// Stop the interval
+function stopUpdates() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+}
+
+// Set up the Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      isInView = true;
+      startUpdates();
+    } else {
+      isInView = false;
+      stopUpdates();
     }
-
-    // Initial shuffle
-    shuffleArray(shuffledNumbers);
-
-    // Initialize the element with the first formatted number
-    countElement.textContent = String(shuffledNumbers[currentIndex]).padStart(2, '0');
-    currentIndex++;
-
-    // Efficient GSAP animation for the random number change
-    gsap.to({}, {
-        duration: 1.9, // Duration of each number change
-        repeat: -1, // Infinite loop
-        onRepeat: () => {
-            // Update the number if all have been used, reshuffle
-            if (currentIndex >= shuffledNumbers.length) {
-                shuffleArray(shuffledNumbers);
-                currentIndex = 0;
-            }
-
-            const randomNumber = shuffledNumbers[currentIndex];
-            currentIndex++;
-
-            // Update the number with minimal DOM manipulation
-            gsap.timeline()
-                .to(countElement, { autoAlpha: 0, duration: 0.1 }) // Quick fade out
-                .set({}, { onUpdate: () => countElement.textContent = String(randomNumber).padStart(2, '0') }) // Update content with leading zero
-                .to(countElement, { autoAlpha: 1, duration: 0.1 }); // Quick fade in
-        }
-    });
+  });
 });
+
+// Observe the text element
+observer.observe(textElement);
