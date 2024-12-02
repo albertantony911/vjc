@@ -267,8 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     function randomFadeAndReposition() {
         const container = document.querySelector("#currencyContainer");
         const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
@@ -279,8 +278,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const precomputedRandoms = Array.from({ length: 50 }, () => Math.random());
         let randomIndex = 0;
-        const getRandom = () => precomputedRandoms[(randomIndex++) % precomputedRandoms.length];
 
+        // Generate precomputed random positions
+        const getRandom = () => precomputedRandoms[(randomIndex++) % precomputedRandoms.length];
         const precomputePositions = () => ({
             left: Array.from({ length: symbols.length }, () => getRandom() * sideWidth),
             right: Array.from({ length: symbols.length }, () => containerWidth - sideWidth + getRandom() * sideWidth),
@@ -290,6 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const startY = -10;
         const endY = containerHeight + 50;
 
+        // Update dimensions on resize
         const updateDimensions = () => {
             containerWidth = container.clientWidth;
             containerHeight = container.clientHeight;
@@ -315,18 +316,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             };
         };
+
         window.addEventListener("resize", throttle(updateDimensions, 200));
 
+        // Create or reuse pooled SVG text elements
         const createOrReuseElement = () => {
             const element = pooledElements.pop() || document.createElementNS("http://www.w3.org/2000/svg", "text");
             if (!element.parentNode) {
                 element.setAttribute("text-anchor", "middle");
                 element.style.willChange = "transform, opacity";
+                element.setAttribute("fill", "#01377D"); // Set consistent dark blue color
                 container.appendChild(element);
             }
             return element;
         };
 
+        // Animate an element with GSAP
         const animateElement = (element, index, side) => {
             element.textContent = symbols[index];
             const startX = side === "left" ? positions.left[index] : positions.right[index];
@@ -339,11 +344,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 duration: 15,
                 ease: "none",
                 onComplete: () => {
-                    pooledElements.push(element);
+                    pooledElements.push(element); // Reuse the element
                 },
             });
         };
 
+        // Animate a batch of elements (one for each side)
         const animateBatch = () => {
             for (let i = 0; i < 2; i++) {
                 const side = i === 0 ? "left" : "right";
@@ -353,6 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
+        // Start the animation loop
         const startAnimation = () => {
             animateBatch();
             setTimeout(() => {
@@ -360,6 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 3000); // Match the interval
         };
 
+        // Handle page visibility changes to pause/resume animations
         let visibilityTimeout;
         document.addEventListener("visibilitychange", () => {
             clearTimeout(visibilityTimeout);
@@ -377,7 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     randomFadeAndReposition();
 });
-
 
 
 
