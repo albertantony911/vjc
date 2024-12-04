@@ -69,26 +69,17 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "line-center", threshold: 0.8, customClass: "visible" },
     { className: "flasher", threshold: 0.8 },
     { className: "calendarDots", threshold: 0.8 },
+    { className: "priceBarMob", threshold: 0.8 },
+    { className: "dotted-line", threshold: 0.8 },
+    { className: "rightWatcher", threshold: 0.8, childSelector: ".rotateRight", customClass: "active" },
+    { className: "leftWatcher", threshold: 0.8, childSelector: ".rotateLeft", customClass: "active" },
+    { className: "observedBar", threshold: 0.8, childSelector: ".priceBar", customClass: "active" },
     { className: "infrastructure-trigger", threshold: 0.8, childSelector: ".scaler", customClass: "active" }
   ]);
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-   const priceBars = document.querySelectorAll(".priceBarMob");
 
-   const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-         if (entry.isIntersecting) {
-            entry.target.classList.add("animate");
-         }
-      });
-   }, {
-      threshold: 0.1, // Adjust as needed for how much of the element needs to be visible
-   });
-
-   priceBars.forEach((bar) => observer.observe(bar));
-});
 
 
 
@@ -132,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('.float').forEach((element, index) => {
     element.style.setProperty('--n', index + 1); // Add index-based custom property
   });
-
 
 
 

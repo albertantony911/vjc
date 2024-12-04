@@ -928,19 +928,181 @@
 
 
 
+ /**
+ * --------------------------------------------------
+ * Icon rotate right and left Animation starts
+ * --------------------------------------------------
+ */
+
+.rotateRight {
+  transform-origin: 50% 100%; /* Bottom center */
+}
+
+/* Add animation only when the 'active' class is applied */
+.rotateRight.active {
+  animation: rotateBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+
+
+/* Keyframes for a smooth bouncing rotation */
+@keyframes rotateBounce {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(8deg); /* Rotate to 10 degrees */
+  }
+  60% {
+    transform: rotate(0deg); /* Slight bounce back */
+  }
+  100% {
+    transform: rotate(0deg); /* Return to the original position */
+  }
+}
+
+
+
+.rotateLeft {
+  transform-origin: 50% 100%; /* Bottom center */
+}
+
+.rotateLeft.active {
+  animation: rotateLeftBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+
+/* Keyframes for rotation with elastic bounce effect */
+@keyframes rotateLeftBounce {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-1deg); /* Rotate to -5 degrees */
+  }
+  60% {
+    transform: rotate(2deg); /* Slight overshoot in the opposite direction */
+  }
+  100% {
+    transform: rotate(0deg); /* Return to original position */
+  }
+}
+
+
+ /**
+ * --------------------------------------------------
+ * Icon rotate right and left Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+/**
+ * --------------------------------------------------
+ * Pricebar Animation starts
+ * --------------------------------------------------
+ */
+
  .priceBarMob {
   opacity: 0;
   transform: translateY(100px);
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-.priceBarMob.animate {
+.priceBarMob.active {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Main Pricebar*/
+
+.priceBar.active {
+   opacity: 0; /* Start hidden */
+   animation: fadeInTranslate 1s ease-in-out forwards; /* Match durationValue and ease */
+}
 
 
+/* Define the keyframe animation */
+@keyframes fadeInTranslate {
+   0% {
+      opacity: 0;
+      transform: translateY(100px); /* Match the yValue in GSAP */
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+
+/* Add stagger effect using nth-child */
+.priceBar.active:nth-child(1) {
+   animation-delay: 0.1s;
+}
+.priceBar.active:nth-child(2) {
+   animation-delay: 0.2s;
+}
+.priceBar.active:nth-child(3) {
+   animation-delay: 0.3s;
+}
+.priceBar.active:nth-child(4) {
+   animation-delay: 0.4s;
+}
+.priceBar.active:nth-child(5) {
+   animation-delay: 0.5s;
+}
+.priceBar.active:nth-child(6) {
+   animation-delay: 0.6s;
+}
+.priceBar.active:nth-child(7) {
+   animation-delay: 0.7s;
+}
+.priceBar.active:nth-child(8) {
+   animation-delay: 0.8s;
+}
+.priceBar.active:nth-child(9) {
+   animation-delay: 0.9s;
+}
+.priceBar.active:nth-child(10) {
+   animation-delay: 1s;
+}
+.priceBar.active:nth-child(11) {
+   animation-delay: 1.1s;
+}
+.priceBar.active:nth-child(12) {
+   animation-delay: 1.2s;
+}
+.priceBar.active:nth-child(13) {
+   animation-delay: 1.3s;
+}
+.priceBar.active:nth-child(14) {
+   animation-delay: 1.4s;
+}
+.priceBar.active:nth-child(15) {
+   animation-delay: 1.5s;
+}
+.priceBar.active:nth-child(16) {
+   animation-delay: 1.6s;
+}
+
+
+
+ /**
+ * --------------------------------------------------
+ * Pricebar Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+ /**
+ * --------------------------------------------------
+ * Cloud Line Animation starts
+ * --------------------------------------------------
+ */
 
 .dotted-line {
   stroke: #fff;
@@ -948,8 +1110,15 @@
   stroke-linecap: round;
   stroke-dasharray: 20, 20; /* Dash and gap lengths */
   stroke-dashoffset: 0; /* Start position of the dash */
+  
+  
+}
+
+.dotted-line.active {
   animation: dash 1s linear infinite; /* Apply animation */
 }
+
+
 
 @keyframes dash {
   to {
@@ -957,6 +1126,11 @@
   }
 }
 
+ /**
+ * --------------------------------------------------
+ * Cloud Line Animation ends
+ * --------------------------------------------------
+ */
 
 
 
@@ -1090,53 +1264,6 @@
 
 
 
-.rotateRight {
-  animation: rotateBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-  transform-origin: 50% 100%; /* Bottom center */
-}
-
-/* Keyframes for a smooth bouncing rotation */
-@keyframes rotateBounce {
-  0% {
-    transform: rotate(0deg);
-  }
-  30% {
-    transform: rotate(8deg); /* Rotate to 10 degrees */
-  }
-  60% {
-    transform: rotate(0deg); /* Slight bounce back */
-  }
-  100% {
-    transform: rotate(0deg); /* Return to the original position */
-  }
-}
-
-
-
-.rotateLeft {
-  animation: rotateLeftBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-  transform-origin: 50% 100%; /* Bottom center */
-}
-
-/* Keyframes for rotation with elastic bounce effect */
-@keyframes rotateLeftBounce {
-  0% {
-    transform: rotate(0deg);
-  }
-  30% {
-    transform: rotate(-1deg); /* Rotate to -5 degrees */
-  }
-  60% {
-    transform: rotate(2deg); /* Slight overshoot in the opposite direction */
-  }
-  100% {
-    transform: rotate(0deg); /* Return to original position */
-  }
-}
-
-
-
-
 
 /* Base styles for each blog set */
 .blog1, .blog2 {
@@ -1257,74 +1384,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-
-/* Define the keyframe animation */
-@keyframes fadeInTranslate {
-   0% {
-      opacity: 0;
-      transform: translateY(100px); /* Match the yValue in GSAP */
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-   }
-}
-
-/* Apply animation to .priceBar */
-.priceBar {
-   opacity: 0; /* Start hidden */
-   animation: fadeInTranslate 1s ease-in-out forwards; /* Match durationValue and ease */
-}
-
-/* Add stagger effect using nth-child */
-.priceBar:nth-child(1) {
-   animation-delay: 0.1s;
-}
-.priceBar:nth-child(2) {
-   animation-delay: 0.2s;
-}
-.priceBar:nth-child(3) {
-   animation-delay: 0.3s;
-}
-.priceBar:nth-child(4) {
-   animation-delay: 0.4s;
-}
-.priceBar:nth-child(5) {
-   animation-delay: 0.5s;
-}
-.priceBar:nth-child(6) {
-   animation-delay: 0.6s;
-}
-.priceBar:nth-child(7) {
-   animation-delay: 0.7s;
-}
-.priceBar:nth-child(8) {
-   animation-delay: 0.8s;
-}
-.priceBar:nth-child(9) {
-   animation-delay: 0.9s;
-}
-.priceBar:nth-child(10) {
-   animation-delay: 1s;
-}
-.priceBar:nth-child(11) {
-   animation-delay: 1.1s;
-}
-.priceBar:nth-child(12) {
-   animation-delay: 1.2s;
-}
-.priceBar:nth-child(13) {
-   animation-delay: 1.3s;
-}
-.priceBar:nth-child(14) {
-   animation-delay: 1.4s;
-}
-.priceBar:nth-child(15) {
-   animation-delay: 1.5s;
-}
-.priceBar:nth-child(16) {
-   animation-delay: 1.6s;
-}
 
 
 
