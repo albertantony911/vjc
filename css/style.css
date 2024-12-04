@@ -3878,10 +3878,6 @@ svg {
       display: none;
     }
 
-    .landscape\:md\:h-\[58svh\] {
-      height: 58svh;
-    }
-
     .landscape\:md\:h-\[65svh\] {
       height: 65svh;
     }
