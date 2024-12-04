@@ -1007,15 +1007,20 @@
  .priceBarMob {
   opacity: 0;
   transform: translateY(100px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  
 }
 
 .priceBarMob.active {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 /* Main Pricebar*/
+
+.priceBar {
+   opacity: 0; /* Start hidden */
+}
 
 .priceBar.active {
    opacity: 0; /* Start hidden */
@@ -1098,6 +1103,72 @@
 
 
 
+
+ /**
+ * --------------------------------------------------
+ * PeriodBox Animation starts
+ * --------------------------------------------------
+ */
+
+
+.periodBox {
+  opacity: 0;
+}
+
+.periodBox.visible {
+  opacity: 1;
+  transition: opacity 1.5s ease-out; /* Adjust duration as needed */
+}
+
+ /**
+ * --------------------------------------------------
+ * PeriodBox Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+ /**
+ * --------------------------------------------------
+ * Vertical and horizontal Line Animation starts
+ * --------------------------------------------------
+ */
+
+
+.line-v {
+  transform: scaleY(0);             /* Start with scaleY at 0 (collapsed) */
+  transform-origin: top;            /* Scale from the top */
+  transition: transform 2s ease-in-out; /* Smooth scaling effect */
+}
+
+.line-v.visible {
+  transform: scaleY(1);             /* Expand to full height */
+}
+
+
+.line-center {
+  transform: scaleX(0);                /* Start with scaleX at 0 (collapsed) */
+  transform-origin: center center;     /* Scale from the center */
+  transition: transform 2s ease-in-out; /* Smooth scaling effect */
+}
+
+.line-center.visible {
+  transform: scaleX(1);                /* Expand to full width */
+}
+
+
+ /**
+ * --------------------------------------------------
+ * Vertical and horizontal Line Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+
  /**
  * --------------------------------------------------
  * Cloud Line Animation starts
@@ -1118,8 +1189,6 @@
   animation: dash 1s linear infinite; /* Apply animation */
 }
 
-
-
 @keyframes dash {
   to {
     stroke-dashoffset: 40; /* Negative offset to create motion */
@@ -1131,7 +1200,6 @@
  * Cloud Line Animation ends
  * --------------------------------------------------
  */
-
 
 
 
@@ -1188,6 +1256,8 @@
 
 
 
+
+
 /* Base float animation */
 .float {
   animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
@@ -1221,7 +1291,7 @@
 }
 
 /* Base styling and animation with varying durations */
-.circleFade {
+.circleFade.active {
   opacity: 1;
   animation: fadeInOut ease-in-out infinite;
 }
@@ -1327,39 +1397,6 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 
 
 
-
-.periodBox {
-  opacity: 0;
-  transition: opacity 1.5s ease-out; /* Adjust duration as needed */
-}
-
-.periodBox.visible {
-  opacity: 1;
-}
-
-
-
-.line-v {
-  transform: scaleY(0);             /* Start with scaleY at 0 (collapsed) */
-  transform-origin: top;            /* Scale from the top */
-  transition: transform 2s ease-in-out; /* Smooth scaling effect */
-}
-
-.line-v.visible {
-  transform: scaleY(1);             /* Expand to full height */
-}
-
-
-
-.line-center {
-  transform: scaleX(0);                /* Start with scaleX at 0 (collapsed) */
-  transform-origin: center center;     /* Scale from the center */
-  transition: transform 2s ease-in-out; /* Smooth scaling effect */
-}
-
-.line-center.visible {
-  transform: scaleX(1);                /* Expand to full width */
-}
 
 
 

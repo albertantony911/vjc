@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Initialize observers and observe elements
-    configurations.forEach(({ className, threshold = 0.5, observeOnce = false, customClass, childSelector }) => {
+    configurations.forEach(({ className, threshold = 0.8, observeOnce = false, customClass, childSelector }) => {
       const elements = document.querySelectorAll(`.${className}`);
       elements.forEach(element => {
         // Store configuration in the element's dataset
@@ -60,21 +60,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Activate animations with configurations
   activateScrollAnimations([
-    { className: "cloud", threshold: 0.8 },
-    { className: "floater", threshold: 0.8 },
-    { className: "pulser", threshold: 0.8 },
-    { className: "marquee__item", threshold: 0.8 },
-    { className: "periodBox", threshold: 0.8, customClass: "visible" },
-    { className: "line-v", threshold: 0.8, customClass: "visible" },
-    { className: "line-center", threshold: 0.8, customClass: "visible" },
-    { className: "flasher", threshold: 0.8 },
-    { className: "calendarDots", threshold: 0.8 },
-    { className: "priceBarMob", threshold: 0.8 },
-    { className: "dotted-line", threshold: 0.8 },
-    { className: "rightWatcher", threshold: 0.8, childSelector: ".rotateRight", customClass: "active" },
-    { className: "leftWatcher", threshold: 0.8, childSelector: ".rotateLeft", customClass: "active" },
-    { className: "observedBar", threshold: 0.8, childSelector: ".priceBar", customClass: "active" },
-    { className: "infrastructure-trigger", threshold: 0.8, childSelector: ".scaler", customClass: "active" }
+    { className: "floater"},
+    { className: "pulser"},
+    { className: "marquee__item"},
+    { className: "periodBox", customClass: "visible" },
+    { className: "line-v", customClass: "visible" },
+    { className: "line-center", customClass: "visible" },
+    { className: "flasher"},
+    { className: "calendarDots"},
+    { className: "priceBarMob"},
+    { className: "rightWatcher", childSelector: ".rotateRight", customClass: "active" },
+    { className: "leftWatcher", childSelector: ".rotateLeft", customClass: "active" },
+    { className: "observedBar", childSelector: ".priceBar", customClass: "active" },
+    { className: "dottedLineObserver", childSelector: ".dotted-line", customClass: "active" },
+    { className: "dotObserver", childSelector: ".float", customClass: "active" },
+    { className: "circleFadeObserver", childSelector: ".circleFade", customClass: "active" },
+    { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 });
 
