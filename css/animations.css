@@ -146,107 +146,7 @@
  * ----------------------------------------
  */
 
-.marquee {
-    block-size: var(--marquee-item-height);
-    margin-block: 0;
-    mask-image: linear-gradient(to right,
-            hsl(0 0% 0% / 0),
-            hsl(0 0% 0% / 1) 20%,
-            hsl(0 0% 0% / 1) 80%,
-            hsl(0 0% 0% / 0));
-}
 
-.marquee--LTR,
-.marquee--RTL {
-    
-    --marquee-duration: 30s;
-    --marquee-items: 9;
-}
-
-.marquee--LTR-M,
-.marquee--RTL-M {
-    --marquee-item-width: 75px;
-    --marquee-item-height: 75px;
-    --marquee-duration: 30s;
-    --marquee-items: 7;
-}
-
-
-
-.marquee__item {
-    --marquee-item-offset: max(calc(var(--marquee-item-width) * var(--marquee-items)),
-            calc(100% + var(--marquee-item-width)));
-    --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
-    position: absolute;
-    inset-inline-start: var(--marquee-item-offset);
-    transform: translateX(-50%);
-    animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-}
-
-/* LTR - Left to Right */
-.marquee--LTR  .marquee__item {
-    animation-direction: normal; /* Default direction for LTR */
-}
-
-/* RTL - Right to Left */
-.marquee--RTL  .marquee__item {
-    animation-direction: reverse; /* Reversed direction for RTL */
-}
-
-/* LTR - Left to Right */
-.marquee--LTR-M  .marquee__item {
-    animation-direction: normal; /* Default direction for LTR */
-}
-
-/* RTL - Right to Left */
-.marquee--RTL-M  .marquee__item {
-    animation-direction: reverse; /* Reversed direction for RTL */
-}
-
-
-/* Keyframes for marquee animation */
-@keyframes go {
-    to {
-        inset-inline-start: calc(var(--marquee-item-width) * -1);
-    }
-}
-
-/* Apply index for each item */
-.marquee__item:nth-of-type(1) {
-    --marquee-item-index: 1;
-}
-
-.marquee__item:nth-of-type(2) {
-    --marquee-item-index: 2;
-}
-
-.marquee__item:nth-of-type(3) {
-    --marquee-item-index: 3;
-}
-
-.marquee__item:nth-of-type(4) {
-    --marquee-item-index: 4;
-}
-
-.marquee__item:nth-of-type(5) {
-    --marquee-item-index: 5;
-}
-
-.marquee__item:nth-of-type(6) {
-    --marquee-item-index: 6;
-}
-
-.marquee__item:nth-of-type(7) {
-    --marquee-item-index: 7;
-}
-
-.marquee__item:nth-of-type(8) {
-    --marquee-item-index: 8;
-}
-
-.marquee__item:nth-of-type(9) {
-    --marquee-item-index: 9;
-}
 
 
 
@@ -323,15 +223,15 @@
 }
 
 /* Assigning unique index to each marquee item for delay */
-.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
-.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
-.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
-.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
-.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
-.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
-.marquee__item:nth-of-type(7) { --marquee-item-index: 7; }
-.marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
-.marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
+.marquee__item.active:nth-of-type(1) { --marquee-item-index: 1; }
+.marquee__item.active:nth-of-type(2) { --marquee-item-index: 2; }
+.marquee__item.active:nth-of-type(3) { --marquee-item-index: 3; }
+.marquee__item.active:nth-of-type(4) { --marquee-item-index: 4; }
+.marquee__item.active:nth-of-type(5) { --marquee-item-index: 5; }
+.marquee__item.active:nth-of-type(6) { --marquee-item-index: 6; }
+.marquee__item.active:nth-of-type(7) { --marquee-item-index: 7; }
+.marquee__item.active:nth-of-type(8) { --marquee-item-index: 8; }
+.marquee__item.active:nth-of-type(9) { --marquee-item-index: 9; }
 
 
  /**
@@ -1203,34 +1103,95 @@
 
 
 
-#calendarText {
-  transition: opacity 1s ease-in-out; /* Smooth fade in and out */
+  /**
+ * --------------------------------------------------
+ * Blog Dots Animation starts
+ * --------------------------------------------------
+ */
+
+
+/* Base styling and animation with varying durations */
+.circleFade.active {
+  opacity: 1;
+  animation: fadeInOut ease-in-out infinite;
 }
 
+/* Increased variance in animation delays and durations for slower animations */
+.circleFade:nth-child(1) { animation-delay: 0s; animation-duration: 6s; }
+.circleFade:nth-child(2) { animation-delay: 2s; animation-duration: 6.8s; }
+.circleFade:nth-child(3) { animation-delay: 1.2s; animation-duration: 7.5s; }
+.circleFade:nth-child(4) { animation-delay: 3s; animation-duration: 8s; }
+.circleFade:nth-child(5) { animation-delay: 0.6s; animation-duration: 9s; }
+.circleFade:nth-child(6) { animation-delay: 3.6s; animation-duration: 6.5s; }
+.circleFade:nth-child(7) { animation-delay: 2.4s; animation-duration: 8.5s; }
+.circleFade:nth-child(8) { animation-delay: 1.1s; animation-duration: 6.9s; }
+.circleFade:nth-child(9) { animation-delay: 4.3s; animation-duration: 7.8s; }
+.circleFade:nth-child(10) { animation-delay: 1.7s; animation-duration: 8.1s; }
+.circleFade:nth-child(11) { animation-delay: 3.9s; animation-duration: 7.2s; }
+.circleFade:nth-child(12) { animation-delay: 0.9s; animation-duration: 9s; }
+.circleFade:nth-child(13) { animation-delay: 2.1s; animation-duration: 7.7s; }
+.circleFade:nth-child(14) { animation-delay: 3.3s; animation-duration: 6.6s; }
+.circleFade:nth-child(15) { animation-delay: 4.5s; animation-duration: 7.4s; }
+.circleFade:nth-child(16) { animation-delay: 1s; animation-duration: 8.4s; }
+.circleFade:nth-child(17) { animation-delay: 2.8s; animation-duration: 6.3s; }
+.circleFade:nth-child(18) { animation-delay: 4.2s; animation-duration: 8.6s; }
+.circleFade:nth-child(19) { animation-delay: 1.8s; animation-duration: 8.2s; }
+.circleFade:nth-child(20) { animation-delay: 3.7s; animation-duration: 6.5s; }
 
 
 
-@keyframes bounce-right {
-    0% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
+  /**
+ * --------------------------------------------------
+ * Blog Dots Animation ends
+ * --------------------------------------------------
+ */
 
-    50% {
-        transform: translateX(5px);
-        /* Adjust distance as needed */
-        animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
-    }
 
-    100% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
-    }
+
+
+   /**
+ * --------------------------------------------------
+ * Typing Animation starts
+ * --------------------------------------------------
+ */
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-.bounce-right {
-    animation: bounce-right 1s infinite;
+.typeFade {
+  opacity: 0.5;
 }
+
+.typeFade.active {
+  opacity: 1;
+  animation: fadeInOut ease-in-out infinite;
+}
+
+.typeFade.active:nth-child(1) { animation-delay: 0s; animation-duration: 2s; }
+.typeFade.active:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.2s; }
+.typeFade.active:nth-child(3) { animation-delay: 0.3s; animation-duration: 2.5s; }
+.typeFade.active:nth-child(4) { animation-delay: 0.7s; animation-duration: 2.8s; }
+.typeFade.active:nth-child(5) { animation-delay: 0.2s; animation-duration: 3s; }
+
+/**
+ * --------------------------------------------------
+ * Typing Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+/**
+ * --------------------------------------------------
+ * Arrow Bounce Animation starts
+ * --------------------------------------------------
+ */
 
 @keyframes bounce-left {
     0% {
@@ -1250,16 +1211,71 @@
     }
 }
 
-.bounce-left {
+.bounce-left.active {
     animation: bounce-left 1s infinite;
 }
 
+/**
+ * --------------------------------------------------
+ * Arrow Bounce Animation ends
+ * --------------------------------------------------
+ */
 
 
 
 
-/* Base float animation */
-.float {
+
+ /**
+ * --------------------------------------------------
+ * Calendar Dots Animation starts
+ * --------------------------------------------------
+ */
+
+circle.calendarDots {
+  fill: #fff;
+  stroke: none;
+}
+
+circle.calendarDots.active {
+  animation: colorCycle 22s infinite; /* Increased duration to accommodate 11 items */
+}
+
+/* Keyframes for color change */
+@keyframes colorCycle {
+  0%, 5% { fill: #7ED348; stroke: #fff; }   /* Active color */
+  10%, 100% { fill: #fff; stroke: none; }    /* Default color */
+}
+
+circle.calendarDots.active:nth-child(1) { animation-delay: 0s; }
+circle.calendarDots.active:nth-child(2) { animation-delay: 2s; }
+circle.calendarDots.active:nth-child(3) { animation-delay: 4s; }
+circle.calendarDots.active:nth-child(4) { animation-delay: 6s; }
+circle.calendarDots.active:nth-child(5) { animation-delay: 8s; }
+circle.calendarDots.active:nth-child(6) { animation-delay: 10s; }
+circle.calendarDots.active:nth-child(7) { animation-delay: 12s; }
+circle.calendarDots.active:nth-child(8) { animation-delay: 14s; }
+circle.calendarDots.active:nth-child(9) { animation-delay: 16s; }
+circle.calendarDots.active:nth-child(10) { animation-delay: 18s; }
+circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
+
+
+
+  /**
+ * --------------------------------------------------
+ * Calendar Dots Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+  /**
+ * --------------------------------------------------
+ * Floating Graph Dots Animation starts
+ * --------------------------------------------------
+ */
+
+
+.float.active {
   animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
   animation-delay: calc(0.5s * var(--n));
 }
@@ -1277,76 +1293,62 @@
 }
 
 
+   /**
+ * --------------------------------------------------
+ * Floating Graph Dots Animation ends
+ * --------------------------------------------------
+ */
 
 
 
-/* Define keyframes for fading in and out */
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+
+    /**
+ * --------------------------------------------------
+ * Calendar Text Animation starts
+ * --------------------------------------------------
+ */
+
+#calendarText {
+  transition: opacity 1s ease-in-out; /* Smooth fade in and out */
 }
 
-/* Base styling and animation with varying durations */
-.circleFade.active {
-  opacity: 1;
-  animation: fadeInOut ease-in-out infinite;
-}
-
-/* Increased variance in animation delays and durations */
-.circleFade:nth-child(1) { animation-delay: 0s; animation-duration: 4s; }
-.circleFade:nth-child(2) { animation-delay: 1.3s; animation-duration: 4.5s; }
-.circleFade:nth-child(3) { animation-delay: 0.8s; animation-duration: 5s; }
-.circleFade:nth-child(4) { animation-delay: 2.1s; animation-duration: 5.5s; }
-.circleFade:nth-child(5) { animation-delay: 0.4s; animation-duration: 6s; }
-.circleFade:nth-child(6) { animation-delay: 2.4s; animation-duration: 4.3s; }
-.circleFade:nth-child(7) { animation-delay: 1.6s; animation-duration: 5.8s; }
-.circleFade:nth-child(8) { animation-delay: 0.7s; animation-duration: 4.6s; }
-.circleFade:nth-child(9) { animation-delay: 2.9s; animation-duration: 5.2s; }
-.circleFade:nth-child(10) { animation-delay: 1.1s; animation-duration: 5.4s; }
-.circleFade:nth-child(11) { animation-delay: 2.6s; animation-duration: 4.8s; }
-.circleFade:nth-child(12) { animation-delay: 0.5s; animation-duration: 6s; }
-.circleFade:nth-child(13) { animation-delay: 1.4s; animation-duration: 5.1s; }
-.circleFade:nth-child(14) { animation-delay: 2.2s; animation-duration: 4.4s; }
-.circleFade:nth-child(15) { animation-delay: 3s; animation-duration: 4.9s; }
-.circleFade:nth-child(16) { animation-delay: 0.6s; animation-duration: 5.6s; }
-.circleFade:nth-child(17) { animation-delay: 1.9s; animation-duration: 4.2s; }
-.circleFade:nth-child(18) { animation-delay: 2.8s; animation-duration: 5.7s; }
-.circleFade:nth-child(19) { animation-delay: 1.2s; animation-duration: 5.5s; }
-.circleFade:nth-child(20) { animation-delay: 2.5s; animation-duration: 4.3s; }
-
-/* Base styling and animation with faster durations */
-.typeFade {
-  opacity: 1;
-  animation: fadeInOut ease-in-out infinite;
-}
-
-/* Reduced delays and durations for a faster effect */
-.typeFade:nth-child(1) { animation-delay: 0s; animation-duration: 2s; }
-.typeFade:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.2s; }
-.typeFade:nth-child(3) { animation-delay: 0.3s; animation-duration: 2.5s; }
-.typeFade:nth-child(4) { animation-delay: 0.7s; animation-duration: 2.8s; }
-.typeFade:nth-child(5) { animation-delay: 0.2s; animation-duration: 3s; }
+    /**
+ * --------------------------------------------------
+ * Calendar Text Animation ends
+ * --------------------------------------------------
+ */
 
 
 
 
 
-/* Base styles for each blog set */
+
+/* Base float animation */
+
+
+
+
+
+
+/**
+ * --------------------------------------------------
+ * Blog Animation starts
+ * --------------------------------------------------
+ */
+
 .blog1, .blog2 {
-  position: absolute; /* Overlap both sets of elements */
+  position: absolute; 
   top: 0;
   left: 0;
-  opacity: 0; /* Initially hidden */
-  animation-duration: 6s; /* Slower duration for each fade cycle */
+  opacity: 0;
+}
+
+.blog1.active, .blog2.active {
+  animation-duration: 6s; 
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
-/* Keyframes for fade-in and fade-out */
 @keyframes fadeInOut {
   0%, 100% { opacity: 0; }     /* Start and end hidden */
   10%, 40% { opacity: 1; }     /* Fade in and remain visible */
@@ -1365,46 +1367,11 @@
 }
 
 
-
-
-/* Base style for all calendar dots */
-circle.calendarDots {
-  fill: #fff;
-  stroke: none;
-  animation: colorCycle 22s infinite; /* Increased duration to accommodate 11 items */
-}
-
-/* Keyframes for color change */
-@keyframes colorCycle {
-  0%, 5% { fill: #7ED348; stroke: #fff; }   /* Active color */
-  10%, 100% { fill: #fff; stroke: none; }    /* Default color */
-}
-
-/* Apply distinct delays for each of the 11 circles */
-circle.calendarDots:nth-child(1) { animation-delay: 0s; }
-circle.calendarDots:nth-child(2) { animation-delay: 2s; }
-circle.calendarDots:nth-child(3) { animation-delay: 4s; }
-circle.calendarDots:nth-child(4) { animation-delay: 6s; }
-circle.calendarDots:nth-child(5) { animation-delay: 8s; }
-circle.calendarDots:nth-child(6) { animation-delay: 10s; }
-circle.calendarDots:nth-child(7) { animation-delay: 12s; }
-circle.calendarDots:nth-child(8) { animation-delay: 14s; }
-circle.calendarDots:nth-child(9) { animation-delay: 16s; }
-circle.calendarDots:nth-child(10) { animation-delay: 18s; }
-circle.calendarDots:nth-child(11) { animation-delay: 20s; }
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * --------------------------------------------------
+ * Typing Blinker Animation starts
+ * --------------------------------------------------
+ */
 
 @keyframes blink {
     0%, 50%, 100% {
@@ -1415,12 +1382,24 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
     }
 }
 
-.flasher {
+.flasher.active {
     animation: blink 2s infinite; /* Adjust duration as needed */
 }
 
 
+/**
+ * --------------------------------------------------
+ * Typing Blinker Animation ends
+ * --------------------------------------------------
+ */
 
+
+
+ /**
+ * --------------------------------------------------
+ * LineGraphs Animation starts
+ * --------------------------------------------------
+ */
 
 
 
@@ -1436,12 +1415,12 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
 }
 
 /* Triggered animation for .lineGraphLarge */
-.lineGraphLarge {
+.lineGraphLarge.active {
     animation: drawPath 3s linear infinite alternate;
 }
 
 /* Triggered animation for .lineGraph */
-.lineGraph {
+.lineGraph.active {
     animation: drawReverse 6s ease-in-out infinite alternate;
 }
 
@@ -1460,3 +1439,30 @@ circle.calendarDots:nth-child(11) { animation-delay: 20s; }
         stroke-dashoffset: 0;
     }
 }
+
+
+ /**
+ * --------------------------------------------------
+ * LineGraphs Animation ends
+ * --------------------------------------------------
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

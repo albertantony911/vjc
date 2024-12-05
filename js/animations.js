@@ -1,3 +1,10 @@
+//////////////////////////////////////////////////////////////////
+//
+// Grouped Intersection Observers for Animation control
+//
+//////////////////////////////////////////////////////////////////
+
+
 document.addEventListener("DOMContentLoaded", function () {
   function activateScrollAnimations(configurations) {
     // Map to store IntersectionObservers based on thresholds
@@ -45,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Initialize observers and observe elements
-    configurations.forEach(({ className, threshold = 0.8, observeOnce = false, customClass, childSelector }) => {
+    configurations.forEach(({ className, threshold = 0.2, observeOnce = false, customClass, childSelector }) => {
       const elements = document.querySelectorAll(`.${className}`);
       elements.forEach(element => {
         // Store configuration in the element's dataset
@@ -66,15 +73,22 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "periodBox", customClass: "visible" },
     { className: "line-v", customClass: "visible" },
     { className: "line-center", customClass: "visible" },
-    { className: "flasher"},
-    { className: "calendarDots"},
-    { className: "priceBarMob"},
+    { className: "priceBarMob" },
+    { className: "bounce-left"},
     { className: "rightWatcher", childSelector: ".rotateRight", customClass: "active" },
     { className: "leftWatcher", childSelector: ".rotateLeft", customClass: "active" },
     { className: "observedBar", childSelector: ".priceBar", customClass: "active" },
     { className: "dottedLineObserver", childSelector: ".dotted-line", customClass: "active" },
     { className: "dotObserver", childSelector: ".float", customClass: "active" },
     { className: "circleFadeObserver", childSelector: ".circleFade", customClass: "active" },
+    { className: "typingFadeObserver", childSelector: ".typeFade", customClass: "active" },
+    { className: "calendarDotsObserver", childSelector: ".calendarDots", customClass: "active" },
+    { className: "floatObserver", childSelector: ".float", customClass: "active" },
+    { className: "blog1Observer", childSelector: ".blog1", customClass: "active" },
+    { className: "blog2Observer", childSelector: ".blog2", customClass: "active" },
+    { className: "flasherObserver", childSelector: ".flasher", customClass: "active" },
+    { className: "lineGraphLargeObserver", childSelector: ".lineGraphLarge", customClass: "active" },
+    { className: "lineGraphObserver", childSelector: ".lineGraph", customClass: "active" },
     { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 });
@@ -82,10 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-// Rotating animation control
+//////////////////////////////////////////////////////////////////
+//
+// Rotating Illustration Grouped Animation Control
+//
+//////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
   // Function to toggle 'active' class based on a single scroll trigger for multiple elements
@@ -120,13 +135,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Additional setup for elements with 'float' class
-  document.querySelectorAll('.float').forEach((element, index) => {
-    element.style.setProperty('--n', index + 1); // Add index-based custom property
-  });
 
-
-
+//////////////////////////////////////////////////////////////////
+//
+// Counter Animation control
+//
+//////////////////////////////////////////////////////////////////
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -196,81 +210,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  gsap.set("#cog", {
-    willChange: "transform"
-  });
-
-  // Animate the #cog only when it's in the viewport
-  gsap.to("#cog", {
-    rotation: 360,               // Rotate 360 degrees for one full rotation
-    duration: 4,                 // Duration of one full rotation (adjust as needed)
-    ease: "none",                // Linear movement, no easing
-    repeat: -1,                  // Repeat infinitely
-    transformOrigin: "50% 50%",  // Rotate around the center
-    scrollTrigger: {
-      trigger: "#cog",           // The element that triggers the animation
-      start: "top 90%",          // Start the animation when #cog is 80% in the viewport
-      end: "bottom 10%",         // End the animation when the bottom of #cog is 20% out of the viewport
-      toggleActions: "play pause resume pause", // Play when in view, pause when out
-      markers: false             // Set to true if you want to see visual markers for debugging
-    }
-  });
-});
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Precompute the transform origins for bars
-  const barElements = ["#bar1", "#bar2", "#bar3"];
-  const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"];
-
-  gsap.set(barElements, { transformOrigin: "bottom" });
-
-  // Single timeline for bars and dots
-  gsap.timeline({
-      repeat: -1, 
-      yoyo: true, 
-      yoyoEase: "power1.inOut"
-  })
-  .to(barElements, {
-      keyframes: [
-          { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },  // First keyframe for each bar with explicit duration
-          { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },  // Second keyframe
-          { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }   // Third keyframe
-      ]
-  })
-  .to(dotElements, {
-      keyframes: [
-          { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },  // First keyframe for each dot with explicit duration
-          { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },    // Second keyframe
-          { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }      // Third keyframe
-      ]
-  }, 0);  // Sync with bars animation
-});
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//
+// Currency Drop Animation control
+//
+//////////////////////////////////////////////////////////////////
 
 
  document.addEventListener("DOMContentLoaded", function () {
@@ -394,15 +338,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//////////////////////////////////////////////////////////////////
+//
+// Landing Illustration Bar and Dot Animation control
+//
+//////////////////////////////////////////////////////////////////
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Precompute the transform origins for bars
+  const barElements = ["#bar1", "#bar2", "#bar3"];
+  const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"];
 
-  /*
-============================
-  LANDING ANIMATION ENDS
-============================
-*/
+  const container = document.querySelector("#animationContainer"); // Ensure this container wraps all target elements
 
+  gsap.set(barElements, { transformOrigin: "bottom" });
+
+  // Create the GSAP timeline
+  const animationTimeline = gsap.timeline({
+      repeat: -1, 
+      yoyo: true, 
+      yoyoEase: "power1.inOut"
+  })
+  .to(barElements, {
+      keyframes: [
+          { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },
+          { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },
+          { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }
+      ]
+  })
+  .to(dotElements, {
+      keyframes: [
+          { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },
+          { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },
+          { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }
+      ]
+  }, 0);
+
+  // Set up the IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              animationTimeline.resume(); // Resume animation when in view
+          } else {
+              animationTimeline.pause();  // Pause animation when out of view
+          }
+      });
+  }, { threshold: 0.1 }); // Adjust threshold as needed
+
+  // Observe the animation container
+  if (container) {
+      observer.observe(container);
+  }
+});
+
+
+//////////////////////////////////////////////////////////////////
+//
+// Calendar Text Animation control
+//
+//////////////////////////////////////////////////////////////////
 
 const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
 const textElement = document.getElementById('calendarText');
@@ -451,3 +446,49 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe the text element
 observer.observe(textElement);
+
+
+
+//////////////////////////////////////////////////////////////////
+//
+// Cog Wheel Animation control
+//
+//////////////////////////////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.set("#cog", {
+    willChange: "transform"
+  });
+
+  // Animate the #cog only when it's in the viewport
+  gsap.to("#cog", {
+    rotation: 360,               // Rotate 360 degrees for one full rotation
+    duration: 4,                 // Duration of one full rotation (adjust as needed)
+    ease: "none",                // Linear movement, no easing
+    repeat: -1,                  // Repeat infinitely
+    transformOrigin: "50% 50%",  // Rotate around the center
+    scrollTrigger: {
+      trigger: "#cog",           // The element that triggers the animation
+      start: "top 90%",          // Start the animation when #cog is 80% in the viewport
+      end: "bottom 10%",         // End the animation when the bottom of #cog is 20% out of the viewport
+      toggleActions: "play pause resume pause", // Play when in view, pause when out
+      markers: false             // Set to true if you want to see visual markers for debugging
+    }
+  });
+});
+
+
+//////////////////////////////////////////////////////////////////
+//
+// Float Animation Random selector control
+//
+//////////////////////////////////////////////////////////////////
+
+
+// Additional setup for elements with 'float' class
+  document.querySelectorAll('.float').forEach((element, index) => {
+    element.style.setProperty('--n', index + 1); // Add index-based custom property
+  });
+
+
+
