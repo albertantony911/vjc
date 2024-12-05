@@ -131,14 +131,6 @@
 }
 
 
-/**
- * ----------------------------------------
- * Hamburger menu animation ends
- * ----------------------------------------
- */
-
-
-
 
  /**
  * ----------------------------------------
@@ -253,16 +245,6 @@
 
 
 
-
- /**
- * ----------------------------------------
- * Logo carousel animation ends
- * ----------------------------------------
- */
-
-
-
-
   /**
  * --------------------------------------------------
  * Background Gradient and Transparency Mask starts
@@ -308,15 +290,6 @@
 }
 
 
- /**
- * --------------------------------------------------
- * Background Gradient and Transparency Mask ends
- * --------------------------------------------------
- */
-
-
-
-
 /**
  * --------------------------------------------------
  * Globe wrapper starts
@@ -342,13 +315,6 @@
     z-index: 3; /* Ensure it's above other elements */
     touch-action: pan-y; /* Allow vertical panning on touch devices */
 }
-
-/**
- * --------------------------------------------------
- * Globe wrapper ends
- * --------------------------------------------------
- */
-
 
 
 
@@ -386,14 +352,6 @@
     transform: translateY(-10px);
   }
 }
-
-/**
- * --------------------------------------------------
- * Infinite Floater Animation ends
- * --------------------------------------------------
- */
-
-
 
 
 
@@ -477,15 +435,6 @@
 }
 
 
-/**
- * --------------------------------------------------
- * Rotator Animation Main ends
- * --------------------------------------------------
- */
-
-
-
-
 
 
  /**
@@ -546,15 +495,6 @@
 
 
 
- /**
- * --------------------------------------------------
- * Rotator Animation Cloud ends
- * --------------------------------------------------
- */
-
-
-
-
 
  /**
  * --------------------------------------------------
@@ -610,15 +550,6 @@
 
 
 
- /**
- * --------------------------------------------------
- * Rotator Animation VCFO ends
- * --------------------------------------------------
- */
-
-
-
-
 
  /**
  * --------------------------------------------------
@@ -670,15 +601,6 @@
   animation: rotate-group 45s linear infinite;
   transform-origin: 1148.318px 1291.436px;
 }
-
-
-
-
- /**
- * --------------------------------------------------
- * Rotator Animation Audit ends
- * --------------------------------------------------
- */
 
 
 
@@ -765,15 +687,6 @@
 }
 
 
-  /**
- * --------------------------------------------------
- * Rotator Animation Legal ends
- * --------------------------------------------------
- */
-
-
-
-
 
 
  /**
@@ -837,16 +750,6 @@
 
 
 
- /**
- * --------------------------------------------------
- * Random Scaling Animation ends
- * --------------------------------------------------
- */
-
-
-
-
-
 
  /**
  * --------------------------------------------------
@@ -907,13 +810,6 @@
     transform: rotate(0deg); /* Return to original position */
   }
 }
-
-
- /**
- * --------------------------------------------------
- * Icon rotate right and left Animation ends
- * --------------------------------------------------
- */
 
 
 
@@ -1013,16 +909,6 @@
 
 
 
- /**
- * --------------------------------------------------
- * Pricebar Animation ends
- * --------------------------------------------------
- */
-
-
-
-
-
 
  /**
  * --------------------------------------------------
@@ -1039,13 +925,6 @@
   opacity: 1;
   transition: opacity 1.5s ease-out; /* Adjust duration as needed */
 }
-
- /**
- * --------------------------------------------------
- * PeriodBox Animation ends
- * --------------------------------------------------
- */
-
 
 
 
@@ -1078,14 +957,6 @@
 }
 
 
- /**
- * --------------------------------------------------
- * Vertical and horizontal Line Animation ends
- * --------------------------------------------------
- */
-
-
-
 
 
 
@@ -1114,12 +985,6 @@
     stroke-dashoffset: 40; /* Negative offset to create motion */
   }
 }
-
- /**
- * --------------------------------------------------
- * Cloud Line Animation ends
- * --------------------------------------------------
- */
 
 
 
@@ -1160,14 +1025,6 @@
 
 
 
-  /**
- * --------------------------------------------------
- * Blog Dots Animation ends
- * --------------------------------------------------
- */
-
-
-
 
    /**
  * --------------------------------------------------
@@ -1199,12 +1056,6 @@
 .typeFade.active:nth-child(4) { animation-delay: 0.7s; animation-duration: 2.8s; }
 .typeFade.active:nth-child(5) { animation-delay: 0.2s; animation-duration: 3s; }
 
-/**
- * --------------------------------------------------
- * Typing Animation ends
- * --------------------------------------------------
- */
-
 
 
 /**
@@ -1234,15 +1085,6 @@
 .bounce-left.active {
     animation: bounce-left 1s infinite;
 }
-
-/**
- * --------------------------------------------------
- * Arrow Bounce Animation ends
- * --------------------------------------------------
- */
-
-
-
 
 
  /**
@@ -1280,22 +1122,16 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 
 
 
-  /**
- * --------------------------------------------------
- * Calendar Dots Animation ends
- * --------------------------------------------------
- */
-
-
 
   /**
  * --------------------------------------------------
- * Floating Graph Dots Animation starts
+ * Floating Graph Dots Landing Animation starts
  * --------------------------------------------------
  */
 
 
 .float.active {
+
   animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
   animation-delay: calc(0.5s * var(--n));
 }
@@ -1313,12 +1149,55 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 }
 
 
-   /**
+
+  /**
  * --------------------------------------------------
- * Floating Graph Dots Animation ends
+ * Floating Graph Dots About Animation starts
  * --------------------------------------------------
  */
 
+
+.floatDot.active {
+  animation: floatAnimation calc(3s + var(--n) * 0.1s) ease-in-out infinite alternate;
+}
+
+.floatDot.active:nth-child(1) {
+  --n: 1;
+  animation-delay: calc(0.5s * 1);
+}
+
+.floatDot.active:nth-child(2) {
+  --n: 2;
+  animation-delay: calc(0.5s * 2);
+}
+
+.floatDot.active:nth-child(3) {
+  --n: 3;
+  animation-delay: calc(0.5s * 3);
+}
+
+.floatDot.active:nth-child(4) {
+  --n: 4;
+  animation-delay: calc(0.5s * 4);
+}
+
+.floatDot.active:nth-child(5) {
+  --n: 5;
+  animation-delay: calc(0.5s * 5);
+}
+
+
+@keyframes floatDotAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -30px);
+  }
+  100% {
+    transform: translate(-30px, 30px);
+  }
+}
 
 
 
@@ -1331,21 +1210,6 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 #calendarText {
   transition: opacity 1s ease-in-out; /* Smooth fade in and out */
 }
-
-    /**
- * --------------------------------------------------
- * Calendar Text Animation ends
- * --------------------------------------------------
- */
-
-
-
-
-
-
-/* Base float animation */
-
-
 
 
 
@@ -1405,14 +1269,6 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 .flasher.active {
     animation: blink 2s infinite; /* Adjust duration as needed */
 }
-
-
-/**
- * --------------------------------------------------
- * Typing Blinker Animation ends
- * --------------------------------------------------
- */
-
 
 
  /**

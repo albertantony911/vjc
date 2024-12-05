@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "typingFadeObserver", childSelector: ".typeFade", customClass: "active" },
     { className: "calendarDotsObserver", childSelector: ".calendarDots", customClass: "active" },
     { className: "floatObserver", childSelector: ".float", customClass: "active" },
+    { className: "floatDotObserver", childSelector: ".floatDot", customClass: "active" },
     { className: "blog1Observer", childSelector: ".blog1", customClass: "active" },
     { className: "blog2Observer", childSelector: ".blog2", customClass: "active" },
     { className: "flasherObserver", childSelector: ".flasher", customClass: "active" },
