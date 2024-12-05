@@ -94,6 +94,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//////////////////////////////////////////////////////////////////
+//
+// Logo Carousel Animation Control
+//
+//////////////////////////////////////////////////////////////////
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all marquees
+  const marquees = document.querySelectorAll('.marquee');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const marqueeItems = entry.target.querySelectorAll('.marquee__item');
+      if (entry.isIntersecting) {
+        // Play animation
+        marqueeItems.forEach(item => {
+          item.style.animationPlayState = 'running';
+        });
+      } else {
+        // Pause animation
+        marqueeItems.forEach(item => {
+          item.style.animationPlayState = 'paused';
+        });
+      }
+    });
+  }, {
+    threshold: 0.1 // Adjust this value based on when you want the animation to pause/play
+  });
+
+  // Observe each marquee
+  marquees.forEach(marquee => observer.observe(marquee));
+});
+
 
 
 //////////////////////////////////////////////////////////////////
