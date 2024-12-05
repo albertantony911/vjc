@@ -2368,6 +2368,26 @@ svg {
     height: 100%;
   }
 
+  .max-md\:size-\[105\%\] {
+    width: 105%;
+    height: 105%;
+  }
+
+  .max-md\:size-\[125\%\] {
+    width: 125%;
+    height: 125%;
+  }
+
+  .max-md\:size-\[\] {
+    width: ;
+    height: ;
+  }
+
+  .max-md\:size-\[110\%\] {
+    width: 110%;
+    height: 110%;
+  }
+
   .max-md\:h-\[35svh\] {
     height: 35svh;
   }
