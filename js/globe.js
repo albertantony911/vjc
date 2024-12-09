@@ -223,12 +223,6 @@ function alignCircleToSurface(circle, position, elevation = 0) {
     circle.setRotationFromQuaternion(quaternion);
 }
 
-function createCircle(geometryParams, materialParams) {
-    // Create a circle geometry and material in one step
-    const geometry = new THREE.CircleGeometry(...geometryParams);
-    const material = new THREE.MeshBasicMaterial(materialParams);
-    return new THREE.Mesh(geometry, material);
-}
 
 
 // Reuse geometry instances
