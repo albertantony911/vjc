@@ -1030,6 +1030,10 @@ html {
   height: 100vh;
 }
 
+.h-\[0\.1rem\] {
+  height: 0.1rem;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -1120,6 +1124,10 @@ html {
 
 .w-full {
   width: 100%;
+}
+
+.w-1 {
+  width: 0.25rem;
 }
 
 .min-w-full {
@@ -1272,6 +1280,10 @@ html {
   flex-wrap: wrap;
 }
 
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1282,6 +1294,10 @@ html {
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1348,6 +1364,10 @@ html {
   gap: 0px;
 }
 
+.gap-\[0\.2rem\] {
+  gap: 0.2rem;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1377,6 +1397,10 @@ html {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
 }
 
 .rounded-2xl {
@@ -1429,6 +1453,26 @@ html {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-\[4rem\] {
+  border-radius: 4rem;
+}
+
+.rounded-\[4svh\] {
+  border-radius: 4svh;
+}
+
+.rounded-\[5svh\] {
+  border-radius: 5svh;
+}
+
+.rounded-\[5\.5svh\] {
+  border-radius: 5.5svh;
+}
+
+.rounded-\[6svh\] {
+  border-radius: 6svh;
 }
 
 .border {
@@ -1704,6 +1748,11 @@ html {
   padding-bottom: 4vw;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1802,6 +1851,10 @@ html {
 
 .text-right {
   text-align: right;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .text-2xl {
@@ -2218,6 +2271,16 @@ svg {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.hover\:shadow-white:hover {
+  --tw-shadow-color: #fff;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-darkGreen:hover {
+  --tw-shadow-color: #7ED348;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .focus\:scale-105:focus {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -2227,6 +2290,11 @@ svg {
 .focus\:bg-white:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.focus\:shadow-darkGreen:focus {
+  --tw-shadow-color: #7ED348;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .focus\:outline-none:focus {
@@ -2244,7 +2312,27 @@ svg {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus-visible\:shadow-darkGreen:focus-visible {
+  --tw-shadow-color: #7ED348;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 @media not all and (min-width: 768px) {
+  .max-md\:mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .max-md\:mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .max-md\:mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
   .max-md\:mb-3 {
     margin-bottom: 0.75rem;
   }
@@ -2263,6 +2351,22 @@ svg {
 
   .max-md\:mt-3 {
     margin-top: 0.75rem;
+  }
+
+  .max-md\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .max-md\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
+  .max-md\:mt-7 {
+    margin-top: 1.75rem;
+  }
+
+  .max-md\:mt-1 {
+    margin-top: 0.25rem;
   }
 
   .max-md\:hidden {
@@ -2444,6 +2548,26 @@ svg {
     margin-right: 2rem;
   }
 
+  .md\:mx-12 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .md\:mx-16 {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .md\:mx-20 {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .md\:mx-\[4rem\] {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -2538,6 +2662,30 @@ svg {
 
   .md\:mt-\[8svh\] {
     margin-top: 8svh;
+  }
+
+  .md\:mt-7 {
+    margin-top: 1.75rem;
+  }
+
+  .md\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .md\:ml-\[0\.15rem\] {
+    margin-left: 0.15rem;
+  }
+
+  .md\:mb-3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .md\:mb-\[4svh\] {
+    margin-bottom: 4svh;
+  }
+
+  .md\:mb-10 {
+    margin-bottom: 2.5rem;
   }
 
   .md\:hidden {
@@ -2761,6 +2909,42 @@ svg {
     width: 2.5rem;
   }
 
+  .md\:w-2\/4 {
+    width: 50%;
+  }
+
+  .md\:w-2 {
+    width: 0.5rem;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
+  }
+
+  .md\:w-3\/4 {
+    width: 75%;
+  }
+
+  .md\:w-\[0\%\] {
+    width: 0%;
+  }
+
+  .md\:w-\[65\%\] {
+    width: 65%;
+  }
+
+  .md\:w-14 {
+    width: 3.5rem;
+  }
+
+  .md\:min-w-\[80rem\] {
+    min-width: 80rem;
+  }
+
+  .md\:min-w-\[75rem\] {
+    min-width: 75rem;
+  }
+
   .md\:max-w-\[100rem\] {
     max-width: 100rem;
   }
@@ -2878,6 +3062,26 @@ svg {
     gap: 3svh;
   }
 
+  .md\:gap-12 {
+    gap: 3rem;
+  }
+
+  .md\:gap-16 {
+    gap: 4rem;
+  }
+
+  .md\:gap-\[4svh\] {
+    gap: 4svh;
+  }
+
+  .md\:gap-\[3\.5svh\] {
+    gap: 3.5svh;
+  }
+
+  .md\:gap-1 {
+    gap: 0.25rem;
+  }
+
   .md\:rounded-\[2\.5svh\] {
     border-radius: 2.5svh;
   }
@@ -2928,6 +3132,14 @@ svg {
 
   .md\:rounded-\[2\.5rem\] {
     border-radius: 2.5rem;
+  }
+
+  .md\:rounded-\[5rem\] {
+    border-radius: 5rem;
+  }
+
+  .md\:rounded-\[4\.5rem\] {
+    border-radius: 4.5rem;
   }
 
   .md\:bg-darkBlue {
@@ -3097,6 +3309,16 @@ svg {
     padding-right: 0px;
   }
 
+  .md\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .md\:py-\[5svh\] {
+    padding-top: 5svh;
+    padding-bottom: 5svh;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3155,6 +3377,18 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
+  }
+
+  .md\:pb-10 {
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
+  .md\:pb-8 {
+    padding-bottom: 2rem;
   }
 
   .md\:text-center {
