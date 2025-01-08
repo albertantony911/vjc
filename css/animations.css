@@ -261,7 +261,7 @@
   background-color: white;
   background:
     linear-gradient(to right, white 0%, transparent 35%, transparent 70%, white 100%), /* Horizontal gradient */
-    linear-gradient(to bottom, white 0%, transparent 35%, transparent 70%, white 100%); /* Vertical gradient */
+    linear-gradient(to bottom, white 0%, transparent 30%, transparent 85%, white 100%); /* Vertical gradient */
 }
 
 
