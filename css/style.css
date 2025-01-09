@@ -2316,6 +2316,10 @@ svg {
     margin-top: 1.75rem;
   }
 
+  .max-md\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
   .max-md\:hidden {
     display: none;
   }
@@ -3305,6 +3309,41 @@ svg {
     line-height: 1.25rem;
   }
 
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-\[min\(2svh\2c 2rem\)\] {
+    font-size: min(2svh,2rem);
+  }
+
+  .md\:text-\[min\(5svh\2c 2rem\)\] {
+    font-size: min(5svh,2rem);
+  }
+
+  .md\:text-\[max\(5svh\2c 2rem\)\] {
+    font-size: max(5svh,2rem);
+  }
+
+  .md\:text-\[max\(2svh\2c 2rem\)\] {
+    font-size: max(2svh,2rem);
+  }
+
+  .md\:text-\[max\(2svh\2c 1rem\)\] {
+    font-size: max(2svh,1rem);
+  }
+
   .md\:leading-\[2\.5rem\] {
     line-height: 2.5rem;
   }
@@ -3320,6 +3359,16 @@ svg {
   .lg\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
@@ -3338,6 +3387,25 @@ svg {
 
   .xl\:p-\[2\.5svh\] {
     padding: 2.5svh;
+  }
+
+  .xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .xl\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .xl\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .xl\:text-\[1\.7rem\] {
+    font-size: 1.7rem;
   }
 }
 
