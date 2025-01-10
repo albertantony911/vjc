@@ -879,6 +879,14 @@ html {
   margin-top: 3.5rem;
 }
 
+.mt-\[5svh\] {
+  margin-top: 5svh;
+}
+
+.mt-\[3svh\] {
+  margin-top: 3svh;
+}
+
 .block {
   display: block;
 }
@@ -2859,6 +2867,16 @@ svg {
     height: 9svh;
   }
 
+  .md\:size-\[50svh\] {
+    width: 50svh;
+    height: 50svh;
+  }
+
+  .md\:size-\[45svh\] {
+    width: 45svh;
+    height: 45svh;
+  }
+
   .md\:h-\[16svw\] {
     height: 16svw;
   }
@@ -3118,6 +3136,10 @@ svg {
     gap: 4svh;
   }
 
+  .md\:gap-\[5svh\] {
+    gap: 5svh;
+  }
+
   .md\:rounded-\[2\.5svh\] {
     border-radius: 2.5svh;
   }
@@ -3164,6 +3186,14 @@ svg {
 
   .md\:p-8 {
     padding: 2rem;
+  }
+
+  .md\:p-\[5svh\] {
+    padding: 5svh;
+  }
+
+  .md\:p-\[2svh\] {
+    padding: 2svh;
   }
 
   .md\:px-0 {
@@ -3309,6 +3339,26 @@ svg {
   .md\:py-\[8svh\] {
     padding-top: 8svh;
     padding-bottom: 8svh;
+  }
+
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .md\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .md\:py-\[5svh\] {
+    padding-top: 5svh;
+    padding-bottom: 5svh;
   }
 
   .md\:pb-0 {
@@ -4128,12 +4178,48 @@ svg {
       width: 35%;
     }
 
+    .landscape\:md\:w-\[37\%\] {
+      width: 37%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @media (orientation: landscape) {
+    .md\:landscape\:w-\[80\%\] {
+      width: 80%;
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  @media (min-width: 768px) {
     .landscape\:md\:max-w-\[55svw\] {
       max-width: 55svw;
     }
 
     .landscape\:md\:max-w-\[65rem\] {
       max-width: 65rem;
+    }
+
+    .landscape\:md\:max-w-\[30svh\] {
+      max-width: 30svh;
+    }
+
+    .landscape\:md\:max-w-\[40svh\] {
+      max-width: 40svh;
+    }
+
+    .landscape\:md\:max-w-\[50svh\] {
+      max-width: 50svh;
+    }
+
+    .landscape\:md\:max-w-\[45svh\] {
+      max-width: 45svh;
+    }
+
+    .landscape\:md\:max-w-\[47svh\] {
+      max-width: 47svh;
     }
 
     .landscape\:md\:flex-row {
@@ -4148,6 +4234,10 @@ svg {
       gap: 3svh;
     }
 
+    .landscape\:md\:gap-\[6\%\] {
+      gap: 6%;
+    }
+
     .landscape\:md\:rounded-r-\[10svh\] {
       border-top-right-radius: 10svh;
       border-bottom-right-radius: 10svh;
@@ -4156,6 +4246,16 @@ svg {
     .landscape\:md\:py-\[4svh\] {
       padding-top: 4svh;
       padding-bottom: 4svh;
+    }
+
+    .landscape\:md\:py-\[5svh\] {
+      padding-top: 5svh;
+      padding-bottom: 5svh;
+    }
+
+    .landscape\:md\:py-\[7svh\] {
+      padding-top: 7svh;
+      padding-bottom: 7svh;
     }
 
     .landscape\:md\:pl-\[13svh\] {
