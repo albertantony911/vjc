@@ -179,7 +179,7 @@ function updateSize() {
 
     // Determine the minimum side and the new size based on the window dimensions
     const minSide = Math.min(windowWidth, windowHeight);
-    const newSize = windowHeight > windowWidth ? minSide : 0.38 * windowWidth;
+    const newSize = windowHeight > windowWidth ? minSide : 0.43 * windowWidth;
 
     // Update only if the size has actually changed
     if (initialSize !== newSize) {
