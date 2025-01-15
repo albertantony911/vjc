@@ -731,11 +731,6 @@ html {
   margin-bottom: auto;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -882,10 +877,6 @@ html {
 
 .mt-\[3svh\] {
   margin-top: 3svh;
-}
-
-.mt-\[5svh\] {
-  margin-top: 5svh;
 }
 
 .mt-\[7svh\] {
@@ -1696,11 +1687,6 @@ html {
   padding-bottom: 3rem;
 }
 
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1762,10 +1748,6 @@ html {
 
 .pb-12 {
   padding-bottom: 3rem;
-}
-
-.pb-14 {
-  padding-bottom: 3.5rem;
 }
 
 .pb-16 {
@@ -1844,10 +1826,6 @@ html {
   padding-top: 1.25rem;
 }
 
-.pt-7 {
-  padding-top: 1.75rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1919,10 +1897,6 @@ html {
 
 .text-\[5\.5vw\] {
   font-size: 5.5vw;
-}
-
-.text-\[6vw\] {
-  font-size: 6vw;
 }
 
 .text-\[7vw\] {
@@ -2546,6 +2520,11 @@ svg {
 }
 
 @media (min-width: 768px) {
+  .md\:mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
   .md\:mx-\[4rem\] {
     margin-left: 4rem;
     margin-right: 4rem;
@@ -2566,11 +2545,6 @@ svg {
     margin-bottom: 1svh;
   }
 
-  .md\:mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -2581,10 +2555,6 @@ svg {
 
   .md\:mb-12 {
     margin-bottom: 3rem;
-  }
-
-  .md\:mb-16 {
-    margin-bottom: 4rem;
   }
 
   .md\:mb-2 {
@@ -2609,10 +2579,6 @@ svg {
 
   .md\:mb-\[5svh\] {
     margin-bottom: 5svh;
-  }
-
-  .md\:mb-\[6svh\] {
-    margin-bottom: 6svh;
   }
 
   .md\:ml-2 {
@@ -2651,6 +2617,10 @@ svg {
     margin-top: 2rem;
   }
 
+  .md\:mt-\[0\.2rem\] {
+    margin-top: 0.2rem;
+  }
+
   .md\:mt-\[1svh\] {
     margin-top: 1svh;
   }
@@ -2681,10 +2651,6 @@ svg {
 
   .md\:mt-\[8svh\] {
     margin-top: 8svh;
-  }
-
-  .md\:mt-\[0\.2rem\] {
-    margin-top: 0.2rem;
   }
 
   .md\:hidden {
@@ -3217,11 +3183,6 @@ svg {
     padding-bottom: 7svh;
   }
 
-  .md\:py-\[8svh\] {
-    padding-top: 8svh;
-    padding-bottom: 8svh;
-  }
-
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3288,10 +3249,6 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
-  }
-
-  .md\:pb-\[7svh\] {
-    padding-bottom: 7svh;
   }
 
   .md\:text-center {
@@ -3699,14 +3656,6 @@ svg {
       gap: 3svw;
     }
 
-    .portrait\:md\:gap-\[5svh\] {
-      gap: 5svh;
-    }
-
-    .portrait\:md\:gap-\[6svh\] {
-      gap: 6svh;
-    }
-
     .portrait\:md\:rounded-\[2svh\] {
       border-radius: 2svh;
     }
@@ -3891,11 +3840,6 @@ svg {
       right: 100%;
     }
 
-    .landscape\:md\:mx-\[4rem\] {
-      margin-left: 4rem;
-      margin-right: 4rem;
-    }
-
     .landscape\:md\:mx-auto {
       margin-left: auto;
       margin-right: auto;
@@ -3924,10 +3868,6 @@ svg {
 
     .landscape\:md\:mt-2 {
       margin-top: 0.5rem;
-    }
-
-    .landscape\:md\:mt-\[0\.2rem\] {
-      margin-top: 0.2rem;
     }
 
     .landscape\:md\:mt-\[10svh\] {
@@ -3963,14 +3903,6 @@ svg {
       width: 5rem;
     }
 
-    .landscape\:md\:w-3\/4 {
-      width: 75%;
-    }
-
-    .landscape\:md\:w-\[30\%\] {
-      width: 30%;
-    }
-
     .landscape\:md\:w-\[39\%\] {
       width: 39%;
     }
@@ -3995,8 +3927,8 @@ svg {
       width: 55%;
     }
 
-    .landscape\:md\:w-\[70\%\] {
-      width: 70%;
+    .landscape\:md\:w-\[97\%\] {
+      width: 97%;
     }
   }
 }
@@ -4011,42 +3943,6 @@ svg {
 
 @media (orientation: landscape) {
   @media (min-width: 768px) {
-    .landscape\:md\:w-\[80\%\] {
-      width: 80%;
-    }
-
-    .landscape\:md\:w-\[85\%\] {
-      width: 85%;
-    }
-
-    .landscape\:md\:w-\[90\%\] {
-      width: 90%;
-    }
-
-    .landscape\:md\:w-\[95\%\] {
-      width: 95%;
-    }
-
-    .landscape\:md\:w-\[97\%\] {
-      width: 97%;
-    }
-
-    .landscape\:md\:w-\[97\] {
-      width: 97;
-    }
-
-    .landscape\:md\:min-w-\[75rem\] {
-      min-width: 75rem;
-    }
-
-    .landscape\:md\:min-w-\[85rem\] {
-      min-width: 85rem;
-    }
-
-    .landscape\:md\:min-w-\[70rem\] {
-      min-width: 70rem;
-    }
-
     .landscape\:md\:max-w-\[50svh\] {
       max-width: 50svh;
     }
@@ -4088,16 +3984,6 @@ svg {
       border-bottom-right-radius: 10svh;
     }
 
-    .landscape\:md\:px-0 {
-      padding-left: 0px;
-      padding-right: 0px;
-    }
-
-    .landscape\:md\:py-10 {
-      padding-top: 2.5rem;
-      padding-bottom: 2.5rem;
-    }
-
     .landscape\:md\:py-\[0svh\] {
       padding-top: 0svh;
       padding-bottom: 0svh;
@@ -4129,15 +4015,6 @@ svg {
       line-height: 2.25rem;
     }
 
-    .landscape\:md\:text-\[0\.9rem\] {
-      font-size: 0.9rem;
-    }
-
-    .landscape\:md\:text-base {
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
-
     .landscape\:md\:leading-\[2\.5rem\] {
       line-height: 2.5rem;
     }
@@ -4157,19 +4034,7 @@ svg {
     .lg\:landscape\:mb-\[3svh\] {
       margin-bottom: 3svh;
     }
-  }
-}
 
-@media (orientation: landscape) {
-  @media (min-width: 1024px) {
-    .landscape\:lg\:flex-row {
-      flex-direction: row;
-    }
-  }
-}
-
-@media (min-width: 1024px) {
-  @media (orientation: landscape) {
     .lg\:landscape\:px-5 {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
@@ -4185,14 +4050,14 @@ svg {
       padding-bottom: 0.75rem;
     }
 
-    .lg\:landscape\:py-5 {
-      padding-top: 1.25rem;
-      padding-bottom: 1.25rem;
-    }
-
     .lg\:landscape\:py-4 {
       padding-top: 1rem;
       padding-bottom: 1rem;
+    }
+
+    .lg\:landscape\:py-5 {
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
   }
 }
@@ -4241,20 +4106,20 @@ svg {
       width: 50%;
     }
 
-    .landscape\:xl\:w-full {
-      width: 100%;
-    }
-
     .landscape\:xl\:w-3\/4 {
       width: 75%;
+    }
+
+    .landscape\:xl\:w-\[30\%\] {
+      width: 30%;
     }
 
     .landscape\:xl\:w-\[70\%\] {
       width: 70%;
     }
 
-    .landscape\:xl\:w-\[30\%\] {
-      width: 30%;
+    .landscape\:xl\:w-full {
+      width: 100%;
     }
 
     .landscape\:xl\:min-w-\[75rem\] {
