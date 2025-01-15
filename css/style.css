@@ -2870,6 +2870,14 @@ svg {
     width: 100svw;
   }
 
+  .md\:w-\[37svh\] {
+    width: 37svh;
+  }
+
+  .md\:w-\[35svh\] {
+    width: 35svh;
+  }
+
   .md\:min-w-\[75rem\] {
     min-width: 75rem;
   }
@@ -3899,6 +3907,14 @@ svg {
       height: min-content;
     }
 
+    .landscape\:md\:h-\[70svh\] {
+      height: 70svh;
+    }
+
+    .landscape\:md\:h-\[65svh\] {
+      height: 65svh;
+    }
+
     .landscape\:md\:w-20 {
       width: 5rem;
     }
@@ -3943,6 +3959,10 @@ svg {
 
 @media (orientation: landscape) {
   @media (min-width: 768px) {
+    .landscape\:md\:w-\[50\%\] {
+      width: 50%;
+    }
+
     .landscape\:md\:max-w-\[50svh\] {
       max-width: 50svh;
     }
@@ -4008,6 +4028,30 @@ svg {
 
     .landscape\:md\:pt-\[10svh\] {
       padding-top: 10svh;
+    }
+
+    .landscape\:md\:pl-\[10svh\] {
+      padding-left: 10svh;
+    }
+
+    .landscape\:md\:pl-\[15svh\] {
+      padding-left: 15svh;
+    }
+
+    .landscape\:md\:pl-\[12svh\] {
+      padding-left: 12svh;
+    }
+
+    .landscape\:md\:pr-\[5svh\] {
+      padding-right: 5svh;
+    }
+
+    .landscape\:md\:pr-\[10svh\] {
+      padding-right: 10svh;
+    }
+
+    .landscape\:md\:pr-\[7svh\] {
+      padding-right: 7svh;
     }
 
     .landscape\:md\:text-3xl {
