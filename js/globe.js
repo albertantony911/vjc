@@ -1,18 +1,17 @@
 // threeModules.js
 import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js";
 import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
 
-export { THREE, OrbitControls, Line2, LineMaterial, LineGeometry };
+export { THREE, Line2, LineMaterial, LineGeometry };
 
     
 
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
 
-let renderer, scene, camera, controls;
+let renderer, scene, camera;
 let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
 let animationFrameId; // Track the animation frame ID
@@ -49,7 +48,6 @@ function initScene() {
 
     clock = new THREE.Clock();
 
-    createOrbitControls();
 
     new THREE.TextureLoader().load("./img/map.webp", (mapTex) => {
         earthTexture = mapTex;
@@ -64,7 +62,7 @@ let angle = 0;
 
 function render() {
   const delta = clock.getDelta();
-  angle += 0.1 * delta; // rotate 0.5 radians/sec
+  angle += 0.12 * delta; // rotate 0.5 radians/sec
 
   // Suppose radius is 2 units from center:
   const radius = 1.5;
@@ -74,7 +72,7 @@ function render() {
     radius * Math.sin(angle)
   );
   camera.lookAt(0,0,0);
-
+  updateOpacity();
   renderer.render(scene, camera);
   requestAnimationFrame(render);
 }
@@ -83,16 +81,6 @@ let initialSize;
 
 
 
-function createOrbitControls() {
-    controls = new OrbitControls(camera, canvas3D);
-    controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.enableDamping = true;
-    controls.enableRotate = false;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 0.8;
-    controls.domElement.style.pointerEvents = 'none';
-}
 
 function createGlobe() {
     const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
