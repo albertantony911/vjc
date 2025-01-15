@@ -59,15 +59,24 @@ function initScene() {
     });
 }
 
-// Simplified render function without conditions
-function render() {
-    mapMaterial.uniforms.u_time_since_click.value = clock.getElapsedTime();
-    controls.update();
-    updateOpacity();
-    renderer.render(scene, camera);
+// Some angle accumulates over time:
+let angle = 0;
 
-    // Save the animation frame ID for pausing
-    animationFrameId = requestAnimationFrame(render);
+function render() {
+  const delta = clock.getDelta();
+  angle += 0.1 * delta; // rotate 0.5 radians/sec
+
+  // Suppose radius is 2 units from center:
+  const radius = 1.5;
+  camera.position.set(
+    radius * Math.cos(angle),
+    0, 
+    radius * Math.sin(angle)
+  );
+  camera.lookAt(0,0,0);
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(render);
 }
 
 let initialSize;
@@ -80,7 +89,7 @@ function createOrbitControls() {
     controls.enableZoom = false;
     controls.enableDamping = true;
     controls.enableRotate = false;
-    controls.autoRotate = true;
+    controls.autoRotate = false;
     controls.autoRotateSpeed = 0.8;
     controls.domElement.style.pointerEvents = 'none';
 }
