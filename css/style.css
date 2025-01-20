@@ -883,6 +883,10 @@ html {
   margin-top: 7svh;
 }
 
+.mt-\[5svh\] {
+  margin-top: 5svh;
+}
+
 .block {
   display: block;
 }
@@ -2916,6 +2920,10 @@ svg {
 
   .md\:w-svw {
     width: 100svw;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
   }
 
   .md\:min-w-\[75rem\] {
