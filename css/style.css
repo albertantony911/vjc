@@ -2000,26 +2000,6 @@ html {
   line-height: 1.25;
 }
 
-.leading-\[1rem\] {
-  line-height: 1rem;
-}
-
-.leading-\[1\.2rem\] {
-  line-height: 1.2rem;
-}
-
-.leading-\[1\.25rem\] {
-  line-height: 1.25rem;
-}
-
-.leading-\[1\.5rem\] {
-  line-height: 1.5rem;
-}
-
-.leading-\[1\.6rem\] {
-  line-height: 1.6rem;
-}
-
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
@@ -2442,21 +2422,6 @@ svg {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .max-md\:translate-y-\[5rem\] {
-    --tw-translate-y: 5rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .max-md\:translate-y-\[3rem\] {
-    --tw-translate-y: 3rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .max-md\:translate-y-\[2rem\] {
-    --tw-translate-y: 2rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
   .max-md\:translate-y-\[1rem\] {
     --tw-translate-y: 1rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2501,6 +2466,11 @@ svg {
     padding-right: 0.5rem;
   }
 
+  .max-md\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
   .max-md\:px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -2524,11 +2494,6 @@ svg {
   .max-md\:py-\[1\.45rem\] {
     padding-top: 1.45rem;
     padding-bottom: 1.45rem;
-  }
-
-  .max-md\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
   }
 
   .max-md\:pb-10 {
@@ -2807,11 +2772,6 @@ svg {
     height: 9svh;
   }
 
-  .md\:size-\[14svh\] {
-    width: 14svh;
-    height: 14svh;
-  }
-
   .md\:h-\[16svw\] {
     height: 16svw;
   }
@@ -2900,6 +2860,14 @@ svg {
     width: 50svh;
   }
 
+  .md\:w-\[55\%\] {
+    width: 55%;
+  }
+
+  .md\:w-\[55svh\] {
+    width: 55svh;
+  }
+
   .md\:w-\[60\%\] {
     width: 60%;
   }
@@ -2948,26 +2916,6 @@ svg {
 
   .md\:w-svw {
     width: 100svw;
-  }
-
-  .md\:w-\[55\%\] {
-    width: 55%;
-  }
-
-  .md\:w-\[55svh\] {
-    width: 55svh;
-  }
-
-  .md\:w-\[60svh\] {
-    width: 60svh;
-  }
-
-  .md\:w-\[57svh\] {
-    width: 57svh;
-  }
-
-  .md\:w-24 {
-    width: 6rem;
   }
 
   .md\:min-w-\[75rem\] {
@@ -3421,6 +3369,10 @@ svg {
     font-size: 2.2svh;
   }
 
+  .md\:text-\[2\.3svh\] {
+    font-size: 2.3svh;
+  }
+
   .md\:text-\[2\.5svh\] {
     font-size: 2.5svh;
   }
@@ -3457,10 +3409,6 @@ svg {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .md\:text-\[2\.3svh\] {
-    font-size: 2.3svh;
   }
 
   .md\:leading-\[2\.5rem\] {
@@ -3962,10 +3910,6 @@ svg {
     gap: 5svh;
   }
 
-  .landscape\:gap-\[3svh\] {
-    gap: 3svh;
-  }
-
   .landscape\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -4107,10 +4051,6 @@ svg {
       width: 97%;
     }
 
-    .landscape\:md\:max-w-\[50svh\] {
-      max-width: 50svh;
-    }
-
     .landscape\:md\:max-w-\[55svw\] {
       max-width: 55svw;
     }
@@ -4119,24 +4059,8 @@ svg {
       max-width: 65rem;
     }
 
-    .landscape\:md\:max-w-\[60svh\] {
-      max-width: 60svh;
-    }
-
-    .landscape\:md\:max-w-\[65svh\] {
-      max-width: 65svh;
-    }
-
-    .landscape\:md\:max-w-\[70svh\] {
-      max-width: 70svh;
-    }
-
     .landscape\:md\:max-w-\[75svh\] {
       max-width: 75svh;
-    }
-
-    .landscape\:md\:max-w-\[80svh\] {
-      max-width: 80svh;
     }
 
     .landscape\:md\:flex-row {
@@ -4147,24 +4071,16 @@ svg {
       flex-direction: row-reverse;
     }
 
+    .landscape\:md\:gap-0 {
+      gap: 0px;
+    }
+
     .landscape\:md\:gap-8 {
       gap: 2rem;
     }
 
-    .landscape\:md\:gap-\[0\.5svh\] {
-      gap: 0.5svh;
-    }
-
     .landscape\:md\:gap-\[3svh\] {
       gap: 3svh;
-    }
-
-    .landscape\:md\:gap-\[0svh\] {
-      gap: 0svh;
-    }
-
-    .landscape\:md\:gap-0 {
-      gap: 0px;
     }
 
     .landscape\:md\:rounded-\[4rem\] {
@@ -4186,6 +4102,11 @@ svg {
       padding-right: 2svh;
     }
 
+    .landscape\:md\:px-\[5svh\] {
+      padding-left: 5svh;
+      padding-right: 5svh;
+    }
+
     .landscape\:md\:py-\[0svh\] {
       padding-top: 0svh;
       padding-bottom: 0svh;
@@ -4194,21 +4115,6 @@ svg {
     .landscape\:md\:py-\[4svh\] {
       padding-top: 4svh;
       padding-bottom: 4svh;
-    }
-
-    .landscape\:md\:px-\[10svh\] {
-      padding-left: 10svh;
-      padding-right: 10svh;
-    }
-
-    .landscape\:md\:px-32 {
-      padding-left: 8rem;
-      padding-right: 8rem;
-    }
-
-    .landscape\:md\:px-\[5svh\] {
-      padding-left: 5svh;
-      padding-right: 5svh;
     }
 
     .landscape\:md\:pl-\[13svh\] {
@@ -4242,30 +4148,6 @@ svg {
 
     .landscape\:md\:leading-\[2\.5rem\] {
       line-height: 2.5rem;
-    }
-
-    .landscape\:md\:leading-\[1\.8rem\] {
-      line-height: 1.8rem;
-    }
-
-    .landscape\:md\:leading-\[1\.9rem\] {
-      line-height: 1.9rem;
-    }
-
-    .landscape\:md\:leading-\[2rem\] {
-      line-height: 2rem;
-    }
-
-    .landscape\:md\:leading-\[2svh\] {
-      line-height: 2svh;
-    }
-
-    .landscape\:md\:leading-\[3svh\] {
-      line-height: 3svh;
-    }
-
-    .landscape\:md\:leading-\[3\.2svh\] {
-      line-height: 3.2svh;
     }
 
     .landscape\:md\:leading-\[3\.5svh\] {
@@ -4383,10 +4265,6 @@ svg {
       flex-direction: row;
     }
 
-    .landscape\:xl\:justify-center {
-      justify-content: center;
-    }
-
     .landscape\:xl\:px-0 {
       padding-left: 0px;
       padding-right: 0px;
@@ -4401,10 +4279,6 @@ svg {
   @media (min-width: 1536px) {
     .landscape\:2xl\:justify-center {
       justify-content: center;
-    }
-
-    .landscape\:2xl\:gap-\[5svh\] {
-      gap: 5svh;
     }
 
     .landscape\:2xl\:gap-\[10svh\] {
