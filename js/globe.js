@@ -42,7 +42,7 @@ function initScene() {
     renderer.setPixelRatio(2);
 
     scene = new THREE.Scene();
-    camera = new THREE.OrthographicCamera(-1.23, 1.23, 1.23, -1.23, 0, 3);
+    camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
     camera.position.set(-0.2, -0.2, 1.45);
     camera.lookAt(0, 0, 0);
 
@@ -176,7 +176,7 @@ function updateSize() {
 
     // Determine the minimum side and the new size based on the window dimensions
     const minSide = Math.min(windowWidth, windowHeight);
-    const newSize = windowHeight > windowWidth ? minSide : 0.35 * windowWidth;
+    const newSize = windowHeight > windowWidth ? minSide : 0.39 * windowWidth;
 
     // Update only if the size has actually changed
     if (initialSize !== newSize) {
