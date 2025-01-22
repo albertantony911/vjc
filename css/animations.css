@@ -156,7 +156,7 @@
     --marquee-item-width: 75px;
     --marquee-item-height: 75px;
     --marquee-duration: 30s;
-    --marquee-items: 9;
+    --marquee-items: 11;
 }
 
 /* Settings for smaller marquee with fewer items */
@@ -241,6 +241,14 @@
 
 .marquee__item:nth-of-type(9) {
     --marquee-item-index: 9;
+}
+
+.marquee__item:nth-of-type(10) {
+    --marquee-item-index: 10;
+}
+
+.marquee__item:nth-of-type(11) {
+    --marquee-item-index: 11;
 }
 
 

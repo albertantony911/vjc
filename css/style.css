@@ -887,6 +887,10 @@ html {
   margin-top: 5svh;
 }
 
+.mt-\[4svh\] {
+  margin-top: 4svh;
+}
+
 .block {
   display: block;
 }
@@ -1044,6 +1048,10 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[75svh\] {
+  height: 75svh;
 }
 
 .w-12 {
@@ -1538,6 +1546,10 @@ html {
   --tw-bg-opacity: 0.65;
 }
 
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -1759,6 +1771,16 @@ html {
   padding-bottom: 4vw;
 }
 
+.px-\[5\.6vw\] {
+  padding-left: 5.6vw;
+  padding-right: 5.6vw;
+}
+
+.py-\[3\.6vw\] {
+  padding-top: 3.6vw;
+  padding-bottom: 3.6vw;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1938,6 +1960,14 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[5vw\] {
+  font-size: 5vw;
+}
+
+.text-\[4\.4vw\] {
+  font-size: 4.4vw;
 }
 
 .font-\[100\] {
@@ -2359,6 +2389,18 @@ svg {
     margin-top: 0.5rem;
   }
 
+  .max-md\:mt-\[2svh\] {
+    margin-top: 2svh;
+  }
+
+  .max-md\:mt-\[5svh\] {
+    margin-top: 5svh;
+  }
+
+  .max-md\:mt-\[3svh\] {
+    margin-top: 3svh;
+  }
+
   .max-md\:hidden {
     display: none;
   }
@@ -2389,6 +2431,18 @@ svg {
   }
 
   .max-md\:h-auto {
+    height: auto;
+  }
+
+  .max-md\:h-\[75svh\] {
+    height: 75svh;
+  }
+
+  .max-md\:h-\[95svh\] {
+    height: 95svh;
+  }
+
+  .max-md\:h-\[auto\] {
     height: auto;
   }
 
@@ -2428,6 +2482,21 @@ svg {
 
   .max-md\:translate-y-\[1rem\] {
     --tw-translate-y: 1rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .max-md\:translate-y-\[0\.8rem\] {
+    --tw-translate-y: 0.8rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .max-md\:translate-y-\[0\.6rem\] {
+    --tw-translate-y: 0.6rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .max-md\:translate-y-\[0\.7rem\] {
+    --tw-translate-y: 0.7rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -2512,6 +2581,38 @@ svg {
     padding-top: 0.25rem;
   }
 
+  .max-md\:pt-\[1\.45rem\] {
+    padding-top: 1.45rem;
+  }
+
+  .max-md\:pt-\[1\.5rem\] {
+    padding-top: 1.5rem;
+  }
+
+  .max-md\:pt-\[1\.6rem\] {
+    padding-top: 1.6rem;
+  }
+
+  .max-md\:pb-\[1\.6rem\] {
+    padding-bottom: 1.6rem;
+  }
+
+  .max-md\:pb-\[2rem\] {
+    padding-bottom: 2rem;
+  }
+
+  .max-md\:pt-\[1\.3rem\] {
+    padding-top: 1.3rem;
+  }
+
+  .max-md\:pt-\[1rem\] {
+    padding-top: 1rem;
+  }
+
+  .max-md\:pb-\[2\.5rem\] {
+    padding-bottom: 2.5rem;
+  }
+
   .max-md\:text-left {
     text-align: left;
   }
@@ -2530,6 +2631,34 @@ svg {
 
   .max-md\:leading-\[1\.27rem\] {
     line-height: 1.27rem;
+  }
+
+  .max-md\:leading-\[1\.3rem\] {
+    line-height: 1.3rem;
+  }
+
+  .max-md\:leading-\[1\.5rem\] {
+    line-height: 1.5rem;
+  }
+
+  .max-md\:leading-relaxed {
+    line-height: 1.625;
+  }
+
+  .max-md\:leading-snug {
+    line-height: 1.375;
+  }
+
+  .max-md\:leading-\[1\.4rem\] {
+    line-height: 1.4rem;
+  }
+
+  .max-md\:leading-\[1rem\] {
+    line-height: 1rem;
+  }
+
+  .max-md\:leading-\[1\.2rem\] {
+    line-height: 1.2rem;
   }
 }
 
@@ -2796,6 +2925,10 @@ svg {
     width: 5rem;
   }
 
+  .md\:w-24 {
+    width: 6rem;
+  }
+
   .md\:w-3\/4 {
     width: 75%;
   }
@@ -2920,10 +3053,6 @@ svg {
 
   .md\:w-svw {
     width: 100svw;
-  }
-
-  .md\:w-24 {
-    width: 6rem;
   }
 
   .md\:min-w-\[75rem\] {
@@ -3687,6 +3816,14 @@ svg {
       height: 80svh;
     }
 
+    .portrait\:md\:h-\[35vh\] {
+      height: 35vh;
+    }
+
+    .portrait\:md\:h-\[75svh\] {
+      height: 75svh;
+    }
+
     .portrait\:md\:w-\[15\%\] {
       width: 15%;
     }
@@ -4010,8 +4147,8 @@ svg {
       display: none;
     }
 
-    .landscape\:md\:h-\[63svh\] {
-      height: 63svh;
+    .landscape\:md\:h-\[70svh\] {
+      height: 70svh;
     }
 
     .landscape\:md\:h-\[75\%\] {
@@ -4057,6 +4194,10 @@ svg {
 
     .landscape\:md\:w-\[97\%\] {
       width: 97%;
+    }
+
+    .landscape\:md\:w-full {
+      width: 100%;
     }
 
     .landscape\:md\:max-w-\[55svw\] {

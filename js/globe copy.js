@@ -128,7 +128,7 @@ function createGlobe() {
         // Fetch the color from the texture and apply the original tint
         vec3 color = texture2D(u_map_tex, vUv).rgb;
         vec3 originalTint = vec3(0.6, 0.9, 1.3);
-        color = mix(color, originalTint, 0.9);
+        color = mix(color, originalTint, 0.5);
 
         // Calculate distance to the center of the point once
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
@@ -159,9 +159,9 @@ function createGlobe() {
     globeMesh = new THREE.Mesh(
         globeGeometry,
         new THREE.MeshBasicMaterial({
-            color: 0x318CE7,
+            color: 0xdbe9f4,
             transparent: true,
-            opacity: 0.1
+            opacity: 0.15
         })
     );
     scene.add(globeMesh);
@@ -169,47 +169,28 @@ function createGlobe() {
 
 
 
-// Customize these ratios:
-const PORTRAIT_RATIO = 0.9; // e.g., 50% of the smaller dimension in portrait
-const LANDSCAPE_RATIO = 0.39; // e.g., 40% of the larger dimension in landscape
-
 function updateSize() {
+    // Cache window dimensions to avoid repeated recalculation
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-    
+
+    // Determine the minimum side and the new size based on the window dimensions
     const minSide = Math.min(windowWidth, windowHeight);
-    const maxSide = Math.max(windowWidth, windowHeight);
+    const newSize = windowHeight > windowWidth ? minSide : 0.39 * windowWidth;
 
-    let newSize;
-
-    if (windowWidth < windowHeight) {
-        // Portrait orientation — use smaller side with a custom ratio
-        newSize = PORTRAIT_RATIO * minSide;
-    } else {
-        // Landscape orientation — you could use minSide or maxSide
-        // depending on your design preference
-        newSize = LANDSCAPE_RATIO * maxSide;
-    }
-
-    // Update only if the size has changed
+    // Update only if the size has actually changed
     if (initialSize !== newSize) {
         initialSize = newSize;
 
-        // Set width/height
-        containerEl.style.cssText = `
-            width: ${initialSize}px;
-            height: ${initialSize}px;
-        `;
+        // Set width and height together for performance
+        containerEl.style.cssText = `width: ${initialSize}px; height: ${initialSize}px;`;
 
-        // Resize renderer
+        // Update renderer size and material uniform value
         renderer.setSize(initialSize, initialSize);
-
-        // Update uniforms, like dot size
         const newDotSize = 0.04 * initialSize;
         mapMaterial.uniforms.u_dot_size.value = newDotSize;
     }
 }
-
 
 // Debounce function to limit the rate at which updateSize is called during resize events
 function debounce(func, delay) {
@@ -247,7 +228,7 @@ const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 // Base material properties - these can be cloned for each instance
 const baseMaterialProps = {
-    color: 0xFFFFFF,
+    color: 0x01377D,
     transparent: true,
     opacity: 1,
     side: THREE.DoubleSide
@@ -371,7 +352,7 @@ function animateArc(points, start, end, reverse = false) {
     let pointIndex = 0;
     const arcMaterial = new LineMaterial({
         color: 0x7CBA3A,
-        linewidth: 2,
+        linewidth: 1.5,
         resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
         depthTest: true,
         transparent: true,
