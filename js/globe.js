@@ -58,11 +58,11 @@ function initScene() {
 }
 
 // Some angle accumulates over time:
-let angle = 0;
+let angle = Math.PI / 2.8;
 
 function render() {
   const delta = clock.getDelta();
-  angle += 0.12 * delta; // rotate 0.5 radians/sec
+  angle += 0.05 * delta; // rotate 0.5 radians/sec
 
   // Suppose radius is 2 units from center:
   const radius = 1.5;
@@ -170,45 +170,43 @@ function createGlobe() {
 
 
 // Customize these ratios:
-const PORTRAIT_RATIO = 0.9; // e.g., 50% of the smaller dimension in portrait
-const LANDSCAPE_RATIO = 0.39; // e.g., 40% of the larger dimension in landscape
+const PORTRAIT_RATIO = 0.9;    // e.g., 90% of smaller side in portrait
+const LANDSCAPE_RATIO = 0.7;   // e.g., 70% of the height in landscape
 
 function updateSize() {
-    const windowWidth = window.innerWidth;
+    const windowWidth  = window.innerWidth;
     const windowHeight = window.innerHeight;
-    
+
     const minSide = Math.min(windowWidth, windowHeight);
-    const maxSide = Math.max(windowWidth, windowHeight);
 
     let newSize;
 
     if (windowWidth < windowHeight) {
-        // Portrait orientation — use smaller side with a custom ratio
+        // Portrait orientation: 
+        // pick 0.9 * smaller side (portrait means width < height)
         newSize = PORTRAIT_RATIO * minSide;
     } else {
-        // Landscape orientation — you could use minSide or maxSide
-        // depending on your design preference
-        newSize = LANDSCAPE_RATIO * maxSide;
+        // Landscape orientation: 
+        // pick 0.7 * the height
+        newSize = LANDSCAPE_RATIO * windowHeight;
     }
 
-    // Update only if the size has changed
+    // Only update if size changed
     if (initialSize !== newSize) {
         initialSize = newSize;
 
-        // Set width/height
         containerEl.style.cssText = `
-            width: ${initialSize}px;
+            width:  ${initialSize}px;
             height: ${initialSize}px;
         `;
 
-        // Resize renderer
         renderer.setSize(initialSize, initialSize);
 
-        // Update uniforms, like dot size
         const newDotSize = 0.04 * initialSize;
         mapMaterial.uniforms.u_dot_size.value = newDotSize;
     }
 }
+
 
 
 // Debounce function to limit the rate at which updateSize is called during resize events
