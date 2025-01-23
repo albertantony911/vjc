@@ -4040,6 +4040,10 @@ svg {
       display: none;
     }
 
+    .landscape\:md\:h-\[70svh\] {
+      height: 70svh;
+    }
+
     .landscape\:md\:h-\[75\%\] {
       height: 75%;
     }
@@ -4051,26 +4055,6 @@ svg {
     .landscape\:md\:h-min {
       height: -moz-min-content;
       height: min-content;
-    }
-
-    .landscape\:md\:h-\[40svw\] {
-      height: 40svw;
-    }
-
-    .landscape\:md\:h-\[40svh\] {
-      height: 40svh;
-    }
-
-    .landscape\:md\:h-\[70svh\] {
-      height: 70svh;
-    }
-
-    .landscape\:md\:h-\[60svh\] {
-      height: 60svh;
-    }
-
-    .landscape\:md\:h-\[65svh\] {
-      height: 65svh;
     }
 
     .landscape\:md\:w-20 {
