@@ -18,19 +18,20 @@ let animationFrameId; // Track the animation frame ID
 
 // Create the observer to detect when the globe is in the viewport
 const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                // Start rendering when in view
-                render();
-            } else {
-                // Stop rendering when out of view
-                cancelAnimationFrame(animationFrameId);
-            }
-        });
-    },
-    { threshold: 0.1 } // Adjust threshold as needed
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        clock.start(); // Reset clock to sync animations
+        animationFrameId = requestAnimationFrame(render);
+      } else {
+        clock.stop();
+        cancelAnimationFrame(animationFrameId);
+      }
+    });
+  },
+  { threshold: 0.1 }
 );
+
 
 // Observe the container element
 observer.observe(containerEl);
@@ -45,6 +46,7 @@ function initScene() {
     camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
     camera.position.set(-0.2, -0.2, 1.45);
     camera.lookAt(0, 0, 0);
+    
 
     clock = new THREE.Clock();
 
@@ -57,25 +59,27 @@ function initScene() {
     });
 }
 
-// Some angle accumulates over time:
-let angle = Math.PI / 2.8;
+let angle = Math.PI / 2.8; // Initial angle
+const rotationSpeed = 0.05; // Radians per second
+const radius = 1.5; // Globe radius
 
 function render() {
-  const delta = clock.getDelta();
-  angle += 0.05 * delta; // rotate 0.5 radians/sec
+  const delta = clock.getDelta(); // Time elapsed since last frame
+  angle = (angle + rotationSpeed * delta) % (2 * Math.PI); // Keep angle within 0 to 2π
 
-  // Suppose radius is 2 units from center:
-  const radius = 1.5;
-  camera.position.set(
-    radius * Math.cos(angle),
-    0, 
-    radius * Math.sin(angle)
-  );
-  camera.lookAt(0,0,0);
-  updateOpacity();
-  renderer.render(scene, camera);
-  requestAnimationFrame(render);
+  // Calculate camera position
+  const x = radius * Math.cos(angle);
+  const z = radius * Math.sin(angle);
+  camera.position.set(x, 0, z);
+  camera.lookAt(0, 0, 0); // Ensure the camera looks at the globe
+
+  updateOpacity(); // Update opacity (optimize if heavy)
+  renderer.render(scene, camera); // Render the scene
+
+  requestAnimationFrame(render); // Continue the animation loop
 }
+
+
 
 let initialSize;
 
