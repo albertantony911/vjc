@@ -153,16 +153,10 @@
 .marquee--RTL,
 .marquee--LTR-M,
 .marquee--RTL-M {
-    --marquee-item-width: 75px;
-    --marquee-item-height: 75px;
+    --marquee-item-width: 90px;
+    --marquee-item-height: 90px;
     --marquee-duration: 30s;
-    --marquee-items: 11;
-}
-
-/* Settings for smaller marquee with fewer items */
-.marquee--LTR-M,
-.marquee--RTL-M {
-    --marquee-items: 7;
+    --marquee-items: 10;
 }
 
 
@@ -247,9 +241,12 @@
     --marquee-item-index: 10;
 }
 
-.marquee__item:nth-of-type(11) {
-    --marquee-item-index: 11;
-}
+
+
+
+
+
+
 
 
 

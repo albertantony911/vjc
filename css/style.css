@@ -891,6 +891,10 @@ html {
   margin-top: 7svh;
 }
 
+.mb-\[1svh\] {
+  margin-bottom: 1svh;
+}
+
 .block {
   display: block;
 }
@@ -1052,6 +1056,14 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[60px\] {
+  height: 60px;
+}
+
+.h-\[75px\] {
+  height: 75px;
 }
 
 .w-12 {
