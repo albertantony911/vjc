@@ -171,6 +171,18 @@
     animation-play-state: paused; /* Default state */}
 
 
+/* Default state: animation running */
+.marquee {
+  animation: go linear infinite;
+  animation-play-state: running;
+}
+
+/* Pause all animations when the marquee container is hovered */
+.marquee:hover .marquee__item {
+  animation-play-state: paused;
+}
+
+
 
 /* LTR - Left to Right */
 .marquee--LTR  .marquee__item {

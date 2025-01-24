@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
   activateScrollAnimations([
     { className: "floater"},
     { className: "pulser"},
-    { className: "marquee__item"},
     { className: "periodBox", customClass: "visible" },
     { className: "line-v", customClass: "visible" },
     { className: "line-center", customClass: "visible" },
@@ -101,34 +100,44 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 //////////////////////////////////////////////////////////////////
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Select all marquees
+  // Select all marquee containers
   const marquees = document.querySelectorAll('.marquee');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const marqueeItems = entry.target.querySelectorAll('.marquee__item');
       if (entry.isIntersecting) {
-        // Play animation
-        marqueeItems.forEach(item => {
+        // Play animation for all items when marquee is in view
+        entry.target.querySelectorAll('.marquee__item').forEach(item => {
           item.style.animationPlayState = 'running';
         });
+
+        // Add hover events to the marquee container
+        entry.target.addEventListener('mouseenter', () => {
+          entry.target.querySelectorAll('.marquee__item').forEach(item => {
+            item.style.animationPlayState = 'paused';
+          });
+        });
+
+        entry.target.addEventListener('mouseleave', () => {
+          entry.target.querySelectorAll('.marquee__item').forEach(item => {
+            item.style.animationPlayState = 'running';
+          });
+        });
       } else {
-        // Pause animation
-        marqueeItems.forEach(item => {
+        // Pause animation for all items when marquee is out of view
+        entry.target.querySelectorAll('.marquee__item').forEach(item => {
           item.style.animationPlayState = 'paused';
         });
       }
     });
   }, {
-    threshold: 0.1 // Adjust this value based on when you want the animation to pause/play
+    threshold: 0.1, // Adjust this as needed
   });
 
-  // Observe each marquee
+  // Observe each marquee container
   marquees.forEach(marquee => observer.observe(marquee));
 });
-
 
 
 //////////////////////////////////////////////////////////////////
