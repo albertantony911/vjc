@@ -891,6 +891,18 @@ html {
   margin-top: 7svh;
 }
 
+.ml-\[3svh\] {
+  margin-left: 3svh;
+}
+
+.ml-\[5svh\] {
+  margin-left: 5svh;
+}
+
+.ml-\[2svh\] {
+  margin-left: 2svh;
+}
+
 .block {
   display: block;
 }
@@ -2572,6 +2584,14 @@ svg {
 }
 
 @media (min-width: 640px) {
+  .sm\:ml-\[5svh\] {
+    margin-left: 5svh;
+  }
+
+  .sm\:ml-\[4svh\] {
+    margin-left: 4svh;
+  }
+
   .sm\:h-10 {
     height: 2.5rem;
   }
@@ -2586,6 +2606,18 @@ svg {
 
   .sm\:gap-8 {
     gap: 2rem;
+  }
+
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .sm\:gap-\[2svh\] {
+    gap: 2svh;
+  }
+
+  .sm\:gap-\[3svh\] {
+    gap: 3svh;
   }
 
   .sm\:px-4 {
@@ -2732,6 +2764,10 @@ svg {
 
   .md\:mt-\[8svh\] {
     margin-top: 8svh;
+  }
+
+  .md\:ml-\[5svh\] {
+    margin-left: 5svh;
   }
 
   .md\:hidden {
