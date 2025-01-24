@@ -2381,6 +2381,14 @@ svg {
     margin-top: 3svh;
   }
 
+  .max-md\:mt-\[5svh\] {
+    margin-top: 5svh;
+  }
+
+  .max-md\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
   .max-md\:hidden {
     display: none;
   }
