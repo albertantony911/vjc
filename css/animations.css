@@ -80,7 +80,7 @@
 #subMenu {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 
 /* Show the submenu */
@@ -150,13 +150,21 @@
 
  /* Common settings for Left-to-Right and Right-to-Left marquees */
 .marquee--LTR,
-.marquee--RTL,
+.marquee--RTL {
+    --marquee-item-width: 90px;
+    --marquee-item-height: 90px;
+    --marquee-duration: 40s;
+    --marquee-items: 10;
+}
+
+
+
 .marquee--LTR-M,
 .marquee--RTL-M {
     --marquee-item-width: 90px;
     --marquee-item-height: 90px;
     --marquee-duration: 30s;
-    --marquee-items: 10;
+    --marquee-items: 7;
 }
 
 
@@ -184,24 +192,15 @@
 
 
 
-/* LTR - Left to Right */
-.marquee--LTR  .marquee__item {
-    animation-direction: normal; /* Default direction for LTR */
+/* Optimized */
+.marquee--LTR .marquee__item,
+.marquee--LTR-M .marquee__item {
+    animation-direction: normal;
 }
 
-/* RTL - Right to Left */
-.marquee--RTL  .marquee__item {
-    animation-direction: reverse; /* Reversed direction for RTL */
-}
-
-/* LTR - Left to Right */
-.marquee--LTR-M  .marquee__item {
-    animation-direction: normal; /* Default direction for LTR */
-}
-
-/* RTL - Right to Left */
-.marquee--RTL-M  .marquee__item {
-    animation-direction: reverse; /* Reversed direction for RTL */
+.marquee--RTL .marquee__item,
+.marquee--RTL-M .marquee__item {
+    animation-direction: reverse;
 }
 
 
