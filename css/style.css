@@ -1006,16 +1006,6 @@ html {
   height: 100%;
 }
 
-.size-\[70svw\] {
-  width: 70svw;
-  height: 70svw;
-}
-
-.size-\[65svw\] {
-  width: 65svw;
-  height: 65svw;
-}
-
 .h-12 {
   height: 3rem;
 }
@@ -1787,11 +1777,6 @@ html {
   padding-bottom: 4vw;
 }
 
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1864,6 +1849,10 @@ html {
   padding-top: 2.5rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
@@ -1874,14 +1863,6 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pt-12 {
-  padding-top: 3rem;
-}
-
-.pt-7 {
-  padding-top: 1.75rem;
 }
 
 .text-left {
@@ -2199,12 +2180,6 @@ html {
 
 .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
-  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-}
-
-.backdrop-blur-lg {
-  --tw-backdrop-blur: blur(16px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
@@ -3275,6 +3250,11 @@ svg {
     padding-bottom: 3rem;
   }
 
+  .md\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
   .md\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -3335,11 +3315,6 @@ svg {
     padding-bottom: 7svh;
   }
 
-  .md\:py-14 {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3380,6 +3355,10 @@ svg {
     padding-top: 2.5rem;
   }
 
+  .md\:pt-14 {
+    padding-top: 3.5rem;
+  }
+
   .md\:pt-16 {
     padding-top: 4rem;
   }
@@ -3406,14 +3385,6 @@ svg {
 
   .md\:pt-\[5svh\] {
     padding-top: 5svh;
-  }
-
-  .md\:pt-12 {
-    padding-top: 3rem;
-  }
-
-  .md\:pt-14 {
-    padding-top: 3.5rem;
   }
 
   .md\:text-center {
