@@ -118,7 +118,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-[100] h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
+    <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
 
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0">
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Menu Button Section -->
-        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-[50] antialiased landscape:hidden"
+        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
             id="menuButtonContainer">
             <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +188,7 @@
 
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
-            class="absolute h-14 right-3 cursor-pointer z-[50] antialiased portrait:hidden text-darkBlue">
+            class="absolute h-14 right-3 cursor-pointer z-50 antialiased portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
 
                 <!-- Home -->
@@ -690,7 +690,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-1-answer">
                                         <span>What services do you offer?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -724,7 +724,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-2-answer">
                                         <span>How do you ensure the security of our financial data?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -760,7 +760,7 @@
                                         <span>Why should I choose your company for financial services
                                             outsourcing?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -794,7 +794,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-4-answer">
                                         <span>What industries do you serve?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -828,7 +828,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-5-answer">
                                         <span>How do you handle compliance and regulatory requirements?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -862,7 +862,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-6-answer">
                                         <span>What is your pricing structure?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -896,7 +896,7 @@
                                         <span>How can you ensure round-the-clock support for all the various time
                                             zones?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -929,7 +929,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-8-answer">
                                         <span>How can I get started with your services?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -962,7 +962,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-9-answer">
                                         <span>What technology do you use to support your services?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -995,7 +995,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-10-answer">
                                         <span>How do you ensure the quality of your services?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -1028,7 +1028,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-11-answer">
                                         <span>Can you provide references or case studies from past clients?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -1059,7 +1059,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-12-answer">
                                         <span>How do you manage projects across different time zones?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -1095,7 +1095,7 @@
                                         <span>What are your Standard Operating Procedures (SOPs) for managing financial
                                             services?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -1130,7 +1130,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-14-answer">
                                         <span>Do you partner with local CPA firms or other B2B businesses?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
@@ -1163,7 +1163,7 @@
                                         :aria-expanded="expanded.toString()" aria-controls="faq-15-answer">
                                         <span>How do you handle language differences with international clients?</span>
                                         <img class="shrink-0 h-5 mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'!rotate-180': expanded}"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
                                             alt="Expand or collapse FAQ content" aria-hidden="true" />
                                     </button>
                                 </h2>
