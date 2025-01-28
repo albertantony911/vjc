@@ -8,6 +8,11 @@
 
 .menudrop {
     transition: transform 0.5s cubic-bezier(0.9, 0.7, 0.1, 1);
+    transform: translateY(-100%); /* Initial hidden state */
+}
+
+.menudrop.open {
+    transform: translateY(0); /* Visible state */
 }
 
 /* Initially hidden */

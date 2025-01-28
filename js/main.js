@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     subMenu.classList.add("hidden");
 
     const toggleMenu = () => {
-        const isMenuOpen = nav.classList.toggle("translate-y-[-100%]");
+        nav.classList.toggle("open"); // Toggle the .open class
         menuButtonContainer.classList.toggle("menu-open");
         menuItems.forEach(item => item.classList.toggle("toggled"));
-        if (isMenuOpen) {
+        if (nav.classList.contains("open")) {
             mainMenu.classList.remove("hidden");
             subMenu.classList.add("hidden");
             subMenu.classList.remove("fade-in", "li-fade-in");
@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
     servicesMenu.addEventListener("click", showSubMenu);
     backButton.addEventListener("click", goBack);
 });
+
+
+
+
 
 
 window.addEventListener('load', () => {
