@@ -1,8 +1,19 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@config './tailwind.config.js';
+
+/* Configuration directly in the CSS file */
+@theme {
+  /* Extend colors */
+  --color-darkBlue: #01377D;
+  --color-darkGreen: #7ED348;
+  --color-lightGreen: #96f2a5;
+  --color-lightBlue: #009DD1;
+
+}
+
 
 @layer base {
+  
   html {
     font-family: 'Poppins', sans-serif; 
   }
@@ -29,7 +40,5 @@ svg {
 .header {
   position: sticky; /* Adjusted to 'sticky' for better browser support */
   top: 0; /* Add this to define where the sticky effect starts */
-  z-index: 10; /* Optional: Adjust the stacking context */
+  z-index: 100; /* Optional: Adjust the stacking context */
 }
-
-

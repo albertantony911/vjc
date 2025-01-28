@@ -1,4 +1,3 @@
-// threeModules.js
 import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module.js";
 import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
@@ -6,22 +5,19 @@ import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm
 
 export { THREE, Line2, LineMaterial, LineGeometry };
 
-    
-
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
 
 let renderer, scene, camera;
 let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
-let animationFrameId; // Track the animation frame ID
+let animationFrameId;
 
-// Create the observer to detect when the globe is in the viewport
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        clock.start(); // Reset clock to sync animations
+        clock.start();
         animationFrameId = requestAnimationFrame(render);
       } else {
         clock.stop();
@@ -32,8 +28,6 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-
-// Observe the container element
 observer.observe(containerEl);
 
 initScene();
@@ -46,106 +40,79 @@ function initScene() {
     camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
     camera.position.set(-0.2, -0.2, 1.45);
     camera.lookAt(0, 0, 0);
-    
 
     clock = new THREE.Clock();
-
 
     new THREE.TextureLoader().load("./img/map.webp", (mapTex) => {
         earthTexture = mapTex;
         createGlobe();
         updateSize();
-        render(); // Initial render call to start animation
+        render();
     });
 }
 
-let angle = Math.PI / 2.8; // Initial angle
-const rotationSpeed = 0.05; // Radians per second
-const radius = 1.5; // Globe radius
+let angle = Math.PI / 2.8;
+const rotationSpeed = 0.05;
+const radius = 1.5;
 
 function render() {
-  const delta = clock.getDelta(); // Time elapsed since last frame
-  angle = (angle + rotationSpeed * delta) % (2 * Math.PI); // Keep angle within 0 to 2π
+  const delta = clock.getDelta();
+  angle = (angle + rotationSpeed * delta) % (2 * Math.PI);
 
-  // Calculate camera position
   const x = radius * Math.cos(angle);
   const z = radius * Math.sin(angle);
   camera.position.set(x, 0, z);
-  camera.lookAt(0, 0, 0); // Ensure the camera looks at the globe
+  camera.lookAt(0, 0, 0);
 
-  updateOpacity(); // Update opacity (optimize if heavy)
-  renderer.render(scene, camera); // Render the scene
+  updateOpacity();
+  renderer.render(scene, camera);
 
-  requestAnimationFrame(render); // Continue the animation loop
+  animationFrameId = requestAnimationFrame(render);
 }
 
-
-
 let initialSize;
-
-
-
 
 function createGlobe() {
     const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
     mapMaterial = new THREE.ShaderMaterial({
         vertexShader: `
-    uniform sampler2D u_map_tex;
-    uniform float u_dot_size, u_time_since_click, u_pi;
-    uniform vec3 u_pointer;
+            uniform sampler2D u_map_tex;
+            uniform float u_dot_size, u_time_since_click, u_pi;
+            uniform vec3 u_pointer;
 
-    varying float vOpacity;
-    varying vec2 vUv;
+            varying float vOpacity;
+            varying vec2 vUv;
 
-    void main() {
-        vUv = uv;
-
-        // Fetch visibility once
-        float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
-        gl_PointSize = visibility * u_dot_size * 0.65;
-
-        // Calculate model-view position
-        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        float distToCam = length(mvPosition.xyz);
-
-        // Calculate opacity based on distance
-        vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
-
-        // Time factor and distance from pointer
-        float t = max(0.0, u_time_since_click - 0.1);
-        float dist = length(position - u_pointer);
-        float damping = exp(-20.0 * t);
-
-        // Calculate delta factor for sine wave
-        float delta = 0.15 * damping * sin(5.0 * t - u_pi) * (1.0 - smoothstep(0.8, 1.0, dist));
-
-        // Final position calculation
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
-    }
-`,
+            void main() {
+                vUv = uv;
+                float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
+                gl_PointSize = visibility * u_dot_size * 0.65;
+                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                float distToCam = length(mvPosition.xyz);
+                vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+                float t = max(0.0, u_time_since_click - 0.1);
+                float dist = length(position - u_pointer);
+                float damping = exp(-20.0 * t);
+                float delta = 0.15 * damping * sin(5.0 * t - u_pi) * (1.0 - smoothstep(0.8, 1.0, dist));
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
+            }
+        `,
         fragmentShader: `
-    uniform sampler2D u_map_tex;
-    varying float vOpacity;
-    varying vec2 vUv;
+            uniform sampler2D u_map_tex;
+            varying float vOpacity;
+            varying vec2 vUv;
 
-    void main() {
-        // Fetch the color from the texture and apply the original tint
-        vec3 color = texture2D(u_map_tex, vUv).rgb;
-        vec3 originalTint = vec3(0.6, 0.9, 1.3);
-        color = mix(color, originalTint, 0.9);
-
-        // Calculate distance to the center of the point once
-        float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
-        color -= 0.1 * distToCenter;
-
-        // Simplify dot calculation
-        float dot = 1.0 - smoothstep(0.48, 0.52, distToCenter);
-        if (dot < 0.5) discard;
-
-        // Set the final fragment color
-        gl_FragColor = vec4(color, dot * vOpacity);
-    }
-`,
+            void main() {
+                vec3 color = texture2D(u_map_tex, vUv).rgb;
+                vec3 originalTint = vec3(0.6, 0.9, 1.3);
+                color = mix(color, originalTint, 0.9);
+                float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
+                color -= 0.1 * distToCenter;
+                float dot = 1.0 - smoothstep(0.48, 0.52, distToCenter);
+                if (dot < 0.5) discard;
+                gl_FragColor = vec4(color, dot * vOpacity);
+            }
+        `,
         uniforms: {
             u_map_tex: { type: "t", value: earthTexture },
             u_dot_size: { type: "f", value: 0.01 },
@@ -171,49 +138,23 @@ function createGlobe() {
     scene.add(globeMesh);
 }
 
-
-
-// Customize these ratios:
-const PORTRAIT_RATIO = 0.9;    // e.g., 90% of smaller side in portrait
-const LANDSCAPE_RATIO = 0.7;   // e.g., 70% of the height in landscape
+const PORTRAIT_RATIO = 0.9;
+const LANDSCAPE_RATIO = 0.7;
 
 function updateSize() {
     const windowWidth  = window.innerWidth;
     const windowHeight = window.innerHeight;
-
     const minSide = Math.min(windowWidth, windowHeight);
+    let newSize = windowWidth < windowHeight ? PORTRAIT_RATIO * minSide : LANDSCAPE_RATIO * windowHeight;
 
-    let newSize;
-
-    if (windowWidth < windowHeight) {
-        // Portrait orientation: 
-        // pick 0.9 * smaller side (portrait means width < height)
-        newSize = PORTRAIT_RATIO * minSide;
-    } else {
-        // Landscape orientation: 
-        // pick 0.7 * the height
-        newSize = LANDSCAPE_RATIO * windowHeight;
-    }
-
-    // Only update if size changed
     if (initialSize !== newSize) {
         initialSize = newSize;
-
-        containerEl.style.cssText = `
-            width:  ${initialSize}px;
-            height: ${initialSize}px;
-        `;
-
+        containerEl.style.cssText = `width: ${initialSize}px; height: ${initialSize}px;`;
         renderer.setSize(initialSize, initialSize);
-
-        const newDotSize = 0.04 * initialSize;
-        mapMaterial.uniforms.u_dot_size.value = newDotSize;
+        mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
     }
 }
 
-
-
-// Debounce function to limit the rate at which updateSize is called during resize events
 function debounce(func, delay) {
     let timeout;
     return function(...args) {
@@ -223,31 +164,19 @@ function debounce(func, delay) {
 }
 window.addEventListener("resize", debounce(updateSize, 200));
 
-
-
-// Reuse vectors and quaternions to avoid unnecessary object creation
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
 
 function alignCircleToSurface(circle, position, elevation = 0) {
-    // Avoid cloning and directly manipulate vectors
     const liftedPos = position.normalize().multiplyScalar(1 + elevation);
     circle.position.copy(liftedPos);
-
-    const direction = liftedPos.normalize(); // No need to clone
-    quaternion.setFromUnitVectors(up, direction);
-
-    // Use quaternion to set the rotation
+    quaternion.setFromUnitVectors(up, liftedPos.normalize());
     circle.setRotationFromQuaternion(quaternion);
 }
 
-
-
-// Reuse geometry instances
 const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
 const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
-// Base material properties - these can be cloned for each instance
 const baseMaterialProps = {
     color: 0xFFFFFF,
     transparent: true,
@@ -256,46 +185,29 @@ const baseMaterialProps = {
 };
 
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
-    // Decide the elevation and geometry based on the isStartingPoint flag
     const elevation = isStartingPoint ? 0.02 : 0.015;
     const geometry = isStartingPoint ? startingPointGeometry : sharedGeometry;
 
-    // Create unique materials for each circle to maintain independent opacity control
-    const staticCircleMaterial = new THREE.MeshBasicMaterial({
-        ...baseMaterialProps,
-        depthWrite: true
-    });
-    
-    const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
-        ...baseMaterialProps,
-        depthWrite: false,
-        depthTest: false
-    });
+    const staticCircleMaterial = new THREE.MeshBasicMaterial({ ...baseMaterialProps, depthWrite: true });
+    const pulsingCircleMaterial = new THREE.MeshBasicMaterial({ ...baseMaterialProps, depthWrite: false, depthTest: false });
 
-    // Create static circle with reused geometry and unique material
     const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial);
     alignCircleToSurface(staticCircle, position, elevation);
 
-    // Create pulsing circle with reused geometry and unique material
     const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial);
     alignCircleToSurface(pulsingCircle, position, elevation);
     pulsingCircle.position.z -= 0.003;
 
-    // Add both to the scene
     scene.add(staticCircle, pulsingCircle);
 
-    // Add pulsing circle animation
     pulsingCircle.userData.gsapOpacity = 1;
     animatePulsingCircle(pulsingCircle);
 
-    // Store relevant data in userData for distance-based opacity control
     staticCircle.userData.distanceOpacityControl = staticCircle.material;
     pulsingCircle.userData.distanceOpacityControl = pulsingCircle.material;
 
     return { staticCircle, pulsingCircle };
 }
-
-
 
 function animatePulsingCircle(pulsingCircle) {
     gsap.to(pulsingCircle.scale, { duration: 2, x: 1.75, y: 1.75, repeat: -1, yoyo: true, ease: "power1.Out" });
@@ -317,8 +229,6 @@ function updateCircleOpacity(object, cameraPosition) {
     const material = object.userData.distanceOpacityControl;
     const distance = cameraPosition.distanceTo(object.position);
     const maxDistance = 2.5, minDistance = 0.5;
-
-    // Calculate distance-based opacity
     const distanceOpacity = THREE.MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
     const newOpacity = object.userData.gsapOpacity !== undefined ? distanceOpacity * object.userData.gsapOpacity : distanceOpacity;
 
@@ -328,24 +238,15 @@ function updateCircleOpacity(object, cameraPosition) {
     }
 }
 
-
 function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
-    // Lift the start point
     const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
     const numPoints = 50;
     const tempVector = new THREE.Vector3();
 
     const createArc = (start, end) => {
-        // Precompute the distance and height above the globe
         const distance = start.distanceTo(end);
         const heightAboveGlobe = baseHeight + distance * heightScale;
-
-        // Precompute the elevation values
-        const elevationArray = Array.from({ length: numPoints + 1 }, (_, i) => 
-            Math.sin((i / numPoints) * Math.PI) * heightAboveGlobe
-        );
-
-        // Create points along the arc
+        const elevationArray = Array.from({ length: numPoints + 1 }, (_, i) => Math.sin((i / numPoints) * Math.PI) * heightAboveGlobe);
         const points = Array.from({ length: numPoints + 1 }, (_, i) => {
             const t = i / numPoints;
             tempVector.lerpVectors(start, end, t);
@@ -353,21 +254,17 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
             return tempVector.multiplyScalar(1 + elevation / tempVector.length()).clone();
         });
 
-        // Animate the arc with the computed points
         animateArc(points, start, end);
     };
 
-    // Loop through the endpoints
     const liftedEnds = endPoints.map(end => end.clone().normalize().multiplyScalar(liftFactor));
     liftedEnds.forEach(liftedEnd => {
         createArc(liftedStart, liftedEnd);
         createStaticAndPulsingCircles(liftedEnd);
     });
 
-    // Create static and pulsing circles for the start point
     return createStaticAndPulsingCircles(liftedStart);
 }
-
 
 function animateArc(points, start, end, reverse = false) {
     let pointIndex = 0;
@@ -421,9 +318,7 @@ function fadeOutArc(line, material, onComplete) {
     requestAnimationFrame(fade);
 }
 
-// Function to convert latitude and longitude to a tilted 3D vector
 function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
-    // Convert lat/lon to vector3
     lon += 180;
     if (lon > 180) lon -= 360;
 
@@ -434,7 +329,6 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
     const y = radius * Math.cos(phi);
     const z = radius * Math.sin(phi) * Math.sin(theta);
 
-    // Apply tilt
     const radians = THREE.MathUtils.degToRad(tiltAngle);
     const cosAngle = Math.cos(radians);
     const sinAngle = Math.sin(radians);
@@ -445,7 +339,6 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
     return new THREE.Vector3(x, tiltedY, tiltedZ);
 }
 
-// Example usage
 const globeRadius = 1;
 const tiltAngle = 23.5;
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
@@ -468,25 +361,19 @@ const endPoints = [
     latLonToTiltedVector3(-41.2865, 174.7762, globeRadius, tiltAngle),
 ];
 
-// Function to create static and pulsing circles
 createStaticAndPulsingCircles(point1, true);
 
-// Base height and height scale factor for arcs
 const baseHeightAboveGlobe = 0.1;
 const heightScaleFactor = 0.3;
 
-// Function to initialize arcs with a delay
 function initializeGlobeArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor) {
-    // Create static and pulsing circles for the start point
     createStaticAndPulsingCircles(startPoint, true);
 
-    // Delay the arc creation for a more natural start
     delayInitialize(() => {
         createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor);
     }, 500);
 }
 
-// Function to delay initialization using requestAnimationFrame
 function delayInitialize(callback, delayMs) {
     const start = performance.now();
 
@@ -501,5 +388,4 @@ function delayInitialize(callback, delayMs) {
     requestAnimationFrame(frame);
 }
 
-// Call the function to initialize everything
 initializeGlobeArcs(point1, endPoints, baseHeightAboveGlobe, heightScaleFactor);

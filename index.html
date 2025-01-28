@@ -112,13 +112,13 @@
 
 </head>
 
-<body class="scroll-smooth mx-auto leading-relaxed">
+<body class="mx-auto leading-relaxed scroll-smooth">
   <!-- Google Tag Manager (noscript) -->
 
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+    <header class="sticky top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white bg-opacity/65 backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
     
       <!-- Logo Section -->
       <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row ">
@@ -153,7 +153,7 @@
       <nav role="navigation" aria-label="Mobile Navigation Menu"
         class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
         <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-          <img class="w-20 md:w-32  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
+          <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
           <p>finest in accounting since 1988</p>
           <p>Chhattisgarh, IN</p>
         </div>
@@ -165,7 +165,7 @@
     
           <li class="mt-20"><a href="./index.html">HOME</a></li>
           <li><a href="./about.html">ABOUT</a></li>
-          <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a></li>
+          <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
     
           <li><a href="./pricing.html">PRICING</a></li>
     
@@ -183,7 +183,7 @@
           <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
           <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
           <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4  bounce-left"
+          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4 bounce-left"
               src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
         </ul>
@@ -194,14 +194,14 @@
     
       <!-- Landscape Navigation -->
       <nav aria-label="Main Navigation" role="navigation"
-        class="absolute h-14 right-3 cursor-pointer z-50 antialiased portrait:hidden text-darkBlue">
+        class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
         <ul class="flex flex-row flex-wrap items-center w-full">
     
           <!-- Home -->
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./index.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Home</span>
             </a>
           </li>
@@ -210,7 +210,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./about.html"
-              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
               <span>About</span>
             </a>
           </li>
@@ -221,60 +221,69 @@
           <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
             @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
             <a href="#" aria-haspopup="true" aria-expanded="false"
-              class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
               @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
               @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
               <span>Services</span>
     
             </a>
-            <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
+            <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
               x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
               x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
               x-transition:leave="transition ease duration-300 transform"
               x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
               style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
               aria-label="Submenu">
-              <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+              <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
               <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                 <ul class="list-reset" role="menu">
                   <!-- Submenu Items -->
-                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./cloud-accounting-and-bookkeeping.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Cloud Accounting and Bookkeeping</span>
                     </a>
                   </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./audit-and-assurance-services.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Audit and Assurance Services</span>
                     </a>
                   </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./tax-planning-and-compliance.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Tax Planning and Compliance</span>
                     </a>
                   </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./virtual-chief-financial-officer.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Virtual Chief Financial officer</span>
                     </a>
                   </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
     
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./legal-process-outsourcing.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                      class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Legal Processing Outsourcing</span>
                     </a>
@@ -293,7 +302,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./pricing.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Pricing</span>
             </a>
           </li>
@@ -304,7 +313,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./resources.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Resources</span>
             </a>
           </li>
@@ -315,7 +324,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./contact.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Contact Us</span>
             </a>
           </li>
@@ -353,8 +362,8 @@
     
       <div  class="landscape:md:w-[50%] max-md:h-auto   max-md:translate-y-[0.7rem]  flex w-full max-md:mt-0">
       
-        <div class="page   m-auto">
-          <div id="arc-container" class="globe-wrapper   m-auto ">
+        <div class="m-auto page">
+          <div id="arc-container" class="m-auto globe-wrapper ">
             <canvas id="globe-3d"></canvas>
             <canvas id="globe-2d-overlay"></canvas>
 
@@ -385,7 +394,7 @@
           <div class="relative justify-center antialiased" role="group" x-data="{ openAccordion: null }">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
               <div class="w-full mx-auto text-center">
-                <div class="divide-slate-200 divide-y" role="region" aria-label="Service Group">
+                <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
         
                   <!-- Service - 1 -->
                   <div class="py-3 portrait:max-md:py-3">
@@ -583,8 +592,8 @@
       </div>
     
       <div class="relative md:size-[58svh]  landscape:md:w-[50%] max-md:h-[50svh] portrait:md:h-[40svh]  flex size-auto flex-col my-auto ">
-        <div class=" absolute gradient-bg size-full  flex ">
-          <div class=" gradient-bg-transparent-main-service  size-full  flex ">
+        <div class="absolute flex gradient-bg size-full">
+          <div class="flex gradient-bg-transparent-main-service size-full">
               <svg  class="md:size-[58svh] size-full  m-auto  overflow-visible calendarDotsObserver" width="100%" height="100%"
                 viewBox="0 0 1678 1761" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -1000,7 +1009,7 @@
 
 
     <!-- About Us Section -->
-    <section class="max-md:mt-7 flex md:flex-row  flex-col-reverse justify-center my-auto mx-auto   ">
+    <section class="flex flex-col-reverse justify-center mx-auto my-auto max-md:mt-7 md:flex-row ">
       <div
         class="landscape:md:w-[53%]  landscape:md:pl-[13svh] flex flex-col text-darkBlue  justify-center  w-full   text-left ">
     
@@ -1027,7 +1036,7 @@
         <div
           class="text-darkBlue xl:gap-[5.4svh] md:gap-[3.7svh] overflow-visible mx-auto flex flex-row  flex-wrap justify-start max-md:px-6 max-md:mt-4  mt-7 landscape:md:mt-[4svh]">
           <!-- Counter 1 -->
-          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 py-4 md:py-0 ">
+          <div class="flex flex-col items-center w-2/4 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
               class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center ">
               <div id="counter1" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
@@ -1042,7 +1051,7 @@
           </div>
     
           <!-- Counter 2 -->
-          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+          <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
               class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
               <div id="counter2" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
@@ -1056,7 +1065,7 @@
           </div>
     
           <!-- Counter 3 -->
-          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+          <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
               class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
               <div id="counter3" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
@@ -1070,7 +1079,7 @@
           </div>
     
           <!-- Counter 4 -->
-          <div class="md:w-1/6  md:p-10 sm:gap-8 flex flex-col items-center w-2/4 gap-5 py-4 md:py-0 ">
+          <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
               class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
               <div id="counter4" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
@@ -1088,13 +1097,13 @@
     
       <div 
         class="relative landscape:md:w-[47%]  portrait:md:h-[50svh]   flex w-full flex-col  ">
-        <div class=" gradient-bg size-full absolute flex">
-          <div class=" gradient-bg-transparent size-full flex">
+        <div class="absolute flex gradient-bg size-full">
+          <div class="flex gradient-bg-transparent size-full">
           </div>
         </div>
       
         <div 
-          class="size-auto dottedLineObserver relative z-10 my-auto">
+          class="relative z-10 my-auto size-auto dottedLineObserver">
       
           <div class="lineGraphLargeObserver">
             <div class="lineGraphObserver">
@@ -1319,8 +1328,8 @@
 
       </div>
 
-      <div class="flex flex-col gap-0 mt-2  md:hidden">
-        <div class="marquee marquee--LTR w-full mx-auto flex relative overflow-x-hidden ">
+      <div class="flex flex-col gap-0 mt-2 md:hidden">
+        <div class="relative flex w-full mx-auto overflow-x-hidden marquee marquee--LTR ">
           <img class="marquee__item" src="./img/netsuite-logo.svg" width="60" height="60" alt="">
           <img class="marquee__item" src="./img/freshbooks-logo.svg" width="60" height="60" alt="">
           <img class="marquee__item" src="./img/quickbooks-logo.svg" width="60" height="60" alt="">
@@ -1335,7 +1344,7 @@
           
         </div>
 
-        <div class="marquee marquee--RTL w-full mx-auto flex relative overflow-x-hidden ">
+        <div class="relative flex w-full mx-auto overflow-x-hidden marquee marquee--RTL ">
           <img class="marquee__item" src="./img/microsoft365-logo.svg" width="60" height="60" alt="">
           <img class="marquee__item" src="./img/reckon-logo.svg" width="60" height="60" alt="">
           <img class="marquee__item" src="./img/myob-logo.svg" width="60" height="60" alt="">
@@ -1352,7 +1361,7 @@
       </div>
 
       <div  class="flex flex-col gap-[1.5svh] mt-[2svh] mb-0  max-md:hidden">
-        <div class="marquee marquee--LTR md:w-full md:mx-auto flex relative overflow-x-hidden ">
+        <div class="relative flex overflow-x-hidden marquee marquee--LTR md:w-full md:mx-auto ">
           <img class="marquee__item size-full" src="./img/netsuite-logo.svg" alt="">
           <img class="marquee__item size-full" src="./img/freshbooks-logo.svg" alt="">
           <img class="marquee__item size-full" src="./img/quickbooks-logo.svg" alt="">
@@ -1366,7 +1375,7 @@
       
         </div>
       
-        <div class="marquee marquee--RTL md:w-full md:mx-auto flex relative overflow-x-hidden">
+        <div class="relative flex overflow-x-hidden marquee marquee--RTL md:w-full md:mx-auto">
           <img class="marquee__item size-full" src="./img/microsoft365-logo.svg" alt="">
           <img class="marquee__item size-full" src="./img/reckon-logo.svg" alt="">
           <img class="marquee__item size-full" src="./img/myob-logo.svg" alt="">
@@ -1408,7 +1417,7 @@
         <div  class="md:w-[55svh]  flex flex-col size-full gradient-bg  circleFadeObserver ">
           <div class="gradient-bg-transparent max-md:size-full blog1Observer ">
             <div class="blog2Observer ">
-                <svg class=" floater max-md:size-full  overflow-visible" width="100%" height="100%"
+                <svg class="overflow-visible floater max-md:size-full" width="100%" height="100%"
                   viewBox="0 0 1010 1192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                   xml:space="preserve" xmlns:serif="http://www.serif.com/"
                   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
@@ -1624,10 +1633,10 @@
 
               </div>
             </div>
-            <div class="flex flex-col text-left gap-1 landscape:md:gap-0  text-darkBlue leading-snug">
+            <div class="flex flex-col gap-1 leading-snug text-left landscape:md:gap-0 text-darkBlue">
               <h3 class="text-[3.5vw] md:text-[2.3svh] portrait:md:text-[1.2svw]  font-bold">INSIGHTS</h3>
               <p class="text-[3vw] md:text-[2svh] portrait:md:text-[1svw]   font-light">Dive into our expert analyses and industry trends to gain valuable knowledge, stay ahead in the ever-evolving financial
-              landscape, and make informed decisions with confidence.<a href="./about.html" class="font-semibold text-[2.9vw] md:text-[1.7svh] underline portrait:md:text-[1.8svw] ml-1">read more</a> </p>
+              landscape, and make informed decisions with confidence.<a href="./about.html" class="font-semibold text-[2.9vw] md:text-[1.7svh] underline-offset-0 portrait:md:text-[1.8svw] ml-1">read more</a> </p>
               <span class="hidden underline font-bold text-[3vw] md:text-[1.2svh] portrait:md:text-[0.8svw]">read
                 more</span>
             </div>
@@ -1679,7 +1688,7 @@
 
               </div>
             </div>
-            <div class="flex flex-col text-left gap-1 landscape:md:gap-0  text-darkBlue leading-snug">
+            <div class="flex flex-col gap-1 leading-snug text-left landscape:md:gap-0 text-darkBlue">
               <h3 class="text-[3.5vw] md:text-[2.3svh] portrait:md:text-[1.2svw]  font-bold">CASE STUDIES</h3>
               <p class="text-[3vw] md:text-[2svh] portrait:md:text-[1svw]  font-light">Explore detailed case studies showcasing how our tailored solutions delivered tangible results and success for
               businesses, empowering them to achieve their goals with precision and confidence.<a href="./about.html" class="font-semibold text-[2.9vw] md:text-[1.7svh] underline portrait:md:text-[1.8svw] ml-1">read
@@ -1726,7 +1735,7 @@
         <div class="relative flex flex-col justify-center overflow-hidden" role="group">
           <div class="md:pt-8 landscape:md:px-[13svh] max-md:w-[80%] pt-3 mx-auto text-center">
             <!-- Accordion component -->
-            <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
+            <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
     
               <!-- FAQ Section 1 -->
               <div x-data="{ expanded: false }" class="py-4 max-md:py-3 ">
@@ -2247,7 +2256,7 @@
                             class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
                         </div>
 
-                        <div class="flex justify-center md:mt-8 mt-7 mb-12 md:mb-10">
+                        <div class="flex justify-center mb-12 md:mt-8 mt-7 md:mb-10">
                             <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                                 aria-label="Link to Schedule a Meeting"
                                 class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-white rounded-full select-none">
@@ -2270,26 +2279,26 @@
                             class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
                         </div>
 
-                        <div class=" max-md:px-8 max-md:mt-7 md:mt-8 flex flex-row justify-center text-base gap-5 mb-10 md:mb-10" role="presentation">
+                        <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-8 md:mb-10" role="presentation">
                             <a href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                                <img class="w-16 md:w-14 transform transition-transform  duration-200 hover:scale-125 cursor-pointer"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                                     src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
                             </a>
                         
                             <a href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
                                 rel="noopener">
-                                <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                                     src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
                             </a>
                         
                             <a href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting" title="Contact us on WhatsApp"
                                 target="_blank" rel="noopener">
-                                <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                                     src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
                             </a>
                         
                             <a href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                                <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                                     src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
                             </a>
                         
@@ -2310,7 +2319,7 @@
             <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">
                 <div class=" flex flex-col px-10 md:px-0  landscape:md:w-[40%] ">
                     <a href="./index.html" aria-label="Home">
-                        <img class="w-16 landscape:md:w-20 landscape:md:mt-2 ml-0" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
+                        <img class="w-16 ml-0 landscape:md:w-20 landscape:md:mt-2" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
                     </a>
                     <div class="flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left uppercase max-md:mt-3 max-md:mb-0">
                         <p>An Affiliate of V. Jaiswal and Co.</p>
@@ -2329,7 +2338,7 @@
                     <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
             
                         <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] xl:gap-[4svh] flex gap-5">
-                            <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
                                 <li><a href="./index.html">Home</a></li>
                                 <li><a href="./about.html">About</a></li>
                                 <li><a href="./pricing.html">Pricing</a></li>
@@ -2337,7 +2346,7 @@
                                 <li><a href="./contact.html">Contact Us</a></li>
                             </ul>
             
-                            <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
                                 <li><a href="#">Insights</a></li>
                                 <li><a href="#">Case Studies</a></li>
                                 <li><a href="./about.html">Careers</a></li>
@@ -2346,9 +2355,9 @@
                             </ul>
                         </div>
             
-                        <div class="md:flex-row md:gap-10 flex flex-col gap-5">
+                        <div class="flex flex-col gap-5 md:flex-row md:gap-10">
             
-                            <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
                                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a>
                                 </li>
                                 <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
@@ -2363,7 +2372,7 @@
                     </div>
             
                     <div class=" md:hidden">
-                        <ul class="text-white flex flex-row flex-wrap justify-start gap-3 px-10 mx-auto text-xs">
+                        <ul class="flex flex-row flex-wrap justify-start gap-3 px-10 mx-auto text-xs text-white">
                             <li><a href="./index.html">Home</a></li>
                             <li><a href="./about.html">About</a></li>
                             <li><a href="./pricing.html">Pricing</a></li>
@@ -2386,8 +2395,8 @@
             </div>
         </div>
 
-        <div class="md:text-center px-10 text-left">
-            <div class="text-darkBlue font-white my-7 text-xs">
+        <div class="px-10 text-left md:text-center">
+            <div class="text-xs text-darkBlue font-white my-7">
                 <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
                         rel="noopener">blackwoodbox.com</a></div>
             </div>
