@@ -156,8 +156,8 @@
  /* Common settings for Left-to-Right and Right-to-Left marquees */
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-item-width: 90px;
-    --marquee-item-height: 90px;
+    --marquee-item-width: 77px;
+    --marquee-item-height: 77px;
     --marquee-duration: 40s;
     --marquee-items: 10;
 }
@@ -166,8 +166,8 @@
 
 .marquee--LTR-M,
 .marquee--RTL-M {
-    --marquee-item-width: 90px;
-    --marquee-item-height: 90px;
+    --marquee-item-width: 77px;
+    --marquee-item-height: 77px;
     --marquee-duration: 30s;
     --marquee-items: 7;
 }
