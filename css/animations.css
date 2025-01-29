@@ -142,62 +142,67 @@
  * Logo carousel animation starts
  * ----------------------------------------
  */
-
 .marquee {
     block-size: var(--marquee-item-height);
     margin-block: 0;
-    mask-image: linear-gradient(to right,
-            hsl(0 0% 0% / 0),
-            hsl(0 0% 0% / 1) 20%,
-            hsl(0 0% 0% / 1) 80%,
-            hsl(0 0% 0% / 0));
+    mask-image: linear-gradient(
+        to right,
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) 20%,
+        hsl(0 0% 0% / 1) 80%,
+        hsl(0 0% 0% / 0)
+    );
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
- /* Common settings for Left-to-Right and Right-to-Left marquees */
+/* Common settings for Left-to-Right and Right-to-Left marquees */
 .marquee--LTR,
-.marquee--RTL {
-    --marquee-item-width: 77px;
-    --marquee-item-height: 77px;
-    --marquee-duration: 40s;
-    --marquee-items: 10;
-}
-
-
-
+.marquee--RTL,
 .marquee--LTR-M,
 .marquee--RTL-M {
     --marquee-item-width: 77px;
     --marquee-item-height: 77px;
+    --marquee-items: 10;
+}
+
+.marquee--LTR,
+.marquee--RTL {
+    --marquee-duration: 40s;
+}
+
+.marquee--LTR-M,
+.marquee--RTL-M {
     --marquee-duration: 30s;
     --marquee-items: 7;
 }
 
-
 .marquee__item {
-    --marquee-item-offset: max(calc(var(--marquee-item-width) * var(--marquee-items)),
-            calc(100% + var(--marquee-item-width)));
-    --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
+    --marquee-item-offset: max(
+        calc(var(--marquee-item-width) * var(--marquee-items)),
+        calc(100% + var(--marquee-item-width))
+    );
+    --marquee-delay: calc(
+        var(--marquee-duration) / var(--marquee-items) *
+        (var(--marquee-items) - var(--marquee-item-index)) * -1
+    );
     position: absolute;
     inset-inline-start: var(--marquee-item-offset);
     transform: translateX(-50%);
     animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-    animation-play-state: paused; /* Default state */}
-
+    animation-play-state: paused; /* Default state */
+}
 
 /* Default state: animation running */
 .marquee {
-  animation: go linear infinite;
-  animation-play-state: running;
+    animation-play-state: running;
 }
 
 /* Pause all animations when the marquee container is hovered */
 .marquee:hover .marquee__item {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
-
-
-/* Optimized */
+/* Animation direction */
 .marquee--LTR .marquee__item,
 .marquee--LTR-M .marquee__item {
     animation-direction: normal;
@@ -208,7 +213,6 @@
     animation-direction: reverse;
 }
 
-
 /* Keyframes for marquee animation */
 @keyframes go {
     to {
@@ -217,49 +221,20 @@
 }
 
 /* Apply index for each item */
-.marquee__item:nth-of-type(1) {
-    --marquee-item-index: 1;
+.marquee__item {
+    --marquee-item-index: 0; /* Default value */
 }
 
-.marquee__item:nth-of-type(2) {
-    --marquee-item-index: 2;
-}
-
-.marquee__item:nth-of-type(3) {
-    --marquee-item-index: 3;
-}
-
-.marquee__item:nth-of-type(4) {
-    --marquee-item-index: 4;
-}
-
-.marquee__item:nth-of-type(5) {
-    --marquee-item-index: 5;
-}
-
-.marquee__item:nth-of-type(6) {
-    --marquee-item-index: 6;
-}
-
-.marquee__item:nth-of-type(7) {
-    --marquee-item-index: 7;
-}
-
-.marquee__item:nth-of-type(8) {
-    --marquee-item-index: 8;
-}
-
-.marquee__item:nth-of-type(9) {
-    --marquee-item-index: 9;
-}
-
-.marquee__item:nth-of-type(10) {
-    --marquee-item-index: 10;
-}
-
-
-
-
+.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
+.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
+.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
+.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
+.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
+.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
+.marquee__item:nth-of-type(7) { --marquee-item-index: 7; }
+.marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
+.marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
+.marquee__item:nth-of-type(10) { --marquee-item-index: 10; }
 
 
 

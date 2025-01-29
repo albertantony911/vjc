@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Dependency files 
+package.json
+package-lock.json
+yarn.lock
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
