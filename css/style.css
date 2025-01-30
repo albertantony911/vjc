@@ -2365,6 +2365,12 @@
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
   }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .py-32 {
+    padding-block: calc(var(--spacing) * 32);
+  }
   .py-\[1\.5vw\] {
     padding-block: 1.5vw;
   }
@@ -2455,6 +2461,9 @@
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
   }
+  .pl-5 {
+    padding-left: calc(var(--spacing) * 5);
+  }
   .pl-9 {
     padding-left: calc(var(--spacing) * 9);
   }
@@ -2522,6 +2531,10 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
@@ -2579,6 +2592,9 @@
   }
   .text-\[5\.5vw\] {
     font-size: 5.5vw;
+  }
+  .text-\[5vw\] {
+    font-size: 5vw;
   }
   .text-\[7vw\] {
     font-size: 7vw;
@@ -2730,6 +2746,9 @@
   }
   .text-gray-900 {
     color: var(--color-gray-900);
+  }
+  .text-slate-100 {
+    color: var(--color-slate-100);
   }
   .text-slate-300 {
     color: var(--color-slate-300);
@@ -3692,28 +3711,28 @@
       font-size: 3.5vw;
     }
   }
-  .max-md\:leading-\[1\.2rem\] {
-    @media (width < 48rem) {
-      --tw-leading: 1.2rem;
-      line-height: 1.2rem;
-    }
-  }
   .max-md\:leading-\[1\.05rem\] {
     @media (width < 48rem) {
       --tw-leading: 1.05rem;
       line-height: 1.05rem;
     }
   }
-  .max-md\:leading-\[1\.5rem\] {
-    @media (width < 48rem) {
-      --tw-leading: 1.5rem;
-      line-height: 1.5rem;
-    }
-  }
   .max-md\:leading-\[1\.27rem\] {
     @media (width < 48rem) {
       --tw-leading: 1.27rem;
       line-height: 1.27rem;
+    }
+  }
+  .max-md\:leading-\[1\.2rem\] {
+    @media (width < 48rem) {
+      --tw-leading: 1.2rem;
+      line-height: 1.2rem;
+    }
+  }
+  .max-md\:leading-\[1\.5rem\] {
+    @media (width < 48rem) {
+      --tw-leading: 1.5rem;
+      line-height: 1.5rem;
     }
   }
   .max-md\:font-medium {
@@ -3998,6 +4017,12 @@
       height: 13svh;
     }
   }
+  .md\:size-\[15svh\] {
+    @media (width >= 48rem) {
+      width: 15svh;
+      height: 15svh;
+    }
+  }
   .md\:size-\[33svh\] {
     @media (width >= 48rem) {
       width: 33svh;
@@ -4038,12 +4063,6 @@
     @media (width >= 48rem) {
       width: 155%;
       height: 155%;
-    }
-  }
-  .md\:size-\[15svh\] {
-    @media (width >= 48rem) {
-      width: 15svh;
-      height: 15svh;
     }
   }
   .md\:h-\[16svw\] {
@@ -4096,14 +4115,9 @@
       width: 8%;
     }
   }
-  .md\:w-\[30\%\] {
+  .md\:w-\[40svh\] {
     @media (width >= 48rem) {
-      width: 30%;
-    }
-  }
-  .md\:w-\[40\%\] {
-    @media (width >= 48rem) {
-      width: 40%;
+      width: 40svh;
     }
   }
   .md\:w-\[45\%\] {
@@ -4111,9 +4125,19 @@
       width: 45%;
     }
   }
+  .md\:w-\[50\%\] {
+    @media (width >= 48rem) {
+      width: 50%;
+    }
+  }
   .md\:w-\[50svh\] {
     @media (width >= 48rem) {
       width: 50svh;
+    }
+  }
+  .md\:w-\[55\%\] {
+    @media (width >= 48rem) {
+      width: 55%;
     }
   }
   .md\:w-\[55svh\] {
@@ -4121,14 +4145,34 @@
       width: 55svh;
     }
   }
+  .md\:w-\[60\%\] {
+    @media (width >= 48rem) {
+      width: 60%;
+    }
+  }
   .md\:w-\[70\%\] {
     @media (width >= 48rem) {
       width: 70%;
     }
   }
+  .md\:w-\[73\%\] {
+    @media (width >= 48rem) {
+      width: 73%;
+    }
+  }
   .md\:w-\[75\%\] {
     @media (width >= 48rem) {
       width: 75%;
+    }
+  }
+  .md\:w-\[80\%\] {
+    @media (width >= 48rem) {
+      width: 80%;
+    }
+  }
+  .md\:w-\[90\%\] {
+    @media (width >= 48rem) {
+      width: 90%;
     }
   }
   .md\:w-\[92\%\] {
@@ -4171,44 +4215,19 @@
       width: 27.6rem;
     }
   }
+  .md\:w-\[30\%\] {
+    @media (width >= 48rem) {
+      width: 30%;
+    }
+  }
   .md\:w-\[35\%\] {
     @media (width >= 48rem) {
       width: 35%;
     }
   }
-  .md\:w-\[40svh\] {
+  .md\:w-\[40\%\] {
     @media (width >= 48rem) {
-      width: 40svh;
-    }
-  }
-  .md\:w-\[50\%\] {
-    @media (width >= 48rem) {
-      width: 50%;
-    }
-  }
-  .md\:w-\[55\%\] {
-    @media (width >= 48rem) {
-      width: 55%;
-    }
-  }
-  .md\:w-\[60\%\] {
-    @media (width >= 48rem) {
-      width: 60%;
-    }
-  }
-  .md\:w-\[73\%\] {
-    @media (width >= 48rem) {
-      width: 73%;
-    }
-  }
-  .md\:w-\[80\%\] {
-    @media (width >= 48rem) {
-      width: 80%;
-    }
-  }
-  .md\:w-\[90\%\] {
-    @media (width >= 48rem) {
-      width: 90%;
+      width: 40%;
     }
   }
   .md\:w-full {
@@ -4526,6 +4545,11 @@
       padding-inline: 2svh;
     }
   }
+  .md\:px-\[13svh\] {
+    @media (width >= 48rem) {
+      padding-inline: 13svh;
+    }
+  }
   .md\:py-0 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 0);
@@ -4566,6 +4590,16 @@
       padding-block: 1.9svh;
     }
   }
+  .md\:py-\[15svh\] {
+    @media (width >= 48rem) {
+      padding-block: 15svh;
+    }
+  }
+  .md\:py-\[1svh\] {
+    @media (width >= 48rem) {
+      padding-block: 1svh;
+    }
+  }
   .md\:py-\[2svh\] {
     @media (width >= 48rem) {
       padding-block: 2svh;
@@ -4581,6 +4615,11 @@
       padding-block: 3.7svh;
     }
   }
+  .md\:py-\[3svh\] {
+    @media (width >= 48rem) {
+      padding-block: 3svh;
+    }
+  }
   .md\:py-\[4svh\] {
     @media (width >= 48rem) {
       padding-block: 4svh;
@@ -4589,21 +4628,6 @@
   .md\:py-\[7svh\] {
     @media (width >= 48rem) {
       padding-block: 7svh;
-    }
-  }
-  .md\:py-\[15svh\] {
-    @media (width >= 48rem) {
-      padding-block: 15svh;
-    }
-  }
-  .md\:py-\[1svh\] {
-    @media (width >= 48rem) {
-      padding-block: 1svh;
-    }
-  }
-  .md\:py-\[3svh\] {
-    @media (width >= 48rem) {
-      padding-block: 3svh;
     }
   }
   .md\:pt-5 {
@@ -5972,6 +5996,14 @@
     @media (width >= 64rem) {
       @media (orientation: landscape) {
         padding-block: calc(var(--spacing) * 5);
+      }
+    }
+  }
+  .landscape\:lg\:text-3xl {
+    @media (orientation: landscape) {
+      @media (width >= 64rem) {
+        font-size: var(--text-3xl);
+        line-height: var(--tw-leading, var(--text-3xl--line-height));
       }
     }
   }

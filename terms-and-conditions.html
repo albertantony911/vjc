@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="en">
+  <meta name="description" content="vjc website">
+
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="VJC India">
+  <meta property="og:description" content="vjc website">
+  <meta property="og:url" content="https://www.vjcindia.com">
+  <meta property="og:image" content="https://www.vjcindia.com/img/logo-og.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./img/logo.png" type="image/x-icon">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/animations.css">
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap">
+  <link href="https://fonts.cdnfonts.com/css/noteworthy" rel="stylesheet">
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+
+
+
+
+
+
+  <!--  Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sf-font@1.0.0/stylesheet.min.css">
+
+  <!-- Custom Scripts -->
+  <script src="./js/main.js" defer></script>
+  <script src="./js/animations.js" defer></script>
+  <script type="module" src="./js/globe.js"></script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="author" content="vjc">
+  <meta name="keywords" content="vjcindia">
+  <meta name="language" content="en">
+
+  <title>Home | Welcome to VJC India Offshore</title>
+  <link rel="canonical" href="https://www.vjcindia.com">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vjcindia.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "404: Page Not Found"
+        }
+      ]
+    }
+    </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://www.vjcindia.com",
+      "logo": "https://www.vjcindia.com/logo.svg",
+      "name": "vjcindia",
+      "description": "vjcindia",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressRegion": "New Delhi",
+        "addressCountry": "India"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91 987654321",
+        "contactType": "customer service",
+        "email": "info@vjcindia.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/vjcindia/",
+        "https://in.linkedin.com/company/vjcindia"
+      ]
+    }
+    </script>
+
+
+</head>
+
+<body class="mx-auto leading-relaxed scroll-smooth">
+  <!-- Google Tag Manager (noscript) -->
+
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header Section -->
+    <header class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+    
+      <!-- Logo Section -->
+      <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row ">
+        <a class="cursor-pointer" href="./index.html">
+          <img class="px-5 landscape:md:pl-[13svh] h-[7svh] sm:h-14 my-auto cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+        </a>
+
+        <div class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] ml-[1svh] ">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/us_flag.svg" alt="VJC Logo" aria-label="Home">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/uk_flag.svg" alt="VJC Logo" aria-label="Home">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="VJC Logo" aria-label="Home">
+        </div>
+        
+      </div>
+    
+      <!-- Menu Button Section -->
+      <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
+        id="menuButtonContainer">
+        <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
+            viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Navigation -->
+      <nav role="navigation" aria-label="Mobile Navigation Menu"
+        class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
+        <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
+          <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
+          <p>finest in accounting since 1988</p>
+          <p>Chhattisgarh, IN</p>
+        </div>
+    
+        <ul id="mainMenu"
+          class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] md:text-[3vw] antialiased">
+    
+          <!-- Navigation Links -->
+    
+          <li class="mt-20"><a href="./index.html">HOME</a></li>
+          <li><a href="./about.html">ABOUT</a></li>
+          <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
+    
+          <li><a href="./pricing.html">PRICING</a></li>
+    
+          <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+          <li><a href="./resources.html">RESOURCES</a></li>
+    
+    
+        </ul>
+    
+        <ul id="subMenu"
+          class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
+          <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
+          <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+          <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
+          <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+          <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+          <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4 bounce-left"
+              src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+    
+        </ul>
+    
+    
+      </nav>
+    
+    
+      <!-- Landscape Navigation -->
+      <nav aria-label="Main Navigation" role="navigation"
+        class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
+        <ul class="flex flex-row flex-wrap items-center w-full">
+    
+          <!-- Home -->
+          <li class="relative block rounded-xl">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./index.html"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+              <span>Home</span>
+            </a>
+          </li>
+    
+          <!-- About -->
+          <li class="relative block rounded-xl">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./about.html"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
+              <span>About</span>
+            </a>
+          </li>
+    
+    
+    
+          <!-- Our Services with Submenu -->
+          <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
+            @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
+            <a href="#" aria-haspopup="true" aria-expanded="false"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
+              @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
+              @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
+              <span>Services</span>
+    
+            </a>
+            <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
+              x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
+              x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease duration-300 transform"
+              x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
+              style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
+              aria-label="Submenu">
+              <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
+              <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
+                <ul class="list-reset" role="menu">
+                  <!-- Submenu Items -->
+                  <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                    @mouseleave="showChildren = false">
+                    <a href="./cloud-accounting-and-bookkeeping.html"
+                      class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      role="menuitem">
+                      <span class="flex-1">Cloud Accounting and Bookkeeping</span>
+                    </a>
+                  </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
+                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                    @mouseleave="showChildren = false">
+                    <a href="./audit-and-assurance-services.html"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      role="menuitem">
+                      <span class="flex-1">Audit and Assurance Services</span>
+                    </a>
+                  </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
+                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                    @mouseleave="showChildren = false">
+                    <a href="./tax-planning-and-compliance.html"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      role="menuitem">
+                      <span class="flex-1">Tax Planning and Compliance</span>
+                    </a>
+                  </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
+                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                    @mouseleave="showChildren = false">
+                    <a href="./virtual-chief-financial-officer.html"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      role="menuitem">
+                      <span class="flex-1">Virtual Chief Financial officer</span>
+                    </a>
+                  </li>
+                  <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
+    
+                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                    @mouseleave="showChildren = false">
+                    <a href="./legal-process-outsourcing.html"
+                      class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      role="menuitem">
+                      <span class="flex-1">Legal Processing Outsourcing</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+    
+    
+    
+    
+    
+    
+          <!-- Pricing -->
+          <li class="relative block rounded-xl">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./pricing.html"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+              <span>Pricing</span>
+            </a>
+          </li>
+    
+    
+    
+          <!-- Resources -->
+          <li class="relative block rounded-xl">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./resources.html"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+              <span>Resources</span>
+            </a>
+          </li>
+    
+    
+    
+          <!-- Contact Us -->
+          <li class="relative block rounded-xl">
+            <!-- Navigation Link with ARIA Label -->
+            <a href="./contact.html"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+              <span>Contact Us</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    
+    </header>
+
+  <main>
+    <section aria-label="Privacy Policy" role="article">
+      <div class="text-slate-100 bg-darkBlue z-10 flex flex-col h-auto text-center" aria-hidden="true">
+        <div data-aos="fade-down" data-aos-delay="500" class="py-32 my-auto">
+          <h1
+            class="md:text-3xl landscape:lg:text-3xl landscape:text-sm text-[5vw] portrait:sm:text-[3vw] font-semibold text-center">
+            TERMS AND CONDITIONS
+          </h1>
+          
+        </div>
+      </div>
+  
+      <div class="bg-light md:px-[13svh] md:text-base flex flex-col px-10 py-20 text-sm font-light leading-relaxed text-left">
+
+        <h2 id="acceptance-terms" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          1. Acceptance of Terms
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          By accessing or using the VJC website, you acknowledge and agree to these Terms of Use. If you do not agree, please
+          refrain from using our website.
+        </p>
+        
+        <h2 id="intellectual-property" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          2. Intellectual Property
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          All content, including text, images, logos, and website design, is the property of VJC. Unauthorized reproduction,
+          modification, or distribution is strictly prohibited, and any such unauthorized usage may attract legal action,
+          subject to the discretion of the management.
+        </p>
+        
+        <h2 id="usage-restrictions" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          3. Website Usage Restrictions
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          Users must not:
+        </p>
+        
+        <ul class="list-disc pl-5 pt-3">
+          <li>Use our website for illegal or fraudulent activities.</li>
+          <li>Attempt to hack, disrupt, or manipulate website content.</li>
+          <li>Misuse any information available on the website.</li>
+        </ul>
+        
+        <h2 id="disclaimer-liability" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          4. Disclaimer & Limitation of Liability
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          VJC provides information for general use and does not guarantee its accuracy for specific cases. We are not liable for
+          any damages resulting from reliance on website content.
+        </p>
+        
+        <h2 id="third-party-links" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          5. Third-Party Links
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          Our website may contain links to external sites. VJC is not responsible for the content, privacy policies, or security
+          practices of third-party websites.
+        </p>
+        
+        <h2 id="governing-law" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          6. Governing Law & Dispute Resolution
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          These Terms of Use are governed by the laws of India. Any disputes arising from website use shall be resolved through
+          arbitration under Indian law.
+        </p>
+        
+        <h2 id="amendments-terms" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          7. Amendments to These Terms
+        </h2>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          VJC reserves the right to update these Terms at any time. Continued use of our website constitutes acceptance of the
+          revised terms.
+        </p>
+        
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          For any inquiries, contact our Data Protection Office at
+          <a href="mailto:dpo@vjcindia.com" class="underline">dpo@vjcindia.com</a>.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+
+  <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh]" role="contentinfo">
+
+        <div class="  py-10 max-md:mx-2   bg-darkBlue  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
+            <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">
+                <div class=" flex flex-col px-10 md:px-0  landscape:md:w-[40%] ">
+                    <a href="./index.html" aria-label="Home">
+                        <img class="w-18 ml-0 landscape:md:w-20 landscape:md:mt-2" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
+                    </a>
+                    <div class="flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] max-md:mb-0">
+                        <p>An Affiliate of V. Jaiswal and Co.</p>
+                        <p>The finest in accounting since 1988.</p>
+                        
+                    </div>
+                    <div
+                      class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
+                      <p class="max-md:text-[3.3vw]">CG, IN 497001</p>
+                      <p class="lowercase max-md:text-[3.3vw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">+91 9630054303, admin@vjcindia.com</p>
+                      
+                    </div>
+                    
+                </div>
+                <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
+                    <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
+            
+                        <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] xl:gap-[4svh] flex gap-5">
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a href="./about.html">About</a></li>
+                                <li><a href="./pricing.html">Pricing</a></li>
+                                <li><a href="./faq.html">FAQ</a></li>
+                                <li><a href="./contact.html">Contact Us</a></li>
+                            </ul>
+            
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
+                                <li><a href="#">Insights</a></li>
+                                <li><a href="#">Case Studies</a></li>
+                                <li><a href="./about.html">Careers</a></li>
+                                <li><a href="./terms-and-conditions.html">Terms & Conditions</a></li>
+                                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+            
+                        <div class="flex flex-col gap-5 md:flex-row md:gap-10">
+            
+                            <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-base">
+                                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a>
+                                </li>
+                                <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
+                                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                            </ul>
+
+                        </div>
+            
+                    </div>
+            
+                    <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
+                      <div class="flex">
+                        <ul class="flex flex-row flex-wrap justify-start gap-2 px-10 mx-auto text-[3.5vw]  text-white">
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./about.html">About</a></li>
+                            <li><a href="./pricing.html">Pricing</a></li>
+                            <li><a href="./contact.html">Contact Us</a></li>
+                            <li><a href="#">Insights</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="flex flex-col text-left">
+                        <h3 class="font-bold px-10 pb-1 text-[4vw]">OUR SERVICES</h3>
+                        <ul class="flex flex-row flex-wrap justify-start gap-1 px-10 mx-auto text-[3.5vw]   text-white">
+                          <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                          <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                          <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
+                          <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                          <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="px-10 text-left md:text-center">
+            <div class="text-xs text-darkBlue font-white my-7">
+                <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
+                        rel="noopener">blackwoodbox.com</a></div>
+            </div>
+        </div>
+        
+  </footer>
+
+</body>
+
+
+
+</html>
