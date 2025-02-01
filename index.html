@@ -377,7 +377,7 @@
 
 
     <section
-      class="mt-[4svh] h-auto portrait:md:h-[75svh]   justify-center  landscape:md:flex-row-reverse flex flex-col-reverse mx-auto ">
+      class="mt-[4svh] h-auto  portrait:md:h-[75svh]   justify-center  landscape:md:flex-row-reverse flex flex-col-reverse mx-auto ">
       <div
         class="landscape:md:w-[50%] landscape:md:pr-[13svh] max-md:h-auto portrait:md:h-[35svh]  flex flex-col text-darkBlue justify-center w-full landscape:md:py-[0svh] portrait:md:px-24  text-left  font-light ">
         <h1
@@ -392,52 +392,55 @@
           business.
         </p>
         <div class="flex justify-start w-full max-md:px-8 ">
-          <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
-            <div class="relative flex flex-col justify-center ">
-              <div class="w-full mx-auto text-center">
-                <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
-          
-                  <!-- Reusable Accordion Component -->
-                  <template x-for="service in [
-                    { id: 1, title: 'Cloud Accounting and Bookkeeping', link: './cloud-accounting-and-bookkeeping.html', description: 'Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you time and reducing stress, all while ensuring accuracy and alignment with your schedule.' },
-                    { id: 2, title: 'Audit and Assurance Services', link: './audit-and-assurance-services.html', description: 'Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance effortlessly, ensuring your business stands on solid ground.' },
-                    { id: 3, title: 'Tax Advisory and Compliance', link: './tax-advisory-and-compliance.html', description: 'Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you compliant, helping you focus on what matters most—growing your business.' },
-                    { id: 4, title: 'Virtual Chief Financial Officer', link: './virtual-chief-financial-officer.html', description: 'Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and guidance to make informed decisions that drive your business forward.' },
-                    { id: 5, title: 'Legal Process Outsourcing', link: './legal-process-outsourcing.html', description: 'Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled efficiently, freeing you to focus on your core business activities.' }
-                  ]" :key="service.id">
-                    <div class="py-3">
-                      <h2>
-                        <button type="button"
-                          class="text-[3.5vw] md:text-[2.1svh] flex items-center justify-start w-full font-bold text-left"
-                          @click="openAccordion = (openAccordion === service.id) ? null : service.id"
-                          :aria-expanded="openAccordion === service.id" :aria-controls="'service-' + service.id">
-                          <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] transition duration-200 transform"
-                            src="./img/drop-arrow.svg" :class="{'rotate-180': openAccordion === service.id}"
-                            alt="Expand or collapse Service content" aria-hidden="true" />
-                          <span class="uppercase" x-text="service.title"></span>
-                        </button>
-                      </h2>
-                      <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
-                        :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
-                        class="text-[3.3vw] md:text-[2svh] overflow-hidden leading-relaxed text-left transition-all duration-300 pl-9 ease-in-out"
-                        :class="openAccordion === service.id ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'">
-                        <div class="overflow-hidden">
-                          <p class="mt-1" x-text="service.description"></p>
-                          <div class="my-2 text-white flex justify-start font-normal">
-                            <a :href="service.link"
-                              class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white text-white py-2 px-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
-                              Read more
-                            </a>
-                          </div>
+        <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
+          <div class="relative flex flex-col justify-center overflow-hidden">
+            <div class="w-full mx-auto text-center">
+              <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
+        
+                <!-- Reusable Accordion Component -->
+                <template x-for="service in [
+                  { id: 1, title: 'Cloud Accounting and Bookkeeping', link: './cloud-accounting-and-bookkeeping.html', description: 'Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you time and reducing stress, all while ensuring accuracy and alignment with your schedule.' },
+                  { id: 2, title: 'Audit and Assurance Services', link: './audit-and-assurance-services.html', description: 'Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance effortlessly, ensuring your business stands on solid ground.' },
+                  { id: 3, title: 'Tax Advisory and Compliance', link: './tax-advisory-and-compliance.html', description: 'Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you compliant, helping you focus on what matters most—growing your business.' },
+                  { id: 4, title: 'Virtual Chief Financial Officer', link: './virtual-chief-financial-officer.html', description: 'Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and guidance to make informed decisions that drive your business forward.' },
+                  { id: 5, title: 'Legal Process Outsourcing', link: './legal-process-outsourcing.html', description: 'Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled efficiently, freeing you to focus on your core business activities.' }
+                ]" :key="service.id">
+                  <div class="py-3">
+                    <h2>
+                      <button type="button"
+                        class="text-[3.5vw] md:text-[2.1svh] flex items-center justify-start w-full font-bold text-left"
+                        @click="openAccordion = (openAccordion === service.id) ? null : service.id"
+                        :aria-expanded="openAccordion === service.id.toString()" :aria-controls="'service-' + service.id">
+                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] transition duration-200 transform"
+                          src="./img/drop-arrow.svg" :class="{'rotate-180': openAccordion === service.id}"
+                          alt="Expand or collapse Service content" aria-hidden="true" />
+                        <span class="uppercase" x-text="service.title"></span>
+                      </button>
+                    </h2>
+                    <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
+                      :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
+                      class="text-[3.3vw] md:text-[2svh] grid overflow-hidden leading-relaxed text-left transition-all duration-300 pl-9 ease-out"
+                      :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-75' : 'grid-rows-[0fr] opacity-0 max-h-0'">
+                      <div class="overflow-hidden">
+                        <p class="mt-1" x-text="service.description"></p>
+                        <div class="my-2 text-white flex justify-start font-normal">
+                          <a :href="service.link"
+                            class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white text-white py-2 px-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                            Read more
+                          </a>
                         </div>
                       </div>
                     </div>
-                  </template>
-          
-                </div>
+                  </div>
+                </template>
+        
               </div>
             </div>
           </div>
+        </div>
+
+
+
 
         </div>
       </div>
@@ -856,7 +859,6 @@
       </div>
     </section>
 
-    
 
 
     <!-- About Us Section -->
@@ -947,7 +949,7 @@
       </div>
     
       <div 
-        class="relative landscape:md:w-[47%]  portrait:md:h-[50svh]   flex w-full flex-col  ">
+        class="relative landscape:md:w-[47%]  portrait:md:h-[50svh]   flex w-full flex-col overflow-hidden">
         <div class="absolute flex gradient-bg size-full">
           <div class="flex gradient-bg-transparent size-full">
           </div>
@@ -960,7 +962,7 @@
             <div class="lineGraphObserver">
               <div class="floater">
                 <svg id="animationContainer"
-                  class="md:w-[40svh] max-md:translate-y-[-0.5rem] w-[64%] portrait:md:w-[40%] h-full mx-auto floatObserver"
+                  class="md:w-[40svh]   max-md:translate-y-[-0.5rem] w-[64%] portrait:md:w-[40%] h-full mx-auto floatObserver"
                   viewBox="0 0 1586 2375" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
                   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
       
@@ -1157,6 +1159,9 @@
         </svg>
       </div>
     </section>
+
+
+    
 
 
 
@@ -1582,509 +1587,61 @@
         </h2>
       </div>
     
-      <div class="relative justify-center antialiased font-light" role="group">
+      <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
         <div class="relative flex flex-col justify-center overflow-hidden" role="group">
           <div class="md:pt-8 landscape:md:px-[13svh] max-md:w-[80%] pt-3 mx-auto text-center">
             <!-- Accordion component -->
             <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
-    
-              <!-- FAQ Section 1 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3 ">
-                <h2>
-                  <button id="faq-1" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-1-answer">
-                    <span>What services do you offer?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-1-answer" role="region" aria-labelledby="faq-1"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh]  portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1 ">
-                    <p>
-                      We specialize in a comprehensive range of financial services, including
-                      accounting and bookkeeping, auditing and
-                      assurance, tax planning and filing, virtual CFO services, and legal process
-                      outsourcing. We have a diverse team
-                      of experts including CAs, ACCAs, CFAs, Accountants, Auditors, and Lawyers
-                      who ensure quality work for our range
-                      of services.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Contact an Expert</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 2 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3 ">
-                <h2>
-                  <button id="faq-2" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-2-answer">
-                    <span>How do you ensure the security of our financial data?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-2-answer" role="region" aria-labelledby="faq-2"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We prioritize data security through a multi-layered approach that includes
-                      end-to-end encryption, secure VPN
-                      connections, advanced firewall protection, and compliance with international
-                      standards. Additionally, our robust IT infrastructure includes regular VAPT
-                      and routine security updates.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Meet and learn more about our data security
-                        measures.</a>
+      
+              <template x-for="(faq, index) in [
+                { question: 'What services do you offer?', answer: 'We specialize in a comprehensive range of financial services, including accounting and bookkeeping, auditing and assurance, tax planning and filing, virtual CFO services, and legal process outsourcing. We have a diverse team of experts including CAs, ACCAs, CFAs, Accountants, Auditors, and Lawyers who ensure quality work for our range of services.', link: './contact.html', linkText: 'Contact an Expert' },
+                { question: 'How do you ensure the security of our financial data?', answer: 'We prioritize data security through a multi-layered approach that includes end-to-end encryption, secure VPN connections, advanced firewall protection, and compliance with international standards. Additionally, our robust IT infrastructure includes regular VAPT and routine security updates.', link: './contact.html', linkText: 'Meeting and learn more about our data security measures' },
+                { question: 'Why should I choose your company for financial services outsourcing?', answer: 'Our company stands out due to our robust engagement framework, our team of experienced professionals, commitment to quality, and adherence to the highest industry standards. We provide customized solutions to meet your unique business requirements, ensuring enhanced efficiency and unparalleled cost savings.', link: './contact.html', linkText: 'Request a personalized quote' },
+                { question: 'What industries do you serve?', answer: 'We serve a diverse range of industries including fintech, SaaS, mining, automobile, petroleum, FMCG, healthcare, retail, manufacturing, real estate, agriculture, fashion, media, and more. Our expertise allows us to tailor our financial services to the specific needs and regulations of each industry.', link: './contact.html', linkText: 'Explore tailor-made solutions for your industry-specific requirements' },
+                { question: 'How do you handle compliance and regulatory requirements?', answer: 'We have a dedicated compliance team that stays up-to-date with the latest regulatory changes. Our processes are designed to ensure compliance with all relevant regulations, including GDPR, GLBA, SOX, and HIPAA. We also conduct regular internal audits to maintain the highest standards of compliance.', link: './contact.html', linkText: 'Speak with our compliance experts' },
+                { question: 'What is your pricing structure?', answer: 'Our pricing is competitive and flexible, designed to fit the unique needs of each client. We offer various pricing models, including fixed-rate, hourly, and project-based rates, ensuring that you receive the best value for your investment.', link: './pricing.html', linkText: 'Check our Pricing Page for more' },
+                { question: 'How can you ensure round-the-clock support for various time zones?', answer: 'We have dedicated teams working for our clients adhering to all their requirements, including the time schedule most suitable for their work. Our vast and ever-expanding network of professionals across the globe ensures 24/7 availability of expert advisory and consultation.', link: './contact.html', linkText: 'Contact us today to experience our seamless global support' },
+                { question: 'How can I get started with your services?', answer: 'Easy! Simply reach out to us via our Contact form, Email, or Phone. Our team will schedule a virtual consultation to understand your needs and develop a customized outsourcing plan for your business after detailed discussions of your requirements.', link: './contact.html', linkText: 'Schedule a free initial consultation' },
+                { question: 'What technology do you use to support your services?', answer: 'We utilize the latest technology and software to ensure high-quality service delivery. This includes Microsoft 365, SharePoint for data sharing, advanced project management tools, secure VDI solutions, and comprehensive IT infrastructure management systems.', link: './contact.html', linkText: 'Request a demo of our solutions' },
+                { question: 'How do you ensure the quality of your services?', answer: 'We have a rigorous quality control process that includes standardized processes, regular audits, performance monitoring, and client feedback mechanisms. Our team is committed to continuous improvement and excellence in service delivery.', link: './contact.html', linkText: 'Reach out for details on our quality assurance practices' },
+                { question: 'Can you provide references or case studies from past clients?', answer: 'Absolutely! We have a proven track record of delivering high-quality financial services to our clients. You can read our case studies on our Resources page.', link: './case-studies.html', linkText: 'Check out our Insights Page for detailed Case Studies' },
+                { question: 'How do you manage projects across different time zones?', answer: 'We have a strategic approach to time zone management for our global clients. Our professionals are distributed across geographies to provide seamless 24/7 service. We align working hours with client time zones, use advanced communication tools, and operate with dedicated global teams working in shifts to ensure continuous workflow and immediate responses.', link: './contact.html', linkText: 'Contact us to discuss managing your project across time zones' },
+                { question: 'What are your Standard Operating Procedures (SOPs) for managing financial services?', answer: 'Our SOPs ensure consistency, quality, and compliance. Each service has detailed process documentation outlining procedures, responsibilities, and quality checks. Team members undergo extensive SOP training. We regularly review and update SOPs, incorporating best practices and regulatory changes. SOPs are also customized to client needs.', link: './contact.html', linkText: 'Learn more about our SOPs ensuring quality and efficiency' },
+                { question: 'Do you partner with local CPA firms or other B2B businesses?', answer: 'Yes, we actively partner with local CPA firms and B2B companies to expand offerings and provide comprehensive solutions. This includes CPA firm collaborations, B2B alliances, client referrals, and co-branding opportunities, leveraging mutual strengths and market presence.', link: './contact.html', linkText: 'Explore partnering with us to add value' },
+                { question: 'How do you handle language differences with international clients?', answer: 'Our team is fluent in English. For other languages, we employ AI translation tools for accurate real-time translations. Additionally, we provide in-house extensive cultural and linguistic training to our staff, which ensures they are not only respectful and aware of cultural nuances but also capable of understanding and addressing the unique needs of clients from diverse backgrounds. We prioritize clear, concise communication tailored to client preferences, ensuring language is never a barrier.', link: './contact.html', linkText: 'Connect with us on accommodating language needs' }
+              ]" :key="index">
+                <div class="py-4">
+                  <h2>
+                    <button type="button"
+                      class="text-[3.3vw] md:text-[2svh] flex items-center justify-between w-full font-medium text-left"
+                      @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
+                      :aria-controls="'faq-' + index">
+                      <span x-text="faq.question"></span>
+                      <img class="shrink-0 size-5 md:size-[2.5svh] ml-8 transition-transform duration-200 transform"
+                        src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
+                        alt="Expand or collapse FAQ content" aria-hidden="true" />
+                    </button>
+                  </h2>
+                  <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-out"
+                    :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+                    <p class="mt-2 text-left text-[3.3vw] md:text-[2svh]" x-text="faq.answer"></p>
+                    <p class="mt-4 text-left block text-[3.3vw] md:text-[1.7svh]">
+                      <a :href="faq.link"
+                        class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
+                        x-text="faq.linkText"></a>
                     </p>
                   </div>
                 </div>
-              </div>
-    
-              <!-- FAQ Section 3 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-3" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-3-answer">
-                    <span>Why should I choose your company for financial services outsourcing?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-3-answer" role="region" aria-labelledby="faq-3"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Our company stands out due to our robust engagement framework, our team of
-                      experienced professionals, commitment
-                      to quality, and adherence to the highest industry standards. We provide
-                      customized solutions to meet your unique
-                      business requirements, ensuring enhanced efficiency and unparalleled cost
-                      savings.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Request a personalized quote.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 4 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-4" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-4-answer">
-                    <span>What industries do you serve?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-4-answer" role="region" aria-labelledby="faq-4"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We serve a diverse range of industries including fintech, SaaS, mining,
-                      automobile, petroleum, FMCG, healthcare,
-                      retail, manufacturing, real estate, agriculture, fashion, media and more.
-                      Our expertise allows us to tailor our
-                      financial services to the specific needs and regulations of each industry.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Explore tailor-made solutions for your industry-specific
-                        requirements.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 5 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-5" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-5-answer">
-                    <span>How do you handle compliance and regulatory requirements?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-5-answer" role="region" aria-labelledby="faq-5"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We have a dedicated compliance team that stays up-to-date with the latest
-                      regulatory changes. Our processes are
-                      designed to ensure compliance with all relevant regulations, including GDPR,
-                      GLBA, SOX, and HIPAA. We also
-                      conduct regular internal audits to maintain the highest standards of
-                      compliance.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Speak with our compliance experts.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 6 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-6" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-6-answer">
-                    <span>What is your pricing structure?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-6-answer" role="region" aria-labelledby="faq-6"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Our pricing is competitive and flexible, designed to fit the unique needs of
-                      each client. We offer various
-                      pricing models, including fixed-rate, hourly, and project-based rates,
-                      ensuring that you receive the best value
-                      for your investment.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./pricing.html" class="text-blue-600">Check our Pricing Page for more.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 7 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-7" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-7-answer">
-                    <span>How can you ensure round-the-clock support for all the various time zones?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-7-answer" role="region" aria-labelledby="faq-7"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We have dedicated teams working for our clients adhering to all their
-                      requirements including the time-schedule
-                      most suitable for their work. Our vast and ever-expanding network of
-                      professionals across the globe ensures 24/7
-                      availability of expert advisory and consultation.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Contact us today to experience our seamless global support.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 8 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-8" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-8-answer">
-                    <span>How can I get started with your services?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-8-answer" role="region" aria-labelledby="faq-8"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Easy! Simply reach out to us via our Contact form, Email, or Phone. Our team
-                      will schedule a virtual
-                      consultation to understand your needs and develop a customized outsourcing
-                      plan for your business post detailed
-                      discussions of your requirements.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Schedule a free initial consultation.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 9 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-9" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-9-answer">
-                    <span>What technology do you use to support your services?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-9-answer" role="region" aria-labelledby="faq-9"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We utilize the latest technology and software to ensure high-quality service
-                      delivery. This includes Microsoft
-                      365, Sharepoint for data sharing, advanced project management tools, secure
-                      VDI solutions, and comprehensive IT
-                      infrastructure management systems.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Request a demo of our solutions.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 10 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-10" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-10-answer">
-                    <span>How do you ensure the quality of your services?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-10-answer" role="region" aria-labelledby="faq-10"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We have a rigorous quality control process that includes standardized
-                      processes, regular audits, performance
-                      monitoring, and client feedback mechanisms. Our team is committed to
-                      continuous improvement and excellence in
-                      service delivery.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Reach out for details on our quality assurance practices.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 11 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-11" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-11-answer">
-                    <span>Can you provide references or case studies from past clients?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-11-answer" role="region" aria-labelledby="faq-11"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Absolutely! We have a proven track record of delivering high-quality
-                      financial services to our clients. You can
-                      read our case studies on our Resources page.
-                    </p>
-                    <p class="mt-4">
-                      <a href="#" class="text-blue-600">Check out our Insights Page for detailed Case Studies.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 12 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-12" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-12-answer">
-                    <span>How do you manage projects across different time zones?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-12-answer" role="region" aria-labelledby="faq-12"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      We have a strategic approach to time zone management for our global clients.
-                      Our professionals are distributed
-                      across geographies to provide seamless 24/7 service. We align working hours
-                      with client time zones, use advanced
-                      communication tools, and operate with dedicated global teams working in
-                      shifts to ensure continuous workflow and
-                      immediate responses.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Contact us to discuss managing your project across time zones.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 13 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-13" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-13-answer">
-                    <span>What are your Standard Operating Procedures (SOPs) for managing financial services?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-13-answer" role="region" aria-labelledby="faq-13"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Our SOPs ensure consistency, quality, and compliance. Each service has
-                      detailed process documentation outlining
-                      procedures, responsibilities, and quality checks. Team members undergo
-                      extensive SOP training. We regularly
-                      review and update SOPs, incorporating best practices and regulatory changes.
-                      SOPs are also customized to client
-                      needs.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Learn more about our SOPs ensuring quality and efficiency.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 14 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-14" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-14-answer">
-                    <span>Do you partner with local CPA firms or other B2B businesses?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-14-answer" role="region" aria-labelledby="faq-14"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Yes, we actively partner with local CPA firms and B2B companies to expand
-                      offerings and provide comprehensive
-                      solutions. This includes CPA firm collaborations, B2B alliances, client
-                      referrals, and co-branding
-                      opportunities, leveraging mutual strengths and market presence.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Explore partnering with us to add value.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 15 -->
-              <div x-data="{ expanded: false }" class="py-4 max-md:py-3">
-                <h2>
-                  <button id="faq-15" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-15-answer">
-                    <span>How do you handle language differences with international clients?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-15-answer" role="region" aria-labelledby="faq-15"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[2svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden max-md:pt-1">
-                    <p>
-                      Our team is fluent in English. For other languages, we employ AI translation
-                      tools for accurate real-time
-                      translations. Additionally, we provide in-house extensive cultural and
-                      linguistic training to our staff, which
-                      ensures they are not only respectful and aware of cultural nuances but also
-                      capable of understanding and
-                      addressing the unique needs of clients from diverse backgrounds. We
-                      prioritize clear, concise communication
-                      tailored to client preferences, ensuring language is never a barrier.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Connect with us on accommodating language needs.</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
+              </template>
+      
             </div>
-    
           </div>
         </div>
       </div>
+
+
+
+
     </section>
 
 
