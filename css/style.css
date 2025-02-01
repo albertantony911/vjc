@@ -1926,11 +1926,17 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .delay-0 {
+    transition-delay: 0ms;
+  }
   .delay-75 {
     transition-delay: 75ms;
   }
   .delay-150 {
     transition-delay: 150ms;
+  }
+  .delay-\[0\] {
+    transition-delay: 0;
   }
   .duration-100 {
     --tw-duration: 100ms;

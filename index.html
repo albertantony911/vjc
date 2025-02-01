@@ -419,8 +419,8 @@
                     </h2>
                     <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
                       :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
-                      class="text-[3.3vw] md:text-[2.1svh] grid overflow-hidden leading-normal text-left transition-all duration-300 pl-9 ease-out"
-                      :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-75' : 'grid-rows-[0fr] opacity-0 max-h-0'">
+                      class="text-[3.3vw] md:text-[2.1svh] grid overflow-hidden leading-normal text-left transition-all duration-300 pl-9 ease-in-out"
+                      :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-[0]' : 'grid-rows-[0fr] opacity-0 max-h-0'">
                       <div class="overflow-hidden">
                         <p class="mt-1" x-text="service.description"></p>
                         <div class="my-2 text-white flex justify-start font-normal">
@@ -1622,7 +1622,7 @@
                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                     </button>
                   </h2>
-                  <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-out"
+                  <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
                     :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
                     <p class="mt-2 text-left text-[3.3vw] md:text-[2.1svh]" x-text="faq.answer"></p>
                     <p class="mt-4 text-left block text-[3.3vw] md:text-[1.7svh]">
