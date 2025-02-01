@@ -2374,12 +2374,6 @@
       line-height: 1.05rem;
     }
   }
-  .max-md\:leading-\[1\.5rem\] {
-    @media (width < 48rem) {
-      --tw-leading: 1.5rem;
-      line-height: 1.5rem;
-    }
-  }
   .max-md\:leading-\[1\.27rem\] {
     @media (width < 48rem) {
       --tw-leading: 1.27rem;
@@ -2390,6 +2384,12 @@
     @media (width < 48rem) {
       --tw-leading: 1.2rem;
       line-height: 1.2rem;
+    }
+  }
+  .max-md\:leading-\[1\.5rem\] {
+    @media (width < 48rem) {
+      --tw-leading: 1.5rem;
+      line-height: 1.5rem;
     }
   }
   .max-md\:font-medium {
@@ -2761,6 +2761,51 @@
       width: 8%;
     }
   }
+  .md\:w-\[23svw\] {
+    @media (width >= 48rem) {
+      width: 23svw;
+    }
+  }
+  .md\:w-\[30\%\] {
+    @media (width >= 48rem) {
+      width: 30%;
+    }
+  }
+  .md\:w-\[40\%\] {
+    @media (width >= 48rem) {
+      width: 40%;
+    }
+  }
+  .md\:w-\[45\%\] {
+    @media (width >= 48rem) {
+      width: 45%;
+    }
+  }
+  .md\:w-\[50svh\] {
+    @media (width >= 48rem) {
+      width: 50svh;
+    }
+  }
+  .md\:w-\[55svh\] {
+    @media (width >= 48rem) {
+      width: 55svh;
+    }
+  }
+  .md\:w-\[70\%\] {
+    @media (width >= 48rem) {
+      width: 70%;
+    }
+  }
+  .md\:w-\[75\%\] {
+    @media (width >= 48rem) {
+      width: 75%;
+    }
+  }
+  .md\:w-\[92\%\] {
+    @media (width >= 48rem) {
+      width: 92%;
+    }
+  }
   .md\:w-\[100\%\] {
     @media (width >= 48rem) {
       width: 100%;
@@ -2786,19 +2831,9 @@
       width: 23.7%;
     }
   }
-  .md\:w-\[23svw\] {
-    @media (width >= 48rem) {
-      width: 23svw;
-    }
-  }
   .md\:w-\[27\.6rem\] {
     @media (width >= 48rem) {
       width: 27.6rem;
-    }
-  }
-  .md\:w-\[30\%\] {
-    @media (width >= 48rem) {
-      width: 30%;
     }
   }
   .md\:w-\[35\%\] {
@@ -2806,19 +2841,9 @@
       width: 35%;
     }
   }
-  .md\:w-\[40\%\] {
-    @media (width >= 48rem) {
-      width: 40%;
-    }
-  }
   .md\:w-\[40svh\] {
     @media (width >= 48rem) {
       width: 40svh;
-    }
-  }
-  .md\:w-\[45\%\] {
-    @media (width >= 48rem) {
-      width: 45%;
     }
   }
   .md\:w-\[50\%\] {
@@ -2826,19 +2851,9 @@
       width: 50%;
     }
   }
-  .md\:w-\[50svh\] {
-    @media (width >= 48rem) {
-      width: 50svh;
-    }
-  }
   .md\:w-\[55\%\] {
     @media (width >= 48rem) {
       width: 55%;
-    }
-  }
-  .md\:w-\[55svh\] {
-    @media (width >= 48rem) {
-      width: 55svh;
     }
   }
   .md\:w-\[60\%\] {
@@ -2846,19 +2861,9 @@
       width: 60%;
     }
   }
-  .md\:w-\[70\%\] {
-    @media (width >= 48rem) {
-      width: 70%;
-    }
-  }
   .md\:w-\[73\%\] {
     @media (width >= 48rem) {
       width: 73%;
-    }
-  }
-  .md\:w-\[75\%\] {
-    @media (width >= 48rem) {
-      width: 75%;
     }
   }
   .md\:w-\[80\%\] {
@@ -2869,11 +2874,6 @@
   .md\:w-\[90\%\] {
     @media (width >= 48rem) {
       width: 90%;
-    }
-  }
-  .md\:w-\[92\%\] {
-    @media (width >= 48rem) {
-      width: 92%;
     }
   }
   .md\:w-full {
@@ -3084,6 +3084,16 @@
   .md\:rounded-\[5\.5svh\] {
     @media (width >= 48rem) {
       border-radius: 5.5svh;
+    }
+  }
+  .md\:rounded-\[5\.7svh\] {
+    @media (width >= 48rem) {
+      border-radius: 5.7svh;
+    }
+  }
+  .md\:rounded-\[5\.8svh\] {
+    @media (width >= 48rem) {
+      border-radius: 5.8svh;
     }
   }
   .md\:rounded-\[5svh\] {
@@ -3438,6 +3448,11 @@
   .md\:text-\[1\.8svh\] {
     @media (width >= 48rem) {
       font-size: 1.8svh;
+    }
+  }
+  .md\:text-\[1\.9svh\] {
+    @media (width >= 48rem) {
+      font-size: 1.9svh;
     }
   }
   .md\:text-\[1svh\] {
