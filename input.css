@@ -29,13 +29,11 @@ svg {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   cursor: default;
-  backface-visibility: hidden; 
+  backface-visibility: hidden;
+
 }
 
 
-svg {
-  overflow: hidden;
-}
 
 .header {
   position: sticky; /* Adjusted to 'sticky' for better browser support */
