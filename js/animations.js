@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Grouped Intersection Observers for Animation control
+  /*** Grouped Intersection Observers for Animation control ***/
   function activateScrollAnimations(configurations) {
+    // Cache element configurations using a WeakMap instead of dataset
+    const configMap = new WeakMap();
     const observerMap = new Map();
 
     const getObserver = (threshold) => {
       if (!observerMap.has(threshold)) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            const config = entry.target.dataset.config;
+            const config = configMap.get(entry.target);
             if (!config) return;
+            const { observeOnce, childSelector, customClass } = config;
+            const activeClass = customClass || "active";
 
-            const { observeOnce, childSelector, customClass } = JSON.parse(config);
-
+            // Toggle class on target or its children
             if (entry.isIntersecting) {
-              const activeClass = customClass || "active";
               if (childSelector) {
                 entry.target.querySelectorAll(childSelector).forEach(child => child.classList.add(activeClass));
               } else {
                 entry.target.classList.add(activeClass);
               }
-
               if (observeOnce) observer.unobserve(entry.target);
             } else if (!observeOnce) {
-              const activeClass = customClass || "active";
               if (childSelector) {
                 entry.target.querySelectorAll(childSelector).forEach(child => child.classList.remove(activeClass));
               } else {
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         }, { threshold });
-
         observerMap.set(threshold, observer);
       }
       return observerMap.get(threshold);
@@ -39,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     configurations.forEach(({ className, threshold = 0.2, observeOnce = false, customClass, childSelector }) => {
       document.querySelectorAll(`.${className}`).forEach(element => {
-        element.dataset.config = JSON.stringify({ observeOnce, customClass, childSelector });
+        // Cache config instead of storing as JSON on DOM
+        configMap.set(element, { observeOnce, customClass, childSelector });
         getObserver(threshold).observe(element);
       });
     });
@@ -71,22 +71,34 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 
-  // Logo Carousel Animation Control
+
+  /*** Logo Carousel Animation Control (Refactored) ***/
   const marquees = document.querySelectorAll('.marquee');
+  // Attach hover event listeners once per marquee element
+  marquees.forEach(marquee => {
+    const items = marquee.querySelectorAll('.marquee__item');
+    marquee.addEventListener('mouseenter', () => {
+      items.forEach(item => item.style.animationPlayState = 'paused');
+    });
+    marquee.addEventListener('mouseleave', () => {
+      items.forEach(item => item.style.animationPlayState = 'running');
+    });
+  });
+
   const marqueeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const items = entry.target.querySelectorAll('.marquee__item');
+      // Only toggle animation play state; hover handlers handle pause/resume
       if (entry.isIntersecting) {
         items.forEach(item => item.style.animationPlayState = 'running');
-        entry.target.addEventListener('mouseenter', () => items.forEach(item => item.style.animationPlayState = 'paused'));
-        entry.target.addEventListener('mouseleave', () => items.forEach(item => item.style.animationPlayState = 'running'));
       } else {
         items.forEach(item => item.style.animationPlayState = 'paused');
       }
     });
   }, { threshold: 0.1 });
-
   marquees.forEach(marquee => marqueeObserver.observe(marquee));
+
+
 
   // Rotating Illustration Grouped Animation Control
   function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
@@ -226,7 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const startX = side === "left" ? positions.left[index] : positions.right[index];
 
       gsap.set(element, { x: startX, y: startY, opacity: 1 });
-
       gsap.to(element, {
         y: endY,
         opacity: 0,
@@ -245,11 +256,33 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
+    // ----- Added Intersection Observer for the currency drop container -----
+    let currencyContainerVisible = true;
+    const currencyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        currencyContainerVisible = entry.isIntersecting;
+        if (currencyContainerVisible) {
+          // Resume GSAP animations when in view.
+          gsap.globalTimeline.resume();
+        } else {
+          // Pause GSAP animations when out of view.
+          gsap.globalTimeline.pause();
+        }
+      });
+    }, { threshold: 0.2 });
+    currencyObserver.observe(container);
+    // --------------------------------------------------------------------------
+
+    // Modify startAnimation to check container visibility.
     const startAnimation = () => {
-      animateBatch();
+      if (currencyContainerVisible) {
+        animateBatch();
+      }
+      // Continue checking periodically regardless of visibility.
       setTimeout(() => requestAnimationFrame(startAnimation), 3000);
     };
 
+    // Existing visibilitychange listener for tab switching.
     let visibilityTimeout;
     document.addEventListener("visibilitychange", () => {
       clearTimeout(visibilityTimeout);
@@ -300,42 +333,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (animationContainer) containerObserver.observe(animationContainer);
 
-  // Calendar Text Animation control
-  const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
-  const textElement = document.getElementById('calendarText');
-  let currentIndex = 0;
-  let intervalId = null;
-  let isInView = false;
+// Calendar Text Animation control
+const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
+const textElement = document.getElementById('calendarText');
+let currentIndex = 0;
+let intervalId = null;
 
-  function updateText() {
-    textElement.textContent = numbers[currentIndex];
-    textElement.style.opacity = '1';
-    setTimeout(() => textElement.style.opacity = '0', 1000);
-    currentIndex = (currentIndex + 1) % numbers.length;
+function updateText() {
+  textElement.textContent = numbers[currentIndex];
+  textElement.style.opacity = '1';
+  setTimeout(() => textElement.style.opacity = '0', 1000);
+  currentIndex = (currentIndex + 1) % numbers.length;
+}
+
+function startUpdates() {
+  if (!intervalId) {
+    intervalId = setInterval(updateText, 2000);
+    updateText();
   }
+}
 
-  function startUpdates() {
-    if (!intervalId) {
-      intervalId = setInterval(updateText, 2000);
-      updateText();
-    }
+function stopUpdates() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
   }
+}
 
-  function stopUpdates() {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  }
-
-  const textObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) startUpdates();
-      else stopUpdates();
-    });
+const textObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) startUpdates();
+    else stopUpdates();
   });
+});
 
-  textObserver.observe(textElement);
+textObserver.observe(textElement);
 
   // Cog Wheel Animation control
   gsap.set("#cog", { willChange: "transform" });
