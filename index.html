@@ -26,7 +26,6 @@
   <link rel="stylesheet" type="text/css" href="./css/animations.css">
 
   <!-- External Libraries -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap">
@@ -34,9 +33,7 @@
 
   <!-- JavaScript Libraries -->
 <!-- Alpine v3 from jsDelivr (latest 3.x release) -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>  
 
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
@@ -338,7 +335,7 @@
     <!-- Hero Section -->
     <section
       class="landscape:sm:h-[70svh]   bg-darkBlue   md:justify-center justify-end portrait:md:justify-end   landscape:sm:flex-row flex flex-col-reverse mx-auto ">
-      <div data-aos="fade-right" data-aos-delay="200" data-aos-once="true"
+      <div 
         class=" landscape:sm:w-[53%] landscape:smd:h-[75%]  landscape:sm:my-auto   max-md:pt-[1rem] max-md:pb-[2.5rem] portrait:md:h-[35svh] flex flex-col max-md:mx-2 portrait:md:mx-[2svh] max-md:mt-0  text-white justify-center md:w-full portrait:px-8  portrait:md:px-20  text-left ">
     
         <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
@@ -365,13 +362,11 @@
     
       </div>
     
-      <div  class="landscape:md:w-[50%] max-md:h-auto   max-md:translate-y-[0.7rem]  flex w-full max-md:mt-0">
+      <div  class="landscape:md:w-[50%]  max-md:translate-y-[0.7rem]   flex w-full ">
       
-        <div class="m-auto page">
-          <div id="arc-container" class="m-auto globe-wrapper ">
+        <div class="mx-auto">
+          <div  class=" globe-wrapper ">
             <canvas id="globe-3d"></canvas>
-            <canvas id="globe-2d-overlay"></canvas>
-
           </div>
       
         </div>
@@ -866,7 +861,7 @@
 
 
     <!-- About Us Section -->
-    <section class="flex flex-col-reverse justify-center mx-auto my-auto max-md:mt-7 md:flex-row ">
+    <section class="flex flex-col-reverse  justify-center mx-auto my-auto max-md:mt-7 md:flex-row ">
       <div
         class="landscape:md:w-[53%]  landscape:md:pl-[13svh] flex flex-col text-darkBlue  justify-center  w-full   text-left ">
     
@@ -891,7 +886,7 @@
     
     
         <div
-          class="text-darkBlue xl:gap-[5.4svh] md:gap-[3.7svh] overflow-visible mx-auto flex flex-row  flex-wrap justify-start max-md:px-6 max-md:mt-4  mt-7 landscape:md:mt-[4svh]">
+          class="text-darkBlue  xl:gap-[5.4svh] md:gap-[3.7svh] overflow-visible mx-auto flex flex-row  flex-wrap justify-start max-md:px-6 max-md:mt-4  mt-7 landscape:md:mt-[4svh]">
           <!-- Counter 1 -->
           <div class="flex flex-col items-center w-2/4 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
@@ -953,7 +948,7 @@
       </div>
     
       <div 
-        class="relative landscape:md:w-[47%]  portrait:md:h-[50svh]   flex w-full flex-col overflow-hidden">
+        class="relative  landscape:md:w-[47%]   portrait:md:h-[50svh]   flex w-full flex-col overflow-hidden">
         <div class="absolute flex gradient-bg size-full">
           <div class="flex gradient-bg-transparent size-full">
           </div>

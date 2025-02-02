@@ -71,33 +71,34 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 
+/*** Logo Carousel Animation Control (Refactored) ***/
+const marquees = document.querySelectorAll('.marquee');
 
-  /*** Logo Carousel Animation Control (Refactored) ***/
-  const marquees = document.querySelectorAll('.marquee');
-  // Attach hover event listeners once per marquee element
-  marquees.forEach(marquee => {
-    const items = marquee.querySelectorAll('.marquee__item');
-    marquee.addEventListener('mouseenter', () => {
-      items.forEach(item => item.style.animationPlayState = 'paused');
-    });
-    marquee.addEventListener('mouseleave', () => {
-      items.forEach(item => item.style.animationPlayState = 'running');
-    });
+// Attach hover event listeners once per marquee element
+marquees.forEach(marquee => {
+  const items = marquee.querySelectorAll('.marquee__item');
+  marquee.addEventListener('mouseenter', () => {
+    items.forEach(item => (item.style.animationPlayState = 'paused'));
   });
+  marquee.addEventListener('mouseleave', () => {
+    items.forEach(item => (item.style.animationPlayState = 'running'));
+  });
+});
 
-  const marqueeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const items = entry.target.querySelectorAll('.marquee__item');
-      // Only toggle animation play state; hover handlers handle pause/resume
-      if (entry.isIntersecting) {
-        items.forEach(item => item.style.animationPlayState = 'running');
-      } else {
-        items.forEach(item => item.style.animationPlayState = 'paused');
+// Use IntersectionObserver to pause/resume animations when off/on screen
+const marqueeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const items = entry.target.querySelectorAll('.marquee__item');
+    const desiredState = entry.isIntersecting ? 'running' : 'paused';
+    items.forEach(item => {
+      if (item.style.animationPlayState !== desiredState) {
+        item.style.animationPlayState = desiredState;
       }
     });
-  }, { threshold: 0.1 });
-  marquees.forEach(marquee => marqueeObserver.observe(marquee));
+  });
+}, { threshold: 0.1 });
 
+marquees.forEach(marquee => marqueeObserver.observe(marquee));
 
 
   // Rotating Illustration Grouped Animation Control

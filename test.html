@@ -118,15 +118,26 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
-
+    <header
+        class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+    
         <!-- Logo Section -->
-        <div class="absolute h-[7svh] sm:h-14 top-0">
+        <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
             <a class="cursor-pointer" href="./index.html">
-                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+                <img class="px-5 landscape:md:pl-[13svh] h-[7svh] sm:h-14 my-auto  cursor-pointer" src="./img/logo.svg"
+                    alt="VJC Logo" aria-label="Home">
             </a>
+    
+            <div
+                class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] transform translate-y-[0.195svh] ml-[1svh] ">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/us_flag.svg" alt="VJC Logo" aria-label="Home">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/uk_flag.svg" alt="VJC Logo" aria-label="Home">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="VJC Logo"
+                    aria-label="Home">
+            </div>
+    
         </div>
-
+    
         <!-- Menu Button Section -->
         <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
             id="menuButtonContainer">
@@ -141,33 +152,33 @@
                 </svg>
             </button>
         </div>
-
+    
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+            class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
             <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-                <img class="md:w-32 mt-28 w-20 mx-auto mb-5" src="./img/logo_w.svg" alt="" srcset="">
+                <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
                 <p>finest in accounting since 1988</p>
                 <p>Chhattisgarh, IN</p>
             </div>
-
+    
             <ul id="mainMenu"
                 class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] md:text-[3vw] antialiased">
-
+    
                 <!-- Navigation Links -->
-
+    
                 <li class="mt-20"><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
-
+    
                 <li><a href="./pricing.html">PRICING</a></li>
-
+    
                 <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
                 <li><a href="./resources.html">RESOURCES</a></li>
-
-
+    
+    
             </ul>
-
+    
             <ul id="subMenu"
                 class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
                 <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
@@ -178,100 +189,110 @@
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
                         class="size-4 bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-
+    
             </ul>
-
-
+    
+    
         </nav>
-
-
+    
+    
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
-            class="absolute h-14 right-3 cursor-pointer z-50 antialiased portrait:hidden text-darkBlue">
+            class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
-
+    
                 <!-- Home -->
-                <li class="rounded-xl relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./index.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Home</span>
                     </a>
                 </li>
-
+    
                 <!-- About -->
-                <li class="rounded-xl relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./about.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
                         <span>About</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Our Services with Submenu -->
-                <li class="rounded-xl relative block" x-data="{ showChildren: false, submenuTimeout: null }"
+                <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
                     @touchstart="showChildren = !showChildren">
                     <a href="#" aria-haspopup="true" aria-expanded="false"
-                        class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer"
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
                         <span>Services</span>
-
+    
                     </a>
-                    <div class=" w-80 rounded-3xl absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white border shadow-2xl"
+                    <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
                         x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
                         x-transition:enter-start="opacity-0 translate-y-2"
                         x-transition:enter-end="opacity-100 translate-y-0"
                         x-transition:leave="transition ease duration-300 transform"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
-                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
-                        aria-label="Submenu">
-                        <span
-                            class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
-                        <div class="rounded-3xl relative z-10 w-full px-2 py-6 bg-white">
+                        @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
+                        <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./cloud-accounting-and-bookkeeping.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Cloud Accounting and Bookkeeping</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./audit-and-assurance-services.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Audit and Assurance Services</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./tax-planning-and-compliance.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Tax Planning and Compliance</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./virtual-chief-financial-officer.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
-
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
+    
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                                        class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Legal Processing Outsourcing</span>
                                     </a>
@@ -280,45 +301,45 @@
                         </div>
                     </div>
                 </li>
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
                 <!-- Pricing -->
-                <li class="rounded-xl relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./pricing.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Pricing</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Resources -->
-                <li class="rounded-xl relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./resources.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Resources</span>
                     </a>
                 </li>
-
-
-
+    
+    
+    
                 <!-- Contact Us -->
-                <li class="rounded-xl relative block">
+                <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./contact.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Contact Us</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
+    
     </header>
 
     <main>
@@ -1336,24 +1357,24 @@
 
 
         <!-- Softwares we use Section -->
-        <section class=" md:mt-0 flex flex-col mt-12 text-center">
-            <div class=" text-darkBlue max-md:px-10 flex flex-col justify-center">
-                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] portrait:mb-[1svh] landscape:mb-[0.25svh] lg:landscape:mb-[1.5svh] font-bold  leading-snug uppercase"
+        <section class=" flex  md:mt-[3svh] mt-12 flex-col  max-md:text-left text-center ">
+            <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10 landscape:md:px-[13svh]  mx-auto">
+                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw]  font-bold  leading-normal uppercase "
                     aria-label="Main Title">
                     Softwares we use
                 </h2>
-                <p class=" text-[3.5vw] md:text-[2svh] portrait:md:text-[1.8svw]   font-light leading-relaxed "
+                <p class=" text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]   font-light leading-normal "
                     aria-label="Hero Description">
-                    We utilize the latest and trending softwares to ensure high-quality service delivery, conforming to
-                    each client’s
-                    standards.
+                    We use cutting-edge software and industry trends to deliver high-quality services, tailored to meet and
+                    exceed each
+                    client’s unique standards, ensuring exceptional results and satisfaction every time.
                 </p>
-
-
+        
+        
             </div>
-
-            <div class="md:hidden flex flex-col gap-8 mt-8 mb-8">
-                <div class="marquee marquee--LTR md:w-[80%] md:mx-auto flex relative overflow-x-hidden ">
+        
+            <div class="flex flex-col gap-0 mt-2 md:hidden">
+                <div class="relative flex w-full mx-auto overflow-x-hidden marquee marquee--LTR ">
                     <img class="marquee__item" src="./img/netsuite-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/freshbooks-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/quickbooks-logo.svg" width="60" height="60" alt="">
@@ -1363,25 +1384,29 @@
                     <img class="marquee__item" src="./img/sage-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/lightyear-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/zoho-logo.svg" width="60" height="60" alt="">
-
+                    <img class="marquee__item" src="./img/wave-logo.svg" width="60" height="60" alt="">
+        
+        
                 </div>
-
-                <div class="marquee marquee--RTL md:w-[70%] md:mx-auto flex relative overflow-x-hidden ">
+        
+                <div class="relative flex w-full mx-auto overflow-x-hidden marquee marquee--RTL ">
                     <img class="marquee__item" src="./img/microsoft365-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/hubdoc-logo.svg" width="60" height="60" alt="">
-                    <img class="marquee__item" src="./img/bills-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/reckon-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/myob-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/xero-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/dext-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/iris-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/odoo-logo.svg" width="60" height="60" alt="">
                     <img class="marquee__item" src="./img/neat-logo.svg" width="60" height="60" alt="">
-
+                    <img class="marquee__item" src="./img/lodgeit-logo.svg" width="60" height="60" alt="">
+                    <img class="marquee__item" src="./img/fyi-logo.svg" width="60" height="60" alt="">
+        
+        
                 </div>
             </div>
-
-            <div class="max-md:hidden flex flex-col gap-8 mt-8 mb-0">
-                <div class="marquee marquee--LTR md:w-[80%] md:mx-auto flex relative overflow-x-hidden ">
+        
+            <div class="flex flex-col gap-[1.5svh] mt-[2svh] mb-0  max-md:hidden">
+                <div class="relative flex overflow-x-hidden marquee marquee--LTR md:w-full md:mx-auto ">
                     <img class="marquee__item size-full" src="./img/netsuite-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/freshbooks-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/quickbooks-logo.svg" alt="">
@@ -1391,23 +1416,26 @@
                     <img class="marquee__item size-full" src="./img/sage-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/lightyear-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/zoho-logo.svg" alt="">
-
+                    <img class="marquee__item size-full" src="./img/wave-logo.svg" alt="">
+        
                 </div>
-
-                <div class="marquee marquee--RTL md:w-[80%] md:mx-auto flex relative overflow-x-hidden">
+        
+                <div class="relative flex overflow-x-hidden marquee marquee--RTL md:w-full md:mx-auto">
                     <img class="marquee__item size-full" src="./img/microsoft365-logo.svg" alt="">
-                    <img class="marquee__item size-full" src="./img/hubdoc-logo.svg" alt="">
-                    <img class="marquee__item size-full" src="./img/bills-logo.svg" alt="">
+                    <img class="marquee__item size-full" src="./img/reckon-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/myob-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/xero-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/dext-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/iris-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/odoo-logo.svg" alt="">
                     <img class="marquee__item size-full" src="./img/neat-logo.svg" alt="">
+                    <img class="marquee__item size-full" src="./img/lodgeit-logo.svg" alt="">
+                    <img class="marquee__item size-full" src="./img/fyi-logo.svg" alt="">
                 </div>
             </div>
-
+        
         </section>
+
 
 
 

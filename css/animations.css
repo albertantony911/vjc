@@ -142,87 +142,105 @@
  * Logo carousel animation starts
  * ----------------------------------------
  */
+/**
+ * ----------------------------------------
+ * Logo carousel animation (Refactored)
+ * ----------------------------------------
+ */
 .marquee {
-    block-size: var(--marquee-item-height);
-    margin-block: 0;
-    mask-image: linear-gradient(
-        to right,
-        hsl(0 0% 0% / 0),
-        hsl(0 0% 0% / 1) 20%,
-        hsl(0 0% 0% / 1) 80%,
-        hsl(0 0% 0% / 0)
-    );
-    overflow: hidden; /* Ensure content doesn't overflow */
+  block-size: var(--marquee-item-height);
+  margin-block: 0;
+  mask-image: linear-gradient(
+    to right,
+    hsla(0, 0%, 0%, 0),
+    hsla(0, 0%, 0%, 1) 20%,
+    hsla(0, 0%, 0%, 1) 80%,
+    hsla(0, 0%, 0%, 0)
+  );
+  overflow: hidden; /* Prevent overflow */
 }
 
-/* Common settings for Left-to-Right and Right-to-Left marquees */
+/* Common settings for both LTR and RTL marquees */
 .marquee--LTR,
 .marquee--RTL,
 .marquee--LTR-M,
 .marquee--RTL-M {
-    --marquee-item-width: 77px;
-    --marquee-item-height: 77px;
-    --marquee-items: 10;
+  --marquee-item-width: 77px;
+  --marquee-item-height: 77px;
+  --marquee-items: 10;
 }
 
 .marquee--LTR,
 .marquee--RTL {
-    --marquee-duration: 40s;
+  --marquee-duration: 40s;
 }
 
 .marquee--LTR-M,
 .marquee--RTL-M {
-    --marquee-duration: 30s;
-    --marquee-items: 7;
+  --marquee-duration: 30s;
+  --marquee-items: 7;
 }
 
+/* Refactored marquee item using transform */
 .marquee__item {
-    --marquee-item-offset: max(
-        calc(var(--marquee-item-width) * var(--marquee-items)),
-        calc(100% + var(--marquee-item-width))
-    );
-    --marquee-delay: calc(
-        var(--marquee-duration) / var(--marquee-items) *
-        (var(--marquee-items) - var(--marquee-item-index)) * -1
-    );
-    position: absolute;
-    inset-inline-start: var(--marquee-item-offset);
-    transform: translateX(-50%);
-    animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-    animation-play-state: paused; /* Default state */
+  /* Define start and end offsets.
+     The original code set:
+       - start position: max(item-width * items, 100% + item-width) with an extra -50% shift
+       - end position: (item-width * -1) with the same shift.
+     We embed the -50% into our calculations. */
+  --marquee-start: calc(
+    max(
+      calc(var(--marquee-item-width) * var(--marquee-items)),
+      calc(100% + var(--marquee-item-width))
+    ) - 50%
+  );
+  --marquee-end: calc(var(--marquee-item-width) * -1 - 50%);
+  --marquee-delay: calc(
+    (var(--marquee-duration) / var(--marquee-items)) *
+      (var(--marquee-items) - var(--marquee-item-index)) * -1
+  );
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Start at the computed start offset */
+  transform: translateX(var(--marquee-start));
+  animation: marquee-move linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
+  animation-play-state: paused; /* Default state; JS will toggle */
+  will-change: transform;
 }
 
-/* Default state: animation running */
+/* Ensure the marquee container runs its child animations by default */
 .marquee {
-    animation-play-state: running;
+  animation-play-state: running;
 }
 
-/* Pause all animations when the marquee container is hovered */
+/* Pause all animations on hover */
 .marquee:hover .marquee__item {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
-/* Animation direction */
+/* Animation direction for LTR vs RTL */
 .marquee--LTR .marquee__item,
 .marquee--LTR-M .marquee__item {
-    animation-direction: normal;
+  animation-direction: normal;
 }
 
 .marquee--RTL .marquee__item,
 .marquee--RTL-M .marquee__item {
-    animation-direction: reverse;
+  animation-direction: reverse;
 }
 
-/* Keyframes for marquee animation */
-@keyframes go {
-    to {
-        inset-inline-start: calc(var(--marquee-item-width) * -1);
-    }
+/* Keyframes: animate transform from start to end offset */
+@keyframes marquee-move {
+  to {
+    transform: translateX(var(--marquee-end));
+  }
 }
 
-/* Apply index for each item */
+/* Assign an index to each item for staggered delays */
 .marquee__item {
-    --marquee-item-index: 0; /* Default value */
+  --marquee-item-index: 0; /* Default value */
 }
 
 .marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
@@ -235,7 +253,6 @@
 .marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
 .marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
 .marquee__item:nth-of-type(10) { --marquee-item-index: 10; }
-
 
 
 
@@ -309,16 +326,13 @@
     -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
 }
 
-#globe-3d,
-#globe-2d-overlay {
+#globe-3d {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; /* Ensure the canvas covers the entire width */
     height: 100%; /* Ensure the canvas covers the entire height */
-    pointer-events: auto; /* Allow interaction with the canvas */
     z-index: 3; /* Ensure it's above other elements */
-    touch-action: pan-y; /* Allow vertical panning on touch devices */
 }
 
 
