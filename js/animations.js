@@ -172,130 +172,136 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeCounter("counter3", 40, 3, 0, '+');
   initializeCounter("counter4", 50, 3, 0, '%');
 
-  // Currency Drop Animation control
-  function randomFadeAndReposition() {
-    const container = document.querySelector("#currencyContainer");
-    const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
-    const pooledElements = [];
-    let containerWidth = container.clientWidth;
-    let containerHeight = container.clientHeight;
-    const sideWidth = containerWidth * 0.2;
+// Currency Drop Animation control
+function randomFadeAndReposition() {
+  const container = document.querySelector("#currencyContainer");
+  const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
+  const pooledElements = [];
+  let containerWidth = container.clientWidth;
+  let containerHeight = container.clientHeight;
+  const sideWidth = containerWidth * 0.2;
 
-    const precomputedRandoms = Array.from({ length: 50 }, () => Math.random());
-    let randomIndex = 0;
+  const precomputedRandoms = Array.from({ length: 50 }, () => Math.random());
+  let randomIndex = 0;
 
-    const getRandom = () => precomputedRandoms[(randomIndex++) % precomputedRandoms.length];
-    const precomputePositions = () => ({
-      left: Array.from({ length: symbols.length }, () => getRandom() * sideWidth),
-      right: Array.from({ length: symbols.length }, () => containerWidth - sideWidth + getRandom() * sideWidth),
-    });
+  const getRandom = () => precomputedRandoms[(randomIndex++) % precomputedRandoms.length];
+  const precomputePositions = () => ({
+    left: Array.from({ length: symbols.length }, () => getRandom() * sideWidth),
+    right: Array.from({ length: symbols.length }, () => containerWidth - sideWidth + getRandom() * sideWidth),
+  });
 
-    let positions = precomputePositions();
-    const startY = -10;
-    const endY = containerHeight + 50;
+  let positions = precomputePositions();
+  const startY = -10;
+  const endY = containerHeight + 50;
 
-    const updateDimensions = () => {
-      containerWidth = container.clientWidth;
-      containerHeight = container.clientHeight;
-      positions = precomputePositions();
-    };
+  const updateDimensions = () => {
+    containerWidth = container.clientWidth;
+    containerHeight = container.clientHeight;
+    positions = precomputePositions();
+  };
 
-    const throttle = (func, limit) => {
-      let lastFunc, lastRan;
-      return function () {
-        const context = this;
-        const args = arguments;
-        if (!lastRan) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        } else {
-          clearTimeout(lastFunc);
-          lastFunc = setTimeout(() => {
-            if (Date.now() - lastRan >= limit) {
-              func.apply(context, args);
-              lastRan = Date.now();
-            }
-          }, limit - (Date.now() - lastRan));
-        }
-      };
-    };
-
-    window.addEventListener("resize", throttle(updateDimensions, 200));
-
-    const createOrReuseElement = () => {
-      const element = pooledElements.pop() || document.createElementNS("http://www.w3.org/2000/svg", "text");
-      if (!element.parentNode) {
-        element.setAttribute("text-anchor", "middle");
-        element.style.willChange = "transform, opacity";
-        element.setAttribute("fill", "#01377D");
-        container.appendChild(element);
+  // Throttle resize events
+  const throttle = (func, limit) => {
+    let lastFunc, lastRan;
+    return function () {
+      const context = this;
+      const args = arguments;
+      if (!lastRan) {
+        func.apply(context, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(() => {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
       }
-      return element;
     };
+  };
 
-    const animateElement = (element, index, side) => {
-      element.textContent = symbols[index];
-      const startX = side === "left" ? positions.left[index] : positions.right[index];
+  window.addEventListener("resize", throttle(updateDimensions, 200));
 
-      gsap.set(element, { x: startX, y: startY, opacity: 1 });
-      gsap.to(element, {
+  const createOrReuseElement = () => {
+    const element = pooledElements.pop() || document.createElementNS("http://www.w3.org/2000/svg", "text");
+    if (!element.parentNode) {
+      element.setAttribute("text-anchor", "middle");
+      element.style.willChange = "transform, opacity";
+      element.setAttribute("fill", "#01377D");
+      container.appendChild(element);
+    }
+    return element;
+  };
+
+  // Create a dedicated timeline for the currency drop animations
+  const currencyTimeline = gsap.timeline({ paused: false });
+
+  const animateElement = (element, index, side) => {
+    element.textContent = symbols[index];
+    const startX = side === "left" ? positions.left[index] : positions.right[index];
+    gsap.set(element, { x: startX, y: startY, opacity: 1 });
+    
+    // Add the tween to the dedicated timeline
+    currencyTimeline.to(
+      element,
+      {
         y: endY,
         opacity: 0,
         duration: 15,
         ease: "none",
         onComplete: () => pooledElements.push(element),
-      });
-    };
+      },
+      0 // All tweens can start at time zero relative to when they're added
+    );
+  };
 
-    const animateBatch = () => {
-      for (let i = 0; i < 2; i++) {
-        const side = i === 0 ? "left" : "right";
-        const element = createOrReuseElement();
-        const symbolIndex = Math.floor(getRandom() * symbols.length);
-        animateElement(element, symbolIndex, side);
-      }
-    };
+  const animateBatch = () => {
+    for (let i = 0; i < 2; i++) {
+      const side = i === 0 ? "left" : "right";
+      const element = createOrReuseElement();
+      const symbolIndex = Math.floor(getRandom() * symbols.length);
+      animateElement(element, symbolIndex, side);
+    }
+  };
 
-    // ----- Added Intersection Observer for the currency drop container -----
-    let currencyContainerVisible = true;
-    const currencyObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+  // Use Intersection Observer to control only the currencyTimeline
+  let currencyContainerVisible = true;
+  const currencyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
         currencyContainerVisible = entry.isIntersecting;
         if (currencyContainerVisible) {
-          // Resume GSAP animations when in view.
-          gsap.globalTimeline.resume();
+          currencyTimeline.resume();
         } else {
-          // Pause GSAP animations when out of view.
-          gsap.globalTimeline.pause();
+          currencyTimeline.pause();
         }
       });
-    }, { threshold: 0.2 });
-    currencyObserver.observe(container);
-    // --------------------------------------------------------------------------
+    },
+    { threshold: 0.2 }
+  );
+  currencyObserver.observe(container);
 
-    // Modify startAnimation to check container visibility.
-    const startAnimation = () => {
-      if (currencyContainerVisible) {
-        animateBatch();
-      }
-      // Continue checking periodically regardless of visibility.
-      setTimeout(() => requestAnimationFrame(startAnimation), 3000);
-    };
+  // Control timeline on tab visibility change
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      currencyTimeline.pause();
+    } else {
+      currencyTimeline.resume();
+    }
+  });
 
-    // Existing visibilitychange listener for tab switching.
-    let visibilityTimeout;
-    document.addEventListener("visibilitychange", () => {
-      clearTimeout(visibilityTimeout);
-      visibilityTimeout = setTimeout(() => {
-        if (document.hidden) gsap.globalTimeline.pause();
-        else gsap.globalTimeline.resume();
-      }, 100);
-    });
+  const startAnimation = () => {
+    if (currencyContainerVisible) {
+      animateBatch();
+    }
+    setTimeout(() => requestAnimationFrame(startAnimation), 3000);
+  };
 
-    startAnimation();
-  }
+  startAnimation();
+}
 
-  randomFadeAndReposition();
+randomFadeAndReposition();
 
   // Landing Illustration Bar and Dot Animation control
   const barElements = ["#bar1", "#bar2", "#bar3"];
