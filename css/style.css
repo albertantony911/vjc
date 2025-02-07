@@ -4269,6 +4269,13 @@
       }
     }
   }
+  .landscape\:md\:ml-\[13svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 48rem) {
+        margin-left: 13svh;
+      }
+    }
+  }
   .landscape\:md\:hidden {
     @media (orientation: landscape) {
       @media (width >= 48rem) {
