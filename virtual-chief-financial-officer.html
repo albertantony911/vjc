@@ -1255,266 +1255,81 @@
                 </h2>
             </div>
         
-            <div class="relative justify-center antialiased" role="group">
-                <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-                    <div class="md:pt-10 w-3/4 pt-5 mx-auto text-center">
-                        <!-- Accordion component -->
-                        <div class="divide-slate-200 divide-y" role="region" aria-label="vCFO FAQ Group">
-        
-                            <!-- FAQ Section 1 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-0" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-0-answer">
-                                        <span>Where Does a vCFO Fit in Your Business?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-0-answer" role="region" aria-labelledby="vcfo-faq-1"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            A vCFO operates at the senior management level, collaborating with CEOs, founders, and boards. They ensure financial
-                                            health while delivering strategic insights, aligning business goals with financial planning.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+            
 
-                            <div x-data="{ expanded: false }" class="py-4">
-                              <h2>
-                                <button id="vcfo-faq-1" type="button"
-                                  class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                  @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                  @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                  aria-controls="vcfo-faq-1-answer">
-                                  <span>How quickly can a vCFO start making an impact on my business?</span>
-                                  <img
-                                    class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                    src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                                    aria-hidden="true" />
-                                </button>
-                              </h2>
-                              <div id="vcfo-faq-1-answer" role="region" aria-labelledby="vcfo-faq-1"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                  <p><br>
-                                    Our vCFOs are experienced professionals who begin by analyzing your financial
-                                    situation right from day one. With a streamlined onboarding process, they quickly
-                                    integrate into your team, identifying key areas of improvement and offering
-                                    actionable insights to help drive immediate value.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-        
-                            <!-- FAQ Section 2 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-2" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-2-answer">
-                                        <span>Will my business data and financial information be secure?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-2-answer" role="region" aria-labelledby="vcfo-faq-2"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            Absolutely. At VJC, we prioritize the confidentiality and security of your data. We
-                                            implement robust cybersecurity measures, including secure communication channels and
-                                            data encryption, to ensure your sensitive financial information is protected at all
-                                            times.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 3 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-3" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-3-answer">
-                                        <span>Can the vCFO work with my existing finance team and systems?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-3-answer" role="region" aria-labelledby="vcfo-faq-3"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            Yes, our vCFOs seamlessly collaborate with your existing finance team and integrate
-                                            into your current systems. Whether you're using cloud-based accounting software or
-                                            traditional financial management tools, we work within your framework to enhance
-                                            efficiency and performance.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 4 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-4" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-4-answer">
-                                        <span>What’s the difference between a part-time and interim vCFO, and how do I choose
-                                            which one suits my business?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-4-answer" role="region" aria-labelledby="vcfo-faq-4"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            A part-time vCFO is ideal for businesses that need ongoing financial guidance but
-                                            don’t require a full-time resource. An interim vCFO is perfect for handling
-                                            transitional phases, like a merger or leadership gap. We can help assess your
-                                            business needs to recommend the right fit.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 5 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-5" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-5-answer">
-                                        <span>How do you ensure that the vCFO understands the specific needs of my
-                                            industry?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-5-answer" role="region" aria-labelledby="vcfo-faq-5"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            Our vCFOs bring years of experience across various industries. Before starting, we
-                                            conduct a thorough analysis of your business model and industry dynamics to tailor
-                                            our strategies and ensure they align with your specific financial and operational
-                                            challenges.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 6 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-6" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-6-answer">
-                                        <span>How often will I receive financial reports and updates from the vCFO?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-6-answer" role="region" aria-labelledby="vcfo-faq-6"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            We offer customized reporting schedules based on your preferences and business
-                                            needs. Typically, our vCFOs provide weekly, monthly, or quarterly updates, but we
-                                            can adjust this frequency to ensure you have real-time insights when you need them.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 7 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-7" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-7-answer">
-                                        <span>Will the vCFO be involved in decision-making beyond just finances?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-7-answer" role="region" aria-labelledby="vcfo-faq-7"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            Definitely. Our vCFOs bring holistic business insights and often collaborate with
-                                            leadership teams to influence decisions beyond just financial matters, such as
-                                            operations, expansion, or partnerships. They act as strategic advisors to help drive
-                                            overall business growth.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- FAQ Section 8 -->
-                            <div x-data="{ expanded: false }" class="py-4">
-                                <h2>
-                                    <button id="vcfo-faq-8" type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                        aria-controls="vcfo-faq-8-answer">
-                                        <span>What commitment level is required when hiring a vCFO?</span>
-                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                            src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                    </button>
-                                </h2>
-                                <div id="vcfo-faq-8-answer" role="region" aria-labelledby="vcfo-faq-8"
-                                    class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                    <div class="overflow-hidden">
-                                        <p><br>
-                                            We offer flexible engagement models to fit your needs, whether it’s a part-time,
-                                            interim, or project-based arrangement. You can scale up or down based on your
-                                            requirements, with no long-term lock-ins, ensuring you get the support you need
-                                            without overcommitting.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-        
+
+            <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
+              <div class="relative flex flex-col justify-center overflow-hidden" role="group">
+                <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
+                  <!-- Accordion component -->
+                  <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
+                    <template x-for="(faq, index) in [
+                      {
+                        question: 'Where Does a vCFO Fit in Your Business?',
+                        answer: 'A vCFO operates at the senior management level, collaborating with CEOs, founders, and boards. They ensure financial health while delivering strategic insights, aligning business goals with financial planning.'
+                      },
+                      {
+                        question: 'How quickly can a vCFO start making an impact on my business?',
+                        answer: 'Our vCFOs are experienced professionals who begin by analyzing your financial situation right from day one. With a streamlined onboarding process, they quickly integrate into your team, identifying key areas of improvement and offering actionable insights to help drive immediate value.'
+                      },
+                      {
+                        question: 'Will my business data and financial information be secure?',
+                        answer: 'Absolutely. At VJC, we prioritize the confidentiality and security of your data. We implement robust cybersecurity measures, including secure communication channels and data encryption, to ensure your sensitive financial information is protected at all times.'
+                      },
+                      {
+                        question: 'Can the vCFO work with my existing finance team and systems?',
+                        answer: 'Yes, our vCFOs seamlessly collaborate with your existing finance team and integrate into your current systems. Whether you\'re using cloud-based accounting software or traditional financial management tools, we work within your framework to enhance efficiency and performance.'
+                      },
+                      {
+                        question: 'What’s the difference between a part-time and interim vCFO, and how do I choose which one suits my business?',
+                        answer: 'A part-time vCFO is ideal for businesses that need ongoing financial guidance but don’t require a full-time resource. An interim vCFO is perfect for handling transitional phases, like a merger or leadership gap. We can help assess your business needs to recommend the right fit.'
+                      },
+                      {
+                        question: 'How do you ensure that the vCFO understands the specific needs of my industry?',
+                        answer: 'Our vCFOs bring years of experience across various industries. Before starting, we conduct a thorough analysis of your business model and industry dynamics to tailor our strategies and ensure they align with your specific financial and operational challenges.'
+                      },
+                      {
+                        question: 'How often will I receive financial reports and updates from the vCFO?',
+                        answer: 'We offer customized reporting schedules based on your preferences and business needs. Typically, our vCFOs provide weekly, monthly, or quarterly updates, but we can adjust this frequency to ensure you have real-time insights when you need them.'
+                      },
+                      {
+                        question: 'Will the vCFO be involved in decision-making beyond just finances?',
+                        answer: 'Definitely. Our vCFOs bring holistic business insights and often collaborate with leadership teams to influence decisions beyond just financial matters, such as operations, expansion, or partnerships. They act as strategic advisors to help drive overall business growth.'
+                      },
+                      {
+                        question: 'What commitment level is required when hiring a vCFO?',
+                        answer: 'We offer flexible engagement models to fit your needs, whether it’s a part-time, interim, or project-based arrangement. You can scale up or down based on your requirements, with no long-term lock-ins, ensuring you get the support you need without overcommitting.'
+                      }
+                    ]" :key="index">
+                      <div class="py-4">
+                        <h2>
+                          <button type="button"
+                            class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                            @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
+                            :aria-controls="'vcfo-faq-' + index">
+                            <span x-text="faq.question"></span>
+                            <img
+                              class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+                              src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
+                              aria-hidden="true" />
+                          </button>
+                        </h2>
+                        <div :id="'vcfo-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+                          :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+                          <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]" x-text="faq.answer"></p>
+                          <template x-if="faq.link">
+                            <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                              <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
+                                x-text="faq.linkText"></a>
+                            </p>
+                          </template>
                         </div>
-                    </div>
+                      </div>
+                    </template>
+
+                  </div>
                 </div>
+              </div>
             </div>
         </section>
 

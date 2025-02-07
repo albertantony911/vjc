@@ -1506,202 +1506,69 @@
               Frequently Asked Questions
             </h2>
           </div>
-        
-          <div class="relative justify-center antialiased" role="group">
+
+          <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-              <div class="md:pt-16 w-3/4 pt-10 mx-auto text-center">
+              <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
                 <!-- Accordion component -->
-                <div class="divide-slate-200 divide-y" role="region" aria-label="Legal Services FAQ Group">
-                  <!-- FAQ Section 1 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-1" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-1-answer">
-                        <span>What types of legal services can be outsourced to VJC?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-1-answer" role="region" aria-labelledby="legal-faq-1"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          You can outsource a range of services, including contract review, litigation
-                          support, legal research, and intellectual property management, among others.
-                        </p>
+                <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
+                  <template x-for="(faq, index) in [
+                    {
+                      question: 'What types of legal services can be outsourced to VJC?',
+                      answer: 'You can outsource a range of services, including contract review, litigation support, legal research, and intellectual property management, among others.'
+                    },
+                    {
+                      question: 'How does VJC ensure confidentiality of sensitive legal information?',
+                      answer: 'We follow strict data security protocols and legal standards to safeguard your confidential information.'
+                    },
+                    {
+                      question: 'What industries do you specialize in?',
+                      answer: 'VJC works across various industries, including finance, healthcare, technology, hospitality, and more.'
+                    },
+                    {
+                      question: 'Do you offer support for cross-border legal issues?',
+                      answer: 'Yes, VJC provides specialized support for international transactions and cross-border legal complexities.'
+                    },
+                    {
+                      question: 'What engagement models does VJC offer?',
+                      answer: 'We offer flexible engagement models, including project-based, in-house support, and retainer-based services.'
+                    },
+                    {
+                      question: 'How do you ensure legal compliance with local and international laws?',
+                      answer: 'Our legal experts stay updated on the latest regulations and ensure that all services are fully compliant with both local and international legal requirements.'
+                    },
+                    {
+                      question: 'Can VJC assist with corporate governance and compliance?',
+                      answer: 'Yes, we help companies with corporate governance, maintaining statutory records, and ensuring compliance with industry regulations.'
+                    }
+                  ]" :key="index">
+                    <div class="py-4">
+                      <h2>
+                        <button type="button"
+                          class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                          @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
+                          :aria-controls="'legal-faq-' + index">
+                          <span x-text="faq.question"></span>
+                          <img
+                            class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+                            src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
+                            aria-hidden="true" />
+                        </button>
+                      </h2>
+                      <div :id="'legal-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+                        :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+                        <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]" x-text="faq.answer"></p>
+                        <template x-if="faq.link">
+                          <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                            <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
+                              x-text="faq.linkText"></a>
+                          </p>
+                        </template>
                       </div>
                     </div>
-                  </div>
-        
-                  <!-- FAQ Section 2 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-2" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-2-answer">
-                        <span>How does VJC ensure confidentiality of sensitive legal information?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-2-answer" role="region" aria-labelledby="legal-faq-2"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          We follow strict data security protocols and legal standards to safeguard your
-                          confidential information.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <!-- FAQ Section 3 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-3" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-3-answer">
-                        <span>What industries do you specialize in?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-3-answer" role="region" aria-labelledby="legal-faq-3"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          VJC works across various industries, including finance, healthcare, technology,
-                          hospitality, and more.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <!-- FAQ Section 4 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-4" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-4-answer">
-                        <span>Do you offer support for cross-border legal issues?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-4-answer" role="region" aria-labelledby="legal-faq-4"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          Yes, VJC provides specialized support for international transactions and
-                          cross-border legal complexities.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <!-- FAQ Section 5 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-5" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-5-answer">
-                        <span>What engagement models does VJC offer?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-5-answer" role="region" aria-labelledby="legal-faq-5"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          We offer flexible engagement models, including project-based, in-house support, and
-                          retainer-based services.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <!-- FAQ Section 6 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-6" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-6-answer">
-                        <span>How do you ensure legal compliance with local and international laws?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-6-answer" role="region" aria-labelledby="legal-faq-6"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          Our legal experts stay updated on the latest regulations and ensure that all
-                          services are fully compliant with both local and international legal requirements.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <!-- FAQ Section 7 -->
-                  <div x-data="{ expanded: false }" class="py-4">
-                    <h2>
-                      <button id="legal-faq-7" type="button"
-                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                        @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                        @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                        aria-controls="legal-faq-7-answer">
-                        <span>Can VJC assist with corporate governance and compliance?</span>
-                        <img
-                          class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                          aria-hidden="true" />
-                      </button>
-                    </h2>
-                    <div id="legal-faq-7-answer" role="region" aria-labelledby="legal-faq-7"
-                      class="grid overflow-hidden text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                      :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                      <div class="overflow-hidden">
-                        <p><br>
-                          Yes, we help companies with corporate governance, maintaining statutory records, and
-                          ensuring compliance with industry regulations.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  </template>
+
                 </div>
-                <!-- end of Accordion component -->
               </div>
             </div>
           </div>

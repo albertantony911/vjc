@@ -1426,163 +1426,71 @@
         </h2>
       </div>
     
-      <div class="relative justify-center antialiased" role="group">
+      <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
         <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-          <div class="md:pt-10 w-3/4 pt-10 mx-auto text-center">
+          <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
             <!-- Accordion component -->
-            <div class="divide-slate-200 divide-y" role="region" aria-label="FAQ Group">
-    
-              <!-- FAQ Section 1 -->
-              <div x-data="{ expanded: false }" class="py-4">
-                <h2>
-                  <button id="faq-1" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-1-answer">
-                    <span>What qualifications do your accountants and bookkeepers have?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-1-answer" role="region" aria-labelledby="faq-1"
-                  class=" grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden">
-                    <p><br>
-                      Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and
-                      experienced bookkeepers. They have extensive knowledge of accounting standards and regulations,
-                      ensuring high-quality service tailored to your business needs.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./about.html" class="text-blue-600">Meet our Team for more info</a>.
-                    </p>
+            <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
+              <template x-for="(faq, index) in [
+                {
+                  question: 'What qualifications do your accountants and bookkeepers have?',
+                  answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.',
+                  link: './about.html',
+                  linkText: 'Meet our Team for more info'
+                },
+                {
+                  question: 'How can cloud accounting benefit my business compared to traditional methods?',
+                  answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.'
+                },
+                {
+                  question: 'Do I need to prepare my books before handing them over to VJC?',
+                  answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.',
+                  link: './contact.html',
+                  linkText: 'Discuss with our Executives for more info'
+                },
+                {
+                  question: 'How does cloud accounting improve financial decision-making for my business?',
+                  answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.'
+                },
+                {
+                  question: 'Is my financial data secure?',
+                  answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.',
+                  link: './about.html',
+                  linkText: 'You can read more here'
+                }
+              ]" :key="index">
+                <div class="py-4">
+                  <h2>
+                    <button type="button"
+                      class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                      @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
+                      :aria-controls="'audit-faq-' + index">
+                      <span x-text="faq.question"></span>
+                      <img
+                        class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+                        src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
+                        aria-hidden="true" />
+                    </button>
+                  </h2>
+                  <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+                    :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+                    <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]" x-text="faq.answer"></p>
+                    <template x-if="faq.link">
+                      <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                        <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
+                          x-text="faq.linkText"></a>
+                      </p>
+                    </template>
                   </div>
                 </div>
-              </div>
-    
-              <!-- FAQ Section 2 -->
-              <div x-data="{ expanded: false }" class="py-4">
-                <h2>
-                  <button id="faq-2" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-2-answer">
-                    <span>How can cloud accounting benefit my business compared to traditional methods?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-2-answer" role="region" aria-labelledby="faq-2"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden">
-                    <p><br>
-                      Cloud accounting offers numerous benefits including real-time financial visibility, improved
-                      collaboration, automated processes, enhanced data security, and the ability to access your financial
-                      information from anywhere at any time. It also scales easily with your business growth and reduces the
-                      risk of data loss.
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 3 -->
-              <div x-data="{ expanded: false }" class="py-4">
-                <h2>
-                  <button id="faq-3" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-3-answer">
-                    <span>Do I need to prepare my books before handing them over to VJC?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-3-answer" role="region" aria-labelledby="faq-3"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden">
-                    <p><br>
-                      No, you don't need to prepare or clean up your books beforehand. As part of our service, we will
-                      assess your current financial records, perform any necessary data cleaning or restructuring, and set
-                      up an appropriate general ledger tailored to your specific business needs. Our goal is to make the
-                      transition as smooth as possible for you.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./contact.html" class="text-blue-600">Discuss with our Executives for more info</a>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 4 -->
-              <div x-data="{ expanded: false }" class="py-4">
-                <h2>
-                  <button id="faq-4" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-4-answer">
-                    <span>How does cloud accounting improve financial decision-making for my business?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-4-answer" role="region" aria-labelledby="faq-4"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden">
-                    <p><br>
-                      Cloud accounting provides real-time financial data and automated reporting, allowing you to make
-                      informed decisions quickly. You'll have instant access to key performance indicators, cash flow
-                      status, and financial forecasts, enabling proactive management of your business finances.
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- FAQ Section 5 -->
-              <div x-data="{ expanded: false }" class="py-4">
-                <h2>
-                  <button id="faq-5" type="button"
-                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                    aria-controls="faq-5-answer">
-                    <span>Is my financial data secure?</span>
-                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                      src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}" alt="Expand or collapse FAQ content"
-                      aria-hidden="true" />
-                  </button>
-                </h2>
-                <div id="faq-5-answer" role="region" aria-labelledby="faq-5"
-                  class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                  :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                  <div class="overflow-hidden">
-                    <p><br>
-                      Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and
-                      regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to
-                      manage who sees what information, enhancing overall data security.
-                    </p>
-                    <p class="mt-4">
-                      <a href="./about.html" class="text-blue-600">You can read more here</a>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-    
+              </template>
             </div>
-    
           </div>
         </div>
       </div>
+
+
+      
     </section>
 
 

@@ -1324,332 +1324,92 @@
             </h2>
         </div>
     
-        <div class="relative justify-center antialiased" role="group">
+        <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-                <div class="md:pt-10 w-3/4 pt-10 mx-auto text-center">
+                <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
                     <!-- Accordion component -->
-                    <div class="divide-slate-200 divide-y" role="region" aria-label="Audit FAQ Group">
-    
-                        <!-- FAQ Section 1 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-1" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-1-answer">
-                                    <span>How do you handle regulatory requirements needing a local professional's signature
-                                        as an offshore provider?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-1-answer" role="region" aria-labelledby="audit-faq-1"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We have a network of onshore partners and professionals across continents to meet
-                                        local regulatory requirements. This allows us to provide cost-effective offshore
-                                        services while ensuring compliance with country-specific regulations. Our partners
-                                        handle necessary signatures and oversights, bridging the gap between our expert
-                                        offshore team and local compliance needs.
-                                    </p>
+                    <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
+                        <template x-for="(faq, index) in [
+                  { 
+                    question: 'How do you handle regulatory requirements needing a local professional\'s signature as an offshore provider?', 
+                    answer: 'We have a network of onshore partners and professionals across continents to meet local regulatory requirements. This allows us to provide cost-effective offshore services while ensuring compliance with country-specific regulations. Our partners handle necessary signatures and oversights, bridging the gap between our expert offshore team and local compliance needs.' 
+                  },
+                  { 
+                    question: 'How do you ensure the confidentiality and security of our financial data during the audit process?', 
+                    answer: 'We implement stringent data protection measures, including end-to-end encryption, secure VPNs, and strict access controls. Our team adheres to confidentiality agreements, and we\'re compliant with international data protection standards.' 
+                  },
+                  { 
+                    question: 'Can you explain your approach to tailoring audit services to our specific industry and company needs?', 
+                    answer: 'We begin with a comprehensive assessment of your industry, business model, and unique challenges. Our team then develops a customized audit plan that addresses your specific risk areas and compliance requirements, ensuring a relevant and value-adding audit process.' 
+                  },
+                  { 
+                    question: 'What qualifications and experience do your auditors have?', 
+                    answer: 'Our audit support team consists of certified professionals, including CPAs and Indian Chartered Accountants, with extensive experience across various industries. They undergo continuous training to stay updated with the latest audit standards and industry-specific regulations.' 
+                  },
+                  { 
+                    question: 'How do you maintain consistency and quality in your audit processes?', 
+                    answer: 'We follow a rigorous quality control system that includes peer reviews, regular training, and standardized methodologies and operating processes. Our work undergoes multiple levels of review to ensure accuracy and completeness.' 
+                  },
+                  { 
+                    question: 'Can your team work as an extension of our in-house audit department?', 
+                    answer: 'Absolutely. We pride ourselves on our flexibility and ability to integrate seamlessly with your existing processes. We can work as an extension of your in-house audit team, providing additional support and expertise where needed. Alternatively, we can also provide standalone audit services if that better suits your requirements. Our goal is to adapt to your preferred working model, enhancing your audit capabilities while ensuring a smooth, efficient process.' 
+                  },
+                  { 
+                    question: 'What technologies do you use to enhance the efficiency and accuracy of your audits?', 
+                    answer: 'We utilize advanced audit software for data analytics, risk assessment, and process automation. This includes tools for continuous auditing, anomaly detection, and predictive analytics, allowing us to provide more insightful and efficient audits.' 
+                  },
+                  { 
+                    question: 'How do you handle potential conflicts of interest or maintain independence in your audit work?', 
+                    answer: 'We have strict policies in place to ensure auditor independence. This includes regular conflict checks, rotation of audit partners, and clear separation of audit and non-audit services. We adhere to all relevant ethical standards and independence requirements.' 
+                  },
+                  { 
+                    question: 'What is your process for communicating audit findings and recommendations?', 
+                    answer: 'We maintain open communication throughout the audit process. At the conclusion, we provide a comprehensive report detailing our findings, along with practical recommendations. We also offer a debriefing session to discuss the results and answer any questions.' 
+                  },
+                  { 
+                    question: 'How do you stay updated with changing audit standards and regulations?', 
+                    answer: 'Our team undergoes regular training and participates in professional development programs. We also have a dedicated team that monitors regulatory changes and updates our audit methodologies accordingly.' 
+                  },
+                  { 
+                    question: 'Can you provide references or case studies from clients similar to our business?', 
+                    answer: 'While we maintain client confidentiality, we can provide anonymized case studies relevant to your industry.',
+                    link: '#',
+                    linkText: 'You can read our select case studies here.'
+                  }
+                ]" :key="index">
+                            <div class="py-4">
+                                <h2>
+                                    <button type="button"
+                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                                        @click="openFaq = (openFaq === index ? null : index)"
+                                        :aria-expanded="openFaq === index.toString()" :aria-controls="'audit-faq-' + index">
+                                        <span x-text="faq.question"></span>
+                                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+                                            src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
+                                            alt="Expand or collapse FAQ content" aria-hidden="true" />
+                                    </button>
+                                </h2>
+                                <div :id="'audit-faq-' + index" role="region"
+                                    class="overflow-hidden transition-all duration-500 ease-in-out"
+                                    :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+                                    <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]"
+                                        x-text="faq.answer"></p>
+                                    <template x-if="faq.link">
+                                        <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                                            <a :href="faq.link"
+                                                class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
+                                                x-text="faq.linkText"></a>
+                                        </p>
+                                    </template>
                                 </div>
                             </div>
-                        </div>
-    
-                        <!-- FAQ Section 2 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-2" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-2-answer">
-                                    <span>How do you ensure the confidentiality and security of our financial data during
-                                        the audit process?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-2-answer" role="region" aria-labelledby="audit-faq-2"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We implement stringent data protection measures, including end-to-end encryption,
-                                        secure VPNs, and strict access controls. Our team adheres to confidentiality
-                                        agreements, and we're compliant with international data protection standards.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 3 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-3" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-3-answer">
-                                    <span>Can you explain your approach to tailoring audit services to our specific industry
-                                        and company needs?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-3-answer" role="region" aria-labelledby="audit-faq-3"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We begin with a comprehensive assessment of your industry, business model, and
-                                        unique challenges. Our team then develops a customized audit plan that addresses
-                                        your specific risk areas and compliance requirements, ensuring a relevant and
-                                        value-adding audit process.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 4 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-4" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-4-answer">
-                                    <span>What qualifications and experience do your auditors have?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-4-answer" role="region" aria-labelledby="audit-faq-4"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        Our audit support team consists of certified professionals, including CPAs and
-                                        Indian Chartered Accountants, with extensive experience across various industries.
-                                        They undergo continuous training to stay updated with the latest audit standards and
-                                        industry-specific regulations.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 5 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-5" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-5-answer">
-                                    <span>How do you maintain consistency and quality in your audit processes?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-5-answer" role="region" aria-labelledby="audit-faq-5"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We follow a rigorous quality control system that includes peer reviews, regular
-                                        training, and standardized methodologies and operating processes. Our work undergoes
-                                        multiple levels of review to ensure accuracy and completeness.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 6 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-6" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-6-answer">
-                                    <span>Can your team work as an extension of our in-house audit department?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-6-answer" role="region" aria-labelledby="audit-faq-6"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        Absolutely. We pride ourselves on our flexibility and ability to integrate
-                                        seamlessly with your existing processes. We can work as an extension of your
-                                        in-house audit team, providing additional support and expertise where needed.
-                                        Alternatively, we can also provide standalone audit services if that better suits
-                                        your requirements. Our goal is to adapt to your preferred working model, enhancing
-                                        your audit capabilities while ensuring a smooth, efficient process.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 7 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-7" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-7-answer">
-                                    <span>What technologies do you use to enhance the efficiency and accuracy of your
-                                        audits?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-7-answer" role="region" aria-labelledby="audit-faq-7"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We utilize advanced audit software for data analytics, risk assessment, and process
-                                        automation. This includes tools for continuous auditing, anomaly detection, and
-                                        predictive analytics, allowing us to provide more insightful and efficient audits.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 8 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-8" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-8-answer">
-                                    <span>How do you handle potential conflicts of interest or maintain independence in your
-                                        audit work?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-8-answer" role="region" aria-labelledby="audit-faq-8"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We have strict policies in place to ensure auditor independence. This includes
-                                        regular conflict checks, rotation of audit partners, and clear separation of audit
-                                        and non-audit services. We adhere to all relevant ethical standards and independence
-                                        requirements.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 9 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-9" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-9-answer">
-                                    <span>What is your process for communicating audit findings and recommendations?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-9-answer" role="region" aria-labelledby="audit-faq-9"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        We maintain open communication throughout the audit process. At the conclusion, we
-                                        provide a comprehensive report detailing our findings, along with practical
-                                        recommendations. We also offer a debriefing session to discuss the results and
-                                        answer any questions.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 10 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-10" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-10-answer">
-                                    <span>How do you stay updated with changing audit standards and regulations?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-10-answer" role="region" aria-labelledby="audit-faq-10"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        Our team undergoes regular training and participates in professional development
-                                        programs. We also have a dedicated team that monitors regulatory changes and updates
-                                        our audit methodologies accordingly.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- FAQ Section 11 -->
-                        <div x-data="{ expanded: false }" class="py-4">
-                            <h2>
-                                <button id="audit-faq-11" type="button"
-                                    class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
-                                    @click="expanded = !expanded" @keydown.space.prevent="expanded = !expanded"
-                                    @keydown.enter.prevent="expanded = !expanded" :aria-expanded="expanded.toString()"
-                                    aria-controls="audit-faq-11-answer">
-                                    <span>Can you provide references or case studies from clients similar to our
-                                        business?</span>
-                                    <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] mb-auto ml-8 transition duration-200 origin-center transform"
-                                        src="./img/drop-arrow.svg" :class="{'rotate-180!': expanded}"
-                                        alt="Expand or collapse FAQ content" aria-hidden="true" />
-                                </button>
-                            </h2>
-                            <div id="audit-faq-11-answer" role="region" aria-labelledby="audit-faq-11"
-                                class="grid overflow-hidden  text-[3.3vw] md:text-[1.8svh] portrait:md:text-[1.5svw] leading-relaxed text-left transition-all duration-300 ease-in-out"
-                                :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                <div class="overflow-hidden">
-                                    <p><br>
-                                        While we maintain client confidentiality, we can provide anonymized case studies
-                                        relevant to your industry.
-                                    </p>
-                                    <p class="mt-4">
-                                        <a href="#" class="text-blue-600">You can read our
-                                            select case studies here.</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
+                        </template>
                     </div>
-    
                 </div>
             </div>
         </div>
+
+
     </section>
 
 

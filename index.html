@@ -1593,7 +1593,7 @@
     
       <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
         <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-          <div class="md:pt-8 landscape:md:px-[13svh] max-md:w-[80%] pt-3 mx-auto text-center">
+          <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
             <!-- Accordion component -->
             <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
       
@@ -1617,19 +1617,19 @@
                 <div class="py-4">
                   <h2>
                     <button type="button"
-                      class="text-[3.3vw] md:text-[2.2svh] flex items-center justify-between w-full font-medium text-left"
+                      class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
                       @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
                       :aria-controls="'faq-' + index">
                       <span x-text="faq.question"></span>
-                      <img class="shrink-0 size-5 md:size-[2.5svh] ml-8 transition-transform duration-200 transform"
+                      <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
                         src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
                         alt="Expand or collapse FAQ content" aria-hidden="true" />
                     </button>
                   </h2>
                   <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
                     :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                    <p class="mt-2 text-left text-[3.3vw] md:text-[2.1svh]" x-text="faq.answer"></p>
-                    <p class="mt-4 text-left block text-[3.3vw] md:text-[1.7svh]">
+                    <p class="mt-2 text-left text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]" x-text="faq.answer"></p>
+                    <p class="mt-4 text-left block text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]">
                       <a :href="faq.link"
                         class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
                         x-text="faq.linkText"></a>
@@ -1653,7 +1653,7 @@
     <section class="">
         <div class="text-white" >
             <div class=" md:py-[7svh]  max-md:px-2  pb-3 md:pb-8 ">
-                <div class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
+                <div class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
                     <div class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-darkBlue   shadow-2xl mx-auto">
                         <h3 id="contactSectionHeading"
                             class="md:text-3xl  uppercase text-2xl font-bold md:mt-10 mt-10 mb-5  md:mb-3    landscape:md:leading-[2.5rem] leading-normal"
@@ -1725,7 +1725,7 @@
   </main>
 
 
-  <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh]" role="contentinfo">
+  <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]" role="contentinfo">
 
         <div class="  py-8 max-md:mx-2  border bg-darkBlue  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
             <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">

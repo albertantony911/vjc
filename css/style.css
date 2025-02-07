@@ -2232,9 +2232,19 @@
       font-weight: var(--font-weight-medium);
     }
   }
+  .max-sm\:hidden {
+    @media (width < 40rem) {
+      display: none;
+    }
+  }
   .sm\:ml-\[4svh\] {
     @media (width >= 40rem) {
       margin-left: 4svh;
+    }
+  }
+  .sm\:hidden {
+    @media (width >= 40rem) {
+      display: none;
     }
   }
   .sm\:h-4 {
@@ -3489,6 +3499,34 @@
       }
     }
   }
+  .portrait\:sm\:px-\[1svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 1svh;
+      }
+    }
+  }
+  .portrait\:sm\:px-\[1svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 1svw;
+      }
+    }
+  }
+  .portrait\:sm\:px-\[2svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 2svh;
+      }
+    }
+  }
+  .portrait\:sm\:px-\[10svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 10svh;
+      }
+    }
+  }
   .sm\:portrait\:px-\[2vw\] {
     @media (width >= 40rem) {
       @media (orientation: portrait) {
@@ -3566,6 +3604,14 @@
       }
     }
   }
+  .portrait\:md\:size-4 {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+      }
+    }
+  }
   .portrait\:md\:size-\[1\.8svw\] {
     @media (orientation: portrait) {
       @media (width >= 48rem) {
@@ -3587,6 +3633,14 @@
       @media (width >= 48rem) {
         width: 2.5svw;
         height: 2.5svw;
+      }
+    }
+  }
+  .portrait\:md\:size-\[2svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        width: 2svw;
+        height: 2svw;
       }
     }
   }
@@ -3861,6 +3915,13 @@
       }
     }
   }
+  .portrait\:md\:px-10 {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        padding-inline: calc(var(--spacing) * 10);
+      }
+    }
+  }
   .portrait\:md\:px-20 {
     @media (orientation: portrait) {
       @media (width >= 48rem) {
@@ -3893,6 +3954,20 @@
     @media (orientation: portrait) {
       @media (width >= 48rem) {
         padding-inline: 2svw;
+      }
+    }
+  }
+  .portrait\:md\:px-\[5svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        padding-inline: 5svw;
+      }
+    }
+  }
+  .portrait\:md\:px-\[7svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        padding-inline: 7svw;
       }
     }
   }
