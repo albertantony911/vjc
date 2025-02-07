@@ -101,32 +101,94 @@ const marqueeObserver = new IntersectionObserver((entries) => {
 marquees.forEach(marquee => marqueeObserver.observe(marquee));
 
 
-  // Rotating Illustration Grouped Animation Control
-  function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-    if (!triggerElement || targetElements.length === 0) return;
-    ScrollTrigger.create({
-      trigger: triggerElement,
-      start: triggerPosition,
-      onEnter: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeave: () => targetElements.forEach(el => el.classList.remove("active")),
-      onEnterBack: () => targetElements.forEach(el => el.classList.add("active")),
-      onLeaveBack: () => targetElements.forEach(el => el.classList.remove("active"))
-    });
-  }
+// Optimized Rotating Illustration Grouped Animation Control
+function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
+  if (!triggerElement || !targetElements.length) return;
 
-  const groups = [
-    { trigger: ".rotating-group-landing", targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"] },
-    { trigger: ".rotating-group-cloud", targets: [".rotating-icon-cloud-1", ".rotating-icon-cloud-2", ".rotating-icon-cloud-3", ".rotating-icon-cloud-4", ".rotating-icon-cloud-5", ".rotating-icon-cloud-6", ".rotating-icon-cloud-7", ".rotating-group-cloud"] },
-    { trigger: ".rotating-group-vcfo", targets: [".rotating-icon-vcfo-1", ".rotating-icon-vcfo-2", ".rotating-icon-vcfo-3", ".rotating-icon-vcfo-4", ".rotating-icon-vcfo-5", ".rotating-group-vcfo"] },
-    { trigger: ".rotating-group-audit", targets: [".rotating-icon-audit-1", ".rotating-icon-audit-2", ".rotating-icon-audit-3", ".rotating-icon-audit-4", ".rotating-icon-audit-5", ".rotating-icon-audit-6", ".rotating-group-audit"] },
-    { trigger: ".rotating-group-legal", targets: [".rotating-icon-legal-1", ".rotating-icon-legal-2", ".rotating-icon-legal-3", ".rotating-icon-legal-4", ".rotating-icon-legal-5", ".rotating-icon-legal-6", ".rotating-icon-legal-7", ".rotating-icon-legal-8", ".rotating-icon-legal-9", ".rotating-icon-legal-10", ".rotating-icon-legal-11", ".rotating-group-legal"] }
-  ];
+  // Prevent duplicate ScrollTrigger creation (if needed)
+  if (triggerElement._scrollTrigger) return;
 
-  groups.forEach(({ trigger, targets }) => {
-    const triggerElement = document.querySelector(trigger);
-    const targetElements = document.querySelectorAll(targets.join(", "));
-    activateScrollTrigger(triggerElement, targetElements);
+  // Create the ScrollTrigger instance using GSAP's toggleClass
+  triggerElement._scrollTrigger = ScrollTrigger.create({
+    trigger: triggerElement,
+    start: triggerPosition,
+    toggleClass: { targets: targetElements, className: "active" }
   });
+}
+
+const groups = [
+  {
+    trigger: ".rotating-group-landing",
+    targets: [
+      ".rotating-icon-1",
+      ".rotating-icon-2",
+      ".rotating-icon-3",
+      ".rotating-icon-4",
+      ".rotating-icon-5",
+      ".rotating-group-landing"
+    ]
+  },
+  {
+    trigger: ".rotating-group-cloud",
+    targets: [
+      ".rotating-icon-cloud-1",
+      ".rotating-icon-cloud-2",
+      ".rotating-icon-cloud-3",
+      ".rotating-icon-cloud-4",
+      ".rotating-icon-cloud-5",
+      ".rotating-icon-cloud-6",
+      ".rotating-icon-cloud-7",
+      ".rotating-group-cloud"
+    ]
+  },
+  {
+    trigger: ".rotating-group-vcfo",
+    targets: [
+      ".rotating-icon-vcfo-1",
+      ".rotating-icon-vcfo-2",
+      ".rotating-icon-vcfo-3",
+      ".rotating-icon-vcfo-4",
+      ".rotating-icon-vcfo-5",
+      ".rotating-group-vcfo"
+    ]
+  },
+  {
+    trigger: ".rotating-group-audit",
+    targets: [
+      ".rotating-icon-audit-1",
+      ".rotating-icon-audit-2",
+      ".rotating-icon-audit-3",
+      ".rotating-icon-audit-4",
+      ".rotating-icon-audit-5",
+      ".rotating-icon-audit-6",
+      ".rotating-group-audit"
+    ]
+  },
+  {
+    trigger: ".rotating-group-legal",
+    targets: [
+      ".rotating-icon-legal-1",
+      ".rotating-icon-legal-2",
+      ".rotating-icon-legal-3",
+      ".rotating-icon-legal-4",
+      ".rotating-icon-legal-5",
+      ".rotating-icon-legal-6",
+      ".rotating-icon-legal-7",
+      ".rotating-icon-legal-8",
+      ".rotating-icon-legal-9",
+      ".rotating-icon-legal-10",
+      ".rotating-icon-legal-11",
+      ".rotating-group-legal"
+    ]
+  }
+];
+
+groups.forEach(({ trigger, targets }) => {
+  const triggerElement = document.querySelector(trigger);
+  const targetElements = document.querySelectorAll(targets.join(", "));
+  activateScrollTrigger(triggerElement, targetElements);
+});
+
 
   // Counter Animation control
   const counterObserver = new IntersectionObserver((entries, observerInstance) => {

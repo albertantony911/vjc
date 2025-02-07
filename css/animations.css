@@ -373,339 +373,99 @@
 }
 
 
-
 /**
  * --------------------------------------------------
- * Rotator Animation Main starts + Key Animation
+ * Rotator Animation Main starts + Key Animations
  * --------------------------------------------------
  */
 
-/* General rotation animations */
+/* Keyframes */
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
 @keyframes rotate-group {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* Apply animation only when .active class is present */
-.pulser {
-  animation: pulsing 2.5s infinite ease-in-out;
-  transform-origin: center;
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes pulsing {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
 }
 
-
-
-/* Apply rotation only when active */
-.rotating-icon-1.active,
-.rotating-icon-2.active,
-.rotating-icon-3.active,
-.rotating-icon-4.active,
-.rotating-icon-5.active {
-  animation: rotate 45s linear infinite;
-}
-
-/* Individual transform-origin settings */
-.rotating-icon-1 {
-  transform-origin: 140px 690px;
-}
-
-.rotating-icon-2 {
-  transform-origin: 1560px 690px;
-}
-
-.rotating-icon-3 {
-  transform-origin: 830px 160px;
-}
-
-.rotating-icon-4 {
-  transform-origin: 1285px 1475px;
-}
-
-.rotating-icon-5 {
-  transform-origin: 450px 1500px;
-}
-
-/* Rotating group animation */
-.rotating-group-landing.active {
-  animation: rotate-group 45s linear infinite;
+/* Pulser animation */
+.pulser {
+  animation: pulsing 2.5s infinite ease-in-out;
   transform-origin: center;
+  will-change: transform;
 }
 
-
-
-
- /**
- * --------------------------------------------------
- * Rotator Animation Cloud starts
- * --------------------------------------------------
- */
-
-
-/* Apply rotation only when active */
-.rotating-icon-cloud-1.active,
-.rotating-icon-cloud-2.active,
-.rotating-icon-cloud-3.active,
-.rotating-icon-cloud-4.active,
-.rotating-icon-cloud-5.active,
-.rotating-icon-cloud-6.active,
-.rotating-icon-cloud-7.active {
+/* General rule for all rotating icons when active */
+[class*="rotating-icon-"].active {
   animation: rotate 45s linear infinite;
+  will-change: transform;
 }
 
-/* Individual transform-origin settings */
-.rotating-icon-cloud-1 {
-  transform-origin: 1277.875px 246.9165px;
-}
-
-.rotating-icon-cloud-2 {
-  transform-origin: 2324.375px 1522.355px;
-}
-
-.rotating-icon-cloud-3 {
-  transform-origin: 2103.055px 627.8995px;
-}
-
-.rotating-icon-cloud-4 {
-  transform-origin: 811.776px 2247.195px;
-}
-
-
-.rotating-icon-cloud-5 {
-  transform-origin: 1750.305px 2255.555px;
-}
-
-.rotating-icon-cloud-6 {
-  transform-origin: 461.9355px 648.005px;
-}
-
-
-.rotating-icon-cloud-7 {
-  transform-origin: 246.9765px 1478.465px;
-}
-
-
-/* Rotating group animation */
-.rotating-group-cloud.active {
-  animation: rotate-group 45s linear infinite;
-  transform-origin: center;
-}
-
-
-
-
- /**
- * --------------------------------------------------
- * Rotator Animation VCFO starts
- * --------------------------------------------------
- */
-
-
-
-
-/* Apply rotation only when active */
-.rotating-icon-vcfo-1.active,
-.rotating-icon-vcfo-2.active,
-.rotating-icon-vcfo-3.active,
-.rotating-icon-vcfo-4.active,
-.rotating-icon-vcfo-5.active {
-  animation: rotate 45s linear infinite;
-}
-
-/* Individual transform-origin settings */
-.rotating-icon-vcfo-1 {
-  transform-origin: 1239.445px 222.1165px;
-}
-
-
-.rotating-icon-vcfo-2 {
-  transform-origin: 2256.61px 961.1025px;
-}
-
-
-.rotating-icon-vcfo-3 {
-  transform-origin: 610.8015px 2142.69px;
-}
-
-
-.rotating-icon-vcfo-4 {
-  transform-origin: 1869.11px 2156.72px;
-}
-
-
-
-.rotating-icon-vcfo-5 {
-  transform-origin: 222.2785px 961.1025px;
-}
-
-
-/* Rotating group animation */
-.rotating-group-vcfo.active {
-  animation: rotate-group 45s linear infinite;
-  transform-origin: center;
-}
-
-
-
-
-
- /**
- * --------------------------------------------------
- * Rotator Animation Audit starts
- * --------------------------------------------------
- */
-
-
-/* Apply rotation only when active */
-.rotating-icon-audit-1.active,
-.rotating-icon-audit-2.active,
-.rotating-icon-audit-3.active,
-.rotating-icon-audit-4.active,
-.rotating-icon-audit-5.active,
-.rotating-icon-audit-6.active {
-  animation: rotate 45s linear infinite;
-}
-
-/* Individual transform-origin settings */
-.rotating-icon-audit-1 {
-  transform-origin: 2074.36px 756.806px;
-}
-
-.rotating-icon-audit-2 {
-  transform-origin: 222.2785px 1826.08px;
-}
-
-.rotating-icon-audit-3 {
-  transform-origin: 1148.3205px 2360.7px;
-}
-
-
-.rotating-icon-audit-4 {
-  transform-origin: 2071.98px 1826.44px;
-}
-
-.rotating-icon-audit-5 {
-  transform-origin: 222.2785px 757.9585px;
-}
-
-
-.rotating-icon-audit-6 {
-  transform-origin: 1148.3205px 222.1165px;
-}
-
-
-/* Rotating group animation */
-.rotating-group-audit.active {
-  animation: rotate-group 45s linear infinite;
-  transform-origin: 1148.318px 1291.436px;
-}
-
-
-
-
-
-  /**
- * --------------------------------------------------
- * Rotator Animation Legal starts
- * --------------------------------------------------
- */
-
-
-
-/* Apply rotation only when active */
-.rotating-icon-legal-1.active,
-.rotating-icon-legal-2.active,
-.rotating-icon-legal-3.active,
-.rotating-icon-legal-4.active,
-.rotating-icon-legal-4.active,
-.rotating-icon-legal-5.active,
-.rotating-icon-legal-6.active,
-.rotating-icon-legal-7.active,
-.rotating-icon-legal-8.active,
-.rotating-icon-legal-9.active,
-.rotating-icon-legal-10.active,
-.rotating-icon-legal-11.active {
-  animation: rotate 45s linear infinite;
-}
-
-/* Individual transform-origin settings */
-.rotating-icon-legal-1 {
-  transform-origin: 1280.87px 222.1165px;
-}
-
-.rotating-icon-legal-2 {
-  transform-origin: 702.6525px 392.1955px;
-}
-
-.rotating-icon-legal-3 {
-  transform-origin: 222.2785px 1444.165px;
-}
-
-.rotating-icon-legal-4 {
-  transform-origin: 1859.07px 392.1955px;
-}
-
-.rotating-icon-legal-5 {
-  transform-origin: 2339.455px 1444.105px;
-}
-
-
-.rotating-icon-legal-6 {
-  transform-origin: 979.56px 2318.055px;
-}
-
-
-.rotating-icon-legal-7 {
-  transform-origin: 2253.695px 847.6795px;
-}
-
-
-.rotating-icon-legal-8 {
-  transform-origin: 472.611px 1992.315px;
-}
-
-.rotating-icon-legal-9 {
-  transform-origin: 1582.17px 2318.11px;
-}
-
-.rotating-icon-legal-10 {
-  transform-origin: 2089.125px 1992.68px;
-}
-
-
-.rotating-icon-legal-11 {
-  transform-origin: 308.0225px 847.6695px;
-}
-
-
-/* Rotating group animation */
+/* Individual transform-origin settings for icons */
+.rotating-icon-1 { transform-origin: 140px 690px; }
+.rotating-icon-2 { transform-origin: 1560px 690px; }
+.rotating-icon-3 { transform-origin: 830px 160px; }
+.rotating-icon-4 { transform-origin: 1285px 1475px; }
+.rotating-icon-5 { transform-origin: 450px 1500px; }
+
+.rotating-icon-cloud-1 { transform-origin: 1277.875px 246.9165px; }
+.rotating-icon-cloud-2 { transform-origin: 2324.375px 1522.355px; }
+.rotating-icon-cloud-3 { transform-origin: 2103.055px 627.8995px; }
+.rotating-icon-cloud-4 { transform-origin: 811.776px 2247.195px; }
+.rotating-icon-cloud-5 { transform-origin: 1750.305px 2255.555px; }
+.rotating-icon-cloud-6 { transform-origin: 461.9355px 648.005px; }
+.rotating-icon-cloud-7 { transform-origin: 246.9765px 1478.465px; }
+
+.rotating-icon-vcfo-1 { transform-origin: 1239.445px 222.1165px; }
+.rotating-icon-vcfo-2 { transform-origin: 2256.61px 961.1025px; }
+.rotating-icon-vcfo-3 { transform-origin: 610.8015px 2142.69px; }
+.rotating-icon-vcfo-4 { transform-origin: 1869.11px 2156.72px; }
+.rotating-icon-vcfo-5 { transform-origin: 222.2785px 961.1025px; }
+
+.rotating-icon-audit-1 { transform-origin: 2074.36px 756.806px; }
+.rotating-icon-audit-2 { transform-origin: 222.2785px 1826.08px; }
+.rotating-icon-audit-3 { transform-origin: 1148.3205px 2360.7px; }
+.rotating-icon-audit-4 { transform-origin: 2071.98px 1826.44px; }
+.rotating-icon-audit-5 { transform-origin: 222.2785px 757.9585px; }
+.rotating-icon-audit-6 { transform-origin: 1148.3205px 222.1165px; }
+
+.rotating-icon-legal-1 { transform-origin: 1280.87px 222.1165px; }
+.rotating-icon-legal-2 { transform-origin: 702.6525px 392.1955px; }
+.rotating-icon-legal-3 { transform-origin: 222.2785px 1444.165px; }
+.rotating-icon-legal-4 { transform-origin: 1859.07px 392.1955px; }
+.rotating-icon-legal-5 { transform-origin: 2339.455px 1444.105px; }
+.rotating-icon-legal-6 { transform-origin: 979.56px 2318.055px; }
+.rotating-icon-legal-7 { transform-origin: 2253.695px 847.6795px; }
+.rotating-icon-legal-8 { transform-origin: 472.611px 1992.315px; }
+.rotating-icon-legal-9 { transform-origin: 1582.17px 2318.11px; }
+.rotating-icon-legal-10 { transform-origin: 2089.125px 1992.68px; }
+.rotating-icon-legal-11 { transform-origin: 308.0225px 847.6695px; }
+
+/* Rotating group animations */
+
+/* Groups with a center transform-origin */
+.rotating-group-landing.active,
+.rotating-group-cloud.active,
+.rotating-group-vcfo.active,
 .rotating-group-legal.active {
   animation: rotate-group 45s linear infinite;
   transform-origin: center;
+  will-change: transform;
 }
 
-
+/* Special case: Audit group with a custom transform-origin */
+.rotating-group-audit.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: 1148.318px 1291.436px;
+  will-change: transform;
+}
 
 
  /**
