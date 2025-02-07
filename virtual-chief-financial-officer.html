@@ -122,7 +122,7 @@
     
       <!-- Logo Section -->
       <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
-        <a class="landscape:md:ml-[13svh] max-md:px-5  h-[7svh] sm:h-14 my-auto " href="./index.html">
+        <a class="landscape:md:ml-[13svh] max-md:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
           <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
             aria-label="Home">
         </a>
@@ -160,17 +160,18 @@
       <nav role="navigation" aria-label="Mobile Navigation Menu"
         class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
         <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-          <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
+          <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo"
+            aria-label="Home">
           <p>finest in accounting since 1988</p>
-          <p>Chhattisgarh, IN</p>
+          <p>CG, IN 497001</p>
         </div>
     
         <ul id="mainMenu"
-          class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] md:text-[3vw] antialiased">
+          class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] antialiased">
     
           <!-- Navigation Links -->
     
-          <li class="mt-20"><a href="./index.html">HOME</a></li>
+          <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
           <li><a href="./about.html">ABOUT</a></li>
           <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
     
@@ -183,15 +184,15 @@
         </ul>
     
         <ul id="subMenu"
-          class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
-          <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
+          class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] text-[4vw] mt-16 ">
+          <li class=" text-[7vw] font-semibold"><a href="#">SERVICES</a></li>
           <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
           <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
           <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
           <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
           <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4 bounce-left"
-              src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
+              class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
         </ul>
     
@@ -883,115 +884,454 @@
 
         <section class=" pb-16 pt-16 md:pt-[5svh] md:pb-[0svh]  text-darkBlue">
             
-            <div class="flex flex-col justify-center md:gap-8 gap-6 md:px-48 ">
+            <div class="flex flex-col justify-center md:gap-8 gap-6  ">
                 <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold md:mb-5 mb-3 text-center">
                     Services We Provide
                 </h2>
+
+                <div class="flex  flex-col justify-center md:gap-8 xl:gap-10 gap-6  landscape:sm:px-[13svh] portrait:sm:px-[7svw] ">
+              
                 
-                <div class="flex  xl:flex-row flex-col portrait:flex-col  portrait:w-full landscape:max-xl:w-full  mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
-
-                    <div
-                        class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
-                        <div class="flex flex-col size-auto ">
-                            <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto ">
-                                <img src="./img/vcfo_service_icon_1.svg" alt="">
-                            </div>
+                  <div
+                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
+                
+                
+                
+                    <div x-data="{
+                                          expanded: false,
+                                          collapseTimeout: null,
+                                          contentHeight: '6em',
+                                          isTruncated: false,
+                                          init() {
+                                            // Delay measurement until after render.
+                                            setTimeout(() => {
+                                              const contentEl = this.$refs.content;
+                                              // Temporarily remove the inline max-height so we can measure the full height.
+                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              contentEl.style.maxHeight = 'none';
+                                              const fullHeight = contentEl.scrollHeight;
+                                              // Restore the original max-height.
+                                              contentEl.style.maxHeight = originalMaxHeight;
+                                              
+                                              // Calculate the collapsed height in pixels (6em).
+                                              const computedStyle = window.getComputedStyle(contentEl);
+                                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                                              const collapsedHeightPx = 6 * fontSize;
+                                              
+                                              // If full height exceeds collapsed height, mark as truncated.
+                                              this.isTruncated = fullHeight > collapsedHeightPx;
+                                            }, 0);
+                                          },
+                                          toggleExpand() {
+                                            this.expanded = !this.expanded;
+                                            clearTimeout(this.collapseTimeout);
+                                            const contentEl = this.$refs.content;
+                                            if (this.expanded) {
+                                              // Remove inline max-height to measure the full content height.
+                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              contentEl.style.maxHeight = 'none';
+                                              const fullHeight = contentEl.scrollHeight;
+                                              contentEl.style.maxHeight = originalMaxHeight;
+                                              this.contentHeight = fullHeight + 'px';
+                                              // Optional auto-collapse after 20 seconds.
+                                              this.collapseTimeout = setTimeout(() => {
+                                                this.expanded = false;
+                                                this.contentHeight = '6em';
+                                              }, 20000);
+                                            } else {
+                                              this.contentHeight = '6em';
+                                            }
+                                          }
+                                        }" x-init="init()"
+                      class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                
+                      <!-- Header / Toggle Button -->
+                      <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                
+                        <div class="flex flex-col w-auto">
+                          <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                            <img src="./img/vcfo_service_icon_1.svg" alt="Service Icon">
+                          </div>
                         </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Financial Planning & Analysis (FP&A)</h3>
-                            <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">Our FP&A service offers a comprehensive view of your financial performance, analyzing key metrics to project future
-                            growth. We help you navigate complexities by offering actionable insights that guide sound business decisions.</p>
-                        </div>
-                    </div>
-
-                    <div
-                      class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
-                      <div class="flex flex-col size-auto ">
-                        <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto ">
-                          <img src="./img/vcfo_service_icon_3.svg" alt="">
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                          <h3 class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                            Financial Planning & Analysis (FP&A)
+                          </h3>
+                
+                          <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                          <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                            class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                            Our FP&A service offers a comprehensive view of your financial performance, analyzing key metrics to project future
+                            growth. We help you navigate complexities by offering actionable insights that guide sound business decisions.
+                          </p>
+                
+                          <!-- Conditionally render the toggle button only if content is truncated -->
+                          <template x-if="isTruncated">
+                            <span @click.stop="toggleExpand"
+                              class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                              <span x-show="!expanded" x-transition>...read more</span>
+                              <span x-show="expanded" x-transition>...collapse</span>
+                            </span>
+                          </template>
                         </div>
                       </div>
-                      <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                        <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Corporate Finance & Governance</h3>
-                        <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">We identify areas of potential risk, ensuring your financial reporting is precise and compliant with industry
-                        regulations. From improving internal controls to safeguarding assets, we provide a robust governance structure for your
-                        business.</p>
+                    </div>
+                
+                    <div x-data="{
+                                                    expanded: false,
+                                                    collapseTimeout: null,
+                                                    contentHeight: '6em',
+                                                    isTruncated: false,
+                                                    init() {
+                                                      // Delay measurement until after render.
+                                                      setTimeout(() => {
+                                                        const contentEl = this.$refs.content;
+                                                        // Temporarily remove the inline max-height so we can measure the full height.
+                                                        const originalMaxHeight = contentEl.style.maxHeight;
+                                                        contentEl.style.maxHeight = 'none';
+                                                        const fullHeight = contentEl.scrollHeight;
+                                                        // Restore the original max-height.
+                                                        contentEl.style.maxHeight = originalMaxHeight;
+                                                        
+                                                        // Calculate the collapsed height in pixels (6em).
+                                                        const computedStyle = window.getComputedStyle(contentEl);
+                                                        const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                                                        const collapsedHeightPx = 6 * fontSize;
+                                                        
+                                                        // If full height exceeds collapsed height, mark as truncated.
+                                                        this.isTruncated = fullHeight > collapsedHeightPx;
+                                                      }, 0);
+                                                    },
+                                                    toggleExpand() {
+                                                      this.expanded = !this.expanded;
+                                                      clearTimeout(this.collapseTimeout);
+                                                      const contentEl = this.$refs.content;
+                                                      if (this.expanded) {
+                                                        // Remove inline max-height to measure the full content height.
+                                                        const originalMaxHeight = contentEl.style.maxHeight;
+                                                        contentEl.style.maxHeight = 'none';
+                                                        const fullHeight = contentEl.scrollHeight;
+                                                        contentEl.style.maxHeight = originalMaxHeight;
+                                                        this.contentHeight = fullHeight + 'px';
+                                                        // Optional auto-collapse after 20 seconds.
+                                                        this.collapseTimeout = setTimeout(() => {
+                                                          this.expanded = false;
+                                                          this.contentHeight = '6em';
+                                                        }, 20000);
+                                                      } else {
+                                                        this.contentHeight = '6em';
+                                                      }
+                                                    }
+                                                  }" x-init="init()"
+                      class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                
+                      <!-- Header / Toggle Button -->
+                      <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                
+                        <div class="flex flex-col w-auto">
+                          <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                            <img src="./img/vcfo_service_icon_3.svg" alt="Service Icon">
+                          </div>
+                        </div>
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                          <h3 class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                            Corporate Finance & Governance
+                          </h3>
+                
+                          <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                          <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                            class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                            e identify areas of potential risk, ensuring your financial reporting is precise and compliant with industry
+                            regulations. From improving internal controls to safeguarding assets, we provide a robust governance structure for your
+                            business.
+                          </p>
+                
+                          <!-- Conditionally render the toggle button only if content is truncated -->
+                          <template x-if="isTruncated">
+                            <span @click.stop="toggleExpand"
+                              class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                              <span x-show="!expanded" x-transition>...read more</span>
+                              <span x-show="expanded" x-transition>...collapse</span>
+                            </span>
+                          </template>
+                        </div>
                       </div>
                     </div>
-
-
-                    
-
-                </div>
-
-
-                <div class="flex  xl:flex-row flex-col portrait:flex-col  portrait:w-full landscape:max-xl:w-full  mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
-
-                    
-
-
-                    <div
-                      class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
-                      <div class="flex flex-col size-auto ">
-                        <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto ">
-                          <img src="./img/vcfo_service_icon_2.svg" alt="">
+                
+                
+                
+                  </div>
+                
+                  <div
+                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
+                
+                
+                
+                    <div x-data="{
+                                  expanded: false,
+                                  collapseTimeout: null,
+                                  contentHeight: '6em',
+                                  isTruncated: false,
+                                  init() {
+                                    // Delay measurement until after render.
+                                    setTimeout(() => {
+                                      const contentEl = this.$refs.content;
+                                      // Temporarily remove the inline max-height so we can measure the full height.
+                                      const originalMaxHeight = contentEl.style.maxHeight;
+                                      contentEl.style.maxHeight = 'none';
+                                      const fullHeight = contentEl.scrollHeight;
+                                      // Restore the original max-height.
+                                      contentEl.style.maxHeight = originalMaxHeight;
+                                      
+                                      // Calculate the collapsed height in pixels (6em).
+                                      const computedStyle = window.getComputedStyle(contentEl);
+                                      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                                      const collapsedHeightPx = 6 * fontSize;
+                                      
+                                      // If full height exceeds collapsed height, mark as truncated.
+                                      this.isTruncated = fullHeight > collapsedHeightPx;
+                                    }, 0);
+                                  },
+                                  toggleExpand() {
+                                    this.expanded = !this.expanded;
+                                    clearTimeout(this.collapseTimeout);
+                                    const contentEl = this.$refs.content;
+                                    if (this.expanded) {
+                                      // Remove inline max-height to measure the full content height.
+                                      const originalMaxHeight = contentEl.style.maxHeight;
+                                      contentEl.style.maxHeight = 'none';
+                                      const fullHeight = contentEl.scrollHeight;
+                                      contentEl.style.maxHeight = originalMaxHeight;
+                                      this.contentHeight = fullHeight + 'px';
+                                      // Optional auto-collapse after 20 seconds.
+                                      this.collapseTimeout = setTimeout(() => {
+                                        this.expanded = false;
+                                        this.contentHeight = '6em';
+                                      }, 20000);
+                                    } else {
+                                      this.contentHeight = '6em';
+                                    }
+                                  }
+                                }" x-init="init()"
+                      class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                
+                      <!-- Header / Toggle Button -->
+                      <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                
+                        <div class="flex flex-col w-auto">
+                          <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                            <img src="./img/vcfo_service_icon_2.svg" alt="Service Icon">
+                          </div>
+                        </div>
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                          <h3 class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                            Treasury & Risk Management
+                          </h3>
+                
+                          <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                          <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                            class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                            Our vCFOs optimize treasury functions by managing banking relationships and financing arrangements. We implement
+                            strategies to mitigate financial risk, ensuring your business remains liquid and stable.
+                          </p>
+                
+                          <!-- Conditionally render the toggle button only if content is truncated -->
+                          <template x-if="isTruncated">
+                            <span @click.stop="toggleExpand"
+                              class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                              <span x-show="!expanded" x-transition>...read more</span>
+                              <span x-show="expanded" x-transition>...collapse</span>
+                            </span>
+                          </template>
                         </div>
                       </div>
-                      <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                        <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Treasury & Risk Management</h3>
-                        <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">Our vCFOs optimize treasury functions by managing banking relationships and financing arrangements. We implement
-                        strategies to mitigate financial risk, ensuring your business remains liquid and stable.
-</p>
+                    </div>
+                
+                    <div x-data="{
+                                            expanded: false,
+                                            collapseTimeout: null,
+                                            contentHeight: '6em',
+                                            isTruncated: false,
+                                            init() {
+                                              // Delay measurement until after render.
+                                              setTimeout(() => {
+                                                const contentEl = this.$refs.content;
+                                                // Temporarily remove the inline max-height so we can measure the full height.
+                                                const originalMaxHeight = contentEl.style.maxHeight;
+                                                contentEl.style.maxHeight = 'none';
+                                                const fullHeight = contentEl.scrollHeight;
+                                                // Restore the original max-height.
+                                                contentEl.style.maxHeight = originalMaxHeight;
+                                                
+                                                // Calculate the collapsed height in pixels (6em).
+                                                const computedStyle = window.getComputedStyle(contentEl);
+                                                const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                                                const collapsedHeightPx = 6 * fontSize;
+                                                
+                                                // If full height exceeds collapsed height, mark as truncated.
+                                                this.isTruncated = fullHeight > collapsedHeightPx;
+                                              }, 0);
+                                            },
+                                            toggleExpand() {
+                                              this.expanded = !this.expanded;
+                                              clearTimeout(this.collapseTimeout);
+                                              const contentEl = this.$refs.content;
+                                              if (this.expanded) {
+                                                // Remove inline max-height to measure the full content height.
+                                                const originalMaxHeight = contentEl.style.maxHeight;
+                                                contentEl.style.maxHeight = 'none';
+                                                const fullHeight = contentEl.scrollHeight;
+                                                contentEl.style.maxHeight = originalMaxHeight;
+                                                this.contentHeight = fullHeight + 'px';
+                                                // Optional auto-collapse after 20 seconds.
+                                                this.collapseTimeout = setTimeout(() => {
+                                                  this.expanded = false;
+                                                  this.contentHeight = '6em';
+                                                }, 20000);
+                                              } else {
+                                                this.contentHeight = '6em';
+                                              }
+                                            }
+                                          }" x-init="init()"
+                      class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                
+                      <!-- Header / Toggle Button -->
+                      <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                
+                        <div class="flex flex-col w-auto">
+                          <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                            <img src="./img/vcfo_service_icon_4.svg" alt="Service Icon">
+                          </div>
+                        </div>
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                          <h3 class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                            Strategic Planning & Operations
+                          </h3>
+                
+                          <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                          <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                            class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                            We provide executive-level financial guidance, aligning financial planning with your company’s strategic vision. Whether
+                            driving profitability or identifying growth opportunities, our vCFOs help you stay ahead of the curve.
+                          </p>
+                
+                          <!-- Conditionally render the toggle button only if content is truncated -->
+                          <template x-if="isTruncated">
+                            <span @click.stop="toggleExpand"
+                              class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                              <span x-show="!expanded" x-transition>...read more</span>
+                              <span x-show="expanded" x-transition>...collapse</span>
+                            </span>
+                          </template>
+                        </div>
                       </div>
                     </div>
-
-                    <div
-                        class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
-                        <div class="flex flex-col size-auto ">
-                            <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto ">
-                                <img src="./img/vcfo_service_icon_4.svg" alt="">
-                            </div>
+                
+                
+                
+                  </div>
+                
+                
+                  <div
+                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
+                
+                
+                
+                    <div x-data="{
+                                          expanded: false,
+                                          collapseTimeout: null,
+                                          contentHeight: '6em',
+                                          isTruncated: false,
+                                          init() {
+                                            // Delay measurement until after render.
+                                            setTimeout(() => {
+                                              const contentEl = this.$refs.content;
+                                              // Temporarily remove the inline max-height so we can measure the full height.
+                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              contentEl.style.maxHeight = 'none';
+                                              const fullHeight = contentEl.scrollHeight;
+                                              // Restore the original max-height.
+                                              contentEl.style.maxHeight = originalMaxHeight;
+                                              
+                                              // Calculate the collapsed height in pixels (6em).
+                                              const computedStyle = window.getComputedStyle(contentEl);
+                                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                                              const collapsedHeightPx = 6 * fontSize;
+                                              
+                                              // If full height exceeds collapsed height, mark as truncated.
+                                              this.isTruncated = fullHeight > collapsedHeightPx;
+                                            }, 0);
+                                          },
+                                          toggleExpand() {
+                                            this.expanded = !this.expanded;
+                                            clearTimeout(this.collapseTimeout);
+                                            const contentEl = this.$refs.content;
+                                            if (this.expanded) {
+                                              // Remove inline max-height to measure the full content height.
+                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              contentEl.style.maxHeight = 'none';
+                                              const fullHeight = contentEl.scrollHeight;
+                                              contentEl.style.maxHeight = originalMaxHeight;
+                                              this.contentHeight = fullHeight + 'px';
+                                              // Optional auto-collapse after 20 seconds.
+                                              this.collapseTimeout = setTimeout(() => {
+                                                this.expanded = false;
+                                                this.contentHeight = '6em';
+                                              }, 20000);
+                                            } else {
+                                              this.contentHeight = '6em';
+                                            }
+                                          }
+                                        }" x-init="init()"
+                      class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+                
+                      <!-- Header / Toggle Button -->
+                      <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+                
+                        <div class="flex flex-col w-auto">
+                          <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svh] m-auto">
+                            <img src="./img/vcfo_service_icon_5.svg" alt="Service Icon">
+                          </div>
                         </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Strategic Planning & Operations</h3>
-                            <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">We provide executive-level financial guidance, aligning financial planning with your company’s strategic vision. Whether
-                            driving profitability or identifying growth opportunities, our vCFOs help you stay ahead of the curve.</p>
+                
+                        <div class="flex flex-col text-left gap-1 text-darkBlue">
+                          <h3 class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                            Financial Reporting & Compliance Oversight
+                          </h3>
+                
+                          <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                          <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                            class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                            Our team monitors cash flow, ensures liquidity, and develops tailored financial budgets. We also facilitate
+                            communication with investors and analysts, ensuring transparency in all financial matters.
+                          </p>
+                
+                          <!-- Conditionally render the toggle button only if content is truncated -->
+                          <template x-if="isTruncated">
+                            <span @click.stop="toggleExpand"
+                              class="cursor-pointer text-[2.9vw] md:text-[1.3svh] portrait:md:text-[1.3svw] font-[500] text-right mr-5">
+                              <span x-show="!expanded" x-transition>...read more</span>
+                              <span x-show="expanded" x-transition>...collapse</span>
+                            </span>
+                          </template>
                         </div>
+                      </div>
                     </div>
-
-                </div>
-
-                <div class="flex  md:flex-row flex-col  justify-around max-md:px-5 gap-8 max-md:gap-6 ">
-
-                    <div
-                        class="flex landscape:xl:w-1/2 xl:max-w-[37svw] md:max-w-[40svw] portrait:md:max-w-[33rem]  flex-row rounded-[3rem]  md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] md:gap-5 gap-4 m-auto  bg-white  p-5 md:p-6 xl:p-[2.5svh]">
-                        <div class="flex flex-col size-auto ">
-                            <div class="size-[20svw] md:size-[13svh] portrait:md:size-[10svw] m-auto ">
-                                <img src="./img/vcfo_service_icon_5.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue ">
-                            <h3 class="text-[3.2vw] md:text-[1.8svh]  portrait:md:text-[1.3svw] font-bold leading-snug">Strategic Planning & Operations
-</h3>
-                            <p class="text-[2.9vw] md:text-[1.6svh] portrait:md:text-[1.3svw] font-normal leading-normal">We provide executive-level financial guidance, aligning financial planning with your company’s strategic vision. Whether
-                            driving profitability or identifying growth opportunities, our vCFOs help you stay ahead of the curve.</p>
-                        </div>
-                    </div>
-
-                    
-
-            
-
-
-
-                </div>
-
-
                 
 
-
-
-
+                
+                  </div>
+                
+                </div>
 
             </div>
 
@@ -1415,7 +1755,8 @@
 
 
 
-    <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh]"
+    <footer
+      class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]"
       role="contentinfo">
     
       <div class="  py-8 max-md:mx-2  border bg-darkBlue  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
@@ -1478,7 +1819,7 @@
             <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
               <div class="flex">
                 <ul
-                  class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.5vw]  text-white">
+                  class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.4vw]  text-white">
                   <li><a href="./index.html">Home</a></li>
                   <li><a href="./about.html">About</a></li>
                   <li><a href="./pricing.html">Pricing</a></li>
@@ -1491,7 +1832,7 @@
     
               <div class="flex flex-col text-left">
                 <h3 class="font-bold px-10 pb-1 text-[4vw]">OUR SERVICES</h3>
-                <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.5vw]   text-white">
+                <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.4vw]   text-white">
                   <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                   <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
                   <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
