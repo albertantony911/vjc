@@ -28,7 +28,6 @@ img,
 svg {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  cursor: default;
   backface-visibility: hidden;
 
 }

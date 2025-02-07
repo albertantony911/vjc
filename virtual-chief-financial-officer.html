@@ -117,13 +117,23 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
+    <header
+      class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
     
       <!-- Logo Section -->
-      <div class="absolute h-[7svh] sm:h-14 top-0">
+      <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
         <a class="cursor-pointer" href="./index.html">
-          <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+          <img class="px-5 landscape:md:pl-[13svh] h-[7svh] sm:h-14 my-auto  cursor-pointer" src="./img/logo.svg"
+            alt="VJC Logo" aria-label="Home">
         </a>
+    
+        <div
+          class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] transform translate-y-[0.195svh] ml-[1svh] ">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/us_flag.svg" alt="VJC Logo" aria-label="Home">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/uk_flag.svg" alt="VJC Logo" aria-label="Home">
+          <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="VJC Logo" aria-label="Home">
+        </div>
+    
       </div>
     
       <!-- Menu Button Section -->
@@ -143,9 +153,9 @@
     
       <!-- Mobile Navigation -->
       <nav role="navigation" aria-label="Mobile Navigation Menu"
-        class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+        class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
         <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-          <img class="w-20 md:w-32  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
+          <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
           <p>finest in accounting since 1988</p>
           <p>Chhattisgarh, IN</p>
         </div>
@@ -157,8 +167,7 @@
     
           <li class="mt-20"><a href="./index.html">HOME</a></li>
           <li><a href="./about.html">ABOUT</a></li>
-          <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
-              class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
+          <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
     
           <li><a href="./pricing.html">PRICING</a></li>
     
@@ -176,7 +185,7 @@
           <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
           <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
           <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4  bounce-left"
+          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-4 bounce-left"
               src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
         </ul>
@@ -187,14 +196,14 @@
     
       <!-- Landscape Navigation -->
       <nav aria-label="Main Navigation" role="navigation"
-        class="absolute h-14 right-3 cursor-pointer z-50 antialiased portrait:hidden text-darkBlue">
+        class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
         <ul class="flex flex-row flex-wrap items-center w-full">
     
           <!-- Home -->
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./index.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Home</span>
             </a>
           </li>
@@ -203,7 +212,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./about.html"
-              class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
               <span>About</span>
             </a>
           </li>
@@ -214,60 +223,72 @@
           <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
             @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
             <a href="#" aria-haspopup="true" aria-expanded="false"
-              class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
               @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
               @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
               <span>Services</span>
     
             </a>
-            <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
+            <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
               x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
               x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
               x-transition:leave="transition ease duration-300 transform"
               x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
               style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
               aria-label="Submenu">
-              <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+              <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
               <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                 <ul class="list-reset" role="menu">
                   <!-- Submenu Items -->
-                  <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./cloud-accounting-and-bookkeeping.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Cloud Accounting and Bookkeeping</span>
                     </a>
                   </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./audit-and-assurance-services.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Audit and Assurance Services</span>
                     </a>
                   </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./tax-planning-and-compliance.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Tax Planning and Compliance</span>
                     </a>
                   </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./virtual-chief-financial-officer.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                      class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Virtual Chief Financial officer</span>
                     </a>
                   </li>
+                  <div
+                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                  </div>
     
                   <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                     @mouseleave="showChildren = false">
                     <a href="./legal-process-outsourcing.html"
-                      class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                      class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                       role="menuitem">
                       <span class="flex-1">Legal Processing Outsourcing</span>
                     </a>
@@ -286,7 +307,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./pricing.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Pricing</span>
             </a>
           </li>
@@ -297,7 +318,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./resources.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Resources</span>
             </a>
           </li>
@@ -308,7 +329,7 @@
           <li class="relative block rounded-xl">
             <!-- Navigation Link with ARIA Label -->
             <a href="./contact.html"
-              class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+              class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
               <span>Contact Us</span>
             </a>
           </li>
@@ -1495,23 +1516,15 @@
 
 
         <!-- Contact Section -->
-        
-
-
-        
-
-
-        <!--  Contact Section -->
         <section class="">
           <div class="text-white">
-            <div class=" md:pb-8  landscape:xl:px-0 px-2  pb-3  md:mt-[7svh]">
+            <div class=" md:py-[7svh]  max-md:px-2  pb-3 md:pb-8 ">
               <div
-                class="flex landscape:xl:flex-row flex-col landscape:md:w-[97%] landscape:xl:w-3/4 landscape:xl:min-w-[75rem] justify-between landscape:md:gap-8 gap-3 mx-auto ">
+                class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
                 <div
-                  class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-darkBlue   shadow-2xl mx-auto"
-                  data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
+                  class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-darkBlue   shadow-2xl mx-auto">
                   <h3 id="contactSectionHeading"
-                    class="md:text-3xl  uppercase text-2xl font-bold md:mt-10 mt-10 mb-5  md:mb-3    landscape:md:leading-[2.5rem] leading-snug"
+                    class="md:text-3xl  uppercase text-2xl font-bold md:mt-10 mt-10 mb-5  md:mb-3    landscape:md:leading-[2.5rem] leading-normal"
                     aria-label="Contact Section">
                     CONNECT WITH US
                   </h3>
@@ -1523,9 +1536,8 @@
                     class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
                   </div>
         
-                  <div class="flex justify-center md:mt-8 mt-7 mb-12 md:mb-10">
-                    <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
-                      aria-label="Link to Schedule a Meeting"
+                  <div class="flex justify-center mb-12 md:mt-8 mt-7 md:mb-10">
+                    <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
                       class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-300 transform bg-white rounded-full select-none">
                       Schedule Meeting
                     </a>
@@ -1533,10 +1545,9 @@
                 </div>
         
                 <div
-                  class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-darkBlue   shadow-xl mx-auto"
-                  data-aos="fade-in" data-aos-delay="200" data-aos-once="true">
+                  class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-darkBlue   shadow-xl mx-auto">
                   <h3 id="contactSectionHeading"
-                    class="landscape:md:text-3xl  uppercase text-2xl font-bold landscape:md:mt-10 mt-10 mb-2  md:mb-3   landscape:md:leading-[2.5rem] leading-snug"
+                    class="landscape:md:text-3xl  uppercase text-2xl font-bold landscape:md:mt-10 mt-10 mb-2  md:mb-3   landscape:md:leading-[2.5rem] leading-normal"
                     aria-label="Contact Section">
                     Contact Us
                   </h3>
@@ -1548,27 +1559,27 @@
                     class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
                   </div>
         
-                  <div class=" max-md:px-8 max-md:mt-7 md:mt-8 flex flex-row justify-center text-base gap-5 mb-10 md:mb-10"
+                  <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-8 md:mb-10"
                     role="presentation">
                     <a href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                      <img class="w-16 md:w-14 transform transition-transform  duration-200 hover:scale-125 cursor-pointer"
+                      <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                         src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
                     </a>
         
                     <a href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
                       rel="noopener">
-                      <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                      <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                         src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
                     </a>
         
                     <a href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
                       title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                      <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                      <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                         src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
                     </a>
         
                     <a href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                      <img class="w-16 md:w-14 transform transition-transform duration-200 hover:scale-125 cursor-pointer"
+                      <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
                         src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
                     </a>
         
@@ -1580,42 +1591,39 @@
           </div>
         </section>
 
-
-
     </main>
 
 
 
-    <footer class=" text-white bg-white flex flex-col text-sm font-normal" role="contentinfo">
+    <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh]"
+      role="contentinfo">
     
-      <div
-        class="  py-10 max-md:mx-2 md:mx-5 landscape:md:mx-auto bg-darkBlue landscape:md:rounded-[4rem] rounded-[6svh] landscape:xl:w-3/4 landscape:md:w-[97%]  landscape:xl:min-w-[75rem]  shadow-xl">
-        <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[4rem] text-center ">
+      <div class="  py-8 max-md:mx-2  border bg-darkBlue  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
+        <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">
           <div class=" flex flex-col px-10 md:px-0  landscape:md:w-[40%] ">
-            <a href="./index.html" aria-label="Home">
-              <img class="w-16 landscape:md:w-20 landscape:md:mt-2 ml-0" src="./img/logo_w.svg" alt="VJC Home"
-                aria-hidden="true">
+            <a class=" w-18 ml-0 landscape:md:w-18 landscape:md:mt-2" href="./index.html" aria-label="Home">
+              <img class="" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
             </a>
             <div
-              class="flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left uppercase max-md:mt-3 max-md:mb-0">
+              class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] max-md:mb-0">
               <p>An Affiliate of V. Jaiswal and Co.</p>
               <p>The finest in accounting since 1988.</p>
     
             </div>
             <div
-              class="flex   flex-col   landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
-              <p>CG, IN 497001</p>
-              <p class="lowercase max-md:text-[0.73rem] max-md:mt-[0.5rem] md:mt-[0.2rem] md:text-[0.9rem]">+91
-                9630054303, admin@vjcindia.com</p>
+              class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
+              <p class="max-md:text-[3.3vw]">CG, IN 497001</p>
+              <p class="lowercase max-md:text-[3.3vw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">+91 9630054303,
+                admin@vjcindia.com</p>
     
             </div>
     
           </div>
           <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
-            <div class=" max-md:hidden md:flex-row md:gap-[4svh] flex flex-col my-auto  gap-5 ">
+            <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
     
-              <div class=" md:flex-row max-md:gap-14 md:gap-[4svh] flex gap-5">
-                <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+              <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] xl:gap-[4svh] flex gap-5">
+                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
                   <li><a href="./index.html">Home</a></li>
                   <li><a href="./about.html">About</a></li>
                   <li><a href="./pricing.html">Pricing</a></li>
@@ -1623,7 +1631,7 @@
                   <li><a href="./contact.html">Contact Us</a></li>
                 </ul>
     
-                <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
                   <li><a href="#">Insights</a></li>
                   <li><a href="#">Case Studies</a></li>
                   <li><a href="./about.html">Careers</a></li>
@@ -1632,15 +1640,14 @@
                 </ul>
               </div>
     
-              <div class="md:flex-row md:gap-10 flex flex-col gap-5">
+              <div class="flex flex-col gap-5 md:flex-row md:gap-10">
     
-                <ul class="text-white flex flex-col justify-center gap-1 ml-0 text-xs md:text-base text-left">
+                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
                   <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a>
                   </li>
                   <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
                   <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-                  <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a>
-                  </li>
+                  <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                   <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 </ul>
     
@@ -1648,32 +1655,37 @@
     
             </div>
     
-            <div class=" md:hidden">
-              <ul class="text-white flex flex-row flex-wrap justify-start gap-3 px-10 mx-auto text-xs">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./pricing.html">Pricing</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="#">Insights</a></li>
-                <li><a href="#">Case Studies</a></li>
-                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
-                <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
-                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
+            <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
+              <div class="flex">
+                <ul
+                  class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.5vw]  text-white">
+                  <li><a href="./index.html">Home</a></li>
+                  <li><a href="./about.html">About</a></li>
+                  <li><a href="./pricing.html">Pricing</a></li>
+                  <li><a href="./contact.html">Contact Us</a></li>
+                  <li><a href="#">Insights</a></li>
+                  <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
+                </ul>
+              </div>
     
-              </ul>
+              <div class="flex flex-col text-left">
+                <h3 class="font-bold px-10 pb-1 text-[4vw]">OUR SERVICES</h3>
+                <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.5vw]   text-white">
+                  <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                  <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+                  <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
+                  <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                  <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                </ul>
+              </div>
             </div>
           </nav>
         </div>
       </div>
     
-      <div class="md:text-center px-10 text-left">
-        <div class="text-darkBlue font-white my-7 text-xs">
+      <div class="px-10 text-left md:text-center">
+        <div class="text-xs text-darkBlue font-white my-7">
           <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
               rel="noopener">blackwoodbox.com</a></div>
         </div>

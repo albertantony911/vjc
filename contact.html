@@ -117,13 +117,24 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header Section -->
-    <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white bg-opacity-65 backdrop-blur-md ">
+    <header
+        class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
     
         <!-- Logo Section -->
-        <div class="absolute h-[7svh] sm:h-14 top-0">
+        <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
             <a class="cursor-pointer" href="./index.html">
-                <img class="px-5 h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" aria-label="Home">
+                <img class="px-5 landscape:md:pl-[13svh] h-[7svh] sm:h-14 my-auto  cursor-pointer" src="./img/logo.svg"
+                    alt="VJC Logo" aria-label="Home">
             </a>
+    
+            <div
+                class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] transform translate-y-[0.195svh] ml-[1svh] ">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/us_flag.svg" alt="VJC Logo" aria-label="Home">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/uk_flag.svg" alt="VJC Logo" aria-label="Home">
+                <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="VJC Logo"
+                    aria-label="Home">
+            </div>
+    
         </div>
     
         <!-- Menu Button Section -->
@@ -143,9 +154,9 @@
     
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative bg-darkBlue  top-0 transform translate-y-[-100%] menudrop landscape:hidden">
+            class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
             <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-                <img class="w-20 md:w-32  mx-auto mt-28 mb-5" src="./img/logo_w.svg" alt="" srcset="">
+                <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
                 <p>finest in accounting since 1988</p>
                 <p>Chhattisgarh, IN</p>
             </div>
@@ -157,8 +168,7 @@
     
                 <li class="mt-20"><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
-                <li class="flex flex-row gap-1 items-center" id="servicesMenu"><a href="#">SERVICES</a><img
-                        class="size-8 bounce-right hidden" src="./img/right-arrow.svg" alt=""></li>
+                <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
     
                 <li><a href="./pricing.html">PRICING</a></li>
     
@@ -177,7 +187,7 @@
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                 <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
-                        class="size-4  bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+                        class="size-4 bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
             </ul>
     
@@ -187,14 +197,14 @@
     
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
-            class="absolute h-14 right-3 cursor-pointer z-50 antialiased portrait:hidden text-darkBlue">
+            class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
     
                 <!-- Home -->
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./index.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Home</span>
                     </a>
                 </li>
@@ -203,7 +213,7 @@
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./about.html"
-                        class="h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline rounded-xl transition-colors duration-100  cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
                         <span>About</span>
                     </a>
                 </li>
@@ -215,13 +225,13 @@
                     @click.away="showChildren = false; clearTimeout(submenuTimeout)"
                     @touchstart="showChildren = !showChildren">
                     <a href="#" aria-haspopup="true" aria-expanded="false"
-                        class="rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer"
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
                         @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                         @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
                         <span>Services</span>
-                        
+    
                     </a>
-                    <div class=" w-80 absolute left-0 top-auto z-30 min-w-full mt-1 text-sm rounded-3xl bg-white border  shadow-2xl"
+                    <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
                         x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
                         x-transition:enter-start="opacity-0 translate-y-2"
                         x-transition:enter-end="opacity-100 translate-y-0"
@@ -229,47 +239,59 @@
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-4" style="display: none;"
                         @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false" aria-label="Submenu">
-                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white border"></span>
+                        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
                         <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
                             <ul class="list-reset" role="menu">
                                 <!-- Submenu Items -->
-                                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                                <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./cloud-accounting-and-bookkeeping.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pb-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Cloud Accounting and Bookkeeping</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./audit-and-assurance-services.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Audit and Assurance Services</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./tax-planning-and-compliance.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Tax Planning and Compliance</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./virtual-chief-financial-officer.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform border-b cursor-pointer"
+                                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Virtual Chief Financial officer</span>
                                     </a>
                                 </li>
+                                <div
+                                    class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                                </div>
     
                                 <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
                                     @mouseleave="showChildren = false">
                                     <a href="./legal-process-outsourcing.html"
-                                        class="hover:text-mid-purple hover:no-underline hover:scale-105 flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer"
+                                        class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
                                         role="menuitem">
                                         <span class="flex-1">Legal Processing Outsourcing</span>
                                     </a>
@@ -288,7 +310,7 @@
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./pricing.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Pricing</span>
                     </a>
                 </li>
@@ -299,7 +321,7 @@
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./resources.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Resources</span>
                     </a>
                 </li>
@@ -310,7 +332,7 @@
                 <li class="relative block rounded-xl">
                     <!-- Navigation Link with ARIA Label -->
                     <a href="./contact.html"
-                        class="h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100 flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100  cursor-pointer">
+                        class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
                         <span>Contact Us</span>
                     </a>
                 </li>
@@ -481,10 +503,11 @@
                 
                 
                     <div class="flex justify-center ">
-                        <button
-                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105  hover:bg-darkGreen hover:text-white shadow-md hover:shadow-lg text-white text-[3.5vw] md:text-[1.7svh] portrait:md:text-[1.5svw] py-[3vw] px-[5vw]  md:px-[2.5svh] md:py-[1.8svh] portrait:md:px-[2.3svw] portrait:md:py-[1.6svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                        
+                        <a href="./pricing.html" aria-label="Link to Schedule a Meeting"
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-white hover:text-white text-[3.5vw] md:text-[1.7svh] portrait:md:text-[1.5svw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             ENGAGEMENT MODELS
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -509,10 +532,12 @@
                 
                 
                     <div class="flex justify-center ">
-                        <button
-                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] md:text-[1.7svh] portrait:md:text-[1.5svw] py-[3vw] px-[5vw]  md:px-[2.5svh] md:py-[1.8svh] portrait:md:px-[2.3svw] portrait:md:py-[1.6svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+        
+
+                        <a href="#" aria-label="Link to Schedule a Meeting"
+                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-white hover:text-white text-[3.5vw] md:text-[1.7svh] portrait:md:text-[1.5svw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             APPLY
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -564,8 +589,8 @@
     <footer class=" text-darkBlue flex flex-col text-sm font-normal mt-5 " role="contentinfo">
         <div class="md:flex-row flex flex-col justify-between landscape:md:px-[5svh] landscape:gap-[5svh] text-center">
             <div class=" flex flex-col  px-10 md:px-0 ">
-                <a href="./index.html" aria-label="Home">
-                    <img class="w-16 borde landscape:md:w-20 landscape:md:mt-2 ml-0" src="./img/logo.svg" alt="VJC Home" aria-hidden="true">
+                <a class="w-16  landscape:md:w-20 landscape:md:mt-2 ml-0" href="./index.html" aria-label="Home">
+                    <img class="w-16  landscape:md:w-20 landscape:md:mt-2 ml-0" src="./img/logo.svg" alt="VJC Home" aria-hidden="true">
                 </a>
                 <div
                     class="flex  flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-base font-light text-left uppercase max-md:mt-3 max-md:mb-0">
@@ -644,20 +669,20 @@
     
             <div class=" max-md:px-8 flex flex-row items-center   text-base max-md:mt-3" role="presentation">
                 <a href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                    <img class="w-12 md:w-24" src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon">
+                    <img class="w-12 md:w-24 transition-transform duration-200 transform cursor-pointer hover:scale-125" src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon">
                 </a>
 
                 <a href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank" rel="noopener">
-                    <img class="w-12 md:w-24" src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img"
+                    <img class="w-12 md:w-24 transition-transform duration-200 transform cursor-pointer hover:scale-125" src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img"
                         aria-label="LinkedIn Logo">
                 </a>
                 <a href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting" title="Contact us on WhatsApp"
                     target="_blank" rel="noopener">
-                    <img class="w-12 md:w-24" src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img"
+                    <img class="w-12 md:w-24 transition-transform duration-200 transform cursor-pointer hover:scale-125" src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img"
                         aria-label="WhatsApp Logo">
                 </a>
                 <a href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                    <img class="w-12 md:w-24" src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo">
+                    <img class="w-12 md:w-24 transition-transform duration-200 transform cursor-pointer hover:scale-125" src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo">
                 </a>
 
             </div>
