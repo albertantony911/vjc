@@ -1588,7 +1588,7 @@
       <div class=" md:py-[7svh] landscape:md:px-[13svh] portrait:sm:px-[7svw] px-4 py-10 ">
         <div class=" ">
           <div 
-            class="md:w-full border-darkGreen border-2 flex p-6 md:px-14 md:py-[3.5svh] flex-col gap-2 justify-center  w-full text-center  md:rounded-[3.5rem] rounded-[3.5rem] bg-white shadow-xl mx-auto">
+            class="md:w-full border-darkGreen border-2 flex p-6 md:px-14 md:py-[3.5svh] flex-col gap-1 justify-center  w-full text-center  md:rounded-[3.5rem] rounded-[3.5rem] bg-white shadow-xl mx-auto">
             <h1 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold text-center leading-snug"
               aria-label="Main Title">
               Where VJC Takes the Lead
@@ -1678,7 +1678,7 @@
                             <div class="py-4">
                                 <h2>
                                     <button type="button"
-                                        class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                                        class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
                                         @click="openFaq = (openFaq === index ? null : index)"
                                         :aria-expanded="openFaq === index.toString()" :aria-controls="'audit-faq-' + index">
                                         <span x-text="faq.question"></span>
@@ -1690,10 +1690,10 @@
                                 <div :id="'audit-faq-' + index" role="region"
                                     class="overflow-hidden transition-all duration-500 ease-in-out"
                                     :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                                    <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]"
+                                    <p class="mt-2 text-left text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw]"
                                         x-text="faq.answer"></p>
                                     <template x-if="faq.link">
-                                        <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                                        <p class="mt-4 text-left block text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw]">
                                             <a :href="faq.link"
                                                 class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
                                                 x-text="faq.linkText"></a>

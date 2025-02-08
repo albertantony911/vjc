@@ -1134,13 +1134,13 @@
 
 
 
-        <section class="text-darkBlue pt-16 pb-16">
-            <div class="mb-16 text-center">
+        <section class="text-darkBlue md:mt-[4svh] mt-12">
+            <div class="md:mb-[4svh] mb-10 text-center max-md:text-left max-md:px-10">
 
-                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold md:mb-5 mb-3">
+                <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold">
                     Services we provide
                 </h2>
-                <p class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 landscape:md:px-[13svh] portrait:sm:px-[7svw]   font-light leading-relaxed "
+                <p class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw]  landscape:md:px-[13svh] portrait:sm:px-[7svw]   font-light leading-normal "
                     aria-label="Hero Description">
                 Our skilled legal team delivers comprehensive compliance and expert contract services, keeping your business protected
                 and ahead of regulatory challenges, while you focus on growth.
@@ -1891,7 +1891,7 @@
           <div class="gradient-bg-transparent-cta md:pt-[3svh] md:pb-[2svh] landscape:md:px-[13svh] portrait:sm:px-[7svw] px-2 py-7 ">
             <div class="">
               <div
-                class="md:w-full border-darkGreen border-2 flex p-7 md:px-14 md:py-[3.5svh] flex-col gap-2 justify-center  w-full text-center   md:rounded-[3.5rem] rounded-[3.5rem] bg-white   shadow-xl mx-auto">
+                class="md:w-full border-darkGreen border-2 flex p-7 md:px-14 md:py-[3.5svh] flex-col gap-1 justify-center  w-full text-center   md:rounded-[3.5rem] rounded-[3.5rem] bg-white   shadow-xl mx-auto">
                 <h1 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw] uppercase font-bold text-center leading-snug"
                   aria-label="Main Title">
                   Where VJC Takes the Lead
@@ -1908,7 +1908,7 @@
         
         
                 <div
-                  class="flex flex-col divide-y divide-slate-200 text-[3.5vw] md:text-[2svh]  portrait:md:text-[1.8svw] font-bold leading-snug  gap-0  text-darkBlue mt-5 md:mt-[2svh] ">
+                  class="flex flex-col divide-y divide-slate-200 text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold leading-snug  gap-0  text-darkBlue mt-5 md:mt-[2svh] ">
         
                   <div class=" flex items-center justify-start w-full text-left gap-2 pb-3">
                     <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.2svw] -rotate-90 mb-auto"
@@ -2029,7 +2029,7 @@
                     <div class="py-4">
                       <h2>
                         <button type="button"
-                          class="text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw] flex items-center justify-between w-full font-medium text-left"
+                          class="text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
                           @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
                           :aria-controls="'legal-faq-' + index">
                           <span x-text="faq.question"></span>
@@ -2041,9 +2041,9 @@
                       </h2>
                       <div :id="'legal-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
                         :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                        <p class="mt-2 text-left text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]" x-text="faq.answer"></p>
+                        <p class="mt-2 text-left text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
                         <template x-if="faq.link">
-                          <p class="mt-4 text-left block text-[3.3vw] md:text-[2svh] portrait:md:text-[1.7svw]">
+                          <p class="mt-4 text-left block text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw]">
                             <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
                               x-text="faq.linkText"></a>
                           </p>
