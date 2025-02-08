@@ -2784,6 +2784,11 @@
       width: 75%;
     }
   }
+  .md\:w-\[90\%\] {
+    @media (width >= 48rem) {
+      width: 90%;
+    }
+  }
   .md\:w-\[92\%\] {
     @media (width >= 48rem) {
       width: 92%;
