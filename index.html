@@ -120,7 +120,7 @@
     
       <!-- Logo Section -->
       <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
-        <a class="landscape:md:ml-[13svh] max-md:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
+        <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
           <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
         </a>
 
@@ -138,7 +138,7 @@
       </div>
     
       <!-- Menu Button Section -->
-      <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
+      <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:md:hidden"
         id="menuButtonContainer">
         <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
           <svg xmlns="http://www.w3.org/2000/svg"
@@ -154,15 +154,15 @@
     
       <!-- Mobile Navigation -->
       <nav role="navigation" aria-label="Mobile Navigation Menu"
-        class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
-        <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
+        class="relative bg-darkBlue  top-0  menudrop landscape:md:hidden">
+        <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-md:hidden">
           <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
           <p>finest in accounting since 1988</p>
           <p>CG, IN 497001</p>
         </div>
     
         <ul id="mainMenu"
-          class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] antialiased">
+          class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
     
           <!-- Navigation Links -->
     
@@ -179,14 +179,14 @@
         </ul>
     
         <ul id="subMenu"
-          class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] text-[4vw] mt-16 ">
-          <li class=" text-[7vw] font-semibold"><a href="#">SERVICES</a></li>
+          class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
+          <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
           <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
           <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
           <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
           <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
           <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-          <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img class="size-[4vw] bounce-left"
+          <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img class="size-[4vw] bounce-left"
               src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
         </ul>
@@ -197,7 +197,7 @@
     
       <!-- Landscape Navigation -->
       <nav aria-label="Main Navigation" role="navigation"
-        class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
+        class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-md:hidden text-darkBlue">
         <ul class="flex flex-row flex-wrap items-center w-full">
     
           <!-- Home -->
@@ -339,27 +339,28 @@
   <main>
     <!-- Hero Section -->
     <section
-      class="landscape:sm:h-[70svh]   bg-darkBlue   md:justify-center justify-end portrait:md:justify-end   landscape:sm:flex-row flex flex-col-reverse mx-auto ">
+      class="landscape:h-[70svh] bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
       <div 
-        class=" landscape:sm:w-[53%] landscape:md:h-[75%]  landscape:sm:my-auto   max-md:pt-[1rem] max-md:pb-[2.5rem] portrait:md:h-[35svh] flex flex-col max-md:mx-2 portrait:md:mx-[2svh] max-md:mt-0  text-white justify-center md:w-full portrait:px-8  portrait:md:px-20  text-left ">
+        class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[5svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left ">
     
         <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
           <div class="">
             <h1
-              class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] portrait:mb-[1.3svh] landscape:mb-[0.25svh] lg:landscape:mb-[1.5svh] font-bold text-left max-md:leading-[1.5rem] landscape:sm:leading-[3.5svh] leading-tight uppercase"
+              class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  portrait:mb-[1.3svh] landscape:mb-[0.25svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
               aria-label="Main Title">
               Innovative Financial Solutions to Drive Your Business Forward
             </h1>
-            <p class=" text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[2svh] sm:landscape:mb-[3svh] landscape:mb-[31svh] font-light max-md:leading-[1.2rem] leading-normal "
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
               aria-label="Hero Description">
               VJC, India’s leading offshore accounting firm, has delivered reliable financial services worldwide since 1988,
               empowering businesses to optimize growth and performance. Enhance you financial operations:
             </p>
           </div>
           
-          <div class=" flex   max-md:mt-[3svh] ">
+          <div class=" flex">
             <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
-              class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-darkBlue text-[3.5vw] sm:text-[2.1svh] portrait:md:text-[1.3svw] py-[3.6vw] px-[5.6vw]  sm:px-[2svh] sm:py-[2svh] portrait:md:px-[2svw] portrait:md:py-[2svw] transition-transform duration-300 transform bg-white rounded-full select-none">
+              class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-darkBlue text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] 
+               sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-300 transform bg-white rounded-full select-none">
               Partner with Us
             </a>
           </div>
@@ -367,7 +368,7 @@
     
       </div>
     
-      <div  class="landscape:md:w-[50%]   max-md:translate-y-[0.7rem]   flex w-full ">
+      <div  class="landscape:sm:w-[50%]   max-sm:translate-y-[0.7rem]   flex w-full ">
       
         <div class="mx-auto">
           <div  class=" globe-wrapper ">
@@ -381,78 +382,74 @@
 
 
     <section
-      class="mt-[4svh] h-auto  portrait:md:h-[75svh]   justify-center  landscape:md:flex-row-reverse flex flex-col-reverse mx-auto ">
+      class="mt-[4svh] text-darkBlue   landscape:md:flex-row-reverse flex flex-col-reverse mx-auto ">
       <div
-        class="landscape:md:w-[50%] landscape:md:pr-[13svh] max-md:h-auto portrait:md:h-[35svh]  flex flex-col text-darkBlue justify-center w-full landscape:md:py-[0svh] portrait:md:px-24  text-left  font-light ">
+        class="landscape:md:w-[50%] landscape:md:pr-[13svh]      flex flex-col  justify-center w-full  portrait:md:px-[7svw]  text-left  font-light ">
         <h1
-          class="md:text-[3.5svh] portrait:md:text-[3.3svw] max-md:mt-5 text-[5.5vw] max-md:px-10   font-bold  leading-normal uppercase"
+          class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] max-md:mt-5   max-md:px-10  font-bold  leading-normal uppercase"
           aria-label="Main Title">
           Our Services
         </h1>
-        <p class=" text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw] max-md:px-10  portrait:mb-[1svh] lg:landscape:mb-[2svh]  leading-normal "
+        <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10  portrait:mb-[1svh] lg:landscape:mb-[2svh]  leading-normal "
           aria-label="Hero Description">
           Businesses often struggle with maintaining accurate financial records and compliance. At VJC, we simplify
           these accounting hurdles, ensuring compliance and accuracy so you can focus on growing your
           business.
         </p>
         <div class="flex justify-start w-full max-md:px-8 ">
-        <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
-          <div class="relative flex flex-col justify-center overflow-hidden">
-            <div class="w-full mx-auto text-center">
-              <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
-        
-                <!-- Reusable Accordion Component -->
-                <template x-for="service in [
-                  { id: 1, title: 'Cloud Accounting and Bookkeeping', link: './cloud-accounting-and-bookkeeping.html', description: 'Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you time and reducing stress, all while ensuring accuracy and alignment with your schedule.' },
-                  { id: 2, title: 'Audit and Assurance Services', link: './audit-and-assurance-services.html', description: 'Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance effortlessly, ensuring your business stands on solid ground.' },
-                  { id: 3, title: 'Tax Advisory and Compliance', link: './tax-advisory-and-compliance.html', description: 'Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you compliant, helping you focus on what matters most—growing your business.' },
-                  { id: 4, title: 'Virtual Chief Financial Officer', link: './virtual-chief-financial-officer.html', description: 'Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and guidance to make informed decisions that drive your business forward.' },
-                  { id: 5, title: 'Legal Process Outsourcing', link: './legal-process-outsourcing.html', description: 'Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled efficiently, freeing you to focus on your core business activities.' }
-                ]" :key="service.id">
-                  <div class="py-3">
-                    <h2>
-                      <button type="button"
-                        class="text-[3.5vw] md:text-[2.1svh] flex items-center justify-start w-full font-bold text-left"
-                        @click="openAccordion = (openAccordion === service.id) ? null : service.id"
-                        :aria-expanded="openAccordion === service.id.toString()" :aria-controls="'service-' + service.id">
-                        <img class="shrink-0 mx-2 size-5 md:size-[2.5svh] transition duration-200 transform"
-                          src="./img/drop-arrow.svg" :class="{'rotate-180': openAccordion === service.id}"
-                          alt="Expand or collapse Service content" aria-hidden="true" />
-                        <span class="uppercase" x-text="service.title"></span>
-                      </button>
-                    </h2>
-                    <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
-                      :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
-                      class="text-[3.3vw] md:text-[2.1svh] grid overflow-hidden leading-normal text-left transition-all duration-300 pl-9 ease-in-out"
-                      :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-[0]' : 'grid-rows-[0fr] opacity-0 max-h-0'">
-                      <div class="overflow-hidden">
-                        <p class="mt-1" x-text="service.description"></p>
-                        <div class="my-2 text-white flex justify-start font-normal">
-                          <a :href="service.link"
-                            class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white text-white py-2 px-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
-                            Read more
-                          </a>
+          <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
+            <div class="relative flex flex-col justify-center overflow-hidden">
+              <div class="w-full mx-auto text-center">
+                <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
+          
+                  <!-- Reusable Accordion Component -->
+                  <template x-for="service in [
+                    { id: 1, title: 'Cloud Accounting and Bookkeeping', link: './cloud-accounting-and-bookkeeping.html', description: 'Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you time and reducing stress, all while ensuring accuracy and alignment with your schedule.' },
+                    { id: 2, title: 'Audit and Assurance Services', link: './audit-and-assurance-services.html', description: 'Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance effortlessly, ensuring your business stands on solid ground.' },
+                    { id: 3, title: 'Tax Advisory and Compliance', link: './tax-advisory-and-compliance.html', description: 'Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you compliant, helping you focus on what matters most—growing your business.' },
+                    { id: 4, title: 'Virtual Chief Financial Officer', link: './virtual-chief-financial-officer.html', description: 'Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and guidance to make informed decisions that drive your business forward.' },
+                    { id: 5, title: 'Legal Process Outsourcing', link: './legal-process-outsourcing.html', description: 'Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled efficiently, freeing you to focus on your core business activities.' }
+                  ]" :key="service.id">
+                    <div class="py-3">
+                      <h2>
+                        <button type="button"
+                          class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-start w-full font-bold text-left"
+                          @click="openAccordion = (openAccordion === service.id) ? null : service.id"
+                          :aria-expanded="openAccordion === service.id.toString()" :aria-controls="'service-' + service.id">
+                          <img class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-200 transform"
+                            src="./img/drop-arrow.svg" :class="{'rotate-180': openAccordion === service.id}"
+                            alt="Expand or collapse Service content" aria-hidden="true" />
+                          <span class="uppercase" x-text="service.title"></span>
+                        </button>
+                      </h2>
+                      <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
+                        :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
+                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left transition-all duration-300 pl-9 ease-in-out"
+                        :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-[0]' : 'grid-rows-[0fr] opacity-0 max-h-0'">
+                        <div class="overflow-hidden">
+                          <p class="mt-1" x-text="service.description"></p>
+                          <div class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]">
+                            <a :href="service.link"
+                              class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white text-white py-2 px-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                              Read more
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </template>
-        
+                  </template>
+          
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-
-
-
-        </div>
       </div>
     
-      <div class="relative md:size-[58svh]  landscape:md:w-[50%] max-md:h-[50svh] portrait:md:h-[40svh]  flex size-auto flex-col my-auto ">
+      <div class="relative flex flex-col m-auto  landscape:w-[50%] size-[48svh] landscape:size-[58svh]">
         <div class="absolute flex gradient-bg size-full">
           <div class="flex gradient-bg-transparent-main-service size-full">
-              <svg  class="md:size-[58svh] size-full  m-auto  overflow-visible calendarDotsObserver" width="100%" height="100%"
+              <svg  class=" size-full  m-auto  overflow-visible calendarDotsObserver" width="100%" height="100%"
                 viewBox="0 0 1678 1761" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 xml:space="preserve" xmlns:serif="http://www.serif.com/"
                 style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:0.73;">
@@ -866,16 +863,16 @@
 
 
     <!-- About Us Section -->
-    <section class="flex flex-col-reverse  justify-center mx-auto my-auto max-md:mt-7 md:flex-row ">
+    <section class="flex flex-col-reverse  justify-center m-auto max-sm:mt-[4svh] landscape:sm:flex-row ">
       <div
         class="landscape:md:w-[53%]  landscape:md:pl-[13svh] flex flex-col text-darkBlue  justify-center  w-full   text-left ">
     
         <h1
-          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw]   max-md:px-10  font-bold  leading-normal uppercase"
+          class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]   max-md:px-10 portrait:md:px-[7svw]  font-bold  leading-normal uppercase"
           aria-label="Main Title">
           About Us
         </h1>
-        <p class=" text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]  max-md:px-10  font-light leading-normal "
+        <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:md:px-[7svw] max-md:px-10  font-light leading-normal "
           aria-label="Hero Description">
           Founded in 1988 to simplify accounting for Indian businesses, we’ve grown into a global certified public
           accounting firm
@@ -884,19 +881,19 @@
           We streamline financial processes as a virtual extension of your accounting department. Our blended shore model
           ensures
           consistent, high-quality service 24/7, powered by our expert global team. <a href="./about.html"
-            class="font-semibold text-[3.3vw] md:text-[1.7svh] underline portrait:md:text-[1.8svw] ml-1">read more</a>
+            class="font-semibold text-[3.3vw] sm:text-[1.7svh] underline portrait:sm:text-[1.8svw] ml-1">read more</a>
         </p>
     
     
     
     
         <div
-          class="text-darkBlue  xl:gap-[5.4svh] md:gap-[3.7svh] overflow-visible mx-auto flex flex-row  flex-wrap justify-start max-md:px-6 max-md:mt-4  mt-7 landscape:md:mt-[4svh]">
+          class="text-darkBlue  xl:gap-[5.4svh] md:gap-[3.7svh] overflow-visible mx-auto flex flex-row  flex-wrap justify-start max-md:px-6 portrait:md:px-[7svw] max-md:mt-4  mt-7 landscape:md:mt-[4svh]">
           <!-- Counter 1 -->
           <div class="flex flex-col items-center w-2/4 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center ">
-              <div id="counter1" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
+              class="flex flex-col size-[9rem] sm:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center ">
+              <div id="counter1" class="counter text-[5.5vw] sm:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
                 aria-live="polite" aria-atomic="true">0
               </div>
               <div
@@ -910,8 +907,8 @@
           <!-- Counter 2 -->
           <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
-              <div id="counter2" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
+              class="flex flex-col size-[9rem] sm:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter2" class="counter text-[5.5vw] sm:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
                 aria-live="polite" aria-atomic="true">0
               </div>
               <div
@@ -924,8 +921,8 @@
           <!-- Counter 3 -->
           <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
-              <div id="counter3" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
+              class="flex flex-col  size-[9rem] sm:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter3" class="counter text-[5.5vw] sm:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
                 aria-live="polite" aria-atomic="true">0
               </div>
               <div
@@ -938,8 +935,8 @@
           <!-- Counter 4 -->
           <div class="flex flex-col items-center w-2/4 gap-5 py-4 md:w-1/6 md:p-10 sm:gap-8 md:py-0 ">
             <div
-              class="flex flex-col md:gap-2 size-[9rem] md:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
-              <div id="counter4" class="counter text-[5.5vw] md:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
+              class="flex flex-col  size-[9rem] sm:size-[13svh] xl:size-[13.5svh] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.7rem] md:rounded-[5svh] gap-2  justify-center">
+              <div id="counter4" class="counter text-[5.5vw] sm:text-[2.2svh] xl:text-[2.5svh] font-bold text-center"
                 aria-live="polite" aria-atomic="true">0
               </div>
               <div
@@ -1154,7 +1151,7 @@
       
         </div>
       
-        <div class="absolute inset-0 z-10 text-[3.5vw] md:text-[2.1svh] text-darkBlue">
+        <div class="absolute inset-0 z-10 text-[3.5vw] md:text-[2.1svh] portrait:sm:text-[1.8svw] text-darkBlue">
           <svg id="currencyContainer" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
         </div>
       
@@ -1172,14 +1169,14 @@
 
 
     <!-- Softwares we use Section -->
-    <section class=" flex  md:mt-[3svh] mt-12 flex-col  max-md:text-left text-center ">
-      <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10 landscape:md:px-[13svh] portrait:sm:px-[7svw]  mx-auto">
+    <section class=" flex  md:mt-[3svh] mt-12 flex-col  portrait:text-left text-center text-darkBlue">
+      <div class="  flex flex-col justify-center   max-md:px-10 leading-normal landscape:md:px-[13svh] portrait:sm:px-[7svw]  mx-auto">
         <h2
-          class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.5vw]  font-bold  leading-normal uppercase "
+          class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold   uppercase "
           aria-label="Main Title">
           Softwares we use
         </h2>
-        <p class=" text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]   font-light leading-normal "
+        <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   font-light "
           aria-label="Hero Description">
           We use cutting-edge software and industry trends to deliver high-quality services, tailored to meet and exceed each
           client’s unique standards, ensuring exceptional results and satisfaction every time.
@@ -1261,20 +1258,20 @@
 
 
     <section class="text-darkBlue ">
-      <div class="landscape:md:px-[13svh] ">
+      <div class="landscape:sm:px-[13svh] max-md:px-10 portrait:sm:px-[7svw] portrait:text-left text-center leading-normal">
 
-        <h2 class="md:text-[3.5svh]  portrait:md:text-[3.3svw] text-[5.5vw] font-bold max-md:text-left max-md:px-10   mx-auto text-center md:mt-[4svh] mt-7 max-md:full uppercase leading-normal">
+        <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw] font-bold    mx-auto  md:mt-[4svh] mt-7 max-md:full uppercase ">
           Learn More About Us
         </h2>
-        <p class=" text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw] max-md:px-10   text-center max-md:text-left   mx-auto font-light leading-normal "
+        <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   mx-auto font-light  "
           aria-label="Hero Description">
           Explore our resources to understand our approach, see how we help businesses grow and innovate, and discover strategies
           designed to drive success, foster growth, and achieve sustainable long-term results.
         </p>
       </div>
 
-      <div class="flex md:flex-row flex-col justify-between landscape:2xl:justify-center landscape:2xl:gap-[10svh] landscape:md:px-[13svh]  mx-auto borer">
-        <div  class="md:w-[55svh]  flex flex-col size-full gradient-bg  circleFadeObserver ">
+      <div class="flex landscape:sm:flex-row flex-col justify-between landscape:2xl:justify-center landscape:2xl:gap-[10svh] landscape:md:px-[13svh]  mx-auto ">
+        <div  class="md:w-[55svh] portrait:sm:w-[55svw]  flex flex-col size-full gradient-bg mx-auto circleFadeObserver ">
           <div class="gradient-bg-transparent max-md:size-full blog1Observer ">
             <div class="blog2Observer ">
                 <svg class="overflow-visible floater max-md:size-full" width="100%" height="100%"
@@ -1410,14 +1407,14 @@
           </div>
         </div>
       
-        <div class="flex md:w-[55%]  landscape:md:max-w-[75svh]   flex-col justify-center md:gap-[5svh]  max-md:px-3 max-md:gap-5  ">
+        <div class="flex md:w-[55%] portrait:sm:w-[70%]  landscape:md:max-w-[75svh]   flex-col justify-center md:gap-[5svh] portrait:sm:gap-[3svh]  max-md:px-3 max-md:gap-5 mx-auto">
       
       
 
           <div 
             class="flex flex-row rounded-[3rem]  md:rounded-[5.8svh]  portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] gap-6 md:gap-[2svh]   p-5 md:p-[2svh]">
             <div class="flex flex-col w-auto circleFadeObserver">
-              <div class="size-[26svw] md:size-[15svh] m-auto  leftWatcher ">
+              <div class="size-[26svw] sm:size-[15svh] portrait:sm:size-[13svw] m-auto  leftWatcher ">
                 <svg class="overflow-visible  rightWatcher " width="100%" height="100%" viewBox="0 0 1135 1187" version="1.1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -1494,10 +1491,10 @@
               </div>
             </div>
             <div class="flex flex-col gap-1 leading-normal text-left  landscape:md:gap-0 text-darkBlue">
-              <h3 class="text-[3.5vw] md:text-[2.3svh] portrait:md:text-[1.2svw]  font-bold">INSIGHTS</h3>
-              <p class="text-[3vw] md:text-[1.9svh] portrait:md:text-[1svw]   font-light leading-normal">Dive into our expert analyses and industry trends to gain valuable knowledge, stay ahead in the ever-evolving financial
-              landscape, and make informed decisions with confidence.<a href="./about.html" class="font-semibold text-[2.9vw] md:text-[1.7svh] underline portrait:md:text-[1.8svw] ml-1">read more</a> </p>
-              <span class="hidden underline font-bold text-[3vw] md:text-[1.2svh] portrait:md:text-[0.8svw]">read
+              <h3 class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw]  font-bold">INSIGHTS</h3>
+              <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw]  font-light leading-normal">Dive into our expert analyses and industry trends to gain valuable knowledge, stay ahead in the ever-evolving financial
+              landscape, and make informed decisions with confidence.<a href="./about.html" class="font-semibold text-[2.9vw] sm:text-[1.7svh] underline portrait:sm:text-[1.4svw] ml-1">read more</a> </p>
+              <span class="hidden underline font-bold text-[3vw] sm:text-[1.2svh] portrait:sm:text-[0.8svw]">read
                 more</span>
             </div>
           </div>
@@ -1505,7 +1502,7 @@
           <div 
             class="flex flex-row rounded-[3rem]  md:rounded-[5.8svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] gap-5 md:gap-[2svh]   p-5 md:p-[2svh]">
             <div class="flex flex-col w-auto overflow-visible  circleFadeObserver">
-              <div class="size-[28svw] md:size-[15svh] m-auto  overflow-visible leftWatcher">
+              <div class="size-[26svw] sm:size-[15svh] portrait:sm:size-[13svw] m-auto  overflow-visible leftWatcher">
       
                 <svg class="overflow-visible rightWatcher" width="100%" height="100%" viewBox="0 0 1135 1187" version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
@@ -1549,11 +1546,11 @@
               </div>
             </div>
             <div class="flex flex-col gap-1 leading-normal text-left landscape:md:gap-0 text-darkBlue">
-              <h3 class="text-[3.5vw] md:text-[2.3svh] portrait:md:text-[1.2svw]  font-bold">CASE STUDIES</h3>
-              <p class="text-[3vw] md:text-[1.9svh] portrait:md:text-[1svw] leading-normal font-light">Explore detailed case studies showcasing how our tailored solutions delivered tangible results and success for
-              businesses, empowering them to achieve their goals with precision and confidence.<a href="./about.html" class="font-semibold text-[2.9vw] md:text-[1.7svh] underline portrait:md:text-[1.8svw] ml-1">read
+              <h3 class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw]   font-bold">CASE STUDIES</h3>
+              <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw] leading-normal font-light">Explore detailed case studies showcasing how our tailored solutions delivered tangible results and success for
+              businesses, empowering them to achieve their goals with precision and confidence.<a href="./about.html" class="font-semibold text-[2.9vw] sm:text-[1.7svh] underline portrait:sm:text-[1.4svw] ml-1">read
                   more</a></p> <span
-                class="hidden underline font-bold text-[3vw] md:text-[1.2svh] portrait:md:text-[0.8svw]">read
+                class="hidden underline font-bold text-[3vw] sm:text-[1.2svh] portrait:sm:text-[0.8svw]">read
                 more</span>
             </div>
           </div>
@@ -1583,10 +1580,10 @@
 
 
     <!-- FAQ Section -->
-    <section class=" text-darkBlue flex flex-col  md:mt-[3svh] mt-16   md:pb-5 pb-8" role="region"
+    <section class=" text-darkBlue flex flex-col  md:mt-[4svh]  mt-16   md:pb-5 pb-8" role="region"
       aria-label="Sessions related FAQ">
       <div role="heading" aria-level="2">
-        <h2 class="md:text-[3.5svh] portrait:md:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
+        <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
           Frequently Asked Questions
         </h2>
       </div>
@@ -1617,7 +1614,7 @@
                 <div class="py-4">
                   <h2>
                     <button type="button"
-                      class="text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
+                      class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
                       @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
                       :aria-controls="'faq-' + index">
                       <span x-text="faq.question"></span>
@@ -1628,8 +1625,8 @@
                   </h2>
                   <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
                     :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                    <p class="mt-2 text-left text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]" x-text="faq.answer"></p>
-                    <p class="mt-4 text-left block text-[3.5vw] md:text-[2.1svh] portrait:md:text-[1.8svw]">
+                    <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+                    <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
                       <a :href="faq.link"
                         class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
                         x-text="faq.linkText"></a>
@@ -1652,15 +1649,15 @@
     <!-- Contact Section -->
     <section class="">
         <div class="text-white" >
-            <div class=" md:py-[7svh]  max-md:px-2  pb-3 md:pb-8 ">
+            <div class=" landscape:sm:py-[7svh] portrait:sm:pt-[3svw] portrait:sm:pb-[1svw] max-md:px-2  max-sm:pb-3 landscape:md:pb-8 ">
                 <div class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
                     <div class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-darkBlue   shadow-2xl mx-auto">
                         <h3 id="contactSectionHeading"
-                            class="md:text-3xl  uppercase text-2xl font-bold md:mt-10 mt-10 mb-5  md:mb-3    landscape:md:leading-[2.5rem] leading-normal"
+                            class="text-2xl landscape:md:text-3xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold landscape:md:mt-10 mt-10 mb-2  md:mb-3  leading-normal"
                             aria-label="Contact Section">
                             Schedule a 30 min consultation call
                         </h3>
-                        <p class="font-light max-md:text-[3.5vw]">
+                        <p class="font-light max-sm:text-[3.5vw]  portrait:sm:text-[1.8svw]">
                             Let’s discuss your requirements and provide you with tailored solutions
                         </p>
 
@@ -1671,7 +1668,7 @@
                         <div class="flex justify-center mb-12 md:mt-8 mt-7 md:mb-10">
                             <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                                 aria-label="Link to Schedule a Meeting"
-                                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-5 transition-transform duration-300 transform bg-white rounded-full select-none">
+                                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-darkBlue text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-300 transform bg-white rounded-full select-none">
                                 Schedule Meeting
                             </a>
                         </div>
@@ -1679,11 +1676,11 @@
 
                     <div class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-darkBlue   shadow-xl mx-auto">
                         <h3 id="contactSectionHeading"
-                            class="landscape:md:text-3xl  uppercase text-2xl font-bold landscape:md:mt-10 mt-10 mb-2  md:mb-3   landscape:md:leading-[2.5rem] leading-normal"
+                            class="text-2xl landscape:md:text-3xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold landscape:md:mt-10 mt-10 mb-2  md:mb-3  leading-normal"
                             aria-label="Contact Section">
                             Contact Us
                         </h3>
-                        <p class="font-light max-md:text-[3.5vw]">
+                        <p class="font-light max-sm:text-[3.5vw]  portrait:sm:text-[1.8svw]">
                             Unlock a partnership with precision and trust.
                         </p>
 
@@ -1733,23 +1730,22 @@
                     <a class=" w-18 ml-0 landscape:md:w-18 landscape:md:mt-2" href="./index.html" aria-label="Home">
                         <img class="" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
                     </a>
-                    <div class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] max-md:mb-0">
+                    <div class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] portrait:sm:text-[1.7svw] max-md:mb-0">
                         <p>An Affiliate of V. Jaiswal and Co.</p>
                         <p>The finest in accounting since 1988.</p>
                         
                     </div>
                     <div
                       class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
-                      <p class="max-md:text-[3.3vw]">CG, IN 497001</p>
-                      <p class="lowercase max-md:text-[3.3vw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">+91 9630054303, admin@vjcindia.com</p>
-                      
+                      <p class="max-md:text-[3.3vw] portrait:sm:text-[1.7svw]">CG, IN 497001</p>
+                      <p class="lowercase max-md:text-[3.3vw] portrait:sm:text-[1.7svw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">+91 9630054303, admin@vjcindia.com</p>
                     </div>
                     
                 </div>
                 <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
-                    <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
+                    <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
             
-                        <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] xl:gap-[4svh] flex gap-5">
+                        <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex gap-5">
                             <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
                                 <li><a href="./index.html">Home</a></li>
                                 <li><a href="./about.html">About</a></li>
@@ -1784,7 +1780,7 @@
             
                     <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
                       <div class="flex">
-                        <ul class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.4vw]  text-white">
+                        <ul class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
                             <li><a href="./index.html">Home</a></li>
                             <li><a href="./about.html">About</a></li>
                             <li><a href="./pricing.html">Pricing</a></li>
@@ -1796,13 +1792,13 @@
                       </div>
 
                       <div class="flex flex-col text-left">
-                        <h3 class="font-bold px-10 pb-1 text-[4vw]">OUR SERVICES</h3>
-                        <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.4vw]   text-white">
-                          <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                        <h3 class="font-bold px-10 pb-1 text-[4vw] portrait:sm:text-[3svw]">OUR SERVICES</h3>
+                        <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
                           <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
                           <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
                           <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
                           <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                          <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
                         </ul>
                       </div>
                     </div>
