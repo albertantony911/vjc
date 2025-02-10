@@ -122,7 +122,7 @@
   
     <!-- Logo Section -->
     <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
-      <a class="landscape:md:ml-[13svh] max-md:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
+      <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
         <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
           aria-label="Home">
       </a>
@@ -142,7 +142,7 @@
     </div>
   
     <!-- Menu Button Section -->
-    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
+    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:md:hidden"
       id="menuButtonContainer">
       <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -158,8 +158,8 @@
   
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
-      <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
+      class="relative bg-darkBlue  top-0  menudrop landscape:md:hidden">
+      <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-md:hidden">
         <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo"
           aria-label="Home">
         <p>finest in accounting since 1988</p>
@@ -167,27 +167,32 @@
       </div>
   
       <ul id="mainMenu"
-        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] antialiased">
+        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
   
         <!-- Navigation Links -->
+  
         <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
         <li><a href="./about.html">ABOUT</a></li>
         <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
+  
         <li><a href="./pricing.html">PRICING</a></li>
+  
         <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
         <li><a href="./resources.html">RESOURCES</a></li>
+  
   
       </ul>
   
       <ul id="subMenu"
-        class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] text-[4vw] mt-16 ">
-        <li class=" text-[7vw] font-semibold"><a href="#">SERVICES</a></li>
+        class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
+        <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
         <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
         <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
         <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
         <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
         <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
+        <li id="backButton"
+          class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img
             class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
   
       </ul>
@@ -198,7 +203,7 @@
   
     <!-- Landscape Navigation -->
     <nav aria-label="Main Navigation" role="navigation"
-      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
+      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-md:hidden text-darkBlue">
       <ul class="flex flex-row flex-wrap items-center w-full">
   
         <!-- Home -->
@@ -1971,24 +1976,25 @@
             <img class="" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
           </a>
           <div
-            class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] max-md:mb-0">
+            class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] portrait:sm:text-[1.7svw] max-md:mb-0">
             <p>An Affiliate of V. Jaiswal and Co.</p>
             <p>The finest in accounting since 1988.</p>
   
           </div>
           <div
             class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
-            <p class="max-md:text-[3.3vw]">CG, IN 497001</p>
-            <p class="lowercase max-md:text-[3.3vw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">+91 9630054303,
-              admin@vjcindia.com</p>
-  
+            <p class="max-md:text-[3.3vw] portrait:sm:text-[1.7svw]">CG, IN 497001</p>
+            <p
+              class="lowercase max-md:text-[3.3vw] portrait:sm:text-[1.7svw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">
+              +91 9630054303, admin@vjcindia.com</p>
           </div>
   
         </div>
         <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
-          <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
+          <div
+            class=" max-md:hidden md:flex-row md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
   
-            <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] xl:gap-[4svh] flex gap-5">
+            <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex gap-5">
               <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
@@ -2024,7 +2030,7 @@
           <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
             <div class="flex">
               <ul
-                class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.4vw]  text-white">
+                class="flex flex-row flex-wrap justify-start gap-[1.2svh] leading-[1.5svh] px-10 mx-auto text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./pricing.html">Pricing</a></li>
@@ -2036,13 +2042,14 @@
             </div>
   
             <div class="flex flex-col text-left">
-              <h3 class="font-bold px-10 pb-1 text-[4vw]">OUR SERVICES</h3>
-              <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.4vw]   text-white">
-                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+              <h3 class="font-bold px-10 pb-1 text-[4vw] portrait:sm:text-[3svw]">OUR SERVICES</h3>
+              <ul
+                class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
                 <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
                 <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
               </ul>
             </div>
           </div>

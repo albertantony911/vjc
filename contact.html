@@ -122,7 +122,8 @@
     
         <!-- Logo Section -->
         <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
-            <a class="landscape:md:ml-[13svh] max-md:px-5  h-[7svh] sm:h-14 my-auto " href="./index.html">
+            <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto "
+                href="./index.html">
                 <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
                     aria-label="Home">
             </a>
@@ -142,7 +143,7 @@
         </div>
     
         <!-- Menu Button Section -->
-        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:hidden"
+        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:md:hidden"
             id="menuButtonContainer">
             <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -158,19 +159,20 @@
     
         <!-- Mobile Navigation -->
         <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative bg-darkBlue  top-0  menudrop landscape:hidden">
-            <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase">
-                <img class="w-20 mx-auto mb-5 md:w-32 mt-28" src="./img/logo_w.svg" alt="" srcset="">
+            class="relative bg-darkBlue  top-0  menudrop landscape:md:hidden">
+            <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-md:hidden">
+                <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo"
+                    title="VJC Logo" aria-label="Home">
                 <p>finest in accounting since 1988</p>
-                <p>Chhattisgarh, IN</p>
+                <p>CG, IN 497001</p>
             </div>
     
             <ul id="mainMenu"
-                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[4vw] text-[5.5vw] md:text-[3vw] antialiased">
+                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
     
                 <!-- Navigation Links -->
     
-                <li class="mt-20"><a href="./index.html">HOME</a></li>
+                <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
                 <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
     
@@ -183,15 +185,16 @@
             </ul>
     
             <ul id="subMenu"
-                class="sm:text-xl   font-[100] uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.5vw] text-[4vw] mt-16">
-                <li class=" text-[7vw] font-[300]"><a href="#">SERVICES</a></li>
+                class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
+                <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
                 <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
                 <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
                 <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
                 <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
                 <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-                <li id="backButton" class="mt-20 text-[4vw] font-thin flex flex-row items-center"><img
-                        class="size-4 bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+                <li id="backButton"
+                    class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+                    <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
     
             </ul>
     
@@ -201,7 +204,7 @@
     
         <!-- Landscape Navigation -->
         <nav aria-label="Main Navigation" role="navigation"
-            class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden text-darkBlue">
+            class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-md:hidden text-darkBlue">
             <ul class="flex flex-row flex-wrap items-center w-full">
     
                 <!-- Home -->
