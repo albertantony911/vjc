@@ -168,6 +168,8 @@ const groups = [
     ]
   }
 ];
+  
+  
 
 function checkScrollTriggers() {
   const threshold = window.innerHeight * 0.8;

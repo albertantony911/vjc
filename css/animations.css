@@ -399,6 +399,14 @@
   50%      { transform: scale(1.05); }
 }
 
+/* GPU Acceleration for Animated Elements */
+[class*="rotating-icon-"],
+[class*="rotating-group-"],
+.pulser {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 /* Pulser animation */
 .pulser {
   animation: pulsing 2.5s infinite ease-in-out;
