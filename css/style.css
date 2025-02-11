@@ -6309,6 +6309,11 @@
       padding-top: 7svh;
     }
   }
+  .landscape\:pt-\[9svh\] {
+    @media (orientation: landscape) {
+      padding-top: 9svh;
+    }
+  }
   .landscape\:text-base {
     @media (orientation: landscape) {
       font-size: var(--text-base);
@@ -6478,6 +6483,20 @@
       }
     }
   }
+  .landscape\:sm\:h-\[60svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        height: 60svh;
+      }
+    }
+  }
+  .landscape\:sm\:h-\[65svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        height: 65svh;
+      }
+    }
+  }
   .landscape\:sm\:h-\[70svh\] {
     @media (orientation: landscape) {
       @media (width >= 40rem) {
@@ -6601,6 +6620,13 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         padding-block: 7svh;
+      }
+    }
+  }
+  .landscape\:sm\:pt-10 {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        padding-top: calc(var(--spacing) * 10);
       }
     }
   }
