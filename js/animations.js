@@ -101,21 +101,7 @@ const marqueeObserver = new IntersectionObserver((entries) => {
 marquees.forEach(marquee => marqueeObserver.observe(marquee));
 
 
-// Optimized Rotating Illustration Grouped Animation Control
-function activateScrollTrigger(triggerElement, targetElements, triggerPosition = "top 80%") {
-  if (!triggerElement || !targetElements.length) return;
-
-  // Prevent duplicate ScrollTrigger creation (if needed)
-  if (triggerElement._scrollTrigger) return;
-
-  // Create the ScrollTrigger instance using GSAP's toggleClass
-  triggerElement._scrollTrigger = ScrollTrigger.create({
-    trigger: triggerElement,
-    start: triggerPosition,
-    toggleClass: { targets: targetElements, className: "active" }
-  });
-}
-
+// Your groups array remains the same
 const groups = [
   {
     trigger: ".rotating-group-landing",
@@ -183,11 +169,28 @@ const groups = [
   }
 ];
 
-groups.forEach(({ trigger, targets }) => {
-  const triggerElement = document.querySelector(trigger);
-  const targetElements = document.querySelectorAll(targets.join(", "));
-  activateScrollTrigger(triggerElement, targetElements);
-});
+function checkScrollTriggers() {
+  const threshold = window.innerHeight * 0.8;
+  groups.forEach(({ trigger, targets }) => {
+    const triggerElement = document.querySelector(trigger);
+    if (!triggerElement) return;
+
+    const rect = triggerElement.getBoundingClientRect();
+    // Active if the element's top has reached the threshold AND it hasn't completely left the viewport.
+    const isActive = rect.top <= threshold && rect.bottom > 0;
+    
+    const targetElements = document.querySelectorAll(targets.join(", "));
+    targetElements.forEach(el => {
+      el.classList.toggle("active", isActive);
+    });
+  });
+}
+
+// Check triggers on scroll, resize, and once the entire page is loaded.
+window.addEventListener("scroll", checkScrollTriggers);
+window.addEventListener("resize", checkScrollTriggers);
+window.addEventListener("load", checkScrollTriggers);
+
 
 
   // Counter Animation control
