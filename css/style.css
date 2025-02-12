@@ -7199,6 +7199,13 @@
       }
     }
   }
+  .landscape\:sm\:text-\[1\.8svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        font-size: 1.8svh;
+      }
+    }
+  }
   .landscape\:sm\:text-\[2svh\] {
     @media (orientation: landscape) {
       @media (width >= 40rem) {
