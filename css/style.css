@@ -6758,6 +6758,11 @@
       font-size: 1.7svw;
     }
   }
+  .landscape\:text-\[1\.8svh\] {
+    @media (orientation: landscape) {
+      font-size: 1.8svh;
+    }
+  }
   .landscape\:text-\[1\.8svw\] {
     @media (orientation: landscape) {
       font-size: 1.8svw;
