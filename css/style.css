@@ -4616,6 +4616,11 @@
       margin-bottom: 0.25svh;
     }
   }
+  .landscape\:mb-\[1svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 1svh;
+    }
+  }
   .landscape\:mb-\[31svh\] {
     @media (orientation: landscape) {
       margin-bottom: 31svh;
@@ -4629,6 +4634,11 @@
   .landscape\:mb-\[4svh\] {
     @media (orientation: landscape) {
       margin-bottom: 4svh;
+    }
+  }
+  .landscape\:mb-\[5svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 5svh;
     }
   }
   .landscape\:hidden {
