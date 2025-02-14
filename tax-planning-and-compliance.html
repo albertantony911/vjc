@@ -1569,7 +1569,7 @@
       
       
         <div
-          class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5  ">
+          class="flex  w-full   mx-auto  max-md:px-5  ">
       
       
       
@@ -1620,7 +1620,8 @@
                                                       }
                                                     }
                                                   }" x-init="init()"
-            class="flex  flex-col   w-full landscape:w-[65%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+            class="flex landscape:md:w-[50%]   w-full portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh]
+            portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh] ">
       
             <!-- Header / Toggle Button -->
             <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
@@ -1644,13 +1645,7 @@
                 </p>
       
                 <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
+                
               </div>
             </div>
           </div>
