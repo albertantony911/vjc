@@ -900,28 +900,32 @@
                     <div x-data="{
                                           expanded: false,
                                           collapseTimeout: null,
-                                          contentHeight: '6em',
+                                          contentHeight: '4.4em',
                                           isTruncated: false,
                                           init() {
-                                            // Delay measurement until after render.
                                             setTimeout(() => {
                                               const contentEl = this.$refs.content;
-                                              // Temporarily remove the inline max-height so we can measure the full height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              
+                                              // Temporarily remove max-height to measure full content height
                                               contentEl.style.maxHeight = 'none';
                                               const fullHeight = contentEl.scrollHeight;
-                                              // Restore the original max-height.
-                                              contentEl.style.maxHeight = originalMaxHeight;
                                               
-                                              // Calculate the collapsed height in pixels (6em).
+                                              // Restore the original max-height
+                                              contentEl.style.maxHeight = this.contentHeight;
+
+                                              // Compute collapsed height in pixels (4.4em)
                                               const computedStyle = window.getComputedStyle(contentEl);
                                               const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                              const collapsedHeightPx = 6 * fontSize;
-                                              
-                                              // If full height exceeds collapsed height, mark as truncated.
-                                              this.isTruncated = fullHeight > collapsedHeightPx;
+                                              const collapsedHeightPx = 4.4 * fontSize;
+
+                                              // Add a small buffer to trigger Read More even when close
+                                              const buffer = 0.5 * fontSize; 
+
+                                              // Check if text should be truncated
+                                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
                                             }, 0);
                                           },
+
                                           toggleExpand() {
                                             this.expanded = !this.expanded;
                                             clearTimeout(this.collapseTimeout);
@@ -936,10 +940,10 @@
                                               // Optional auto-collapse after 20 seconds.
                                               this.collapseTimeout = setTimeout(() => {
                                                 this.expanded = false;
-                                                this.contentHeight = '6em';
+                                                this.contentHeight = '4.4em';
                                               }, 20000);
                                             } else {
-                                              this.contentHeight = '6em';
+                                              this.contentHeight = '4.4em';
                                             }
                                           }
                                         }" x-init="init()"
@@ -982,28 +986,32 @@
                     <div x-data="{
                                                     expanded: false,
                                                     collapseTimeout: null,
-                                                    contentHeight: '6em',
+                                                    contentHeight: '4.4em',
                                                     isTruncated: false,
                                                     init() {
-                                                      // Delay measurement until after render.
                                                       setTimeout(() => {
                                                         const contentEl = this.$refs.content;
-                                                        // Temporarily remove the inline max-height so we can measure the full height.
-                                                        const originalMaxHeight = contentEl.style.maxHeight;
+                                                        
+                                                        // Temporarily remove max-height to measure full content height
                                                         contentEl.style.maxHeight = 'none';
                                                         const fullHeight = contentEl.scrollHeight;
-                                                        // Restore the original max-height.
-                                                        contentEl.style.maxHeight = originalMaxHeight;
                                                         
-                                                        // Calculate the collapsed height in pixels (6em).
+                                                        // Restore the original max-height
+                                                        contentEl.style.maxHeight = this.contentHeight;
+
+                                                        // Compute collapsed height in pixels (4.4em)
                                                         const computedStyle = window.getComputedStyle(contentEl);
                                                         const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                        const collapsedHeightPx = 6 * fontSize;
-                                                        
-                                                        // If full height exceeds collapsed height, mark as truncated.
-                                                        this.isTruncated = fullHeight > collapsedHeightPx;
+                                                        const collapsedHeightPx = 4.4 * fontSize;
+
+                                                        // Add a small buffer to trigger Read More even when close
+                                                        const buffer = 0.5 * fontSize; 
+
+                                                        // Check if text should be truncated
+                                                        this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
                                                       }, 0);
                                                     },
+
                                                     toggleExpand() {
                                                       this.expanded = !this.expanded;
                                                       clearTimeout(this.collapseTimeout);
@@ -1018,10 +1026,10 @@
                                                         // Optional auto-collapse after 20 seconds.
                                                         this.collapseTimeout = setTimeout(() => {
                                                           this.expanded = false;
-                                                          this.contentHeight = '6em';
+                                                          this.contentHeight = '4.4em';
                                                         }, 20000);
                                                       } else {
-                                                        this.contentHeight = '6em';
+                                                        this.contentHeight = '4.4em';
                                                       }
                                                     }
                                                   }" x-init="init()"
@@ -1074,28 +1082,32 @@
                     <div x-data="{
                                   expanded: false,
                                   collapseTimeout: null,
-                                  contentHeight: '6em',
+                                  contentHeight: '4.4em',
                                   isTruncated: false,
                                   init() {
-                                    // Delay measurement until after render.
                                     setTimeout(() => {
                                       const contentEl = this.$refs.content;
-                                      // Temporarily remove the inline max-height so we can measure the full height.
-                                      const originalMaxHeight = contentEl.style.maxHeight;
+                                      
+                                      // Temporarily remove max-height to measure full content height
                                       contentEl.style.maxHeight = 'none';
                                       const fullHeight = contentEl.scrollHeight;
-                                      // Restore the original max-height.
-                                      contentEl.style.maxHeight = originalMaxHeight;
                                       
-                                      // Calculate the collapsed height in pixels (6em).
+                                      // Restore the original max-height
+                                      contentEl.style.maxHeight = this.contentHeight;
+
+                                      // Compute collapsed height in pixels (4.4em)
                                       const computedStyle = window.getComputedStyle(contentEl);
                                       const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                      const collapsedHeightPx = 6 * fontSize;
-                                      
-                                      // If full height exceeds collapsed height, mark as truncated.
-                                      this.isTruncated = fullHeight > collapsedHeightPx;
+                                      const collapsedHeightPx = 4.4 * fontSize;
+
+                                      // Add a small buffer to trigger Read More even when close
+                                      const buffer = 0.5 * fontSize; 
+
+                                      // Check if text should be truncated
+                                      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
                                     }, 0);
                                   },
+
                                   toggleExpand() {
                                     this.expanded = !this.expanded;
                                     clearTimeout(this.collapseTimeout);
@@ -1110,10 +1122,10 @@
                                       // Optional auto-collapse after 20 seconds.
                                       this.collapseTimeout = setTimeout(() => {
                                         this.expanded = false;
-                                        this.contentHeight = '6em';
+                                        this.contentHeight = '4.4em';
                                       }, 20000);
                                     } else {
-                                      this.contentHeight = '6em';
+                                      this.contentHeight = '4.4em';
                                     }
                                   }
                                 }" x-init="init()"
@@ -1156,28 +1168,32 @@
                     <div x-data="{
                                             expanded: false,
                                             collapseTimeout: null,
-                                            contentHeight: '6em',
+                                            contentHeight: '4.4em',
                                             isTruncated: false,
                                             init() {
-                                              // Delay measurement until after render.
                                               setTimeout(() => {
                                                 const contentEl = this.$refs.content;
-                                                // Temporarily remove the inline max-height so we can measure the full height.
-                                                const originalMaxHeight = contentEl.style.maxHeight;
+                                                
+                                                // Temporarily remove max-height to measure full content height
                                                 contentEl.style.maxHeight = 'none';
                                                 const fullHeight = contentEl.scrollHeight;
-                                                // Restore the original max-height.
-                                                contentEl.style.maxHeight = originalMaxHeight;
                                                 
-                                                // Calculate the collapsed height in pixels (6em).
+                                                // Restore the original max-height
+                                                contentEl.style.maxHeight = this.contentHeight;
+
+                                                // Compute collapsed height in pixels (4.4em)
                                                 const computedStyle = window.getComputedStyle(contentEl);
                                                 const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                const collapsedHeightPx = 6 * fontSize;
-                                                
-                                                // If full height exceeds collapsed height, mark as truncated.
-                                                this.isTruncated = fullHeight > collapsedHeightPx;
+                                                const collapsedHeightPx = 4.4 * fontSize;
+
+                                                // Add a small buffer to trigger Read More even when close
+                                                const buffer = 0.5 * fontSize; 
+
+                                                // Check if text should be truncated
+                                                this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
                                               }, 0);
                                             },
+
                                             toggleExpand() {
                                               this.expanded = !this.expanded;
                                               clearTimeout(this.collapseTimeout);
@@ -1192,10 +1208,10 @@
                                                 // Optional auto-collapse after 20 seconds.
                                                 this.collapseTimeout = setTimeout(() => {
                                                   this.expanded = false;
-                                                  this.contentHeight = '6em';
+                                                  this.contentHeight = '4.4em';
                                                 }, 20000);
                                               } else {
-                                                this.contentHeight = '6em';
+                                                this.contentHeight = '4.4em';
                                               }
                                             }
                                           }" x-init="init()"
@@ -1248,28 +1264,32 @@
                     <div x-data="{
                                           expanded: false,
                                           collapseTimeout: null,
-                                          contentHeight: '6em',
+                                          contentHeight: '4.4em',
                                           isTruncated: false,
                                           init() {
-                                            // Delay measurement until after render.
                                             setTimeout(() => {
                                               const contentEl = this.$refs.content;
-                                              // Temporarily remove the inline max-height so we can measure the full height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
+                                              
+                                              // Temporarily remove max-height to measure full content height
                                               contentEl.style.maxHeight = 'none';
                                               const fullHeight = contentEl.scrollHeight;
-                                              // Restore the original max-height.
-                                              contentEl.style.maxHeight = originalMaxHeight;
                                               
-                                              // Calculate the collapsed height in pixels (6em).
+                                              // Restore the original max-height
+                                              contentEl.style.maxHeight = this.contentHeight;
+
+                                              // Compute collapsed height in pixels (4.4em)
                                               const computedStyle = window.getComputedStyle(contentEl);
                                               const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                              const collapsedHeightPx = 6 * fontSize;
-                                              
-                                              // If full height exceeds collapsed height, mark as truncated.
-                                              this.isTruncated = fullHeight > collapsedHeightPx;
+                                              const collapsedHeightPx = 4.4 * fontSize;
+
+                                              // Add a small buffer to trigger Read More even when close
+                                              const buffer = 0.5 * fontSize; 
+
+                                              // Check if text should be truncated
+                                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
                                             }, 0);
                                           },
+
                                           toggleExpand() {
                                             this.expanded = !this.expanded;
                                             clearTimeout(this.collapseTimeout);
@@ -1284,10 +1304,10 @@
                                               // Optional auto-collapse after 20 seconds.
                                               this.collapseTimeout = setTimeout(() => {
                                                 this.expanded = false;
-                                                this.contentHeight = '6em';
+                                                this.contentHeight = '4.4em';
                                               }, 20000);
                                             } else {
-                                              this.contentHeight = '6em';
+                                              this.contentHeight = '4.4em';
                                             }
                                           }
                                         }" x-init="init()"
