@@ -2020,7 +2020,7 @@
 
 
         <!-- Legal Services FAQ Section -->
-        <section id="faq" class="bg-light text-darkBlue flex flex-col sm:mt-[5svh] mt-[7svh] max-sm:mb-[5svh]" role="region"
+        <section id="faq" class="bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]" role="region"
           aria-label="Legal Services FAQ">
           <div role="heading" aria-level="2">
             <h2 class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
@@ -2068,7 +2068,7 @@
                         <button type="button"
                           class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
                           @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
-                          :aria-controls="'legal-faq-' + index">
+                          :aria-controls="'audit-faq-' + index">
                           <span x-text="faq.question"></span>
                           <img
                             class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
@@ -2076,7 +2076,7 @@
                             aria-hidden="true" />
                         </button>
                       </h2>
-                      <div :id="'legal-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+                      <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
                         :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
                         <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
                         <template x-if="faq.link">
