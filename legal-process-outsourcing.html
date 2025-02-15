@@ -2019,50 +2019,53 @@
 
 
 
+        
+
         <!-- Legal Services FAQ Section -->
-        <section id="faq" class="hidden bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]" role="region"
-          aria-label="Legal Services FAQ">
+        <section id="faq" class="bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]"
+          role="region" aria-label="Sessions related FAQ">
           <div role="heading" aria-level="2">
-            <h2 class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
-              Frequently Asked Questions
+            <h2
+              class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
+              Frequently Asked Questions 
             </h2>
           </div>
-
+        
           <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
               <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
                 <!-- Accordion component -->
                 <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
                   <template x-for="(faq, index) in [
-                    {
-                      question: 'What types of legal services can be outsourced to VJC?',
-                      answer: 'You can outsource a range of services, including contract review, litigation support, legal research, and intellectual property management, among others.'
-                    },
-                    {
-                      question: 'How does VJC ensure confidentiality of sensitive legal information?',
-                      answer: 'We follow strict data security protocols and legal standards to safeguard your confidential information.'
-                    },
-                    {
-                      question: 'What industries do you specialize in?',
-                      answer: 'VJC works across various industries, including finance, healthcare, technology, hospitality, and more.'
-                    },
-                    {
-                      question: 'Do you offer support for cross-border legal issues?',
-                      answer: 'Yes, VJC provides specialized support for international transactions and cross-border legal complexities.'
-                    },
-                    {
-                      question: 'What engagement models does VJC offer?',
-                      answer: 'We offer flexible engagement models, including project-based, in-house support, and retainer-based services.'
-                    },
-                    {
-                      question: 'How do you ensure legal compliance with local and international laws?',
-                      answer: 'Our legal experts stay updated on the latest regulations and ensure that all services are fully compliant with both local and international legal requirements.'
-                    },
-                    {
-                      question: 'Can VJC assist with corporate governance and compliance?',
-                      answer: 'Yes, we help companies with corporate governance, maintaining statutory records, and ensuring compliance with industry regulations.'
-                    }
-                  ]" :key="index">
+                                      {
+                                        question: 'What types of legal services can be outsourced to VJC?',
+                                        answer: 'You can outsource a range of services, including contract review, litigation support, legal research, and intellectual property management, among others.'
+                                      },
+                                      {
+                                        question: 'How does VJC ensure confidentiality of sensitive legal information?',
+                                        answer: 'We follow strict data security protocols and legal standards to safeguard your confidential information.'
+                                      },
+                                      {
+                                        question: 'What industries do you specialize in?',
+                                        answer: 'VJC works across various industries, including finance, healthcare, technology, hospitality, and more.'
+                                      },
+                                      {
+                                        question: 'Do you offer support for cross-border legal issues?',
+                                        answer: 'Yes, VJC provides specialized support for international transactions and cross-border legal complexities.'
+                                      },
+                                      {
+                                        question: 'What engagement models does VJC offer?',
+                                        answer: 'We offer flexible engagement models, including project-based, in-house support, and retainer-based services.'
+                                      },
+                                      {
+                                        question: 'How do you ensure legal compliance with local and international laws?',
+                                        answer: 'Our legal experts stay updated on the latest regulations and ensure that all services are fully compliant with both local and international legal requirements.'
+                                      },
+                                      {
+                                        question: 'Can VJC assist with corporate governance and compliance?',
+                                        answer: 'Yes, we help companies with corporate governance, maintaining statutory records, and ensuring compliance with industry regulations.'
+                                      }
+                                    ]" :key="index">
                     <div class="py-4">
                       <h2>
                         <button type="button"
@@ -2088,91 +2091,10 @@
                       </div>
                     </div>
                   </template>
-
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]"
-          role="region" aria-label="Sessions related FAQ">
-          <div role="heading" aria-level="2">
-            <h2
-              class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
-              Frequently Asked Questions - Cloud Accounting Services
-            </h2>
-          </div>
-        
-          <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
-            <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-              <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
-                <!-- Accordion component -->
-                <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-                  <template x-for="(faq, index) in [
-                        {
-                          question: 'What qualifications do your accountants and bookkeepers have?',
-                          answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.',
-                          link: './about.html',
-                          linkText: 'Meet our Team for more info'
-                        },
-                        {
-                          question: 'How can cloud accounting benefit my business compared to traditional methods?',
-                          answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.'
-                        },
-                        {
-                          question: 'Do I need to prepare my books before handing them over to VJC?',
-                          answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.',
-                          link: './contact.html',
-                          linkText: 'Discuss with our Executives for more info'
-                        },
-                        {
-                          question: 'How does cloud accounting improve financial decision-making for my business?',
-                          answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.'
-                        },
-                        {
-                          question: 'Is my financial data secure?',
-                          answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.',
-                          link: './about.html',
-                          linkText: 'You can read more here'
-                        }
-                      ]" :key="index">
-                    <div class="py-4">
-                      <h2>
-                        <button type="button"
-                          class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-                          @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
-                          :aria-controls="'audit-faq-' + index">
-                          <span x-text="faq.question"></span>
-                          <img
-                            class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-                            src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
-                            alt="Expand or collapse FAQ content" aria-hidden="true" />
-                        </button>
-                      </h2>
-                      <div :id="'audit-faq-' + index" role="region"
-                        class="overflow-hidden transition-all duration-500 ease-in-out"
-                        :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                        <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer">
-                        </p>
-                        <template x-if="faq.link">
-                          <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-                            <a :href="faq.link"
-                              class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
-                              x-text="faq.linkText"></a>
-                          </p>
-                        </template>
-                      </div>
-                    </div>
-                  </template>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-        
-        
         </section>
 
   
