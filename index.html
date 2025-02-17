@@ -111,7 +111,7 @@
   <header class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
   
     <!-- Logo Section -->
-    <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden">
+    <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
       <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
         <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
       </a>
@@ -130,7 +130,7 @@
     </div>
   
     <!-- Menu Button Section -->
-    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:md:hidden"
+    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden"
       id="menuButtonContainer">
       <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@
   
     <!-- Mobile Navigation -->
     <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0  menudrop landscape:md:hidden">
+      class="relative bg-darkBlue  top-0  menudrop landscape:lg:hidden">
       <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-md:hidden">
         <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
         <p>finest in accounting since 1988</p>
@@ -189,23 +189,23 @@
   
     <!-- Landscape Navigation -->
     <nav aria-label="Main Navigation" role="navigation"
-      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-md:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
+      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue ">
+      <ul class="flex flex-row flex-wrap  items-center w-full">
   
         <!-- Home -->
-        <li class="relative block rounded-xl">
+        <li class="relative block rounded-xl  ">
           <!-- Navigation Link with ARIA Label -->
           <a href="./index.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4  rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
             <span>Home</span>
           </a>
         </li>
   
         <!-- About -->
-        <li class="relative block rounded-xl">
+        <li class="relative block rounded-xl  ">
           <!-- Navigation Link with ARIA Label -->
           <a href="./about.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
             <span>About</span>
           </a>
         </li>
