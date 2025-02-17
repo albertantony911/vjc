@@ -690,6 +690,9 @@
   .mt-\[4svh\] {
     margin-top: 4svh;
   }
+  .mt-\[7svh\] {
+    margin-top: 7svh;
+  }
   .mt-\[10svh\] {
     margin-top: 10svh;
   }
@@ -698,9 +701,6 @@
   }
   .mt-\[1svh\] {
     margin-top: 1svh;
-  }
-  .mt-\[7svh\] {
-    margin-top: 7svh;
   }
   .mt-auto {
     margin-top: auto;
@@ -2701,16 +2701,6 @@
       padding-block: 3.5svh;
     }
   }
-  .sm\:py-\[15svh\] {
-    @media (width >= 40rem) {
-      padding-block: 15svh;
-    }
-  }
-  .sm\:py-\[1svh\] {
-    @media (width >= 40rem) {
-      padding-block: 1svh;
-    }
-  }
   .sm\:py-\[3\.7svh\] {
     @media (width >= 40rem) {
       padding-block: 3.7svh;
@@ -2729,6 +2719,16 @@
   .sm\:py-\[5svh\] {
     @media (width >= 40rem) {
       padding-block: 5svh;
+    }
+  }
+  .sm\:py-\[15svh\] {
+    @media (width >= 40rem) {
+      padding-block: 15svh;
+    }
+  }
+  .sm\:py-\[1svh\] {
+    @media (width >= 40rem) {
+      padding-block: 1svh;
     }
   }
   .sm\:pt-\[7svh\] {
@@ -2869,6 +2869,11 @@
       margin-top: calc(var(--spacing) * 5);
     }
   }
+  .md\:mt-6 {
+    @media (width >= 48rem) {
+      margin-top: calc(var(--spacing) * 6);
+    }
+  }
   .md\:mt-8 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 8);
@@ -2942,6 +2947,11 @@
   .md\:mb-3 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 3);
+    }
+  }
+  .md\:mb-7 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 7);
     }
   }
   .md\:mb-10 {
@@ -3937,6 +3947,13 @@
       }
     }
   }
+  .portrait\:sm\:w-\[5svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        width: 5svw;
+      }
+    }
+  }
   .portrait\:sm\:w-\[13\%\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
@@ -3969,13 +3986,6 @@
     @media (orientation: portrait) {
       @media (width >= 40rem) {
         width: 55svw;
-      }
-    }
-  }
-  .portrait\:sm\:w-\[5svw\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        width: 5svw;
       }
     }
   }
@@ -4621,6 +4631,11 @@
       margin-bottom: 1svh;
     }
   }
+  .landscape\:mb-\[5svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 5svh;
+    }
+  }
   .landscape\:mb-\[31svh\] {
     @media (orientation: landscape) {
       margin-bottom: 31svh;
@@ -4634,11 +4649,6 @@
   .landscape\:mb-\[4svh\] {
     @media (orientation: landscape) {
       margin-bottom: 4svh;
-    }
-  }
-  .landscape\:mb-\[5svh\] {
-    @media (orientation: landscape) {
-      margin-bottom: 5svh;
     }
   }
   .landscape\:hidden {
@@ -4743,6 +4753,13 @@
       }
     }
   }
+  .landscape\:max-sm\:text-\[3\.5vw\] {
+    @media (orientation: landscape) {
+      @media (width < 40rem) {
+        font-size: 3.5vw;
+      }
+    }
+  }
   .landscape\:sm\:inset-x-full {
     @media (orientation: landscape) {
       @media (width >= 40rem) {
@@ -4785,6 +4802,13 @@
       }
     }
   }
+  .landscape\:sm\:mt-\[4svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        margin-top: 4svh;
+      }
+    }
+  }
   .landscape\:sm\:mt-\[10svh\] {
     @media (orientation: landscape) {
       @media (width >= 40rem) {
@@ -4796,13 +4820,6 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         margin-top: 1svh;
-      }
-    }
-  }
-  .landscape\:sm\:mt-\[4svh\] {
-    @media (orientation: landscape) {
-      @media (width >= 40rem) {
-        margin-top: 4svh;
       }
     }
   }
@@ -4929,6 +4946,13 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         padding-inline: 5svh;
+      }
+    }
+  }
+  .landscape\:sm\:px-\[6svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        padding-inline: 6svh;
       }
     }
   }
@@ -5231,6 +5255,13 @@
       }
     }
   }
+  .landscape\:md\:pb-7 {
+    @media (orientation: landscape) {
+      @media (width >= 48rem) {
+        padding-bottom: calc(var(--spacing) * 7);
+      }
+    }
+  }
   .landscape\:md\:pb-8 {
     @media (orientation: landscape) {
       @media (width >= 48rem) {
@@ -5256,6 +5287,14 @@
     @media (orientation: landscape) {
       @media (width >= 48rem) {
         padding-left: 13svh;
+      }
+    }
+  }
+  .landscape\:md\:text-2xl {
+    @media (orientation: landscape) {
+      @media (width >= 48rem) {
+        font-size: var(--text-2xl);
+        line-height: var(--tw-leading, var(--text-2xl--line-height));
       }
     }
   }
