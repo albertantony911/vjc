@@ -687,12 +687,6 @@
   .mt-\[3svh\] {
     margin-top: 3svh;
   }
-  .mt-\[4svh\] {
-    margin-top: 4svh;
-  }
-  .mt-\[7svh\] {
-    margin-top: 7svh;
-  }
   .mt-\[10svh\] {
     margin-top: 10svh;
   }
@@ -701,6 +695,12 @@
   }
   .mt-\[1svh\] {
     margin-top: 1svh;
+  }
+  .mt-\[4svh\] {
+    margin-top: 4svh;
+  }
+  .mt-\[7svh\] {
+    margin-top: 7svh;
   }
   .mt-auto {
     margin-top: auto;
@@ -2729,11 +2729,6 @@
       padding-block: 3svh;
     }
   }
-  .sm\:py-\[4svh\] {
-    @media (width >= 40rem) {
-      padding-block: 4svh;
-    }
-  }
   .sm\:py-\[5svh\] {
     @media (width >= 40rem) {
       padding-block: 5svh;
@@ -2749,9 +2744,19 @@
       padding-block: 1svh;
     }
   }
+  .sm\:py-\[4svh\] {
+    @media (width >= 40rem) {
+      padding-block: 4svh;
+    }
+  }
   .sm\:pt-\[7svh\] {
     @media (width >= 40rem) {
       padding-top: 7svh;
+    }
+  }
+  .sm\:pt-\[15svh\] {
+    @media (width >= 40rem) {
+      padding-top: 15svh;
     }
   }
   .sm\:pb-0 {
@@ -2762,6 +2767,21 @@
   .sm\:pb-\[2svh\] {
     @media (width >= 40rem) {
       padding-bottom: 2svh;
+    }
+  }
+  .sm\:pb-\[7svh\] {
+    @media (width >= 40rem) {
+      padding-bottom: 7svh;
+    }
+  }
+  .sm\:pb-\[8svh\] {
+    @media (width >= 40rem) {
+      padding-bottom: 8svh;
+    }
+  }
+  .sm\:pb-\[10svh\] {
+    @media (width >= 40rem) {
+      padding-bottom: 10svh;
     }
   }
   .sm\:text-center {
@@ -3909,14 +3929,6 @@
       }
     }
   }
-  .portrait\:sm\:size-\[7svh\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        width: 7svh;
-        height: 7svh;
-      }
-    }
-  }
   .portrait\:sm\:size-\[10svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
@@ -3970,6 +3982,14 @@
       @media (width >= 40rem) {
         width: 75svh;
         height: 75svh;
+      }
+    }
+  }
+  .portrait\:sm\:size-\[7svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        width: 7svh;
+        height: 7svh;
       }
     }
   }
@@ -4664,6 +4684,11 @@
       margin-bottom: 1svh;
     }
   }
+  .landscape\:mb-\[4svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 4svh;
+    }
+  }
   .landscape\:mb-\[31svh\] {
     @media (orientation: landscape) {
       margin-bottom: 31svh;
@@ -4672,11 +4697,6 @@
   .landscape\:mb-\[3svh\] {
     @media (orientation: landscape) {
       margin-bottom: 3svh;
-    }
-  }
-  .landscape\:mb-\[4svh\] {
-    @media (orientation: landscape) {
-      margin-bottom: 4svh;
     }
   }
   .landscape\:mb-\[5svh\] {
@@ -5042,6 +5062,13 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         padding-right: 10svh;
+      }
+    }
+  }
+  .landscape\:sm\:pb-\[7svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        padding-bottom: 7svh;
       }
     }
   }
