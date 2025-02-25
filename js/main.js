@@ -44,3 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.querySelectorAll('.delayed-link').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      const href = this.href;
+      const target = this.target;
+      setTimeout(() => {
+        if (target === '_blank') {
+          window.open(href, '_blank');
+        } else {
+          window.location.href = href;
+        }
+      }, 150); // Matches your duration-300
+    });
+  });
+
+

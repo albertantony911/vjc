@@ -196,7 +196,7 @@
         <li class="relative block rounded-xl  ">
           <!-- Navigation Link with ARIA Label -->
           <a href="./index.html"
-            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4  rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4  rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
             <span>Home</span>
           </a>
         </li>
@@ -205,7 +205,7 @@
         <li class="relative block rounded-xl  ">
           <!-- Navigation Link with ARIA Label -->
           <a href="./about.html"
-            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
             <span>About</span>
           </a>
         </li>
@@ -216,16 +216,16 @@
         <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
           @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
           <a href="#" aria-haspopup="true" aria-expanded="false"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
             @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
             @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
             <span>Services</span>
   
           </a>
           <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
-            x-show="showChildren" x-transition:enter="transition ease duration-300 transform"
+            x-show="showChildren" x-transition:enter="transition ease duration-100 transform"
             x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-300 transform"
+            x-transition:leave="transition ease duration-100 transform"
             x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
             style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
             aria-label="Submenu">
@@ -297,7 +297,7 @@
         <li class="relative block rounded-xl">
           <!-- Navigation Link with ARIA Label -->
           <a href="./pricing.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
             <span>Pricing</span>
           </a>
         </li>
@@ -308,7 +308,7 @@
         <li class="relative block rounded-xl">
           <!-- Navigation Link with ARIA Label -->
           <a href="./resources.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
             <span>Resources</span>
           </a>
         </li>
@@ -319,7 +319,7 @@
         <li class="relative block rounded-xl">
           <!-- Navigation Link with ARIA Label -->
           <a href="./contact.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-100 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
             <span>Contact Us</span>
           </a>
         </li>
@@ -349,10 +349,17 @@
             </p>
           </div>
           
-          <div class=" flex">
-            <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
-              class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-darkBlue text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] 
-               sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-300 transform bg-white rounded-full select-none">
+          <div class="flex">
+            <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" target="_blank" rel="noopener noreferrer"
+              aria-label="Schedule a Meeting with Us on Outlook" class="whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
+                      hover:scale-105 active:scale-105 shadow-md hover:shadow-lg 
+                      hover:bg-darkGreen hover:text-white 
+                      active:bg-darkGreen active:text-white 
+                      text-darkBlue text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] 
+                      py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] 
+                      portrait:sm:px-[3svw] portrait:sm:py-[2svw] 
+                      transition-all duration-100 transform bg-white 
+                      rounded-full select-none delayed-link">
               Partner with Us
             </a>
           </div>
@@ -416,13 +423,13 @@
                       </h2>
                       <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
                         :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left transition-all duration-300 pl-9 ease-in-out"
+                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left transition-all duration-100 pl-9 ease-in-out"
                         :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-[0]' : 'grid-rows-[0fr] opacity-0 max-h-0'">
                         <div class="overflow-hidden">
                           <p class="mt-1" x-text="service.description"></p>
                           <div class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]">
                             <a :href="service.link"
-                              class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white text-white py-2 px-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                              class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100  transform bg-darkBlue rounded-full select-none">
                               Read more
                             </a>
                           </div>
@@ -1660,7 +1667,7 @@
                         <div class="flex justify-center mb-12 md:mt-6 mt-7 md:mb-7">
                             <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                                 aria-label="Link to Schedule a Meeting"
-                                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-300 transform bg-white rounded-full select-none">
+                                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white delayed-link  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-100 transform bg-white rounded-full select-none">
                                 Schedule Meeting
                             </a>
                         </div>
@@ -1681,25 +1688,25 @@
                         </div>
 
                         <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7" role="presentation">
-                            <a href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
+                            <a class="delayed-link" href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
+                                <img class="w-16 transition-transform duration-100 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125 "
                                     src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
                             </a>
                         
-                            <a href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
+                            <a class="delayed-link" href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
                                 rel="noopener">
-                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
                                     src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
                             </a>
                         
-                            <a href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting" title="Contact us on WhatsApp"
+                            <a class="delayed-link" href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting" title="Contact us on WhatsApp"
                                 target="_blank" rel="noopener">
-                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
                                     src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
                             </a>
                         
-                            <a href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125"
+                            <a class="delayed-link" href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
+                                <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
                                     src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
                             </a>
                         

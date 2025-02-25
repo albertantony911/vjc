@@ -681,6 +681,15 @@
   .mt-\[0\.8svh\] {
     margin-top: 0.8svh;
   }
+  .mt-\[10svh\] {
+    margin-top: 10svh;
+  }
+  .mt-\[15svh\] {
+    margin-top: 15svh;
+  }
+  .mt-\[1svh\] {
+    margin-top: 1svh;
+  }
   .mt-\[2svh\] {
     margin-top: 2svh;
   }
@@ -692,15 +701,6 @@
   }
   .mt-\[7svh\] {
     margin-top: 7svh;
-  }
-  .mt-\[10svh\] {
-    margin-top: 10svh;
-  }
-  .mt-\[15svh\] {
-    margin-top: 15svh;
-  }
-  .mt-\[1svh\] {
-    margin-top: 1svh;
   }
   .mr-1 {
     margin-right: calc(var(--spacing) * 1);
@@ -797,10 +797,6 @@
     width: 1.1rem;
     height: 1.1rem;
   }
-  .size-\[4vw\] {
-    width: 4vw;
-    height: 4vw;
-  }
   .size-\[9rem\] {
     width: 9rem;
     height: 9rem;
@@ -828,6 +824,10 @@
   .size-\[48svh\] {
     width: 48svh;
     height: 48svh;
+  }
+  .size-\[4vw\] {
+    width: 4vw;
+    height: 4vw;
   }
   .size-\[70svh\] {
     width: 70svh;
@@ -1765,6 +1765,14 @@
   .delay-\[0\] {
     transition-delay: 0;
   }
+  .duration-5 {
+    --tw-duration: 5ms;
+    transition-duration: 5ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
@@ -1780,10 +1788,6 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
-  }
-  .ease-in {
-    --tw-ease: var(--ease-in);
-    transition-timing-function: var(--ease-in);
   }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
@@ -1889,30 +1893,14 @@
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
-  .focus\:bg-darkGreen {
-    &:focus {
-      background-color: var(--color-darkGreen);
-    }
-  }
   .focus\:bg-white {
     &:focus {
       background-color: var(--color-white);
     }
   }
-  .focus\:text-white {
-    &:focus {
-      color: var(--color-white);
-    }
-  }
   .focus\:ring-1 {
     &:focus {
       --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .focus\:shadow-lg {
-    &:focus {
-      --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
@@ -1930,11 +1918,30 @@
       outline-color: var(--color-lightBlue);
     }
   }
+  .focus-visible\:outline-2 {
+    &:focus-visible {
+      outline-style: var(--tw-outline-style);
+      outline-width: 2px;
+    }
+  }
+  .focus-visible\:outline-lightBlue {
+    &:focus-visible {
+      outline-color: var(--color-lightBlue);
+    }
+  }
   .active\:scale-105 {
     &:active {
       --tw-scale-x: 105%;
       --tw-scale-y: 105%;
       --tw-scale-z: 105%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .active\:scale-125 {
+    &:active {
+      --tw-scale-x: 125%;
+      --tw-scale-y: 125%;
+      --tw-scale-z: 125%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
@@ -1946,12 +1953,6 @@
   .active\:text-white {
     &:active {
       color: var(--color-white);
-    }
-  }
-  .active\:shadow-lg {
-    &:active {
-      --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .max-md\:mx-2 {
@@ -2162,6 +2163,11 @@
   .max-sm\:mb-5 {
     @media (width < 40rem) {
       margin-bottom: calc(var(--spacing) * 5);
+    }
+  }
+  .max-sm\:mb-10 {
+    @media (width < 40rem) {
+      margin-bottom: calc(var(--spacing) * 10);
     }
   }
   .max-sm\:mb-\[5svh\] {
@@ -2789,6 +2795,11 @@
       margin-inline: auto;
     }
   }
+  .md\:my-10 {
+    @media (width >= 48rem) {
+      margin-block: calc(var(--spacing) * 10);
+    }
+  }
   .md\:my-\[1svh\] {
     @media (width >= 48rem) {
       margin-block: 1svh;
@@ -3010,6 +3021,16 @@
       width: 8%;
     }
   }
+  .md\:w-\[30\%\] {
+    @media (width >= 48rem) {
+      width: 30%;
+    }
+  }
+  .md\:w-\[50svh\] {
+    @media (width >= 48rem) {
+      width: 50svh;
+    }
+  }
   .md\:w-\[100\%\] {
     @media (width >= 48rem) {
       width: 100%;
@@ -3030,11 +3051,6 @@
       width: 23.7%;
     }
   }
-  .md\:w-\[30\%\] {
-    @media (width >= 48rem) {
-      width: 30%;
-    }
-  }
   .md\:w-\[40\%\] {
     @media (width >= 48rem) {
       width: 40%;
@@ -3048,11 +3064,6 @@
   .md\:w-\[45\%\] {
     @media (width >= 48rem) {
       width: 45%;
-    }
-  }
-  .md\:w-\[50svh\] {
-    @media (width >= 48rem) {
-      width: 50svh;
     }
   }
   .md\:w-\[55\%\] {
@@ -3574,6 +3585,11 @@
       padding-block: 1svh;
     }
   }
+  .portrait\:mt-\[13svh\] {
+    @media (orientation: portrait) {
+      margin-top: 13svh;
+    }
+  }
   .portrait\:mb-\[1\.3svh\] {
     @media (orientation: portrait) {
       margin-bottom: 1.3svh;
@@ -3604,6 +3620,11 @@
       display: none;
     }
   }
+  .portrait\:h-svh {
+    @media (orientation: portrait) {
+      height: 100svh;
+    }
+  }
   .portrait\:w-full {
     @media (orientation: portrait) {
       width: 100%;
@@ -3617,6 +3638,11 @@
   .portrait\:rounded-\[3svw\] {
     @media (orientation: portrait) {
       border-radius: 3svw;
+    }
+  }
+  .portrait\:p-\[6vw\] {
+    @media (orientation: portrait) {
+      padding: 6vw;
     }
   }
   .portrait\:px-8 {
@@ -3662,6 +3688,21 @@
   .portrait\:pb-\[5svh\] {
     @media (orientation: portrait) {
       padding-bottom: 5svh;
+    }
+  }
+  .portrait\:pb-\[10svh\] {
+    @media (orientation: portrait) {
+      padding-bottom: 10svh;
+    }
+  }
+  .portrait\:pb-\[12svh\] {
+    @media (orientation: portrait) {
+      padding-bottom: 12svh;
+    }
+  }
+  .portrait\:pb-\[13svh\] {
+    @media (orientation: portrait) {
+      padding-bottom: 13svh;
     }
   }
   .portrait\:text-left {
@@ -3775,6 +3816,14 @@
       }
     }
   }
+  .portrait\:sm\:size-\[7svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        width: 7svh;
+        height: 7svh;
+      }
+    }
+  }
   .portrait\:sm\:size-\[10svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
@@ -3828,14 +3877,6 @@
       @media (width >= 40rem) {
         width: 75svh;
         height: 75svh;
-      }
-    }
-  }
-  .portrait\:sm\:size-\[7svh\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        width: 7svh;
-        height: 7svh;
       }
     }
   }
@@ -4001,6 +4042,13 @@
     @media (orientation: portrait) {
       @media (width >= 40rem) {
         border-radius: 4.3svw;
+      }
+    }
+  }
+  .sm\:portrait\:p-\[3vw\] {
+    @media (width >= 40rem) {
+      @media (orientation: portrait) {
+        padding: 3vw;
       }
     }
   }
@@ -4197,6 +4245,13 @@
     @media (orientation: portrait) {
       @media (width >= 40rem) {
         font-size: 3vw;
+      }
+    }
+  }
+  .sm\:portrait\:text-\[1\.7vw\] {
+    @media (width >= 40rem) {
+      @media (orientation: portrait) {
+        font-size: 1.7vw;
       }
     }
   }
@@ -4501,6 +4556,11 @@
       }
     }
   }
+  .landscape\:mt-\[12svh\] {
+    @media (orientation: landscape) {
+      margin-top: 12svh;
+    }
+  }
   .landscape\:mb-\[0\.25svh\] {
     @media (orientation: landscape) {
       margin-bottom: 0.25svh;
@@ -4540,6 +4600,11 @@
   .landscape\:h-\[70svh\] {
     @media (orientation: landscape) {
       height: 70svh;
+    }
+  }
+  .landscape\:h-svh {
+    @media (orientation: landscape) {
+      height: 100svh;
     }
   }
   .landscape\:w-\[50\%\] {
@@ -4644,6 +4709,13 @@
       }
     }
   }
+  .landscape\:sm\:mt-\[4svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        margin-top: 4svh;
+      }
+    }
+  }
   .landscape\:sm\:mt-\[10svh\] {
     @media (orientation: landscape) {
       @media (width >= 40rem) {
@@ -4655,13 +4727,6 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         margin-top: 1svh;
-      }
-    }
-  }
-  .landscape\:sm\:mt-\[4svh\] {
-    @media (orientation: landscape) {
-      @media (width >= 40rem) {
-        margin-top: 4svh;
       }
     }
   }
@@ -5051,6 +5116,13 @@
       @media (width >= 48rem) {
         font-size: var(--text-2xl);
         line-height: var(--tw-leading, var(--text-2xl--line-height));
+      }
+    }
+  }
+  .lg\:landscape\:mt-\[13svh\] {
+    @media (width >= 64rem) {
+      @media (orientation: landscape) {
+        margin-top: 13svh;
       }
     }
   }
@@ -5509,4 +5581,9 @@ img, svg {
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }

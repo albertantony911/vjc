@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="en">
+  <meta name="description" content="vjc website">
+
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="VJC India">
+  <meta property="og:description" content="vjc website">
+  <meta property="og:url" content="https://www.vjcindia.com">
+  <meta property="og:image" content="https://www.vjcindia.com/img/logo-og.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./img/logo.png" type="image/x-icon">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/animations.css">
+
+  <!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>  
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+
+
+  <!--  Fonts -->
+  <!-- Preload Poppins -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  
+  <!-- Preload Noteworthy -->
+  <link rel="preload" as="style" href="https://fonts.cdnfonts.com/css/noteworthy">
+  <link href="https://fonts.cdnfonts.com/css/noteworthy" rel="stylesheet">
+
+  <!-- Custom Scripts -->
+  <script src="./js/main.js" defer></script>
+  <script src="./js/animations.js" defer></script>
+  <script type="module" src="./js/globe.js" defer></script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="author" content="vjc">
+  <meta name="keywords" content="vjcindia">
+  <meta name="language" content="en">
+
+  <title>Home | Welcome to VJC India Offshore</title>
+  <link rel="canonical" href="https://www.vjcindia.com">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vjcindia.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "404: Page Not Found"
+        }
+      ]
+    }
+    </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://www.vjcindia.com",
+      "logo": "https://www.vjcindia.com/logo.svg",
+      "name": "vjcindia",
+      "description": "vjcindia",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressRegion": "New Delhi",
+        "addressCountry": "India"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91 987654321",
+        "contactType": "customer service",
+        "email": "info@vjcindia.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/vjcindia/",
+        "https://in.linkedin.com/company/vjcindia"
+      ]
+    }
+    </script>
+
+
+</head>
+
+<body class="mx-auto leading-normal scroll-smooth">
+  <!-- Google Tag Manager (noscript) -->
+
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header Section -->
+  <header class="sticky  top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+  
+    <!-- Logo Section -->
+    <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
+      <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
+        <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+      </a>
+
+      <div class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] transform translate-y-[0.195svh] ml-[1svh] ">
+        <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/us_flag.svg" alt="US Flag" title="United States"
+          aria-label="United States Flag">
+        <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/uk_flag.svg" alt="UK Flag" title="United Kingdom"
+          aria-label="United Kingdom Flag">
+        <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="Australia Flag" title="Australia"
+          aria-label="Australia Flag">
+      </div>
+      
+
+      
+    </div>
+  
+    <!-- Menu Button Section -->
+    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden"
+      id="menuButtonContainer">
+      <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
+          viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Mobile Navigation -->
+    <nav role="navigation" aria-label="Mobile Navigation Menu"
+      class="relative bg-darkBlue  top-0  menudrop landscape:lg:hidden">
+      <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
+        <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+        <p>finest in accounting since 1988</p>
+        <p>CG, IN 497001</p>
+      </div>
+  
+      <ul id="mainMenu"
+        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
+  
+        <!-- Navigation Links -->
+  
+        <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
+        <li><a href="./about.html">ABOUT</a></li>
+        <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
+  
+        <li><a href="./pricing.html">PRICING</a></li>
+  
+        <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+        <li><a href="./resources.html">RESOURCES</a></li>
+  
+  
+      </ul>
+  
+      <ul id="subMenu"
+        class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
+        <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
+        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
+        <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
+        <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
+        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+        <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img class="size-[4vw] bounce-left"
+            src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+  
+      </ul>
+  
+  
+    </nav>
+  
+  
+    <!-- Landscape Navigation -->
+    <nav aria-label="Main Navigation" role="navigation"
+      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue ">
+      <ul class="flex flex-row flex-wrap  items-center w-full">
+  
+        <!-- Home -->
+        <li class="relative block rounded-xl  ">
+          <!-- Navigation Link with ARIA Label -->
+          <a href="./index.html"
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4  rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            <span>Home</span>
+          </a>
+        </li>
+  
+        <!-- About -->
+        <li class="relative block rounded-xl  ">
+          <!-- Navigation Link with ARIA Label -->
+          <a href="./about.html"
+            class="flex items-center px-1 mx-1 text-xs  leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
+            <span>About</span>
+          </a>
+        </li>
+  
+  
+  
+        <!-- Our Services with Submenu -->
+        <li class="relative block rounded-xl" x-data="{ showChildren: false, submenuTimeout: null }"
+          @click.away="showChildren = false; clearTimeout(submenuTimeout)" @touchstart="showChildren = !showChildren">
+          <a href="#" aria-haspopup="true" aria-expanded="false"
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
+            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
+            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
+            <span>Services</span>
+  
+          </a>
+          <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white  shadow-2xl w-80 rounded-3xl"
+            x-show="showChildren" x-transition:enter="transition ease duration-100 transform"
+            x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease duration-100 transform"
+            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
+            style="display: none;" @mouseenter="clearTimeout(submenuTimeout)" @mouseleave="showChildren = false"
+            aria-label="Submenu">
+            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white "></span>
+            <div class="relative z-10 w-full px-2 py-6 bg-white rounded-3xl">
+              <ul class="list-reset" role="menu">
+                <!-- Submenu Items -->
+                <li class="relative " x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  @mouseleave="showChildren = false">
+                  <a href="./cloud-accounting-and-bookkeeping.html"
+                    class="flex items-start w-full px-4 pb-5 no-underline transition-all duration-300  transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                    role="menuitem">
+                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
+                  </a>
+                </li>
+                <div
+                  class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                </div>
+                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  @mouseleave="showChildren = false">
+                  <a href="./audit-and-assurance-services.html"
+                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                    role="menuitem">
+                    <span class="flex-1">Audit and Assurance Services</span>
+                  </a>
+                </li>
+                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                </div>
+                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  @mouseleave="showChildren = false">
+                  <a href="./tax-planning-and-compliance.html"
+                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                    role="menuitem">
+                    <span class="flex-1">Tax Planning and Compliance</span>
+                  </a>
+                </li>
+                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                </div>
+                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  @mouseleave="showChildren = false">
+                  <a href="./virtual-chief-financial-officer.html"
+                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform  cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                    role="menuitem">
+                    <span class="flex-1">Virtual Chief Financial officer</span>
+                  </a>
+                </li>
+                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center ">
+                </div>
+  
+                <li class="relative" x-data="{ showChildren: false }" @mouseenter="showChildren = true"
+                  @mouseleave="showChildren = false">
+                  <a href="./legal-process-outsourcing.html"
+                    class="flex items-start w-full px-4 pt-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                    role="menuitem">
+                    <span class="flex-1">Legal Processing Outsourcing</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+  
+  
+  
+  
+  
+  
+        <!-- Pricing -->
+        <li class="relative block rounded-xl">
+          <!-- Navigation Link with ARIA Label -->
+          <a href="./pricing.html"
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            <span>Pricing</span>
+          </a>
+        </li>
+  
+  
+  
+        <!-- Resources -->
+        <li class="relative block rounded-xl">
+          <!-- Navigation Link with ARIA Label -->
+          <a href="./resources.html"
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            <span>Resources</span>
+          </a>
+        </li>
+  
+  
+  
+        <!-- Contact Us -->
+        <li class="relative block rounded-xl">
+          <!-- Navigation Link with ARIA Label -->
+          <a href="./contact.html"
+            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
+            <span>Contact Us</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="landscape:h-svh bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
+      <div 
+        class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[10svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left ">
+    
+        <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
+          <div class="">
+            <h1
+              class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  portrait:mb-[1.3svh] landscape:mb-[0.25svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
+              aria-label="Main Title">
+              Request Received!
+            </h1>
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
+              aria-label="Hero Description">
+              Thank you for reaching out to us. We will get back to you shortly.
+            </p>
+          </div>
+          
+          <div class="flex">
+            <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" target="_blank" rel="noopener noreferrer"
+              aria-label="Schedule a Meeting with Us on Outlook" class="whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
+                      hover:scale-105 active:scale-105 shadow-md hover:shadow-lg 
+                      hover:bg-darkGreen hover:text-white 
+                      active:bg-darkGreen active:text-white 
+                      text-darkBlue text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] 
+                      py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] 
+                      portrait:sm:px-[3svw] portrait:sm:py-[2svw] 
+                      transition-all duration-100 transform bg-white 
+                      rounded-full select-none delayed-link">
+              Partner with Us
+            </a>
+          </div>
+        </div>
+    
+      </div>
+    
+      <div  class="landscape:sm:w-[50%]   max-sm:translate-y-[0.7rem]   flex w-full ">
+      
+        <div class="m-auto">
+          <div  class=" globe-wrapper ">
+            <canvas id="globe-3d"></canvas>
+          </div>
+      
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section class="bg-darkBlue">
+      <div class="text-darkBlue">
+        <div
+          class=" landscape:sm:pb-[7svh] portrait:sm:pt-[3svw] portrait:sm:pb-[1svw] max-md:px-2  max-sm:pb-3 landscape:md:pb-8 ">
+          <div
+            class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
+            <div
+              class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-white   shadow-2xl mx-auto">
+              <h3 id="contactSectionHeading"
+                class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold  mt-7 max-sm:mt-10 leading-normal"
+                aria-label="Contact Section">
+                Schedule a 30 min consultation call
+              </h3>
+              <p class="font-light max-sm:text-[3.5vw]  portrait:sm:text-[1.8svw]">
+                Let’s discuss your requirements and provide you with tailored solutions
+              </p>
+    
+              <div
+                class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
+              </div>
+    
+              <div class="flex justify-center mb-12 md:mt-6 mt-7 md:mb-7">
+                <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
+                  aria-label="Link to Schedule a Meeting"
+                  class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-white hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] active:bg-darkGreen active:text-white delayed-link sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                  Schedule Meeting
+                </a>
+              </div>
+            </div>
+    
+            <div
+              class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-white   shadow-xl mx-auto">
+              <h3 id="contactSectionHeading"
+                class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold  mt-7 max-sm:mt-10 leading-normal"
+                aria-label="Contact Section">
+                Contact Us
+              </h3>
+              <p class="font-light max-sm:text-[3.5vw] md:text-sm  portrait:sm:text-[1.8svw]">
+                Unlock a partnership with precision and trust.
+              </p>
+    
+              <div
+                class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
+              </div>
+    
+              <div class="flex flex-row justify-center gap-3 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7"
+                role="presentation">
+                <a class="delayed-link" href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
+                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                    src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
+                </a>
+    
+                <a class="delayed-link" href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
+                  rel="noopener">
+                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                    src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
+                </a>
+    
+                <a class="delayed-link" href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
+                  title="Contact us on WhatsApp" target="_blank" rel="noopener">
+                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                    src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
+                </a>
+    
+                <a class="delayed-link" href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
+                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                    src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
+                </a>
+    
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer
+    class=" text-darkBlue bg-darkBlue flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]"
+    role="contentinfo">
+  
+    <div class="  py-8 max-md:mx-2  border bg-white  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
+      <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">
+        <div class=" flex flex-col px-10 md:px-0  landscape:md:w-[40%] ">
+          <a class=" w-18 ml-0 landscape:md:w-18 landscape:md:mt-2" href="./index.html" aria-label="Home">
+            <img class="" src="./img/logo_t.svg" alt="VJC Home" aria-hidden="true">
+          </a>
+          <div
+            class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] portrait:sm:text-[1.7svw] max-md:mb-0">
+            <p>An Affiliate of V. Jaiswal and Co.</p>
+            <p>The finest in accounting since 1988.</p>
+  
+          </div>
+          <div
+            class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
+            <p class="max-md:text-[3.3vw] portrait:sm:text-[1.7svw]">CG, IN 497001</p>
+            <p
+              class="lowercase max-md:text-[3.3vw] portrait:sm:text-[1.7svw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">
+              +91 9630054303, admin@vjcindia.com</p>
+          </div>
+  
+        </div>
+        <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
+          <div
+            class=" max-md:hidden md:flex-row md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
+  
+            <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex gap-5">
+              <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-darkBlue md:text-sm">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./pricing.html">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+              </ul>
+  
+              <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-darkBlue md:text-sm">
+                <li><a href="#">Insights</a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="./about.html">Careers</a></li>
+                <li><a href="./terms-and-conditions.html">Terms & Conditions</a></li>
+                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+              </ul>
+            </div>
+  
+            <div class="flex flex-col gap-5 md:flex-row md:gap-10">
+  
+              <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-darkBlue md:text-sm">
+                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a>
+                </li>
+                <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
+                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a>
+                </li>
+                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+              </ul>
+  
+            </div>
+  
+          </div>
+  
+          <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
+            <div class="flex">
+              <ul
+                class="flex flex-row flex-wrap justify-start gap-[1.2svh] sm:gap-[3svw] leading-[1.5svh] px-10 mx-auto text-[3.3vw] portrait:sm:text-[2.5svw]  text-darkBlue">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./pricing.html">Pricing</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+                <li><a href="#">Insights</a></li>
+                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
+              </ul>
+            </div>
+  
+            <div class="flex flex-col text-left">
+              <h3 class="font-bold px-10 pb-1 text-[4vw] portrait:sm:text-[3svw]">OUR SERVICES</h3>
+              <ul
+                class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.3vw] portrait:sm:text-[2.5svw]  text-darkBlue">
+                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a>
+                </li>
+                <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
+                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
+                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a>
+                </li>
+                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  
+    <div class="px-10 text-left md:text-center">
+      <div class="text-xs text-white font-white my-7">
+        <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
+            rel="noopener">blackwoodbox.com</a></div>
+      </div>
+    </div>
+  
+  </footer>
+
+</body>
+
+
+
+</html>
