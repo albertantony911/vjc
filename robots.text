@@ -1,0 +1,36 @@
+# robots.txt for https://www.vjcindia.com
+# Created on March 19, 2025
+
+# Allow all crawlers by default
+User-agent: *
+
+# Disallow low-value or private pages on the primary site
+Disallow: /login/              # Block any login pages
+Disallow: /cart/               # Block cart pages (if applicable)
+Disallow: /test.html           # Block test page (not meant for public indexing)
+Disallow: /message-received.html  # Block form confirmation page (low SEO value)
+
+# Block query parameters that create duplicate content
+Disallow: /*?utm_*             # Block UTM tracking parameters
+Disallow: /*?sort=*            # Block sorting parameters (if applicable)
+Disallow: /*?filter=*          # Block filter parameters (if applicable)
+
+# Block the admin subdomain entirely
+Disallow: https://admin.vjcindia.com/
+
+# Allow all other pages on the primary site
+Allow: /
+
+# Sitemap references
+Sitemap: https://www.vjcindia.com/sitemap.xml
+Sitemap: https://resources.vjcindia.com/sitemap.xml
+
+# Specific rules for Googlebot (optional, for fine-tuning)
+User-agent: Googlebot
+Disallow: /*.pdf$              # Block PDF files from Googlebot (if you don’t want them indexed)
+Allow: /
+
+# Specific rules for Bingbot (optional, for fine-tuning)
+User-agent: Bingbot
+Disallow: /*.pdf$              # Block PDF files from Bingbot
+Allow: /
