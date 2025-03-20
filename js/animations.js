@@ -417,22 +417,40 @@ const textObserver = new IntersectionObserver((entries) => {
 textObserver.observe(textElement);
 
   // Cog Wheel Animation control
-  gsap.set("#cog", { willChange: "transform" });
+const cog = document.getElementById('cog');
+cog.style.willChange = 'transform';
 
-  gsap.to("#cog", {
-    rotation: 360,
-    duration: 4,
-    ease: "none",
-    repeat: -1,
-    transformOrigin: "50% 50%",
-    scrollTrigger: {
-      trigger: "#cog",
-      start: "top 90%",
-      end: "bottom 10%",
-      toggleActions: "play pause resume pause",
-      markers: false
+// Create the GSAP tween for infinite rotation, paused initially.
+const rotationTween = gsap.to(cog, {
+  rotation: 360,
+  duration: 4,
+  ease: 'none',
+  repeat: -1,
+  transformOrigin: '50% 50%',
+  paused: true,
+});
+
+// Function to check if the cog is within our desired viewport range.
+function checkCogInView() {
+  const rect = cog.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  // "top 90%" means the cog's top must be above 90% of the viewport height,
+  // "bottom 10%" means its bottom must be below 10% of the viewport height.
+  if (rect.top < 0.9 * viewportHeight && rect.bottom > 0.1 * viewportHeight) {
+    if (!rotationTween.isActive()) {
+      rotationTween.resume();
     }
-  });
+  } else {
+    rotationTween.pause();
+  }
+}
+
+// Listen to scroll and resize events to continuously check the cog's position.
+window.addEventListener('scroll', checkCogInView);
+window.addEventListener('resize', checkCogInView);
+
+// Run the check on page load.
+checkCogInView();
 
   // Float Animation Random selector control
   document.querySelectorAll('.float').forEach((element, index) => {
