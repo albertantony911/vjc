@@ -15,9 +15,6 @@ Disallow: /*?utm_*             # Block UTM tracking parameters
 Disallow: /*?sort=*            # Block sorting parameters (if applicable)
 Disallow: /*?filter=*          # Block filter parameters (if applicable)
 
-# Block the admin subdomain entirely
-Disallow: https://admin.vjcindia.com/
-
 # Allow all other pages on the primary site
 Allow: /
 
