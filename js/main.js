@@ -64,51 +64,60 @@ document.querySelectorAll('.delayed-link').forEach(link => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Get DOM elements
+function initCookieBanner(attempt = 0) {
     const cookieBanner = document.getElementById('cookieBanner');
     const acceptButton = document.getElementById('acceptCookies');
     const rejectButton = document.getElementById('rejectCookies');
-    const cookieSettingsLinks = document.querySelectorAll('.cookie-settings'); // Select all matching elements
+    const cookieSettingsLinks = document.querySelectorAll('.cookie-settings');
 
-    // Function to show the banner
+    if (!cookieBanner || !acceptButton || !rejectButton) {
+        // Retry up to 10 times (1s max)
+        if (attempt < 10) {
+            return setTimeout(() => initCookieBanner(attempt + 1), 100);
+        } else {
+            // Fallback: remove no-scroll in case it's stuck
+            document.body.classList.remove('no-scroll');
+            return;
+        }
+    }
+
     function showBanner() {
         cookieBanner.style.display = 'flex';
         document.body.classList.add('no-scroll');
     }
 
-    // Function to hide the banner
     function hideBanner() {
         cookieBanner.style.display = 'none';
         document.body.classList.remove('no-scroll');
     }
 
-    // Check initial state
     if (!localStorage.getItem('cookieConsent')) {
         showBanner();
     }
 
-    // Accept button handler
     acceptButton.addEventListener('click', () => {
         localStorage.setItem('cookieConsent', 'granted');
         hideBanner();
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ 'event': 'cookie_consent_granted', 'analytics_storage': 'granted' });
+        window.dataLayer.push({ event: 'cookie_consent_granted', analytics_storage: 'granted' });
     });
 
-    // Reject button handler
     rejectButton.addEventListener('click', () => {
         localStorage.setItem('cookieConsent', 'denied');
         hideBanner();
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ 'event': 'cookie_consent_denied', 'analytics_storage': 'denied' });
+        window.dataLayer.push({ event: 'cookie_consent_denied', analytics_storage: 'denied' });
     });
 
-    // Attach event listeners to both Cookie Settings links
     cookieSettingsLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             showBanner();
         });
     });
+}
+
+window.addEventListener('load', () => {
+    document.body.classList.remove('no-scroll'); // Safety reset
+    initCookieBanner();
 });

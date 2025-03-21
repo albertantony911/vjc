@@ -40,6 +40,12 @@ svg {
   z-index: 100; /* Optional: Adjust the stacking context */
 }
 
-.no-scroll {
-        overflow: hidden;
-    }
+
+body:not(.no-scroll) {
+    overflow: auto !important;
+}
+
+#cookieBanner {
+    display: none; /* Default state */
+}
+    
