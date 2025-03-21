@@ -74,20 +74,23 @@ function initCookieBanner(attempt = 0) {
         if (attempt < 10) {
             return setTimeout(() => initCookieBanner(attempt + 1), 100);
         }
+        console.error('Cookie banner elements not found after 10 attempts');
         return;
     }
 
     const showBanner = () => {
-        banner.style.display = 'flex';
+        banner.classList.remove('hidden');
     };
 
     const hideBanner = () => {
-        banner.style.display = 'none';
+        banner.classList.add('hidden');
     };
 
     // Show banner only if user hasn't made a choice
     if (!localStorage.getItem('cookieConsent')) {
         showBanner();
+    } else {
+        hideBanner();
     }
 
     acceptBtn.addEventListener('click', () => {

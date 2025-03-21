@@ -137,8 +137,6 @@
           aria-label="Australia Flag">
       </div>
       
-
-      
     </div>
   
     <!-- Menu Button Section -->
@@ -194,8 +192,7 @@
             src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
   
       </ul>
-  
-  
+
     </nav>
   
   
@@ -342,11 +339,9 @@
 
   <main>
     <!-- Hero Section -->
-    <section
-      class="landscape:h-[70svh] bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
-      <div 
-        class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[5svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left ">
-    
+    <section class="landscape:h-[70svh] bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
+      
+      <div class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[5svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left "> 
         <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
           <div class="">
             <h1
@@ -360,7 +355,6 @@
               empowering businesses to optimize growth and performance. Enhance you financial operations:
             </p>
           </div>
-          
           <div class="flex">
             <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" target="_blank" rel="noopener noreferrer"
               aria-label="Schedule a Meeting with Us on Outlook" class="whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
@@ -376,11 +370,9 @@
             </a>
           </div>
         </div>
-    
       </div>
     
       <div  class="landscape:sm:w-[50%]   max-sm:translate-y-[0.7rem]   flex w-full ">
-      
         <div class="mx-auto">
           <div  class=" globe-wrapper ">
             <canvas id="globe-3d"></canvas>
@@ -389,7 +381,6 @@
         </div>
       </div>
     </section>
-
 
 
     <section
@@ -1841,28 +1832,24 @@
         
   </footer>
 
+  <section id="cookieBanner" class="fixed max-w-md p-4 max-sm:mx-5 mx-auto bottom-5 sm:right-10 sm:bottom-10 bg-white/70 backdrop-blur-md landscape:md:rounded-[2rem] z-50 rounded-[4svh] px-8 py-8 shadow-[0_11px_16px_-4px_rgba(147,112,219,0.5),0_5px_7px_-3px_rgba(79,110,210,0.2)] hidden">
+      <h2 class="text-xl sm:text-2xl font-bold text-center uppercase text-darkBlue"> Cookie Policy</h2>
+      <p class="mt-4 text-sm sm:text-base leading-normal font-light text-center text-darkBlue">
+          We use cookies for analytics to improve your experience. By continuing, you agree to our 
+          <a href="./privacy-policy.html" class="text-blue-500 hover:underline">Privacy Policy</a>.
+      </p>
+      <div class="flex items-center justify-center mt-4 gap-x-4 shrink-0">
+          <button id="acceptCookies" class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white text-white hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[3vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[1vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-3 transition-transform duration-100 transform bg-darkBlue rounded-full select-none">
+              Accept
+          </button>
+          <button id="rejectCookies" class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-gray-300 active:bg-gray-500 active:text-darkBlue text-darkBlue hover:text-darkBlue landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[3vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[1vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-3 transition-transform duration-100 transform bg-white border-[0.5px] border-darkBlue rounded-full select-none">
+              Reject
+          </button>
+          
+      </div>
+  </section>
 
-<!-- Cookie Banner -->
-<div id="cookieBanner" class="fixed bottom-4  right-4 z-50" >
-    <div class="bg-white landscape:md:rounded-[2rem] rounded-[4svh] px-8 py-8 shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.5)] w-full max-w-2xl">
-        <h2 class="text-xl sm:text-2xl font-bold text-center uppercase text-darkBlue">Cookie Policy</h2>
-        <p class="text-sm sm:text-base leading-normal font-light text-center text-darkBlue mt-2">
-            We use cookies for analytics to improve your experience. By continuing, you agree to our 
-            <a href="./privacy-policy.html" class="underline text-blue-400 hover:text-blue-300">Privacy Policy</a>.
-        </p>
-        <div class="flex justify-center gap-4 mt-5">
-            <button id="acceptCookies"
-                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white text-white hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[3vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[1vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-3 transition-transform duration-100 transform bg-darkBlue rounded-full select-none">
-                Accept
-            </button>
 
-            <button id="rejectCookies"
-                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-gray-300 active:bg-gray-500 active:text-darkBlue text-darkBlue hover:text-darkBlue landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[3vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[1vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-3 transition-transform duration-100 transform bg-white border-1 border-darkBlue rounded-full select-none">
-                Reject
-            </button>
-        </div>
-    </div>
-</div>
 
 
 
