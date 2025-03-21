@@ -65,59 +65,58 @@ document.querySelectorAll('.delayed-link').forEach(link => {
 
 
 function initCookieBanner(attempt = 0) {
-    const cookieBanner = document.getElementById('cookieBanner');
-    const acceptButton = document.getElementById('acceptCookies');
-    const rejectButton = document.getElementById('rejectCookies');
-    const cookieSettingsLinks = document.querySelectorAll('.cookie-settings');
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const rejectBtn = document.getElementById('rejectCookies');
+    const settingsLinks = document.querySelectorAll('.cookie-settings');
 
-    if (!cookieBanner || !acceptButton || !rejectButton) {
-        // Retry up to 10 times (1s max)
+    if (!banner || !acceptBtn || !rejectBtn) {
         if (attempt < 10) {
             return setTimeout(() => initCookieBanner(attempt + 1), 100);
-        } else {
-            // Fallback: remove no-scroll in case it's stuck
-            document.body.classList.remove('no-scroll');
-            return;
         }
+        return;
     }
 
-    function showBanner() {
-        cookieBanner.style.display = 'flex';
-        document.body.classList.add('no-scroll');
-    }
+    const showBanner = () => {
+        banner.style.display = 'flex';
+    };
 
-    function hideBanner() {
-        cookieBanner.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-    }
+    const hideBanner = () => {
+        banner.style.display = 'none';
+    };
 
+    // Show banner only if user hasn't made a choice
     if (!localStorage.getItem('cookieConsent')) {
         showBanner();
     }
 
-    acceptButton.addEventListener('click', () => {
+    acceptBtn.addEventListener('click', () => {
         localStorage.setItem('cookieConsent', 'granted');
         hideBanner();
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'cookie_consent_granted', analytics_storage: 'granted' });
+        window.dataLayer.push({
+            event: 'cookie_consent_granted',
+            analytics_storage: 'granted'
+        });
     });
 
-    rejectButton.addEventListener('click', () => {
+    rejectBtn.addEventListener('click', () => {
         localStorage.setItem('cookieConsent', 'denied');
         hideBanner();
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'cookie_consent_denied', analytics_storage: 'denied' });
+        window.dataLayer.push({
+            event: 'cookie_consent_denied',
+            analytics_storage: 'denied'
+        });
     });
 
-    cookieSettingsLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    settingsLinks.forEach(link => {
+        link.addEventListener('click', e => {
             e.preventDefault();
             showBanner();
         });
     });
 }
 
-window.addEventListener('load', () => {
-    document.body.classList.remove('no-scroll'); // Safety reset
-    initCookieBanner();
-});
+// Initialize on window load
+window.addEventListener('load', initCookieBanner);

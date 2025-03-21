@@ -41,11 +41,3 @@ svg {
 }
 
 
-body:not(.no-scroll) {
-    overflow: auto !important;
-}
-
-#cookieBanner {
-    display: none; /* Default state */
-}
-    
