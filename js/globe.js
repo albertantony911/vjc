@@ -12,22 +12,42 @@ let renderer, scene, camera;
 let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
 let animationFrameId;
-
-// Global flag to control whether globe animations are active
 let globeIsActive = true;
+let opacityObjects = []; // Cache for opacity updates
 
-// IntersectionObserver to detect container visibility and pause/resume animations
+// Reusable materials
+const staticCircleMaterial = new THREE.MeshBasicMaterial({
+  color: 0xFFFFFF,
+  transparent: true,
+  opacity: 1,
+  side: THREE.DoubleSide
+});
+const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
+  color: 0xFFFFFF,
+  transparent: true,
+  opacity: 1,
+  side: THREE.DoubleSide,
+  depthWrite: false,
+  depthTest: false
+});
+const arcMaterial = new LineMaterial({
+  color: 0x7CBA3A,
+  linewidth: 2,
+  resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
+  depthTest: true,
+  transparent: true,
+  opacity: 1.0,
+  alphaToCoverage: true,
+});
+
+// IntersectionObserver
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       globeIsActive = entry.isIntersecting;
       if (globeIsActive) {
         clock.start();
-        // Restart the main render loop if it's not already running
-        if (!animationFrameId) {
-          animationFrameId = requestAnimationFrame(render);
-        }
-        // Resume GSAP tweens for globe elements
+        if (!animationFrameId) animationFrameId = requestAnimationFrame(render);
         scene.traverse((object) => {
           if (object.userData.tweenScale) object.userData.tweenScale.resume();
           if (object.userData.tweenOpacity) object.userData.tweenOpacity.resume();
@@ -36,7 +56,6 @@ const observer = new IntersectionObserver(
         clock.stop();
         cancelAnimationFrame(animationFrameId);
         animationFrameId = null;
-        // Pause all GSAP tweens for globe elements
         scene.traverse((object) => {
           if (object.userData.tweenScale) object.userData.tweenScale.pause();
           if (object.userData.tweenOpacity) object.userData.tweenOpacity.pause();
@@ -66,9 +85,7 @@ function initScene() {
     earthTexture = mapTex;
     createGlobe();
     updateSize();
-    if (globeIsActive) {
-      animationFrameId = requestAnimationFrame(render);
-    }
+    if (globeIsActive) animationFrameId = requestAnimationFrame(render);
   });
 }
 
@@ -77,7 +94,7 @@ const rotationSpeed = 0.05;
 const radius = 1.5;
 
 function render() {
-  if (!globeIsActive) return; // Skip rendering if inactive
+  if (!globeIsActive) return;
 
   const delta = clock.getDelta();
   angle = (angle + rotationSpeed * delta) % (2 * Math.PI);
@@ -89,7 +106,6 @@ function render() {
 
   updateOpacity();
   renderer.render(scene, camera);
-
   animationFrameId = requestAnimationFrame(render);
 }
 
@@ -100,24 +116,22 @@ function createGlobe() {
   mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
       uniform sampler2D u_map_tex;
-      uniform float u_dot_size, u_time_since_click, u_pi;
+      uniform float u_dot_size, u_time_since_click;
       uniform vec3 u_pointer;
-
       varying float vOpacity;
       varying vec2 vUv;
 
       void main() {
-          vUv = uv;
-          float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
-          gl_PointSize = visibility * u_dot_size * 0.65;
-          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-          float distToCam = length(mvPosition.xyz);
-          vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
-          float t = max(0.0, u_time_since_click - 0.1);
-          float dist = length(position - u_pointer);
-          float damping = exp(-20.0 * t);
-          float delta = 0.15 * damping * sin(5.0 * t - u_pi) * (1.0 - smoothstep(0.8, 1.0, dist));
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
+        vUv = uv;
+        gl_PointSize = u_dot_size * 0.65;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        float distToCam = length(mvPosition.xyz);
+        vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+        float t = max(0.0, u_time_since_click - 0.1);
+        float dist = length(position - u_pointer);
+        float damping = exp(-20.0 * t);
+        float delta = 0.15 * damping * sin(5.0 * t - 3.14159) * (1.0 - smoothstep(0.8, 1.0, dist));
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
       }
     `,
     fragmentShader: `
@@ -126,14 +140,16 @@ function createGlobe() {
       varying vec2 vUv;
 
       void main() {
-          vec3 color = texture2D(u_map_tex, vUv).rgb;
-          vec3 originalTint = vec3(0.6, 0.9, 1.3);
-          color = mix(color, originalTint, 0.9);
-          float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
-          color -= 0.1 * distToCenter;
-          float dot = 1.0 - smoothstep(0.48, 0.52, distToCenter);
-          if (dot < 0.5) discard;
-          gl_FragColor = vec4(color, dot * vOpacity);
+        float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
+        if (visibility < 0.5) discard;
+        vec3 color = texture2D(u_map_tex, vUv).rgb;
+        vec3 originalTint = vec3(0.6, 0.9, 1.3);
+        color = mix(color, originalTint, 0.9);
+        float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
+        color -= 0.1 * distToCenter;
+        float dot = 1.0 - smoothstep(0.48, 0.52, distToCenter);
+        if (dot < 0.5) discard;
+        gl_FragColor = vec4(color, dot * vOpacity);
       }
     `,
     uniforms: {
@@ -189,6 +205,8 @@ window.addEventListener("resize", debounce(updateSize, 200));
 
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
+const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
+const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
   const liftedPos = position.normalize().multiplyScalar(1 + elevation);
@@ -197,31 +215,19 @@ function alignCircleToSurface(circle, position, elevation = 0) {
   circle.setRotationFromQuaternion(quaternion);
 }
 
-const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
-const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
-
-const baseMaterialProps = {
-  color: 0xFFFFFF,
-  transparent: true,
-  opacity: 1,
-  side: THREE.DoubleSide
-};
-
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
   const elevation = isStartingPoint ? 0.02 : 0.015;
   const geometry = isStartingPoint ? startingPointGeometry : sharedGeometry;
 
-  const staticCircleMaterial = new THREE.MeshBasicMaterial({ ...baseMaterialProps, depthWrite: true });
-  const pulsingCircleMaterial = new THREE.MeshBasicMaterial({ ...baseMaterialProps, depthWrite: false, depthTest: false });
-
-  const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial);
+  const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial.clone());
   alignCircleToSurface(staticCircle, position, elevation);
 
-  const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial);
+  const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial.clone());
   alignCircleToSurface(pulsingCircle, position, elevation);
   pulsingCircle.position.z -= 0.003;
 
   scene.add(staticCircle, pulsingCircle);
+  opacityObjects.push(staticCircle, pulsingCircle); // Add to opacity cache
 
   pulsingCircle.userData.gsapOpacity = 1;
   animatePulsingCircle(pulsingCircle);
@@ -233,7 +239,6 @@ function createStaticAndPulsingCircles(position, isStartingPoint = false) {
 }
 
 function animatePulsingCircle(pulsingCircle) {
-  // Create and store GSAP tweens, starting paused if globeIsActive is false
   pulsingCircle.userData.tweenScale = gsap.to(pulsingCircle.scale, {
     duration: 2,
     x: 1.75,
@@ -260,12 +265,7 @@ function animatePulsingCircle(pulsingCircle) {
 function updateOpacity() {
   const cameraPosition = new THREE.Vector3();
   camera.getWorldPosition(cameraPosition);
-
-  scene.traverse((object) => {
-    if (object instanceof THREE.Mesh && object.userData.distanceOpacityControl) {
-      updateCircleOpacity(object, cameraPosition);
-    }
-  });
+  opacityObjects.forEach((object) => updateCircleOpacity(object, cameraPosition));
 }
 
 function updateCircleOpacity(object, cameraPosition) {
@@ -315,20 +315,10 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
 
 function animateArc(points, start, end, reverse = false) {
   let pointIndex = 0;
-  const arcMaterial = new LineMaterial({
-    color: 0x7CBA3A,
-    linewidth: 2,
-    resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
-    depthTest: true,
-    transparent: true,
-    opacity: 1.0,
-    alphaToCoverage: true,
-  });
-  const line2 = new Line2(new LineGeometry(), arcMaterial);
+  const line2 = new Line2(new LineGeometry(), arcMaterial.clone());
 
   function drawArc() {
     if (!globeIsActive) {
-      // If not active, wait a bit and try again
       setTimeout(drawArc, 100);
       return;
     }
@@ -345,11 +335,10 @@ function animateArc(points, start, end, reverse = false) {
       requestAnimationFrame(drawArc);
     } else {
       setTimeout(() => {
-        // Wait until active to start the fade-out sequence
         if (!globeIsActive) {
           const checkActive = () => {
             if (globeIsActive) {
-              fadeOutArc(line2, arcMaterial, () =>
+              fadeOutArc(line2, line2.material, () =>
                 reverse
                   ? animateArc(points.reverse(), end, start, false)
                   : animateArc(points.reverse(), start, end, true)
@@ -360,7 +349,7 @@ function animateArc(points, start, end, reverse = false) {
           };
           checkActive();
         } else {
-          fadeOutArc(line2, arcMaterial, () =>
+          fadeOutArc(line2, line2.material, () =>
             reverse
               ? animateArc(points.reverse(), end, start, false)
               : animateArc(points.reverse(), start, end, true)
@@ -370,7 +359,6 @@ function animateArc(points, start, end, reverse = false) {
     }
   }
 
-  // Use a randomized delay before starting the arc animation
   setTimeout(() => {
     drawArc();
   }, Math.random() * 3000);
@@ -448,7 +436,6 @@ const heightScaleFactor = 0.3;
 
 function initializeGlobeArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor) {
   createStaticAndPulsingCircles(startPoint, true);
-
   delayInitialize(() => {
     createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor);
   }, 500);
@@ -456,15 +443,10 @@ function initializeGlobeArcs(startPoint, endPoints, baseHeightAboveGlobe, height
 
 function delayInitialize(callback, delayMs) {
   const start = performance.now();
-
   function frame(time) {
-    if (time - start >= delayMs) {
-      callback();
-    } else {
-      requestAnimationFrame(frame);
-    }
+    if (time - start >= delayMs) callback();
+    else requestAnimationFrame(frame);
   }
-
   requestAnimationFrame(frame);
 }
 
