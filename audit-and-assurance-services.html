@@ -54,11 +54,11 @@
   <link rel="stylesheet" href="./css/animations.css">
 
   <!-- JavaScript (Defer for Performance) -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="./js/main.js" defer></script>
-  <script src="./js/animations.js" defer></script>
-  <script type="module" src="./js/globe.js" defer></script>
+ <script src="./js/main.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script> 
+<script src="./js/animations.js" defer></script> 
+<script type="module" src="./js/globe.js"></script> 
 
   <!-- Structured Data (Updated with Blog Reference) -->
   <script type="application/ld+json">
@@ -1020,373 +1020,196 @@
             
             
             
-                    <div x-data="{
-                    expanded: false,
-                    collapseTimeout: null,
-                    contentHeight: '4.4em',
-                    isTruncated: false,
-                    toggleText: '...read more',
-                    init() {
-                        setTimeout(() => {
-                        const contentEl = this.$refs.content;
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        contentEl.style.maxHeight = this.contentHeight;
-                        const computedStyle = window.getComputedStyle(contentEl);
-                        const fontSize = parseFloat(computedStyle.fontSize);
-                        const collapsedHeightPx = 4.4 * fontSize;
-                        const buffer = 0.5 * fontSize;
-                        this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                        }, 0);
-                    },
-                    toggleExpand() {
-                        const contentEl = this.$refs.content;
-                        this.expanded = !this.expanded;
-                        this.toggleText = this.expanded ? '...collapse' : '...read more';
-                        clearTimeout(this.collapseTimeout);
-                        if (this.expanded) {
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        this.contentHeight = '4.4em';
-                        this.$nextTick(() => {
-                            this.contentHeight = fullHeight + 'px';
-                            this.collapseTimeout = setTimeout(() => {
-                            this.expanded = false;
-                            this.contentHeight = '4.4em';
-                            this.toggleText = '...read more';
-                            }, 20000);
-                        });
-                        } else {
-                        this.contentHeight = '4.4em';
-                        }
-                    }
-                    }" x-init="init()"
-                    class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                    <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-                        <div class="flex flex-col w-auto">
-                        <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                            <img src="./img/audit_service_icon_1.svg" alt="Service Icon">
-                        </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue">
-                        <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                            Pre-Audit Review
-                        </h3>
-                        <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                            Pre-audit comprehensive review and validation of financial statements to ensure accuracy, compliance, and reliability;
-                            Perform cut-off procedures to ensure that all supplier invoices, sales invoices, expenses, etc. are recorded
-                            appropriately; Ensuring that all year-end procedures including legal compliance are properly complied with;
-                            Identification of accounting errors through detailed ledgers scrutiny; Inspection of all entries related to deferred
-                            revenue, unbilled revenue, prepaid expenses and others; Finalizing and providing a draft set of financial statements
-                            after considering the adjustments identified during the pre-audit review.
-                        </p>
-                        <template x-if="isTruncated">
-                            <span @click.stop="toggleExpand"
-                            class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                            x-text="toggleText" x-transition></span>
-                        </template>
-                        </div>
-                    </div>
-                    </div>
-            
-                    <div x-data="{
-                    expanded: false,
-                    collapseTimeout: null,
-                    contentHeight: '4.4em',
-                    isTruncated: false,
-                    toggleText: '...read more',
-                    init() {
-                        setTimeout(() => {
-                        const contentEl = this.$refs.content;
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        contentEl.style.maxHeight = this.contentHeight;
-                        const computedStyle = window.getComputedStyle(contentEl);
-                        const fontSize = parseFloat(computedStyle.fontSize);
-                        const collapsedHeightPx = 4.4 * fontSize;
-                        const buffer = 0.5 * fontSize;
-                        this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                        }, 0);
-                    },
-                    toggleExpand() {
-                        const contentEl = this.$refs.content;
-                        this.expanded = !this.expanded;
-                        this.toggleText = this.expanded ? '...collapse' : '...read more';
-                        clearTimeout(this.collapseTimeout);
-                        if (this.expanded) {
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        this.contentHeight = '4.4em';
-                        this.$nextTick(() => {
-                            this.contentHeight = fullHeight + 'px';
-                            this.collapseTimeout = setTimeout(() => {
-                            this.expanded = false;
-                            this.contentHeight = '4.4em';
-                            this.toggleText = '...read more';
-                            }, 20000);
-                        });
-                        } else {
-                        this.contentHeight = '4.4em';
-                        }
-                    }
-                    }" x-init="init()"
-                    class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
-                    <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-                        <div class="flex flex-col w-auto">
-                        <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                            <img src="./img/audit_service_icon_2.svg" alt="Service Icon">
-                        </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue">
-                        <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                            Internal Audits
-                        </h3>
-                        <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                            Partner with us for Internal Auditing: Enhance Corporate Performance and Governance
-                            Internal auditing plays a crucial role in assessing and fortifying a company's internal control systems, corporate
-                            governance structures, and adherence to legal and regulatory requirements. Its primary goal is to ensure that financial
-                            reporting is both accurate and timely, to boost operational efficiency, and to protect company assets.<br><br>We
-                            understand that each company is unique, and therefore, our internal audit approach is tailored to the specific scope
-                            of work and goals of the audit.
-                            Our internal audit services are designed to assist executives and board members in efficiently managing performance,
-                            assessing risks, and improving employee productivity. We focus on monitoring the firm’s financial health while aiming to
-                            enhance overall efficiency, effectiveness, and quality within the organization.
-                        </p>
-                        <template x-if="isTruncated">
-                            <span @click.stop="toggleExpand"
-                            class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                            x-text="toggleText" x-transition></span>
-                        </template>
-                        </div>
-                    </div>
-                    </div>
-            
-            
-            
-                </div>
-            
-                <div
-                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
-            
-            
-            
-                    <div x-data="{
-                    expanded: false,
-                    collapseTimeout: null,
-                    contentHeight: '4.4em',
-                    isTruncated: false,
-                    toggleText: '...read more',
-                    init() {
-                        setTimeout(() => {
-                        const contentEl = this.$refs.content;
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        contentEl.style.maxHeight = this.contentHeight;
-                        const computedStyle = window.getComputedStyle(contentEl);
-                        const fontSize = parseFloat(computedStyle.fontSize);
-                        const collapsedHeightPx = 4.4 * fontSize;
-                        const buffer = 0.5 * fontSize;
-                        this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                        }, 0);
-                    },
-                    toggleExpand() {
-                        const contentEl = this.$refs.content;
-                        this.expanded = !this.expanded;
-                        this.toggleText = this.expanded ? '...collapse' : '...read more';
-                        clearTimeout(this.collapseTimeout);
-                        if (this.expanded) {
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        this.contentHeight = '4.4em';
-                        this.$nextTick(() => {
-                            this.contentHeight = fullHeight + 'px';
-                            this.collapseTimeout = setTimeout(() => {
-                            this.expanded = false;
-                            this.contentHeight = '4.4em';
-                            this.toggleText = '...read more';
-                            }, 20000);
-                        });
-                        } else {
-                        this.contentHeight = '4.4em';
-                        }
-                    }
-                    }" x-init="init()"
-                    class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
-                    <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-                        <div class="flex flex-col w-auto">
-                        <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                            <img src="./img/audit_service_icon_3.svg" alt="Service Icon">
-                        </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue">
-                        <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                            Compliance Audit Assistance
-                        </h3>
-                        <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                            Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance from a headache into a strategic
-                            asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's about fortifying your business
-                            against risks and building stakeholder confidence.<br><br>Our compliance audit assistance procedure engages us in your operations, comparing them against the latest
-                            regulatory standards. Our goal? To uncover hidden compliance gaps and transform them into opportunities for improvement. With VJC,
-                            you're not just meeting today's rules—you're preparing for tomorrow's challenges.
-                        </p>
-                        <template x-if="isTruncated">
-                            <span @click.stop="toggleExpand"
-                            class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                            x-text="toggleText" x-transition></span>
-                        </template>
-                        </div>
-                    </div>
-                    </div>
-            
-                    <div x-data="{
-                    expanded: false,
-                    collapseTimeout: null,
-                    contentHeight: '4.4em',
-                    isTruncated: false,
-                    toggleText: '...read more',
-                    init() {
-                        setTimeout(() => {
-                        const contentEl = this.$refs.content;
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        contentEl.style.maxHeight = this.contentHeight;
-                        const computedStyle = window.getComputedStyle(contentEl);
-                        const fontSize = parseFloat(computedStyle.fontSize);
-                        const collapsedHeightPx = 4.4 * fontSize;
-                        const buffer = 0.5 * fontSize;
-                        this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                        }, 0);
-                    },
-                    toggleExpand() {
-                        const contentEl = this.$refs.content;
-                        this.expanded = !this.expanded;
-                        this.toggleText = this.expanded ? '...collapse' : '...read more';
-                        clearTimeout(this.collapseTimeout);
-                        if (this.expanded) {
-                        contentEl.style.maxHeight = 'none';
-                        const fullHeight = contentEl.scrollHeight;
-                        this.contentHeight = '4.4em';
-                        this.$nextTick(() => {
-                            this.contentHeight = fullHeight + 'px';
-                            this.collapseTimeout = setTimeout(() => {
-                            this.expanded = false;
-                            this.contentHeight = '4.4em';
-                            this.toggleText = '...read more';
-                            }, 20000);
-                        });
-                        } else {
-                        this.contentHeight = '4.4em';
-                        }
-                    }
-                    }" x-init="init()"
-                    class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
-                    <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                        :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-                        <div class="flex flex-col w-auto">
-                        <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                            <img src="./img/audit_service_icon_6.svg" alt="Service Icon">
-                        </div>
-                        </div>
-                        <div class="flex flex-col text-left gap-1 text-darkBlue">
-                        <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                            Statutory Audit Support
-                        </h3>
-                        <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                            Comprehensive planning, execution, and compliance to ensure accurate financial statements, audit
-                            readiness, and regulatory adherence. We offer a comprehensive statutory audit support process, covering planning,
-                            execution, and finalization.<br><br>We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.<br><br>
-                            <span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">1. Planning:</span> Prepare a requirement list, review prior audits, verify opening balances, select samples, and calculate materiality.</span><br><br>
-                            <span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">2. Execution:</span> Prepare and review working papers, test internal controls, gather and verify evidence, summarize audit observations, perform casting procedures, assess risks, and assist with balance confirmations.</span><br><br>
-                            <span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">3. Finalization:</span> Review and prepare financial statements, ensure audit file completeness, draft management letters, develop internal control procedures, check compliance with standards, and draft notes for proper disclosures.</span>
-                        </p>
-                        <template x-if="isTruncated">
-                            <span @click.stop="toggleExpand"
-                            class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                            x-text="toggleText" x-transition></span>
-                        </template>
-                        </div>
-                    </div>
-                    </div>
-            
-            
-            
-                </div>
-            
-            
-                <div
-                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
-            
-            
-            
-                    <div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '6em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      contentEl.style.maxHeight = this.contentHeight;
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize);
-      const collapsedHeightPx = 6 * fontSize;
-      const buffer = 0.5 * fontSize;
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-    if (this.expanded) {
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      this.contentHeight = '6em';
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '6em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '6em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
+  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/audit_service_icon_1.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Pre-Audit Review
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Pre-audit comprehensive review and validation of financial statements to ensure accuracy, compliance, and reliability; Perform cut-off procedures to ensure that all supplier invoices, sales invoices, expenses, etc. are recorded appropriately; Ensuring that all year-end procedures including legal compliance are properly complied with; Identification of accounting errors through detailed ledgers scrutiny; Inspection of all entries related to deferred revenue, unbilled revenue, prepaid expenses and others; Finalizing and providing a draft set of financial statements after considering the adjustments identified during the pre-audit review.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+            
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/audit_service_icon_2.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Internal Audits
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Partner with us for Internal Auditing: Enhance Corporate Performance and Governance. Internal auditing plays a crucial role in assessing and fortifying a company's internal control systems, corporate governance structures, and adherence to legal and regulatory requirements. Its primary goal is to ensure that financial reporting is both accurate and timely, to boost operational efficiency, and to protect company assets.<br><br>We understand that each company is unique, and therefore, our internal audit approach is tailored to the specific scope of work and goals of the audit. Our internal audit services are designed to assist executives and board members in efficiently managing performance, assessing risks, and improving employee productivity. We focus on monitoring the firm’s financial health while aiming to enhance overall efficiency, effectiveness, and quality within the organization.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+            
+            
+            
+                </div>
+            
+                <div
+                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
+            
+            
+            
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/audit_service_icon_3.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Compliance Audit Assistance
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance from a headache into a strategic asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's about fortifying your business against risks and building stakeholder confidence.<br><br>Our compliance audit assistance procedure engages us in your operations, comparing them against the latest regulatory standards. Our goal? To uncover hidden compliance gaps and transform them into opportunities for improvement. With VJC, you're not just meeting today's rules—you're preparing for tomorrow's challenges.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/audit_service_icon_6.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Statutory Audit Support
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Comprehensive planning, execution, and compliance to ensure accurate financial statements, audit readiness, and regulatory adherence. We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.<br><br>We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.<br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">1. Planning:</span> Prepare a requirement list, review prior audits, verify opening balances, select samples, and calculate materiality.</span><br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">2. Execution:</span> Prepare and review working papers, test internal controls, gather and verify evidence, summarize audit observations, perform casting procedures, assess risks, and assist with balance confirmations.</span><br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">3. Finalization:</span> Review and prepare financial statements, ensure audit file completeness, draft management letters, develop internal control procedures, check compliance with standards, and draft notes for proper disclosures.</span>
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+            
+            
+            
+                </div>
+            
+            
+                <div
+                    class="flex  xl:flex-row flex-col portrait:flex-col portrait:w-full landscape:max-xl:w-full   mx-auto  max-md:px-5 gap-8 xl:gap-10 max-md:gap-6 ">
+            
+            
+            
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
         <img src="./img/audit_service_icon_5.svg" alt="Service Icon">
       </div>
     </div>
+
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
         Due Diligence and Transaction Advisory
       </h3>
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
         Financial and operational analysis to support mergers, acquisitions, and other business transactions.
       </p>
+
+      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1394,66 +1217,35 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
       </template>
     </div>
   </div>
-                    </div>
+</div>
             
-                    <div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '6em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      contentEl.style.maxHeight = this.contentHeight;
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize);
-      const collapsedHeightPx = 6 * fontSize;
-      const buffer = 0.5 * fontSize;
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-    if (this.expanded) {
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      this.contentHeight = '6em';
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '6em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '6em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
+  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
         <img src="./img/audit_service_icon_4.svg" alt="Service Icon">
       </div>
     </div>
+
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
         Forensic Accounting and Fraud Investigations
       </h3>
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
         Expert analysis and reporting to uncover financial irregularities and support legal proceedings.
       </p>
+
+      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1461,7 +1253,7 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
       </template>
     </div>
   </div>
-                    </div>
+</div>
             
             
             

@@ -54,11 +54,11 @@
   <link rel="stylesheet" href="./css/animations.css">
 
   <!-- JavaScript (Defer for Performance) -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="./js/main.js" defer></script>
-  <script src="./js/animations.js" defer></script>
-  <script type="module" src="./js/globe.js" defer></script>
+<script src="./js/main.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script> 
+<script src="./js/animations.js" defer></script> 
+<script type="module" src="./js/globe.js"></script> 
 
   <!-- Structured Data (Updated with Blog Reference) -->
   <script type="application/ld+json">
@@ -1050,170 +1050,77 @@
       
       
       
-          <div x-data="{
-                                expanded: false,
-                                collapseTimeout: null,
-                                contentHeight: '6em',
-                                isTruncated: false,
-                                init() {
-                                  // Delay measurement until after render.
-                                  setTimeout(() => {
-                                    const contentEl = this.$refs.content;
-                                    // Temporarily remove the inline max-height so we can measure the full height.
-                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    // Restore the original max-height.
-                                    contentEl.style.maxHeight = originalMaxHeight;
-                                    
-                                    // Calculate the collapsed height in pixels (6em).
-                                    const computedStyle = window.getComputedStyle(contentEl);
-                                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                    const collapsedHeightPx = 6 * fontSize;
-                                    
-                                    // If full height exceeds collapsed height, mark as truncated.
-                                    this.isTruncated = fullHeight > collapsedHeightPx;
-                                  }, 0);
-                                },
-                                toggleExpand() {
-                                  this.expanded = !this.expanded;
-                                  clearTimeout(this.collapseTimeout);
-                                  const contentEl = this.$refs.content;
-                                  if (this.expanded) {
-                                    // Remove inline max-height to measure the full content height.
-                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    contentEl.style.maxHeight = originalMaxHeight;
-                                    this.contentHeight = fullHeight + 'px';
-                                    // Optional auto-collapse after 20 seconds.
-                                    this.collapseTimeout = setTimeout(() => {
-                                      this.expanded = false;
-                                      this.contentHeight = '6em';
-                                    }, 20000);
-                                  } else {
-                                    this.contentHeight = '6em';
-                                  }
-                                }
-                              }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_4.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Sales Tax, VAT & GST Compliance
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Ensuring that your business meets sales tax or VAT/GST requirements across multiple jurisdictions.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_4.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Sales Tax, VAT & GST
-                  Compliance
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Ensuring that your
-                  business meets sales tax or VAT/GST requirements across multiple jurisdictions.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
-      
-          <div x-data="{
-                                          expanded: false,
-                                          collapseTimeout: null,
-                                          contentHeight: '6em',
-                                          isTruncated: false,
-                                          init() {
-                                            // Delay measurement until after render.
-                                            setTimeout(() => {
-                                              const contentEl = this.$refs.content;
-                                              // Temporarily remove the inline max-height so we can measure the full height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
-                                              contentEl.style.maxHeight = 'none';
-                                              const fullHeight = contentEl.scrollHeight;
-                                              // Restore the original max-height.
-                                              contentEl.style.maxHeight = originalMaxHeight;
-                                              
-                                              // Calculate the collapsed height in pixels (6em).
-                                              const computedStyle = window.getComputedStyle(contentEl);
-                                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                              const collapsedHeightPx = 6 * fontSize;
-                                              
-                                              // If full height exceeds collapsed height, mark as truncated.
-                                              this.isTruncated = fullHeight > collapsedHeightPx;
-                                            }, 0);
-                                          },
-                                          toggleExpand() {
-                                            this.expanded = !this.expanded;
-                                            clearTimeout(this.collapseTimeout);
-                                            const contentEl = this.$refs.content;
-                                            if (this.expanded) {
-                                              // Remove inline max-height to measure the full content height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
-                                              contentEl.style.maxHeight = 'none';
-                                              const fullHeight = contentEl.scrollHeight;
-                                              contentEl.style.maxHeight = originalMaxHeight;
-                                              this.contentHeight = fullHeight + 'px';
-                                              // Optional auto-collapse after 20 seconds.
-                                              this.collapseTimeout = setTimeout(() => {
-                                                this.expanded = false;
-                                                this.contentHeight = '6em';
-                                              }, 20000);
-                                            } else {
-                                              this.contentHeight = '6em';
-                                            }
-                                          }
-                                        }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-      
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_1.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Tax Preparation & Filing
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Accurate and timely
-                  tax returns for individuals, businesses, and corporations.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_1.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Tax Preparation & Filing
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Accurate and timely tax returns for individuals, businesses, and corporations.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
       
       
@@ -1224,170 +1131,77 @@
       
       
       
-          <div x-data="{
-                        expanded: false,
-                        collapseTimeout: null,
-                        contentHeight: '6em',
-                        isTruncated: false,
-                        init() {
-                          // Delay measurement until after render.
-                          setTimeout(() => {
-                            const contentEl = this.$refs.content;
-                            // Temporarily remove the inline max-height so we can measure the full height.
-                            const originalMaxHeight = contentEl.style.maxHeight;
-                            contentEl.style.maxHeight = 'none';
-                            const fullHeight = contentEl.scrollHeight;
-                            // Restore the original max-height.
-                            contentEl.style.maxHeight = originalMaxHeight;
-                            
-                            // Calculate the collapsed height in pixels (6em).
-                            const computedStyle = window.getComputedStyle(contentEl);
-                            const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                            const collapsedHeightPx = 6 * fontSize;
-                            
-                            // If full height exceeds collapsed height, mark as truncated.
-                            this.isTruncated = fullHeight > collapsedHeightPx;
-                          }, 0);
-                        },
-                        toggleExpand() {
-                          this.expanded = !this.expanded;
-                          clearTimeout(this.collapseTimeout);
-                          const contentEl = this.$refs.content;
-                          if (this.expanded) {
-                            // Remove inline max-height to measure the full content height.
-                            const originalMaxHeight = contentEl.style.maxHeight;
-                            contentEl.style.maxHeight = 'none';
-                            const fullHeight = contentEl.scrollHeight;
-                            contentEl.style.maxHeight = originalMaxHeight;
-                            this.contentHeight = fullHeight + 'px';
-                            // Optional auto-collapse after 20 seconds.
-                            this.collapseTimeout = setTimeout(() => {
-                              this.expanded = false;
-                              this.contentHeight = '6em';
-                            }, 20000);
-                          } else {
-                            this.contentHeight = '6em';
-                          }
-                        }
-                      }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_7.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Tax Credits Savings & Incentives
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Maximizing potential tax benefits through eligible credits and deductions.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_7.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Tax Credits Savings &
-                  Incentives
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Maximizing potential
-                  tax benefits through eligible credits and deductions.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
-      
-          <div x-data="{
-                                  expanded: false,
-                                  collapseTimeout: null,
-                                  contentHeight: '6em',
-                                  isTruncated: false,
-                                  init() {
-                                    // Delay measurement until after render.
-                                    setTimeout(() => {
-                                      const contentEl = this.$refs.content;
-                                      // Temporarily remove the inline max-height so we can measure the full height.
-                                      const originalMaxHeight = contentEl.style.maxHeight;
-                                      contentEl.style.maxHeight = 'none';
-                                      const fullHeight = contentEl.scrollHeight;
-                                      // Restore the original max-height.
-                                      contentEl.style.maxHeight = originalMaxHeight;
-                                      
-                                      // Calculate the collapsed height in pixels (6em).
-                                      const computedStyle = window.getComputedStyle(contentEl);
-                                      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                      const collapsedHeightPx = 6 * fontSize;
-                                      
-                                      // If full height exceeds collapsed height, mark as truncated.
-                                      this.isTruncated = fullHeight > collapsedHeightPx;
-                                    }, 0);
-                                  },
-                                  toggleExpand() {
-                                    this.expanded = !this.expanded;
-                                    clearTimeout(this.collapseTimeout);
-                                    const contentEl = this.$refs.content;
-                                    if (this.expanded) {
-                                      // Remove inline max-height to measure the full content height.
-                                      const originalMaxHeight = contentEl.style.maxHeight;
-                                      contentEl.style.maxHeight = 'none';
-                                      const fullHeight = contentEl.scrollHeight;
-                                      contentEl.style.maxHeight = originalMaxHeight;
-                                      this.contentHeight = fullHeight + 'px';
-                                      // Optional auto-collapse after 20 seconds.
-                                      this.collapseTimeout = setTimeout(() => {
-                                        this.expanded = false;
-                                        this.contentHeight = '6em';
-                                      }, 20000);
-                                    } else {
-                                      this.contentHeight = '6em';
-                                    }
-                                  }
-                                }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-      
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_3.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Year-Round Tax Support
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Stay compliant
-                  throughout the year with ongoing tax advisory and filing services.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_3.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Year-Round Tax Support
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Stay compliant throughout the year with ongoing tax advisory and filing services.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
       
       
@@ -1399,168 +1213,77 @@
       
       
       
-          <div x-data="{
-                                expanded: false,
-                                collapseTimeout: null,
-                                contentHeight: '6em',
-                                isTruncated: false,
-                                init() {
-                                  // Delay measurement until after render.
-                                  setTimeout(() => {
-                                    const contentEl = this.$refs.content;
-                                    // Temporarily remove the inline max-height so we can measure the full height.
-                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    // Restore the original max-height.
-                                    contentEl.style.maxHeight = originalMaxHeight;
-                                    
-                                    // Calculate the collapsed height in pixels (6em).
-                                    const computedStyle = window.getComputedStyle(contentEl);
-                                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                    const collapsedHeightPx = 6 * fontSize;
-                                    
-                                    // If full height exceeds collapsed height, mark as truncated.
-                                    this.isTruncated = fullHeight > collapsedHeightPx;
-                                  }, 0);
-                                },
-                                toggleExpand() {
-                                  this.expanded = !this.expanded;
-                                  clearTimeout(this.collapseTimeout);
-                                  const contentEl = this.$refs.content;
-                                  if (this.expanded) {
-                                    // Remove inline max-height to measure the full content height.
-                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    contentEl.style.maxHeight = originalMaxHeight;
-                                    this.contentHeight = fullHeight + 'px';
-                                    // Optional auto-collapse after 20 seconds.
-                                    this.collapseTimeout = setTimeout(() => {
-                                      this.expanded = false;
-                                      this.contentHeight = '6em';
-                                    }, 20000);
-                                  } else {
-                                    this.contentHeight = '6em';
-                                  }
-                                }
-                              }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_2.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Tax Planning & Advisory
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Strategies to minimize tax liabilities while ensuring compliance with international and local regulations.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_2.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Tax Planning & Advisory
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Strategies to minimize
-                  tax liabilities while ensuring compliance with international and local regulations.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
-      
-          <div x-data="{
-                                          expanded: false,
-                                          collapseTimeout: null,
-                                          contentHeight: '6em',
-                                          isTruncated: false,
-                                          init() {
-                                            // Delay measurement until after render.
-                                            setTimeout(() => {
-                                              const contentEl = this.$refs.content;
-                                              // Temporarily remove the inline max-height so we can measure the full height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
-                                              contentEl.style.maxHeight = 'none';
-                                              const fullHeight = contentEl.scrollHeight;
-                                              // Restore the original max-height.
-                                              contentEl.style.maxHeight = originalMaxHeight;
-                                              
-                                              // Calculate the collapsed height in pixels (6em).
-                                              const computedStyle = window.getComputedStyle(contentEl);
-                                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                              const collapsedHeightPx = 6 * fontSize;
-                                              
-                                              // If full height exceeds collapsed height, mark as truncated.
-                                              this.isTruncated = fullHeight > collapsedHeightPx;
-                                            }, 0);
-                                          },
-                                          toggleExpand() {
-                                            this.expanded = !this.expanded;
-                                            clearTimeout(this.collapseTimeout);
-                                            const contentEl = this.$refs.content;
-                                            if (this.expanded) {
-                                              // Remove inline max-height to measure the full content height.
-                                              const originalMaxHeight = contentEl.style.maxHeight;
-                                              contentEl.style.maxHeight = 'none';
-                                              const fullHeight = contentEl.scrollHeight;
-                                              contentEl.style.maxHeight = originalMaxHeight;
-                                              this.contentHeight = fullHeight + 'px';
-                                              // Optional auto-collapse after 20 seconds.
-                                              this.collapseTimeout = setTimeout(() => {
-                                                this.expanded = false;
-                                                this.contentHeight = '6em';
-                                              }, 20000);
-                                            } else {
-                                              this.contentHeight = '6em';
-                                            }
-                                          }
-                                        }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-      
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_6.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Tax Audit Support
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Assistance with tax audits, responding to regulatory authorities, and managing compliance reviews.
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_6.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Tax Audit Support
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Assistance with tax audits, responding to regulatory authorities, and managing compliance reviews.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
       
       
       
@@ -1575,81 +1298,41 @@
       
       
       
-          <div x-data="{
-                                                    expanded: false,
-                                                    collapseTimeout: null,
-                                                    contentHeight: '6em',
-                                                    isTruncated: false,
-                                                    init() {
-                                                      // Delay measurement until after render.
-                                                      setTimeout(() => {
-                                                        const contentEl = this.$refs.content;
-                                                        // Temporarily remove the inline max-height so we can measure the full height.
-                                                        const originalMaxHeight = contentEl.style.maxHeight;
-                                                        contentEl.style.maxHeight = 'none';
-                                                        const fullHeight = contentEl.scrollHeight;
-                                                        // Restore the original max-height.
-                                                        contentEl.style.maxHeight = originalMaxHeight;
-                                                        
-                                                        // Calculate the collapsed height in pixels (6em).
-                                                        const computedStyle = window.getComputedStyle(contentEl);
-                                                        const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                        const collapsedHeightPx = 6 * fontSize;
-                                                        
-                                                        // If full height exceeds collapsed height, mark as truncated.
-                                                        this.isTruncated = fullHeight > collapsedHeightPx;
-                                                      }, 0);
-                                                    },
-                                                    toggleExpand() {
-                                                      this.expanded = !this.expanded;
-                                                      clearTimeout(this.collapseTimeout);
-                                                      const contentEl = this.$refs.content;
-                                                      if (this.expanded) {
-                                                        // Remove inline max-height to measure the full content height.
-                                                        const originalMaxHeight = contentEl.style.maxHeight;
-                                                        contentEl.style.maxHeight = 'none';
-                                                        const fullHeight = contentEl.scrollHeight;
-                                                        contentEl.style.maxHeight = originalMaxHeight;
-                                                        this.contentHeight = fullHeight + 'px';
-                                                        // Optional auto-collapse after 20 seconds.
-                                                        this.collapseTimeout = setTimeout(() => {
-                                                          this.expanded = false;
-                                                          this.contentHeight = '6em';
-                                                        }, 20000);
-                                                      } else {
-                                                        this.contentHeight = '6em';
-                                                      }
-                                                    }
-                                                  }" x-init="init()"
-            class="flex landscape:md:w-[50%]   w-full portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh]
-            portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh] ">
-      
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-      
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
-                  <img src="./img/tax_service_icon_5.svg" alt="Service Icon">
-                </div>
-              </div>
-      
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  International Tax Advisory
-                </h3>
-      
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Expert guidance on cross-border tax issues, transfer pricing, and double taxation treaties. 
-                </p>
-      
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                
-              </div>
-            </div>
-          </div>
+<div x-data="collapsibleCard('6em', 20000)" x-init="init()"
+  class="flex landscape:md:w-[50%] w-full portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[11svh] portrait:sm:size-[7svh] m-auto">
+        <img src="./img/tax_service_icon_5.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        International Tax Advisory
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Expert guidance on cross-border tax issues, transfer pricing, and double taxation treaties.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
 
           
       
