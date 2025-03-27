@@ -1,3 +1,60 @@
+// Register Alpine.js components before Alpine initializes
+document.addEventListener('alpine:init', () => {
+    Alpine.data('collapsibleCard', (initialHeight = '4.4em', autoCollapseTime = 20000) => ({
+        expanded: false,
+        collapseTimeout: null,
+        contentHeight: initialHeight,
+        isTruncated: false,
+        toggleText: '...read more',
+        init() {
+            this.$nextTick(() => {
+                const contentEl = this.$refs.content;
+                if (!contentEl) return; // Guard clause for safety
+                
+                // Temporarily remove max-height to measure full height
+                contentEl.style.maxHeight = 'none';
+                const fullHeight = contentEl.scrollHeight;
+                
+                // Restore initial height
+                contentEl.style.maxHeight = this.contentHeight;
+                
+                // Calculate if content is truncated
+                const computedStyle = window.getComputedStyle(contentEl);
+                const fontSize = parseFloat(computedStyle.fontSize);
+                const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
+                const buffer = 0.5 * fontSize;
+                this.isTruncated = fullHeight > (collapsedHeightPx + buffer);
+            });
+        },
+        toggleExpand() {
+            const contentEl = this.$refs.content;
+            this.expanded = !this.expanded;
+            this.toggleText = this.expanded ? '...collapse' : '...read more';
+            clearTimeout(this.collapseTimeout);
+
+            if (this.expanded) {
+                contentEl.style.maxHeight = 'none';
+                const fullHeight = contentEl.scrollHeight;
+                contentEl.style.maxHeight = this.contentHeight; // Reset to trigger transition
+                
+                this.$nextTick(() => {
+                    contentEl.style.maxHeight = `${fullHeight}px`;
+                    if (autoCollapseTime > 0) {
+                        this.collapseTimeout = setTimeout(() => {
+                            this.expanded = false;
+                            this.toggleText = '...read more';
+                            contentEl.style.maxHeight = this.contentHeight;
+                        }, autoCollapseTime);
+                    }
+                });
+            } else {
+                contentEl.style.maxHeight = this.contentHeight;
+            }
+        }
+    }));
+});
+
+// Your existing vanilla JS code
 document.addEventListener("DOMContentLoaded", function () {
     const menuButtonContainer = document.getElementById("menuButtonContainer");
     const nav = document.querySelector("nav");
@@ -11,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     subMenu.classList.add("hidden");
 
     const toggleMenu = () => {
-        nav.classList.toggle("open"); // Toggle the .open class
+        nav.classList.toggle("open");
         menuButtonContainer.classList.toggle("menu-open");
         menuItems.forEach(item => item.classList.toggle("toggled"));
         if (nav.classList.contains("open")) {
@@ -43,26 +100,20 @@ document.addEventListener("DOMContentLoaded", function () {
     backButton.addEventListener("click", goBack);
 });
 
-
 document.querySelectorAll('.delayed-link').forEach(link => {
     link.addEventListener('click', function(event) {
-      event.preventDefault();
-      const href = this.href;
-      const target = this.target;
-      setTimeout(() => {
-        if (target === '_blank') {
-          window.open(href, '_blank');
-        } else {
-          window.location.href = href;
-        }
-      }, 150); // Matches your duration-300
+        event.preventDefault();
+        const href = this.href;
+        const target = this.target;
+        setTimeout(() => {
+            if (target === '_blank') {
+                window.open(href, '_blank');
+            } else {
+                window.location.href = href;
+            }
+        }, 150); // Matches your duration-300
     });
-  });
-
-
-
-
-
+});
 
 function initCookieBanner(attempt = 0) {
     const banner = document.getElementById('cookieBanner');
@@ -86,7 +137,6 @@ function initCookieBanner(attempt = 0) {
         banner.classList.add('hidden');
     };
 
-    // Show banner only if user hasn't made a choice
     if (!localStorage.getItem('cookieConsent')) {
         showBanner();
     } else {
@@ -121,5 +171,4 @@ function initCookieBanner(attempt = 0) {
     });
 }
 
-// Initialize on window load
 window.addEventListener('load', initCookieBanner);
