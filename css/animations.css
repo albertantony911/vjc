@@ -1,4 +1,6 @@
-
+[x-cloak] {
+    display: none !important;
+  }
 /**
  * ----------------------------------------
  * Hamburger menu animation starts
