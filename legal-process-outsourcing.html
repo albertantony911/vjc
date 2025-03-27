@@ -415,7 +415,7 @@
               
               <div class="flex items-center  flex-row  landscape:sm:mt-[4svh]  gap-[5svh]">
                 <div class="flex">
-                  <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
+                  <a id="schedule-button-header-legal-process" data-track="button" data-action="schedule" href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
                     class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] active:bg-darkGreen active:text-white delayed-link transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                     Partner with Us
                   </a>
@@ -1163,182 +1163,145 @@
             
             
                 <div x-data="{
-                                      expanded: false,
-                                      collapseTimeout: null,
-                                      contentHeight: '4.4em',
-                                      isTruncated: false,
-                                      init() {
-                                        setTimeout(() => {
-                                          const contentEl = this.$refs.content;
-                                          
-                                          // Temporarily remove max-height to measure full content height
-                                          contentEl.style.maxHeight = 'none';
-                                          const fullHeight = contentEl.scrollHeight;
-                                          
-                                          // Restore the original max-height
-                                          contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                          // Compute collapsed height in pixels (4.4em)
-                                          const computedStyle = window.getComputedStyle(contentEl);
-                                          const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                          const collapsedHeightPx = 4.4 * fontSize;
-
-                                          // Add a small buffer to trigger Read More even when close
-                                          const buffer = 0.5 * fontSize; 
-
-                                          // Check if text should be truncated
-                                          this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                        }, 0);
-                                      },
-
-                                      toggleExpand() {
-                                        this.expanded = !this.expanded;
-                                        clearTimeout(this.collapseTimeout);
-                                        const contentEl = this.$refs.content;
-                                        if (this.expanded) {
-                                          // Remove inline max-height to measure the full content height.
-                                          const originalMaxHeight = contentEl.style.maxHeight;
-                                          contentEl.style.maxHeight = 'none';
-                                          const fullHeight = contentEl.scrollHeight;
-                                          contentEl.style.maxHeight = originalMaxHeight;
-                                          this.contentHeight = fullHeight + 'px';
-                                          // Optional auto-collapse after 20 seconds.
-                                          this.collapseTimeout = setTimeout(() => {
-                                            this.expanded = false;
-                                            this.contentHeight = '4.4em';
-                                          }, 20000);
-                                        } else {
-                                          this.contentHeight = '4.4em';
-                                        }
-                                      }
-                                    }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_1.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Contract Review and Drafting
-                      </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We review, draft, and negotiate contracts and agreements to
-                          safeguard your company’s interests.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>Our legal experts ensure full compliance with laws and regulations
-                          while identifying and mitigating any risks.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_1.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Contract Review and Drafting
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We review, draft, and negotiate contracts and agreements to
+          safeguard your company’s interests.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>Our legal experts ensure full compliance with laws and regulations
+          while identifying and mitigating any risks.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
                 <div x-data="{
-                                                expanded: false,
-                                                collapseTimeout: null,
-                                                contentHeight: '4.4em',
-                                                isTruncated: false,
-                                                init() {
-                                                  setTimeout(() => {
-                                                    const contentEl = this.$refs.content;
-                                                    
-                                                    // Temporarily remove max-height to measure full content height
-                                                    contentEl.style.maxHeight = 'none';
-                                                    const fullHeight = contentEl.scrollHeight;
-                                                    
-                                                    // Restore the original max-height
-                                                    contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                                    // Compute collapsed height in pixels (4.4em)
-                                                    const computedStyle = window.getComputedStyle(contentEl);
-                                                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                    const collapsedHeightPx = 4.4 * fontSize;
-
-                                                    // Add a small buffer to trigger Read More even when close
-                                                    const buffer = 0.5 * fontSize; 
-
-                                                    // Check if text should be truncated
-                                                    this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                                  }, 0);
-                                                },
-
-                                                toggleExpand() {
-                                                  this.expanded = !this.expanded;
-                                                  clearTimeout(this.collapseTimeout);
-                                                  const contentEl = this.$refs.content;
-                                                  if (this.expanded) {
-                                                    // Remove inline max-height to measure the full content height.
-                                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                                    contentEl.style.maxHeight = 'none';
-                                                    const fullHeight = contentEl.scrollHeight;
-                                                    contentEl.style.maxHeight = originalMaxHeight;
-                                                    this.contentHeight = fullHeight + 'px';
-                                                    // Optional auto-collapse after 20 seconds.
-                                                    this.collapseTimeout = setTimeout(() => {
-                                                      this.expanded = false;
-                                                      this.contentHeight = '4.4em';
-                                                    }, 20000);
-                                                  } else {
-                                                    this.contentHeight = '4.4em';
-                                                  }
-                                                }
-                                              }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_3.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Compliance and Regulatory
-                        Oversight
-                      </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>VJC assists in developing compliance frameworks to align your business operations with required legal mandates.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We ensure compliance by staying up to date with regulations in the client’s country, as well as international practices
-                        that directly or indirectly impact the client’s trade or profession.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_3.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Compliance and Regulatory Oversight
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>VJC assists in developing compliance frameworks to align your business operations with required legal mandates.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We ensure compliance by staying up to date with regulations in the client’s country, as well as international practices
+        that directly or indirectly impact the client’s trade or profession.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
             
             
@@ -1350,181 +1313,143 @@
             
             
                 <div x-data="{
-                              expanded: false,
-                              collapseTimeout: null,
-                              contentHeight: '4.4em',
-                              isTruncated: false,
-                              init() {
-                                setTimeout(() => {
-                                  const contentEl = this.$refs.content;
-                                  
-                                  // Temporarily remove max-height to measure full content height
-                                  contentEl.style.maxHeight = 'none';
-                                  const fullHeight = contentEl.scrollHeight;
-                                  
-                                  // Restore the original max-height
-                                  contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                  // Compute collapsed height in pixels (4.4em)
-                                  const computedStyle = window.getComputedStyle(contentEl);
-                                  const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                  const collapsedHeightPx = 4.4 * fontSize;
-
-                                  // Add a small buffer to trigger Read More even when close
-                                  const buffer = 0.5 * fontSize; 
-
-                                  // Check if text should be truncated
-                                  this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                }, 0);
-                              },
-
-                              toggleExpand() {
-                                this.expanded = !this.expanded;
-                                clearTimeout(this.collapseTimeout);
-                                const contentEl = this.$refs.content;
-                                if (this.expanded) {
-                                  // Remove inline max-height to measure the full content height.
-                                  const originalMaxHeight = contentEl.style.maxHeight;
-                                  contentEl.style.maxHeight = 'none';
-                                  const fullHeight = contentEl.scrollHeight;
-                                  contentEl.style.maxHeight = originalMaxHeight;
-                                  this.contentHeight = fullHeight + 'px';
-                                  // Optional auto-collapse after 20 seconds.
-                                  this.collapseTimeout = setTimeout(() => {
-                                    this.expanded = false;
-                                    this.contentHeight = '4.4em';
-                                  }, 20000);
-                                } else {
-                                  this.contentHeight = '4.4em';
-                                }
-                              }
-                            }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_2.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Legal Research and
-                        Analysis
-                      </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>Your team conducts comprehensive legal research, offering detailed insights into relevant laws, regulations, and
-                        precedents.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We provide advisory services on the legal implications of business decisions and offer strategies for risk mitigation.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_2.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Legal Research and Analysis
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>Your team conducts comprehensive legal research, offering detailed insights into relevant laws, regulations, and
+        precedents.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We provide advisory services on the legal implications of business decisions and offer strategies for risk mitigation.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
                 <div x-data="{
-                                        expanded: false,
-                                        collapseTimeout: null,
-                                        contentHeight: '4.4em',
-                                        isTruncated: false,
-                                        init() {
-                                          setTimeout(() => {
-                                            const contentEl = this.$refs.content;
-                                            
-                                            // Temporarily remove max-height to measure full content height
-                                            contentEl.style.maxHeight = 'none';
-                                            const fullHeight = contentEl.scrollHeight;
-                                            
-                                            // Restore the original max-height
-                                            contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                            // Compute collapsed height in pixels (4.4em)
-                                            const computedStyle = window.getComputedStyle(contentEl);
-                                            const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                            const collapsedHeightPx = 4.4 * fontSize;
-
-                                            // Add a small buffer to trigger Read More even when close
-                                            const buffer = 0.5 * fontSize; 
-
-                                            // Check if text should be truncated
-                                            this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                          }, 0);
-                                        },
-
-                                        toggleExpand() {
-                                          this.expanded = !this.expanded;
-                                          clearTimeout(this.collapseTimeout);
-                                          const contentEl = this.$refs.content;
-                                          if (this.expanded) {
-                                            // Remove inline max-height to measure the full content height.
-                                            const originalMaxHeight = contentEl.style.maxHeight;
-                                            contentEl.style.maxHeight = 'none';
-                                            const fullHeight = contentEl.scrollHeight;
-                                            contentEl.style.maxHeight = originalMaxHeight;
-                                            this.contentHeight = fullHeight + 'px';
-                                            // Optional auto-collapse after 20 seconds.
-                                            this.collapseTimeout = setTimeout(() => {
-                                              this.expanded = false;
-                                              this.contentHeight = '4.4em';
-                                            }, 20000);
-                                          } else {
-                                            this.contentHeight = '4.4em';
-                                          }
-                                        }
-                                      }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_4.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Litigation Support
-                      </h3>
-            
-    
-
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>Our litigation support services include document review, evidence gathering, and case preparation.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We also collaborate with external legal counsel to represent your company’s interests in legal disputes.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_4.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Litigation Support
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>Our litigation support services include document review, evidence gathering, and case preparation.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We also collaborate with external legal counsel to represent your company’s interests in legal disputes.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
             
             
@@ -1537,182 +1462,146 @@
             
             
                 <div x-data="{
-                                      expanded: false,
-                                      collapseTimeout: null,
-                                      contentHeight: '4.4em',
-                                      isTruncated: false,
-                                      init() {
-                                        setTimeout(() => {
-                                          const contentEl = this.$refs.content;
-                                          
-                                          // Temporarily remove max-height to measure full content height
-                                          contentEl.style.maxHeight = 'none';
-                                          const fullHeight = contentEl.scrollHeight;
-                                          
-                                          // Restore the original max-height
-                                          contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                          // Compute collapsed height in pixels (4.4em)
-                                          const computedStyle = window.getComputedStyle(contentEl);
-                                          const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                          const collapsedHeightPx = 4.4 * fontSize;
-
-                                          // Add a small buffer to trigger Read More even when close
-                                          const buffer = 0.5 * fontSize; 
-
-                                          // Check if text should be truncated
-                                          this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                        }, 0);
-                                      },
-
-                                      toggleExpand() {
-                                        this.expanded = !this.expanded;
-                                        clearTimeout(this.collapseTimeout);
-                                        const contentEl = this.$refs.content;
-                                        if (this.expanded) {
-                                          // Remove inline max-height to measure the full content height.
-                                          const originalMaxHeight = contentEl.style.maxHeight;
-                                          contentEl.style.maxHeight = 'none';
-                                          const fullHeight = contentEl.scrollHeight;
-                                          contentEl.style.maxHeight = originalMaxHeight;
-                                          this.contentHeight = fullHeight + 'px';
-                                          // Optional auto-collapse after 20 seconds.
-                                          this.collapseTimeout = setTimeout(() => {
-                                            this.expanded = false;
-                                            this.contentHeight = '4.4em';
-                                          }, 20000);
-                                        } else {
-                                          this.contentHeight = '4.4em';
-                                        }
-                                      }
-                                    }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_5.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Intellectual Property (IP) Management
-                      </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>VJC provides strategic legal support for protecting and managing intellectual property assets, including trademarks,
-                        patents, and copyrights.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We assist in drafting and reviewing IP agreements, licensing, and enforcement actions to safeguard your intellectual
-                        property rights.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_5.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Intellectual Property (IP) Management
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>VJC provides strategic legal support for protecting and managing intellectual property assets, including trademarks,
+        patents, and copyrights.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We assist in drafting and reviewing IP agreements, licensing, and enforcement actions to safeguard your intellectual
+        property rights.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
                 <div x-data="{
-                                                expanded: false,
-                                                collapseTimeout: null,
-                                                contentHeight: '4.4em',
-                                                isTruncated: false,
-                                                init() {
-                                                  setTimeout(() => {
-                                                    const contentEl = this.$refs.content;
-                                                    
-                                                    // Temporarily remove max-height to measure full content height
-                                                    contentEl.style.maxHeight = 'none';
-                                                    const fullHeight = contentEl.scrollHeight;
-                                                    
-                                                    // Restore the original max-height
-                                                    contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                                    // Compute collapsed height in pixels (4.4em)
-                                                    const computedStyle = window.getComputedStyle(contentEl);
-                                                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                    const collapsedHeightPx = 4.4 * fontSize;
-
-                                                    // Add a small buffer to trigger Read More even when close
-                                                    const buffer = 0.5 * fontSize; 
-
-                                                    // Check if text should be truncated
-                                                    this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                                  }, 0);
-                                                },
-
-                                                toggleExpand() {
-                                                  this.expanded = !this.expanded;
-                                                  clearTimeout(this.collapseTimeout);
-                                                  const contentEl = this.$refs.content;
-                                                  if (this.expanded) {
-                                                    // Remove inline max-height to measure the full content height.
-                                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                                    contentEl.style.maxHeight = 'none';
-                                                    const fullHeight = contentEl.scrollHeight;
-                                                    contentEl.style.maxHeight = originalMaxHeight;
-                                                    this.contentHeight = fullHeight + 'px';
-                                                    // Optional auto-collapse after 20 seconds.
-                                                    this.collapseTimeout = setTimeout(() => {
-                                                      this.expanded = false;
-                                                      this.contentHeight = '4.4em';
-                                                    }, 20000);
-                                                  } else {
-                                                    this.contentHeight = '4.4em';
-                                                  }
-                                                }
-                                              }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_7.svg" alt="Service Icon">
-                      </div>
-                    </div>
-            
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Mergers and Acquisitions Due Diligence
-                      </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We conduct thorough legal due diligence to identify potential risks and liabilities in mergers, acquisitions, and
-                        business transactions.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>Our team provides comprehensive assessments of contractual obligations, compliance status, and regulatory adherence
-                        before finalizing deals.</span>
-                      </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_7.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Mergers and Acquisitions Due Diligence
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We conduct thorough legal due diligence to identify potential risks and liabilities in mergers, acquisitions, and
+        business transactions.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>Our team provides comprehensive assessments of contractual obligations, compliance status, and regulatory adherence
+        before finalizing deals.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
             
             
@@ -1728,181 +1617,144 @@
             
             
                 <div x-data="{
-                                                          expanded: false,
-                                                          collapseTimeout: null,
-                                                          contentHeight: '4.4em',
-                                                          isTruncated: false,
-                                                          init() {
-                                                            setTimeout(() => {
-                                                              const contentEl = this.$refs.content;
-                                                              
-                                                              // Temporarily remove max-height to measure full content height
-                                                              contentEl.style.maxHeight = 'none';
-                                                              const fullHeight = contentEl.scrollHeight;
-                                                              
-                                                              // Restore the original max-height
-                                                              contentEl.style.maxHeight = this.contentHeight;
+                  expanded: false,
+                  collapseTimeout: null,
+                  contentHeight: '4.4em',
+                  isTruncated: false,
+                  toggleText: '...read more',
+                  init() {
+                    setTimeout(() => {
+                      const contentEl = this.$refs.content;
+                      contentEl.style.maxHeight = 'none';
+                      const fullHeight = contentEl.scrollHeight;
+                      contentEl.style.maxHeight = this.contentHeight;
+                      const computedStyle = window.getComputedStyle(contentEl);
+                      const fontSize = parseFloat(computedStyle.fontSize);
+                      const collapsedHeightPx = 4.4 * fontSize;
+                      const buffer = 0.5 * fontSize;
+                      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+                    }, 0);
+                  },
+                  toggleExpand() {
+                    const contentEl = this.$refs.content;
+                    this.expanded = !this.expanded;
+                    this.toggleText = this.expanded ? '...collapse' : '...read more';
+                    clearTimeout(this.collapseTimeout);
+                    if (this.expanded) {
+                      contentEl.style.maxHeight = 'none';
+                      const fullHeight = contentEl.scrollHeight;
+                      this.contentHeight = '4.4em';
+                      this.$nextTick(() => {
+                        this.contentHeight = fullHeight + 'px';
+                        this.collapseTimeout = setTimeout(() => {
+                          this.expanded = false;
+                          this.contentHeight = '4.4em';
+                          this.toggleText = '...read more';
+                        }, 20000);
+                      });
+                    } else {
+                      this.contentHeight = '4.4em';
+                    }
+                  }
+                }" x-init="init()"
+                class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                                              // Compute collapsed height in pixels (4.4em)
-                                                              const computedStyle = window.getComputedStyle(contentEl);
-                                                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                              const collapsedHeightPx = 4.4 * fontSize;
-
-                                                              // Add a small buffer to trigger Read More even when close
-                                                              const buffer = 0.5 * fontSize; 
-
-                                                              // Check if text should be truncated
-                                                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                                            }, 0);
-                                                          },
-
-                                                          toggleExpand() {
-                                                            this.expanded = !this.expanded;
-                                                            clearTimeout(this.collapseTimeout);
-                                                            const contentEl = this.$refs.content;
-                                                            if (this.expanded) {
-                                                              // Remove inline max-height to measure the full content height.
-                                                              const originalMaxHeight = contentEl.style.maxHeight;
-                                                              contentEl.style.maxHeight = 'none';
-                                                              const fullHeight = contentEl.scrollHeight;
-                                                              contentEl.style.maxHeight = originalMaxHeight;
-                                                              this.contentHeight = fullHeight + 'px';
-                                                              // Optional auto-collapse after 20 seconds.
-                                                              this.collapseTimeout = setTimeout(() => {
-                                                                this.expanded = false;
-                                                                this.contentHeight = '4.4em';
-                                                              }, 20000);
-                                                            } else {
-                                                              this.contentHeight = '4.4em';
-                                                            }
-                                                          }
-                                                        }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-            
-                  <!-- Header / Toggle Button -->
                   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
                     :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-            
                     <div class="flex flex-col w-auto">
                       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
                         <img src="./img/legal_service_icon_8.svg" alt="Service Icon">
                       </div>
                     </div>
-            
                     <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
+                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
                         Training and Awareness
                       </h3>
-            
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
                       <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
                         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We offer tailored legal training programs to help your team understand key regulations, compliance issues, and company
+                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We offer tailored legal training programs to help your team understand key regulations, compliance issues, and company
                         policies.</span>
                         <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>Our sessions foster a culture of ethical conduct and legal awareness across your organization.</span>
+                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>Our sessions foster a culture of ethical conduct and legal awareness across your organization.</span>
                       </p>
-            
-                      <!-- Conditionally render the toggle button only if content is truncated -->
                       <template x-if="isTruncated">
                         <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
+                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+                          x-text="toggleText" x-transition></span>
                       </template>
                     </div>
                   </div>
                 </div>
 
                 <div x-data="{
-                               expanded: false,
-                                collapseTimeout: null,
-                                contentHeight: '4.4em',
-                                isTruncated: false,
-                                init() {
-                                  setTimeout(() => {
-                                    const contentEl = this.$refs.content;
-                                    
-                                    // Temporarily remove max-height to measure full content height
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    
-                                    // Restore the original max-height
-                                    contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      contentEl.style.maxHeight = this.contentHeight;
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize);
+      const collapsedHeightPx = 4.4 * fontSize;
+      const buffer = 0.5 * fontSize;
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+    if (this.expanded) {
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      this.contentHeight = '4.4em';
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                                    // Compute collapsed height in pixels (4.4em)
-                                    const computedStyle = window.getComputedStyle(contentEl);
-                                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                    const collapsedHeightPx = 4.4 * fontSize;
-
-                                    // Add a small buffer to trigger Read More even when close
-                                    const buffer = 0.5 * fontSize; 
-
-                                    // Check if text should be truncated
-                                    this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                  }, 0);
-                                },
-
-                                toggleExpand() {
-                                  this.expanded = !this.expanded;
-                                  clearTimeout(this.collapseTimeout);
-                                  const contentEl = this.$refs.content;
-                                  if (this.expanded) {
-                                    // Remove inline max-height to measure the full content height.
-                                    const originalMaxHeight = contentEl.style.maxHeight;
-                                    contentEl.style.maxHeight = 'none';
-                                    const fullHeight = contentEl.scrollHeight;
-                                    contentEl.style.maxHeight = originalMaxHeight;
-                                    this.contentHeight = fullHeight + 'px';
-                                    // Optional auto-collapse after 20 seconds.
-                                    this.collapseTimeout = setTimeout(() => {
-                                      this.expanded = false;
-                                      this.contentHeight = '4.4em';
-                                    }, 20000);
-                                  } else {
-                                    this.contentHeight = '4.4em';
-                                  }
-                                }
-                              }" x-init="init()"
-                  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-                
-                  <!-- Header / Toggle Button -->
-                  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-                    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-                
-                    <div class="flex flex-col w-auto">
-                      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                        <img src="./img/legal_service_icon_11.svg" alt="Service Icon">
-                      </div>
-                    </div>
-                
-                    <div class="flex flex-col text-left gap-1 text-darkBlue">
-                      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                        Data Breach and GDPR
-                        Compliance
-                      </h3>
-                
-                      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We assist businesses in developing data protection policies and ensuring adherence to global data privacy regulations,
-                        including GDPR.</span>
-                        <br>
-                        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">&#9679;</span>We conduct thorough compliance checks and help implement necessary security measures to prevent data breaches.</span>
-                      </p>
-                
-                      <!-- Conditionally render the toggle button only if content is truncated -->
-                      <template x-if="isTruncated">
-                        <span @click.stop="toggleExpand"
-                          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                          <span x-show="!expanded" x-transition>...read more</span>
-                          <span x-show="expanded" x-transition>...collapse</span>
-                        </span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/legal_service_icon_11.svg" alt="Service Icon">
+      </div>
+    </div>
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Data Breach and GDPR Compliance
+      </h3>
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We assist businesses in developing data protection policies and ensuring adherence to global data privacy regulations,
+        including GDPR.</span>
+        <br>
+        <span><span class="mr-1 text-[0.8rem] text-darkBlue font-bold">●</span>We conduct thorough compliance checks and help implement necessary security measures to prevent data breaches.</span>
+      </p>
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
             
             
             
@@ -2037,61 +1889,55 @@
               <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto w-full text-center">
                 <!-- Accordion component -->
                 <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-                  <template x-for="(faq, index) in [
-                                      {
-                                        question: 'What types of legal services can be outsourced to VJC?',
-                                        answer: 'You can outsource a range of services, including contract review, litigation support, legal research, and intellectual property management, among others.'
-                                      },
-                                      {
-                                        question: 'How does VJC ensure confidentiality of sensitive legal information?',
-                                        answer: 'We follow strict data security protocols and legal standards to safeguard your confidential information.'
-                                      },
-                                      {
-                                        question: 'What industries do you specialize in?',
-                                        answer: 'VJC works across various industries, including finance, healthcare, technology, hospitality, and more.'
-                                      },
-                                      {
-                                        question: 'Do you offer support for cross-border legal issues?',
-                                        answer: 'Yes, VJC provides specialized support for international transactions and cross-border legal complexities.'
-                                      },
-                                      {
-                                        question: 'What engagement models does VJC offer?',
-                                        answer: 'We offer flexible engagement models, including project-based, in-house support, and retainer-based services.'
-                                      },
-                                      {
-                                        question: 'How do you ensure legal compliance with local and international laws?',
-                                        answer: 'Our legal experts stay updated on the latest regulations and ensure that all services are fully compliant with both local and international legal requirements.'
-                                      },
-                                      {
-                                        question: 'Can VJC assist with corporate governance and compliance?',
-                                        answer: 'Yes, we help companies with corporate governance, maintaining statutory records, and ensuring compliance with industry regulations.'
-                                      }
-                                    ]" :key="index">
-                    <div class="py-4">
-                      <h2>
-                        <button type="button"
-                          class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-                          @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
-                          :aria-controls="'audit-faq-' + index">
-                          <span x-text="faq.question"></span>
-                          <img
-                            class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-                            src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
-                            aria-hidden="true" />
-                        </button>
-                      </h2>
-                      <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-                        :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                        <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
-                        <template x-if="faq.link">
-                          <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-                            <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
-                              x-text="faq.linkText"></a>
-                          </p>
-                        </template>
-                      </div>
-                    </div>
-                  </template>
+                  <template x-data="{
+  faqs: [
+    { question: 'What types of legal services can be outsourced to VJC?', answer: 'You can outsource a range of services, including contract review, litigation support, legal research, and intellectual property management, among others.' },
+    { question: 'How does VJC ensure confidentiality of sensitive legal information?', answer: 'We follow strict data security protocols and legal standards to safeguard your confidential information.' },
+    { question: 'What industries do you specialize in?', answer: 'VJC works across various industries, including finance, healthcare, technology, hospitality, and more.' },
+    { question: 'Do you offer support for cross-border legal issues?', answer: 'Yes, VJC provides specialized support for international transactions and cross-border legal complexities.' },
+    { question: 'What engagement models does VJC offer?', answer: 'We offer flexible engagement models, including project-based, in-house support, and retainer-based services.' },
+    { question: 'How do you ensure legal compliance with local and international laws?', answer: 'Our legal experts stay updated on the latest regulations and ensure that all services are fully compliant with both local and international legal requirements.' },
+    { question: 'Can VJC assist with corporate governance and compliance?', answer: 'Yes, we help companies with corporate governance, maintaining statutory records, and ensuring compliance with industry regulations.' }
+  ],
+  openFaq: null,
+  page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
+}" x-for="(faq, index) in faqs" :key="index">
+  <div class="py-4">
+    <h2>
+      <button type="button"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
+        @click="openFaq = (openFaq === index ? null : index); window.dataLayer.push({ event: 'dom_updated' })"
+        :aria-expanded="openFaq === index.toString()"
+        :aria-controls="'lpo-faq-' + index">
+        <span x-text="faq.question"></span>
+        <img
+          class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+          src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
+          aria-hidden="true" />
+      </button>
+    </h2>
+    <div :id="'lpo-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+      :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+      <template x-if="faq.link">
+        <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
+          <a
+            :href="faq.link"
+            :id="'lpo-faq-link-' + index + '-' + page"
+            :data-track="faq.styleAsButton ? 'button' : 'link'"
+            :data-action="faq.action"
+            :target="faq.link && faq.link.includes('https://') ? '_blank' : null"
+            :rel="faq.link && faq.link.includes('https://') ? 'noopener noreferrer' : null"
+            :aria-label="faq.linkText + ' for ' + faq.question"
+            :class="faq.styleAsButton ? 'whitespace-nowrap font-semibold text-[2.9vw] sm:text-[1.7svh] portrait:sm:text-[1.4svw] focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white text-darkBlue py-[2vw] px-[3vw] sm:px-[2svh] sm:py-[1svh] portrait:sm:px-[2svw] portrait:sm:py-[1svw] transition-all duration-100 transform bg-white rounded-full select-none delayed-link' : 'text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link'"
+          >
+            <span x-text="faq.linkText"></span>
+          </a>
+        </p>
+      </template>
+    </div>
+  </div>
+</template>
                 </div>
               </div>
             </div>
@@ -2126,7 +1972,7 @@
               </div>
     
               <div class="flex justify-center mb-12 md:mt-6 mt-7 md:mb-7">
-                <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
+                <a id="schedule-button-footer-legal-process" data-track="button" data-action="schedule" href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                   aria-label="Link to Schedule a Meeting"
                   class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] active:bg-darkGreen active:text-white delayed-link sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-300 transform bg-white rounded-full select-none">
                   Schedule Meeting
@@ -2134,48 +1980,87 @@
               </div>
             </div>
     
-            <div
-              class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-darkBlue   shadow-xl mx-auto">
-              <h3 id="contactSectionHeading"
-                class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold  mt-7 max-sm:mt-10 leading-normal"
-                aria-label="Contact Section">
-                Contact Us
-              </h3>
-              <p class="font-light max-sm:text-[3.5vw] md:text-sm  portrait:sm:text-[1.8svw]">
-                Unlock a partnership with precision and trust.
-              </p>
-    
-              <div
-                class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
-              </div>
-    
-              <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7"
-                role="presentation">
-                <a class="delayed-link" href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
-                </a>
-    
-                <a class="delayed-link" href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
-                  rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
-                </a>
-    
-                <a class="delayed-link" href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
-                  title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
-                </a>
-    
-                <a class="delayed-link" href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
-                </a>
-    
-    
-              </div>
-            </div>
+                        <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7" role="presentation">
+                            <a
+                                class="delayed-link"
+                                href="tel:+919630054303"
+                                id="contact-call_us-legal-process"
+                                data-track="link"
+                                data-action="call_us"
+                                title="Call us"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Call us at +919630054303"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/phone-circle-icon.svg"
+                                alt="Phone Icon"
+                                role="img"
+                                aria-label="Call us at +919630054303"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://in.linkedin.com/company/vjcindia"
+                                id="contact-visit_linkedin-legal-process"
+                                data-track="link"
+                                data-action="visit_linkedin"
+                                title="Visit our LinkedIn profile"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Visit our LinkedIn profile"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/linkedin-circle-icon.svg"
+                                alt="LinkedIn Logo"
+                                role="img"
+                                aria-label="Visit our LinkedIn profile"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
+                                id="contact-contact_whatsapp-legal-process"
+                                data-track="link"
+                                data-action="contact_whatsapp"
+                                title="Contact us on WhatsApp"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/whatsapp-circle-icon.svg"
+                                alt="WhatsApp Logo"
+                                role="img"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="mailto:admin@vjcindia.com"
+                                id="contact-email_us-legal-process"
+                                data-track="link"
+                                data-action="email_us"
+                                title="Send us a mail"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/mail-circle-icon.svg"
+                                alt="Email Logo"
+                                role="img"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                                />
+                            </a>
+                            </div>
           </div>
         </div>
       </div>

@@ -371,7 +371,7 @@
                 
                 
                     <div class="flex justify-center landscape:sm:mt-[4svh] landscape:sm:mb-[4svh] mt-8 mb-8">
-                        <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
+                        <a id="schedule-button-contact" data-track="button" data-action="schedule" href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
                             class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] active:bg-darkGreen active:text-white delayed-link transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             Schedule Meeting
                         </a>
@@ -542,7 +542,7 @@
                     <div class="flex justify-center ">
         
 
-                        <a href="https://vjcllp.in/application-form/" aria-label="Link to Apply for a Career"
+                        <a id="career-application-button-contact" data-track="button" data-action="apply_career" href="https://vjcllp.in/application-form/" aria-label="Link to Apply for a Career"
                             class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] active:bg-darkGreen active:text-white delayed-link portrait:sm:py-[2svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
                             APPLY
                         </a>
@@ -630,33 +630,86 @@
                                 class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
                             </div>
         
-                            <div class="flex flex-row justify-center gap-3 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7"
-                                role="presentation">
-                                <a class="delayed-link" href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                                    <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                        src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
-                                </a>
-        
-                                <a class="delayed-link" href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile"
-                                    target="_blank" rel="noopener">
-                                    <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                        src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img"
-                                        aria-label="LinkedIn Logo" />
-                                </a>
-        
-                                <a class="delayed-link" href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
-                                    title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                                    <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                        src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img"
-                                        aria-label="WhatsApp Logo" />
-                                </a>
-        
-                                <a class="delayed-link" href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                                    <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                        src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
-                                </a>
-        
-        
+                        <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7" role="presentation">
+                            <a
+                                class="delayed-link"
+                                href="tel:+919630054303"
+                                id="contact-call_us-contact-page"
+                                data-track="link"
+                                data-action="call_us"
+                                title="Call us"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Call us at +919630054303"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/phone-circle-icon.svg"
+                                alt="Phone Icon"
+                                role="img"
+                                aria-label="Call us at +919630054303"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://in.linkedin.com/company/vjcindia"
+                                id="contact-visit_linkedin-contact-page"
+                                data-track="link"
+                                data-action="visit_linkedin"
+                                title="Visit our LinkedIn profile"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Visit our LinkedIn profile"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/linkedin-circle-icon.svg"
+                                alt="LinkedIn Logo"
+                                role="img"
+                                aria-label="Visit our LinkedIn profile"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
+                                id="contact-contact_whatsapp-contact-page"
+                                data-track="link"
+                                data-action="contact_whatsapp"
+                                title="Contact us on WhatsApp"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/whatsapp-circle-icon.svg"
+                                alt="WhatsApp Logo"
+                                role="img"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="mailto:admin@vjcindia.com"
+                                id="contact-email_us-contact-page"
+                                data-track="link"
+                                data-action="email_us"
+                                title="Send us a mail"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/mail-circle-icon.svg"
+                                alt="Email Logo"
+                                role="img"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                                />
+                            </a>
                             </div>
                         </div>
                     </div>

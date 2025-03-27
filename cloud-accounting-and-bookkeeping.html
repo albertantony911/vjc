@@ -418,7 +418,7 @@
 
               <div class="flex items-center  flex-row  landscape:sm:mt-[4svh]  gap-[5svh]">
                 <div class="flex">
-                  <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
+                  <a id="schedule-button-header-cloud-accounting" data-track="button" data-action="schedule" href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/" aria-label="Link to Schedule a Meeting"
                     class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-100 active:bg-darkGreen active:text-white delayed-link transform bg-darkBlue rounded-full select-none">
                     Partner with Us
                   </a>
@@ -1055,175 +1055,183 @@
         
         
           <div x-data="{
-                          expanded: false,
-                          collapseTimeout: null,
-                          contentHeight: '4.4em',
-                          isTruncated: false,
-                          init() {
-                            setTimeout(() => {
-                              const contentEl = this.$refs.content;
-                              
-                              // Temporarily remove max-height to measure full content height
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              
-                              // Restore the original max-height
-                              contentEl.style.maxHeight = this.contentHeight;
+                expanded: false,
+                collapseTimeout: null,
+                contentHeight: '4.4em',
+                isTruncated: false,
+                toggleText: '...read more', // Added for reactive toggle text
+                init() {
+                  setTimeout(() => {
+                    const contentEl = this.$refs.content;
+                    
+                    // Temporarily remove max-height to measure full content height
+                    contentEl.style.maxHeight = 'none';
+                    const fullHeight = contentEl.scrollHeight;
+                    
+                    // Restore the original max-height
+                    contentEl.style.maxHeight = this.contentHeight;
 
-                              // Compute collapsed height in pixels (4.4em)
-                              const computedStyle = window.getComputedStyle(contentEl);
-                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                              const collapsedHeightPx = 4.4 * fontSize;
+                    // Compute collapsed height in pixels (4.4em)
+                    const computedStyle = window.getComputedStyle(contentEl);
+                    const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                    const collapsedHeightPx = 4.4 * fontSize;
 
-                              // Add a small buffer to trigger Read More even when close
-                              const buffer = 0.5 * fontSize; 
+                    // Add a small buffer to trigger Read More even when close
+                    const buffer = 0.5 * fontSize; 
 
-                              // Check if text should be truncated
-                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                            }, 0);
-                          },
+                    // Check if text should be truncated
+                    this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+                  }, 0);
+                },
 
-                          toggleExpand() {
-                            this.expanded = !this.expanded;
-                            clearTimeout(this.collapseTimeout);
-                            const contentEl = this.$refs.content;
-                            if (this.expanded) {
-                              // Remove inline max-height to measure the full content height.
-                              const originalMaxHeight = contentEl.style.maxHeight;
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              contentEl.style.maxHeight = originalMaxHeight;
-                              this.contentHeight = fullHeight + 'px';
-                              // Optional auto-collapse after 20 seconds.
-                              this.collapseTimeout = setTimeout(() => {
-                                this.expanded = false;
-                                this.contentHeight = '4.4em';
-                              }, 20000);
-                            } else {
-                              this.contentHeight = '4.4em';
-                            }
-                          }
-                        }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-        
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-        
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_3.svg" alt="Service Icon">
+                toggleExpand() {
+                  const contentEl = this.$refs.content;
+                  this.expanded = !this.expanded;
+                  this.toggleText = this.expanded ? '...collapse' : '...read more'; // Update text reactively
+                  clearTimeout(this.collapseTimeout);
+
+                  if (this.expanded) {
+                    // Measure full height
+                    contentEl.style.maxHeight = 'none';
+                    const fullHeight = contentEl.scrollHeight;
+                    // Reset to collapsed height to start animation
+                    this.contentHeight = '4.4em';
+                    // Use nextTick for smooth expansion
+                    this.$nextTick(() => {
+                      this.contentHeight = fullHeight + 'px';
+                      // Auto-collapse after 20 seconds
+                      this.collapseTimeout = setTimeout(() => {
+                        this.expanded = false;
+                        this.contentHeight = '4.4em';
+                        this.toggleText = '...read more';
+                      }, 20000);
+                    });
+                  } else {
+                    this.contentHeight = '4.4em';
+                  }
+                }
+              }" x-init="init()"
+              class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+                <!-- Header / Toggle Button -->
+                <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+                  :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+                  <div class="flex flex-col w-auto">
+                    <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+                      <img src="./img/cloud_service_icon_3.svg" alt="Service Icon">
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col text-left gap-1 text-darkBlue">
+                    <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+                      Accounts Receivable Management
+                    </h3>
+
+                    <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+                    <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                      class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                      Extensive services to
+                      manage account receivables functions by billing and invoicing, managing credit policies and
+                      processes, collection services, account reconciliation, analysis and reporting.
+                    </p>
+
+                    <!-- Single toggle text with reactive binding -->
+                    <template x-if="isTruncated">
+                      <span @click.stop="toggleExpand"
+                        class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+                        x-text="toggleText" x-transition></span>
+                    </template>
+                  </div>
                 </div>
               </div>
         
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Accounts Receivable
-                  Management
-                </h3>
-        
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Extensive services to
-                  manage account receivables functions by billing and invoicing, managing credit policies and
-                  processes, collection services, account reconciliation, analysis and reporting.
-                </p>
-        
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
-        
           <div x-data="{
-                          expanded: false,
-                          collapseTimeout: null,
-                          contentHeight: '4.4em',
-                          isTruncated: false,
-                          init() {
-                            setTimeout(() => {
-                              const contentEl = this.$refs.content;
-                              
-                              // Temporarily remove max-height to measure full content height
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              
-                              // Restore the original max-height
-                              contentEl.style.maxHeight = this.contentHeight;
+            expanded: false,
+            collapseTimeout: null,
+            contentHeight: '4.4em',
+            isTruncated: false,
+            toggleText: '...read more', // New property for reactive toggle text
+            init() {
+              setTimeout(() => {
+                const contentEl = this.$refs.content;
+                
+                // Temporarily remove max-height to measure full content height
+                contentEl.style.maxHeight = 'none';
+                const fullHeight = contentEl.scrollHeight;
+                
+                // Restore the original max-height
+                contentEl.style.maxHeight = this.contentHeight;
 
-                              // Compute collapsed height in pixels (4.4em)
-                              const computedStyle = window.getComputedStyle(contentEl);
-                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                              const collapsedHeightPx = 4.4 * fontSize;
+                // Compute collapsed height in pixels (4.4em)
+                const computedStyle = window.getComputedStyle(contentEl);
+                const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+                const collapsedHeightPx = 4.4 * fontSize;
 
-                              // Add a small buffer to trigger Read More even when close
-                              const buffer = 0.5 * fontSize; 
+                // Add a small buffer to trigger Read More even when close
+                const buffer = 0.5 * fontSize; 
 
-                              // Check if text should be truncated
-                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                            }, 0);
-                          },
+                // Check if text should be truncated
+                this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+              }, 0);
+            },
 
-                          toggleExpand() {
-                            this.expanded = !this.expanded;
-                            clearTimeout(this.collapseTimeout);
-                            const contentEl = this.$refs.content;
-                            if (this.expanded) {
-                              // Remove inline max-height to measure the full content height.
-                              const originalMaxHeight = contentEl.style.maxHeight;
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              contentEl.style.maxHeight = originalMaxHeight;
-                              this.contentHeight = fullHeight + 'px';
-                              // Optional auto-collapse after 20 seconds.
-                              this.collapseTimeout = setTimeout(() => {
-                                this.expanded = false;
-                                this.contentHeight = '4.4em';
-                              }, 20000);
-                            } else {
-                              this.contentHeight = '4.4em';
-                            }
-                          }
-                                  }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-        
+            toggleExpand() {
+              const contentEl = this.$refs.content;
+              this.expanded = !this.expanded;
+              this.toggleText = this.expanded ? '...collapse' : '...read more'; // Update text reactively
+              clearTimeout(this.collapseTimeout);
+
+              if (this.expanded) {
+                // Measure full height
+                contentEl.style.maxHeight = 'none';
+                const fullHeight = contentEl.scrollHeight;
+                // Reset to the collapsed height explicitly to start the animation
+                this.contentHeight = '4.4em';
+                // Use nextTick to ensure the DOM updates with the collapsed height first
+                this.$nextTick(() => {
+                  this.contentHeight = fullHeight + 'px';
+                  // Auto-collapse after 20 seconds
+                  this.collapseTimeout = setTimeout(() => {
+                    this.expanded = false;
+                    this.contentHeight = '4.4em';
+                    this.toggleText = '...read more';
+                  }, 20000);
+                });
+              } else {
+                this.contentHeight = '4.4em';
+              }
+            }
+          }" x-init="init()"
+          class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
             <!-- Header / Toggle Button -->
             <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
               :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-        
+
               <div class="flex flex-col w-auto">
                 <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
                   <img src="./img/cloud_service_icon_2.svg" alt="Service Icon">
                 </div>
               </div>
-        
+
               <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Accounts Payable
-                  Management
+                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+                  Accounts Payable Management
                 </h3>
-        
+
                 <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
                 <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
                   class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
                   Efficient management of accounts payable functions, including invoice processing, supplier management, purchase order
                   matching, account reconciliation, data reporting and analysis.
                 </p>
-        
-                <!-- Conditionally render the toggle button only if content is truncated -->
+
+                <!-- Single toggle text with reactive binding -->
                 <template x-if="isTruncated">
                   <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
+                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+                    x-text="toggleText" x-transition></span>
                 </template>
               </div>
             </div>
@@ -1239,179 +1247,187 @@
           
         
           <div x-data="{
-                  expanded: false,
-                  collapseTimeout: null,
-                  contentHeight: '4.4em',
-                  isTruncated: false,
-                  init() {
-                    setTimeout(() => {
-                      const contentEl = this.$refs.content;
-                      
-                      // Temporarily remove max-height to measure full content height
-                      contentEl.style.maxHeight = 'none';
-                      const fullHeight = contentEl.scrollHeight;
-                      
-                      // Restore the original max-height
-                      contentEl.style.maxHeight = this.contentHeight;
+          expanded: false,
+          collapseTimeout: null,
+          contentHeight: '4.4em',
+          isTruncated: false,
+          toggleText: '...read more',
+          init() {
+            setTimeout(() => {
+              const contentEl = this.$refs.content;
+              
+              // Temporarily remove max-height to measure full content height
+              contentEl.style.maxHeight = 'none';
+              const fullHeight = contentEl.scrollHeight;
+              
+              // Restore the original max-height
+              contentEl.style.maxHeight = this.contentHeight;
 
-                      // Compute collapsed height in pixels (4.4em)
-                      const computedStyle = window.getComputedStyle(contentEl);
-                      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                      const collapsedHeightPx = 4.4 * fontSize;
+              // Compute collapsed height in pixels (4.4em)
+              const computedStyle = window.getComputedStyle(contentEl);
+              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+              const collapsedHeightPx = 4.4 * fontSize;
 
-                      // Add a small buffer to trigger Read More even when close
-                      const buffer = 0.5 * fontSize; 
+              // Add a small buffer to trigger Read More even when close
+              const buffer = 0.5 * fontSize; 
 
-                      // Check if text should be truncated
-                      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                    }, 0);
-                  },
+              // Check if text should be truncated
+              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+            }, 0);
+          },
 
-                  toggleExpand() {
-                    this.expanded = !this.expanded;
-                    clearTimeout(this.collapseTimeout);
-                    const contentEl = this.$refs.content;
-                    if (this.expanded) {
-                      // Remove inline max-height to measure the full content height.
-                      const originalMaxHeight = contentEl.style.maxHeight;
-                      contentEl.style.maxHeight = 'none';
-                      const fullHeight = contentEl.scrollHeight;
-                      contentEl.style.maxHeight = originalMaxHeight;
-                      this.contentHeight = fullHeight + 'px';
-                      // Optional auto-collapse after 20 seconds.
-                      this.collapseTimeout = setTimeout(() => {
-                        this.expanded = false;
-                        this.contentHeight = '4.4em';
-                      }, 20000);
-                    } else {
-                      this.contentHeight = '4.4em';
-                    }
-                  }
-                }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-          
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-          
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_1.svg" alt="Service Icon">
-                </div>
-              </div>
-          
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  General Ledger Maintenance and Bank Reconciliations
-                </h3>
-          
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Historical clean-up and review of the books including charts of accounts; all-inclusive bookkeeping services, account
-                  reconciliation, and financial reporting to maintain accurate and up-to-date general ledgers.
-                </p>
-          
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
+          toggleExpand() {
+            const contentEl = this.$refs.content;
+            this.expanded = !this.expanded;
+            this.toggleText = this.expanded ? '...collapse' : '...read more';
+            clearTimeout(this.collapseTimeout);
+
+            if (this.expanded) {
+              // Measure full height
+              contentEl.style.maxHeight = 'none';
+              const fullHeight = contentEl.scrollHeight;
+              // Reset to collapsed height to start animation
+              this.contentHeight = '4.4em';
+              // Use nextTick for smooth expansion
+              this.$nextTick(() => {
+                this.contentHeight = fullHeight + 'px';
+                // Auto-collapse after 20 seconds
+                this.collapseTimeout = setTimeout(() => {
+                  this.expanded = false;
+                  this.contentHeight = '4.4em';
+                  this.toggleText = '...read more';
+                }, 20000);
+              });
+            } else {
+              this.contentHeight = '4.4em';
+            }
+          }
+        }" x-init="init()"
+        class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+          <!-- Header / Toggle Button -->
+          <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+            <div class="flex flex-col w-auto">
+              <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+                <img src="./img/cloud_service_icon_1.svg" alt="Service Icon">
               </div>
             </div>
-          </div>
 
-          <div x-data="{
-                            expanded: false,
-                            collapseTimeout: null,
-                            contentHeight: '4.4em',
-                            isTruncated: false,
-                            init() {
-                              setTimeout(() => {
-                                const contentEl = this.$refs.content;
-                                
-                                // Temporarily remove max-height to measure full content height
-                                contentEl.style.maxHeight = 'none';
-                                const fullHeight = contentEl.scrollHeight;
-                                
-                                // Restore the original max-height
-                                contentEl.style.maxHeight = this.contentHeight;
+            <div class="flex flex-col text-left gap-1 text-darkBlue">
+              <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+                General Ledger Maintenance and Bank Reconciliations
+              </h3>
 
-                                // Compute collapsed height in pixels (4.4em)
-                                const computedStyle = window.getComputedStyle(contentEl);
-                                const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                const collapsedHeightPx = 4.4 * fontSize;
+              <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+              <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+                class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+                Historical clean-up and review of the books including charts of accounts; all-inclusive bookkeeping services, account
+                reconciliation, and financial reporting to maintain accurate and up-to-date general ledgers.
+              </p>
 
-                                // Add a small buffer to trigger Read More even when close
-                                const buffer = 0.5 * fontSize; 
-
-                                // Check if text should be truncated
-                                this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                              }, 0);
-                            },
-
-                            toggleExpand() {
-                              this.expanded = !this.expanded;
-                              clearTimeout(this.collapseTimeout);
-                              const contentEl = this.$refs.content;
-                              if (this.expanded) {
-                                // Remove inline max-height to measure the full content height.
-                                const originalMaxHeight = contentEl.style.maxHeight;
-                                contentEl.style.maxHeight = 'none';
-                                const fullHeight = contentEl.scrollHeight;
-                                contentEl.style.maxHeight = originalMaxHeight;
-                                this.contentHeight = fullHeight + 'px';
-                                // Optional auto-collapse after 20 seconds.
-                                this.collapseTimeout = setTimeout(() => {
-                                  this.expanded = false;
-                                  this.contentHeight = '4.4em';
-                                }, 20000);
-                              } else {
-                                this.contentHeight = '4.4em';
-                              }
-                            }
-                          }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-          
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-          
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_5.svg" alt="Service Icon">
-                </div>
-              </div>
-          
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Payroll Processing and Compliances
-                </h3>
-          
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Accurate and compliant payroll processing, including tax filings and employee benefit management, in compliance
-                  with applicable laws, ensuring proper classification of employees, adherence to overtime rules, and timely
-                  payment of wages. Additional management support and compliance insights for business operations.
-                </p>
-          
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
+              <!-- Single toggle text with reactive binding -->
+              <template x-if="isTruncated">
+                <span @click.stop="toggleExpand"
+                  class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+                  x-text="toggleText" x-transition></span>
+              </template>
             </div>
           </div>
+        </div>
+
+        <div x-data="{
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      
+      // Temporarily remove max-height to measure full content height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      
+      // Restore the original max-height
+      contentEl.style.maxHeight = this.contentHeight;
+
+      // Compute collapsed height in pixels (4.4em)
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+      const collapsedHeightPx = 4.4 * fontSize;
+
+      // Add a small buffer to trigger Read More even when close
+      const buffer = 0.5 * fontSize; 
+
+      // Check if text should be truncated
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+
+    if (this.expanded) {
+      // Measure full height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      // Reset to collapsed height to start animation
+      this.contentHeight = '4.4em';
+      // Use nextTick for smooth expansion
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        // Auto-collapse after 20 seconds
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_5.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Payroll Processing and Compliances
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        Accurate and compliant payroll processing, including tax filings and employee benefit management, in compliance
+        with applicable laws, ensuring proper classification of employees, adherence to overtime rules, and timely
+        payment of wages. Additional management support and compliance insights for business operations.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
 
 
           
@@ -1424,171 +1440,187 @@
         
         
           <div x-data="{
-                          expanded: false,
-                          collapseTimeout: null,
-                          contentHeight: '4.4em',
-                          isTruncated: false,
-                          init() {
-                            setTimeout(() => {
-                              const contentEl = this.$refs.content;
-                              
-                              // Temporarily remove max-height to measure full content height
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              
-                              // Restore the original max-height
-                              contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      
+      // Temporarily remove max-height to measure full content height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      
+      // Restore the original max-height
+      contentEl.style.maxHeight = this.contentHeight;
 
-                              // Compute collapsed height in pixels (4.4em)
-                              const computedStyle = window.getComputedStyle(contentEl);
-                              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                              const collapsedHeightPx = 4.4 * fontSize;
+      // Compute collapsed height in pixels (4.4em)
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+      const collapsedHeightPx = 4.4 * fontSize;
 
-                              // Add a small buffer to trigger Read More even when close
-                              const buffer = 0.5 * fontSize; 
+      // Add a small buffer to trigger Read More even when close
+      const buffer = 0.5 * fontSize; 
 
-                              // Check if text should be truncated
-                              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                            }, 0);
-                          },
+      // Check if text should be truncated
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
 
-                          toggleExpand() {
-                            this.expanded = !this.expanded;
-                            clearTimeout(this.collapseTimeout);
-                            const contentEl = this.$refs.content;
-                            if (this.expanded) {
-                              // Remove inline max-height to measure the full content height.
-                              const originalMaxHeight = contentEl.style.maxHeight;
-                              contentEl.style.maxHeight = 'none';
-                              const fullHeight = contentEl.scrollHeight;
-                              contentEl.style.maxHeight = originalMaxHeight;
-                              this.contentHeight = fullHeight + 'px';
-                              // Optional auto-collapse after 20 seconds.
-                              this.collapseTimeout = setTimeout(() => {
-                                this.expanded = false;
-                                this.contentHeight = '4.4em';
-                              }, 20000);
-                            } else {
-                              this.contentHeight = '4.4em';
-                            }
-                          }
-                        }" x-init="init()"
-            
-                        class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-        
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-        
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_4.svg" alt="Service Icon">
-                </div>
-              </div>
-        
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Inventory Tracking and
-                  Fixed Asset Accounting
-                </h3>
-        
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Thorough inventory management and fixed asset record-keeping to ensure proper reporting and controls.
-                </p>
-        
-                
-              </div>
-            </div>
-          </div>
-        
-          <div x-data="{
-                                    expanded: false,
-                                    collapseTimeout: null,
-                                    contentHeight: '4.4em',
-                                    isTruncated: false,
-                                    init() {
-                                      // Delay measurement until after render.
-                                      setTimeout(() => {
-                                        const contentEl = this.$refs.content;
-                                        // Temporarily remove the inline max-height so we can measure the full height.
-                                        const originalMaxHeight = contentEl.style.maxHeight;
-                                        contentEl.style.maxHeight = 'none';
-                                        const fullHeight = contentEl.scrollHeight;
-                                        // Restore the original max-height.
-                                        contentEl.style.maxHeight = originalMaxHeight;
-                                        
-                                        // Calculate the collapsed height in pixels (4.4em).
-                                        const computedStyle = window.getComputedStyle(contentEl);
-                                        const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                        const collapsedHeightPx = 6 * fontSize;
-                                        
-                                        // If full height exceeds collapsed height, mark as truncated.
-                                        this.isTruncated = fullHeight > collapsedHeightPx;
-                                      }, 0);
-                                    },
-                                    toggleExpand() {
-                                      this.expanded = !this.expanded;
-                                      clearTimeout(this.collapseTimeout);
-                                      const contentEl = this.$refs.content;
-                                      if (this.expanded) {
-                                        // Remove inline max-height to measure the full content height.
-                                        const originalMaxHeight = contentEl.style.maxHeight;
-                                        contentEl.style.maxHeight = 'none';
-                                        const fullHeight = contentEl.scrollHeight;
-                                        contentEl.style.maxHeight = originalMaxHeight;
-                                        this.contentHeight = fullHeight + 'px';
-                                        // Optional auto-collapse after 20 seconds.
-                                        this.collapseTimeout = setTimeout(() => {
-                                          this.expanded = false;
-                                          this.contentHeight = '4.4em';
-                                        }, 20000);
-                                      } else {
-                                        this.contentHeight = '4.4em';
-                                      }
-                                    }
-                                  }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-        
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-        
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_7.svg" alt="Service Icon">
-                </div>
-              </div>
-        
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Year-End Closing
-                </h3>
-        
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Matching records, identifying discrepancies, and reconciling records for cleanup and accounting closing for each
-                  fiscal
-                  year with utmost accuracy; Checking accuracy of transactions, reconciling the control accounts, careful matching
-                  of financial statements, scrutinizing the general ledger, computation of accruals and advanced payments,
-                  calculation of amortization and
-                  depreciation, AR/AP reconciliation, financial statement preparation, and concluding other aspects of closing the
-                  year.
-                </p>
-        
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+
+    if (this.expanded) {
+      // Measure full height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      // Reset to collapsed height to start animation
+      this.contentHeight = '4.4em';
+      // Use nextTick for smooth expansion
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        // Auto-collapse after 20 seconds
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_4.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Inventory Tracking and Fixed Asset Accounting
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        Thorough inventory management and fixed asset record-keeping to ensure proper reporting and controls.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+
+
+<div x-data="{
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      
+      // Temporarily remove max-height to measure full content height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      
+      // Restore the original max-height
+      contentEl.style.maxHeight = this.contentHeight;
+
+      // Compute collapsed height in pixels (4.4em)
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+      const collapsedHeightPx = 4.4 * fontSize;
+
+      // Add a small buffer to trigger Read More even when close
+      const buffer = 0.5 * fontSize; 
+
+      // Check if text should be truncated
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
+
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+
+    if (this.expanded) {
+      // Measure full height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      // Reset to collapsed height to start animation
+      this.contentHeight = '4.4em';
+      // Use nextTick for smooth expansion
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        // Auto-collapse after 20 seconds
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_3.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Accounts Receivable Management
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        Extensive services to
+        manage account receivables functions by billing and invoicing, managing credit policies and
+        processes, collection services, account reconciliation, analysis and reporting.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
         
         
         
@@ -1604,96 +1636,98 @@
         
 
           <div x-data="{
-                                              expanded: false,
-                                            collapseTimeout: null,
-                                            contentHeight: '4.4em',
-                                            isTruncated: false,
-                                            init() {
-                                              setTimeout(() => {
-                                                const contentEl = this.$refs.content;
-                                                
-                                                // Temporarily remove max-height to measure full content height
-                                                contentEl.style.maxHeight = 'none';
-                                                const fullHeight = contentEl.scrollHeight;
-                                                
-                                                // Restore the original max-height
-                                                contentEl.style.maxHeight = this.contentHeight;
+  expanded: false,
+  collapseTimeout: null,
+  contentHeight: '4.4em',
+  isTruncated: false,
+  toggleText: '...read more',
+  init() {
+    setTimeout(() => {
+      const contentEl = this.$refs.content;
+      
+      // Temporarily remove max-height to measure full content height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      
+      // Restore the original max-height
+      contentEl.style.maxHeight = this.contentHeight;
 
-                                                // Compute collapsed height in pixels (4.4em)
-                                                const computedStyle = window.getComputedStyle(contentEl);
-                                                const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                                                const collapsedHeightPx = 4.4 * fontSize;
+      // Compute collapsed height in pixels (4.4em)
+      const computedStyle = window.getComputedStyle(contentEl);
+      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
+      const collapsedHeightPx = 4.4 * fontSize;
 
-                                                // Add a small buffer to trigger Read More even when close
-                                                const buffer = 0.5 * fontSize; 
+      // Add a small buffer to trigger Read More even when close
+      const buffer = 0.5 * fontSize; 
 
-                                                // Check if text should be truncated
-                                                this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-                                              }, 0);
-                                            },
+      // Check if text should be truncated
+      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
+    }, 0);
+  },
 
-                                            toggleExpand() {
-                                              this.expanded = !this.expanded;
-                                              clearTimeout(this.collapseTimeout);
-                                              const contentEl = this.$refs.content;
-                                              if (this.expanded) {
-                                                // Remove inline max-height to measure the full content height.
-                                                const originalMaxHeight = contentEl.style.maxHeight;
-                                                contentEl.style.maxHeight = 'none';
-                                                const fullHeight = contentEl.scrollHeight;
-                                                contentEl.style.maxHeight = originalMaxHeight;
-                                                this.contentHeight = fullHeight + 'px';
-                                                // Optional auto-collapse after 20 seconds.
-                                                this.collapseTimeout = setTimeout(() => {
-                                                  this.expanded = false;
-                                                  this.contentHeight = '4.4em';
-                                                }, 20000);
-                                              } else {
-                                                this.contentHeight = '4.4em';
-                                              }
-                                            }
-                                            }" x-init="init()"
-            class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-          
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-          
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_6.svg" alt="Service Icon">
-                </div>
-              </div>
-          
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug  font-bold uppercase">
-                  Management Reporting and Analytics
-                </h3>
-          
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Financial Reporting in accordance with applicable standards; Cash flow management, and forecasting to gauge the
-                  business
-                  performance; Comparison of results with forecasts and variance analysis to determine trends and regular
-                  reporting
-                  the same to the management. <br> <br> Timely preparation of management accounts, budgets, and financial analysis
-                  to support
-                  informed business decision-making. Assistance in Standard Operating Procedures preparation for all business
-                  activities.
-                </p>
-          
-                <!-- Conditionally render the toggle button only if content is truncated -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5">
-                    <span x-show="!expanded" x-transition>...read more</span>
-                    <span x-show="expanded" x-transition>...collapse</span>
-                  </span>
-                </template>
-              </div>
-            </div>
-          </div>
+  toggleExpand() {
+    const contentEl = this.$refs.content;
+    this.expanded = !this.expanded;
+    this.toggleText = this.expanded ? '...collapse' : '...read more';
+    clearTimeout(this.collapseTimeout);
+
+    if (this.expanded) {
+      // Measure full height
+      contentEl.style.maxHeight = 'none';
+      const fullHeight = contentEl.scrollHeight;
+      // Reset to collapsed height to start animation
+      this.contentHeight = '4.4em';
+      // Use nextTick for smooth expansion
+      this.$nextTick(() => {
+        this.contentHeight = fullHeight + 'px';
+        // Auto-collapse after 20 seconds
+        this.collapseTimeout = setTimeout(() => {
+          this.expanded = false;
+          this.contentHeight = '4.4em';
+          this.toggleText = '...read more';
+        }, 20000);
+      });
+    } else {
+      this.contentHeight = '4.4em';
+    }
+  }
+}" x-init="init()"
+class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_6.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Management Reporting and Analytics
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+        Financial Reporting in accordance with applicable standards; Cash flow management, and forecasting to gauge the
+        business performance; Comparison of results with forecasts and variance analysis to determine trends and regular
+        reporting the same to the management. <br> <br> Timely preparation of management accounts, budgets, and financial analysis
+        to support informed business decision-making. Assistance in Standard Operating Procedures preparation for all business
+        activities.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
 
 
           
@@ -1833,59 +1867,51 @@
           <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
             <!-- Accordion component -->
             <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-              <template x-for="(faq, index) in [
-                {
-                  question: 'What qualifications do your accountants and bookkeepers have?',
-                  answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.',
-                  link: './about.html',
-                  linkText: 'Meet our Team for more info'
-                },
-                {
-                  question: 'How can cloud accounting benefit my business compared to traditional methods?',
-                  answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.'
-                },
-                {
-                  question: 'Do I need to prepare my books before handing them over to VJC?',
-                  answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.',
-                  link: './contact.html',
-                  linkText: 'Discuss with our Executives for more info'
-                },
-                {
-                  question: 'How does cloud accounting improve financial decision-making for my business?',
-                  answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.'
-                },
-                {
-                  question: 'Is my financial data secure?',
-                  answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.',
-                  link: './about.html',
-                  linkText: 'You can read more here'
-                }
-              ]" :key="index">
-                <div class="py-4">
-                  <h2>
-                    <button type="button"
-                      class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-                      @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index.toString()"
-                      :aria-controls="'audit-faq-' + index">
-                      <span x-text="faq.question"></span>
-                      <img
-                        class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-                        src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
-                        aria-hidden="true" />
-                    </button>
-                  </h2>
-                  <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-                    :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                    <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
-                    <template x-if="faq.link">
-                      <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-                        <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200"
-                          x-text="faq.linkText"></a>
-                      </p>
-                    </template>
-                  </div>
-                </div>
-              </template>
+              <template x-data="{
+  faqs: [
+    { question: 'What qualifications do your accountants and bookkeepers have?', answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.', link: './about.html', linkText: 'Meet our Team for more info', action: 'meet_team' },
+    { question: 'How can cloud accounting benefit my business compared to traditional methods?', answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.' },
+    { question: 'Do I need to prepare my books before handing them over to VJC?', answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.', link: './contact.html', linkText: 'Discuss with our Executives for more info', action: 'discuss_executives', styleAsButton: true },
+    { question: 'How does cloud accounting improve financial decision-making for my business?', answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.' },
+    { question: 'Is my financial data secure?', answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.', link: './about.html', linkText: 'You can read more here', action: 'read_data_security' }
+  ],
+  openFaq: null,
+  page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
+}" x-for="(faq, index) in faqs" :key="index">
+  <div class="py-4">
+    <h2>
+      <button type="button"
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
+        @click="openFaq = (openFaq === index ? null : index); window.dataLayer.push({ event: 'dom_updated' })"
+        :aria-expanded="openFaq === index.toString()"
+        :aria-controls="'audit-faq-' + index">
+        <span x-text="faq.question"></span>
+        <img
+          class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+          src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
+          aria-hidden="true" />
+      </button>
+    </h2>
+    <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+      :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
+      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+      <template x-if="faq.link">
+        <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
+          <a
+            :href="faq.link"
+            :id="'audit-faq-link-' + index + '-' + page"
+            :data-track="faq.styleAsButton ? 'button' : 'link'"
+            :data-action="faq.action"
+            :aria-label="faq.linkText + ' for ' + faq.question"
+            :class="faq.styleAsButton ? 'whitespace-nowrap font-semibold text-[2.9vw] sm:text-[1.7svh] portrait:sm:text-[1.4svw] focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white text-darkBlue py-[2vw] px-[3vw] sm:px-[2svh] sm:py-[1svh] portrait:sm:px-[2svw] portrait:sm:py-[1svw] transition-all duration-100 transform bg-white rounded-full select-none delayed-link' : 'text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link'"
+          >
+            <span x-text="faq.linkText"></span>
+          </a>
+        </p>
+      </template>
+    </div>
+  </div>
+</template>
             </div>
           </div>
         </div>
@@ -1923,7 +1949,7 @@
               </div>
     
               <div class="flex justify-center mb-12 md:mt-6 mt-7 md:mb-7">
-                <a href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
+                <a id="schedule-button-footer-cloud-accounting" data-track="button" data-action="schedule" href="https://outlook.office365.com/book/ConnectWithUs@vjcindia.com/"
                   aria-label="Link to Schedule a Meeting"
                   class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] active:bg-darkGreen active:text-white delayed-link sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-300 transform bg-white rounded-full select-none">
                   Schedule Meeting
@@ -1946,32 +1972,87 @@
                 class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
               </div>
     
-              <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7"
-                role="presentation">
-                <a class="delayed-link" href="tel:+919630054303" title="Call us" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/phone-circle-icon.svg" alt="Phone Icon" role="img" aria-label="Phone Icon" />
-                </a>
-    
-                <a class="delayed-link" href="https://in.linkedin.com/company/vjcindia" title="Visit our LinkedIn profile" target="_blank"
-                  rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/linkedin-circle-icon.svg" alt="LinkedIn Logo" role="img" aria-label="LinkedIn Logo" />
-                </a>
-    
-                <a class="delayed-link" href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
-                  title="Contact us on WhatsApp" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/whatsapp-circle-icon.svg" alt="WhatsApp Logo" role="img" aria-label="WhatsApp Logo" />
-                </a>
-    
-                <a class="delayed-link" href="mailto:admin@vjcindia.com" title="Send us a mail" target="_blank" rel="noopener">
-                  <img class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                    src="./img/mail-circle-icon.svg" alt="Email Logo" role="img" aria-label="Email Logo" />
-                </a>
-    
-    
-              </div>
+                        <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7" role="presentation">
+                            <a
+                                class="delayed-link"
+                                href="tel:+919630054303"
+                                id="contact-call_us-cloud-accounting-and-bookkeeping"
+                                data-track="link"
+                                data-action="call_us"
+                                title="Call us"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Call us at +919630054303"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/phone-circle-icon.svg"
+                                alt="Phone Icon"
+                                role="img"
+                                aria-label="Call us at +919630054303"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://in.linkedin.com/company/vjcindia"
+                                id="contact-visit_linkedin-cloud-accounting-and-bookkeeping"
+                                data-track="link"
+                                data-action="visit_linkedin"
+                                title="Visit our LinkedIn profile"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Visit our LinkedIn profile"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/linkedin-circle-icon.svg"
+                                alt="LinkedIn Logo"
+                                role="img"
+                                aria-label="Visit our LinkedIn profile"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="https://wa.me/919630054303?text=I%20want%20to%20schedule%20a%20meeting"
+                                id="contact-contact_whatsapp-cloud-accounting-and-bookkeeping"
+                                data-track="link"
+                                data-action="contact_whatsapp"
+                                title="Contact us on WhatsApp"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/whatsapp-circle-icon.svg"
+                                alt="WhatsApp Logo"
+                                role="img"
+                                aria-label="Contact us on WhatsApp to schedule a meeting"
+                                />
+                            </a>
+
+                            <a
+                                class="delayed-link"
+                                href="mailto:admin@vjcindia.com"
+                                id="contact-email_us-cloud-accounting-and-bookkeeping"
+                                data-track="link"
+                                data-action="email_us"
+                                title="Send us a mail"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                            >
+                                <img
+                                class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
+                                src="./img/mail-circle-icon.svg"
+                                alt="Email Logo"
+                                role="img"
+                                aria-label="Send us an email at admin@vjcindia.com"
+                                />
+                            </a>
+                            </div>
             </div>
           </div>
         </div>
@@ -2114,7 +2195,7 @@
           
       </div>
   </section>
-  
+
 </body>
 
 </html>
