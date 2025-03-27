@@ -1,57 +1,51 @@
 // Register Alpine.js components before Alpine initializes
 document.addEventListener('alpine:init', () => {
-    Alpine.data('collapsibleCard', (initialHeight = '4.4em', autoCollapseTime = 20000) => ({
-        expanded: false,
-        collapseTimeout: null,
-        contentHeight: initialHeight,
-        isTruncated: false,
-        toggleText: '...read more',
-        init() {
-            this.$nextTick(() => {
-                const contentEl = this.$refs.content;
-                if (!contentEl) return; // Guard clause for safety
-                
-                // Temporarily remove max-height to measure full height
-                contentEl.style.maxHeight = 'none';
-                const fullHeight = contentEl.scrollHeight;
-                
-                // Restore initial height
-                contentEl.style.maxHeight = this.contentHeight;
-                
-                // Calculate if content is truncated
-                const computedStyle = window.getComputedStyle(contentEl);
-                const fontSize = parseFloat(computedStyle.fontSize);
-                const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
-                const buffer = 0.5 * fontSize;
-                this.isTruncated = fullHeight > (collapsedHeightPx + buffer);
-            });
-        },
-        toggleExpand() {
-            const contentEl = this.$refs.content;
-            this.expanded = !this.expanded;
-            this.toggleText = this.expanded ? '...collapse' : '...read more';
-            clearTimeout(this.collapseTimeout);
-
-            if (this.expanded) {
-                contentEl.style.maxHeight = 'none';
-                const fullHeight = contentEl.scrollHeight;
-                contentEl.style.maxHeight = this.contentHeight; // Reset to trigger transition
-                
-                this.$nextTick(() => {
-                    contentEl.style.maxHeight = `${fullHeight}px`;
-                    if (autoCollapseTime > 0) {
-                        this.collapseTimeout = setTimeout(() => {
-                            this.expanded = false;
-                            this.toggleText = '...read more';
-                            contentEl.style.maxHeight = this.contentHeight;
-                        }, autoCollapseTime);
-                    }
-                });
-            } else {
-                contentEl.style.maxHeight = this.contentHeight;
-            }
-        }
-    }));
+  Alpine.data('collapsibleCard', (initialHeight = '4.4em', autoCollapseTime = 20000) => ({
+    expanded: false,
+    collapseTimeout: null,
+    contentHeight: initialHeight,
+    isTruncated: false,
+    toggleText: '...read more',
+    init() {
+      this.$nextTick(() => {
+        const contentEl = this.$refs.content;
+        if (!contentEl) return;
+        contentEl.style.maxHeight = 'none';
+        const fullHeight = contentEl.scrollHeight;
+        contentEl.style.maxHeight = this.contentHeight;
+        const computedStyle = window.getComputedStyle(contentEl);
+        const fontSize = parseFloat(computedStyle.fontSize);
+        const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
+        // Reduce buffer or remove it to catch truncation more aggressively
+        this.isTruncated = fullHeight > collapsedHeightPx; // No buffer for stricter check
+        // Debug log to verify values
+        console.log('Full Height:', fullHeight, 'Collapsed Height:', collapsedHeightPx, 'Truncated:', this.isTruncated);
+      });
+    },
+    toggleExpand() {
+      const contentEl = this.$refs.content;
+      this.expanded = !this.expanded;
+      this.toggleText = this.expanded ? '...collapse' : '...read more';
+      clearTimeout(this.collapseTimeout);
+      if (this.expanded) {
+        contentEl.style.maxHeight = 'none';
+        const fullHeight = contentEl.scrollHeight;
+        contentEl.style.maxHeight = this.contentHeight;
+        this.$nextTick(() => {
+          contentEl.style.maxHeight = `${fullHeight}px`;
+          if (autoCollapseTime > 0) {
+            this.collapseTimeout = setTimeout(() => {
+              this.expanded = false;
+              this.toggleText = '...read more';
+              contentEl.style.maxHeight = this.contentHeight;
+            }, autoCollapseTime);
+          }
+        });
+      } else {
+        contentEl.style.maxHeight = this.contentHeight;
+      }
+    }
+  }));
 });
 
 // Your existing vanilla JS code

@@ -1092,96 +1092,41 @@
             </div>
           </div>
         
-          <div x-data="{
-            expanded: false,
-            collapseTimeout: null,
-            contentHeight: '4.4em',
-            isTruncated: false,
-            toggleText: '...read more', // New property for reactive toggle text
-            init() {
-              setTimeout(() => {
-                const contentEl = this.$refs.content;
-                
-                // Temporarily remove max-height to measure full content height
-                contentEl.style.maxHeight = 'none';
-                const fullHeight = contentEl.scrollHeight;
-                
-                // Restore the original max-height
-                contentEl.style.maxHeight = this.contentHeight;
+          <div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-                // Compute collapsed height in pixels (4.4em)
-                const computedStyle = window.getComputedStyle(contentEl);
-                const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-                const collapsedHeightPx = 4.4 * fontSize;
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
-                // Add a small buffer to trigger Read More even when close
-                const buffer = 0.5 * fontSize; 
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_2.svg" alt="Service Icon">
+      </div>
+    </div>
 
-                // Check if text should be truncated
-                this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-              }, 0);
-            },
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        Accounts Payable Management
+      </h3>
 
-            toggleExpand() {
-              const contentEl = this.$refs.content;
-              this.expanded = !this.expanded;
-              this.toggleText = this.expanded ? '...collapse' : '...read more'; // Update text reactively
-              clearTimeout(this.collapseTimeout);
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Efficient management of accounts payable functions, including invoice processing, supplier management, purchase order matching, account reconciliation, data reporting and analysis.
+      </p>
 
-              if (this.expanded) {
-                // Measure full height
-                contentEl.style.maxHeight = 'none';
-                const fullHeight = contentEl.scrollHeight;
-                // Reset to the collapsed height explicitly to start the animation
-                this.contentHeight = '4.4em';
-                // Use nextTick to ensure the DOM updates with the collapsed height first
-                this.$nextTick(() => {
-                  this.contentHeight = fullHeight + 'px';
-                  // Auto-collapse after 20 seconds
-                  this.collapseTimeout = setTimeout(() => {
-                    this.expanded = false;
-                    this.contentHeight = '4.4em';
-                    this.toggleText = '...read more';
-                  }, 20000);
-                });
-              } else {
-                this.contentHeight = '4.4em';
-              }
-            }
-          }" x-init="init()"
-          class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
-            <!-- Header / Toggle Button -->
-            <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-              :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-
-              <div class="flex flex-col w-auto">
-                <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                  <img src="./img/cloud_service_icon_2.svg" alt="Service Icon">
-                </div>
-              </div>
-
-              <div class="flex flex-col text-left gap-1 text-darkBlue">
-                <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                  Accounts Payable Management
-                </h3>
-
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-                <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                  class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                  Efficient management of accounts payable functions, including invoice processing, supplier management, purchase order
-                  matching, account reconciliation, data reporting and analysis.
-                </p>
-
-                <!-- Single toggle text with reactive binding -->
-                <template x-if="isTruncated">
-                  <span @click.stop="toggleExpand"
-                    class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                    x-text="toggleText" x-transition></span>
-                </template>
-              </div>
-            </div>
-          </div>
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
         
         
         
@@ -1192,159 +1137,48 @@
         
           
         
-          <div x-data="{
-          expanded: false,
-          collapseTimeout: null,
-          contentHeight: '4.4em',
-          isTruncated: false,
-          toggleText: '...read more',
-          init() {
-            setTimeout(() => {
-              const contentEl = this.$refs.content;
-              
-              // Temporarily remove max-height to measure full content height
-              contentEl.style.maxHeight = 'none';
-              const fullHeight = contentEl.scrollHeight;
-              
-              // Restore the original max-height
-              contentEl.style.maxHeight = this.contentHeight;
-
-              // Compute collapsed height in pixels (4.4em)
-              const computedStyle = window.getComputedStyle(contentEl);
-              const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-              const collapsedHeightPx = 4.4 * fontSize;
-
-              // Add a small buffer to trigger Read More even when close
-              const buffer = 0.5 * fontSize; 
-
-              // Check if text should be truncated
-              this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-            }, 0);
-          },
-
-          toggleExpand() {
-            const contentEl = this.$refs.content;
-            this.expanded = !this.expanded;
-            this.toggleText = this.expanded ? '...collapse' : '...read more';
-            clearTimeout(this.collapseTimeout);
-
-            if (this.expanded) {
-              // Measure full height
-              contentEl.style.maxHeight = 'none';
-              const fullHeight = contentEl.scrollHeight;
-              // Reset to collapsed height to start animation
-              this.contentHeight = '4.4em';
-              // Use nextTick for smooth expansion
-              this.$nextTick(() => {
-                this.contentHeight = fullHeight + 'px';
-                // Auto-collapse after 20 seconds
-                this.collapseTimeout = setTimeout(() => {
-                  this.expanded = false;
-                  this.contentHeight = '4.4em';
-                  this.toggleText = '...read more';
-                }, 20000);
-              });
-            } else {
-              this.contentHeight = '4.4em';
-            }
-          }
-        }" x-init="init()"
-        class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
-
-          <!-- Header / Toggle Button -->
-          <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-            :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
-
-            <div class="flex flex-col w-auto">
-              <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-                <img src="./img/cloud_service_icon_1.svg" alt="Service Icon">
-              </div>
-            </div>
-
-            <div class="flex flex-col text-left gap-1 text-darkBlue">
-              <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                General Ledger Maintenance and Bank Reconciliations
-              </h3>
-
-              <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-              <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-                class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-                Historical clean-up and review of the books including charts of accounts; all-inclusive bookkeeping services, account
-                reconciliation, and financial reporting to maintain accurate and up-to-date general ledgers.
-              </p>
-
-              <!-- Single toggle text with reactive binding -->
-              <template x-if="isTruncated">
-                <span @click.stop="toggleExpand"
-                  class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
-                  x-text="toggleText" x-transition></span>
-              </template>
-            </div>
-          </div>
-        </div>
-
-        <div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '4.4em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      
-      // Temporarily remove max-height to measure full content height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      
-      // Restore the original max-height
-      contentEl.style.maxHeight = this.contentHeight;
-
-      // Compute collapsed height in pixels (4.4em)
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-      const collapsedHeightPx = 4.4 * fontSize;
-
-      // Add a small buffer to trigger Read More even when close
-      const buffer = 0.5 * fontSize; 
-
-      // Check if text should be truncated
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-
-    if (this.expanded) {
-      // Measure full height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      // Reset to collapsed height to start animation
-      this.contentHeight = '4.4em';
-      // Use nextTick for smooth expansion
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        // Auto-collapse after 20 seconds
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '4.4em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '4.4em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
   <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+
+    <div class="flex flex-col w-auto">
+      <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
+        <img src="./img/cloud_service_icon_1.svg" alt="Service Icon">
+      </div>
+    </div>
+
+    <div class="flex flex-col text-left gap-1 text-darkBlue">
+      <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
+        General Ledger Maintenance and Bank Reconciliations
+      </h3>
+
+      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Historical clean-up and review of the books including charts of accounts; all-inclusive bookkeeping services, account reconciliation, and financial reporting to maintain accurate and up-to-date general ledgers.
+      </p>
+
+      <!-- Single toggle text with reactive binding -->
+      <template x-if="isTruncated">
+        <span @click.stop="toggleExpand"
+          class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
+          x-text="toggleText" x-transition></span>
+      </template>
+    </div>
+  </div>
+</div>
+
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+
+  <!-- Header / Toggle Button -->
+  <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
@@ -1358,11 +1192,11 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
       </h3>
 
       <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-        Accurate and compliant payroll processing, including tax filings and employee benefit management, in compliance
-        with applicable laws, ensuring proper classification of employees, adherence to overtime rules, and timely
-        payment of wages. Additional management support and compliance insights for business operations.
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Accurate and compliant payroll processing, including tax filings and employee benefit management, in compliance with applicable laws, ensuring proper classification of employees, adherence to overtime rules, and timely payment of wages. Additional management support and compliance insights for business operations.
       </p>
 
       <!-- Single toggle text with reactive binding -->
@@ -1385,68 +1219,12 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
         
         
         
-          <div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '4.4em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      
-      // Temporarily remove max-height to measure full content height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      
-      // Restore the original max-height
-      contentEl.style.maxHeight = this.contentHeight;
-
-      // Compute collapsed height in pixels (4.4em)
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-      const collapsedHeightPx = 4.4 * fontSize;
-
-      // Add a small buffer to trigger Read More even when close
-      const buffer = 0.5 * fontSize; 
-
-      // Check if text should be truncated
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-
-    if (this.expanded) {
-      // Measure full height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      // Reset to collapsed height to start animation
-      this.contentHeight = '4.4em';
-      // Use nextTick for smooth expansion
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        // Auto-collapse after 20 seconds
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '4.4em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '4.4em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
   <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
@@ -1460,8 +1238,10 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
       </h3>
 
       <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
         Thorough inventory management and fixed asset record-keeping to ensure proper reporting and controls.
       </p>
 
@@ -1476,86 +1256,30 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
 </div>
 
 
-<div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '4.4em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      
-      // Temporarily remove max-height to measure full content height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      
-      // Restore the original max-height
-      contentEl.style.maxHeight = this.contentHeight;
-
-      // Compute collapsed height in pixels (4.4em)
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-      const collapsedHeightPx = 4.4 * fontSize;
-
-      // Add a small buffer to trigger Read More even when close
-      const buffer = 0.5 * fontSize; 
-
-      // Check if text should be truncated
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-
-    if (this.expanded) {
-      // Measure full height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      // Reset to collapsed height to start animation
-      this.contentHeight = '4.4em';
-      // Use nextTick for smooth expansion
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        // Auto-collapse after 20 seconds
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '4.4em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '4.4em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
   <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
-        <img src="./img/cloud_service_icon_3.svg" alt="Service Icon">
+        <img src="./img/cloud_service_icon_7.svg" alt="Service Icon">
       </div>
     </div>
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Accounts Receivable Management
+        Year-End Closing
       </h3>
 
       <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-        Extensive services to
-        manage account receivables functions by billing and invoicing, managing credit policies and
-        processes, collection services, account reconciliation, analysis and reporting.
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Matching records, identifying discrepancies, and reconciling records for cleanup and accounting closing for each fiscal year with utmost accuracy; Checking accuracy of transactions, reconciling the control accounts, careful matching of financial statements, scrutinizing the general ledger, computation of accruals and advanced payments, calculation of amortization and depreciation, AR/AP reconciliation, financial statement preparation, and concluding other aspects of closing the year.
       </p>
 
       <!-- Single toggle text with reactive binding -->
@@ -1581,68 +1305,12 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
 
         
 
-          <div x-data="{
-  expanded: false,
-  collapseTimeout: null,
-  contentHeight: '4.4em',
-  isTruncated: false,
-  toggleText: '...read more',
-  init() {
-    setTimeout(() => {
-      const contentEl = this.$refs.content;
-      
-      // Temporarily remove max-height to measure full content height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      
-      // Restore the original max-height
-      contentEl.style.maxHeight = this.contentHeight;
-
-      // Compute collapsed height in pixels (4.4em)
-      const computedStyle = window.getComputedStyle(contentEl);
-      const fontSize = parseFloat(computedStyle.fontSize); // e.g., 16px
-      const collapsedHeightPx = 4.4 * fontSize;
-
-      // Add a small buffer to trigger Read More even when close
-      const buffer = 0.5 * fontSize; 
-
-      // Check if text should be truncated
-      this.isTruncated = fullHeight > (collapsedHeightPx - buffer);
-    }, 0);
-  },
-
-  toggleExpand() {
-    const contentEl = this.$refs.content;
-    this.expanded = !this.expanded;
-    this.toggleText = this.expanded ? '...collapse' : '...read more';
-    clearTimeout(this.collapseTimeout);
-
-    if (this.expanded) {
-      // Measure full height
-      contentEl.style.maxHeight = 'none';
-      const fullHeight = contentEl.scrollHeight;
-      // Reset to collapsed height to start animation
-      this.contentHeight = '4.4em';
-      // Use nextTick for smooth expansion
-      this.$nextTick(() => {
-        this.contentHeight = fullHeight + 'px';
-        // Auto-collapse after 20 seconds
-        this.collapseTimeout = setTimeout(() => {
-          this.expanded = false;
-          this.contentHeight = '4.4em';
-          this.toggleText = '...read more';
-        }, 20000);
-      });
-    } else {
-      this.contentHeight = '4.4em';
-    }
-  }
-}" x-init="init()"
-class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
+<div x-data="collapsibleCard('4.4em', 20000)" x-init="init()"
+  class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
   <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
-    :aria-expanded="expanded.toString()" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
+    :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
     <div class="flex flex-col w-auto">
       <div class="size-[20svw] sm:size-[13svh] portrait:md:size-[10svh] m-auto">
@@ -1656,13 +1324,11 @@ class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:
       </h3>
 
       <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
-      <p x-ref="content" :style="`max-height: ${contentHeight}; opacity: ${expanded ? '1' : '0.8'}`"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden">
-        Financial Reporting in accordance with applicable standards; Cash flow management, and forecasting to gauge the
-        business performance; Comparison of results with forecasts and variance analysis to determine trends and regular
-        reporting the same to the management. <br> <br> Timely preparation of management accounts, budgets, and financial analysis
-        to support informed business decision-making. Assistance in Standard Operating Procedures preparation for all business
-        activities.
+      <p x-ref="content" 
+        :style="{ 'max-height': contentHeight }" 
+        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
+        :class="{ 'opacity-100': expanded }">
+        Financial Reporting in accordance with applicable standards; Cash flow management, and forecasting to gauge the business performance; Comparison of results with forecasts and variance analysis to determine trends and regular reporting the same to the management.<br><br>Timely preparation of management accounts, budgets, and financial analysis to support informed business decision-making. Assistance in Standard Operating Procedures preparation for all business activities.
       </p>
 
       <!-- Single toggle text with reactive binding -->
