@@ -20,8 +20,6 @@ import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/
 import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
 
-// Add GSAP import (assuming you're using it from a CDN)
-import { gsap } from "https://cdn.skypack.dev/gsap@3.12.5";
 
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
