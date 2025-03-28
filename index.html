@@ -386,25 +386,52 @@
                       ]" :key="service.id">
                         <div class="py-3">
                           <h2>
-                            <button type="button"
+                            <button
+                              type="button"
                               class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-start w-full font-bold text-left"
                               @click="openAccordion = (openAccordion === service.id) ? null : service.id"
-                              :aria-expanded="openAccordion === service.id.toString()" :aria-controls="'service-' + service.id">
-                              <img class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-200 transform"
-                                src="./img/drop-arrow.svg" :class="{'rotate-180': openAccordion === service.id}"
-                                alt="Expand or collapse Service content" aria-hidden="true" />
+                              :aria-expanded="(openAccordion === service.id).toString()"
+                              :aria-controls="'service-' + service.id"
+                              :id="'service-button-' + service.id"
+                            >
+                              <img
+                                class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-200 transform"
+                                src="./img/drop-arrow.svg"
+                                :class="{ 'rotate-180': openAccordion === service.id }"
+                                alt="Expand or collapse Service content"
+                                aria-hidden="true"
+                              />
                               <span class="uppercase" x-text="service.title"></span>
                             </button>
                           </h2>
-                          <div :id="'service-' + service.id" role="region" :aria-labelledby="'service-' + service.id"
-                            :aria-hidden="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left transition-all duration-100 pl-9 ease-in-out"
-                            :class="openAccordion === service.id ? 'grid-rows-[1fr] opacity-100 max-h-[600px] delay-[0]' : 'grid-rows-[0fr] opacity-0 max-h-0'">
+
+                          <div
+                            x-show="openAccordion === service.id"
+                            x-transition:enter="transition-all ease-in-out duration-200"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-[600px]"
+                            x-transition:leave="transition-all ease-in-out duration-200"
+                            x-transition:leave-start="opacity-100 max-h-[600px]"
+                            x-transition:leave-end="opacity-0 max-h-0"
+                            :id="'service-' + service.id"
+                            role="region"
+                            :aria-labelledby="'service-button-' + service.id"
+                            :inert="openAccordion !== service.id"
+                            :tabindex="openAccordion === service.id ? 0 : -1"
+                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left pl-9"
+                            style="transition-property: opacity, max-height"
+                          >
                             <div class="overflow-hidden">
                               <p class="mt-1" x-text="service.description"></p>
-                              <div class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]">
-                                <a :href="service.link"
-                                  class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100  transform bg-darkBlue rounded-full select-none">
+                              <div
+                                class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]"
+                              >
+                                <a
+                                  :href="service.link"
+                                  :aria-label="`Read more about ${service.title}`"
+                                  :title="`Read more about ${service.title}`"
+                                  class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100 transform bg-darkBlue rounded-full select-none"
+                                >
                                   Read more
                                 </a>
                               </div>

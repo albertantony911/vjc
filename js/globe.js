@@ -1,25 +1,9 @@
-import {
-  WebGLRenderer,
-  Scene,
-  OrthographicCamera,
-  Clock,
-  Points,
-  IcosahedronGeometry,
-  ShaderMaterial,
-  Mesh,
-  MeshBasicMaterial,
-  Vector2,
-  Vector3,
-  TextureLoader,
-  MathUtils,
-  Quaternion,
-  CircleGeometry
-} from "https://cdn.skypack.dev/three@0.133.1";
-
+import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module.js";
 import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
 
+export { THREE, Line2, LineMaterial, LineGeometry };
 
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
@@ -29,27 +13,27 @@ let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
 let animationFrameId;
 let globeIsActive = true;
-let opacityObjects = [];
+let opacityObjects = []; // Cache for opacity updates
 
 // Reusable materials
-const staticCircleMaterial = new MeshBasicMaterial({
+const staticCircleMaterial = new THREE.MeshBasicMaterial({
   color: 0xFFFFFF,
   transparent: true,
   opacity: 1,
-  side: 2 // Replace THREE.DoubleSide
+  side: THREE.DoubleSide
 });
-const pulsingCircleMaterial = new MeshBasicMaterial({
+const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
   color: 0xFFFFFF,
   transparent: true,
   opacity: 1,
-  side: 2, // Replace THREE.DoubleSide
+  side: THREE.DoubleSide,
   depthWrite: false,
   depthTest: false
 });
 const arcMaterial = new LineMaterial({
   color: 0x7CBA3A,
   linewidth: 2,
-  resolution: new Vector2(window.innerWidth, window.innerHeight),
+  resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
   depthTest: true,
   transparent: true,
   opacity: 1.0,
@@ -87,17 +71,17 @@ observer.observe(containerEl);
 initScene();
 
 function initScene() {
-  renderer = new WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
+  renderer = new THREE.WebGLRenderer({ canvas: canvas3D, alpha: true, antialias: true });
   renderer.setPixelRatio(2);
 
-  scene = new Scene();
-  camera = new OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
+  scene = new THREE.Scene();
+  camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
   camera.position.set(-0.2, -0.2, 1.45);
   camera.lookAt(0, 0, 0);
 
-  clock = new Clock();
+  clock = new THREE.Clock();
 
-  new TextureLoader().load("./img/map.webp", (mapTex) => {
+  new THREE.TextureLoader().load("./img/map.webp", (mapTex) => {
     earthTexture = mapTex;
     createGlobe();
     updateSize();
@@ -128,8 +112,8 @@ function render() {
 let initialSize;
 
 function createGlobe() {
-  const globeGeometry = new IcosahedronGeometry(1, 20);
-  mapMaterial = new ShaderMaterial({
+  const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
+  mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
       uniform sampler2D u_map_tex;
       uniform float u_dot_size, u_time_since_click;
@@ -171,20 +155,20 @@ function createGlobe() {
     uniforms: {
       u_map_tex: { type: "t", value: earthTexture },
       u_dot_size: { type: "f", value: 0.01 },
-      u_pointer: { type: "v3", value: new Vector3(0.0, 0.0, 1) },
+      u_pointer: { type: "v3", value: new THREE.Vector3(0.0, 0.0, 1) },
       u_time_since_click: { value: 0 }
     },
     transparent: true
   });
 
-  globe = new Points(globeGeometry, mapMaterial);
+  globe = new THREE.Points(globeGeometry, mapMaterial);
   scene.add(globe);
 
-  globe.rotation.x = MathUtils.degToRad(23.5);
+  globe.rotation.x = THREE.MathUtils.degToRad(23.5);
 
-  globeMesh = new Mesh(
+  globeMesh = new THREE.Mesh(
     globeGeometry,
-    new MeshBasicMaterial({
+    new THREE.MeshBasicMaterial({
       color: 0x318CE7,
       transparent: true,
       opacity: 0.1
@@ -219,10 +203,10 @@ function debounce(func, delay) {
 }
 window.addEventListener("resize", debounce(updateSize, 200));
 
-const up = new Vector3(0, 0, 1);
-const quaternion = new Quaternion();
-const sharedGeometry = new CircleGeometry(0.027, 32);
-const startingPointGeometry = new CircleGeometry(0.04, 32);
+const up = new THREE.Vector3(0, 0, 1);
+const quaternion = new THREE.Quaternion();
+const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
+const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
   const liftedPos = position.normalize().multiplyScalar(1 + elevation);
@@ -235,15 +219,15 @@ function createStaticAndPulsingCircles(position, isStartingPoint = false) {
   const elevation = isStartingPoint ? 0.02 : 0.015;
   const geometry = isStartingPoint ? startingPointGeometry : sharedGeometry;
 
-  const staticCircle = new Mesh(geometry, staticCircleMaterial.clone());
+  const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial.clone());
   alignCircleToSurface(staticCircle, position, elevation);
 
-  const pulsingCircle = new Mesh(geometry, pulsingCircleMaterial.clone());
+  const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial.clone());
   alignCircleToSurface(pulsingCircle, position, elevation);
   pulsingCircle.position.z -= 0.003;
 
   scene.add(staticCircle, pulsingCircle);
-  opacityObjects.push(staticCircle, pulsingCircle);
+  opacityObjects.push(staticCircle, pulsingCircle); // Add to opacity cache
 
   pulsingCircle.userData.gsapOpacity = 1;
   animatePulsingCircle(pulsingCircle);
@@ -279,7 +263,7 @@ function animatePulsingCircle(pulsingCircle) {
 }
 
 function updateOpacity() {
-  const cameraPosition = new Vector3();
+  const cameraPosition = new THREE.Vector3();
   camera.getWorldPosition(cameraPosition);
   opacityObjects.forEach((object) => updateCircleOpacity(object, cameraPosition));
 }
@@ -288,7 +272,7 @@ function updateCircleOpacity(object, cameraPosition) {
   const material = object.userData.distanceOpacityControl;
   const distance = cameraPosition.distanceTo(object.position);
   const maxDistance = 2.5, minDistance = 0.5;
-  const distanceOpacity = MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
+  const distanceOpacity = THREE.MathUtils.clamp((maxDistance - distance) / (maxDistance - minDistance), 0, 1);
   const newOpacity = object.userData.gsapOpacity !== undefined ? distanceOpacity * object.userData.gsapOpacity : distanceOpacity;
 
   if (material.opacity !== newOpacity) {
@@ -300,7 +284,7 @@ function updateCircleOpacity(object, cameraPosition) {
 function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
   const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
   const numPoints = 50;
-  const tempVector = new Vector3();
+  const tempVector = new THREE.Vector3();
 
   const createArc = (start, end) => {
     const distance = start.distanceTo(end);
@@ -413,14 +397,14 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
   const y = radius * Math.cos(phi);
   const z = radius * Math.sin(phi) * Math.sin(theta);
 
-  const radians = MathUtils.degToRad(tiltAngle);
+  const radians = THREE.MathUtils.degToRad(tiltAngle);
   const cosAngle = Math.cos(radians);
   const sinAngle = Math.sin(radians);
 
   const tiltedY = y * cosAngle - z * sinAngle;
   const tiltedZ = y * sinAngle + z * cosAngle;
 
-  return new Vector3(x, tiltedY, tiltedZ);
+  return new THREE.Vector3(x, tiltedY, tiltedZ);
 }
 
 const globeRadius = 1;
