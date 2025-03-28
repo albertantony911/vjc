@@ -1,7 +1,7 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.133.1/build/three.module.js";
-import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js";
-import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js";
-import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js";
+import * as THREE from "https://cdn.skypack.dev/three@0.133.1?min";
+import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js?min";
+import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js?min";
+import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js?min";
 
 export { THREE, Line2, LineMaterial, LineGeometry };
 
