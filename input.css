@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* Configuration directly in the CSS file */
 @theme {
   /* Extend colors */
@@ -8,17 +7,24 @@
   --color-darkGreen: #7ED348;
   --color-lightGreen: #96f2a5;
   --color-lightBlue: #009DD1;
-
 }
 
-
 @layer base {
-  
+
+  /* ✅ Subset Noteworthy Font */
+  @font-face {
+    font-family: 'NoteworthySubset';
+    src: url('../fonts/noteworthy-lt-subset.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+
   html {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
   }
 }
 
+/* Touch improvements */
 * {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
@@ -29,17 +35,11 @@ svg {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   backface-visibility: hidden;
-
 }
-
-
 
 .header {
-  position: sticky; /* Adjusted to 'sticky' for better browser support */
-  top: 0; /* Add this to define where the sticky effect starts */
-  z-index: 100; /* Optional: Adjust the stacking context */
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-
-
-
 
