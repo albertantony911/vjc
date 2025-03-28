@@ -1768,10 +1768,6 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
-  .ease-in {
-    --tw-ease: var(--ease-in);
-    transition-timing-function: var(--ease-in);
-  }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
@@ -4799,9 +4795,10 @@
 }
 @layer base {
   @font-face {
-    font-family: 'NoteworthySubset';
-    src: url('../fonts/noteworthy-lt-subset.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'Noteworthy';
+    src: url('subset-Noteworthy-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
     font-display: swap;
   }
   html {

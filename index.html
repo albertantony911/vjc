@@ -57,7 +57,6 @@
       <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script> 
       <script src="./js/animations.js" defer></script> 
-      <link rel="preload" href="./img/map.webp" as="image" type="image/webp">
       <script type="module" src="./js/globe.js" defer></script> 
 
       <!-- Structured Data (Updated with Blog Reference) -->
@@ -795,14 +794,14 @@
                         <text x="600px" y="990px" id="calendarText"
                           style="
                             font-family: 'NoteworthySubset', 'Noteworthy', sans-serif;
-                            font-weight: 700;
+                            font-weight: 300;
                             font-size: 165px;
                             fill: #fff;
                             stroke: #fff;
                             stroke-width: 8;
                             paint-order: stroke fill;
-                            stroke-miterlimit: 2;
-                            text-anchor: right;">
+                            stroke-miterlimit: 2;"
+                          text-anchor="end">
                         </text>
                         <g>
                           <circle class="calendarDots" cx="910" cy="825" r="15" style="fill:#fff;" />
