@@ -13,7 +13,7 @@
 
   @font-face {
       font-family: 'Noteworthy';
-      src: url('subset-Noteworthy-Light.woff2') format('woff2');
+      src: url('./fonts/subset-Noteworthy-Light.woff2') format('woff2');
       font-weight: 300;
       font-style: normal;
       font-display: swap;
