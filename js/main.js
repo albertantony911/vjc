@@ -1,4 +1,3 @@
-// Register Alpine.js components before Alpine initializes
 document.addEventListener('alpine:init', () => {
   Alpine.data('collapsibleCard', (initialHeight = '4.4em', autoCollapseTime = 20000) => ({
     expanded: false,
@@ -6,43 +5,72 @@ document.addEventListener('alpine:init', () => {
     contentHeight: initialHeight,
     isTruncated: false,
     toggleText: '...read more',
+
     init() {
-      this.$nextTick(() => {
-        const contentEl = this.$refs.content;
-        if (!contentEl) return;
-        contentEl.style.maxHeight = 'none';
-        const fullHeight = contentEl.scrollHeight;
-        contentEl.style.maxHeight = this.contentHeight;
-        const computedStyle = window.getComputedStyle(contentEl);
-        const fontSize = parseFloat(computedStyle.fontSize);
-        const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
-        // Reduce buffer or remove it to catch truncation more aggressively
-        this.isTruncated = fullHeight > collapsedHeightPx; // No buffer for stricter check
-        // Debug log to verify values
-        console.log('Full Height:', fullHeight, 'Collapsed Height:', collapsedHeightPx, 'Truncated:', this.isTruncated);
+      // Wait until the browser is idle to avoid LCP or CLS impact
+      requestIdleCallback(() => {
+        this.$nextTick(() => {
+          const contentEl = this.$refs.content;
+          if (!contentEl) return;
+
+          // Temporarily allow full expansion to measure height
+          contentEl.style.maxHeight = 'none';
+          const fullHeight = contentEl.scrollHeight;
+
+          // Restore collapsed height
+          contentEl.style.maxHeight = this.contentHeight;
+
+          // Calculate truncation
+          const computedStyle = window.getComputedStyle(contentEl);
+          const fontSize = parseFloat(computedStyle.fontSize);
+          const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
+
+          this.isTruncated = fullHeight > collapsedHeightPx;
+
+          // Set accessibility attributes when collapsed
+          contentEl.setAttribute('aria-hidden', 'true');
+          contentEl.setAttribute('inert', '');
+        });
       });
     },
+
     toggleExpand() {
       const contentEl = this.$refs.content;
+
       this.expanded = !this.expanded;
       this.toggleText = this.expanded ? '...collapse' : '...read more';
+
       clearTimeout(this.collapseTimeout);
+
       if (this.expanded) {
+        // Make content accessible
+        contentEl.removeAttribute('aria-hidden');
+        contentEl.removeAttribute('inert');
+
+        // Expand smoothly
         contentEl.style.maxHeight = 'none';
         const fullHeight = contentEl.scrollHeight;
         contentEl.style.maxHeight = this.contentHeight;
+
         this.$nextTick(() => {
           contentEl.style.maxHeight = `${fullHeight}px`;
+
           if (autoCollapseTime > 0) {
             this.collapseTimeout = setTimeout(() => {
               this.expanded = false;
               this.toggleText = '...read more';
               contentEl.style.maxHeight = this.contentHeight;
+
+              // Reapply hidden state
+              contentEl.setAttribute('aria-hidden', 'true');
+              contentEl.setAttribute('inert', '');
             }, autoCollapseTime);
           }
         });
       } else {
         contentEl.style.maxHeight = this.contentHeight;
+        contentEl.setAttribute('aria-hidden', 'true');
+        contentEl.setAttribute('inert', '');
       }
     }
   }));
