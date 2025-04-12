@@ -1458,16 +1458,16 @@
             <!-- Accordion component -->
             <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
               <template x-data="{
-  faqs: [
-    { question: 'What qualifications do your accountants and bookkeepers have?', answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.', link: './about.html', linkText: 'Meet our Team for more info', action: 'meet_team' },
-    { question: 'How can cloud accounting benefit my business compared to traditional methods?', answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.' },
-    { question: 'Do I need to prepare my books before handing them over to VJC?', answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.', link: './contact.html', linkText: 'Discuss with our Executives for more info', action: 'discuss_executives', styleAsButton: true },
-    { question: 'How does cloud accounting improve financial decision-making for my business?', answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.' },
-    { question: 'Is my financial data secure?', answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.', link: './about.html', linkText: 'You can read more here', action: 'read_data_security' }
-  ],
-  openFaq: null,
-  page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
-}" x-for="(faq, index) in faqs" :key="index">
+            faqs: [
+              { question: 'What qualifications do your accountants and bookkeepers have?', answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.', link: './about.html', linkText: 'Meet our Team for more info', action: 'meet_team' },
+              { question: 'How can cloud accounting benefit my business compared to traditional methods?', answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.' },
+              { question: 'Do I need to prepare my books before handing them over to VJC?', answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.', link: './contact.html', linkText: 'Discuss with our Executives for more info', action: 'discuss_executives' },
+              { question: 'How does cloud accounting improve financial decision-making for my business?', answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.' },
+              { question: 'Is my financial data secure?', answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.', link: './about.html', linkText: 'You can read more here', action: 'read_data_security' }
+            ],
+            openFaq: null,
+            page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
+          }" x-for="(faq, index) in faqs" :key="index">
   <div class="py-4">
     <h2>
       <button type="button"
