@@ -1477,19 +1477,19 @@
 
 
 
-      <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
-        <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-          <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
-            <!-- Accordion component -->
-            <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-              <template x-data="{
+<div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
+  <div class="relative flex flex-col justify-center overflow-hidden" role="group">
+    <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
+      <!-- Accordion component -->
+      <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
+        <template x-data="{
   faqs: [
-    { question: 'What tax services do you provide for Australian businesses and individuals?', answer: 'At VJC, we offer comprehensive tax planning and compliance services for Australian businesses...' },
-    { question: 'What tax services do you provide for the UK businesses and individuals?', answer: 'We offer comprehensive tax services to meet the varying needs of UK-based businesses and individuals...' },
-    { question: 'What types of tax forms do you handle for the US clients?', answer: 'At VJC, we provide comprehensive outsourced tax preparation services for various entities in the U.S...' },
-    { question: 'Can VJC integrate with our existing tax software and systems?', answer: 'Absolutely. We are software agnostic and can seamlessly work within your existing tax software...' },
-    { question: 'How does VJC ensure the safety and security of our shared financial data?', answer: 'The security of your data is our utmost priority. We employ advanced encryption technologies and secure file transfer protocols to protect your sensitive information. Our systems are compliant with international data protection regulations, and we regularly perform security audits to maintain the highest standards. Additionally, our staff undergo rigorous training in data confidentiality and are bound by strict non-disclosure agreements.' },
-    { question: 'How does VJC handle access to local tax portals for filing purposes?', answer: 'At VJC, we have extensive experience navigating local tax portals across multiple countries, including the Australia, the UK, and the US. With your authorization, our team securely accesses the necessary tax portals to prepare and file your returns accurately and on time. We ensure compliance with all local regulations and keep you informed throughout the process, minimizing any administrative burden on your end.' }
+    { question: 'What tax services do you provide for Australian businesses and individuals?', answer: 'At VJC, we offer comprehensive tax planning and compliance services for Australian businesses and individuals, including the preparation of Business Activity Statements (BAS) and related workpapers. Our services cover various taxes based on your business size, employee count, benefits offered, and location. \n\nWe assist with:\n• <strong>Goods and Services Tax (GST)</strong>\n• <strong>Fringe Benefits Tax (FBT)</strong>\n• <strong>Pay as You Go Instalments (PAYGI)</strong>\n• <strong>Pay as You Go Withholding (PAYGW)</strong>\n• <strong>Fuel Tax Credits</strong>\n\nWe ensure your income tax return and fringe benefits tax return are lodged accurately and on time with the Australian Taxation Office (ATO), helping you avoid penalties for late lodgment. \n\nOur services also include:\n• <strong>Accurate preparation of tax filings</strong>\n• <strong>Preparation of financial statements</strong>\n• <strong>Stress-free compliance</strong>, reducing the burden of managing taxes yourself\n\nAdditionally, we offer international tax advisory for Australian entities and strategic tax planning to minimize tax liabilities and maximize savings for both individuals and corporations.' },
+    { question: 'What tax services do you provide for the UK businesses and individuals?', answer: 'We offer comprehensive tax services to meet the varying needs of UK-based businesses and individuals, ensuring compliance with HMRC requirements. \n\nOur services include:\n• <strong>Self-Assessment Tax Returns</strong>: Accurate preparation and timely submission of self-assessment returns, ensuring all applicable reliefs and deductions are claimed.\n• <strong>VAT Returns</strong>: Assistance with VAT registration and preparation of VAT returns, ensuring compliance with the latest regulations.\n• <strong>PAYE and Payroll Services</strong>: Management of PAYE, including real-time information (RTI) submissions and payroll processing.\n• <strong>Capital Gains Tax</strong>: Accurate filing and reporting of capital gains on property, stocks, or other assets, ensuring minimization of tax liabilities through applicable reliefs.\n• <strong>Corporate Tax</strong>: End-to-end preparation and filing of corporate tax returns for UK-based companies, ensuring compliance with local legislation.\n• <strong>International Tax Advisory</strong>: Strategic planning and advisory services to help businesses manage their cross-border tax obligations, minimizing global tax liabilities.\n\nBy working with us, UK clients can ensure that all submissions are made on time, reducing stress and avoiding penalties from HMRC. Additionally, our tax planning expertise helps to optimize tax outcomes for both individuals and businesses.' },
+    { question: 'What types of tax forms do you handle for the US clients?', answer: 'At VJC, we provide comprehensive outsourced tax preparation services for various entities in the U.S., including:\n• <strong>Individuals</strong>: Form 1040, Form 1040NR, Form 1040A, Form 1040EZ\n• <strong>Partnerships</strong>: Form 1065\n• <strong>Corporations</strong>: Form 1120, Form 1120A, Form 1120S (for statutory corporations)\n• <strong>Non-Profit Organizations</strong>: Form 990\n• <strong>Fiduciaries</strong>: Form 1041\n• <strong>Estate & Gift Tax</strong>: Form 706\n• <strong>Payroll Tax</strong>: Form 940, Form 941, Form 944, Form W-2\n• <strong>Sales & Use Tax</strong>: State-specific Sales & Use Tax Returns\n• <strong>Year-End Reporting</strong>: Form 1099 series\n\nWe ensure accurate, timely filing for all types of returns, helping you stay compliant with U.S. tax regulations.' },
+    { question: 'Can VJC integrate with our existing tax software and systems?', answer: 'Absolutely. We are software agnostic and can seamlessly work within your existing tax software and systems. Whether you use platforms like:\n• <strong>QuickBooks</strong>\n• <strong>Xero</strong>\n• <strong>TurboTax</strong>\n• <strong>Sage</strong>\n• <strong>Taxcalc</strong>\n• <strong>Iris</strong>\n• or any specialized tax software\n\nOur team is proficient in utilizing them. This flexibility ensures a smooth collaboration without the need for you to change your current setup.' },
+    { question: 'How does VJC ensure the safety and security of our shared financial data?', answer: 'The security of your data is our utmost priority. \n\nWe employ:\n• <strong>advanced encryption technologies</strong>\n• <strong>secure file transfer protocols</strong>\n\nto protect your sensitive information. Our systems are compliant with international data protection regulations, and we regularly perform security audits to maintain the highest standards. Additionally, our staff undergo rigorous training in data confidentiality and are bound by strict non-disclosure agreements.' },
+    { question: 'How does VJC handle access to local tax portals for filing purposes?', answer: 'At VJC, we have extensive experience navigating local tax portals across multiple countries, including:\n• <strong>UK</strong>\n• <strong>US</strong>\n• <strong>Australia</strong>\n• <strong>UAE</strong>\n• <strong>Canada</strong>\n\nWith your authorization, our team securely accesses the necessary tax portals to prepare and file your returns accurately and on time. We ensure compliance with all local regulations and keep you informed throughout the process, minimizing any administrative burden on your end.' }
   ],
   openFaq: null,
   page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
@@ -1509,8 +1509,8 @@
       </button>
     </h2>
     <div :id="'tax-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-      :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+      :class="openFaq === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'">
+      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] whitespace-pre-wrap" x-html="faq.answer"></p>
       <template x-if="faq.link">
         <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
           <a
@@ -1530,12 +1530,12 @@
     </div>
   </div>
 </template>
-
-      
             </div>
           </div>
         </div>
       </div>
+
+
     </section>
 
 

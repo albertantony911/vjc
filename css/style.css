@@ -898,8 +898,14 @@
   .max-h-\[300px\] {
     max-height: 300px;
   }
+  .max-h-\[500px\] {
+    max-height: 500px;
+  }
   .max-h-\[600px\] {
     max-height: 600px;
+  }
+  .max-h-\[1000px\] {
+    max-height: 1000px;
   }
   .min-h-\[70svh\] {
     min-height: 70svh;
@@ -1610,6 +1616,9 @@
   .whitespace-nowrap {
     white-space: nowrap;
   }
+  .whitespace-pre-wrap {
+    white-space: pre-wrap;
+  }
   .text-blue-500 {
     color: var(--color-blue-500);
   }
@@ -1767,10 +1776,6 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
-  }
-  .ease-in {
-    --tw-ease: var(--ease-in);
-    transition-timing-function: var(--ease-in);
   }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
