@@ -1,80 +1,101 @@
 document.addEventListener('alpine:init', () => {
-  Alpine.data('collapsibleCard', (initialHeight = '4.4em', autoCollapseTime = 20000) => ({
+  Alpine.data('collapsibleCard', ({ targetLines = 3, autoCollapseTime = 20000 } = {}) => ({
     expanded: false,
-    collapseTimeout: null,
-    contentHeight: initialHeight,
     isTruncated: false,
+    collapseTimeout: null,
+    contentHeight: '0px',
     toggleText: '...read more',
 
     init() {
-      // Wait until the browser is idle to avoid LCP or CLS impact
-      requestIdleCallback(() => {
-        this.$nextTick(() => {
-          const contentEl = this.$refs.content;
-          if (!contentEl) return;
+      this.$nextTick(() => {
+        this.setInitialHeight();
+        this.checkTruncation();
+        this.setCollapsedState();
+        this.setupResizeListener();
+      });
+    },
 
-          // Temporarily allow full expansion to measure height
-          contentEl.style.maxHeight = 'none';
-          const fullHeight = contentEl.scrollHeight;
+    setInitialHeight() {
+      const el = this.$refs.content;
+      if (!el) return;
 
-          // Restore collapsed height
-          contentEl.style.maxHeight = this.contentHeight;
+      const style = window.getComputedStyle(el);
+      let lineHeight = parseFloat(style.lineHeight);
 
-          // Calculate truncation
-          const computedStyle = window.getComputedStyle(contentEl);
-          const fontSize = parseFloat(computedStyle.fontSize);
-          const collapsedHeightPx = parseFloat(this.contentHeight) * fontSize;
+      if (isNaN(lineHeight)) {
+        const fontSize = parseFloat(style.fontSize);
+        lineHeight = fontSize * 1.5;
+      }
 
-          this.isTruncated = fullHeight > collapsedHeightPx;
+      this.contentHeight = `${lineHeight * targetLines}px`;
+      el.style.maxHeight = this.contentHeight;
+    },
 
-          // Set accessibility attributes when collapsed
-          contentEl.setAttribute('aria-hidden', 'true');
-          contentEl.setAttribute('inert', '');
-        });
+    checkTruncation() {
+      const el = this.$refs.content;
+      if (!el) return;
+
+      const currentMax = el.style.maxHeight;
+      el.style.maxHeight = 'none';
+      const fullHeight = el.scrollHeight;
+      el.style.maxHeight = currentMax;
+
+      this.isTruncated = fullHeight > parseFloat(this.contentHeight) + 1;
+    },
+
+    setCollapsedState() {
+      const el = this.$refs.content;
+      el.setAttribute('aria-hidden', 'true');
+      el.setAttribute('inert', '');
+    },
+
+    setupResizeListener() {
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          this.setInitialHeight();
+          this.checkTruncation();
+          if (!this.expanded) this.setCollapsedState();
+        }, 200);
       });
     },
 
     toggleExpand() {
-      const contentEl = this.$refs.content;
+      const el = this.$refs.content;
+      if (!el) return;
 
       this.expanded = !this.expanded;
       this.toggleText = this.expanded ? '...collapse' : '...read more';
-
       clearTimeout(this.collapseTimeout);
 
       if (this.expanded) {
-        // Make content accessible
-        contentEl.removeAttribute('aria-hidden');
-        contentEl.removeAttribute('inert');
+        el.removeAttribute('aria-hidden');
+        el.removeAttribute('inert');
+        el.style.maxHeight = `${el.scrollHeight}px`;
 
-        // Expand smoothly
-        contentEl.style.maxHeight = 'none';
-        const fullHeight = contentEl.scrollHeight;
-        contentEl.style.maxHeight = this.contentHeight;
-
-        this.$nextTick(() => {
-          contentEl.style.maxHeight = `${fullHeight}px`;
-
-          if (autoCollapseTime > 0) {
-            this.collapseTimeout = setTimeout(() => {
-              this.expanded = false;
-              this.toggleText = '...read more';
-              contentEl.style.maxHeight = this.contentHeight;
-
-              // Reapply hidden state
-              contentEl.setAttribute('aria-hidden', 'true');
-              contentEl.setAttribute('inert', '');
-            }, autoCollapseTime);
-          }
-        });
+        if (autoCollapseTime > 0) {
+          this.collapseTimeout = setTimeout(() => this.collapse(), autoCollapseTime);
+        }
       } else {
-        contentEl.style.maxHeight = this.contentHeight;
-        contentEl.setAttribute('aria-hidden', 'true');
-        contentEl.setAttribute('inert', '');
+        this.collapse();
       }
+    },
+
+    collapse() {
+      const el = this.$refs.content;
+      if (!el) return;
+
+      this.expanded = false;
+      this.toggleText = '...read more';
+      el.style.maxHeight = this.contentHeight;
+      el.setAttribute('aria-hidden', 'true');
+      el.setAttribute('inert', '');
     }
   }));
 });
+
+
 
 // Your existing vanilla JS code
 document.addEventListener("DOMContentLoaded", function () {
