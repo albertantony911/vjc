@@ -2161,6 +2161,21 @@
       margin-bottom: calc(var(--spacing) * 10);
     }
   }
+  .max-sm\:mb-12 {
+    @media (width < 40rem) {
+      margin-bottom: calc(var(--spacing) * 12);
+    }
+  }
+  .max-sm\:mb-14 {
+    @media (width < 40rem) {
+      margin-bottom: calc(var(--spacing) * 14);
+    }
+  }
+  .max-sm\:mb-16 {
+    @media (width < 40rem) {
+      margin-bottom: calc(var(--spacing) * 16);
+    }
+  }
   .max-sm\:mb-\[5svh\] {
     @media (width < 40rem) {
       margin-bottom: 5svh;
@@ -2305,6 +2320,11 @@
   .sm\:mb-0 {
     @media (width >= 40rem) {
       margin-bottom: calc(var(--spacing) * 0);
+    }
+  }
+  .sm\:mb-5 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 5);
     }
   }
   .sm\:mb-\[2svh\] {
