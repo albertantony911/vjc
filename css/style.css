@@ -1791,6 +1791,10 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
+  .ease-in {
+    --tw-ease: var(--ease-in);
+    transition-timing-function: var(--ease-in);
+  }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
@@ -3434,6 +3438,11 @@
       padding-block: 1svh;
     }
   }
+  .portrait\:mt-7 {
+    @media (orientation: portrait) {
+      margin-top: calc(var(--spacing) * 7);
+    }
+  }
   .portrait\:mb-\[1\.3svh\] {
     @media (orientation: portrait) {
       margin-bottom: 1.3svh;
@@ -4932,6 +4941,14 @@
     @media (orientation: landscape) {
       @media (width >= 80rem) {
         padding-inline: 8svh;
+      }
+    }
+  }
+  .landscape\:2xl\:size-1 {
+    @media (orientation: landscape) {
+      @media (width >= 96rem) {
+        width: calc(var(--spacing) * 1);
+        height: calc(var(--spacing) * 1);
       }
     }
   }
