@@ -2315,6 +2315,11 @@
       margin-top: 8svh;
     }
   }
+  .sm\:mt-\[10svw\] {
+    @media (width >= 40rem) {
+      margin-top: 10svw;
+    }
+  }
   .sm\:mb-0 {
     @media (width >= 40rem) {
       margin-bottom: calc(var(--spacing) * 0);
@@ -4098,6 +4103,27 @@
       }
     }
   }
+  .portrait\:md\:mt-\[2svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        margin-top: 2svh;
+      }
+    }
+  }
+  .portrait\:md\:mt-\[3svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        margin-top: 3svh;
+      }
+    }
+  }
+  .portrait\:md\:mt-\[6svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 48rem) {
+        margin-top: 6svh;
+      }
+    }
+  }
   .portrait\:md\:ml-\[20\%\] {
     @media (orientation: portrait) {
       @media (width >= 48rem) {
@@ -4572,6 +4598,13 @@
     @media (orientation: landscape) {
       @media (width >= 48rem) {
         margin-top: 4svh;
+      }
+    }
+  }
+  .landscape\:md\:mt-\[6svh\] {
+    @media (orientation: landscape) {
+      @media (width >= 48rem) {
+        margin-top: 6svh;
       }
     }
   }
