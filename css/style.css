@@ -926,23 +926,8 @@
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
-  .w-32 {
-    width: calc(var(--spacing) * 32);
-  }
-  .w-36 {
-    width: calc(var(--spacing) * 36);
-  }
-  .w-40 {
-    width: calc(var(--spacing) * 40);
-  }
-  .w-42 {
-    width: calc(var(--spacing) * 42);
-  }
   .w-48 {
     width: calc(var(--spacing) * 48);
-  }
-  .w-52 {
-    width: calc(var(--spacing) * 52);
   }
   .w-56 {
     width: calc(var(--spacing) * 56);
@@ -3864,10 +3849,17 @@
       }
     }
   }
-  .portrait\:sm\:px-\[3svw\] {
+  .portrait\:sm\:px-\[2svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
-        padding-inline: 3svw;
+        padding-inline: 2svw;
+      }
+    }
+  }
+  .portrait\:sm\:px-\[7svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 7svw;
       }
     }
   }
@@ -3885,17 +3877,10 @@
       }
     }
   }
-  .portrait\:sm\:px-\[2svw\] {
+  .portrait\:sm\:px-\[3svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
-        padding-inline: 2svw;
-      }
-    }
-  }
-  .portrait\:sm\:px-\[7svw\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        padding-inline: 7svw;
+        padding-inline: 3svw;
       }
     }
   }
