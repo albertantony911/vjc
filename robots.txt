@@ -1,4 +1,4 @@
-# robots.txt for https://www.vjcindia.com
+# robots.txt for https://www.vjcpartners.com
 # Created on March 19, 2025
 
 # Allow all crawlers by default
@@ -19,8 +19,8 @@ Disallow: /*?filter=*          # Block filter parameters (if applicable)
 Allow: /
 
 # Sitemap references
-Sitemap: https://www.vjcindia.com/sitemap.xml
-Sitemap: https://resources.vjcindia.com/sitemap.xml
+Sitemap: https://www.vjcpartners.com/sitemap.xml
+Sitemap: https://resources.vjcpartners.com/sitemap.xml
 
 # Specific rules for Googlebot (optional, for fine-tuning)
 User-agent: Googlebot
