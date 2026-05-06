@@ -412,7 +412,7 @@ const tiltAngle = 23.5;
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
 
 const endPoints = [
-  latLonToTiltedVector3(-37.8136, 144.9631, globeRadius, tiltAngle),
+  latLonToTiltedVector3(-25.2744, 133.7751, globeRadius, tiltAngle),
 ];
 
 createStaticAndPulsingCircles(point1, true);
