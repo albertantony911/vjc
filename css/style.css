@@ -788,6 +788,9 @@
   .ml-8 {
     margin-left: calc(var(--spacing) * 8);
   }
+  .ml-10 {
+    margin-left: calc(var(--spacing) * 10);
+  }
   .ml-\[1svh\] {
     margin-left: 1svh;
   }
@@ -808,6 +811,9 @@
   }
   .hidden {
     display: none;
+  }
+  .inline-block {
+    display: inline-block;
   }
   .aspect-square {
     aspect-ratio: 1 / 1;
@@ -4099,9 +4105,19 @@
       padding-top: 2svh;
     }
   }
+  .portrait\:pt-\[4svh\] {
+    @media (orientation: portrait) {
+      padding-top: 4svh;
+    }
+  }
   .portrait\:pb-\[5svh\] {
     @media (orientation: portrait) {
       padding-bottom: 5svh;
+    }
+  }
+  .portrait\:pb-\[8svh\] {
+    @media (orientation: portrait) {
+      padding-bottom: 8svh;
     }
   }
   .portrait\:pb-\[10svh\] {
@@ -4926,6 +4942,11 @@
   .landscape\:w-\[45\%\] {
     @media (orientation: landscape) {
       width: 45%;
+    }
+  }
+  .landscape\:w-\[47\%\] {
+    @media (orientation: landscape) {
+      width: 47%;
     }
   }
   .landscape\:w-\[50\%\] {
