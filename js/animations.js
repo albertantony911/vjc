@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*** Logo Carousel Animation Control ***/
   const marquees = cacheElements('.marquee');
-  marquees.forEach(marquee => {
+  marquees.forEach(marquee => {SVGMarkerElement
     const items = marquee.querySelectorAll('.marquee__item');
     marquee.addEventListener('mouseenter', () => {
       items.forEach(item => (item.style.animationPlayState = 'paused'));
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   initializeCounter("counter1", 3000, 3, 0, '+');
-  initializeCounter("counter2", 37, 3, 0, '+');
+  initializeCounter("counter2", 38, 3, 0, '+');
   initializeCounter("counter3", 40, 3, 0, '+');
   initializeCounter("counter4", 50, 3, 0, '%');
 

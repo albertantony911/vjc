@@ -7,9 +7,9 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- About Page -->
+  <!-- About Us Page -->
   <url>
-    <loc>https://www.vjcpartners.com/about</loc>
+    <loc>https://www.vjcpartners.com/about-us.html</loc>
     <lastmod>2025-03-19</lastmod>
     <priority>0.8</priority>
   </url>
@@ -48,9 +48,9 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Pricing Page -->
+  <!-- Engagement Models Page -->
   <url>
-    <loc>https://www.vjcpartners.com/pricing</loc>
+    <loc>https://www.vjcpartners.com/engagement-models.html</loc>
     <lastmod>2025-03-19</lastmod>
     <priority>0.6</priority>
   </url>
