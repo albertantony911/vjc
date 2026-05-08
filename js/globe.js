@@ -412,21 +412,7 @@ const tiltAngle = 23.5;
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
 
 const endPoints = [
-  latLonToTiltedVector3(53.3498, -6.2603, globeRadius, tiltAngle),
-  latLonToTiltedVector3(51.5074, -0.1278, globeRadius, tiltAngle),
-  latLonToTiltedVector3(46.8182, 8.2275, globeRadius, tiltAngle),
-  latLonToTiltedVector3(25.276987, 55.296249, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-37.8136, 144.9631, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-31.9505, 115.8605, globeRadius, tiltAngle),
-  latLonToTiltedVector3(40.7128, -74.0060, globeRadius, tiltAngle),
-  latLonToTiltedVector3(34.0522, -118.2437, globeRadius, tiltAngle),
-  latLonToTiltedVector3(61.3707, -152.4040, globeRadius, tiltAngle),
-  latLonToTiltedVector3(49.2827, -123.1207, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-22.9068, -43.1729, globeRadius, tiltAngle),
-  latLonToTiltedVector3(3.4372, -76.5226, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-33.9189, 18.4233, globeRadius, tiltAngle),
-  latLonToTiltedVector3(30.0444, 31.2357, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-41.2865, 174.7762, globeRadius, tiltAngle),
+  latLonToTiltedVector3(-25.2744, 133.7751, globeRadius, tiltAngle),
 ];
 
 createStaticAndPulsingCircles(point1, true);

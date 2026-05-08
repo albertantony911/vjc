@@ -57,7 +57,7 @@
       <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script> 
       <script src="./js/animations.js" defer></script> 
-      <script type="module" src="./js/globe.js" defer></script> 
+      <script type="module" src="./js/test-globe.js" defer></script> 
 
       <!-- Structured Data (Updated with Blog Reference) -->
       <script type="application/ld+json">
@@ -160,22 +160,25 @@
             class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
             <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
             <li><a href="./about-us.html">ABOUT US</a></li>
-            <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
+            <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
             <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
             <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
             <li><a href="https://resources.vjcpartners.com">RESOURCES</a></li>
           </ul>
       
-          <ul id="subMenu"
-            class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
-            <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
-            <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-            <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
-            <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-            <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-            <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-            <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img class="size-[4vw] bounce-left"
-                src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
+          <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
+            <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
+            
+            <li class="max-w-[80vw] text-center"><a href="./bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
+            <li class="max-w-[80vw] text-center"><a href="./payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
+            <li class="max-w-[80vw] text-center"><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
+            <li class="max-w-[80vw] text-center"><a href="./tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
+            <li class="max-w-[80vw] text-center"><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
+
+            <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+              <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+              <a href="#">BACK</a>
+            </li>
           </ul>
 
         </nav>
@@ -215,7 +218,7 @@
                 @touchstart.prevent.stop="showChildren = !showChildren"
                 @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
                 @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-                <span>Services</span>
+                <span>Solutions</span>
               </a>
               <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl"
                 x-show="showChildren" 
@@ -232,46 +235,51 @@
                 <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
                 <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
                   <ul class="list-reset " role="menu">
-                    <!-- Submenu Items -->
+                    
                     <li class="relative ">
-                      <a href="./cloud-accounting-and-bookkeeping.html"
-                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      <a href="./bookkeeping-outsourcing.html"
+                        class="flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105 whitespace-normal leading-snug"
                         role="menuitem">
-                        <span class="flex-1">Cloud Accounting and Bookkeeping</span>
+                        <span class="flex-1">Bookkeeping Outsourcing</span>
                       </a>
                     </li>
                     <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
+                    
                     <li class="relative ">
-                      <a href="./audit-and-assurance-services.html"
-                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      <a href="./payroll-outsourcing-and-compliance.html"
+                        class="flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105 whitespace-normal leading-snug"
                         role="menuitem">
-                        <span class="flex-1">Audit and Assurance Services</span>
+                        <span class="flex-1">Payroll Outsourcing & Compliance</span>
                       </a>
                     </li>
                     <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
+                    
                     <li class="relative">
-                      <a href="./tax-planning-and-compliance.html"
-                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      <a href="./year-end-accounting-and-financial-statement-preparation.html"
+                        class="flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105 whitespace-normal leading-snug"
                         role="menuitem">
-                        <span class="flex-1">Tax Planning and Compliance</span>
+                        <span class="flex-1">Year-End Accounting & Financial Statement Preparation</span>
                       </a>
                     </li>
                     <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
+                    
                     <li class="relative">
-                      <a href="./virtual-chief-financial-officer.html"
-                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      <a href="./tax-compliance-outsourcing.html"
+                        class="flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105 whitespace-normal leading-snug"
                         role="menuitem">
-                        <span class="flex-1">Virtual Chief Financial Officer</span>
+                        <span class="flex-1">Tax Compliance Outsourcing</span>
                       </a>
                     </li>
                     <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
+                    
                     <li class="relative">
-                      <a href="./legal-process-outsourcing.html"
-                        class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
+                      <a href="./smsf-accounting-and-compliance-outsourcing.html"
+                        class="flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105 whitespace-normal leading-snug"
                         role="menuitem">
-                        <span class="flex-1">Legal Processing Outsourcing</span>
+                        <span class="flex-1">SMSF Accounting & Compliance Outsourcing</span>
                       </a>
                     </li>
+
                   </ul>
                 </div>
               </div>
@@ -307,7 +315,7 @@
 
       <main>
         <!-- Hero Section -->
-        <section class="landscape:h-[70svh] min-h-[70svh] bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
+        <section class="landscape:h-[80svh] min-h-[70svh] bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
           
           <div class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[5svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left "> 
             <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
@@ -315,17 +323,16 @@
                 <h1
                   class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  portrait:mb-[1.3svh] landscape:mb-[0.25svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
                   aria-label="Main Title">
-                  Innovative Financial Solutions to Drive Your Business Forward
+                  Smartsourcing for Australian accounting firms that want better jobs, calmer weeks, and growth without hiring.
                 </h1>
                 <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
                   aria-label="Hero Description">
-                  VJC, India’s leading offshore accounting firm, has delivered reliable financial services worldwide since 1988,
-                  empowering businesses to optimize growth and performance. Enhance your financial operations: 
+                  A qualified-accountant team for Australian firms, delivering bookkeeping outsourcing, payroll outsourcing, tax compliance, year-end accounting and SMSF accounting services. Smartsourcing means we run the core compliance work the way your firm would, so your team stays on advisory and your firm scales without hiring.  
                 </p>
               </div>
-              <div class="flex">
+              <div class="flex flex-col sm:flex-col gap-[3vw] sm:gap-[2svh] portrait:gap-[2svh] landscape:gap-[2svh]">
                 <a id="schedule-button-header-home" data-track="button" data-action="schedule" href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min" target="_blank" rel="noopener noreferrer"
-                  aria-label="Schedule a Meeting with Us on Outlook" class="whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
+                  aria-label="Schedule a Meeting with Us on Outlook" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
                           hover:scale-105 active:scale-105 shadow-md hover:shadow-lg 
                           hover:bg-darkGreen hover:text-white 
                           active:bg-darkGreen active:text-white 
@@ -334,14 +341,26 @@
                           portrait:sm:px-[3svw] portrait:sm:py-[2svw] 
                           transition-transform duration-100 transform bg-white 
                           rounded-full select-none delayed-link">
-                  Partner with Us
+                  Start Your Smartsourcing Workflow Trial
+                </a>
+                <a id="secondary-button-header-home" data-track="button" data-action="contact" href="./contact.html"
+                  aria-label="Talk to Our Growth & Partnerships team" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
+                          hover:scale-105 active:scale-105 shadow-md hover:shadow-lg 
+                          hover:bg-darkGreen hover:text-white 
+                          active:bg-darkGreen active:text-white 
+                          text-white border-[1.5px] border-white hover:border-darkGreen text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] 
+                          py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] 
+                          portrait:sm:px-[3vw] portrait:sm:py-[2svw] 
+                          transition-transform duration-100 transform bg-transparent 
+                          rounded-full select-none delayed-link">
+                  Talk to Our Growth & Partnerships team
                 </a>
               </div>
             </div>
           </div>
         
           <div  class="landscape:sm:w-[50%]   max-sm:translate-y-[0.7rem]   flex w-full ">
-            <div class="mx-auto">
+            <div class="m-auto">
               <div  class=" globe-wrapper ">
                 <canvas class="aspect-square w-full block" id="globe-3d"></canvas>
               </div>
@@ -353,81 +372,39 @@
 
         <section
           class="mt-[4svh] text-darkBlue   landscape:md:flex-row-reverse flex flex-col-reverse mx-auto ">
-          <div
-            class="landscape:md:w-[50%] landscape:md:pr-[13svh]      flex flex-col  justify-center w-full  portrait:md:px-[7svw]  text-left  font-light ">
-            <h1
-              class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] max-md:mt-5   max-md:px-10  font-bold  leading-normal uppercase"
-              aria-label="Main Title">
-              Our Services
+          <div class="landscape:md:w-[50%] landscape:md:pr-[13svh] flex flex-col justify-center w-full portrait:md:px-[7svw] text-left font-light ">
+            <h1 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw] max-md:mt-5 max-md:px-10 font-bold leading-normal uppercase" aria-label="Main Title">
+              Our Solutions
             </h1>
-            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10  portrait:mb-[1svh] lg:landscape:mb-[2svh]  leading-normal "
-              aria-label="Hero Description">
-              Businesses often struggle with maintaining accurate financial records and compliance. At VJC, we simplify
-              these accounting hurdles, ensuring compliance and accuracy so you can focus on growing your
-              business.
+            <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 portrait:mb-[1svh] lg:landscape:mb-[2svh] leading-normal " aria-label="Hero Description">
+              Smartsourcing solutions built for Australian accounting firms, CPA practices and tax agents looking for a reliable accounting outsourcing partner. Every job is handled by a qualified accountant with a minimum of three years’ Australian accounting and compliance experience, supported by detailed workpapers, reconciliations and outputs aligned with your internal processes - so each job arrives accurate, compliant and ready for sign-off.
             </p>
             <div class="flex justify-start w-full max-md:px-8 ">
               <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
                 <div class="relative flex flex-col justify-center overflow-hidden">
                   <div class="w-full mx-auto text-center">
                     <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
-              
-                      <!-- Reusable Accordion Component -->
+
                       <template x-for="service in [
-                        { id: 1, title: 'Cloud Accounting and Bookkeeping', link: './cloud-accounting-and-bookkeeping.html', description: 'Stay on top of your finances with real-time cloud bookkeeping. Our experts manage your accounts seamlessly, saving you time and reducing stress, all while ensuring accuracy and alignment with your schedule.' },
-                        { id: 2, title: 'Audit and Assurance Services', link: './audit-and-assurance-services.html', description: 'Gain peace of mind with thorough audits that enhance your financial integrity. Our services help you maintain compliance effortlessly, ensuring your business stands on solid ground.' },
-                        { id: 3, title: 'Tax Planning and Compliance', link: './tax-planning-and-compliance.html', description: 'Navigate tax complexities with ease. We provide clear, practical advice to optimize your tax position while keeping you compliant, helping you focus on what matters most—growing your business.' },
-                        { id: 4, title: 'Virtual Chief Financial Officer', link: './virtual-chief-financial-officer.html', description: 'Access strategic financial leadership without the overhead. Our virtual CFO service offers you tailored insights and guidance to make informed decisions that drive your business forward.' },
-                        { id: 5, title: 'Legal Process Outsourcing', link: './legal-process-outsourcing.html', description: 'Streamline your legal processes with precision. Our LPO services ensure your contracts and compliance tasks are handled efficiently, freeing you to focus on your core business activities.' }
+                        { id: 1, title: 'Bookkeeping Outsourcing', link: './bookkeeping-outsourcing.html', description: 'Reliable bookkeeping services for Australian accounting firms covering bank reconciliations, accounts payable/receivable and real-time financial reporting.' },
+                        { id: 2, title: 'Payroll Outsourcing & Compliance', link: './payroll-outsourcing-and-compliance.html', description: 'End-to-end payroll outsourcing for Australian firms including STP Phase 2, superannuation, Modern Awards and full employee payroll management.' },
+                        { id: 3, title: 'Year-End Accounting & Financial Statement Preparation', link: './year-end-accounting-and-financial-statement-preparation.html', description: 'Accurate year-end accounting services for Australian firms with financial statements preparation, adjustments and audit-ready workpapers.' },
+                        { id: 4, title: 'Tax Compliance Outsourcing', link: './tax-compliance-outsourcing.html', description: 'Expert tax return preparation and tax compliance outsourcing in Australia ensuring ATO compliance and lodgement ready files across all entity types.' },
+                        { id: 5, title: 'SMSF Accounting & Compliance Outsourcing', link: './smsf-accounting-and-compliance-outsourcing.html', description: 'Specialised SMSF accounting outsourcing for Australian firms covering fund accounting, reporting and audit-ready compliance.' }
                       ]" :key="service.id">
                         <div class="py-3">
                           <h2>
-                            <button
-                              type="button"
-                              class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-start w-full font-bold text-left"
-                              @click="openAccordion = (openAccordion === service.id) ? null : service.id"
-                              :aria-expanded="(openAccordion === service.id).toString()"
-                              :aria-controls="'service-' + service.id"
-                              :id="'service-button-' + service.id"
-                            >
-                              <img
-                                class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform"
-                                src="./img/drop-arrow.svg"
-                                :class="{ 'rotate-180': openAccordion === service.id }"
-                                alt="Expand or collapse Service content"
-                                aria-hidden="true"
-                              />
-                              <span class="uppercase" x-text="service.title"></span>
+                            <button type="button" class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-start w-full font-bold text-left" @click="openAccordion = (openAccordion === service.id) ? null : service.id" :aria-expanded="(openAccordion === service.id).toString()" :aria-controls="'service-' + service.id" :id="'service-button-' + service.id">
+                              <img class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform" src="./img/drop-arrow.svg" :class="{ 'rotate-180': openAccordion === service.id }" alt="Expand or collapse Service content" aria-hidden="true" />
+                              <span class="uppercase whitespace-normal" x-text="service.title"></span>
                             </button>
                           </h2>
 
-                          <div
-                            x-show="openAccordion === service.id"
-                            x-transition:enter="transition-all ease-in-out duration-500"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-[600px]"
-                            x-transition:leave="transition-all ease-in-out duration-500"
-                            x-transition:leave-start="opacity-100 max-h-[600px]"
-                            x-transition:leave-end="opacity-0 max-h-0"
-                            :id="'service-' + service.id"
-                            role="region"
-                            :aria-labelledby="'service-button-' + service.id"
-                            :inert="openAccordion !== service.id"
-                            :tabindex="openAccordion === service.id ? 0 : -1"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left pl-9"
-                            style="transition-property: opacity, max-height"
-                          >
+                          <div x-show="openAccordion === service.id" x-transition:enter="transition-all ease-in-out duration-500" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-[600px]" x-transition:leave="transition-all ease-in-out duration-500" x-transition:leave-start="opacity-100 max-h-[600px]" x-transition:leave-end="opacity-0 max-h-0" :id="'service-' + service.id" role="region" :aria-labelledby="'service-button-' + service.id" :inert="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1" class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left pl-9" style="transition-property: opacity, max-height">
                             <div class="overflow-hidden">
                               <p class="mt-1" x-text="service.description"></p>
-                              <div
-                                class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]"
-                              >
-                                <a
-                                  :href="service.link"
-                                  :aria-label="`Read more about ${service.title}`"
-                                  :title="`Read more about ${service.title}`"
-                                  class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100 transform bg-darkBlue rounded-full select-none"
-                                >
+                              <div class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]">
+                                <a :href="service.link" :aria-label="`Read more about ${service.title}`" :title="`Read more about ${service.title}`" class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100 transform bg-darkBlue rounded-full select-none">
                                   Read more
                                   <span class="sr-only" x-text="`about ${service.title}`"></span>
                                 </a>
@@ -436,7 +413,7 @@
                           </div>
                         </div>
                       </template>
-              
+
                     </div>
                   </div>
                 </div>
@@ -868,6 +845,53 @@
 
 
 
+        <!-- Our Motto -->
+
+
+        <section class="mt-[8svh] mb-[4svh] text-darkBlue flex flex-col items-start md:items-center mx-auto max-w-[1200px]">
+  
+          <div class="mb-6 md:mb-8 max-md:px-10">
+            <img src="./img/smartsourcing-core-icon.svg" class="size-10 sm:size-[5svh]" alt="Smartsourcing Strategic Icon">
+          </div>
+
+          <div class="w-full text-left md:text-center">
+            <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw] max-md:px-10 font-bold leading-normal uppercase" aria-label="Strategic Title">
+              What Smartsourcing Means for Your Firm
+            </h2>
+            <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 mt-2 portrait:mb-[3svh] lg:landscape:mb-[4svh] leading-normal max-w-[1000px] md:mx-auto font-light" aria-label="Strategic Description">
+              Outsourcing is tactical, it shaves cost. Smartsourcing is strategic, it raises the standard of the work. For Australian accounting firms, that comes down to three things.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1  max-md:px-10  md:grid-cols-3 w-full md:border-t border-slate-200 mt-2">
+            
+            <div class="py-5 md:px-10 md:py-8  flex flex-col items-start text-left border-b max-md:border-t border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
+              <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-2 tracking-[0.2em] uppercase">01</span>
+              <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Consistent effectiveness</h3>
+              <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
+                Every job is prepared by a qualified accountant with a minimum of three years’ Australian accounting and tax experience. No junior hand-offs.
+              </p>
+            </div>
+
+            <div class="py-5 md:px-10 md:py-8  flex flex-col items-start text-left border-b border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
+              <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-3 tracking-[0.2em] uppercase">02</span>
+              <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Deep expertise</h3>
+              <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
+                Big-4 trained, boutique-delivered. A Chartered Accountancy firm since 1988. Judgement that survives partner review.
+              </p>
+            </div>
+
+            <div class="py-5 md:px-10 md:py-8 flex flex-col items-start text-left border-b border-slate-200 md:border-b-0 last:border-b-0">
+              <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-3 tracking-[0.2em] uppercase">03</span>
+              <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Stronger core competencies</h3>
+              <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
+                You and your team stay on advisory; we run the compliance engine in the background. Scale without the hire.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
         <!-- About Us Section -->
         <section class="flex flex-col-reverse  justify-center m-auto max-sm:mt-[4svh] landscape:sm:flex-row ">
           <div
@@ -880,13 +904,7 @@
             </h1>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:md:px-[7svw] max-md:px-10  font-light leading-normal "
               aria-label="Hero Description">
-              Founded in 1988 to simplify accounting for Indian businesses, we’ve grown into a global certified public
-              accounting firm
-              offering offshore solutions worldwide.
-        
-              We streamline financial processes as a virtual extension of your accounting department. Our blended shore model
-              ensures
-              consistent, high-quality service 24/7, powered by our expert global team. <a
+              Founded in 1988 as a Chartered Accountancy firm, VJC has spent close to four decades on the partner side of the desk. Today, VJC Partners works exclusively with Australian accounting firms as their extended accounting team — delivering smartsourcing solutions and offshore accounting services for Australian firms aligned to Australian accounting standards, ATO requirements and the compliance frameworks their practice already runs on. <a
                 href="./about-us.html"
                 aria-label="Read more about our firm"
                 title="Read more about our firm"
@@ -1191,8 +1209,7 @@
             </h2>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   font-light "
               aria-label="Hero Description">
-              We use cutting-edge software and industry trends to deliver high-quality services, tailored to meet and exceed each
-              client’s unique standards, ensuring exceptional results and satisfaction every time.
+              We work inside your stack, not ours.
             </p>
 
 
@@ -1505,8 +1522,7 @@
                 </div>
                 <div class="flex flex-col gap-1 leading-normal text-left  landscape:md:gap-0 text-darkBlue">
                   <h3 class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw]  font-bold">INSIGHTS</h3>
-                  <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw]  font-light leading-normal">Dive into our expert analyses and industry trends to gain valuable knowledge, stay ahead in the ever-evolving financial
-                  landscape, and make informed decisions with confidence.<a id="resources-button-insights-home"
+                  <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw]  font-light leading-normal">Practical notes on what is changing in Australian tax law, ATO focus areas, and considerations for working with an offshore preparation team. Authored by VJC directors, technically reviewed before publication.<a id="resources-button-insights-home"
                     data-track="link"
                     href="https://resources.vjcpartners.com" 
                     aria-label="Read more from our insights"
@@ -1565,9 +1581,8 @@
                   </div>
                 </div>
                 <div class="flex flex-col gap-1 leading-normal text-left landscape:md:gap-0 text-darkBlue">
-                  <h3 class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw]   font-bold">CASE STUDIES</h3>
-                  <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw] leading-normal font-light">Explore detailed case studies showcasing how our tailored solutions delivered tangible results and success for
-                  businesses, empowering them to achieve their goals with precision and confidence.<a id="resources-button-case-studies-home"
+                  <h3 class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw]  uppercase font-bold">Client Success Stories</h3>
+                  <p class="text-[3vw] sm:text-[1.9svh] portrait:sm:text-[1.6svw] leading-normal font-light">Explore client stories showcasing how our tailored smartsourcing solutions delivered tangible results for Australian firms, empowering principals to step back from production and grow their practices with precision and confidence.<a id="resources-button-case-studies-home"
                     data-track="link"
                     href="https://resources.vjcpartners.com#case-studies"
                     aria-label="Read more case studies"
@@ -1597,71 +1612,150 @@
         <!-- FAQ Section -->
         <section id="faq" class=" text-darkBlue flex flex-col  md:mt-[4svh]  mt-16   md:pb-5 pb-8" role="region"
           aria-label="Sessions related FAQ">
+
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is smartsourcing, and how is it different from outsourcing?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Outsourcing is tactical, focusing on cost-cutting. Smartsourcing is strategic, delegating core, judgement-bearing work to a partner whose expertise rivals your own. For an Australian accounting firm, that means qualified-accountant-led preparation within your own software environment."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is distinctive about VJC’s approach?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "VJC Partners works exclusively with Australian accounting firms. Unlike BPOs, we have been a Chartered Accountancy firm since 1988. Every job is prepared by a qualified accountant with a minimum of three years’ Australian experience."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What does “Big-4 quality, boutique firm attention” mean?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Big-4 quality refers to technical discipline like line-by-line workpapers and complete reconciliations. Boutique attention means you have direct access to a named preparer, a Client Success Partner, and a VJC director on every call."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Who prepares our jobs, and what are their qualifications?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every job is prepared by a qualified accountant (CA, postgraduate degree, or equivalent) with minimum three years’ Australian experience and 100+ hours of specific AU tax and compliance training."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you provide references or case studies?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Several client stories are on our Resources page. We can also put you in touch with a principal at a firm of comparable size and service mix to yours upon request."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What does the onboarding process look like?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You are assigned a dedicated Client Success Partner who documents your processes and software. Most firms are fully operational within 1–2 weeks with a structured reporting rhythm starting from day one."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What tech infrastructure do I need to set up before we start?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your existing practice stack is enough. You provide software seats for tools like Xero or BGL, and a secure email ID with multi-factor authentication for each team member."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What are your working hours, and how do you handle the time-zone difference?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our teams work 8:00 AM to 5:00 PM IST, providing significant live overlap for both East-coast (AEST) and West-coast (AWST) Australian practices."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do you handle the security of our financial data?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We are ISO 27001:2022-certified, use no local device storage, implement multi-factor authentication, and ensure every team member signs a confidentiality deed."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What happens if we want to scale up, scale down, or pause?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every model flexes on thirty-sixty days’ written notice. Move between FTE and Job-by-Job models without minimum-term lock-ins or exit penalties."
+                  }
+                }
+              ]
+            }
+          </script>
+
           <div role="heading" aria-level="2">
             <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
               Frequently Asked Questions
             </h2>
+            <p class="text-center text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mt-2 font-light px-[2.4rem] md:px-24">
+                Questions partners ask us before they commit. The rest, you can ask on the call.
+            </p>
           </div>
-        
+
           <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
               <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
-                <!-- Accordion component -->
                 <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
           
                   <template x-data="{
                     faqs: [
-                      { question: 'What services do you offer?', answer: 'We specialize in a comprehensive range of financial services, including accounting and bookkeeping, auditing and assurance, tax planning and filing, virtual CFO services, and legal process outsourcing. We have a diverse team of experts including CAs, ACCAs, CFAs, Accountants, Auditors, and Lawyers who ensure quality work for our range of services.', link: './contact.html', linkText: 'Contact an Expert', action: 'contact_expert' },
-                      { question: 'How do you ensure the security of our financial data?', answer: 'We prioritize data security through a multi-layered approach that includes end-to-end encryption, secure VPN connections, advanced firewall protection, and compliance with international standards. Additionally, our robust IT infrastructure includes regular VAPT and routine security updates.', link: './contact.html', linkText: 'Learn more about our data security measures', action: 'learn_data_security' },
-                      { question: 'Why should I choose your company for financial services outsourcing?', answer: 'Our company stands out due to our robust engagement framework, our team of experienced professionals, commitment to quality, and adherence to the highest industry standards. We provide customized solutions to meet your unique business requirements, ensuring enhanced efficiency and unparalleled cost savings.', link: './contact.html', linkText: 'Request a personalized quote', action: 'request_quote' },
-                      { question: 'What industries do you serve?', answer: 'We serve a diverse range of industries including fintech, SaaS, mining, automobile, petroleum, FMCG, healthcare, retail, manufacturing, real estate, agriculture, fashion, media, and more. Our expertise allows us to tailor our financial services to the specific needs and regulations of each industry.', link: './contact.html', linkText: 'Explore tailor-made solutions for your industry-specific requirements', action: 'explore_solutions' },
-                      { question: 'How do you handle compliance and regulatory requirements?', answer: 'We have a dedicated compliance team that stays up-to-date with the latest regulatory changes. Our processes are designed to ensure compliance with all relevant regulations, including GDPR, GLBA, SOX, and HIPAA. We also conduct regular internal audits to maintain the highest standards of compliance.', link: './contact.html', linkText: 'Speak with our compliance experts', action: 'contact_compliance' },
-                      { question: 'What is your pricing structure?', answer: 'Our pricing is competitive and flexible, designed to fit the unique needs of each client. We offer various pricing models, including fixed-rate, hourly, and project-based rates, ensuring that you receive the best value for your investment.', link: './engagement-models.html', linkText: 'Check our Engagement Models Page for more', action: 'view_pricing' },
-                      { question: 'How can you ensure round-the-clock support for various time zones?', answer: 'We have dedicated teams working for our clients adhering to all their requirements, including the time schedule most suitable for their work. Our vast and ever-expanding network of professionals across the globe ensures 24/7 availability of expert advisory and consultation.', link: './contact.html', linkText: 'Contact us today to experience our seamless global support', action: 'contact_global_support' },
-                      { question: 'How can I get started with your services?', answer: 'Easy! Simply reach out to us via our Contact form, Email, or Phone. Our team will schedule a virtual consultation to understand your needs and develop a customized outsourcing plan for your business after detailed discussions of your requirements.', link: './contact.html', linkText: 'Schedule a free initial consultation', action: 'schedule_consultation'},
-                      { question: 'What technology do you use to support your services?', answer: 'We utilize the latest technology and software to ensure high-quality service delivery. This includes Microsoft 365, SharePoint for data sharing, advanced project management tools, secure VDI solutions, and comprehensive IT infrastructure management systems.', link: './contact.html', linkText: 'Request a demo of our solutions', action: 'request_demo' },
-                      { question: 'How do you ensure the quality of your services?', answer: 'We have a rigorous quality control process that includes standardized processes, regular audits, performance monitoring, and client feedback mechanisms. Our team is committed to continuous improvement and excellence in service delivery.', link: './contact.html', linkText: 'Reach out for details on our quality assurance practices', action: 'learn_quality_assurance' },
-                      { question: 'Can you provide references or case studies from past clients?', answer: 'Absolutely! We have a proven track record of delivering high-quality financial services to our clients. You can read our case studies on our Resources page.', link: 'https://resources.vjcpartners.com', linkText: 'Check out our Insights Page for detailed Case Studies', action: 'view_case_studies' },
-                      { question: 'How do you manage projects across different time zones?', answer: 'We have a strategic approach to time zone management for our global clients. Our professionals are distributed across geographies to provide seamless 24/7 service. We align working hours with client time zones, use advanced communication tools, and operate with dedicated global teams working in shifts to ensure continuous workflow and immediate responses.', link: './contact.html', linkText: 'Contact us to discuss managing your project across time zones', action: 'contact_time_zones' },
-                      { question: 'What are your Standard Operating Procedures (SOPs) for managing financial services?', answer: 'Our SOPs ensure consistency, quality, and compliance. Each service has detailed process documentation outlining procedures, responsibilities, and quality checks. Team members undergo extensive SOP training. We regularly review and update SOPs, incorporating best practices and regulatory changes. SOPs are also customized to client needs.', link: './contact.html', linkText: 'Learn more about our SOPs ensuring quality and efficiency', action: 'learn_sops' },
-                      { question: 'Do you partner with local CPA firms or other B2B businesses?', answer: 'Yes, we actively partner with local CPA firms and B2B companies to expand offerings and provide comprehensive solutions. This includes CPA firm collaborations, B2B alliances, client referrals, and co-branding opportunities, leveraging mutual strengths and market presence.', link: './contact.html', linkText: 'Explore partnering with us to add value', action: 'explore_partnering' },
-                      { question: 'How do you handle language differences with international clients?', answer: 'Our team is fluent in English. For other languages, we employ AI translation tools for accurate real-time translations. Additionally, we provide in-house extensive cultural and linguistic training to our staff, which ensures they are not only respectful and aware of cultural nuances but also capable of understanding and addressing the unique needs of clients from diverse backgrounds. We prioritize clear, concise communication tailored to client preferences, ensuring language is never a barrier.', link: './contact.html', linkText: 'Connect with us on accommodating language needs', action: 'contact_language_needs' }
-                        ],
-                        openFaq: null,
-                        page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
-                      }" x-for="(faq, index) in faqs" :key="index">
-                      <div class="py-4">
-                        <h2>
-                          <button type="button"
-                            class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-                            @click="openFaq = (openFaq === index ? null : index); window.dataLayer.push({ event: 'dom_updated' })"
-                            :aria-expanded="openFaq === index.toString()"
-                            :aria-controls="'faq-' + index">
-                            <span x-text="faq.question"></span>
-                            <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-                              src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
-                              alt="Expand or collapse FAQ content" aria-hidden="true" />
-                          </button>
-                        </h2>
-                        <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-                          :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-                          <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
-                          <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-                            <a
-                              :href="faq.link"
-                              :id="'faq-link-' + index + '-' + page"
-                              :data-track="faq.styleAsButton ? 'button' : 'link'"
-                              :data-action="faq.action"
-                              :target="faq.link.includes('https://') ? '_blank' : null"
-                              :rel="faq.link.includes('https://') ? 'noopener noreferrer' : null"
-                              :aria-label="faq.linkText + ' for ' + faq.question"
-                              :class="faq.styleAsButton ? 'whitespace-nowrap font-semibold text-[2.9vw] sm:text-[1.7svh] portrait:sm:text-[1.4svw] focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white text-darkBlue py-[2vw] px-[3vw] sm:px-[2svh] sm:py-[1svh] portrait:sm:px-[2svw] portrait:sm:py-[1svw] transition-all duration-100 transform bg-white rounded-full select-none delayed-link' : 'text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link'"
-                            >
-                              <span x-text="faq.linkText"></span>
-                            </a>
-                          </p>
-                        </div>
-                      </div>
+                        { question: 'What is smartsourcing, and how is it different from outsourcing?', answer: 'Outsourcing is tactical, you delegate non-core or low-value work to cut cost or shorten a project. Smartsourcing is strategic, you delegate core, judgement-bearing work to a partner whose expertise rivals your own, measured on long-term improvement rather than unit price. For an Australian accounting firm, that means qualified-accountant-led preparation of bookkeeping, payroll, year-end, tax compliance and SMSF jobs, run inside your software and to your firm’s standards. We treat the work like it is ours because for the duration of every engagement, it is.' },
+                        { question: 'What is distinctive about VJC’s approach?', answer: 'VJC Partners works exclusively with Australian accounting firms, and the underlying practice has been a Chartered Accountancy firm in India since 1988, not a BPO that learned accounting later. Every job is prepared by a qualified accountant with a minimum of three years’ Australian experience, working inside your software, workflows and templates. You get Big-4 quality with boutique firm attention.' },
+                        { question: 'What does “Big-4 quality, boutique firm attention” mean?', answer: 'Big-4 quality is about the technical discipline: line-by-line workpapers, complete reconciliations, position notes where a judgement is being made, and a clear work trail from receipt to delivery. The work is prepared to a standard that survives review. Boutique firm attention is about the relationship around the work. You get a named preparer, a named Client Success Partner, and a VJC director on every call. If something needs attention, you know exactly who to call.' },
+                        { question: 'Who prepares our jobs, and what are their qualifications?', answer: 'Every job is prepared by a qualified accountant (Chartered Accountant, postgraduate accounting degree, or equivalent professional qualification) with minimum three years’ Australian experience, who has completed 100+ hours of Australian tax and compliance training before being assigned to any client account. Workpapers, reconciliations and open queries are presented clearly so you can sign off without re-doing the working. You will not see junior output presented as anything else.' },
+                        { question: 'Can you provide references or case studies?', answer: 'Yes — several client stories sit on our Resources page. For direct references, our Growth & Partnerships team can put you in touch with a principal at a firm of comparable size and service mix to yours, on request.', link: 'https://resources.vjcpartners.com', linkText: 'Check out our Insights Page for detailed Case Studies' },
+                        { question: 'What does the onboarding process look like?', answer: 'Once you decide to proceed, you’re assigned a dedicated Client Success Partner who guides the entire setup. We document your processes, templates, software stack and quality standards, then provision access and train our dedicated team member against your exact requirements. A structured reporting rhythm kicks in from day one: daily updates, weekly task reviews, monthly performance reviews, and quarterly strategic check-ins. Most firms are fully operational within 1–2 weeks.' },
+                        { question: 'What tech infrastructure do I need to set up before we start?', answer: 'Your existing practice stack is enough — we work inside your software, so there is nothing new to buy or migrate to. In practical terms you provide: Software seats (Xero, Karbon, etc) and secure access with an email ID with multi-factor authentication per team member.' },
+                        { question: 'What are your working hours, and how do you handle the time-zone difference?', answer: 'Our delivery teams in India work 8:00 AM to 5:00 PM IST, Monday to Friday. East-coast practices (AEST) get a four-and-a-half-hour live overlap (12:30 PM to 5:00 PM AEST). West-coast practices (AWST) get a six-and-a-half-hour overlap (10:30 AM to 5:00 PM AWST). Queries you raise in your morning are answered same-day; jobs left for us at the end of your day are returned the next morning.' },
+                        { question: 'How do you protect our clients’ data?', answer: 'ISO 27001:2022-certified operations, no local device storage, multi-factor authentication on every cloud tool, and a signed confidentiality deed from every team member from day one. Your data never leaves the approved environment, and we do not sub-contract any part of the engagement.' },
+                        { question: 'What happens if we want to scale up, scale down, or pause?', answer: 'Every model flexes on thirty-sixty days’ written notice. Move from Job by Job to Full Time Equivalent, or from FTE back to Part Time, without minimum-term lock-ins or exit penalties. The engagement continues on the strength of the work.' }
+                    ],
+                    openFaq: null,
+                    page: 'solutions'
+                  }" x-for="(faq, index) in faqs" :key="index">
+                  <div class="py-4">
+                    <h2>
+                      <button type="button"
+                        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
+                        @click="openFaq = (openFaq === index ? null : index)"
+                        :aria-expanded="openFaq === index.toString()"
+                        :aria-controls="'faq-' + index">
+                        <span x-text="faq.question"></span>
+                        <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform"
+                          src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
+                          alt="Expand or collapse FAQ content" aria-hidden="true" />
+                      </button>
+                    </h2>
+                    <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
+                      :class="openFaq === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'">
+                      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+                      
+                      <template x-if="faq.link">
+                        <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
+                          <a :href="faq.link" class="text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link" x-text="faq.linkText"></a>
+                        </p>
+                      </template>
+                    </div>
+                  </div>
                   </template>
           
                 </div>
@@ -1672,241 +1766,160 @@
 
 
         <!-- Contact Section -->
-        <section class="">
-            <div class="text-white" >
-                <div class=" landscape:sm:py-[7svh] portrait:sm:pt-[3svw] portrait:sm:pb-[1svw] max-md:px-2  max-sm:pb-3 landscape:md:pb-8 ">
-                    <div class="flex landscape:xl:flex-row flex-col  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]  justify-between landscape:md:gap-8 gap-3 mx-auto ">
-                        <div class="landscape:xl:w-[70%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh]  bg-darkBlue   shadow-2xl mx-auto">
-                            <h3 id="contactSectionHeading"
-                                class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold  mt-7 max-sm:mt-10 leading-normal"
-                                aria-label="Contact Section">
-                                Schedule a 30 min discovery call
-                            </h3>
-                            <p class="font-light max-sm:text-[3.5vw]  portrait:sm:text-[1.8svw]">
-                                Let’s discuss your requirements and provide you with tailored solutions
-                            </p>
+        <section class="pre-footer-banners">
+          <div class="text-white">
+              <div class="landscape:sm:py-[7svh] portrait:sm:pt-[3svw] portrait:sm:pb-[1svw] max-md:px-2 max-sm:pb-3 landscape:md:pb-8">
+                  <div class="flex landscape:xl:flex-row flex-col landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw] justify-between landscape:md:gap-8 gap-3 mx-auto">
+                      
+                      <div class="landscape:xl:w-[50%] flex px-8 flex-col justify-center w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] bg-darkBlue shadow-2xl mx-auto py-10">
+                          <h3 class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold leading-normal">
+                              See the work before you commit.
+                          </h3>
+                          <p class="font-light max-sm:text-[3.5vw] portrait:sm:text-[1.8svw] mt-2 leading-normal">
+                              Send us one job: a BAS, a set of workpapers, a single tax return, one SMSF job. We will prepare it, review it, and show you exactly what a VJC smartsourced job looks like. No cost, no obligation, no hand-off to sales.
+                          </p>
 
-                            <div
-                                class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
-                            </div>
+                          <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5"></div>
 
-                            <div class="flex justify-center mb-12 md:mt-6 mt-7 md:mb-7">
-                                <a id="schedule-button-footer-home" data-track="button" data-action="schedule" href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min"
-                                    aria-label="Link to Schedule a Meeting"
-                                    class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white delayed-link  text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-4 landscape:py-3 lg:landscape:px-6 lg:landscape:py-4 transition-transform duration-100 transform bg-white rounded-full select-none">
-                                    Schedule Meeting
-                                </a>
-                            </div>
-                        </div>
+                          <div class="flex justify-center mt-10 md:mt-8">
+                              <a id="trial-button-footer" data-track="button" data-action="trial_request" href="./contact.html"
+                                  aria-label="Start Your Smartsourcing Workflow Trial"
+                                  class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white delayed-link text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-8 landscape:py-4 transition-transform duration-100 transform bg-white rounded-full select-none">
+                                  Start Your Smartsourcing Workflow Trial
+                              </a>
+                          </div>
+                      </div>
 
-                        <div class="landscape:xl:w-[30%] flex px-8 flex-col justify-center  w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] backdrop-blur-xl  bg-darkBlue   shadow-xl mx-auto">
-                            <h3 id="contactSectionHeading"
-                                class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold  mt-7 max-sm:mt-10 leading-normal"
-                                aria-label="Contact Section">
-                                Contact Us
-                            </h3>
-                            <p class="font-light max-sm:text-[3.5vw] md:text-sm  portrait:sm:text-[1.8svw]">
-                                Unlock a partnership with precision and trust.
-                            </p>
+                      <div class="landscape:xl:w-[50%] flex px-8 flex-col justify-center w-full text-center landscape:md:rounded-[4rem] rounded-[6svh] bg-darkBlue shadow-2xl mx-auto py-10">
+                          <h3 class="text-2xl landscape:md:text-2xl portrait:sm:text-[3.3svw] text-[5.1vw] uppercase font-bold leading-normal">
+                              Talk to a director before you commit.
+                          </h3>
+                          <p class="font-light max-sm:text-[3.5vw] portrait:sm:text-[1.8svw] mt-2 leading-normal">
+                              Every discovery call is hosted by our Growth & Partnerships team, with a VJC director on the line. You will get a working conversation about your capacity, your software, and a straight answer on fit.
+                          </p>
+                          
+                          <div class="mt-2">
+                              <a href="./engagement-models.html" class="text-[3.2vw] sm:text-[1.5svh] portrait:sm:text-[1.3svw] underline opacity-80 hover:opacity-100 transition-opacity font-light ">
+                                  Request pricing details
+                              </a>
+                          </div>
 
-                            <div
-                                class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5">
-                            </div>
+                          <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center mt-5"></div>
 
-                            <div class="flex flex-row justify-center gap-5 mb-10 text-base max-md:px-8 max-md:mt-7 md:mt-6 md:mb-7" role="presentation">
-                                <a
-                                  class="delayed-link"
-                                  href="tel:+61272591533"
-                                  id="contact-call_us-home"
-                                  data-track="link"
-                                  data-action="call_us"
-                                  title="Call us"
-                                  target="_blank"
-                                  rel="noopener"
-                                  aria-label="Call us at +61272591533"
-                                >
-                                  <img
-                                    class="w-16 transition-transform duration-100 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                    src="./img/phone-circle-icon.svg"
-                                    alt="Phone Icon"
-                                    role="img"
-                                    aria-label="Call us at +61272591533"
-                                  />
-                                </a>
+                          <div class="flex justify-center mt-10 md:mt-8">
+                              <a id="director-call-button" data-track="button" data-action="schedule_director" href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min"
+                                  aria-label="Talk to Our Growth & Partnerships team"
+                                  class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white delayed-link text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-8 landscape:py-4 transition-transform duration-100 transform bg-white rounded-full select-none">
+                                  Talk to Our Growth & Partnerships team
+                              </a>
+                          </div>
+                      </div>
 
-                                <a
-                                  class="delayed-link"
-                                  href="https://in.linkedin.com/company/vjcindia"
-                                  id="contact-visit_linkedin-home"
-                                  data-track="link"
-                                  data-action="visit_linkedin"
-                                  title="Visit our LinkedIn profile"
-                                  target="_blank"
-                                  rel="noopener"
-                                  aria-label="Visit our LinkedIn profile"
-                                >
-                                  <img
-                                    class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                    src="./img/linkedin-circle-icon.svg"
-                                    alt="LinkedIn Logo"
-                                    role="img"
-                                    aria-label="Visit our LinkedIn profile"
-                                  />
-                                </a>
-
-                                <a
-                                  class="delayed-link"
-                                  href="https://wa.me/919009934303?text=I%20want%20to%20schedule%20a%20meeting"
-                                  id="contact-contact_whatsapp-home"
-                                  data-track="link"
-                                  data-action="contact_whatsapp"
-                                  title="Contact us on WhatsApp"
-                                  target="_blank"
-                                  rel="noopener"
-                                  aria-label="Contact us on WhatsApp to schedule a meeting"
-                                >
-                                  <img
-                                    class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                    src="./img/whatsapp-circle-icon.svg"
-                                    alt="WhatsApp Logo"
-                                    role="img"
-                                    aria-label="Contact us on WhatsApp to schedule a meeting"
-                                  />
-                                </a>
-
-                                <a
-                                  class="delayed-link"
-                                  href="mailto:info@vjcindia.com"
-                                  id="contact-email_us-home"
-                                  data-track="link"
-                                  data-action="email_us"
-                                  title="Send us a mail"
-                                  target="_blank"
-                                  rel="noopener"
-                                  aria-label="Send us an email at info@vjcindia.com"
-                                >
-                                  <img
-                                    class="w-16 transition-transform duration-200 transform cursor-pointer md:w-14 hover:scale-125 active:scale-125"
-                                    src="./img/mail-circle-icon.svg"
-                                    alt="Email Logo"
-                                    role="img"
-                                    aria-label="Send us an email at info@vjcindia.com"
-                                  />
-                                </a>
-                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                  </div>
+              </div>
+          </div>
+      </section>
 
       </main>
 
       <!-- Footer -->
-      <footer class=" text-white bg-white flex flex-col text-sm font-normal  landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]" role="contentinfo">
-            <div class="  py-8 max-md:mx-2   bg-darkBlue  landscape:md:rounded-[4rem] rounded-[6svh]  shadow-xl">
-                <div class=" landscape:md:flex-row flex flex-col justify-between md:mx-[3.2rem] text-center ">
-                    <div class=" flex flex-col px-10 md:px-0  landscape:md:w-[40%] ">
-                        <a class=" w-18 ml-0 landscape:md:w-18 landscape:md:mt-2" href="./index.html" aria-label="Home">
-                            <img class="" src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
-                        </a>
-                        <div class=" flex flex-wrap mt-3 flex-row gap-[0.2rem]  landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left max-md:font-medium uppercase max-md:mt-5 max-md:text-[3.4vw] portrait:sm:text-[1.7svw] max-md:mb-0">
-                            
-                            <p>The finest in accounting since 1988.</p>
-                        </div>
-                        <div
-                          class="flex   flex-col max-md:font-medium   landscape:md:ml-[0.15rem] text-xs md:text-sm font-light text-left uppercase max-md:mt-0 max-md:mb-5 mb-5">
-                          <p class="max-md:text-[3.3vw] portrait:sm:text-[1.7svw]">Pakenham, VIC, Australia, 3810</p>
-                          <p class="lowercase max-md:text-[3.3vw] portrait:sm:text-[1.7svw] max-md:mt-[0.5rem] md:mt-[0.1rem] md:text-[0.9rem]">(02) 7259 1533, info@vjcindia.com</p>
-                          <a class="max-sm:hidden cookie-settings text-white mt-1 capitalize underline" href="#" >Cookie Settings</a>
-                        </div>
-                    </div>
-                    <nav class="my-auto" aria-label="Footer Navigation - Sitemap" role="navigation">
-                        <div class=" max-md:hidden md:flex-row md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex flex-col my-auto  gap-5 ">
-                            <div class=" md:flex-row max-md:gap-14 md:gap-[2.5svh] portrait:sm:gap-[6svw] xl:gap-[4svh] flex gap-5">
-
-                              <div class="portrait:hidden w-48 ml-0  my-auto" >
-                                <img class="" src="./img/iso_certification_logo_w.svg" alt="VJC ISO certificate" aria-hidden="true">
-                              </div>
-                                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
-                                    <li><a href="./index.html">Home</a></li>
-                                    <li><a href="./about-us.html">About Us</a></li>
-                                    <li><a href="./engagement-models.html">Engagement Models</a></li>
-                                    <li><a href="#faq">FAQ</a></li>
-                                    <li><a href="./contact.html">Contact Us</a></li>
-                                </ul>
-                                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
-                                    <li><a href="https://resources.vjcpartners.com">Insights</a></li>
-                                    <li><a href="https://resources.vjcpartners.com#case-studies">Case Studies</a></li>
-                                    <li><a href="https://vjcllp.in/application-form/">Careers</a></li>
-                                    <li><a href="./terms-and-conditions.html">Terms & Conditions</a></li>
-                                    <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                                </ul>
-                            </div>          
-                            <div class="flex flex-col gap-5 md:flex-row md:gap-10">
-                                <ul class="flex flex-col justify-center gap-1 ml-0 text-xs text-left text-white md:text-sm">
-                                    <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting and Bookkeeping</a>
-                                    </li>
-                                    <li><a href="./audit-and-assurance-services.html">Audit and Assurance services</a></li>
-                                    <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-                                    <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-                                    <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-                                </ul>
-                            </div>
-                        </div>
+<footer class="text-white bg-white flex flex-col text-sm font-normal landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]" role="contentinfo">
+    <div class="py-10 max-md:mx-2 bg-darkBlue landscape:md:rounded-[4rem] rounded-[6svh] shadow-xl">
+        <div class="flex flex-col md:flex-row justify-between md:mx-[3.2rem] text-center md:text-right">
+            
+            <div class="flex flex-col px-10 md:px-0 md:w-[28%] text-left">
+                <a class="w-18 ml-0 md:w-18 md:mt-2" href="./index.html" aria-label="Home">
+                    <img src="./img/logo_w.svg" alt="VJC Home" aria-hidden="true">
+                </a>
                 
-                        <div class=" md:hidden flex flex-col gap-[2.5svh] font-light">
-                          <div class="flex">
-                            <ul class="flex flex-row flex-wrap justify-start gap-[1.2svh] sm:gap-[3svw] leading-[1.5svh] px-10 mx-auto text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
+                <div class="flex flex-col mt-5 font-light uppercase max-md:text-[3.4vw] portrait:sm:text-[1.7svw] gap-1">
+                    <p class="font-medium text-darkGreen">Smartsourcing Solutions for Australian Accountants.</p>
+                    <p class="lowercase max-md:text-[3.3vw] md:text-[0.9rem]">business@vjcpartners.com</p>
+                    <p class="max-md:text-[3.3vw] md:text-[0.9rem]">+61 2 7259 1533</p>
+                    <p class="max-md:text-[3.3vw] md:text-[0.9rem]">Pakenham, VIC, Australia, 3810</p>
+                </div>
+
+                <div class="flex flex-col mt-8 md:hidden gap-6">
+                    <div class="flex gap-4">
+                        <img class="w-28 opacity-90" src="./img/iso_certification_logo_w.svg" alt="ISO Certification">
+                        <img class="w-28 opacity-90" src="./img/iso_certification_logo_w.svg" alt="GDPR Compliant">
+                    </div>
+                    <div class="flex gap-5 items-center">
+                        <a href="https://in.linkedin.com/company/vjcindia" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/linkedin-circle-icon.svg" class="w-10" alt="LinkedIn"></a>
+                        <a href="https://www.facebook.com/vjcindia/" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/facebook-circle-icon.svg" class="w-10" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/vjcindia/" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/instagram-circle-icon.svg" class="w-10" alt="Instagram"></a>
+                    </div>
+                </div>
+
+                <a class="hidden md:block cookie-settings text-white mt-6 capitalize underline text-xs opacity-60 hover:opacity-100 transition-opacity" href="#">Cookie Settings</a>
+            </div>
+
+            <div class="flex flex-col flex-1 my-auto max-md:mt-12 md:pl-10">
+                <nav aria-label="Footer Navigation">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10 md:gap-12 lg:gap-16 portrait:sm:gap-[4svw] text-left px-10 md:px-0">
+                        
+                        <div class="flex flex-col gap-1 md:w-max">
+                            <h3 class="font-bold text-[4vw] portrait:sm:text-[2svw] md:text-xs uppercase text-darkGreen mb-1">Quick Links</h3>
+                            <ul class="flex flex-col gap-[0.5svh] text-[3.3vw] portrait:sm:text-[1.7svw] md:text-sm font-light">
                                 <li><a href="./index.html">Home</a></li>
                                 <li><a href="./about-us.html">About Us</a></li>
                                 <li><a href="./engagement-models.html">Engagement Models</a></li>
                                 <li><a href="./contact.html">Contact Us</a></li>
-                                <li><a href="https://resources.vjcpartners.com">Resources</a></li>
-                                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="./terms-and-conditions.html">Terms and Conditions</a></li>
+                                <li><a href="https://vjcllp.in/application-form/">Careers</a></li>
                             </ul>
-                          </div>
+                        </div>
 
-                          <div class="flex flex-col text-left">
-                            <h3 class="font-bold px-10 pb-1 text-[4vw] portrait:sm:text-[3svw]">OUR SERVICES</h3>
-                            <ul class="flex flex-col  justify-start gap-[0.5svh] px-10 text-left text-[3.3vw] portrait:sm:text-[2.5svw]  text-white">
-                              <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                              <li><a href="./audit-and-assurance-services.html">Audit & Assurance Services</a></li>
-                              <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-                              <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-                              <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
+                        <div class="flex flex-col gap-0 md:w-max">
+                            <h3 class="font-bold text-[4vw] portrait:sm:text-[2svw] md:text-xs uppercase text-darkGreen mb-1">Resources</h3>
+                            <ul class="flex flex-col gap-[0.5svh] text-[3.3vw] portrait:sm:text-[1.7svw] md:text-sm font-light">
+                                <li><a href="https://resources.vjcpartners.com">Latest Insights</a></li>
+                                <li><a href="https://resources.vjcpartners.com#case-studies">Client Success Stories</a></li>
+                                <div class="h-[1px] w-6 bg-white/10 my-2 md:mr-auto"></div>
+                                <li><a href="./terms-and-conditions.html" class="opacity-60">Terms & Conditions</a></li>
+                                <li><a href="./privacy-policy.html" class="opacity-60">Privacy Policy</a></li>
+                                <li><a href="./sitemap.xml" class="opacity-60">Sitemap</a></li>
                             </ul>
-                          </div>
-                          
-                          
                         </div>
 
-                        <div class="text-left px-10 flex">
-                          <a class="sm:hidden cookie-settings text-white mt-3 capitalize underline" href="#" >Cookie Settings</a>
+                        <div class="flex flex-col gap-1 col-span-2 md:col-span-1 md:w-max">
+                            <h3 class="font-bold text-[4vw] portrait:sm:text-[2svw] md:text-xs uppercase text-darkGreen mb-1">Our Solutions</h3>
+                            <ul class="flex flex-col gap-[0.5svh] text-[3.3vw] portrait:sm:text-[1.7svw] md:text-sm font-light">
+                                <li><a href="./bookkeeping-outsourcing.html">Bookkeeping</a></li>
+                                <li><a href="./payroll-outsourcing-and-compliance.html">Payroll & Compliance</a></li>
+                                <li><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting</a></li>
+                                <li><a href="./tax-compliance-outsourcing.html">Tax Compliance</a></li>
+                                <li><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance</a></li>
+                            </ul>
                         </div>
+                    </div>
+                </nav>
 
-                        <div class="lg:hidden w-48 max-sm:px-10 pt-5  my-auto" >
-                          <img class="" src="./img/iso_certification_logo_w.svg" alt="VJC ISO certificate" aria-hidden="true">
-                        </div>
+                <div class="hidden md:flex flex-row items-center gap-6 mt-10 justify-start">
+                    <div class="flex gap-4">
+                        <img class="w-28 opacity-90" src="./img/iso_certification_logo_w.svg" alt="ISO Certification">
+                        <img class="w-28 opacity-90" src="./img/iso_certification_logo_w.svg" alt="GDPR Compliant">
+                    </div>
+                    <div class="flex gap-5 border-l border-white/20 pl-6">
+                        <a href="https://in.linkedin.com/company/vjcindia" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/linkedin-circle-icon.svg" class="w-8" alt="LinkedIn"></a>
+                        <a href="https://www.facebook.com/vjcindia/" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/facebook-circle-icon.svg" class="w-8" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/vjcindia/" target="_blank" class="hover:scale-110 transition-transform"><img src="./img/instagram-circle-icon.svg" class="w-8" alt="Instagram"></a>
+                    </div>
+                </div>
 
-                        
-
-                        
-
-                        
-                    </nav>
+                <div class="md:hidden px-10 text-left mt-6">
+                    <a class="cookie-settings text-white capitalize underline text-[3.3vw] opacity-60" href="#">Cookie Settings</a>
                 </div>
             </div>
 
-            <div class="px-10 text-left md:text-center">
-                <div class="text-xs text-darkBlue font-white my-7">
-                    <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank"
-                            rel="noopener">blackwoodbox.com</a></div>
-                </div>
-            </div>
-            
-      </footer>
+        </div>
+    </div>
+
+    <div class="px-10 text-left md:text-center">
+        <div class="text-xs text-darkBlue font-white my-7">
+            <div>Powered By <a class="font-bold" href="https://blackwoodbox.com" target="_blank" rel="noopener">blackwoodbox.com</a></div>
+        </div>
+    </div>
+</footer>
 
       <!-- Cookie Banner -->
       <section id="cookieBanner" class="fixed max-w-md p-4 max-sm:mx-5 mx-auto bottom-5 sm:right-10 sm:bottom-10 bg-white/70 backdrop-blur-md landscape:md:rounded-[2rem] z-50 rounded-[4svh] px-8 py-8 shadow-[0_11px_16px_-4px_rgba(147,112,219,0.5),0_5px_7px_-3px_rgba(79,110,210,0.2)] hidden">
