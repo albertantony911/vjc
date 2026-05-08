@@ -942,6 +942,9 @@
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
@@ -1349,6 +1352,9 @@
   .bg-darkBlue {
     background-color: var(--color-darkBlue);
   }
+  .bg-darkGreen {
+    background-color: var(--color-darkGreen);
+  }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
@@ -1744,6 +1750,12 @@
   .text-slate-300 {
     color: var(--color-slate-300);
   }
+  .text-slate-400 {
+    color: var(--color-slate-400);
+  }
+  .text-slate-900 {
+    color: var(--color-slate-900);
+  }
   .text-white {
     color: var(--color-white);
   }
@@ -1904,6 +1916,21 @@
     -webkit-user-select: none;
     user-select: none;
   }
+  .group-hover\:translate-x-1 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-translate-x: calc(var(--spacing) * 1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .group-hover\:text-blue-600 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-blue-600);
+      }
+    }
+  }
   .last\:border-r-0 {
     &:last-child {
       border-right-style: var(--tw-border-style);
@@ -1953,6 +1980,13 @@
       }
     }
   }
+  .hover\:bg-darkBlue {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-darkBlue);
+      }
+    }
+  }
   .hover\:bg-darkGreen {
     &:hover {
       @media (hover: hover) {
@@ -1971,6 +2005,20 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-300);
+      }
+    }
+  }
+  .hover\:bg-slate-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-slate-50);
+      }
+    }
+  }
+  .hover\:bg-white {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white);
       }
     }
   }
@@ -2090,6 +2138,11 @@
       --tw-scale-y: 125%;
       --tw-scale-z: 125%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .active\:bg-darkBlue {
+    &:active {
+      background-color: var(--color-darkBlue);
     }
   }
   .active\:bg-darkGreen {

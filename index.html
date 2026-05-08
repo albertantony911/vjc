@@ -125,11 +125,7 @@
           <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
             <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
           </a>
-          <div class="flex flex-row sm:gap-[2svh] gap-5 items-center sm:ml-[4svh] transform translate-y-[0.195svh] ml-[1svh] ">
 
-            <img class="h-[1.7svh] sm:h-4 cursor-pointer" src="./img/australia_flag.svg" alt="Australia Flag" title="Australia"
-              aria-label="Australia Flag">
-          </div>
         </div>
       
         <!-- Menu Button -->
@@ -323,11 +319,11 @@
                 <h1
                   class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  portrait:mb-[1.3svh] landscape:mb-[0.25svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
                   aria-label="Main Title">
-                  Smartsourcing for Australian accounting firms that want better jobs, calmer weeks, and growth without hiring.
+                  Smartsourcing for Australian accounting firms that want consistent quality, calmer weeks, and growth without hiring.
                 </h1>
                 <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
                   aria-label="Hero Description">
-                  A qualified-accountant team for Australian firms, delivering bookkeeping outsourcing, payroll outsourcing, tax compliance, year-end accounting and SMSF accounting services. Smartsourcing means we run the core compliance work the way your firm would, so your team stays on advisory and your firm scales without hiring.  
+                  Clear compliance backlog, keep your seniors on advisory, and scale with trained team. We run your bookkeeping, payroll, tax compliance, year-end and SMSF work the way your firm would. That's smartsourcing.  
                 </p>
               </div>
               <div class="flex flex-col sm:flex-col gap-[3vw] sm:gap-[2svh] portrait:gap-[2svh] landscape:gap-[2svh]">
@@ -341,7 +337,7 @@
                           portrait:sm:px-[3svw] portrait:sm:py-[2svw] 
                           transition-transform duration-100 transform bg-white 
                           rounded-full select-none delayed-link">
-                  Start Your Smartsourcing Workflow Trial
+                  Start Your Smartsourcing Trial
                 </a>
                 <a id="secondary-button-header-home" data-track="button" data-action="contact" href="./contact.html"
                   aria-label="Talk to Our Growth & Partnerships team" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
@@ -377,42 +373,73 @@
               Our Solutions
             </h1>
             <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 portrait:mb-[1svh] lg:landscape:mb-[2svh] leading-normal " aria-label="Hero Description">
-              Smartsourcing solutions built for Australian accounting firms, CPA practices and tax agents looking for a reliable accounting outsourcing partner. Every job is handled by a qualified accountant with a minimum of three years’ Australian accounting and compliance experience, supported by detailed workpapers, reconciliations and outputs aligned with your internal processes - so each job arrives accurate, compliant and ready for sign-off.
+              Smartsourcing solutions built for Australian accounting firms, CPA practices and Tax agents looking for a reliable accounting outsourcing partner. Every job is handled by a qualified accountant with a minimum of three years’ Australian accounting and compliance experience, supported by detailed workpapers, reconciliations and outputs aligned with your internal processes - so each job arrives accurate, compliant and  <span class="font-medium">ready for sign-off.</span>
             </p>
             <div class="flex justify-start w-full max-md:px-8 ">
               <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
                 <div class="relative flex flex-col justify-center overflow-hidden">
                   <div class="w-full mx-auto text-center">
-                    <div class="divide-y divide-slate-200" role="region" aria-label="Service Group">
+                    <div class="divide-y divide-slate-200" role="navigation" aria-label="Service Group">
+  
+                      <a href="./bookkeeping-outsourcing.html" class="group flex items-center py-3 hover:bg-slate-50 transition-colors">
+                        <img 
+                          class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform -rotate-90 group-hover:translate-x-1" 
+                          src="./img/drop-arrow.svg" 
+                          alt="" 
+                          aria-hidden="true" 
+                        />
+                        <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
+                          Bookkeeping Outsourcing
+                        </span>
+                      </a>
 
-                      <template x-for="service in [
-                        { id: 1, title: 'Bookkeeping Outsourcing', link: './bookkeeping-outsourcing.html', description: 'Reliable bookkeeping services for Australian accounting firms covering bank reconciliations, accounts payable/receivable and real-time financial reporting.' },
-                        { id: 2, title: 'Payroll Outsourcing & Compliance', link: './payroll-outsourcing-and-compliance.html', description: 'End-to-end payroll outsourcing for Australian firms including STP Phase 2, superannuation, Modern Awards and full employee payroll management.' },
-                        { id: 3, title: 'Year-End Accounting & Financial Statement Preparation', link: './year-end-accounting-and-financial-statement-preparation.html', description: 'Accurate year-end accounting services for Australian firms with financial statements preparation, adjustments and audit-ready workpapers.' },
-                        { id: 4, title: 'Tax Compliance Outsourcing', link: './tax-compliance-outsourcing.html', description: 'Expert tax return preparation and tax compliance outsourcing in Australia ensuring ATO compliance and lodgement ready files across all entity types.' },
-                        { id: 5, title: 'SMSF Accounting & Compliance Outsourcing', link: './smsf-accounting-and-compliance-outsourcing.html', description: 'Specialised SMSF accounting outsourcing for Australian firms covering fund accounting, reporting and audit-ready compliance.' }
-                      ]" :key="service.id">
-                        <div class="py-3">
-                          <h2>
-                            <button type="button" class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-start w-full font-bold text-left" @click="openAccordion = (openAccordion === service.id) ? null : service.id" :aria-expanded="(openAccordion === service.id).toString()" :aria-controls="'service-' + service.id" :id="'service-button-' + service.id">
-                              <img class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform" src="./img/drop-arrow.svg" :class="{ 'rotate-180': openAccordion === service.id }" alt="Expand or collapse Service content" aria-hidden="true" />
-                              <span class="uppercase whitespace-normal" x-text="service.title"></span>
-                            </button>
-                          </h2>
+                      <a href="./payroll-outsourcing-and-compliance.html" class="group flex items-center py-3 hover:bg-slate-50 transition-colors">
+                        <img 
+                          class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform -rotate-90 group-hover:translate-x-1" 
+                          src="./img/drop-arrow.svg" 
+                          alt="" 
+                          aria-hidden="true" 
+                        />
+                        <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
+                          Payroll Outsourcing & Compliance
+                        </span>
+                      </a>
 
-                          <div x-show="openAccordion === service.id" x-transition:enter="transition-all ease-in-out duration-500" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-[600px]" x-transition:leave="transition-all ease-in-out duration-500" x-transition:leave-start="opacity-100 max-h-[600px]" x-transition:leave-end="opacity-0 max-h-0" :id="'service-' + service.id" role="region" :aria-labelledby="'service-button-' + service.id" :inert="openAccordion !== service.id" :tabindex="openAccordion === service.id ? 0 : -1" class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] grid overflow-hidden leading-normal text-left pl-9" style="transition-property: opacity, max-height">
-                            <div class="overflow-hidden">
-                              <p class="mt-1" x-text="service.description"></p>
-                              <div class="my-2 text-white flex justify-start font-normal text-[2.7vw] sm:text-[1.4svh] portrait:sm:text-[1.1svw]">
-                                <a :href="service.link" :aria-label="`Read more about ${service.title}`" :title="`Read more about ${service.title}`" class="whitespace-nowrap shadow-md hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white delayed-link text-white py-2 px-4 transition-transform duration-100 transform bg-darkBlue rounded-full select-none">
-                                  Read more
-                                  <span class="sr-only" x-text="`about ${service.title}`"></span>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </template>
+                      <a href="./year-end-accounting-and-financial-statement-preparation.html" class="group flex items-center py-3 hover:bg-slate-50 transition-colors">
+                        <img 
+                          class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform -rotate-90 group-hover:translate-x-1" 
+                          src="./img/drop-arrow.svg" 
+                          alt="" 
+                          aria-hidden="true" 
+                        />
+                        <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
+                          Year-End Accounting & Financial Statement Preparation
+                        </span>
+                      </a>
+
+                      <a href="./tax-compliance-outsourcing.html" class="group flex items-center py-3 hover:bg-slate-50 transition-colors">
+                        <img 
+                          class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform -rotate-90 group-hover:translate-x-1" 
+                          src="./img/drop-arrow.svg" 
+                          alt="" 
+                          aria-hidden="true" 
+                        />
+                        <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
+                          Tax Compliance Outsourcing
+                        </span>
+                      </a>
+
+                      <a href="./smsf-accounting-and-compliance-outsourcing.html" class="group flex items-center py-3 hover:bg-slate-50 transition-colors">
+                        <img 
+                          class="shrink-0 mx-2 size-5 sm:size-[2.5svh] portrait:sm:size-[2.2svw] transition duration-500 transform -rotate-90 group-hover:translate-x-1" 
+                          src="./img/drop-arrow.svg" 
+                          alt="" 
+                          aria-hidden="true" 
+                        />
+                        <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
+                          SMSF Accounting & Compliance Outsourcing
+                        </span>
+                      </a>
 
                     </div>
                   </div>
@@ -859,25 +886,25 @@
               What Smartsourcing Means for Your Firm
             </h2>
             <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 mt-2 portrait:mb-[3svh] lg:landscape:mb-[4svh] leading-normal max-w-[1000px] md:mx-auto font-light" aria-label="Strategic Description">
-              Outsourcing is tactical, it shaves cost. Smartsourcing is strategic, it raises the standard of the work. For Australian accounting firms, that comes down to three things.
+              Outsourcing is tactical, it saves cost. Smartsourcing is strategic, it raises the standard of work. For Australian accounting firms, that comes down to three things.
             </p>
           </div>
 
-          <div class="grid grid-cols-1  max-md:px-10  md:grid-cols-3 w-full md:border-t border-slate-200 mt-2">
+          <div class="grid grid-cols-1 max-md:px-10 md:grid-cols-3 w-full md:border-t border-slate-200 mt-2">
             
-            <div class="py-5 md:px-10 md:py-8  flex flex-col items-start text-left border-b max-md:border-t border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
+            <div class="py-5 md:px-10 md:py-8 flex flex-col items-start text-left border-b max-md:border-t border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
               <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-2 tracking-[0.2em] uppercase">01</span>
               <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Consistent effectiveness</h3>
               <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
-                Every job is prepared by a qualified accountant with a minimum of three years’ Australian accounting and tax experience. No junior hand-offs.
+                Every job is prepared by following a documented SOP grounded in Australian accounting and tax knowledge. The same standard on every file.
               </p>
             </div>
 
-            <div class="py-5 md:px-10 md:py-8  flex flex-col items-start text-left border-b border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
+            <div class="py-5 md:px-10 md:py-8 flex flex-col items-start text-left border-b border-slate-200 md:border-b-0 md:border-r last:border-r-0 last:border-b-0">
               <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-3 tracking-[0.2em] uppercase">02</span>
               <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Deep expertise</h3>
               <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
-                Big-4 trained, boutique-delivered. A Chartered Accountancy firm since 1988. Judgement that survives partner review.
+                Big-4 trained, boutique-style delivery. A Chartered Accountancy firm since 1988, not a BPO that learned accounting later.
               </p>
             </div>
 
@@ -885,7 +912,7 @@
               <span class="text-darkGreen font-bold text-[4.5vw] sm:text-[2svh] mb-3 tracking-[0.2em] uppercase">03</span>
               <h3 class="font-bold uppercase text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mb-1 md:min-h-[3svh] leading-tight">Stronger core competencies</h3>
               <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-snug opacity-90">
-                You and your team stay on advisory; we run the compliance engine in the background. Scale without the hire.
+                You and your team stay on advisory; we run the compliance engine in the background.
               </p>
             </div>
 
@@ -904,7 +931,7 @@
             </h1>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:md:px-[7svw] max-md:px-10  font-light leading-normal "
               aria-label="Hero Description">
-              Founded in 1988 as a Chartered Accountancy firm, VJC has spent close to four decades on the partner side of the desk. Today, VJC Partners works exclusively with Australian accounting firms as their extended accounting team — delivering smartsourcing solutions and offshore accounting services for Australian firms aligned to Australian accounting standards, ATO requirements and the compliance frameworks their practice already runs on. <a
+              Founded in 1988 as a Chartered Accountancy firm, VJC has spent close to four decades on the partner side of the desk. Today, VJC Partners works exclusively with Australian accounting firms as their extended accounting team — delivering smartsourcing solutions for Australian firms aligned to Australian accounting standards, ATO requirements and the compliance frameworks their practice already runs on. <a
                 href="./about-us.html"
                 aria-label="Read more about our firm"
                 title="Read more about our firm"
@@ -1295,7 +1322,7 @@
             </h2>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   mx-auto font-light  "
               aria-label="Hero Description">
-              Explore our resources to understand our approach, see how we help businesses grow and innovate, and discover strategies
+              Explore our resources to understand our approach, see how we help you grow and innovate, and discover strategies
               designed to drive success, foster growth, and achieve sustainable long-term results.
             </p>
           </div>
@@ -1655,7 +1682,7 @@
                   "name": "Can you provide references or case studies?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Several client stories are on our Resources page. We can also put you in touch with a principal at a firm of comparable size and service mix to yours upon request."
+                    "text": "Yes, several client stories sit on our Resources page. For direct references, our Growth & Partnerships team can put you in touch with a principal at a firm of comparable size and service mix to yours, on request. "
                   }
                 },
                 {
@@ -1722,7 +1749,7 @@
                         { question: 'What is distinctive about VJC’s approach?', answer: 'VJC Partners works exclusively with Australian accounting firms, and the underlying practice has been a Chartered Accountancy firm in India since 1988, not a BPO that learned accounting later. Every job is prepared by a qualified accountant with a minimum of three years’ Australian experience, working inside your software, workflows and templates. You get Big-4 quality with boutique firm attention.' },
                         { question: 'What does “Big-4 quality, boutique firm attention” mean?', answer: 'Big-4 quality is about the technical discipline: line-by-line workpapers, complete reconciliations, position notes where a judgement is being made, and a clear work trail from receipt to delivery. The work is prepared to a standard that survives review. Boutique firm attention is about the relationship around the work. You get a named preparer, a named Client Success Partner, and a VJC director on every call. If something needs attention, you know exactly who to call.' },
                         { question: 'Who prepares our jobs, and what are their qualifications?', answer: 'Every job is prepared by a qualified accountant (Chartered Accountant, postgraduate accounting degree, or equivalent professional qualification) with minimum three years’ Australian experience, who has completed 100+ hours of Australian tax and compliance training before being assigned to any client account. Workpapers, reconciliations and open queries are presented clearly so you can sign off without re-doing the working. You will not see junior output presented as anything else.' },
-                        { question: 'Can you provide references or case studies?', answer: 'Yes — several client stories sit on our Resources page. For direct references, our Growth & Partnerships team can put you in touch with a principal at a firm of comparable size and service mix to yours, on request.', link: 'https://resources.vjcpartners.com', linkText: 'Check out our Insights Page for detailed Case Studies' },
+                        { question: 'Can you provide references or case studies?', answer: 'Yes, several client stories sit on our Resources page. For direct references, our Growth & Partnerships team can put you in touch with a principal at a firm of comparable size and service mix to yours, on request. ', link: 'https://resources.vjcpartners.com', linkText: 'Check out our Resources Page for Client Success Stories' },
                         { question: 'What does the onboarding process look like?', answer: 'Once you decide to proceed, you’re assigned a dedicated Client Success Partner who guides the entire setup. We document your processes, templates, software stack and quality standards, then provision access and train our dedicated team member against your exact requirements. A structured reporting rhythm kicks in from day one: daily updates, weekly task reviews, monthly performance reviews, and quarterly strategic check-ins. Most firms are fully operational within 1–2 weeks.' },
                         { question: 'What tech infrastructure do I need to set up before we start?', answer: 'Your existing practice stack is enough — we work inside your software, so there is nothing new to buy or migrate to. In practical terms you provide: Software seats (Xero, Karbon, etc) and secure access with an email ID with multi-factor authentication per team member.' },
                         { question: 'What are your working hours, and how do you handle the time-zone difference?', answer: 'Our delivery teams in India work 8:00 AM to 5:00 PM IST, Monday to Friday. East-coast practices (AEST) get a four-and-a-half-hour live overlap (12:30 PM to 5:00 PM AEST). West-coast practices (AWST) get a six-and-a-half-hour overlap (10:30 AM to 5:00 PM AWST). Queries you raise in your morning are answered same-day; jobs left for us at the end of your day are returned the next morning.' },
@@ -1784,8 +1811,8 @@
                           <div class="flex justify-center mt-10 md:mt-8">
                               <a id="trial-button-footer" data-track="button" data-action="trial_request" href="./contact.html"
                                   aria-label="Start Your Smartsourcing Workflow Trial"
-                                  class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkGreen active:text-white delayed-link text-darkBlue hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-8 landscape:py-4 transition-transform duration-100 transform bg-white rounded-full select-none">
-                                  Start Your Smartsourcing Workflow Trial
+                                  class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-white active:bg-darkBlue active:text-darkBlue delayed-link text-darkBlue hover:text-darkBlue landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-8 landscape:py-4 transition-transform duration-100 transform bg-darkGreen rounded-full select-none">
+                                  Start Your Smartsourcing Trial
                               </a>
                           </div>
                       </div>
