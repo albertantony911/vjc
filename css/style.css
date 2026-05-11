@@ -2386,6 +2386,11 @@
       background-color: var(--color-gray-500);
     }
   }
+  .active\:bg-white {
+    &:active {
+      background-color: var(--color-white);
+    }
+  }
   .active\:text-darkBlue {
     &:active {
       color: var(--color-darkBlue);
@@ -2434,6 +2439,11 @@
   .max-md\:mt-\[0\.5rem\] {
     @media (width < 48rem) {
       margin-top: 0.5rem;
+    }
+  }
+  .max-md\:mt-\[5svh\] {
+    @media (width < 48rem) {
+      margin-top: 5svh;
     }
   }
   .max-md\:mb-0 {
@@ -4093,6 +4103,11 @@
       margin-bottom: 1.3svh;
     }
   }
+  .portrait\:mb-\[1\.7svh\] {
+    @media (orientation: portrait) {
+      margin-bottom: 1.7svh;
+    }
+  }
   .portrait\:mb-\[1svh\] {
     @media (orientation: portrait) {
       margin-bottom: 1svh;
@@ -4948,6 +4963,16 @@
       margin-bottom: 0.25svh;
     }
   }
+  .landscape\:mb-\[0\.55svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 0.55svh;
+    }
+  }
+  .landscape\:mb-\[1\.2svh\] {
+    @media (orientation: landscape) {
+      margin-bottom: 1.2svh;
+    }
+  }
   .landscape\:mb-\[1svh\] {
     @media (orientation: landscape) {
       margin-bottom: 1svh;
@@ -4974,6 +4999,16 @@
       height: 80svh;
     }
   }
+  .landscape\:h-\[85svh\] {
+    @media (orientation: landscape) {
+      height: 85svh;
+    }
+  }
+  .landscape\:h-\[90svh\] {
+    @media (orientation: landscape) {
+      height: 90svh;
+    }
+  }
   .landscape\:h-svh {
     @media (orientation: landscape) {
       height: 100svh;
@@ -4987,6 +5022,11 @@
   .landscape\:w-\[53\%\] {
     @media (orientation: landscape) {
       width: 53%;
+    }
+  }
+  .landscape\:w-\[55\%\] {
+    @media (orientation: landscape) {
+      width: 55%;
     }
   }
   .landscape\:flex-row {
