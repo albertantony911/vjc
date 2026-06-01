@@ -395,13 +395,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 const slider = document.getElementById('slider');
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
 
 if (slider) {
   const cards = slider.querySelectorAll('.card');
-  const AUTO_MS = 3500;
+  const AUTO_MS = 3000;
   const END_HOLD = 2;
 
   let isDragging = false;
@@ -412,111 +413,99 @@ if (slider) {
   let endHoldCount = 0;
   let autoTimer = null;
 
-  /* ── Core UI Updates & Center Detection ── */
   function updateSliderUI() {
     if (!slider || !btnPrev || !btnNext) return;
     const maxScroll = slider.scrollWidth - slider.clientWidth;
-    btnPrev.disabled = slider.scrollLeft <= 4;
-    btnNext.disabled = slider.scrollLeft >= maxScroll - 4;
+    btnPrev.disabled = slider.scrollLeft <= 10;
+    btnNext.disabled = slider.scrollLeft >= maxScroll - 10;
   }
 
   function updateActiveCard() {
     if (!slider || cards.length === 0) return;
-    
-    // Find the exact horizontal center of the slider container
-    const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
-    let closestCard = null;
+    const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+    const targetLine = slider.scrollLeft + sliderPaddingLeft + 20;
+
+    let closestCard = cards[0];
     let minDistance = Infinity;
 
-    // Loop through cards to find which one's center point is closest to the slider's center
     cards.forEach(card => {
-      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-      const distance = Math.abs(sliderCenter - cardCenter);
-      
+      const distance = Math.abs(card.offsetLeft - targetLine);
       if (distance < minDistance) {
         minDistance = distance;
         closestCard = card;
       }
     });
 
-    // Apply the active state ONLY to the centered card
     cards.forEach(card => {
-      if (card === closestCard) {
-        card.classList.add('is-active');
-      } else {
-        card.classList.remove('is-active');
-      }
+      card.classList.toggle('is-active', card === closestCard);
     });
   }
 
-  // Monitor scroll continuously to update active card and buttons
   slider.addEventListener('scroll', () => {
     updateSliderUI();
     updateActiveCard();
   }, { passive: true });
 
-  // Initialize UI immediately
   setTimeout(() => {
     updateSliderUI();
     updateActiveCard();
   }, 100);
 
-  /* ── Click-to-Center Interaction ── */
+  slider.addEventListener('wheel', (e) => {
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5;
+    if (!isHorizontal) {
+      e.stopPropagation();
+      window.scrollBy({ top: e.deltaY, behavior: 'instant' });
+    }
+  }, { passive: false });
+
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't trigger click if the user was just dragging the slider
-      if (draggedDist > 10) return; 
+      if (draggedDist > 10) return;
+      if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) return;
 
-      // If they click the link inside the last card, let the link do its job
-      if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) {
-         return; 
-      }
-
-      // Pause auto-scroll briefly when the user interacts
       userPaused = true;
-      setTimeout(() => userPaused = false, 5000); 
+      setTimeout(() => userPaused = false, 5000);
 
-      // Calculate where the slider needs to scroll to put this card in the middle
-      const sliderCenterOffset = slider.clientWidth / 2;
-      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-      const targetScrollLeft = cardCenter - sliderCenterOffset;
-
-      slider.scrollTo({
-        left: targetScrollLeft,
-        behavior: 'smooth'
-      });
+      const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+      slider.scrollTo({ left: card.offsetLeft - sliderPaddingLeft, behavior: 'smooth' });
     });
   });
 
-  /* ── Arrow Button Controls ── */
   if (btnPrev && btnNext) {
-    btnNext.addEventListener('click', () => {
-      if (cards.length === 0) return;
-      const cardWidth = cards[0].offsetWidth + 20;
-      slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    });
-
-    btnPrev.addEventListener('click', () => {
-      if (cards.length === 0) return;
-      const cardWidth = cards[0].offsetWidth + 20;
-      slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-    });
+    btnNext.addEventListener('click', () => { scrollToNextCard(1); });
+    btnPrev.addEventListener('click', () => { scrollToNextCard(-1); });
   }
 
-  /* ── Auto-scroll Engine ── */
-  function tick() {
-    if (userPaused || isDragging || slider.scrollWidth <= slider.clientWidth + 10) return;
-    const isAtEnd = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 4;
-    if (isAtEnd) {
+  function scrollToNextCard(direction = 1) {
+    if (!slider || cards.length === 0) return;
+
+    const currentCardIndex = Array.from(cards).findIndex(card => card.classList.contains('is-active'));
+    let nextIndex = currentCardIndex + direction;
+
+    if (nextIndex >= cards.length) {
       endHoldCount++;
       if (endHoldCount >= END_HOLD) {
         slider.scrollTo({ left: 0, behavior: 'smooth' });
         endHoldCount = 0;
       }
-    } else {
-      slider.scrollBy({ left: cards.length > 0 ? cards[0].offsetWidth + 20 : 420, behavior: 'smooth' });
-      endHoldCount = 0;
+      return;
     }
+
+    if (nextIndex < 0) nextIndex = 0;
+
+    const nextCard = cards[nextIndex];
+    const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+    slider.scrollTo({
+      left: nextCard.offsetLeft - sliderPaddingLeft,
+      behavior: 'smooth'
+    });
+    endHoldCount = 0;
+  }
+
+  function tick() {
+    if (userPaused || isDragging || slider.scrollWidth <= slider.clientWidth + 10) return;
+    scrollToNextCard(1);
   }
 
   function startAuto() {
@@ -526,16 +515,13 @@ if (slider) {
 
   startAuto();
 
-  /* ── Interaction Tracking ── */
   slider.addEventListener('mouseenter', () => { userPaused = true; });
   slider.addEventListener('mouseleave', () => { userPaused = false; });
   slider.addEventListener('touchstart', () => { userPaused = true; }, { passive: true });
   slider.addEventListener('touchend', () => { setTimeout(() => { userPaused = false; }, 2000); }, { passive: true });
 
-  /* ── Drag to Scroll ── */
   slider.addEventListener('mousedown', e => {
     if (slider.scrollWidth <= slider.clientWidth + 10) return;
-    
     isDragging = true;
     dragStartX = e.pageX - slider.offsetLeft;
     dragScrollL = slider.scrollLeft;
@@ -561,7 +547,6 @@ if (slider) {
     slider.scrollLeft = dragScrollL - walk;
   });
 
-  /* ── Card Entrance Observer ── */
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {

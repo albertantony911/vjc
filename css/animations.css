@@ -1143,16 +1143,6 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
   user-select: none;
 }
 
-.card-enter {
-  opacity: 0;
-  transform: translateY(24px);
-  /* Slowed down entrance slightly to match relaxed hover state */
-  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.card-enter.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Left-to-right reveal line */
 .card-line {
@@ -1165,6 +1155,17 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
   clip-path: inset(0 0% 0 0);
 }
 
+
+.cta-ghost span {
+  display: block;
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.133);
+}
 /**
  * --------------------------------------------------
  * Smartsourcing Slider Animation Ends
