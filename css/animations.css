@@ -1124,5 +1124,49 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 
 
 
+/**
+ * --------------------------------------------------
+ * Smartsourcing Slider Animation Starts
+ * --------------------------------------------------
+ */
 
+.no-scrollbar::-webkit-scrollbar { 
+  display: none; 
+}
+.no-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
 
+.is-dragging { 
+  cursor: grabbing !important; 
+  user-select: none;
+}
+
+.card-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  /* Slowed down entrance slightly to match relaxed hover state */
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.card-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left-to-right reveal line */
+.card-line {
+  clip-path: inset(0 100% 0 0);
+  /* Slowed down the top border line animation */
+  transition: clip-path 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card:hover .card-line,
+.group:hover .card-line {
+  clip-path: inset(0 0% 0 0);
+}
+
+/**
+ * --------------------------------------------------
+ * Smartsourcing Slider Animation Ends
+ * --------------------------------------------------
+ */

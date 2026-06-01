@@ -395,4 +395,185 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+const slider = document.getElementById('slider');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
+if (slider) {
+  const cards = slider.querySelectorAll('.card');
+  const AUTO_MS = 3500;
+  const END_HOLD = 2;
+
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragScrollL = 0;
+  let draggedDist = 0;
+  let userPaused = false;
+  let endHoldCount = 0;
+  let autoTimer = null;
+
+  /* ── Core UI Updates & Center Detection ── */
+  function updateSliderUI() {
+    if (!slider || !btnPrev || !btnNext) return;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    btnPrev.disabled = slider.scrollLeft <= 4;
+    btnNext.disabled = slider.scrollLeft >= maxScroll - 4;
+  }
+
+  function updateActiveCard() {
+    if (!slider || cards.length === 0) return;
+    
+    // Find the exact horizontal center of the slider container
+    const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
+    let closestCard = null;
+    let minDistance = Infinity;
+
+    // Loop through cards to find which one's center point is closest to the slider's center
+    cards.forEach(card => {
+      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+      const distance = Math.abs(sliderCenter - cardCenter);
+      
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    // Apply the active state ONLY to the centered card
+    cards.forEach(card => {
+      if (card === closestCard) {
+        card.classList.add('is-active');
+      } else {
+        card.classList.remove('is-active');
+      }
+    });
+  }
+
+  // Monitor scroll continuously to update active card and buttons
+  slider.addEventListener('scroll', () => {
+    updateSliderUI();
+    updateActiveCard();
+  }, { passive: true });
+
+  // Initialize UI immediately
+  setTimeout(() => {
+    updateSliderUI();
+    updateActiveCard();
+  }, 100);
+
+  /* ── Click-to-Center Interaction ── */
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't trigger click if the user was just dragging the slider
+      if (draggedDist > 10) return; 
+
+      // If they click the link inside the last card, let the link do its job
+      if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) {
+         return; 
+      }
+
+      // Pause auto-scroll briefly when the user interacts
+      userPaused = true;
+      setTimeout(() => userPaused = false, 5000); 
+
+      // Calculate where the slider needs to scroll to put this card in the middle
+      const sliderCenterOffset = slider.clientWidth / 2;
+      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+      const targetScrollLeft = cardCenter - sliderCenterOffset;
+
+      slider.scrollTo({
+        left: targetScrollLeft,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  /* ── Arrow Button Controls ── */
+  if (btnPrev && btnNext) {
+    btnNext.addEventListener('click', () => {
+      if (cards.length === 0) return;
+      const cardWidth = cards[0].offsetWidth + 20;
+      slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    btnPrev.addEventListener('click', () => {
+      if (cards.length === 0) return;
+      const cardWidth = cards[0].offsetWidth + 20;
+      slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+  }
+
+  /* ── Auto-scroll Engine ── */
+  function tick() {
+    if (userPaused || isDragging || slider.scrollWidth <= slider.clientWidth + 10) return;
+    const isAtEnd = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 4;
+    if (isAtEnd) {
+      endHoldCount++;
+      if (endHoldCount >= END_HOLD) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+        endHoldCount = 0;
+      }
+    } else {
+      slider.scrollBy({ left: cards.length > 0 ? cards[0].offsetWidth + 20 : 420, behavior: 'smooth' });
+      endHoldCount = 0;
+    }
+  }
+
+  function startAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(tick, AUTO_MS);
+  }
+
+  startAuto();
+
+  /* ── Interaction Tracking ── */
+  slider.addEventListener('mouseenter', () => { userPaused = true; });
+  slider.addEventListener('mouseleave', () => { userPaused = false; });
+  slider.addEventListener('touchstart', () => { userPaused = true; }, { passive: true });
+  slider.addEventListener('touchend', () => { setTimeout(() => { userPaused = false; }, 2000); }, { passive: true });
+
+  /* ── Drag to Scroll ── */
+  slider.addEventListener('mousedown', e => {
+    if (slider.scrollWidth <= slider.clientWidth + 10) return;
+    
+    isDragging = true;
+    dragStartX = e.pageX - slider.offsetLeft;
+    dragScrollL = slider.scrollLeft;
+    draggedDist = 0;
+    slider.classList.add('is-dragging');
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.classList.remove('is-dragging');
+  });
+
+  window.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.classList.remove('is-dragging');
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const walk = (e.pageX - slider.offsetLeft - dragStartX) * 1.4;
+    draggedDist = Math.abs(walk);
+    slider.scrollLeft = dragScrollL - walk;
+  });
+
+  /* ── Card Entrance Observer ── */
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const delay = parseFloat(entry.target.dataset.delay || 0);
+        setTimeout(() => entry.target.classList.add('is-visible'), delay);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((card, i) => {
+    card.dataset.delay = i * 80;
+    cardObserver.observe(card);
+  });
+}
