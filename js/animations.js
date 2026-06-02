@@ -562,3 +562,72 @@ if (slider) {
     cardObserver.observe(card);
   });
 }
+
+
+
+function cloneSet(srcId, destId) {
+  const src = document.getElementById(srcId);
+  const dest = document.getElementById(destId);
+  
+  // 1. Populate the first cloned set (set1b / set2b)
+  dest.innerHTML = src.innerHTML;
+  
+  // 2. Create and append a third set to prevent initial gaps on wide screens for the RTL animation
+  const thirdSet = document.createElement('div');
+  thirdSet.className = 'logo-set';
+  thirdSet.setAttribute('aria-hidden', 'true');
+  thirdSet.innerHTML = src.innerHTML;
+  dest.parentNode.appendChild(thirdSet);
+}
+
+function applyAnimation(innerId, setId, direction, duration) {
+  const inner = document.getElementById(innerId);
+  const set = document.getElementById(setId);
+
+  // Force a reflow so the browser recalculates layout after clone
+  inner.getBoundingClientRect();
+
+  const setWidth = set.getBoundingClientRect().width; // more accurate than offsetWidth
+  inner.style.setProperty('--set-width-neg', `-${setWidth}px`);
+  inner.style.animation = 'none';
+  inner.offsetHeight;
+  inner.style.animation = `marquee-${direction} ${duration}s linear infinite`;
+}
+
+function init(duration) {
+  cloneSet('set1a', 'set1b');
+  cloneSet('set2a', 'set2b');
+
+  // Double rAF — first frame commits the clone to DOM, second measures after layout
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      applyAnimation('inner1', 'set1a', 'ltr', duration);
+      applyAnimation('inner2', 'set2a', 'rtl', duration);
+    });
+  });
+}
+
+// Pause animation on hover
+['row1', 'row2'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('mouseenter', () => {
+    document.getElementById('inner1').classList.add('paused');
+    document.getElementById('inner2').classList.add('paused');
+  });
+  el.addEventListener('mouseleave', () => {
+    document.getElementById('inner1').classList.remove('paused');
+    document.getElementById('inner2').classList.remove('paused');
+  });
+});
+
+// Wait for all images to load before measuring widths and starting
+const allImages = document.querySelectorAll('#set1a img, #set2a img');
+const imagePromises = Array.from(allImages).map(img => {
+  if (img.complete) return Promise.resolve();
+  return new Promise(resolve => {
+    img.addEventListener('load', resolve);
+    img.addEventListener('error', resolve);
+  });
+});
+
+Promise.all(imagePromises).then(() => init(40));

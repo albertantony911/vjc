@@ -146,124 +146,64 @@
 
 
 
- 
+ /* ----------------------------------------
+ * Logo carousel animation (Flexbox Final)
+ * ---------------------------------------- */
 
-/**
- * ----------------------------------------
- * Logo carousel animation (Refactored)
- * ----------------------------------------
- */
-.marquee {
-  block-size: var(--marquee-item-height);
-  margin-block: 0;
-  mask-image: linear-gradient(
-    to right,
-    hsla(0, 0%, 0%, 0),
-    hsla(0, 0%, 0%, 1) 20%,
-    hsla(0, 0%, 0%, 1) 80%,
-    hsla(0, 0%, 0%, 0)
-  );
-  overflow: hidden; /* Prevent overflow */
+/* Fades the left and right edges smoothly */
+.track-outer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
-/* Common settings for both LTR and RTL marquees */
-.marquee--LTR,
-.marquee--RTL,
-.marquee--LTR-M,
-.marquee--RTL-M {
-  --marquee-item-width: 77px;
-  --marquee-item-height: 77px;
-  --marquee-items: 10;
+.fade-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
-.marquee--LTR,
-.marquee--RTL {
-  --marquee-duration: 40s;
-}
-
-.marquee--LTR-M,
-.marquee--RTL-M {
-  --marquee-duration: 30s;
-  --marquee-items: 7;
-}
-
-/* Refactored marquee item using transform */
-.marquee__item {
-  /* Define start and end offsets.
-     The original code set:
-       - start position: max(item-width * items, 100% + item-width) with an extra -50% shift
-       - end position: (item-width * -1) with the same shift.
-     We embed the -50% into our calculations. */
-  --marquee-start: calc(
-    max(
-      calc(var(--marquee-item-width) * var(--marquee-items)),
-      calc(100% + var(--marquee-item-width))
-    ) - 50%
-  );
-  --marquee-end: calc(var(--marquee-item-width) * -1 - 50%);
-  --marquee-delay: calc(
-    (var(--marquee-duration) / var(--marquee-items)) *
-      (var(--marquee-items) - var(--marquee-item-index)) * -1
-  );
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  /* Start at the computed start offset */
-  transform: translateX(var(--marquee-start));
-  animation: marquee-move linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-  animation-play-state: paused; /* Default state; JS will toggle */
+.track-inner {
+  display: flex;
+  width: max-content;
   will-change: transform;
 }
 
-/* Ensure the marquee container runs its child animations by default */
-.marquee {
-  animation-play-state: running;
+.track-inner.paused {
+  animation-play-state: paused !important;
 }
 
-/* Pause all animations on hover */
-.marquee:hover .marquee__item {
-  animation-play-state: paused;
+.logo-set {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding-right: 64px;
+  flex-shrink: 0;
 }
 
-/* Animation direction for LTR vs RTL */
-.marquee--LTR .marquee__item,
-.marquee--LTR-M .marquee__item {
-  animation-direction: normal;
+.logo-img {
+  height: 75px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.marquee--RTL .marquee__item,
-.marquee--RTL-M .marquee__item {
-  animation-direction: reverse;
+.row {
+  margin-bottom: 10px;
 }
 
-/* Keyframes: animate transform from start to end offset */
-@keyframes marquee-move {
-  to {
-    transform: translateX(var(--marquee-end));
-  }
+.row:last-child {
+  margin-bottom: 0;
 }
 
-/* Assign an index to each item for staggered delays */
-.marquee__item {
-  --marquee-item-index: 0; /* Default value */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(var(--set-width-neg)); }
 }
 
-.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
-.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
-.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
-.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
-.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
-.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
-.marquee__item:nth-of-type(7) { --marquee-item-index: 7; }
-.marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
-.marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
-.marquee__item:nth-of-type(10) { --marquee-item-index: 10; }
-
-
-
-
-
+@keyframes marquee-rtl {
+  0%   { transform: translateX(var(--set-width-neg)); }
+  100% { transform: translateX(0); }
+}
   /**
  * --------------------------------------------------
  * Background Gradient and Transparency Mask starts
