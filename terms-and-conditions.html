@@ -122,204 +122,264 @@
     <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header Section -->
-  <header
-    class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+       <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white/50 backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+  <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
+    <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw] h-[7svh] sm:h-14 my-auto " href="./index.html">
+      <img class="h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+    </a>
+  </div>
+
+  <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden" id="menuButtonContainer">
+    <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform" viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <nav role="navigation" aria-label="Mobile Navigation Menu" class="relative bg-darkBlue top-0 menudrop landscape:lg:hidden">
+    <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
+      <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+      <p>finest in accounting since 1988</p>
+      <p>Pakenham, VIC<br> Australia, 3810</p>
+    </div>
+
+    <ul id="mainMenu" class=" font-[300] shadow-md text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
+      <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
+      <li class="flex flex-row items-center gap-1" id="aboutMenu"><a href="#">ABOUT US</a></li>
+      <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
+      <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
+      <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+      <li class="flex flex-row items-center gap-1" id="resourcesMenu"><a href="#">RESOURCES</a></li>
+    </ul>
+
+    <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="aboutSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-journey">Our Journey</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-people">Our People</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-infrastructure">Our Infrastructure</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#why-us">Why Us</a></li>
+      <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="resourcesSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">RESOURCES</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./latest-insights.html">Latest Insights</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./client-success-stories.html">Client Success Stories</a></li>
+      <li id="resourcesBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+  </nav>
+
+<nav aria-label="Main Navigation" role="navigation"
+  class="absolute z-50 flex items-center justify-between h-14 left-[25svh] right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
   
-    <!-- Logo Section -->
-    <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
-      <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
-        <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
-          aria-label="Home">
+  <ul class="flex flex-row items-center">
+    <li class="relative block ">
+      <a href="./index.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-lg hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Home</span>
       </a>
-  
-  
-  
-  
-    </div>
-  
-    <!-- Menu Button Section -->
-    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden"
-      id="menuButtonContainer">
-      <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
-        <svg xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
-          viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="18" x2="20" y2="18" />
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="./about-us.html" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">About Us</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
-      </button>
-    </div>
-  
-    <!-- Mobile Navigation -->
-    <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0  menudrop landscape:lg:hidden">
-      <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
-        <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo"
-          aria-label="Home">
-        <p>finest in accounting since 1988</p>
-        <p>Pakenham, VIC<br> Australia, 3810</p>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./about-us.html#our-journey" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Journey</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-people" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our People</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-infrastructure" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Infrastructure</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </div>
-  
-      <ul id="mainMenu"
-        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
-  
-        <!-- Navigation Links -->
-  
-        <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
-        <li><a href="./about-us.html">ABOUT US</a></li>
-        <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
-  
-        <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
-  
-        <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
-        <li><a href="https://resources.vjcpartners.com">RESOURCES</a></li>
-  
-  
-      </ul>
-  
-      <ul id="subMenu"
-        class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
-        <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
-        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-        <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
-        <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton"
-          class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img
-            class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-  
-      </ul>
-  
-  
-    </nav>
-  
-  
-    <!-- Landscape Navigation -->
-    <nav aria-label="Main Navigation" role="navigation"
-      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Solutions</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./bookkeeping-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Bookkeeping Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./payroll-outsourcing-and-compliance.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./year-end-accounting-and-financial-statement-preparation.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./tax-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Tax Compliance Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./smsf-accounting-and-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </li>
+    
+    <li class="relative block">
+      <a href="./engagement-models.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-base hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Engagement Models</span>
+      </a>
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Resources</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./latest-insights.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Latest Insights</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./client-success-stories.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Client Success Stories</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-        <!-- Home -->
-        <li class="relative block rounded-xl">
-          <a href="./index.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-lg hover:no-underline hover:bg-gray-100">
-            <span>Home</span>
-          </a>
-        </li>
-
-        <!-- About -->
-        <li class="relative block rounded-xl">
-          <a href="./about-us.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
-            <span>About Us</span>
-          </a>
-        </li>
-
-        <!-- Our Services with Submenu -->
-        <li class="relative block rounded-xl" 
-            x-data="{ showChildren: false, submenuTimeout: null }"
-            x-init="showChildren = false"
-            @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-          <a href="#" 
-            aria-haspopup="true" 
-            :aria-expanded="showChildren"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
-            @click.prevent.stop="showChildren = !showChildren"
-            @touchstart.prevent.stop="showChildren = !showChildren"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Services</span>
-          </a>
-          <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl"
-            x-show="showChildren" 
-            x-cloak
-            x-transition:enter="transition ease duration-100 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" 
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-200 transform"
-            x-transition:leave-start="opacity-100 translate-y-0" 
-            x-transition:leave-end="opacity-0 translate-y-4"
-            @mouseenter="clearTimeout(submenuTimeout)" 
-            @mouseleave="showChildren = false"
-            aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
-            <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
-              <ul class="list-reset " role="menu">
-                <!-- Submenu Items -->
-                <li class="relative ">
-                  <a href="./cloud-accounting-and-bookkeeping.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative ">
-                  <a href="./audit-and-assurance-services.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Audit and Assurance Services</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./tax-planning-and-compliance.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Tax Planning and Compliance</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./virtual-chief-financial-officer.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Virtual Chief Financial Officer</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./legal-process-outsourcing.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Legal Processing Outsourcing</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
-
-        <!-- Engagement Models -->
-        <li class="relative block rounded-xl">
-          <a href="./engagement-models.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Engagement Models</span>
-          </a>
-        </li>
-
-        <!-- Resources -->
-        <li class="relative block rounded-xl">
-          <a href="https://resources.vjcpartners.com"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Resources</span>
-          </a>
-        </li>
-
-        <!-- Contact Us -->
-        <li class="relative block rounded-xl">
-          <a href="./contact.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Contact Us</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  
-  </header>
+  <ul class="flex flex-row items-center">
+    <li class="relative block">
+      <a href="./contact.html" 
+         class="flex items-center justify-center text-white px-6 py-2 mx-2 text-xs font-medium text-dakrBlue no-underline  ease-out transform cursor-pointer bg-darkGreen active:bg-darkBlue hover:bg-darkBlue hover:text-white rounded-full h-10 md:text-base hover:scale-103 active:scale-95 ">
+        <span>Contact Us</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+      </header>
 
   <main>
     <section class="text-darkBlue" aria-label="TERMS AND CONDITIONS" role="article">

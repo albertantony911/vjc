@@ -102,46 +102,92 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuButtonContainer = document.getElementById("menuButtonContainer");
     const nav = document.querySelector("nav");
     const menuItems = document.querySelectorAll(".menudrop li");
+    const mainMenu = document.getElementById("mainMenu");
+
+    // Solutions Menu Elements
     const servicesMenu = document.getElementById("servicesMenu");
     const subMenu = document.getElementById("subMenu");
-    const mainMenu = document.getElementById("mainMenu");
     const backButton = document.getElementById("backButton");
 
+    // About Us Menu Elements
+    const aboutMenu = document.getElementById("aboutMenu");
+    const aboutSubMenu = document.getElementById("aboutSubMenu");
+    const aboutBackButton = document.getElementById("aboutBackButton");
+
+    // Resources Menu Elements
+    const resourcesMenu = document.getElementById("resourcesMenu");
+    const resourcesSubMenu = document.getElementById("resourcesSubMenu");
+    const resourcesBackButton = document.getElementById("resourcesBackButton");
+
+    // Array of all submenus for easy resetting
+    const allSubMenus = [subMenu, aboutSubMenu, resourcesSubMenu];
+
     // Set initial state
-    subMenu.classList.add("hidden");
+    allSubMenus.forEach(menu => {
+        menu.classList.add("hidden");
+    });
 
     const toggleMenu = () => {
         nav.classList.toggle("open");
         menuButtonContainer.classList.toggle("menu-open");
         menuItems.forEach(item => item.classList.toggle("toggled"));
+        
         if (nav.classList.contains("open")) {
+            // Reset to main menu whenever mobile nav is opened
+            mainMenu.style.display = "flex";
             mainMenu.classList.remove("hidden");
-            subMenu.classList.add("hidden");
-            subMenu.classList.remove("fade-in", "li-fade-in");
+            
+            allSubMenus.forEach(menu => {
+                menu.style.display = "none";
+                menu.classList.add("hidden");
+                menu.classList.remove("fade-in", "li-fade-in", "active");
+            });
         }
     };
 
-    const showSubMenu = () => {
+    // Generic function to show a specific submenu
+    const showSubMenu = (targetMenu) => {
         mainMenu.classList.add("hidden");
-        subMenu.classList.remove("hidden");
-        subMenu.classList.remove("fade-in");
-        void subMenu.offsetWidth; // Trigger reflow
-        subMenu.classList.add("active", "fade-in");
+        mainMenu.style.display = "none"; // Remove from document flow
+
+        targetMenu.style.display = "flex"; // Add to document flow
+        targetMenu.classList.remove("hidden");
+        targetMenu.classList.remove("fade-in");
+        void targetMenu.offsetWidth; // Trigger reflow
+        targetMenu.classList.add("active", "fade-in");
     };
 
-    const goBack = () => {
-        subMenu.classList.remove("fade-in");
-        subMenu.classList.add("hidden");
+    // Generic function to go back to the main menu
+    const goBack = (currentMenu) => {
+        currentMenu.classList.remove("fade-in", "active");
+        currentMenu.classList.add("hidden");
+        currentMenu.style.display = "none";
+
+        mainMenu.style.display = "flex";
         mainMenu.classList.remove("hidden");
         mainMenu.classList.remove("fade-in");
         void mainMenu.offsetWidth; // Trigger reflow
         mainMenu.classList.add("fade-in");
     };
 
+    // Main Toggle Listener
     menuButtonContainer.addEventListener("click", toggleMenu);
-    servicesMenu.addEventListener("click", showSubMenu);
-    backButton.addEventListener("click", goBack);
+
+    // Event Listeners for Solutions
+    servicesMenu.addEventListener("click", (e) => { e.preventDefault(); showSubMenu(subMenu); });
+    backButton.addEventListener("click", (e) => { e.preventDefault(); goBack(subMenu); });
+
+    // Event Listeners for About Us
+    aboutMenu.addEventListener("click", (e) => { e.preventDefault(); showSubMenu(aboutSubMenu); });
+    aboutBackButton.addEventListener("click", (e) => { e.preventDefault(); goBack(aboutSubMenu); });
+
+    // Event Listeners for Resources
+    resourcesMenu.addEventListener("click", (e) => { e.preventDefault(); showSubMenu(resourcesSubMenu); });
+    resourcesBackButton.addEventListener("click", (e) => { e.preventDefault(); goBack(resourcesSubMenu); });
 });
+
+
+
 
 document.querySelectorAll('.delayed-link').forEach(link => {
     link.addEventListener('click', function(event) {

@@ -565,6 +565,8 @@ if (slider) {
 
 
 
+
+
 function cloneSet(srcId, destId) {
   const src = document.getElementById(srcId);
   const dest = document.getElementById(destId);
@@ -587,10 +589,13 @@ function applyAnimation(innerId, setId, direction, duration) {
   // Force a reflow so the browser recalculates layout after clone
   inner.getBoundingClientRect();
 
-  const setWidth = set.getBoundingClientRect().width; // more accurate than offsetWidth
+  // Fix: Rounding the width prevents fractional sub-pixel jitter when pausing
+  const setWidth = Math.round(set.getBoundingClientRect().width); 
   inner.style.setProperty('--set-width-neg', `-${setWidth}px`);
+  
+  // Trigger layout recalculation before applying new animation to ensure smooth start
   inner.style.animation = 'none';
-  inner.offsetHeight;
+  inner.offsetHeight; 
   inner.style.animation = `marquee-${direction} ${duration}s linear infinite`;
 }
 
@@ -607,27 +612,16 @@ function init(duration) {
   });
 }
 
-// Pause animation on hover
-['row1', 'row2'].forEach(id => {
-  const el = document.getElementById(id);
-  el.addEventListener('mouseenter', () => {
-    document.getElementById('inner1').classList.add('paused');
-    document.getElementById('inner2').classList.add('paused');
-  });
-  el.addEventListener('mouseleave', () => {
-    document.getElementById('inner1').classList.remove('paused');
-    document.getElementById('inner2').classList.remove('paused');
-  });
-});
-
 // Wait for all images to load before measuring widths and starting
 const allImages = document.querySelectorAll('#set1a img, #set2a img');
 const imagePromises = Array.from(allImages).map(img => {
   if (img.complete) return Promise.resolve();
   return new Promise(resolve => {
     img.addEventListener('load', resolve);
-    img.addEventListener('error', resolve);
+    // Resolves on error so the promise doesn't hang indefinitely if an image 404s
+    img.addEventListener('error', resolve); 
   });
 });
 
-Promise.all(imagePromises).then(() => init(40));
+// Starts the carousel. 
+Promise.all(imagePromises).then(() => init(60));

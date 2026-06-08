@@ -80,23 +80,27 @@
     /* Updated cubic bezier for rotation animation */
 }
 
-
-
-/* Initially hide the submenu */
-#subMenu {
+/* Initially hide the submenus */
+#subMenu,
+#aboutSubMenu,
+#resourcesSubMenu {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease-in-out;
 }
 
-/* Show the submenu */
-#subMenu.active {
+/* Show the submenus */
+#subMenu.active,
+#aboutSubMenu.active,
+#resourcesSubMenu.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Hide submenu */
-#subMenu.hidden {
+/* Hide submenus */
+#subMenu.hidden,
+#aboutSubMenu.hidden,
+#resourcesSubMenu.hidden {
     opacity: 0;
     visibility: hidden;
 }
@@ -132,10 +136,11 @@
     }
 }
 
-#subMenu.fade-in {
+#subMenu.fade-in,
+#aboutSubMenu.fade-in,
+#resourcesSubMenu.fade-in {
     animation: fadeInSubMenu 0.20s ease-in-out;
 }
-
 
 
  /**
@@ -146,9 +151,10 @@
 
 
 
- /* ----------------------------------------
- * Logo carousel animation (Flexbox Final)
+/* ----------------------------------------
+ * Logo carousel animation 
  * ---------------------------------------- */
+
 
 /* Fades the left and right edges smoothly */
 .track-outer {
@@ -166,10 +172,19 @@
   display: flex;
   width: max-content;
   will-change: transform;
+  
+  /* Anti-jerk hardware acceleration locks */
+  transform: translate3d(0, 0, 0); 
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-.track-inner.paused {
-  animation-play-state: paused !important;
+/* ONLY applies pause-on-hover for devices with a precise mouse/trackpad */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .track-inner {
+    animation-play-state: paused !important;
+  }
 }
 
 .logo-set {
@@ -185,6 +200,11 @@
   width: auto;
   flex-shrink: 0;
   object-fit: contain;
+  
+  /* Lock individual images to prevent pixel-snapping during pause */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .row {
@@ -195,14 +215,15 @@
   margin-bottom: 0;
 }
 
+/* Fix: Enforced translate3d inside keyframes to prevent GPU handoff jitter */
 @keyframes marquee-ltr {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(var(--set-width-neg)); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(var(--set-width-neg), 0, 0); }
 }
 
 @keyframes marquee-rtl {
-  0%   { transform: translateX(var(--set-width-neg)); }
-  100% { transform: translateX(0); }
+  0%   { transform: translate3d(var(--set-width-neg), 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
   /**
  * --------------------------------------------------

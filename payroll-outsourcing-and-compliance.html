@@ -122,205 +122,264 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header Section -->
-    <header
-        class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+       <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white/50 backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+  <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
+    <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw] h-[7svh] sm:h-14 my-auto " href="./index.html">
+      <img class="h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+    </a>
+  </div>
+
+  <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden" id="menuButtonContainer">
+    <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform" viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <nav role="navigation" aria-label="Mobile Navigation Menu" class="relative bg-darkBlue top-0 menudrop landscape:lg:hidden">
+    <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
+      <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+      <p>finest in accounting since 1988</p>
+      <p>Pakenham, VIC<br> Australia, 3810</p>
+    </div>
+
+    <ul id="mainMenu" class=" font-[300] shadow-md text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
+      <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
+      <li class="flex flex-row items-center gap-1" id="aboutMenu"><a href="#">ABOUT US</a></li>
+      <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
+      <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
+      <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+      <li class="flex flex-row items-center gap-1" id="resourcesMenu"><a href="#">RESOURCES</a></li>
+    </ul>
+
+    <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="aboutSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-journey">Our Journey</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-people">Our People</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-infrastructure">Our Infrastructure</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#why-us">Why Us</a></li>
+      <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="resourcesSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">RESOURCES</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./latest-insights.html">Latest Insights</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./client-success-stories.html">Client Success Stories</a></li>
+      <li id="resourcesBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+  </nav>
+
+<nav aria-label="Main Navigation" role="navigation"
+  class="absolute z-50 flex items-center justify-between h-14 left-[25svh] right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
+  
+  <ul class="flex flex-row items-center">
+    <li class="relative block ">
+      <a href="./index.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-lg hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Home</span>
+      </a>
+    </li>
     
-        <!-- Logo Section -->
-        <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
-            <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto "
-                href="./index.html">
-                <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
-                    aria-label="Home">
-            </a>
-    
-    
-    
-    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="./about-us.html" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">About Us</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./about-us.html#our-journey" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Journey</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-people" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our People</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-infrastructure" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Infrastructure</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
+              </a>
+            </li>
+            
+          </ul>
         </div>
+      </div>
+    </li>
     
-        <!-- Menu Button Section -->
-        <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden"
-            id="menuButtonContainer">
-            <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
-                    viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <line x1="4" y1="6" x2="20" y2="6" />
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <line x1="4" y1="18" x2="20" y2="18" />
-                </svg>
-            </button>
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Solutions</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./bookkeeping-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Bookkeeping Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./payroll-outsourcing-and-compliance.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./year-end-accounting-and-financial-statement-preparation.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./tax-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Tax Compliance Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./smsf-accounting-and-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+              </a>
+            </li>
+            
+          </ul>
         </div>
+      </div>
+    </li>
     
-        <!-- Mobile Navigation -->
-        <nav role="navigation" aria-label="Mobile Navigation Menu"
-            class="relative bg-darkBlue  top-0  menudrop landscape:lg:hidden">
-            <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
-                <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo"
-                    title="VJC Logo" aria-label="Home">
-                <p>finest in accounting since 1988</p>
-                <p>Pakenham, VIC<br> Australia, 3810</p>
-            </div>
+    <li class="relative block">
+      <a href="./engagement-models.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-base hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Engagement Models</span>
+      </a>
+    </li>
     
-            <ul id="mainMenu"
-                class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
-    
-                <!-- Navigation Links -->
-    
-                <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
-                <li><a href="./about-us.html">ABOUT US</a></li>
-                <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
-    
-                <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
-    
-                <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
-                <li><a href="https://resources.vjcpartners.com">RESOURCES</a></li>
-    
-    
-            </ul>
-    
-            <ul id="subMenu"
-                class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
-                <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
-                <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-                <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
-                <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-                <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-                <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-                <li id="backButton"
-                    class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
-                    <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-    
-            </ul>
-    
-    
-        </nav>
-    
-    
-    <!-- Landscape Navigation -->
-    <nav aria-label="Main Navigation" role="navigation"
-      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Resources</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./latest-insights.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Latest Insights</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./client-success-stories.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Client Success Stories</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-        <!-- Home -->
-        <li class="relative block rounded-xl">
-          <a href="./index.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-lg hover:no-underline hover:bg-gray-100">
-            <span>Home</span>
-          </a>
-        </li>
-
-        <!-- About -->
-        <li class="relative block rounded-xl">
-          <a href="./about-us.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
-            <span>About Us</span>
-          </a>
-        </li>
-
-        <!-- Our Services with Submenu -->
-        <li class="relative block rounded-xl" 
-            x-data="{ showChildren: false, submenuTimeout: null }"
-            x-init="showChildren = false"
-            @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-          <a href="#" 
-            aria-haspopup="true" 
-            :aria-expanded="showChildren"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
-            @click.prevent.stop="showChildren = !showChildren"
-            @touchstart.prevent.stop="showChildren = !showChildren"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Services</span>
-          </a>
-          <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl"
-            x-show="showChildren" 
-            x-cloak
-            x-transition:enter="transition ease duration-100 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" 
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-200 transform"
-            x-transition:leave-start="opacity-100 translate-y-0" 
-            x-transition:leave-end="opacity-0 translate-y-4"
-            @mouseenter="clearTimeout(submenuTimeout)" 
-            @mouseleave="showChildren = false"
-            aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
-            <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
-              <ul class="list-reset " role="menu">
-                <!-- Submenu Items -->
-                <li class="relative ">
-                  <a href="./cloud-accounting-and-bookkeeping.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative ">
-                  <a href="./audit-and-assurance-services.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Audit and Assurance Services</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./tax-planning-and-compliance.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Tax Planning and Compliance</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./virtual-chief-financial-officer.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Virtual Chief Financial Officer</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./legal-process-outsourcing.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Legal Processing Outsourcing</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
-
-        <!-- Engagement Models -->
-        <li class="relative block rounded-xl">
-          <a href="./engagement-models.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Engagement Models</span>
-          </a>
-        </li>
-
-        <!-- Resources -->
-        <li class="relative block rounded-xl">
-          <a href="https://resources.vjcpartners.com"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Resources</span>
-          </a>
-        </li>
-
-        <!-- Contact Us -->
-        <li class="relative block rounded-xl">
-          <a href="./contact.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Contact Us</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    
-    </header>
+  <ul class="flex flex-row items-center">
+    <li class="relative block">
+      <a href="./contact.html" 
+         class="flex items-center justify-center text-white px-6 py-2 mx-2 text-xs font-medium text-dakrBlue no-underline  ease-out transform cursor-pointer bg-darkGreen active:bg-darkBlue hover:bg-darkBlue hover:text-white rounded-full h-10 md:text-base hover:scale-103 active:scale-95 ">
+        <span>Contact Us</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+      </header>
 
     <main class="overflow-x-hidden">
 
@@ -332,84 +391,75 @@
         
                     <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] portrait:mb-[1.3svh] landscape:mb-[1svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
                         aria-label="Main Title">
-                        Audit and Assurance
+                        Payroll & Compliance
                     </h1>
                     <p class="text-[3.5vw] sm:text-[2.1svh]  portrait:sm:text-[1.8svw] portrait:mb-[4svh] portrait:sm:mb-[2svh]  landscape:mb-[4svh]  font-light portrait:leading-snug leading-normal"
                         aria-label="Hero Description">
-                        At VJC, we deliver regulatory-compliant offshore audit support, providing thorough financial evaluations and uncovering
-                        growth opportunities to enhance your financial processes and drive business success.
+                        VJC helps Australian accounting firms Smartsource payroll and compliance support inside Xero, MYOB, Employment Hero and related payroll systems. Our payroll specialists support pay cycles, employee setup, Single Touch Payroll (STP), Pay As You Go (PAYG) withholding, superannuation, working holiday maker payroll and Payday Super readiness from 1 July 2026.
                     </p>
 
                     <div class="flex flex-col portrait:sm:flex-col-reverse ">
-                        <div
-                            class=" flex flex-row justify-between gap-3 md:max-w-[100rem]  max-sm:hidden  sm:text-[1.4svh] portrait:sm:text-[1.2svw]  text-[3vw] font-semibold text-center portrait:sm:mt-[3svh]">
-                            <div class="flex flex-col  gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_1.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Industry Expertise
-                                </p>
-                            </div>
-                            <div class="flex flex-col  gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_2.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Advanced Analytics
-                                </p>
-                            </div>
-                            <div class="flex flex-col  gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_3.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Insightful Reporting
-                                </p>
-                            </div>
-                            <div class="flex flex-col  gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_4.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Due Diligence Advice
-                                </p>
-                            </div>
-                            <div class="flex flex-col gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_5.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Nuanced Understanding
-                                </p>
-                            </div>
-                            <div class="flex flex-col  gap-3">
-                                <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
-                                    src="./img/audit_quality_icon_6.svg" alt="">
-                                <p class="" role="header" aria-label="Frequently Asked Questions Header">
-                                    Regulatory Compliant
-                                </p>
-                            </div>
-                        
-                        </div>
-                        
-                        
-                        <div class="flex items-center  flex-row  landscape:sm:mt-[4svh]  gap-[5svh]">
-                            <div class="flex">
-                                <a id="schedule-button-header-audit-and-assurance" data-track="button" data-action="schedule" href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min" aria-label="Link to Schedule a Meeting"
-                                    class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] active:bg-darkGreen active:text-white delayed-link portrait:sm:py-[2svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
-                                    Partner with Us
-                                </a>
-                            </div>
-                        
-                        
-                            <div class="text-darkBlue   max-sm:hidden ">
-                                <div class="flex py-auto   ">
-                                    <div class="flex flex-col gap-3 sm:py-[1svh]  border-l-2 pl-[4svh] border-darkGreen">
-                                        <h2 class="text-[4vw] sm:text-[2svh] portrait:sm:text-[1.5svw]  overflow-visible font-bold uppercase leading-normal"
-                                            aria-label="Main Title">
-                                            Trustworthy audit support that fortifies your financial credibility and compliance
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div
+        class=" flex flex-row justify-between gap-3 md:max-w-[100rem]  max-sm:hidden  sm:text-[1.4svh] portrait:sm:text-[1.2svw]  text-[3vw] font-semibold text-center portrait:sm:mt-[3svh]">
+        <div class="flex flex-col  gap-3">
+            <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
+                src="./img/audit_quality_icon_1.svg" alt="">
+            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                Accurate Pay Cycles
+            </p>
+        </div>
+        <div class="flex flex-col  gap-3">
+            <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
+                src="./img/audit_quality_icon_2.svg" alt="">
+            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                Clean STP Records
+            </p>
+        </div>
+        <div class="flex flex-col  gap-3">
+            <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
+                src="./img/audit_quality_icon_3.svg" alt="">
+            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                PAYG & Super Reconciled
+            </p>
+        </div>
+        <div class="flex flex-col  gap-3">
+            <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
+                src="./img/audit_quality_icon_4.svg" alt="">
+            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                Leave and Final Pay Reviewed
+            </p>
+        </div>
+        <div class="flex flex-col gap-3">
+            <img class="size-28 sm:size-[9svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto"
+                src="./img/audit_quality_icon_5.svg" alt="">
+            <p class="" role="header" aria-label="Frequently Asked Questions Header">
+                Payday Super Ready
+            </p>
+        </div>
+    </div>
+    
+    
+    <div class="flex items-center  flex-row  landscape:sm:mt-[4svh]  gap-[5svh]">
+        <div class="flex">
+            <a id="schedule-button-header-audit-and-assurance" data-track="button" data-action="schedule" href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min" aria-label="Link to Schedule a Meeting"
+                class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] active:bg-darkGreen active:text-white delayed-link portrait:sm:py-[2svw] transition-transform duration-300 transform bg-darkBlue rounded-full select-none">
+                Book a discovery call
+            </a>
+        </div>
+    
+    
+        <div class="text-darkBlue   max-sm:hidden ">
+            <div class="flex py-auto   ">
+                <div class="flex flex-col gap-3 sm:py-[1svh]  border-l-2 pl-[4svh] border-darkGreen">
+                    <h2 class="text-[4vw] sm:text-[2svh] portrait:sm:text-[1.5svw]  overflow-visible font-bold uppercase leading-normal"
+                        aria-label="Main Title">
+                        Payroll support across pay runs, STP, PAYG, super and leave.
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     
         
@@ -910,7 +960,7 @@
                     src="./img/audit_quality_icon_1.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Industry Expertise
+                    Accurate Pay Cycles
                 </p>
             </div>
             <div class="flex w-[35%] flex-col  gap-3 ">
@@ -918,7 +968,7 @@
                     src="./img/audit_quality_icon_2.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Advanced Analytics
+                    Clean STP Records
                 </p>
             </div>
             <div class="flex flex-col w-[35%] gap-3">
@@ -926,7 +976,7 @@
                     src="./img/audit_quality_icon_3.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Insightful Reporting
+                    PAYG & Super Reconciled
                 </p>
             </div>
             <div class="flex flex-col w-[35%] gap-3">
@@ -934,7 +984,7 @@
                     src="./img/audit_quality_icon_4.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Due Diligence
+                    Leave and Final Pay Reviewed
                 </p>
             </div>
             <div class="flex flex-col w-[35%] gap-3">
@@ -942,18 +992,9 @@
                     src="./img/audit_quality_icon_5.svg" alt="">
                 <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
                     role="header" aria-label="Frequently Asked Questions Header">
-                    Nuanced Understanding
+                    Payday Super Ready
                 </p>
             </div>
-            <div class="flex flex-col w-[35%] gap-3">
-                <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto"
-                    src="./img/audit_quality_icon_6.svg" alt="">
-                <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
-                    role="header" aria-label="Frequently Asked Questions Header">
-                    Regulatory Compliant
-                </p>
-            </div>
-        
         </section>
         
         <section class="text-darkBlue max-md:px-10 mt-0  md:px-32 sm:hidden">
@@ -961,7 +1002,7 @@
                 <div class="flex flex-col gap-3 md:py-16 py-5">
                     <h2 class="md:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold uppercase leading-normal"
                         aria-label="Main Title">
-                        Trustworthy audit support that fortifies your financial credibility and complaince
+                        Payroll support across pay runs, STP, PAYG, super and leave.
                         
                     </h2>
                 </div>
@@ -970,18 +1011,12 @@
 
         
 
-        <section class="text-darkBlue md:mt-[4svh] mt-12">
+          <section class="text-darkBlue md:mt-[4svh] mt-12">
             <div class="sm:mb-[4svh] mb-10 text-center portrait:max-sm:text-left max-md:px-10 sm:px-[13svh] portrait:sm:px-[7svw]">
 
                 <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] max-md:mt-5   font-bold  leading-normal uppercase ">
                     Services we provide
                 </h2>
-                <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  portrait:mb-[1svh] font-light lg:landscape:mb-[2svh]  leading-normal"
-                    aria-label="Hero Description">
-                    We offer precise, secure bookkeeping for startups and established companies, allowing you to focus on growth. Our
-                    tailored audit and assurance services build investor confidence and help businesses of all sizes stay ahead of
-                    regulatory challenges with comprehensive support.
-                </p>
             </div>
 
             <div class="flex flex-col justify-center md:gap-8 xl:gap-10 gap-6  landscape:sm:px-[13svh] portrait:sm:px-[7svw] ">
@@ -996,7 +1031,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1008,18 +1042,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Pre-Audit Review
+        Core Payroll Processing
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Pre-audit comprehensive review and validation of financial statements to ensure accuracy, compliance, and reliability; Perform cut-off procedures to ensure that all supplier invoices, sales invoices, expenses, etc. are recorded appropriately; Ensuring that all year-end procedures including legal compliance are properly complied with; Identification of accounting errors through detailed ledgers scrutiny; Inspection of all entries related to deferred revenue, unbilled revenue, prepaid expenses and others; Finalizing and providing a draft set of financial statements after considering the adjustments identified during the pre-audit review.
+        VJC supports weekly, fortnightly and monthly pay cycle preparation across wages, salaries, allowances, deductions, reimbursements and contractor payments. Pay runs are prepared inside your client’s payroll software with payroll reports, payslips and working notes organised for review.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1032,7 +1064,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1044,18 +1075,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Internal Audits
+        Employee & Contractor Setup
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Partner with us for Internal Auditing: Enhance Corporate Performance and Governance. Internal auditing plays a crucial role in assessing and fortifying a company's internal control systems, corporate governance structures, and adherence to legal and regulatory requirements. Its primary goal is to ensure that financial reporting is both accurate and timely, to boost operational efficiency, and to protect company assets.<br><br>We understand that each company is unique, and therefore, our internal audit approach is tailored to the specific scope of work and goals of the audit. Our internal audit services are designed to assist executives and board members in efficiently managing performance, assessing risks, and improving employee productivity. We focus on monitoring the firm’s financial health while aiming to enhance overall efficiency, effectiveness, and quality within the organization.
+        Our team assists with employee onboarding, Tax File Number (TFN) declaration tracking, super fund details, employment classifications and contractor setup. This includes Australian Business Number (ABN) checks, PAYG withholding review for contractors and working holiday maker setup for subclass 417 and 462 employees.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1077,7 +1106,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1089,18 +1117,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Compliance Audit Assistance
+        STP, PAYG & ATO Reporting Support
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Regulations evolve, but your peace of mind shouldn't waver. At VJC, we turn compliance from a headache into a strategic asset. Our Compliance Audit Assistance services aren't just about ticking boxes—it's about fortifying your business against risks and building stakeholder confidence.<br><br>Our compliance audit assistance procedure engages us in your operations, comparing them against the latest regulatory standards. Our goal? To uncover hidden compliance gaps and transform them into opportunities for improvement. With VJC, you're not just meeting today's rules—you're preparing for tomorrow's challenges.
+        VJC supports STP pay event preparation, STP update events, correction support and year-end finalisation assistance through STP-enabled software. We also reconcile PAYG withholding amounts to payroll reports and Business Activity Statement (BAS) workpapers before review.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1113,7 +1139,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1125,18 +1150,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Statutory Audit Support
+        Superannuation & Payday Super Readiness
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Comprehensive planning, execution, and compliance to ensure accurate financial statements, audit readiness, and regulatory adherence. We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.<br><br>We offer a comprehensive statutory audit support process, covering planning, execution, and finalization.<br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">1. Planning:</span> Prepare a requirement list, review prior audits, verify opening balances, select samples, and calculate materiality.</span><br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">2. Execution:</span> Prepare and review working papers, test internal controls, gather and verify evidence, summarize audit observations, perform casting procedures, assess risks, and assist with balance confirmations.</span><br><br><span class="px-2 md:mb-2 mb-2 text-left"><span class="font-semibold">3. Finalization:</span> Review and prepare financial statements, ensure audit file completeness, draft management letters, develop internal control procedures, check compliance with standards, and draft notes for proper disclosures.</span>
+        We assist with Superannuation Guarantee (SG) calculation checks, ordinary time earnings review, super payable reconciliations and clearing house workflows. With Payday Super applying from 1 July 2026, we help firms prepare cleaner payroll processes, fund data checks and payment timing controls.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1159,7 +1182,6 @@
 <div x-data="collapsibleCard({ targetLines: 4, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1171,18 +1193,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Due Diligence and Transaction Advisory
+        Leave, Awards & Termination Support
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Financial and operational analysis to support mergers, acquisitions, and other business transactions.
+        Payroll errors often sit in leave accruals, award treatment, allowances, penalties and final pay calculations. VJC supports annual leave, personal leave, long service leave, termination pay, unused leave and redundancy calculation workpapers for review.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1195,7 +1215,6 @@
 <div x-data="collapsibleCard({ targetLines: 4, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1207,18 +1226,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Forensic Accounting and Fraud Investigations
+        Payroll Compliance & Reporting
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Expert analysis and reporting to uncover financial irregularities and support legal proceedings.
+        VJC prepares payroll-linked compliance support schedules, including PAYG withholding reconciliations, Taxable Payments Annual Report (TPAR) support, Fringe Benefits Tax (FBT) payroll workpapers and payroll tax threshold assessment support. We also assist with payroll clearing account reviews and month-end payroll reporting.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1238,23 +1255,100 @@
         </section>
 
         
+        <!-- Softwares we use Section -->
+        <section class=" flex  md:mt-[3svh] mt-12 flex-col  portrait:text-left text-center text-darkBlue">
+          <div class="  flex flex-col justify-center   max-md:px-10 leading-normal landscape:md:px-[13svh] portrait:sm:px-[7svw]  mx-auto">
+            <h2
+              class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold   uppercase "
+              aria-label="Main Title">
+              Softwares we use
+            </h2>
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   font-light "
+              aria-label="Hero Description">
+              We work inside your stack, not ours.
+            </p>
 
 
+          </div>
+
+
+
+<div class="carousel-wrap">
+  <div class="row track-outer fade-mask" id="row1">
+    <div class="track-inner" id="inner1">
+      <div class="logo-set" id="set1a">
+        <img class="logo-img" src="./img/a2x-logo.svg" alt="a2x">
+        <img class="logo-img" src="./img/access-logo.png" alt="access">
+        <img class="logo-img" src="./img/activeworkers-logo.svg" alt="activeworkers">
+        <img class="logo-img" src="./img/bgl-logo.svg" alt="bgl">
+        <img class="logo-img" src="./img/cch-logo.webp" alt="cch">
+        <img class="logo-img" src="./img/classsuper-logo.webp" alt="classsuper">
+        <img class="logo-img" src="./img/dext-logo.svg" alt="dext">
+        <img class="logo-img" src="./img/dropbox-logo.svg" alt="dropbox">
+        <img class="logo-img" src="./img/employeehero-logo.svg" alt="employeehero">
+        <img class="logo-img" src="./img/fyi-logo.webp" alt="fyi">
+        <img class="logo-img" src="./img/googleworkspace-logo.svg" alt="googleworkspace">
+        <img class="logo-img" src="./img/hubdoc-logo.svg" alt="hubdoc">
+        <img class="logo-img" src="./img/ignition-logo.webp" alt="ignition">
+        <img class="logo-img" src="./img/karbon-logo.svg" alt="karbon">
+        <img class="logo-img" src="./img/keypay-logo.svg" alt="keypay">
+      </div>
+      <div class="logo-set" id="set1b" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="row track-outer fade-mask" id="row2">
+    <div class="track-inner" id="inner2">
+      <div class="logo-set" id="set2a">
+        <img class="logo-img" src="./img/lodgeit-logo.svg" alt="lodgeit">
+        <img class="logo-img" src="./img/lyd-logo.png" alt="lyd">
+        <img class="logo-img" src="./img/m365-logo.png" alt="m365">
+        <img class="logo-img" src="./img/myob-logo.svg" alt="myob">
+        <img class="logo-img" src="./img/xpm-logo.png" alt="xpm">
+        <img class="logo-img" src="./img/nowinfinity-logo.png" alt="nowinfinity">
+        <img class="logo-img" src="./img/practiceprotect-logo.png" alt="practiceprotect">
+        <img class="logo-img" src="./img/quickbooks-logo.png" alt="quickbooks">
+        <img class="logo-img" src="./img/reckon-logo.svg" alt="reckon">
+        <img class="logo-img" src="./img/sage-logo.svg" alt="sage">
+        <img class="logo-img" src="./img/stripe-logo.svg" alt="stripe">
+        <img class="logo-img" src="./img/supermate-logo.png" alt="supermate">
+        <img class="logo-img" src="./img/wave-logo.svg" alt="wave">
+        <img class="logo-img" src="./img/workiro-logo.png" alt="workiro">
+        <img class="logo-img" src="./img/xero-logo.svg" alt="xero">
+      </div>
+      <div class="logo-set" id="set2b" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+    
+
+  
+    
+    
+
+
+    <!-- Contact Section -->
     <section class=" text-darkBlue" role="region" aria-labelledby="contactSectionHeading">
     
-      <div class=" sm:mt-[8svh] landscape:sm:px-[13svh] portrait:sm:px-[7svw]  px-4 mt-[7svh] ">
+      <div class="sm:mt-[4svh] landscape:sm:px-[13svh] portrait:sm:px-[7svw]  px-4 mt-7 ">
         <div class=" ">
           <div 
-            class="md:w-full border-darkGreen border-2 flex p-6 md:px-14 md:py-[3.5svh] flex-col gap-1 justify-center  w-full text-center  md:rounded-[3.5rem] rounded-[3.5rem] bg-white shadow-md mx-auto">
+            class="sm:w-full  border-darkGreen border-2 flex p-6  md:py-[3.5svh] flex-col gap-1 justify-center  w-full text-center   md:rounded-[3.5rem] rounded-[3.5rem] bg-white   shadow-md mx-auto">
             <h1 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw]  text-[5.5vw] uppercase font-bold text-center leading-normal"
               aria-label="Main Title">
               Where VJC Takes the Lead
             </h1>
-            <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   leading-normal font-bold">Assurance for Flawless Financial Compliance</p>
-            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal mt-2 md:mt-[1svh]">At VJC, we believe one size doesn’t fit all in auditing. That’s why we take a bespoke approach to every engagement,
-            aligning our expertise with your specific needs. Beyond audit support, we provide a tailored roadmap for improvement,
-            streamlining the audit process while uncovering valuable insights to drive your business growth.</p>
-    
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal"
+              aria-label="Hero Description">
+              Payroll is not just a recurring admin task. Every pay cycle carries employee entitlement, PAYG withholding, superannuation, STP and record-keeping risk. VJC’s Smartsourcing approach gives accounting firms structured payroll support with clear workpapers, early exception reporting and clean reconciliations. <br><br>
+Your firm stays in control of approval and client relationships. We reduce the processing load and help keep payroll files review-ready.
+
+
+
+            </p>
 
           </div>
     
@@ -1269,80 +1363,99 @@
 
 
 
+        <section id="faq" class="text-darkBlue flex flex-col md:mt-[4svh] mt-16 md:pb-5 pb-8" role="region" aria-label="Services related FAQ">
 
-    <!-- New FAQ Section -->
-    <section id="faq" class="bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]" role="region"
-        aria-label="Audit-related FAQ">
-        <div role="heading" aria-level="2">
-            <h2 class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
-                Frequently Asked Questions
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Which payroll systems do you work in?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We commonly support payroll through Xero, MYOB, Employment Hero and related payroll systems. We can also work with exported payroll reports where your firm uses Microsoft Excel-based review workflows."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can VJC process payroll directly for our clients?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, depending on your firm’s approval process. Some firms ask us to prepare the pay run for review. Others authorise further steps after checks are completed."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you support Single Touch Payroll?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. We assist with Single Touch Payroll (STP) pay event preparation, update events, correction support and year-end finalisation through STP-enabled software."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you support working holiday maker payroll?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. We support payroll setup and withholding checks for working holiday makers, including subclass 417 and 462 employees."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you help with Payday Super readiness?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. We assist with super reconciliation, employee fund data checks, clearing house transition workflows, returned contribution follow-up and process changes ahead of Payday Super from 1 July 2026."
+                  }
+                }
+              ]
+            }
+          </script>
+
+          <div role="heading" aria-level="2">
+            <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
+              Frequently Asked Questions
             </h2>
-        </div>
-    
-        <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
+            <p class="text-center text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mt-2 font-light px-[2.4rem] md:px-24">
+              Questions partners ask us before they commit. The rest, you can ask on the call.
+            </p>
+          </div>
+
+          <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
             <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-                <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
-                    <!-- Accordion component -->
-                    <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-                        <template x-data="{
-  faqs: [
-    { question: 'How do you handle regulatory requirements needing a local professional\'s signature as an offshore provider?', answer: 'We have a network of onshore partners and professionals across continents to meet local regulatory requirements. This allows us to provide cost-effective offshore services while ensuring compliance with country-specific regulations. Our partners handle necessary signatures and oversights, bridging the gap between our expert offshore team and local compliance needs.' },
-    { question: 'How do you ensure the confidentiality and security of our financial data during the audit process?', answer: 'We implement stringent data protection measures, including end-to-end encryption, secure VPNs, and strict access controls. Our team adheres to confidentiality agreements, and we\'re compliant with international data protection standards.' },
-    { question: 'Can you explain your approach to tailoring audit services to our specific industry and company needs?', answer: 'We begin with a comprehensive assessment of your industry, business model, and unique challenges. Our team then develops a customized audit plan that addresses your specific risk areas and compliance requirements, ensuring a relevant and value-adding audit process.' },
-    { question: 'What qualifications and experience do your auditors have?', answer: 'Our audit support team consists of certified professionals, including CPAs and Indian Chartered Accountants, with extensive experience across various industries. They undergo continuous training to stay updated with the latest audit standards and industry-specific regulations.' },
-    { question: 'How do you maintain consistency and quality in your audit processes?', answer: 'We follow a rigorous quality control system that includes peer reviews, regular training, and standardized methodologies and operating processes. Our work undergoes multiple levels of review to ensure accuracy and completeness.' },
-    { question: 'Can your team work as an extension of our in-house audit department?', answer: 'Absolutely. We pride ourselves on our flexibility and ability to integrate seamlessly with your existing processes. We can work as an extension of your in-house audit team, providing additional support and expertise where needed. Alternatively, we can also provide standalone audit services if that better suits your requirements. Our goal is to adapt to your preferred working model, enhancing your audit capabilities while ensuring a smooth, efficient process.' },
-    { question: 'What technologies do you use to enhance the efficiency and accuracy of your audits?', answer: 'We utilize advanced audit software for data analytics, risk assessment, and process automation. This includes tools for continuous auditing, anomaly detection, and predictive analytics, allowing us to provide more insightful and efficient audits.' },
-    { question: 'How do you handle potential conflicts of interest or maintain independence in your audit work?', answer: 'We have strict policies in place to ensure auditor independence. This includes regular conflict checks, rotation of audit partners, and clear separation of audit and non-audit services. We adhere to all relevant ethical standards and independence requirements.' },
-    { question: 'What is your process for communicating audit findings and recommendations?', answer: 'We maintain open communication throughout the audit process. At the conclusion, we provide a comprehensive report detailing our findings, along with practical recommendations. We also offer a debriefing session to discuss the results and answer any questions.' },
-    { question: 'How do you stay updated with changing audit standards and regulations?', answer: 'Our team undergoes regular training and participates in professional development programs. We also have a dedicated team that monitors regulatory changes and updates our audit methodologies accordingly.' },
-    { question: 'Can you provide references or case studies from clients similar to our business?', answer: 'While we maintain client confidentiality, we can provide anonymized case studies relevant to your industry.', link: 'https://resources.vjcpartners.com', linkText: 'You can read our selected case studies here.', action: 'view_case_studies' }
-  ],
-  openFaq: null,
-  page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
-}" x-for="(faq, index) in faqs" :key="index">
-  <div class="py-4">
-    <h2>
-      <button type="button"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-        @click="openFaq = (openFaq === index ? null : index); window.dataLayer.push({ event: 'dom_updated' })"
-        :aria-expanded="openFaq === index.toString()"
-        :aria-controls="'audit-faq-' + index">
-        <span x-text="faq.question"></span>
-        <img class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-          src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}"
-          alt="Expand or collapse FAQ content" aria-hidden="true" />
-      </button>
-    </h2>
-    <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-      :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
-      <template x-if="faq.link">
-        <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-          <a
-            :href="faq.link"
-            :id="'audit-faq-link-' + index + '-' + page"
-            :data-track="faq.styleAsButton ? 'button' : 'link'"
-            :data-action="faq.action"
-            :target="faq.link.includes('https://') ? '_blank' : null"
-            :rel="faq.link.includes('https://') ? 'noopener noreferrer' : null"
-            :aria-label="faq.linkText + ' for ' + faq.question"
-            :class="faq.styleAsButton ? 'whitespace-nowrap font-semibold text-[2.9vw] sm:text-[1.7svh] portrait:sm:text-[1.4svw] focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white text-darkBlue py-[2vw] px-[3vw] sm:px-[2svh] sm:py-[1svh] portrait:sm:px-[2svw] portrait:sm:py-[1svw] transition-all duration-100 transform bg-white rounded-full select-none delayed-link' : 'text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link'"
-          >
-            <span x-text="faq.linkText"></span>
-          </a>
-        </p>
-      </template>
-    </div>
-  </div>
-</template>
+              <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
+                <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
+
+                  <template x-data="{
+                    faqs: [
+                        { question: 'Which payroll systems do you work in?', answer: 'We commonly support payroll through Xero, MYOB, Employment Hero and related payroll systems. We can also work with exported payroll reports where your firm uses Microsoft Excel-based review workflows.' },
+                        { question: 'Can VJC process payroll directly for our clients?', answer: 'Yes, depending on your firm’s approval process. Some firms ask us to prepare the pay run for review. Others authorise further steps after checks are completed.' },
+                        { question: 'Do you support Single Touch Payroll?', answer: 'Yes. We assist with Single Touch Payroll (STP) pay event preparation, update events, correction support and year-end finalisation through STP-enabled software.' },
+                        { question: 'Can you support working holiday maker payroll?', answer: 'Yes. We support payroll setup and withholding checks for working holiday makers, including subclass 417 and 462 employees.' },
+                        { question: 'Can you help with Payday Super readiness?', answer: 'Yes. We assist with super reconciliation, employee fund data checks, clearing house transition workflows, returned contribution follow-up and process changes ahead of Payday Super from 1 July 2026.' }
+                    ],
+                    openFaq: null
+                  }" x-for="(faq, index) in faqs" :key="index">
+                    <div class="py-4">
+                      <h2>
+                        <button type="button" class="cursor-pointer transition-transform duration-100 active:scale-[0.99] text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left" @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index" :aria-controls="'faq-' + index">
+                          <span x-text="faq.question"></span>
+                          <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform" src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                        </button>
+                      </h2>
+                      <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out" :class="openFaq === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'">
+                        <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+                      </div>
                     </div>
+                  </template>
+
                 </div>
+              </div>
             </div>
-        </div>
-
-
-    </section>
+          </div>
+        </section>
 
 
 

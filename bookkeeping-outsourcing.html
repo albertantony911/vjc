@@ -122,204 +122,264 @@
     <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header Section -->
-  <header
-    class="sticky  top-0 flex flex-col z-100  h-[7svh] sm:h-14 bg-white/50  backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+       <header class="sticky top-0 flex flex-col z-100 h-[7svh] sm:h-14 bg-white/50 backdrop-blur-md shadow-[0_11px_16px_-4px_rgba(147,112,219,0.15),0_5px_7px_-3px_rgba(79,110,210,0.15)] ">
+  <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
+    <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw] h-[7svh] sm:h-14 my-auto " href="./index.html">
+      <img class="h-[7svh] sm:h-14 cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+    </a>
+  </div>
+
+  <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden" id="menuButtonContainer">
+    <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform" viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <nav role="navigation" aria-label="Mobile Navigation Menu" class="relative bg-darkBlue top-0 menudrop landscape:lg:hidden">
+    <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
+      <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo" aria-label="Home">
+      <p>finest in accounting since 1988</p>
+      <p>Pakenham, VIC<br> Australia, 3810</p>
+    </div>
+
+    <ul id="mainMenu" class=" font-[300] shadow-md text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
+      <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
+      <li class="flex flex-row items-center gap-1" id="aboutMenu"><a href="#">ABOUT US</a></li>
+      <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
+      <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
+      <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
+      <li class="flex flex-row items-center gap-1" id="resourcesMenu"><a href="#">RESOURCES</a></li>
+    </ul>
+
+    <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="aboutSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-journey">Our Journey</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-people">Our People</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#our-infrastructure">Our Infrastructure</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us.html#why-us">Why Us</a></li>
+      <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+
+    <ul id="resourcesSubMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16" style="display: none;">
+      <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">RESOURCES</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./latest-insights.html">Latest Insights</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./client-success-stories.html">Client Success Stories</a></li>
+      <li id="resourcesBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
+        <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
+        <a href="#">BACK</a>
+      </li>
+    </ul>
+  </nav>
+
+<nav aria-label="Main Navigation" role="navigation"
+  class="absolute z-50 flex items-center justify-between h-14 left-[25svh] right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
   
-    <!-- Logo Section -->
-    <div class="absolute h-[7svh] sm:h-14 top-0 flex py-auto flex-row overflow-hidden ">
-      <a class="landscape:sm:ml-[13svh] max-sm:px-5 portrait:sm:ml-[5svw]  h-[7svh] sm:h-14 my-auto " href="./index.html">
-        <img class="h-[7svh] sm:h-14  cursor-pointer" src="./img/logo.svg" alt="VJC Logo" title="VJC Logo"
-          aria-label="Home">
+  <ul class="flex flex-row items-center">
+    <li class="relative block ">
+      <a href="./index.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-lg hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Home</span>
       </a>
-  
-  
-  
-  
-    </div>
-  
-    <!-- Menu Button Section -->
-    <div class="absolute sm:h-14 h-[7svh] right-5 cursor-pointer z-50 antialiased landscape:lg:hidden"
-      id="menuButtonContainer">
-      <button class="h-[7svh] sm:h-14" id="menuButton" aria-label="Toggle Menu">
-        <svg xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-menu-2 stroke-darkBlue h-[5svh] sm:h-10 transition-transform transform"
-          viewBox="0 0 24 24" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="18" x2="20" y2="18" />
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="./about-us.html" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">About Us</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
-      </button>
-    </div>
-  
-    <!-- Mobile Navigation -->
-    <nav role="navigation" aria-label="Mobile Navigation Menu"
-      class="relative bg-darkBlue  top-0  menudrop landscape:lg:hidden">
-      <div class="absolute w-full text-center text-white text-[3vw] md:text-[2vw] uppercase landscape:max-lg:hidden">
-        <img class="w-20 mx-auto mb-5 md:w-32 md:mt-28 mt-[15svh]" src="./img/logo_w.svg" alt="VJC Logo" title="VJC Logo"
-          aria-label="Home">
-        <p>finest in accounting since 1988</p>
-        <p>Pakenham, VIC<br> Australia, 3810</p>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./about-us.html#our-journey" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Journey</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-people" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our People</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#our-infrastructure" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Our Infrastructure</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./about-us.html#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </div>
-  
-      <ul id="mainMenu"
-        class=" font-[300] shadow-md  text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
-  
-        <!-- Navigation Links -->
-  
-        <li class="md:mt-20 mt-[10svh]"><a href="./index.html">HOME</a></li>
-        <li><a href="./about-us.html">ABOUT US</a></li>
-        <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SERVICES</a></li>
-  
-        <li><a href="./engagement-models.html">ENGAGEMENT MODELS</a></li>
-  
-        <li class="mt-10"><a href="./contact.html">CONTACT</a></li>
-        <li><a href="https://resources.vjcpartners.com">RESOURCES</a></li>
-  
-  
-      </ul>
-  
-      <ul id="subMenu"
-        class="sm:text-xl   font-light uppercase text-white z-20 flex flex-col items-center   justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16 ">
-        <li class=" text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SERVICES</a></li>
-        <li><a href="./cloud-accounting-and-bookkeeping.html">Cloud Accounting & Bookkeeping</a></li>
-        <li><a href="./audit-and-assurance-services.html">Audit and Assurance Services</a></li>
-        <li><a href="./tax-planning-and-compliance.html">Tax Planning and Compliance</a></li>
-        <li><a href="./virtual-chief-financial-officer.html">Virtual Chief Financial Officer</a></li>
-        <li><a href="./legal-process-outsourcing.html">Legal Process Outsourcing</a></li>
-        <li id="backButton"
-          class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center"><img
-            class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt=""><a href="#">BACK</a></li>
-  
-      </ul>
-  
-  
-    </nav>
-  
-  
-    <!-- Landscape Navigation -->
-    <nav aria-label="Main Navigation" role="navigation"
-      class="absolute z-50 antialiased cursor-pointer h-14 right-3 portrait:hidden landscape:max-lg:hidden text-darkBlue">
-      <ul class="flex flex-row flex-wrap items-center w-full">
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Solutions</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./bookkeeping-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Bookkeeping Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./payroll-outsourcing-and-compliance.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./year-end-accounting-and-financial-statement-preparation.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./tax-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Tax Compliance Outsourcing</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./smsf-accounting-and-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </li>
+    
+    <li class="relative block">
+      <a href="./engagement-models.html" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6  md:text-base hover:no-underline hover:bg-gray-100 active:scale-98">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Engagement Models</span>
+      </a>
+    </li>
+    
+    <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
+      <a href="#" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+        <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Resources</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+      
+      <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl" 
+           x-show="showChildren" 
+           x-cloak 
+           x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-300 transform origin-top-left" 
+           x-transition:enter-start="opacity-0 scale-95 -translate-y-2" 
+           x-transition:enter-end="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave="transition cubic-bezier(0.16, 1, 0.3, 1) duration-200 transform origin-top-left" 
+           x-transition:leave-start="opacity-100 scale-100 translate-y-0" 
+           x-transition:leave-end="opacity-0 scale-95 -translate-y-1" 
+           @mouseenter="clearTimeout(submenuTimeout)" 
+           @mouseleave="showChildren = false" 
+           aria-label="Submenu">
+        <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
+        <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
+          <ul class="list-reset" role="menu">
+            
+            <li class="relative">
+              <a href="./latest-insights.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Latest Insights</span>
+              </a>
+            </li>
+            <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
+            
+            <li class="relative">
+              <a href="./client-success-stories.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Client Success Stories</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-        <!-- Home -->
-        <li class="relative block rounded-xl">
-          <a href="./index.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-lg hover:no-underline hover:bg-gray-100">
-            <span>Home</span>
-          </a>
-        </li>
-
-        <!-- About -->
-        <li class="relative block rounded-xl">
-          <a href="./about-us.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100 rounded-xl">
-            <span>About Us</span>
-          </a>
-        </li>
-
-        <!-- Our Services with Submenu -->
-        <li class="relative block rounded-xl" 
-            x-data="{ showChildren: false, submenuTimeout: null }"
-            x-init="showChildren = false"
-            @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-          <a href="#" 
-            aria-haspopup="true" 
-            :aria-expanded="showChildren"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer rounded-xl h-14 sm:px-4 md:text-base hover:no-underline hover:bg-gray-100"
-            @click.prevent.stop="showChildren = !showChildren"
-            @touchstart.prevent.stop="showChildren = !showChildren"
-            @mouseenter="showChildren = true; clearTimeout(submenuTimeout)"
-            @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 300)">
-            <span>Services</span>
-          </a>
-          <div class="absolute left-0 top-auto z-30 min-w-full mt-1 text-sm bg-white shadow-2xl w-80 rounded-3xl"
-            x-show="showChildren" 
-            x-cloak
-            x-transition:enter="transition ease duration-100 transform"
-            x-transition:enter-start="opacity-0 translate-y-2" 
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease duration-200 transform"
-            x-transition:leave-start="opacity-100 translate-y-0" 
-            x-transition:leave-end="opacity-0 translate-y-4"
-            @mouseenter="clearTimeout(submenuTimeout)" 
-            @mouseleave="showChildren = false"
-            aria-label="Submenu">
-            <span class="absolute top-0 left-0 w-4 h-5 ml-6 -mt-1 transform rotate-45 bg-white"></span>
-            <div class="relative z-10 w-full px-2 py-1 bg-white rounded-3xl">
-              <ul class="list-reset " role="menu">
-                <!-- Submenu Items -->
-                <li class="relative ">
-                  <a href="./cloud-accounting-and-bookkeeping.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Cloud Accounting and Bookkeeping</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative ">
-                  <a href="./audit-and-assurance-services.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Audit and Assurance Services</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./tax-planning-and-compliance.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Tax Planning and Compliance</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./virtual-chief-financial-officer.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Virtual Chief Financial Officer</span>
-                  </a>
-                </li>
-                <div class="h-[0.1rem] w-[95%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center"></div>
-                <li class="relative">
-                  <a href="./legal-process-outsourcing.html"
-                    class="flex items-start w-full px-4 py-5 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline hover:scale-105"
-                    role="menuitem">
-                    <span class="flex-1">Legal Processing Outsourcing</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
-
-        <!-- Engagement Models -->
-        <li class="relative block rounded-xl">
-          <a href="./engagement-models.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Engagement Models</span>
-          </a>
-        </li>
-
-        <!-- Resources -->
-        <li class="relative block rounded-xl">
-          <a href="https://resources.vjcpartners.com"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Resources</span>
-          </a>
-        </li>
-
-        <!-- Contact Us -->
-        <li class="relative block rounded-xl">
-          <a href="./contact.html"
-            class="flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-colors duration-300 cursor-pointer h-14 sm:px-4 rounded-xl md:text-base hover:no-underline hover:bg-gray-100">
-            <span>Contact Us</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  
-  </header>
+  <ul class="flex flex-row items-center">
+    <li class="relative block">
+      <a href="./contact.html" 
+         class="flex items-center justify-center text-white px-6 py-2 mx-2 text-xs font-medium text-dakrBlue no-underline  ease-out transform cursor-pointer bg-darkGreen active:bg-darkBlue hover:bg-darkBlue hover:text-white rounded-full h-10 md:text-base hover:scale-103 active:scale-95 ">
+        <span>Contact Us</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+      </header>
 
   <main class=" overflow-x-hidden" >
     <!-- Hero Section -->
@@ -335,7 +395,7 @@
           </h1>
           <p class="text-[3.5vw] sm:text-[2.1svh]  portrait:sm:text-[1.8svw] portrait:mb-[4svh] portrait:sm:mb-[2svh]  landscape:mb-[4svh]  font-light portrait:leading-snug leading-normal"
             aria-label="Hero Description">
-            Outsourced bookkeeping for Australian accounting firms, delivered by qualified accountants working to Australian standards across Xero, MYOB and QuickBooks Online - built on a smart sourcing model.
+            VJC Partners helps Australian accounting firms Smartsource bookkeeping work for their clients through qualified-accountant-led support. We work inside your software, templates, workflows and review systems to prepare clean, organised bookkeeping files from bank reconciliations and GST coding checks to BAS support, month-end workpapers and management reports.
           </p> 
           
           <div class="flex flex-col portrait:sm:flex-col-reverse">
@@ -343,27 +403,27 @@
               
               <div class="flex flex-col gap-3">
                 <img class="size-28 sm:size-[8.7svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto" src="./img/cloud_quality_icon_1.svg" alt="">
-                <p class="px-2" role="header">Clean and reconciled records</p>
+                <p class="px-2" role="header">Reconciled Records</p>
               </div>
 
               <div class="flex flex-col gap-3">
                 <img class="size-28 sm:size-[8.7svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto" src="./img/cloud_quality_icon_2.svg" alt="">
-                <p class="px-2" role="header">Advisory-ready books</p>
+                <p class="px-2" role="header">Correct GST Coding</p>
               </div>
 
               <div class="flex flex-col gap-3">
                 <img class="size-28 sm:size-[8.7svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto" src="./img/cloud_quality_icon_3.svg" alt="">
-                <p class="px-2" role="header">Your software</p>
+                <p class="px-2" role="header">Less Rework</p>
               </div>
 
               <div class="flex flex-col gap-3">
                 <img class="size-28 sm:size-[8.7svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto" src="./img/cloud_quality_icon_4.svg" alt="">
-                <p class="px-2" role="header">Your workflows</p>
+                <p class="px-2" role="header">Standards-Aligned Treatment</p>
               </div>
 
               <div class="flex flex-col gap-3">
                 <img class="size-28 sm:size-[8.7svh] portrait:md:size-[8.7svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[3svh] portrait:rounded-[3svw] mx-auto" src="./img/cloud_quality_icon_5.svg" alt="">
-                <p class="px-2" role="header">Your templates</p>
+                <p class="px-2" role="header">Advisory-Ready Books</p>
               </div>
               
             </div>
@@ -371,7 +431,7 @@
             <div class="flex items-center flex-row landscape:sm:mt-[4svh] gap-[5svh]">
               <div class="flex">
                 <a id="schedule-button-header-cloud-accounting" href="#" class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-100 bg-darkBlue rounded-full select-none">
-                  Book a discovery call
+                  Talk to Growth and Partnerships Team
                 </a>
               </div>
 
@@ -379,7 +439,7 @@
                 <div class="flex py-auto">
                   <div class="flex flex-col gap-3 sm:py-[1svh] border-l-2 pl-[4svh] border-darkGreen">
                     <h2 class="text-[4vw] sm:text-[2svh] portrait:sm:text-[1.5svw] font-bold uppercase leading-normal">
-                      Accuracy in Every Entry,<br>Foresight in Every Report
+                      Bookkeeping files prepared the way <br>your firm wants to review them.
                     </h2>
                   </div>
                 </div>
@@ -922,40 +982,38 @@
         <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto" src="./img/cloud_quality_icon_1.svg" alt="">
         <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
           role="header" aria-label="Frequently Asked Questions Header">
-          Clean and reconciled records
+          Reconciled Records
         </p>
       </div>
       <div class="flex w-[35%] flex-col  gap-3 ">
         <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto" src="./img/cloud_quality_icon_2.svg" alt="">
         <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
           role="header" aria-label="Frequently Asked Questions Header">
-          Advisory-ready books
+          Correct GST Coding
         </p>
       </div>
       <div class="flex flex-col w-[35%] gap-3">
         <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto" src="./img/cloud_quality_icon_3.svg" alt="">
         <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
           role="header" aria-label="Frequently Asked Questions Header">
-          Your software
+          Less Rework
         </p>
       </div>
       <div class="flex flex-col w-[35%] gap-3">
         <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto" src="./img/cloud_quality_icon_4.svg" alt="">
         <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
           role="header" aria-label="Frequently Asked Questions Header">
-          Your workflows
+          Standards-Aligned Treatment
         </p>
       </div>
       <div class="flex flex-col w-[35%] gap-3 ">
         <img class="size-28 shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] rounded-[2.6rem] mx-auto" src="./img/cloud_quality_icon_5.svg" alt="">
         <p class="md:text-3xl landscape:lg:text-sm landscape:text-sm text-[3.3vw] portrait:sm:text-[3vw] font-semibold text-center"
           role="header" aria-label="Frequently Asked Questions Header">
-          Remote Data Availability
+          Advisory-Ready Books
         </p>
       </div>
-
-    
-    </section>
+</section>
 
     <section class="text-darkBlue max-md:px-10 mt-0  md:px-32 sm:hidden">
         <div class="flex py-auto  border-l-[1.5px] border-darkGreen   md:pl-14 pl-10   ">
@@ -963,8 +1021,7 @@
             <h2
               class="md:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold uppercase leading-normal"
               aria-label="Main Title">
-              Accuracy in Every Entry,
-              Foresight in Every Report
+              Bookkeeping files prepared the way your firm wants to review them.
             </h2>
           </div>
         </div>
@@ -993,7 +1050,6 @@
           <div x-data="collapsibleCard({ targetLines: 4, autoCollapseTime: 10000 })" x-init="init()"
             class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-            <!-- Header / Toggle Button -->
             <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
               :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1005,18 +1061,16 @@
 
               <div class="flex flex-col text-left gap-1 text-darkBlue">
                 <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-                  End-to-end Bookkeeping & Bank Reconciliations
+                  Daily Data Entry & Reconciliations
                 </h3>
 
-                <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
                 <p x-ref="content" 
                   :style="{ 'max-height': contentHeight }" 
                   class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
                   :class="{ 'opacity-100': expanded }">
-                  Daily bookkeeping outsourcing and bank reconciliation services across your client portfolio of Australian businesses. Reconciliations across bank accounts, Shopify, Stripe, PayPal and other payment platforms. Source documents coded via Hubdoc; transactions reviewed for discrepancies; month-end close supported.
+                  VJC supports daily bookkeeping, coding and reconciliations across bank accounts, credit cards, Shopify, Stripe and other payment gateways. Supporting documents are organised through cloud-based workflows such as Hubdoc, Dext and your internal document systems. The focus is on clean records, complete audit trails and fewer unresolved items at month-end.
                 </p>
 
-                <!-- Single toggle text with reactive binding -->
                 <template x-if="isTruncated">
                   <span @click.stop="toggleExpand"
                     class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1029,7 +1083,6 @@
           <div x-data="collapsibleCard({ targetLines: 4, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1044,15 +1097,13 @@
         Accounts Payable & Receivable
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        AP: supplier invoice coding, PO matching, scheduled payment runs, supplier-statement reconciliation and month-end support. AR: debtor follow-ups, payment allocation, aged-debtor monitoring, billing-discrepancy resolution and month-end reporting.
+        We assist with invoice processing, payment allocations, supplier reconciliations, debtor tracking and month-end AP/AR reporting. Your firm receives clear schedules, updated balances and documented queries so the bookkeeping file is easier to review and easier to discuss with the client.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1074,7 +1125,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1086,18 +1136,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        BAS & IAS Preparation
+        BAS, IAS & Compliance Support
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Lodgement-ready preparation of Business Activity Statements (BAS) and Instalment Activity Statements (IAS), along with related compliance lodgements such as FBT, TPAR and SGC where applicable.
+        VJC prepares BAS and IAS workpapers supported by reconciliations, GST checks and transaction-level review. We also assist with FBT workpapers, TPAR schedules, SGC calculations and other compliance support your team may need. Your firm remains the reviewer and lodging agent.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1110,7 +1158,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1122,18 +1169,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Inventory & Fixed Assets
+        Fixed Asset Register Management
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Inventory management, stock adjustments and reconciliations. Fixed asset register maintenance, additions and disposals, depreciation schedules, capital allowance and end-of-year roll-forwards.
+        We maintain fixed asset registers, including additions, disposals, depreciation schedules and rollforward reports. This keeps the asset register aligned with the ledger and reduces year-end clean-up work.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1156,7 +1201,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1168,18 +1212,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        General Leder & Management Reporting
+        General Ledger & Management Reporting
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Monthly P&L, balance sheet and cash flow packs, benchmarked against prior period and budget, with variance commentary written for a partner's five-minute read, not a 20-page data dump.
+        VJC supports month-end bookkeeping, balance sheet reconciliations and preparation of management reports. This may include Profit & Loss Statements, Balance Sheets, Cash Flow Statements, budget vs actual reports and location-wise or department-wise reporting.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1193,7 +1235,6 @@
 <div x-data="collapsibleCard({ targetLines: 3, autoCollapseTime: 10000 })" x-init="init()"
   class="flex landscape:xl:w-1/2 flex-col xl:max-w-1/2 md:max-w-[75%] portrait:md:max-w-[75%] rounded-[3rem] md:rounded-[5.5svh] portrait:md:rounded-[5.5svw] shadow-[0px_7px_35px_0px_rgba(138,43,226,0.4)] m-auto bg-white p-5 md:p-6 xl:p-[2.5svh]">
 
-  <!-- Header / Toggle Button -->
   <div @click="toggleExpand" @keydown.space.prevent="toggleExpand" @keydown.enter.prevent="toggleExpand"
     :aria-expanded="expanded" class="flex flex-row md:gap-3 gap-4 cursor-pointer">
 
@@ -1205,18 +1246,16 @@
 
     <div class="flex flex-col text-left gap-1 text-darkBlue">
       <h3 class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] leading-snug font-bold uppercase">
-        Cloud Migration & App Integrations
+        Cloud Migration & App Integration Support
       </h3>
 
-      <!-- Paragraph with Expand/Collapse and Smooth Height Transition -->
       <p x-ref="content" 
         :style="{ 'max-height': contentHeight }" 
         class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-light leading-normal text-left transition-all duration-500 ease-in-out overflow-hidden opacity-80"
         :class="{ 'opacity-100': expanded }">
-        Migration of legacy Reckon, Quicken, desktop MYOB and Excel ledgers to Xero or MYOB, including chart-of-accounts restructure, opening-balance reconciliation and dead-file clean-up. Integration with A2X, Hubdoc and other cloud-based tools.
+        We assist with migration from Reckon, QuickBooks Desktop, MYOB and Excel-based systems into Xero, QuickBooks Online and MYOB Business. Support includes chart of accounts restructuring, opening balance reconciliation, ledger clean-up, inactive account review and app integrations such as Hubdoc, A2X, Shopify and Stripe.
       </p>
 
-      <!-- Single toggle text with reactive binding -->
       <template x-if="isTruncated">
         <span @click.stop="toggleExpand"
           class="cursor-pointer text-[2.9vw] sm:text-[1.6svh] portrait:md:text-[1.4svw] font-[500] text-right mr-5"
@@ -1230,14 +1269,6 @@
         
         </div>
 
-        
-        
-     
-
-
-        
-        
-      
       </div>
 
     </section>
@@ -1245,70 +1276,73 @@
     
     
 
-    <!-- Softwares we use Section -->
-    <section class=" flex  md:mt-[6svh] mt-12 flex-col text-center portrait:text-left">
-      <div class="  flex flex-col text-darkBlue justify-center   max-md:px-10 landscape:sm:px-[13svh] portrait:sm:px-[7svw] ">
-        <h2
-          class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] max-md:mt-5   font-bold  leading-normal uppercase "
-          aria-label="Main Title">
-          Softwares we use
-        </h2>
+        <!-- Softwares we use Section -->
+        <section class=" flex  md:mt-[3svh] mt-12 flex-col  portrait:text-left text-center text-darkBlue">
+          <div class="  flex flex-col justify-center   max-md:px-10 leading-normal landscape:md:px-[13svh] portrait:sm:px-[7svw]  mx-auto">
+            <h2
+              class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold   uppercase "
+              aria-label="Main Title">
+              Softwares we use
+            </h2>
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]   font-light "
+              aria-label="Hero Description">
+              We work inside your stack, not ours.
+            </p>
 
-    
-    
-      </div>
-    
-      <div class="flex flex-col gap-0 mt-2  sm:hidden ">
-        <div class="marquee marquee--LTR-M w-full sm:mx-auto flex relative overflow-x-hidden ">
-          <img class="marquee__item" src="./img/netsuite-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/freshbooks-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/quickbooks-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/bills-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/myob-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/sage-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/zoho-logo.svg" width="60" height="60" alt="">
-    
-        </div>
-    
-        <div class="marquee marquee--RTL-M w-full sm:mx-auto flex relative overflow-x-hidden ">
-          <img class="marquee__item" src="./img/lightyear-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/hubdoc-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/fyi-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/xero-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/dext-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/odoo-logo.svg" width="60" height="60" alt="">
-          <img class="marquee__item" src="./img/neat-logo.svg" width="60" height="60" alt="">
-          
-    
-        </div>
-      </div>
 
-      <div class="flex flex-col gap-[0.5svh] mt-[0.8svh] mb-0  max-sm:hidden ">
-        <div class="relative flex overflow-x-hidden marquee marquee--LTR-M sm:w-full sm:mx-auto ">
-          <img class="marquee__item size-full" src="./img/bills-logo.svg" alt="">
-          <img class="marquee__item  size-full" src="./img/netsuite-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/freshbooks-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/quickbooks-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/myob-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/sage-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/zoho-logo.svg"  alt="">
-      
-        </div>
-      
-        <div class="relative flex overflow-x-hidden marquee marquee--RTL-M sm:w-full sm:mx-auto ">
-          <img class="marquee__item size-full" src="./img/lightyear-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/hubdoc-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/xero-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/dext-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/odoo-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/neat-logo.svg"  alt="">
-          <img class="marquee__item size-full" src="./img/fyi-logo.svg" alt="">
-      
-      
-        </div>
+          </div>
+
+
+
+<div class="carousel-wrap">
+  <div class="row track-outer fade-mask" id="row1">
+    <div class="track-inner" id="inner1">
+      <div class="logo-set" id="set1a">
+        <img class="logo-img" src="./img/a2x-logo.svg" alt="a2x">
+        <img class="logo-img" src="./img/access-logo.png" alt="access">
+        <img class="logo-img" src="./img/activeworkers-logo.svg" alt="activeworkers">
+        <img class="logo-img" src="./img/bgl-logo.svg" alt="bgl">
+        <img class="logo-img" src="./img/cch-logo.webp" alt="cch">
+        <img class="logo-img" src="./img/classsuper-logo.webp" alt="classsuper">
+        <img class="logo-img" src="./img/dext-logo.svg" alt="dext">
+        <img class="logo-img" src="./img/dropbox-logo.svg" alt="dropbox">
+        <img class="logo-img" src="./img/employeehero-logo.svg" alt="employeehero">
+        <img class="logo-img" src="./img/fyi-logo.webp" alt="fyi">
+        <img class="logo-img" src="./img/googleworkspace-logo.svg" alt="googleworkspace">
+        <img class="logo-img" src="./img/hubdoc-logo.svg" alt="hubdoc">
+        <img class="logo-img" src="./img/ignition-logo.webp" alt="ignition">
+        <img class="logo-img" src="./img/karbon-logo.svg" alt="karbon">
+        <img class="logo-img" src="./img/keypay-logo.svg" alt="keypay">
       </div>
-    
-    </section>
+      <div class="logo-set" id="set1b" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="row track-outer fade-mask" id="row2">
+    <div class="track-inner" id="inner2">
+      <div class="logo-set" id="set2a">
+        <img class="logo-img" src="./img/lodgeit-logo.svg" alt="lodgeit">
+        <img class="logo-img" src="./img/lyd-logo.png" alt="lyd">
+        <img class="logo-img" src="./img/m365-logo.png" alt="m365">
+        <img class="logo-img" src="./img/myob-logo.svg" alt="myob">
+        <img class="logo-img" src="./img/xpm-logo.png" alt="xpm">
+        <img class="logo-img" src="./img/nowinfinity-logo.png" alt="nowinfinity">
+        <img class="logo-img" src="./img/practiceprotect-logo.png" alt="practiceprotect">
+        <img class="logo-img" src="./img/quickbooks-logo.png" alt="quickbooks">
+        <img class="logo-img" src="./img/reckon-logo.svg" alt="reckon">
+        <img class="logo-img" src="./img/sage-logo.svg" alt="sage">
+        <img class="logo-img" src="./img/stripe-logo.svg" alt="stripe">
+        <img class="logo-img" src="./img/supermate-logo.png" alt="supermate">
+        <img class="logo-img" src="./img/wave-logo.svg" alt="wave">
+        <img class="logo-img" src="./img/workiro-logo.png" alt="workiro">
+        <img class="logo-img" src="./img/xero-logo.svg" alt="xero">
+      </div>
+      <div class="logo-set" id="set2b" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
+
+        </section>
 
     
 
@@ -1330,9 +1364,9 @@
             </h1>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal"
               aria-label="Hero Description">
-              Most bookkeeping outsourcing models rely on processing teams. Our approach is different!
-Every engagement is handled by a qualified accountant with a minimum of three years’ Australian experience across bookkeeping, accounting and compliance.
-Work is delivered with reconciliations, structured workpapers and clearly resolved queries - so your team reviews, rather than reworks.
+              Bookkeeping is not just data entry. Poor coding, unreconciled balances, missing documents and unclear GST treatment create review pressure inside accounting firms. VJC’s Smartsourcing model is built to reduce that pressure. Every engagement is handled by qualified accountants and trained bookkeeping professionals experienced in Australian accounting workflows. <br><br>
+Your team spends less time correcting the file and more time advising the client.
+
 
             </p>
 
@@ -1347,73 +1381,99 @@ Work is delivered with reconciliations, structured workpapers and clearly resolv
     </section>
 
 
-    <!-- FAQ Section -->
-    <section id="faq" class="bg-light text-darkBlue flex flex-col  sm:mt-[5svh] mt-[7svh]     max-sm:mb-[5svh]" role="region"
-      aria-label="Sessions related FAQ">
-      <div role="heading" aria-level="2">
-        <h2 class="sm:text-[3.3svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-[13svw] portrait:px-[7svw] text-center leading-normal uppercase">
-          Frequently Asked Questions - Cloud Accounting Services
-        </h2>
-      </div>
-    
-      <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
-        <div class="relative flex flex-col justify-center overflow-hidden" role="group">
-          <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
-            <!-- Accordion component -->
-            <div class="divide-y divide-slate-200" role="region" aria-label="Audit FAQ Group">
-              <template x-data="{
-            faqs: [
-              { question: 'What qualifications do your accountants and bookkeepers have?', answer: 'Our team consists of certified professionals including CPAs, Indian Chartered Accountants, and experienced bookkeepers. They have extensive knowledge of accounting standards and regulations, ensuring high-quality service tailored to your business needs.', link: 'https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min', linkText: 'Meet our Team for more info', action: 'meet_team' },
-              { question: 'How can cloud accounting benefit my business compared to traditional methods?', answer: 'Cloud accounting offers numerous benefits including real-time financial visibility, improved collaboration, automated processes, enhanced data security, and the ability to access your financial information from anywhere at any time. It also scales easily with your business growth and reduces the risk of data loss.' },
-              { question: 'Do I need to prepare my books before handing them over to VJC?', answer: 'No, you don\'t need to prepare or clean up your books beforehand. As part of our service, we will assess your current financial records, perform any necessary data cleaning or restructuring, and set up an appropriate general ledger tailored to your specific business needs. Our goal is to make the transition as smooth as possible for you.', link: './contact.html', linkText: 'Discuss with our Executives for more info', action: 'discuss_executives' },
-              { question: 'How does cloud accounting improve financial decision-making for my business?', answer: 'Cloud accounting provides real-time financial data and automated reporting, allowing you to make informed decisions quickly. You\'ll have instant access to key performance indicators, cash flow status, and financial forecasts, enabling proactive management of your business finances.' },
-              { question: 'Is my financial data secure?', answer: 'Yes, we provide excellent data security. We use advanced encryption, multi-factor authentication, and regular backups to protect your data. Our cloud systems also offer controlled access, allowing us to manage who sees what information, enhancing overall data security.', link: './about-us.html', linkText: 'You can read more here', action: 'read_data_security' }
-            ],
-            openFaq: null,
-            page: '{{page}}' // Replace with actual page name (e.g., 'home', 'about')
-          }" x-for="(faq, index) in faqs" :key="index">
-  <div class="py-4">
-    <h2>
-      <button type="button"
-        class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left"
-        @click="openFaq = (openFaq === index ? null : index); window.dataLayer.push({ event: 'dom_updated' })"
-        :aria-expanded="openFaq === index.toString()"
-        :aria-controls="'audit-faq-' + index">
-        <span x-text="faq.question"></span>
-        <img
-          class="shrink-0 size-5 sm:size-[2.5svh] portrait:sm:size-[2.5svw] ml-8 transition-transform duration-200 transform"
-          src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content"
-          aria-hidden="true" />
-      </button>
-    </h2>
-    <div :id="'audit-faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out"
-      :class="openFaq === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'">
-      <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
-      <template x-if="faq.link">
-        <p class="mt-4 text-left block text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]">
-          <a
-            :href="faq.link"
-            :id="'audit-faq-link-' + index + '-' + page"
-            :data-track="faq.styleAsButton ? 'button' : 'link'"
-            :data-action="faq.action"
-            :aria-label="faq.linkText + ' for ' + faq.question"
-            :class="faq.styleAsButton ? 'whitespace-nowrap font-semibold text-[2.9vw] sm:text-[1.7svh] portrait:sm:text-[1.4svw] focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white active:bg-darkGreen active:text-white text-darkBlue py-[2vw] px-[3vw] sm:px-[2svh] sm:py-[1svh] portrait:sm:px-[2svw] portrait:sm:py-[1svw] transition-all duration-100 transform bg-white rounded-full select-none delayed-link' : 'text-blue-600 font-medium underline hover:text-blue-800 transition duration-200 delayed-link'"
-          >
-            <span x-text="faq.linkText"></span>
-          </a>
-        </p>
-      </template>
-    </div>
-  </div>
-</template>
+            <section id="faq" class="text-darkBlue flex flex-col md:mt-[4svh] mt-16 md:pb-5 pb-8" role="region" aria-label="Services related FAQ">
+
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Do you work directly with our clients?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We can, but only if your firm wants that. Most firms prefer VJC to work inside their practice workflow, with queries routed through the manager, partner or nominated client contact."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you use our bookkeeping templates and checklists?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. We work inside your software, templates, naming conventions, workpaper formats and review systems. The aim is to make the file feel like it was prepared by your own team."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you prepare BAS returns?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We prepare BAS and IAS workpapers with reconciliations, GST checks and supporting schedules. Your registered BAS or tax agent reviews and lodges."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which bookkeeping platforms do you support?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We commonly work in Xero, QuickBooks Online, MYOB Business, MYOB AccountRight, Reckon and QuickBooks Desktop, along with Hubdoc, Dext, A2X, Shopify and Stripe."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can we start with one client file first?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The Single Trial is designed for firms that want to test quality, turnaround and communication before committing to a broader engagement."
+                  }
+                }
+              ]
+            }
+          </script>
+
+          <div role="heading" aria-level="2">
+            <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
+              Frequently Asked Questions
+            </h2>
+            <p class="text-center text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mt-2 font-light px-[2.4rem] md:px-24">
+              Questions partners ask us before they commit. The rest, you can ask on the call.
+            </p>
+          </div>
+
+          <div class="relative justify-center antialiased font-light" x-data="{ openFaq: null }" role="group">
+            <div class="relative flex flex-col justify-center overflow-hidden" role="group">
+              <div class="md:pt-8 landscape:md:px-[13svh] portrait:md:px-[7svw] max-md:w-[80%] pt-3 mx-auto text-center">
+                <div class="divide-y divide-slate-200" role="region" aria-label="FAQ Group">
+
+                  <template x-data="{
+                    faqs: [
+                        { question: 'Do you work directly with our clients?', answer: 'We can, but only if your firm wants that. Most firms prefer VJC to work inside their practice workflow, with queries routed through the manager, partner or nominated client contact.' },
+                        { question: 'Can you use our bookkeeping templates and checklists?', answer: 'Yes. We work inside your software, templates, naming conventions, workpaper formats and review systems. The aim is to make the file feel like it was prepared by your own team.' },
+                        { question: 'Do you prepare BAS returns?', answer: 'We prepare BAS and IAS workpapers with reconciliations, GST checks and supporting schedules. Your registered BAS or tax agent reviews and lodges.' },
+                        { question: 'Which bookkeeping platforms do you support?', answer: 'We commonly work in Xero, QuickBooks Online, MYOB Business, MYOB AccountRight, Reckon and QuickBooks Desktop, along with Hubdoc, Dext, A2X, Shopify and Stripe.' },
+                        { question: 'Can we start with one client file first?', answer: 'Yes. The Single Trial is designed for firms that want to test quality, turnaround and communication before committing to a broader engagement.' }
+                    ],
+                    openFaq: null
+                  }" x-for="(faq, index) in faqs" :key="index">
+                    <div class="py-4">
+                      <h2>
+                        <button type="button" class="cursor-pointer transition-transform duration-100 active:scale-[0.99] text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] flex items-center justify-between w-full font-medium text-left" @click="openFaq = (openFaq === index ? null : index)" :aria-expanded="openFaq === index" :aria-controls="'faq-' + index">
+                          <span x-text="faq.question"></span>
+                          <img class="shrink-0 size-5 md:size-[2.5svh] portrait:md:size-[2.5svw] ml-8 transition-transform duration-200 transform" src="./img/drop-arrow.svg" :class="{'rotate-180': openFaq === index}" alt="Expand or collapse FAQ content" aria-hidden="true" />
+                        </button>
+                      </h2>
+                      <div :id="'faq-' + index" role="region" class="overflow-hidden transition-all duration-500 ease-in-out" :class="openFaq === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'">
+                        <p class="mt-2 text-left text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]" x-text="faq.answer"></p>
+                      </div>
+                    </div>
+                  </template>
+
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-
-      
-    </section>
+        </section>
 
 
 
