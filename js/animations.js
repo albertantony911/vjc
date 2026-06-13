@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "flasherObserver", childSelector: ".flasher", customClass: "active" },
     { className: "lineGraphLargeObserver", childSelector: ".lineGraphLarge", customClass: "active" },
     { className: "lineGraphObserver", childSelector: ".lineGraph", customClass: "active" },
+    { className: "orbit-container", customClass: "is-playing", threshold: 0 },
     { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 
@@ -122,51 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.1 });
   marquees.forEach(marquee => marqueeObserver.observe(marquee));
 
-  /*** Rotating Groups Animation Control ***/
-  const groups = [
-    {
-      trigger: ".rotating-group-landing",
-      targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"]
-    },
-    {
-      trigger: ".rotating-group-cloud",
-      targets: [".rotating-icon-cloud-1", ".rotating-icon-cloud-2", ".rotating-icon-cloud-3", ".rotating-icon-cloud-4", ".rotating-icon-cloud-5", ".rotating-icon-cloud-6", ".rotating-icon-cloud-7", ".rotating-group-cloud"]
-    },
-    {
-      trigger: ".rotating-group-vcfo",
-      targets: [".rotating-icon-vcfo-1", ".rotating-icon-vcfo-2", ".rotating-icon-vcfo-3", ".rotating-icon-vcfo-4", ".rotating-icon-vcfo-5", ".rotating-group-vcfo"]
-    },
-    {
-      trigger: ".rotating-group-audit",
-      targets: [".rotating-icon-audit-1", ".rotating-icon-audit-2", ".rotating-icon-audit-3", ".rotating-icon-audit-4", ".rotating-icon-audit-5", ".rotating-icon-audit-6", ".rotating-group-audit"]
-    },
-    {
-      trigger: ".rotating-group-legal",
-      targets: [".rotating-icon-legal-1", ".rotating-icon-legal-2", ".rotating-icon-legal-3", ".rotating-icon-legal-4", ".rotating-icon-legal-5", ".rotating-icon-legal-6", ".rotating-icon-legal-7", ".rotating-icon-legal-8", ".rotating-icon-legal-9", ".rotating-icon-legal-10", ".rotating-icon-legal-11", ".rotating-group-legal"]
-    }
-  ];
-
-  function checkScrollTriggers() {
-    const threshold = window.innerHeight * 0.8;
-    groups.forEach(({ trigger, targets }) => {
-      const triggerElement = document.querySelector(trigger);
-      if (!triggerElement) return;
-
-      const rect = triggerElement.getBoundingClientRect();
-      const isActive = rect.top <= threshold && rect.bottom > 0;
-      const targetElements = cacheElements(targets.join(", "));
-      if (isActive) {
-        targetElements.forEach(el => el.classList.add("active"));
-      } else {
-        targetElements.forEach(el => el.classList.remove("active"));
-      }
-    });
-  }
-
-  const throttledScrollTriggers = throttle(checkScrollTriggers, 100);
-  window.addEventListener("scroll", throttledScrollTriggers);
-  window.addEventListener("resize", throttledScrollTriggers);
-  window.addEventListener("load", checkScrollTriggers);
+  
 
   /*** Counter Animation Control ***/
   const counterObserver = new IntersectionObserver((entries, observerInstance) => {
@@ -625,3 +582,6 @@ const imagePromises = Array.from(allImages).map(img => {
 
 // Starts the carousel. 
 Promise.all(imagePromises).then(() => init(60));
+
+
+
