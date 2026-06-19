@@ -349,6 +349,38 @@ document.addEventListener("DOMContentLoaded", function () {
   cacheElements('.float').forEach((element, index) => {
     element.style.setProperty('--n', index + 1);
   });
+
+  /*** Rotating Groups Animation Control ***/
+  const groups = [
+    {
+      trigger: ".rotating-group-landing",
+      targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"]
+    }
+  ];
+
+  function checkScrollTriggers() {
+    const threshold = window.innerHeight * 0.8;
+    groups.forEach(({ trigger, targets }) => {
+      const triggerElement = document.querySelector(trigger);
+      if (!triggerElement) return;
+
+      const rect = triggerElement.getBoundingClientRect();
+      const isActive = rect.top <= threshold && rect.bottom > 0;
+      
+      const targetElements = cacheElements(targets.join(", "));
+      
+      if (isActive) {
+        targetElements.forEach(el => el.classList.add("active"));
+      } else {
+        targetElements.forEach(el => el.classList.remove("active"));
+      }
+    });
+  }
+
+  window.addEventListener('scroll', throttle(checkScrollTriggers, 100));
+  window.addEventListener('resize', throttle(checkScrollTriggers, 100));
+  checkScrollTriggers();
+
 });
 
 
@@ -582,6 +614,3 @@ const imagePromises = Array.from(allImages).map(img => {
 
 // Starts the carousel. 
 Promise.all(imagePromises).then(() => init(60));
-
-
-

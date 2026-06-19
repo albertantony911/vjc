@@ -51,67 +51,105 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/animations.css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
   <!-- JavaScript -->
   <script src="./js/main.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="./js/animations.js" defer></script>
+  
 
-  <!-- Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "url": "https://www.vjcpartners.com",
-    "logo": "https://www.vjcpartners.com/img/logo.svg",
-    "name": "VJC India",
-    "description": "VJC India provides offshore business solutions for accounting, tax planning, and legal outsourcing since 1988.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "New Delhi",
-      "addressRegion": "New Delhi",
-      "addressCountry": "IN"
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://www.vjcpartners.com",
+  "logo": "https://www.vjcpartners.com/img/logo.svg",
+  "name": "VJC India",
+  "description": "VJC India provides offshore business solutions for accounting, tax planning, and legal outsourcing since 1988.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New Delhi",
+    "addressRegion": "Delhi",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9630054303",
+    "contactType": "customer service",
+    "email": "admin@vjcindia.com"
+  },
+  "sameAs": [
+    "https://www.instagram.com/vjcindia/",
+    "https://www.linkedin.com/company/vjcindia"
+  ]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPoint",
+  "telephone": "+61 2 7259 1533",
+  "email": "business@vjcpartners.com",
+  "contactType": "general inquiries",
+  "areaServed": "Australia",
+  "availableLanguage": "English"
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us | VJC Partners",
+  "url": "https://www.vjcpartners.com/contact.html",
+  "description": "Get in touch with VJC Partners for bookkeeping, payroll, tax compliance, and SMSF smartsourcing solutions."
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us | VJC Partners",
+  "url": "https://www.vjcpartners.com/contact.html",
+  "description": "Get in touch with VJC Partners for bookkeeping, payroll, tax compliance, and SMSF smartsourcing solutions."
+}
+</script>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vjcpartners.com/"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-9630054303",
-      "contactType": "customer service",
-      "email": "admin@vjcindia.com"
-    },
-    "sameAs": [
-      "https://www.instagram.com/vjcindia/",
-      "https://in.linkedin.com/company/vjcindia"
-    ],
-    "hasPart": {
-      "@type": "WebSite",
-      "name": "VJC India Resources",
-      "url": "https://resources.vjcpartners.com",
-      "description": "Blog and resources for offshore business solutions by VJC India."
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://www.vjcpartners.com/contact.html"
     }
-  }
-  </script>
+  ]
+}
+</script>
 
-  <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.vjcpartners.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Contact",
-        "item": "https://www.vjcpartners.com/contact.html"
-      }
-    ]
-  }
-  </script>
+
+
 </head>
 
 
@@ -158,11 +196,11 @@
 
     <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/bookkeeping-outsourcing.html">Bookkeeping Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing-and-compliance.html">Payroll Outsourcing & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-accounting-and-financial-statement-preparation.html">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/tax-compliance-outsourcing.html">Tax Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-accounting-and-compliance-outsourcing.html">SMSF Accounting & Compliance Outsourcing</a></li>
       <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
         <a href="#">BACK</a>
@@ -283,35 +321,35 @@
           <ul class="list-reset" role="menu">
             
             <li class="relative">
-              <a href="./bookkeeping-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./solutions/bookkeeping-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Bookkeeping Outsourcing</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./payroll-outsourcing-and-compliance.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./solutions/payroll-outsourcing-and-compliance.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./year-end-accounting-and-financial-statement-preparation.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./solutions/year-end-accounting-and-financial-statement-preparation.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./tax-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./solutions/tax-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Tax Compliance Outsourcing</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./smsf-accounting-and-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./solutions/smsf-accounting-and-compliance-outsourcing.html" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
               </a>
             </li>
@@ -400,7 +438,7 @@
                         Three ways to start with us. Pick the one that fits today.
                     </p>
                 
-                    <div class="grid grid-cols-1 md:grid-cols-3  gap-6 md:gap-8 lg:gap-[4svh] mt-6 sm:mt-16 mb-16 px-6 sm:px-16 w-full sm:max-w-[85%] mx-auto items-stretch">
+                    <div class="grid grid-cols-1 md:grid-cols-3  gap-6 md:gap-8 lg:gap-[4svh] mt-6 sm:mt-16 mb-16 px-6 sm:px-16 w-full sm:max-w-[85svw] mx-auto items-stretch">
                         
                         <div class="group flex flex-col h-full bg-white rounded-4xl md:rounded-[4svh] p-6 md:p-8 border border-darkGreen/40 shadow-[0_20px_40px_rgba(1,55,125,0.08)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-darkGreen hover:shadow-[0_20px_40px_rgba(1,55,125,0.18)] text-center">
                             <div class="flex flex-col items-center gap-3 flex-1">
@@ -510,6 +548,124 @@
                 </div>
                 <div class="h-[0.15rem] w-[80%] mx-auto bg-linear-to-r from-transparent via-darkGreen/90 to-transparent line-center "></div>
                 
+
+<div class="w-[80%] max-w-[110rem] py-6 sm:py-[3svh] text-left font-sans mx-auto">
+
+    <div class="text-center w-full mb-6 sm:mb-[4svh]">
+        <h1 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw] uppercase font-bold tracking-wide leading-snug text-darkBlue">
+            Global presence
+        </h1>
+    </div>
+
+    <div class="w-full h-[200px] sm:h-[30svh] rounded-2xl md:rounded-[3svh] overflow-hidden relative mb-6 sm:mb-[3svh] border-[0.5px] border-slate-200 shadow-sm">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80" alt="Modern office interior" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-[2.5svh] mb-6 sm:mb-[3svh]">
+        <div class=" backdrop-blur-lg border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]  hover:border-darkGreen/60 hover:shadow-[0_0_40px_rgba(0,100,50,0.12) shadow-sm rounded-2xl md:rounded-[2.5svh] p-4 lg:p-[2svh] flex items-center gap-3 transition-all duration-300  hover:shadow-md group">
+            <div class="w-10 h-10 md:w-[4.5svh] md:h-[4.5svh] rounded-xl  flex items-center justify-center shrink-0 text-darkGreen text-lg md:text-[2.5svh] group-hover:scale-105 transition-transform duration-300">
+                <i class="ti ti-clock"></i>
+            </div>
+            <div>
+                <div class="text-[2.8vw] sm:text-[1.3svh] font-bold tracking-widest text-darkBlue/60 uppercase mb-0.5">AEST · East coast</div>
+                <div class="text-[4vw] sm:text-[2svh] font-extrabold text-darkBlue leading-tight">12:30 – 5:00 PM</div>
+                <div class="text-[3vw] sm:text-[1.4svh] font-medium text-darkBlue/70 mt-0.5">4.5 hrs overlap</div>
+            </div>
+        </div>
+
+        <div class=" backdrop-blur-lg border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]  hover:border-darkGreen/60 hover:shadow-[0_0_40px_rgba(0,100,50,0.12) shadow-sm rounded-2xl md:rounded-[2.5svh] p-4 lg:p-[2svh] flex items-center gap-3 transition-all duration-300  hover:shadow-md group">
+            <div class="w-10 h-10 md:w-[4.5svh] md:h-[4.5svh] rounded-xl  flex items-center justify-center shrink-0 text-darkGreen text-lg md:text-[2.5svh] group-hover:scale-105 transition-transform duration-300">
+                <i class="ti ti-clock"></i>
+            </div>
+            <div>
+                <div class="text-[2.8vw] sm:text-[1.3svh] font-bold tracking-widest text-darkBlue/60 uppercase mb-0.5">AWST · West coast</div>
+                <div class="text-[4vw] sm:text-[2svh] font-extrabold text-darkBlue leading-tight">10:30 AM – 5:00 PM</div>
+                <div class="text-[3vw] sm:text-[1.4svh] font-medium text-darkBlue/70 mt-0.5">6.5 hrs overlap</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-[3svh]">
+        
+        <div class=" border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]  hover:border-darkGreen/60 hover:shadow-[0_0_40px_rgba(0,100,50,0.12) shadow-sm rounded-2xl md:rounded-[2.5svh] p-5 lg:p-[2.5svh] flex flex-col transition-all duration-300  hover:shadow-md">
+            <div class="flex items-center gap-2.5 mb-3 pb-3 border-b-[0.5px] border-slate-200">
+                <i class="ti ti-building text-xl sm:text-[2.5svh] text-darkGreen"></i>
+                <h3 class="sm:text-[2svh] text-[4vw] font-extrabold tracking-tight uppercase text-darkBlue m-0">Our offices</h3>
+            </div>
+
+            <div class="flex gap-3 py-3 border-b-[0.5px] border-slate-200">
+                <div class="w-9 h-9 sm:w-[4.5svh] sm:h-[4.5svh] rounded-xl  border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]  hover:border-darkGreen/60 hover:shadow-[0_0_40px_rgba(0,100,50,0.12) flex items-center justify-center shrink-0 text-lg sm:text-[2.2svh]">🇮🇳</div>
+                <div class="space-y-0.5">
+                    <div class="text-[3.2vw] sm:text-[1.7svh] font-bold text-darkBlue uppercase tracking-wide leading-tight">India</div>
+                    <div class="text-[3.2vw] sm:text-[1.6svh] font-light leading-snug text-darkBlue/80">VJC Partners<br>Raipur, Chhattisgarh</div>
+                    <a href="#" class="inline-flex items-center gap-1 text-[2.8vw] sm:text-[1.4svh] text-darkGreen font-bold mt-1.5 uppercase tracking-wide no-underline hover:text-darkBlue transition-colors group">
+                        <i class="ti ti-map-pin text-base group-hover:-translate-y-0.5 transition-transform"></i> Get directions
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-4">
+                <div class="w-9 h-9 sm:w-[4.5svh] sm:h-[4.5svh] rounded-xl bg-white/60 shadow-sm border-[0.5px] border-slate-200 flex items-center justify-center shrink-0 text-lg sm:text-[2.2svh]">🇦🇺</div>
+                <div class="space-y-0.5">
+                    <div class="text-[3.2vw] sm:text-[1.7svh] font-bold text-darkBlue uppercase tracking-wide leading-tight">Australia</div>
+                    <div class="text-[3.2vw] sm:text-[1.6svh] font-light leading-snug text-darkBlue/80">Supporting accounting firms across Australia</div>
+                    <a href="#" class="inline-flex items-center gap-1 text-[2.8vw] sm:text-[1.4svh] text-darkGreen font-bold mt-1.5 uppercase tracking-wide no-underline hover:text-darkBlue transition-colors group">
+                        <i class="ti ti-world text-base group-hover:rotate-12 transition-transform"></i> View coverage
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="  border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]  hover:border-darkGreen/60 hover:shadow-[0_0_40px_rgba(0,100,50,0.12) shadow-sm rounded-2xl md:rounded-[2.5svh] p-5 lg:p-[2.5svh] flex flex-col justify-between transition-all duration-300  hover:shadow-md">
+            <div>
+                <div class="flex items-center gap-2.5 mb-3 pb-3 border-b-[0.5px] border-slate-200">
+                    <i class="ti ti-message text-xl sm:text-[2.5svh] text-darkGreen"></i>
+                    <h3 class="sm:text-[2svh] text-[4vw] font-extrabold tracking-tight uppercase text-darkBlue m-0">Get in touch</h3>
+                </div>
+                
+                <div class="flex items-center gap-3 py-2.5 border-b-[0.5px] border-slate-200">
+                    <div class="w-9 h-9 sm:w-[4svh] sm:h-[4svh] rounded-lg bg-white/60 shadow-sm border-[0.5px] border-slate-200 flex items-center justify-center shrink-0 text-darkGreen text-base sm:text-[2svh]">
+                        <i class="ti ti-phone"></i>
+                    </div>
+                    <div>
+                        <div class="text-[2.8vw] sm:text-[1.3svh] font-bold tracking-widest text-darkBlue/60 uppercase mb-0.5">Phone</div>
+                        <div class="text-[3.2vw] sm:text-[1.6svh] font-bold text-darkBlue">+61 2 8212 8285</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 py-2.5 border-b-[0.5px] border-slate-200">
+                    <div class="w-9 h-9 sm:w-[4svh] sm:h-[4svh] rounded-lg bg-white/60 shadow-sm border-[0.5px] border-slate-200 flex items-center justify-center shrink-0 text-darkGreen text-base sm:text-[2svh]">
+                        <i class="ti ti-mail"></i>
+                    </div>
+                    <div>
+                        <div class="text-[2.8vw] sm:text-[1.3svh] font-bold tracking-widest text-darkBlue/60 uppercase mb-0.5">Email</div>
+                        <div class="text-[3.2vw] sm:text-[1.6svh] font-bold text-darkBlue">
+                            <a href="mailto:info@vjcpartners.com.au" class="text-darkBlue no-underline hover:text-darkGreen transition-colors">info@vjcpartners.com.au</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 pt-3.5">
+                    <div class="w-9 h-9 sm:w-[4svh] sm:h-[4svh] rounded-lg bg-white/60 shadow-sm border-[0.5px] border-slate-200 flex items-center justify-center shrink-0 text-darkGreen text-base sm:text-[2svh]">
+                        <i class="ti ti-clock"></i>
+                    </div>
+                    <div>
+                        <div class="text-[2.8vw] sm:text-[1.3svh] font-bold tracking-widest text-darkBlue/60 uppercase mb-0.5">Hours (AEST)</div>
+                        <div class="text-[3.2vw] sm:text-[1.6svh] font-medium text-darkBlue">Mon – Fri &nbsp;|&nbsp; 9:00 AM – 5:30 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="w-full mt-5 bg-darkBlue/90 backdrop-blur-md hover:bg-darkGreen text-white border-none rounded-xl py-3 sm:py-[1.5svh] text-[3.2vw] sm:text-[1.6svh] font-bold tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm">
+                <i class="ti ti-calendar text-base"></i> Book a meeting
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+
                 <div 
     x-data = "{ activeTab: 0 }" 
     class = "w-[80%] bg-white py-6 sm:py-[3svh]  text-center items-center font-sans mx-auto"
@@ -704,8 +860,14 @@
                 </div>
 
             </div>
+
+            
             
 </section>
+
+
+
+
 
 
         <!-- Contact Section -->
