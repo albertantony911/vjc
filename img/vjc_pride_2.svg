@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1250 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(0.178088,0,0,0.178088,625,500)">
+        <clipPath id="_clip1">
+            <path d="M0,1333.333C-1257.08,1333.333 -1885.619,1333.333 -2276.141,1138.067C-2666.667,942.813 -2666.667,628.533 -2666.667,0C-2666.667,-628.54 -2666.667,-942.809 -2276.141,-1138.071C-1885.619,-1333.333 -1257.08,-1333.333 0,-1333.333C1257.067,-1333.333 1885.627,-1333.333 2276.133,-1138.071C2666.667,-942.809 2666.667,-628.54 2666.667,0C2666.667,628.533 2666.667,942.813 2276.133,1138.067C1885.627,1333.333 1257.067,1333.333 0,1333.333Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(1,0,0,1,-2666.666667,-1333.333333)">
+                <clipPath id="_clip2">
+                    <rect x="0" y="0" width="5333.333" height="2666.667"/>
+                </clipPath>
+                <g clip-path="url(#_clip2)">
+                    <g transform="matrix(444.444444,0,0,444.444444,0,0)">
+                        <rect x="0" y="0" width="12" height="6" style="fill:rgb(1,33,105);"/>
+                        <clipPath id="_clip3">
+                            <rect x="0" y="0" width="6" height="3"/>
+                        </clipPath>
+                        <g clip-path="url(#_clip3)">
+                            <path d="M0,0L6,3M6,0L0,3" style="fill-rule:nonzero;stroke:white;stroke-width:0.6px;"/>
+                        </g>
+                        <clipPath id="_clip4">
+                            <path d="M0,0L0,1.5L6,1.5L6,3L0,0ZM6,0L3,0L3,3L0,3L6,0Z"/>
+                        </clipPath>
+                        <g clip-path="url(#_clip4)">
+                            <path d="M0,0L6,3M6,0L0,3" style="fill-rule:nonzero;stroke:rgb(228,0,43);stroke-width:0.4px;"/>
+                        </g>
+                        <path d="M3,0L3,3M0,1.5L6,1.5" style="fill-rule:nonzero;stroke:white;stroke-width:1px;"/>
+                        <path d="M3,0L3,3M0,1.5L6,1.5" style="fill-rule:nonzero;stroke:rgb(228,0,43);stroke-width:0.6px;"/>
+                    </g>
+                    <g transform="matrix(0.529101,0,0,0.529101,0,0)">
+                        <g id="Comwlth" transform="matrix(2.1,0,0,2.1,2520,3780)">
+                            <path d="M0,-360L69.421,-144.155L281.459,-224.456L155.988,-35.603L350.974,80.108L125.093,99.758L156.198,324.349L0,160L-156.198,324.349L-125.093,99.758L-350.974,80.108L-155.988,-35.603L-281.459,-224.456L-69.421,-144.155L0,-360Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g id="αCrucis" transform="matrix(1,0,0,1,7560,4200)">
+                            <path d="M0,-360L69.421,-144.155L281.459,-224.456L155.988,-35.603L350.974,80.108L125.093,99.758L156.198,324.349L0,160L-156.198,324.349L-125.093,99.758L-350.974,80.108L-155.988,-35.603L-281.459,-224.456L-69.421,-144.155L0,-360Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g id="βCrucis" transform="matrix(1,0,0,1,6300,2205)">
+                            <path d="M0,-360L69.421,-144.155L281.459,-224.456L155.988,-35.603L350.974,80.108L125.093,99.758L156.198,324.349L0,160L-156.198,324.349L-125.093,99.758L-350.974,80.108L-155.988,-35.603L-281.459,-224.456L-69.421,-144.155L0,-360Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g id="γCrucis" transform="matrix(1,0,0,1,7560,840)">
+                            <path d="M0,-360L69.421,-144.155L281.459,-224.456L155.988,-35.603L350.974,80.108L125.093,99.758L156.198,324.349L0,160L-156.198,324.349L-125.093,99.758L-350.974,80.108L-155.988,-35.603L-281.459,-224.456L-69.421,-144.155L0,-360Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g id="δCrucis" transform="matrix(1,0,0,1,8680,1869)">
+                            <path d="M0,-360L69.421,-144.155L281.459,-224.456L155.988,-35.603L350.974,80.108L125.093,99.758L156.198,324.349L0,160L-156.198,324.349L-125.093,99.758L-350.974,80.108L-155.988,-35.603L-281.459,-224.456L-69.421,-144.155L0,-360Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g id="εCrucis" transform="matrix(1,0,0,1,8064,2730)">
+                            <path d="M0,-210L54.86,-75.508L199.722,-64.894L88.765,28.842L123.435,169.894L0,93.333L-123.435,169.894L-88.765,28.842L-199.722,-64.894L-54.86,-75.508L0,-210Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
