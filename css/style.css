@@ -1031,8 +1031,11 @@
   .h-\[1px\] {
     height: 1px;
   }
-  .h-\[7svh\] {
-    height: 7svh;
+  .h-\[50\%\] {
+    height: 50%;
+  }
+  .h-\[5svh\] {
+    height: 5svh;
   }
   .h-\[220px\] {
     height: 220px;
@@ -1043,14 +1046,11 @@
   .h-\[3px\] {
     height: 3px;
   }
-  .h-\[5svh\] {
-    height: 5svh;
+  .h-\[7svh\] {
+    height: 7svh;
   }
   .h-\[45\%\] {
     height: 45%;
-  }
-  .h-\[50\%\] {
-    height: 50%;
   }
   .h-\[580px\] {
     height: 580px;
@@ -2655,6 +2655,11 @@
       color: color-mix(in oklab, var(--color-white) 40%, transparent);
     }
   }
+  .placeholder\:text-white\/60 {
+    &::placeholder {
+      color: color-mix(in oklab, var(--color-white) 60%, transparent);
+    }
+  }
   .last\:border-0 {
     &:last-child {
       border-style: var(--tw-border-style);
@@ -2809,6 +2814,13 @@
       }
     }
   }
+  .hover\:bg-white\/10 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+      }
+    }
+  }
   .hover\:bg-white\/80 {
     &:hover {
       @media (hover: hover) {
@@ -2922,6 +2934,13 @@
       }
     }
   }
+  .hover\:shadow-white\/30 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow-color: color-mix(in oklab, var(--color-white) 30%, transparent);
+      }
+    }
+  }
   .focus\:bg-white {
     &:focus {
       background-color: var(--color-white);
@@ -2954,6 +2973,11 @@
       --tw-ring-color: color-mix(in oklab, var(--color-darkGreen) 50%, transparent);
     }
   }
+  .focus\:ring-darkGreen\/80 {
+    &:focus {
+      --tw-ring-color: color-mix(in oklab, var(--color-darkGreen) 80%, transparent);
+    }
+  }
   .focus\:ring-offset-2 {
     &:focus {
       --tw-ring-offset-width: 2px;
@@ -2978,6 +3002,23 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .focus-visible\:ring-2 {
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-visible\:ring-\[\#00ff96\] {
+    &:focus-visible {
+      --tw-ring-color: #00ff96;
+    }
+  }
+  .focus-visible\:ring-offset-2 {
+    &:focus-visible {
+      --tw-ring-offset-width: 2px;
+      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     }
   }
   .focus-visible\:outline-2 {
@@ -3054,6 +3095,11 @@
       background-color: var(--color-darkGreen);
     }
   }
+  .active\:bg-darkGreen\/90 {
+    &:active {
+      background-color: color-mix(in oklab, var(--color-darkGreen) 90%, transparent);
+    }
+  }
   .active\:bg-gray-500 {
     &:active {
       background-color: var(--color-gray-500);
@@ -3084,6 +3130,11 @@
       opacity: 25%;
     }
   }
+  .disabled\:opacity-60 {
+    &:disabled {
+      opacity: 60%;
+    }
+  }
   .disabled\:hover\:scale-100 {
     &:disabled {
       &:hover {
@@ -3110,6 +3161,16 @@
       &:hover {
         @media (hover: hover) {
           color: var(--color-darkBlue);
+        }
+      }
+    }
+  }
+  .disabled\:hover\:shadow-sm {
+    &:disabled {
+      &:hover {
+        @media (hover: hover) {
+          --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
         }
       }
     }
@@ -4650,31 +4711,6 @@
       font-size: 0.9rem;
     }
   }
-  .md\:text-\[2\.1svh\] {
-    @media (width >= 48rem) {
-      font-size: 2.1svh;
-    }
-  }
-  .md\:text-\[2vw\] {
-    @media (width >= 48rem) {
-      font-size: 2vw;
-    }
-  }
-  .md\:text-\[3\.5svh\] {
-    @media (width >= 48rem) {
-      font-size: 3.5svh;
-    }
-  }
-  .md\:text-\[3vw\] {
-    @media (width >= 48rem) {
-      font-size: 3vw;
-    }
-  }
-  .md\:text-\[4svh\] {
-    @media (width >= 48rem) {
-      font-size: 4svh;
-    }
-  }
   .md\:text-\[13px\] {
     @media (width >= 48rem) {
       font-size: 13px;
@@ -4700,6 +4736,11 @@
       font-size: 1svh;
     }
   }
+  .md\:text-\[2\.1svh\] {
+    @media (width >= 48rem) {
+      font-size: 2.1svh;
+    }
+  }
   .md\:text-\[20px\] {
     @media (width >= 48rem) {
       font-size: 20px;
@@ -4710,9 +4751,29 @@
       font-size: 24px;
     }
   }
+  .md\:text-\[2vw\] {
+    @media (width >= 48rem) {
+      font-size: 2vw;
+    }
+  }
+  .md\:text-\[3\.5svh\] {
+    @media (width >= 48rem) {
+      font-size: 3.5svh;
+    }
+  }
   .md\:text-\[35px\] {
     @media (width >= 48rem) {
       font-size: 35px;
+    }
+  }
+  .md\:text-\[3vw\] {
+    @media (width >= 48rem) {
+      font-size: 3vw;
+    }
+  }
+  .md\:text-\[4svh\] {
+    @media (width >= 48rem) {
+      font-size: 4svh;
     }
   }
   .md\:tracking-wide {
