@@ -1931,6 +1931,9 @@
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
   }
+  .pb-4 {
+    padding-bottom: calc(var(--spacing) * 4);
+  }
   .pb-5 {
     padding-bottom: calc(var(--spacing) * 5);
   }
@@ -3253,6 +3256,16 @@
       height: 85svh;
     }
   }
+  .max-sm\:h-\[87svh\] {
+    @media (width < 40rem) {
+      height: 87svh;
+    }
+  }
+  .max-sm\:h-\[90svh\] {
+    @media (width < 40rem) {
+      height: 90svh;
+    }
+  }
   .max-sm\:h-auto {
     @media (width < 40rem) {
       height: auto;
@@ -4536,6 +4549,21 @@
       font-size: 0.9rem;
     }
   }
+  .md\:text-\[13px\] {
+    @media (width >= 48rem) {
+      font-size: 13px;
+    }
+  }
+  .md\:text-\[14px\] {
+    @media (width >= 48rem) {
+      font-size: 14px;
+    }
+  }
+  .md\:text-\[15px\] {
+    @media (width >= 48rem) {
+      font-size: 15px;
+    }
+  }
   .md\:text-\[16px\] {
     @media (width >= 48rem) {
       font-size: 16px;
@@ -4586,21 +4614,6 @@
       font-size: 4svh;
     }
   }
-  .md\:text-\[13px\] {
-    @media (width >= 48rem) {
-      font-size: 13px;
-    }
-  }
-  .md\:text-\[14px\] {
-    @media (width >= 48rem) {
-      font-size: 14px;
-    }
-  }
-  .md\:text-\[15px\] {
-    @media (width >= 48rem) {
-      font-size: 15px;
-    }
-  }
   .md\:tracking-wide {
     @media (width >= 48rem) {
       --tw-tracking: var(--tracking-wide);
@@ -4617,6 +4630,13 @@
     @media (width >= 48rem) {
       --tw-shadow: 0px 4px 25px var(--tw-shadow-color, rgba(155,130,255,0.3));
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .max-md\:md\:hidden {
+    @media (width < 48rem) {
+      @media (width >= 48rem) {
+        display: none;
+      }
     }
   }
   .lg\:mx-0 {
@@ -4795,6 +4815,11 @@
   .portrait\:mb-\[4svh\] {
     @media (orientation: portrait) {
       margin-bottom: 4svh;
+    }
+  }
+  .portrait\:block {
+    @media (orientation: portrait) {
+      display: block;
     }
   }
   .portrait\:hidden {
@@ -5548,6 +5573,11 @@
   .landscape\:mb-\[4svh\] {
     @media (orientation: landscape) {
       margin-bottom: 4svh;
+    }
+  }
+  .landscape\:hidden {
+    @media (orientation: landscape) {
+      display: none;
     }
   }
   .landscape\:size-\[58svh\] {
