@@ -1470,6 +1470,13 @@
   .gap-y-10 {
     row-gap: calc(var(--spacing) * 10);
   }
+  .space-x-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
   .divide-y {
     :where(& > :not(:last-child)) {
       --tw-divide-y-reverse: 0;
@@ -1988,6 +1995,9 @@
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
   }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
   }
@@ -2304,6 +2314,9 @@
   }
   .text-darkBlue {
     color: var(--color-darkBlue);
+  }
+  .text-darkBlue\/30 {
+    color: color-mix(in oklab, var(--color-darkBlue) 30%, transparent);
   }
   .text-darkBlue\/60 {
     color: color-mix(in oklab, var(--color-darkBlue) 60%, transparent);
@@ -4102,6 +4115,11 @@
       grid-column: span 7 / span 7;
     }
   }
+  .md\:mx-2 {
+    @media (width >= 48rem) {
+      margin-inline: calc(var(--spacing) * 2);
+    }
+  }
   .md\:mx-\[3\.2rem\] {
     @media (width >= 48rem) {
       margin-inline: 3.2rem;
@@ -4541,6 +4559,15 @@
   .md\:gap-\[5svh\] {
     @media (width >= 48rem) {
       gap: 5svh;
+    }
+  }
+  .md\:space-x-2 {
+    @media (width >= 48rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-x-reverse: 0;
+        margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
+        margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
+      }
     }
   }
   .md\:rounded-\[1\.75rem\] {
@@ -6612,6 +6639,11 @@ img, svg {
   initial-value: proximity;
 }
 @property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-x-reverse {
   syntax: "*";
   inherits: false;
   initial-value: 0;
