@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*** Logo Carousel Animation Control ***/
   const marquees = cacheElements('.marquee');
-  marquees.forEach(marquee => {SVGMarkerElement
+  marquees.forEach(marquee => {
     const items = marquee.querySelectorAll('.marquee__item');
     marquee.addEventListener('mouseenter', () => {
       items.forEach(item => (item.style.animationPlayState = 'paused'));
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /*** Currency Drop Animation Control ***/
   function randomFadeAndReposition() {
     const container = document.querySelector("#currencyContainer");
+    if (!container) return;
     const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
     const poolSize = 10;
     const pooledElements = [];
@@ -247,103 +248,109 @@ document.addEventListener("DOMContentLoaded", function () {
   randomFadeAndReposition();
 
   /*** Landing Illustration Bar and Dot Animation Control ***/
-  const barElements = ["#bar1", "#bar2", "#bar3"].map(id => document.querySelector(id));
-  const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"].map(id => document.querySelector(id));
   const animationContainer = document.querySelector("#animationContainer");
+  if (animationContainer) {
+    const barElements = ["#bar1", "#bar2", "#bar3"].map(id => document.querySelector(id));
+    const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"].map(id => document.querySelector(id));
 
-  gsap.set(barElements, { transformOrigin: "bottom" });
+    gsap.set(barElements, { transformOrigin: "bottom" });
 
-  const animationTimeline = gsap.timeline({
-    repeat: -1,
-    yoyo: true,
-    yoyoEase: "power1.inOut"
-  })
-    .to(barElements, {
-      keyframes: [
-        { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },
-        { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },
-        { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }
-      ]
+    const animationTimeline = gsap.timeline({
+      repeat: -1,
+      yoyo: true,
+      yoyoEase: "power1.inOut"
     })
-    .to(dotElements, {
-      keyframes: [
-        { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },
-        { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },
-        { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }
-      ]
-    }, 0);
+      .to(barElements, {
+        keyframes: [
+          { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },
+          { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },
+          { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }
+        ]
+      })
+      .to(dotElements, {
+        keyframes: [
+          { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },
+          { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },
+          { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }
+        ]
+      }, 0);
 
-  const containerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) animationTimeline.resume();
-      else animationTimeline.pause();
-    });
-  }, { threshold: 0.1 });
+    const containerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animationTimeline.resume();
+        else animationTimeline.pause();
+      });
+    }, { threshold: 0.1 });
 
-  if (animationContainer) containerObserver.observe(animationContainer);
+    containerObserver.observe(animationContainer);
+  }
 
   /*** Calendar Text Animation Control ***/
-  const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
   const textElement = document.getElementById('calendarText');
-  let currentIndex = 0;
-  let intervalId = null;
+  if (textElement) {
+    const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
+    let currentIndex = 0;
+    let intervalId = null;
 
-  function updateText() {
-    textElement.textContent = numbers[currentIndex];
-    textElement.style.opacity = '1';
-    setTimeout(() => textElement.style.opacity = '0', 1000);
-    currentIndex = (currentIndex + 1) % numbers.length;
-  }
-
-  function startUpdates() {
-    if (!intervalId) {
-      intervalId = setInterval(updateText, 2000);
-      updateText();
+    function updateText() {
+      textElement.textContent = numbers[currentIndex];
+      textElement.style.opacity = '1';
+      setTimeout(() => textElement.style.opacity = '0', 1000);
+      currentIndex = (currentIndex + 1) % numbers.length;
     }
-  }
 
-  function stopUpdates() {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
+    function startUpdates() {
+      if (!intervalId) {
+        intervalId = setInterval(updateText, 2000);
+        updateText();
+      }
     }
-  }
 
-  const textObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) startUpdates();
-      else stopUpdates();
+    function stopUpdates() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    const textObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) startUpdates();
+        else stopUpdates();
+      });
     });
-  });
-  textObserver.observe(textElement);
+    textObserver.observe(textElement);
+  }
 
   /*** Cog Wheel Animation Control ***/
   const cog = document.getElementById('cog');
-  cog.style.willChange = 'transform';
+  if (cog) {
+    cog.style.willChange = 'transform';
 
-  const rotationTween = gsap.to(cog, {
-    rotation: 360,
-    duration: 4,
-    ease: 'none',
-    repeat: -1,
-    transformOrigin: '50% 50%',
-    paused: true,
-  });
+    const rotationTween = gsap.to(cog, {
+      rotation: 360,
+      duration: 4,
+      ease: 'none',
+      repeat: -1,
+      transformOrigin: '50% 50%',
+      paused: true,
+    });
 
-  function checkCogInView() {
-    const rect = cog.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    if (rect.top < 0.9 * viewportHeight && rect.bottom > 0.1 * viewportHeight) {
-      if (!rotationTween.isActive()) rotationTween.resume();
-    } else {
-      rotationTween.pause();
+    function checkCogInView() {
+      const rect = cog.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      if (rect.top < 0.9 * viewportHeight && rect.bottom > 0.1 * viewportHeight) {
+        if (!rotationTween.isActive()) rotationTween.resume();
+      } else {
+        rotationTween.pause();
+      }
     }
-  }
 
-  const throttledCogCheck = throttle(checkCogInView, 100);
-  window.addEventListener('scroll', throttledCogCheck);
-  window.addEventListener('resize', throttledCogCheck);
-  window.addEventListener('load', checkCogInView);
+    const throttledCogCheck = throttle(checkCogInView, 100);
+    window.addEventListener('scroll', throttledCogCheck);
+    window.addEventListener('resize', throttledCogCheck);
+    window.addEventListener('load', checkCogInView);
+  }
 
   /*** Float Animation Random Selector ***/
   cacheElements('.float').forEach((element, index) => {
@@ -380,6 +387,132 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('scroll', throttle(checkScrollTriggers, 100));
   window.addEventListener('resize', throttle(checkScrollTriggers, 100));
   checkScrollTriggers();
+
+  // Slider navigation overlays click and auto-scroll logic
+  const slideLeft = document.getElementById('slide-left');
+  const slideRight = document.getElementById('slide-right');
+  const sliderEl = document.getElementById('slider');
+
+  if (sliderEl && slideLeft && slideRight) {
+    const getScrollAmount = () => {
+      const card = sliderEl.querySelector('.card');
+      if (!card) return sliderEl.clientWidth;
+      
+      const cardWidth = card.getBoundingClientRect().width;
+      const cardStyle = window.getComputedStyle(card);
+      const marginLeft = parseFloat(cardStyle.marginLeft) || 0;
+      const marginRight = parseFloat(cardStyle.marginRight) || 0;
+      
+      const sliderStyle = window.getComputedStyle(sliderEl);
+      const gap = parseFloat(sliderStyle.columnGap) || parseFloat(sliderStyle.gap) || 0;
+      
+      return cardWidth + marginLeft + marginRight + gap;
+    };
+
+    slideLeft.addEventListener('click', (e) => {
+      e.preventDefault();
+      sliderEl.scrollBy({
+        left: -getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    slideRight.addEventListener('click', (e) => {
+      e.preventDefault();
+      sliderEl.scrollBy({
+        left: getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    // Intersection Observer for Auto-Reset and Auto-Scroll Loop
+    const section = document.getElementById('smartsourcing');
+    if (section && 'IntersectionObserver' in window) {
+      let autoScrollInterval = null;
+      let currentCardIndex = 0;
+      let holdTicks = 0;
+      const cards = sliderEl.querySelectorAll('.card');
+
+      const startAutoScrollLoop = () => {
+        stopAutoScrollLoop();
+        holdTicks = 0;
+        
+        autoScrollInterval = setInterval(() => {
+          if (cards.length === 0) return;
+          
+          const maxScrollLeft = sliderEl.scrollWidth - sliderEl.clientWidth;
+          if (maxScrollLeft <= 10) return; // Slider is not scrollable
+
+          // Check if slider is at the physical scroll limit (last card fully visible)
+          const isAtEnd = sliderEl.scrollLeft >= maxScrollLeft - 15;
+          
+          if (isAtEnd) {
+            holdTicks++;
+            if (holdTicks >= 2) { // Hold on the final card for 2 ticks (6 seconds total) before scrolling back
+              sliderEl.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+              });
+              holdTicks = 0;
+            }
+          } else {
+            holdTicks = 0;
+            
+            // Calculate approx index of the currently resting card
+            const scrollAmount = getScrollAmount();
+            const approxIndex = Math.round(sliderEl.scrollLeft / scrollAmount);
+            let nextIndex = approxIndex + 1;
+            
+            if (nextIndex >= cards.length) {
+              nextIndex = cards.length - 1;
+            }
+            
+            const targetCard = cards[nextIndex];
+            if (targetCard) {
+              const sliderPaddingLeft = parseFloat(window.getComputedStyle(sliderEl).paddingLeft) || 0;
+              sliderEl.scrollTo({
+                left: targetCard.offsetLeft - sliderPaddingLeft,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }, 3000);
+      };
+
+      const stopAutoScrollLoop = () => {
+        if (autoScrollInterval) {
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = null;
+        }
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Instantly reset the slider back to the first slide (absolute beginning)
+            sliderEl.scrollLeft = 0;
+            currentCardIndex = 0;
+            
+            // Wait 500ms and start the loop
+            setTimeout(() => {
+              if (entry.isIntersecting) {
+                startAutoScrollLoop();
+              }
+            }, 500);
+          } else {
+            // Stop/clear the auto-scroll timer immediately
+            stopAutoScrollLoop();
+            // Instantly reset the slider back to the first slide (absolute beginning)
+            sliderEl.scrollLeft = 0;
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      observer.observe(section);
+    }
+  }
 
 });
 
@@ -502,10 +635,9 @@ if (slider) {
     autoTimer = setInterval(tick, AUTO_MS);
   }
 
-  startAuto();
+  // startAuto(); // Disabled in favor of viewport auto-scroll loop
 
-  slider.addEventListener('mouseenter', () => { userPaused = true; });
-  slider.addEventListener('mouseleave', () => { userPaused = false; });
+
   slider.addEventListener('touchstart', () => { userPaused = true; }, { passive: true });
   slider.addEventListener('touchend', () => { setTimeout(() => { userPaused = false; }, 2000); }, { passive: true });
 
@@ -560,6 +692,8 @@ function cloneSet(srcId, destId) {
   const src = document.getElementById(srcId);
   const dest = document.getElementById(destId);
   
+  if (!src || !dest) return;
+  
   // 1. Populate the first cloned set (set1b / set2b)
   dest.innerHTML = src.innerHTML;
   
@@ -574,6 +708,8 @@ function cloneSet(srcId, destId) {
 function applyAnimation(innerId, setId, direction, duration) {
   const inner = document.getElementById(innerId);
   const set = document.getElementById(setId);
+
+  if (!inner || !set) return;
 
   // Force a reflow so the browser recalculates layout after clone
   inner.getBoundingClientRect();
@@ -603,14 +739,16 @@ function init(duration) {
 
 // Wait for all images to load before measuring widths and starting
 const allImages = document.querySelectorAll('#set1a img, #set2a img');
-const imagePromises = Array.from(allImages).map(img => {
-  if (img.complete) return Promise.resolve();
-  return new Promise(resolve => {
-    img.addEventListener('load', resolve);
-    // Resolves on error so the promise doesn't hang indefinitely if an image 404s
-    img.addEventListener('error', resolve); 
+if (allImages.length > 0) {
+  const imagePromises = Array.from(allImages).map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.addEventListener('load', resolve);
+      // Resolves on error so the promise doesn't hang indefinitely if an image 404s
+      img.addEventListener('error', resolve); 
+    });
   });
-});
 
-// Starts the carousel. 
-Promise.all(imagePromises).then(() => init(60));
+  // Starts the carousel. 
+  Promise.all(imagePromises).then(() => init(60));
+}

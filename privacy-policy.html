@@ -206,10 +206,10 @@
     <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/bookkeeping-outsourcing">Bookkeeping Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll Outsourcing & Compliance</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/tax-compliance-outsourcing">Tax Compliance Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting</a></li>
       <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
         <a href="#">BACK</a>
@@ -220,7 +220,7 @@
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-journey">Our Journey</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-people">Our People</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./about-us#why-us">Why Us</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us#smartsourcing">Why Us</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-infrastructure">Our Infrastructure</a></li>
       <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
@@ -288,7 +288,7 @@
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./about-us#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./about-us#smartsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
               </a>
             </li>
@@ -338,14 +338,14 @@
             
             <li class="relative">
               <a href="./solutions/payroll-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll & Compliance Outsourcing</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
               <a href="./solutions/year-end-financials-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
@@ -359,7 +359,7 @@
             
             <li class="relative">
               <a href="./solutions/smsf-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Compliance Outsourcing</span>
               </a>
             </li>
             
@@ -442,377 +442,216 @@
   
       <div class="bg-light md:px-[13svh] md:text-base flex flex-col px-10 py-20 portrait:py-10 text-sm font-light leading-relaxed text-left">
 
-        <h2 id="scope" class=" pt-10 pb-3 text-xl font-semibold uppercase">
-          1. INTRODUCTION
-        </h2>
-        <p class="" aria-live="polite" tabindex="0">
-          VJC provides offshore financial services like accounting, taxation planning and filing, advisory, and other associated
-          services for clients from Australia, New Zealand, United Kingdom, and United States of America.
-
+        <p class="font-medium" aria-live="polite" tabindex="0">
+          Effective date: 1 June 2026
         </p>
 
         <p class="pt-5" aria-live="polite" tabindex="0">
-          
-          VJC is committed to protecting your personal data and ensuring transparency in how we collect, use, and safeguard your
-          information. We align our data protection practices with the <span class="font-medium">General Data Protection Regulation (GDPR), Australia’s
-          Privacy Act 1988, UK Data Protection Act 2018, and US privacy laws such as the California Consumer Privacy Act (CCPA).</span> 
-        
+          This Privacy Policy explains how VJC Partners Private Limited (“VPPL”, “VJC”, “we”, “us” or “our”) collects, uses, stores, discloses and protects personal information through our website, enquiry forms, meeting bookings, email communications, recruitment forms and client onboarding interactions.
         </p>
-
 
         <p class="pt-5" aria-live="polite" tabindex="0">
-          
-          This Privacy Policy explains how VJC collects, processes, shares, and protects the personal data of website visitors,
-          prospective clients, and clients who engage with our services. By accessing our website or using our services, you
-          agree
-          to the terms outlined in this policy.
-        
+          VJC is an India-based Smartsourcing firm working with Australian accounting firms. We provide accounting, bookkeeping, payroll, year-end compliance, tax compliance, SMSF support and related accounting support services. In handling personal information provided by our Australian accounting-firm clients, we apply contractual, technical and operational controls designed to support those clients in meeting their obligations under the Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs). Personal information collected through this website is also handled in accordance with applicable Indian privacy laws, including the Digital Personal Data Protection Act 2023 (DPDP Act), to the extent those laws apply to website data collection and processing.
         </p>
-  
-        <h2 id="scope" class=" pt-10 pb-3 text-xl font-semibold uppercase">
-          2. Defining the Audience
 
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          This policy applies to website visitors, prospective clients, client contacts, suppliers, job applicants and other people who interact with VJC through our website or business communication channels.
+        </p>
+
+        <h2 id="personal-info-collection" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          1. What personal information we collect
         </h2>
-  
         <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Visitor:</span> Individuals who visit the website to browse, or with an intention of engaging in business or to apply for a job. Usually
-          looking for general information about VJC’s services, expertise, and reputation, as well as an introduction to the
-          company.
-
+          The type of personal information we collect depends on how you interact with us. It may include:
         </p>
-  
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Client:</span> Businesses or individuals who are currently using VJC’s services for
-          offshore accounting, finance, legal, or other business solutions. They require access to detailed service offerings,
-          pricing, case studies, client testimonials, and resources. Clients may also look for support portals or contact
-          options for ongoing projects.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Team Member:</span> Employees, contractors, strategic partners, or independent consultants
-          working with VJC who are a part of the team.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Job Seeker:</span> Individuals who are actively looking for job opportunities at VJC,
-          either in accounting, finance, legal services, or other business operations, and apply through the link provided on
-          our website.
-        </p>
-
-        <h2 id="gdpr" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          3. Alignment with the GDPR Principles
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Lawfulness, Fairness, and Transparency:</span> We collect data for legitimate purposes and
-          ensure transparency in how we use it.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Purpose Limitation:</span> Data is only used for the purposes specified at the time of
-          collection.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Data Minimization:</span> We collect only the necessary information required for our
-          services.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Accuracy:</span> We keep data up to date and correct inaccuracies upon request.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Storage Limitation:</span> Data is retained only as long as necessary for its intended
-          purpose.
-        </p>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          <span class="font-medium">• Integrity and Confidentiality:</span> Robust security measures are in place to protect
-          personal data.
-        </p>
-
-        
-
-        <h2 id="commitment" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          4. Our Commitment
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          At VJC, we are dedicated to safeguarding your personal data and ensuring transparency in how it is collected, used,
-          and stored. Our commitment includes:
-        </p>
-        
         <ul class="list-disc pl-5 pt-3">
-          <li>Collecting only the data that is necessary and relevant to our services.</li>
-          <li>Storing your data exclusively on secure systems that comply with regulatory standards.</li>
-          <li>Restricting access to your data strictly to authorized personnel and minimizing data processing wherever possible.
-          </li>
-          <li>
-            Never sharing, selling, or trading your data with any third party outside of VJC and its designated Processors
-            unless:
-            <ul class="list-disc pl-10">
-              <li>You have provided explicit consent.</li>
-              <li>We are legally required to disclose the information.</li>
-              <li>It is necessary to fulfill our service commitments through a third party that meets our privacy standards.
-              </li>
-            </ul>
-          </li>
-          <li>
-            Recognizing that your data belongs to you, not us. We will always ensure transparency, respect your rights, and
-            respond promptly to any requests regarding your data.
-          </li>
+          <li><span class="font-medium">Contact details:</span> name, email address, phone number, business name, role, location and communication preferences.</li>
+          <li><span class="font-medium">Business enquiry information:</span> details about your accounting practice, service requirements, software stack, workload, preferred engagement model and any information you choose to provide in forms, calls or emails.</li>
+          <li><span class="font-medium">Meeting and communication information:</span> meeting booking details, call notes, email correspondence and records of discussions with VJC representatives.</li>
+          <li><span class="font-medium">Recruitment information:</span> resume/CV, qualifications, work history, professional registrations, references, interview notes and other information provided by job applicants.</li>
+          <li><span class="font-medium">Service-related information:</span> information provided by Australian accounting-firm clients for onboarding, scoping or service delivery, including client files, accounting data, tax data, payroll information, workpapers, government identifiers or other confidential information where required for authorised work.</li>
+          <li><span class="font-medium">Technical and website information:</span> IP address, browser type, device information, pages visited, form submissions, cookie information, analytics data and website usage patterns.</li>
         </ul>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          If you have any concerns or wish to exercise your data rights, we are here to assist you.
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          We usually receive end-client information from the Australian accounting firm that engages us. We do not contact an accounting firm’s clients directly unless the firm instructs us to do so in writing.
         </p>
 
-
-        <h2 id="information-we-collect" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          5. What Information We Collect
+        <h2 id="how-we-collect" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          2. How we collect personal information
         </h2>
-        
         <p class="pt-3" aria-live="polite" tabindex="0">
-          We collect the following categories of data:
+          We may collect personal information when you:
         </p>
-        
         <ul class="list-disc pl-5 pt-3">
-          <li>
-            <span class="font-medium">Personal Information:</span> Name, email address, phone number, business details.
-          </li>
-          <li>
-            <span class="font-medium">Financial Data:</span> Billing details, payment transactions related to our services.
-          </li>
-          <li>
-            <span class="font-medium">Technical Information:</span> IP address, browser type, cookies, and tracking user
-            behavior.
-          </li>
-          <li>
-            <span class="font-medium">Sensitive Information:</span> Financial records, tax details, or other confidential
-            documents required for our accounting and advisory services.
-          </li>
+          <li>submit an enquiry through our website;</li>
+          <li>book a meeting through Microsoft Bookings or another approved scheduling tool;</li>
+          <li>send us an email, call us, message us or interact with us through business social media channels;</li>
+          <li>apply for a role or submit recruitment information;</li>
+          <li>enter into, or enquire about, a service arrangement with VJC;</li>
+          <li>give us access to approved cloud accounting, practice management, document management, payroll, SMSF or tax software for authorised work; or</li>
+          <li>visit our website, where cookies or analytics tools may collect technical usage information.</li>
         </ul>
-
-
-        <h2 id="data-collection" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          6. Data Collection
-        </h2>
-        
-        <h3 id="data-collection-categories" class="pt-5 pb-3 text-lg font-medium">
-          6.1 We collect Data under two broad categories:
-        </h3>
-        
-        <ul class="list-disc pl-5">
-          <li>
-            <span class="font-medium">Direct communication:</span>
-            <ul class="list-disc pl-10">
-              <li>Data collected through website inquiries and forms submitted by <a href="#" class="underline">visitor</a>, and
-                audio/video calls or emails exchanged between the visitor and VJC personnel in order to determine the
-                requirements of the visitor.</li>
-              <li>Social media platforms engagement via chats and direct messaging.</li>
-              <li>Relevant data voluntarily provided by clients for processing of services that the clients require to be
-                delivered.</li>
-            </ul>
-          </li>
-          <li>
-            <span class="font-medium">Indirect collection:</span>
-            <ul class="list-disc pl-10">
-              <li>Via cookies and tracking technologies when you visit our website to improve user experience and to maintain a
-                log of website activity.</li>
-              <li>From third-party sources that provide relevant business data, available on the public domain, as a part of
-                market research.</li>
-            </ul>
-          </li>
-        </ul>
-        
-        <h3 id="purpose-of-collection" class="pt-5 pb-3 text-lg font-medium">
-          6.2 The purpose of collection of this data is:
-        </h3>
-        
-        <ul class="list-disc pl-5">
-          <li>Provide accounting, bookkeeping, and advisory services.</li>
-          <li>Communicate with you regarding service requests, updates, or legal compliance matters.</li>
-          <li>Improve user experience and optimize our website’s performance.</li>
-          <li>Conduct marketing and promotional activities (only if you opt-in).</li>
-          <li>Prevent fraudulent activities and comply with legal obligations.</li>
-        </ul>
-
-
-
-        <h2 id="data-protection" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          7. How We Protect and Store Your Data
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          VJC employs industry-standard security measures, including:
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Where practical, we collect information directly from you or from the accounting firm that has engaged us. Where information relates to an accounting firm’s end client, we rely on the accounting firm to have the necessary authority, notice or consent to provide that information to VJC.
         </p>
-        
+
+        <h2 id="why-we-use" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          3. Why we use personal information
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          We use personal information for the following purposes:
+        </p>
         <ul class="list-disc pl-5 pt-3">
-          <li>Data encryption and access control mechanisms.</li>
-          <li>Secure cloud storage with restricted access.</li>
-          <li>Regular security audits to prevent data breaches.</li>
-          <li>Request our “Security Standards Manual” for more details.</li>
+          <li>responding to enquiries and meeting requests;</li>
+          <li>assessing whether VJC is the right fit for a prospective client firm;</li>
+          <li>preparing proposals, service scopes, onboarding documents and commercial communications;</li>
+          <li>delivering accounting, bookkeeping, payroll, tax compliance, SMSF and related support services;</li>
+          <li>managing our relationship with client firms, including communications, invoicing, service updates and quality review;</li>
+          <li>processing job applications and managing recruitment;</li>
+          <li>operating, securing, maintaining and improving our website and systems;</li>
+          <li>meeting legal, regulatory, professional, contractual, audit and risk-management obligations; and</li>
+          <li>sending limited B2B updates to business contacts, with the option to unsubscribe or opt out.</li>
         </ul>
-        
-        <h2 id="data-sharing" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          8. How We Share Your Information
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          VJC does not sell personal data. However, we may share your data with:
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          We do not sell personal information. We do not use an accounting firm’s client information for unrelated marketing or direct promotion to that firm’s clients.
         </p>
-        
+
+        <h2 id="client-service-info" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          4. Client service information
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          When an Australian accounting firm engages VJC, the firm may provide personal information and confidential information relating to its clients, staff, suppliers or business operations. Depending on the service, this may include names, addresses, contact details, tax information, payroll records, bank transaction data, invoices, workpapers, superannuation/SMSF information, identity documents, business records and government identifiers.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          We use this information only for authorised work, in accordance with the client firm’s instructions, the relevant service agreement and VJC’s internal privacy, confidentiality and data handling procedures.
+        </p>
+
+        <h2 id="overseas-processing" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          5. Overseas processing and applicable privacy laws
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          VJC is based in India. Personal information may be accessed, processed or stored in India and through approved cloud service providers. Where Australian accounting-firm clients provide personal information to VJC, we apply contractual, technical and operational controls designed to support those clients in meeting their obligations under the Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs), including APP 8 (cross-border disclosure of personal information).
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Client firms are responsible for obtaining any notices, consents or engagement-letter permissions required under their own privacy, professional and tax-practitioner obligations before providing client information to VJC.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Personal data collected through this website is handled in accordance with applicable Indian privacy laws, including the Digital Personal Data Protection Act 2023 (DPDP Act), to the extent those laws apply to website data collection and processing. VJC does not conduct client-service operations through this website; the website is used for enquiries, meeting bookings, recruitment and general business communications only.
+        </p>
+
+        <h2 id="security-info" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          6. Security of personal information
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          We take reasonable steps to protect personal information from misuse, interference, loss, unauthorised access, modification or disclosure. Our controls may include:
+        </p>
         <ul class="list-disc pl-5 pt-3">
-          <li>
-            <span class="font-medium">Third-party service providers:</span> Assisting with IT, payment processing, and business
-            operations, subject to strict confidentiality agreements.
-          </li>
-          <li>
-            <span class="font-medium">Regulatory authorities or legal bodies:</span> When required by law.
-          </li>
-          <li>
-            <span class="font-medium">International transfers:</span> Between Australia, the UK, and the US, ensuring compliance
-            with GDPR Standard Contractual Clauses (SCCs).
-          </li>
+          <li>role-based access and need-to-know permissions;</li>
+          <li>multi-factor authentication where supported;</li>
+          <li>secure cloud storage and approved business systems;</li>
+          <li>password, device and endpoint controls;</li>
+          <li>restricted use of personal devices and removable media;</li>
+          <li>confidentiality obligations for employees, contractors and vendors;</li>
+          <li>security monitoring, backup and recovery processes;</li>
+          <li>staff training and internal data handling procedures; and</li>
+          <li>incident escalation and breach response procedures.</li>
         </ul>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          No system is completely risk-free. If we become aware of an actual or suspected privacy incident affecting a client firm’s information, we will take steps to contain the incident and notify the relevant client firm in accordance with our contractual and legal obligations.
+        </p>
 
-
-        <h2 id="privacy-rights" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          9. Your Rights Under Privacy Laws
+        <h2 id="third-party-providers" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          7. Third-party service providers
         </h2>
-        
         <p class="pt-3" aria-live="polite" tabindex="0">
-          Depending on your location, you have the following rights:
+          We may use trusted third-party service providers to support our website, communications, scheduling, analytics, cloud storage, client delivery, security, professional advice and business operations. These may include website hosting providers, Microsoft 365, Microsoft Teams, Microsoft Bookings, analytics tools, CRM systems, accounting and practice-management software, cloud storage providers, auditors, legal advisers and IT/security providers.
         </p>
-        
-        <h3 id="australia-rights" class="pt-5 pb-3 text-lg font-medium">
-          Australia (Privacy Act 1988):
-        </h3>
-        <ul class="list-disc pl-5">
-          <li>Right to access and request corrections to your personal data.</li>
-        </ul>
-        
-        <h3 id="uk-rights" class="pt-5 pb-3 text-lg font-medium">
-          UK (GDPR & Data Protection Act 2018):
-        </h3>
-        <ul class="list-disc pl-5">
-          <li>Right to access, rectify, erase, restrict processing, and data portability.</li>
-          <li>Right to object to data processing and automated decision-making.</li>
-        </ul>
-        
-        <h3 id="us-rights" class="pt-5 pb-3 text-lg font-medium">
-          US (CCPA & Other State Laws):
-        </h3>
-        <ul class="list-disc pl-5">
-          <li>Right to request access to personal data collected about you.</li>
-          <li>Right to opt-out of data sale (VJC does not sell personal data).</li>
-          <li>Right to request deletion of personal data.</li>
-        </ul>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          To exercise your rights, contact <a href="mailto:dpo@vjcpartners.com" class="underline">dpo@vjcpartners.com</a>.
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          We only share personal information with service providers where reasonably necessary for the purpose for which the information was collected, or where required or permitted by law. We require service providers to handle personal information under appropriate confidentiality, privacy and security obligations.
         </p>
 
-
-
-        <h2 id="cookies-tracking" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          10. Cookies & Tracking Technologies
+        <h2 id="cookies-analytics" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          8. Cookies and analytics
         </h2>
-        
         <p class="pt-3" aria-live="polite" tabindex="0">
-          We use cookies and similar tracking technologies for:
+          Our website may use cookies, analytics tools and similar technologies to operate the site, remember preferences, understand website traffic, improve user experience, monitor website performance and support security. Cookies may collect technical information such as IP address, browser type, device details, pages visited and time spent on pages.
         </p>
-        
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          You can usually adjust your browser settings to refuse or delete cookies. Some website features may not function properly if cookies are disabled.
+        </p>
+
+        <h2 id="direct-marketing" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          9. Direct marketing and opt-out
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          We may send limited B2B communications to practice owners, accounting-firm contacts and business contacts who have interacted with VJC or where permitted by law. You can opt out of marketing communications at any time by using the unsubscribe option in our emails or by contacting us.
+        </p>
+
+        <h2 id="recruitment-info" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          10. Recruitment information
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          If you apply for a role with VJC, we use your information to assess your application, verify qualifications or experience, conduct interviews, complete reference checks where appropriate, and manage recruitment decisions. We may retain recruitment information for future opportunities unless you ask us not to, subject to legal and business requirements.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Unless you ask us to delete your information earlier, we retain recruitment information for up to 24 months from the date of your application, after which we take reasonable steps to delete or de-identify it, subject to legal and business requirements.
+        </p>
+
+        <h2 id="retention-deletion" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          11. Retention and deletion
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          We keep personal information only for as long as reasonably required for the purpose for which it was collected, including service delivery, relationship management, recruitment, legal, tax, audit, regulatory, insurance, dispute-resolution and record-keeping purposes. When information is no longer required, we take reasonable steps to delete, de-identify or securely archive it, subject to legal and contractual requirements.
+        </p>
+
+        <h2 id="access-correction" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          12. Access, correction and privacy enquiries
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          You may request access to, or correction of, personal information that we hold about you. In some cases, we may need to verify your identity or refer the request to the Australian accounting firm that controls the relevant client relationship or file.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          For privacy enquiries, requests or complaints, contact:
+        </p>
         <ul class="list-disc pl-5 pt-3">
-          <li>Enhancing website functionality and improving user experience.</li>
-          <li>Analyzing website traffic and user behavior through analytics tools.</li>
-          <li>Marketing purposes, where legally permitted.</li>
-          <li>Monitoring website health and identifying errors or crashes.</li>
+          <li><span class="font-medium">Data Protection Officer:</span> <a href="mailto:dpo@vjcpartners.com" class="underline">dpo@vjcpartners.com</a></li>
+          <li><span class="font-medium">General service enquiries:</span> <a href="mailto:csp@vjcpartners.com" class="underline">csp@vjcpartners.com</a></li>
         </ul>
-
-
-
-
-        <h2 id="third-party-data-processors" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          11. Use of Third-Party Data Processors
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          To deliver our services efficiently, VJC engages with certain third-party service providers that act as Data
-          Processors on our behalf. These providers help us enhance user experience, manage client interactions, and improve
-          service delivery. The third parties we engage with include:
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          We will review privacy enquiries and complaints and respond within a reasonable time. If the matter relates to an Australian accounting firm’s client information, we may coordinate with the relevant firm before taking action.
         </p>
-        
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          If you are not satisfied with our response to a privacy enquiry or complaint, you may lodge a complaint with the Data Protection Board of India, established under the Digital Personal Data Protection Act 2023.
+        </p>
+
+        <h2 id="data-breach" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          13. Data breach response
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          If we become aware of an actual or suspected privacy incident, we will take reasonable steps to contain the incident, preserve relevant evidence, assess the impact, notify affected client firms where applicable, and support any investigation or notification process required by law or contract.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Where a privacy incident affects personal information provided to VJC by an Australian accounting-firm client, and the incident may trigger that firm’s obligations under the Notifiable Data Breaches (NDB) scheme in Part IIIC of the Privacy Act 1988 (Cth), VJC will promptly notify the client firm and provide reasonable assistance to support the firm’s assessment, containment and notification process.
+        </p>
+        <p class="pt-5" aria-live="polite" tabindex="0">
+          Unless legally required or expressly authorised, VJC will not notify a client firm’s end clients directly. The relevant accounting firm usually maintains the direct client relationship and controls end-client communications.
+        </p>
+
+        <h2 id="changes-policy" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          14. Changes to this policy
+        </h2>
+        <p class="pt-3" aria-live="polite" tabindex="0">
+          We may update this Privacy Policy from time to time to reflect changes in our services, systems, legal requirements or privacy practices. The latest version will be published on our website with the updated effective date.
+        </p>
+
+        <h2 id="contact-info" class="pt-10 pb-3 text-xl font-semibold uppercase">
+          15. Contact
+        </h2>
         <ul class="list-disc pl-5 pt-3">
-          <li>
-            <span class="font-medium">Google Analytics:</span> We utilize Google Analytics to monitor website traffic,
-            understand visitor behavior, and analyze time spent on different sections of our site. This helps us enhance user
-            experience. Google Analytics does not collect or store any personally identifiable information shared with us by
-            visitors, clients, or respondents. For more details, please refer to Google’s Privacy Policy.
-          </li>
-          <li>
-            <span class="font-medium">Mixpanel:</span> We use Mixpanel to analyze user activity on our website, helping us
-            understand visitor interactions and enhance our digital experience.
-          </li>
-          <li>
-            <span class="font-medium">Website Forms & Microsoft Bookings:</span> Our website includes inquiry forms for visitors
-            to submit queries and service requests. Additionally, we use Microsoft Bookings, embedded on our contact page, to
-            facilitate meeting scheduling. The information provided through these forms and bookings is used solely to respond
-            to inquiries and arrange discussions. We don’t rent or trade email lists with other organizations and businesses.
-          </li>
-          <li>
-            <span class="font-medium">Microsoft Teams:</span> For day-to-day communication with clients regarding operational
-            tasks. These tools are used strictly for internal purposes, and no personal data collected through them is shared,
-            sold, or traded with external entities.
-          </li>
-          <li>
-            <span class="font-medium">Various bookkeeping, accounting, audit, tax, and payroll platforms:</span> In order to
-            perform bookkeeping, accounting, audit, tax compliance, and payroll services, clients may grant VJC access to
-            specific financial platforms. These platforms remain under the client’s control, and VJC only accesses systems
-            explicitly provided by the client for service execution.
-          </li>
+          <li><span class="font-medium">Website:</span> <a href="https://www.vjcpartners.com" class="underline">www.vjcpartners.com</a></li>
+          <li><span class="font-medium">Data Protection Officer:</span> <a href="mailto:dpo@vjcpartners.com" class="underline">dpo@vjcpartners.com</a></li>
+          <li><span class="font-medium">General enquiries:</span> <a href="mailto:csp@vjcpartners.com" class="underline">csp@vjcpartners.com</a></li>
         </ul>
-
-
-        <h2 id="complaint-right" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          12. Right to Make a Complaint
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          If you believe your data has been mishandled, you have the right to:
-        </p>
-        
-        <ul class="list-disc pl-5 pt-3">
-          <li>
-            <span class="font-medium">Contact our Data Protection Officer:</span> Adv. Deep Shikha, at
-            <a href="mailto:dpo@vjcpartners.com" class="underline">dpo@vjcpartners.com</a>.
-          </li>
-          <li>
-            <span class="font-medium">Lodge a complaint:</span> With the relevant data protection authority in your
-            jurisdiction.
-          </li>
-        </ul>
-        
-        <h2 id="policy-updates" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          13. Updates to This Policy
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          This Privacy Policy may be updated periodically. Any changes will be posted on this page, and where necessary, we will
-          notify users via email or website banners.
-        </p>
-        
-        <h2 id="acceptance-conditions" class="pt-10 pb-3 text-xl font-semibold uppercase">
-          14. Acceptance of These Conditions
-        </h2>
-        
-        <p class="pt-3" aria-live="polite" tabindex="0">
-          We assume that all Visitors, Respondents, and Clients have read this page carefully. If someone does have any query
-          regarding this policy, then please contact our Data Protection Officer at
-          <a href="mailto:dpo@vjcpartners.com" class="underline">dpo@vjcpartners.com</a>.
-        </p>
-
 
       </div>
     </section>
@@ -971,17 +810,17 @@
                 <img class="w-24 md:w-40 opacity-80" src="./img/iso_certification_logo_w.svg" alt="ISO Certification">
                 <img class="w-24 md:w-14 opacity-80" src="./img/gdpr_logo.webp" alt="GDPR Compliant">
             </div>
-            <div class="flex gap-5 border-l border-white/20 pl-6 h-8 items-center">
+            <div class="flex gap-5 md:gap-6 border-l border-white/20 pl-6 h-8 md:h-10 items-center">
     <a href="https://in.linkedin.com/company/vjcindia" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/linkedin-circle-icon.svg" class="w-7" alt="LinkedIn">
+        <img src="./img/linkedin-circle-icon.svg" class="w-7 md:w-10" alt="LinkedIn">
     </a>
     
     <a href="https://www.facebook.com/CAVJC" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/facebook-circle-icon.svg" class="w-7" alt="Facebook">
+        <img src="./img/facebook-circle-icon.svg" class="w-7 md:w-10" alt="Facebook">
     </a>
     
     <a href="https://www.instagram.com/vjc_group/" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/instagram-circle-icon.svg" class="w-7" alt="Instagram">
+        <img src="./img/instagram-circle-icon.svg" class="w-7 md:w-10" alt="Instagram">
     </a>
 </div>
         </div>

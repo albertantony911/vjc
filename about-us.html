@@ -48,6 +48,56 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/animations.css">
+  <style>
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    @keyframes nudge-left {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-4px); }
+    }
+    @keyframes nudge-right {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+    .animate-nudge-left {
+      animation: nudge-left 2s infinite ease-in-out;
+    }
+    .animate-nudge-right {
+      animation: nudge-right 2s infinite ease-in-out;
+    }
+    #slide-left {
+      background-image: linear-gradient(to right, 
+        color-mix(in oklab, var(--color-darkGreen, #7ED348) 12%, transparent) 0%, 
+        color-mix(in oklab, var(--color-darkGreen, #7ED348) 6%, transparent) 50%, 
+        transparent 100%
+      ) !important;
+    }
+    #slide-right {
+      background-image: linear-gradient(to left, 
+        color-mix(in oklab, var(--color-darkGreen, #7ED348) 12%, transparent) 0%, 
+        color-mix(in oklab, var(--color-darkGreen, #7ED348) 6%, transparent) 50%, 
+        transparent 100%
+      ) !important;
+    }
+    #slide-left svg, #slide-right svg {
+      color: var(--color-darkBlue, #01377D) !important;
+    }
+    #slide-left:hover svg {
+      color: var(--color-darkBlue, #01377D) !important;
+      transform: scale(1.15) translateX(-4px) !important;
+      animation: none !important;
+    }
+    #slide-right:hover svg {
+      color: var(--color-darkBlue, #01377D) !important;
+      transform: scale(1.15) translateX(4px) !important;
+      animation: none !important;
+    }
+  </style>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -220,10 +270,10 @@
     <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/bookkeeping-outsourcing">Bookkeeping Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll Outsourcing & Compliance</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/tax-compliance-outsourcing">Tax Compliance Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting</a></li>
       <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
         <a href="#">BACK</a>
@@ -234,7 +284,7 @@
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-journey">Our Journey</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-people">Our People</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./about-us#why-us">Why Us</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us#smartsourcing">Why Us</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-infrastructure">Our Infrastructure</a></li>
       <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
@@ -302,7 +352,7 @@
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./about-us#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./about-us#smartsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
               </a>
             </li>
@@ -352,14 +402,14 @@
             
             <li class="relative">
               <a href="./solutions/payroll-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll & Compliance Outsourcing</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
               <a href="./solutions/year-end-financials-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
@@ -373,7 +423,7 @@
             
             <li class="relative">
               <a href="./solutions/smsf-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Compliance Outsourcing</span>
               </a>
             </li>
             
@@ -818,7 +868,7 @@
                         </h1>
                         <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                             aria-label="Hero Description">
-                            VJC was founded in 1988 as a Chartered Accountancy firm serving businesses across India. For close to four decades, our leaders have signed audit reports, prepared complex tax positions, and stood behind every opinion we have issued. In 2023, a firm based in Perth asked if we could prepare an Australian tax return to the same standard we prepared Indian audit reports. We could. From that single job came a referral, then a firm, then a roster. VJC Partners was built around that work.
+                            VJC was established in 1988 as a Chartered Accountancy firm and has been delivering accounting, audit and tax services for nearly 40 years. Building on humble beginnings, the firm today stands as an all-inclusive institution offering wide array of solutions including accounting, auditing, taxation, corporate compliance, and business consultancy. Our journey in Australia began in 2023 with a request from an accounting firm in Perth to prepare an Australian tax return. We approached the engagement with the same commitment to quality, accuracy and professionalism that has been at the heart of VJC since day one. That one engagement led to another referral, then another, and before long we found ourselves supporting a growing number of Australian accounting practices.
                         </p>
                     </div>
                 
@@ -1713,8 +1763,7 @@
         
         <div class="relative w-full lg:max-w-[320px] mx-auto lg:mx-0 flex-shrink-0 flex flex-col z-10 rounded-[1.5rem] md:rounded-[1.75rem] overflow-hidden isolate translate-z-0 border border-darkGreen/50 shadow-[0_8px_30px_rgba(1,55,125,0.12)] transition-all duration-500 ease-out hover:border-darkGreen group cursor-default">
             <div class="relative w-full h-full min-h-[380px] bg-slate-50 rounded-[1.5rem] md:rounded-[1.75rem] overflow-hidden isolate">
-                <img src="./img/ydesk
-                .webp" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:contrast-[1.02]" alt="Kshipra Rajvanshi" loading="lazy">
+                <img src="./img/kshipra_rajvanshi.webp" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:contrast-[1.02]" alt="Kshipra Rajvanshi" loading="lazy">
                 
                 <div class="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-3 px-5 py-4 transition-all duration-300 rounded-b-[1.5rem] md:rounded-b-[1.75rem]"
                      style="background: rgba(255, 255, 255, 0.10); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-top: 1px solid rgba(255, 255, 255, 0.25);">
@@ -1811,7 +1860,7 @@
 
 
     <!-- Contact Section -->
-<section class="relative w-full py-12 md:py-14 text-darkBlue overflow-hidden z-0" id="why-vjc">
+<section class="relative w-full py-12 md:py-14 text-darkBlue overflow-hidden z-0 scroll-mt-24" id="smartsourcing">
 
 
 
@@ -1826,102 +1875,118 @@
     </div>
   </div>
 
-<div id="why-us" role="region" aria-label="Why choose VJC features" 
-     class="flex overflow-x-auto overflow-y-hidden overscroll-x-none snap-x snap-mandatory gap-4 md:gap-5 pt-3 md:pt-4 pb-8 md:pb-12 no-scrollbar transition-all duration-500 pl-8 portrait:md:pl-[7svw] max-md:pr-8 portrait:md:pr-[7svw] scroll-pl-8 portrait:md:scroll-pl-[7svw] landscape:lg:scroll-pl-[5svh] lg:justify-center min-h-[450px]">
+<div class="relative w-full group">
+  <!-- Left Arrow Button -->
+  <button id="slide-left" class="absolute top-3 bottom-10 md:top-4 md:bottom-14 left-0 w-24 backdrop-blur-sm [mask-image:linear-gradient(to_right,black_0%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,black_0%,transparent_100%)] z-10 flex items-center justify-start pl-4 opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer focus:outline-none hidden md:flex" aria-label="Scroll left">
+    <svg class="w-10 h-10 text-darkBlue transition-all duration-300 ease-out drop-shadow-sm animate-nudge-left" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <div id="slider" role="region" aria-label="Why choose VJC features" 
+       class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-4 md:gap-5 pt-3 pb-10 md:pt-4 md:pb-14 transition-all duration-500 pl-8 portrait:md:pl-[7svw] max-md:pr-8 portrait:md:pr-[7svw] scroll-pl-8 portrait:md:scroll-pl-[7svw] landscape:lg:scroll-pl-[5svh] min-h-[450px]">
        
-  <!-- 1. Legacy -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
-    <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Legacy</span>
-    <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">38 Years of Professional Legacy</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">VJC is built on nearly four decades of Chartered Accountancy experience, compliance discipline, review culture, and long-term client relationships.</p>
-    <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
-      <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <img src="./img/vjc_pride_1.svg" alt="CA Legacy Icon" class="w-full h-full object-cover object-center relative z-10 drop-shadow-sm" />
-      <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
-      <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
-    </div>
-  </article>
+    <!-- 1. Legacy -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
+      <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Legacy</span>
+      <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">38 Years of Professional Legacy</h3>
+      <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">VJC is built on nearly four decades of Chartered Accountancy experience, compliance discipline, review culture, and long-term client relationships.</p>
+      <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
+        <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <img src="./img/vjc_pride_1.svg" alt="CA Legacy Icon" class="w-full h-full object-cover object-center relative z-10 drop-shadow-sm" />
+        <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
+        <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
+      </div>
+    </article>
 
-  <!-- 2. Focus -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
-    <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Focus</span>
-    <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">100% Focused on Australian Firms</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">The team works exclusively with Australian accounting firms, bringing deeper understanding of local legislation, software, workflows, and firm expectations.</p>
-    <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
-      <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <img src="./img/vjc_pride_2.svg" alt="Australian Focus Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
-      <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
-      <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
-    </div>
-  </article>
+    <!-- 2. Focus -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
+      <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Focus</span>
+      <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">100% Focused on Australian Firms</h3>
+      <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">The team works exclusively with Australian accounting firms, bringing deeper understanding of local legislation, software, workflows, and firm expectations.</p>
+      <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
+        <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <img src="./img/vjc_pride_2.svg" alt="Australian Focus Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
+        <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
+        <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
+      </div>
+    </article>
 
-  <!-- 3. Process -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
-    <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Process</span>
-    <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Big Four Quality.<br>Boutique Attention.</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">Work is prepared through checklists, review systems, and customised processes aligned to each firm’s software, templates, and communication style.</p>
-    <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
-      <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <img src="./img/vjc_pride_3.svg" alt="Process Quality Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
-      <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
-      <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
-    </div>
-  </article>
+    <!-- 3. Process -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
+      <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Process</span>
+      <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Big Four Quality.<br>Boutique Attention.</h3>
+      <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">Work is prepared through checklists, review systems, and customised processes aligned to each firm’s software, templates, and communication style.</p>
+      <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
+        <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <img src="./img/vjc_pride_3.svg" alt="Process Quality Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
+        <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
+        <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
+      </div>
+    </article>
 
-  <!-- 4. Security -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
-    <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Security</span>
-    <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Data Security by Design</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">Access controls, agreements, process governance, and controlled system environments are built into the operating model from day one.</p>
-    <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
-      <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <img src="./img/vjc_pride_4.svg" alt="Security by Design Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
-      <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
-      <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
-    </div>
-  </article>
+    <!-- 4. Security -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
+      <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Security</span>
+      <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Data Security by Design</h3>
+      <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">Access controls, agreements, process governance, and controlled system environments are built into the operating model from day one.</p>
+      <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
+        <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <img src="./img/vjc_pride_4.svg" alt="Security by Design Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
+        <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
+        <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
+      </div>
+    </article>
 
-  <!-- 5. Partnership -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
-    <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Partnership</span>
-    <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Partnership Mindset, Not Vendor Mindset</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">VJC integrates like an extended remote team, helping firms improve turnaround time, capacity, client experience, and profitability.</p>
-    <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
-      <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
-      <img src="./img/vjc_pride_5.svg" alt="Partnership Mindset Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
-      <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
-      <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
-    </div>
-  </article>
+    <!-- 5. Partnership -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
+      <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Partnership</span>
+      <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Partnership Mindset, Not Vendor Mindset</h3>
+      <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">VJC integrates like an extended remote team, helping firms improve turnaround time, capacity, client experience, and profitability.</p>
+      <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
+        <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
+        <img src="./img/vjc_pride_5.svg" alt="Partnership Mindset Icon" class="w-full h-full object-contain object-center relative z-10 drop-shadow-sm" />
+        <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
+        <div class="absolute inset-0 z-30 pointer-events-none rounded-[14px] md:rounded-[18px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"></div>
+      </div>
+    </article>
 
-  <!-- 6. CTA Card -->
-  <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-darkBlue/95 backdrop-blur-2xl text-white rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-white/10 relative overflow-hidden transition-all duration-500 hover:bg-darkBlue hover:border-darkGreen/40 hover:-translate-y-1 hover:scale-[1.02]" tabindex="0">
-    <div class="cta-ghost absolute bottom-8 md:bottom-16 -left-2 -right-2 z-0 pointer-events-none overflow-hidden flex flex-col" aria-hidden="true">
-      <span>WORK</span>
-      <span>WITH</span>
-      <span>VJC</span>
-    </div>
-    <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block relative z-10">Get Started</span>
-    <h3 class="text-[28px] md:text-[35px] font-extrabold leading-[1.1] tracking-tight mb-2 md:mb-3 relative z-10 text-white">Ready to<br>Build Your <br>Extended <br>Accounting Team?</h3>
-    <p class="text-[14px] md:text-[16px] leading-relaxed text-white/90 flex-grow mb-6 md:mb-8 relative z-10">Discover how VJC can help your firm add qualified capacity, reduce review pressure, and deliver work with greater consistency.</p>
-    <div class="mt-auto relative z-10">
-      <a href="#" class="inline-flex items-center justify-center w-full py-3.5 md:py-4 px-6 bg-darkGreen text-white rounded-4xl text-[14px] md:text-[15px] font-normal tracking-tight shadow-md transition-all duration-500 hover:bg-white hover:text-darkBlue hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0">
-        Talk to a Specialist
-      </a>
-    </div>
-  </article>
+    <!-- 6. CTA Card -->
+    <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-darkBlue/95 backdrop-blur-2xl text-white rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-white/10 relative overflow-hidden transition-all duration-500 hover:bg-darkBlue hover:border-darkGreen/40 hover:-translate-y-1 hover:scale-[1.02]" tabindex="0">
+      <div class="cta-ghost absolute bottom-8 md:bottom-16 -left-2 -right-2 z-0 pointer-events-none overflow-hidden flex flex-col" aria-hidden="true">
+        <span>WORK</span>
+        <span>WITH</span>
+        <span>VJC</span>
+      </div>
+      <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block relative z-10">Get Started</span>
+      <h3 class="text-[28px] md:text-[35px] font-extrabold leading-[1.1] tracking-tight mb-2 md:mb-3 relative z-10 text-white">Ready to<br>Build Your <br>Extended <br>Accounting Team?</h3>
+      <p class="text-[14px] md:text-[16px] leading-relaxed text-white/90 flex-grow mb-6 md:mb-8 relative z-10">Discover how VJC can help your firm add qualified capacity, reduce review pressure, and deliver work with greater consistency.</p>
+      <div class="mt-auto relative z-10">
+        <a href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min" class="inline-flex items-center justify-center w-full py-3.5 md:py-4 px-6 bg-darkGreen text-white rounded-4xl text-[14px] md:text-[15px] font-normal tracking-tight shadow-md transition-all duration-500 hover:bg-white hover:text-darkBlue hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0">
+          Talk to Us
+        </a>
+      </div>
+    </article>
 
-  <div id="slider-spacer" class="shrink-0 w-4 md:w-[48px]" aria-hidden="true"></div>
+    <div id="slider-spacer" class="shrink-0 w-4 md:w-[48px]" aria-hidden="true"></div>
+  </div>
+
+  <!-- Right Arrow Button -->
+  <button id="slide-right" class="absolute top-3 bottom-10 md:top-4 md:bottom-14 right-0 w-24 backdrop-blur-sm [mask-image:linear-gradient(to_left,black_0%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,transparent_100%)] z-10 flex items-center justify-end pr-4 opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer focus:outline-none hidden md:flex" aria-label="Scroll right">
+    <svg class="w-10 h-10 text-darkBlue transition-all duration-300 ease-out drop-shadow-sm animate-nudge-right" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
 </div>
 
   <div id="slider-controls" class="max-w-[1400px] mx-auto px-6 md:px-12  items-center justify-center gap-6 md:gap-10 transition-opacity duration-500 hidden">
@@ -3703,17 +3768,17 @@
                 <img class="w-24 md:w-40 opacity-80" src="./img/iso_certification_logo_w.svg" alt="ISO Certification">
                 <img class="w-24 md:w-14 opacity-80" src="./img/gdpr_logo.webp" alt="GDPR Compliant">
             </div>
-            <div class="flex gap-5 border-l border-white/20 pl-6 h-8 items-center">
+            <div class="flex gap-5 md:gap-6 border-l border-white/20 pl-6 h-8 md:h-10 items-center">
     <a href="https://in.linkedin.com/company/vjcindia" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/linkedin-circle-icon.svg" class="w-7" alt="LinkedIn">
+        <img src="./img/linkedin-circle-icon.svg" class="w-7 md:w-10" alt="LinkedIn">
     </a>
     
     <a href="https://www.facebook.com/CAVJC" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/facebook-circle-icon.svg" class="w-7" alt="Facebook">
+        <img src="./img/facebook-circle-icon.svg" class="w-7 md:w-10" alt="Facebook">
     </a>
     
     <a href="https://www.instagram.com/vjc_group/" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/instagram-circle-icon.svg" class="w-7" alt="Instagram">
+        <img src="./img/instagram-circle-icon.svg" class="w-7 md:w-10" alt="Instagram">
     </a>
 </div>
         </div>

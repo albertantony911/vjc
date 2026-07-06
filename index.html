@@ -51,6 +51,56 @@
       <!-- CSS Stylesheets -->
       <link rel="stylesheet" href="./css/style.css">
       <link rel="stylesheet" href="./css/animations.css">
+      <style>
+        .no-scrollbar {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        @keyframes nudge-left {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(-4px); }
+        }
+        @keyframes nudge-right {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(4px); }
+        }
+        .animate-nudge-left {
+          animation: nudge-left 2s infinite ease-in-out;
+        }
+        .animate-nudge-right {
+          animation: nudge-right 2s infinite ease-in-out;
+        }
+        #slide-left {
+          background-image: linear-gradient(to right, 
+            color-mix(in oklab, var(--color-darkGreen, #7ED348) 12%, transparent) 0%, 
+            color-mix(in oklab, var(--color-darkGreen, #7ED348) 6%, transparent) 50%, 
+            transparent 100%
+          ) !important;
+        }
+        #slide-right {
+          background-image: linear-gradient(to left, 
+            color-mix(in oklab, var(--color-darkGreen, #7ED348) 12%, transparent) 0%, 
+            color-mix(in oklab, var(--color-darkGreen, #7ED348) 6%, transparent) 50%, 
+            transparent 100%
+          ) !important;
+        }
+        #slide-left svg, #slide-right svg {
+          color: var(--color-darkBlue, #01377D) !important;
+        }
+        #slide-left:hover svg {
+          color: var(--color-darkBlue, #01377D) !important;
+          transform: scale(1.15) translateX(-4px) !important;
+          animation: none !important;
+        }
+        #slide-right:hover svg {
+          color: var(--color-darkBlue, #01377D) !important;
+          transform: scale(1.15) translateX(4px) !important;
+          animation: none !important;
+        }
+      </style>
 
       <!-- JavaScript (Defer for Performance) -->
       <script src="./js/main.js" defer></script> 
@@ -272,10 +322,10 @@
     <ul id="subMenu" class="sm:text-xl font-light uppercase text-white z-20 flex flex-col items-center justify-center h-screen gap-[2.3vw] landscape:sm:text-xl text-[4vw] mt-16">
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">SOLUTIONS</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/bookkeeping-outsourcing">Bookkeeping Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll Outsourcing & Compliance</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting & Financial Statement Preparation</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/payroll-outsourcing">Payroll & Compliance</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/year-end-financials-outsourcing">Year-End Accounting</a></li>
       <li class="max-w-[80vw] text-center"><a href="./solutions/tax-compliance-outsourcing">Tax Compliance Outsourcing</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting & Compliance Outsourcing</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./solutions/smsf-outsourcing">SMSF Accounting</a></li>
       <li id="backButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
         <a href="#">BACK</a>
@@ -286,7 +336,7 @@
       <li class="text-[7vw] landscape:sm:text-2xl font-semibold"><a href="#">ABOUT US</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-journey">Our Journey</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-people">Our People</a></li>
-      <li class="max-w-[80vw] text-center"><a href="./about-us#why-us">Why Us</a></li>
+      <li class="max-w-[80vw] text-center"><a href="./about-us#smartsourcing">Why Us</a></li>
       <li class="max-w-[80vw] text-center"><a href="./about-us#our-infrastructure">Our Infrastructure</a></li>
       <li id="aboutBackButton" class="mt-20 text-[4vw] landscape:sm:text-xl landscape:sm:mt-5 font-thin flex flex-row items-center">
         <img class="size-[4vw] bounce-left" src="./img/left-arrow.svg" alt="">
@@ -354,7 +404,7 @@
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
-              <a href="./about-us#why-us" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
+              <a href="./about-us#smartsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
                 <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Why Us</span>
               </a>
             </li>
@@ -404,14 +454,14 @@
             
             <li class="relative">
               <a href="./solutions/payroll-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll Outsourcing & Compliance</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Payroll & Compliance Outsourcing</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
             
             <li class="relative">
               <a href="./solutions/year-end-financials-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement Preparation</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">Year-End Accounting & Financial Statement</span>
               </a>
             </li>
             <div class="h-[1px] w-[95%] mx-auto bg-[#B0B0B0] line-center"></div>
@@ -425,7 +475,7 @@
             
             <li class="relative">
               <a href="./solutions/smsf-outsourcing" class="group flex items-start w-full px-4 py-4 no-underline transition-all duration-300 transform cursor-pointer hover:text-darkBlue hover:no-underline whitespace-normal leading-snug" role="menuitem">
-                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Accounting & Compliance Outsourcing</span>
+                <span class="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">SMSF Compliance Outsourcing</span>
               </a>
             </li>
             
@@ -503,11 +553,11 @@
               <div class="">
                 <h1 class="sm:text-[4.5svh] portrait:sm:text-[4.3svw] text-[6.5vw] portrait:mb-[1.3svh] landscape:mb-[1.2svh] font-bold leading-[4.5svh] portrait:leading-[6.5svw] portrait:sm:leading-[4.5svw] uppercase"
                     aria-label="Main Title">
-                  <span class="line-through decoration-3 opacity-60 mr-2">Outsourcing</span><br>Smartsourcing for Australian Accountants
+                  Smartsourcing<br><span class="line-through decoration-3 opacity-60 mr-2">Outsourcing</span> for Australian Accountants
                 </h1>
                 <p class="text-[3.5vw] sm:text-[2.3svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
                   aria-label="Hero Description">
-                  Clear compliance backlogs deliver jobs on time and spend more time advising clients while our qualified accountants help you avoid delays, deferrals, penalties, and missed billings. We run your bookkeeping, payroll, tax compliance, year-end and SMSF work the way your firm would. That's smartsourcing.   
+                  Outsourcing made smarter, qualified accountants who clear the backlog, keep compliance on track, and free your team to focus on advising clients. On your deadlines, to your standards, under your control.
                 </p>
               </div>
               <div class="flex flex-col sm:flex-row gap-[3vw] sm:gap-[2svh] portrait:gap-[2svh] landscape:gap-[2svh]">
@@ -566,8 +616,16 @@
     </div>
   </div>
 
-<div id="slider" role="region" aria-label="Smartsourcing features" 
-     class="flex overflow-x-auto overflow-y-hidden overscroll-x-none snap-x snap-mandatory gap-4 md:gap-5 pt-3 pb-10 md:pt-4 md:pb-14 no-scrollbar transition-all duration-500 pl-8 portrait:md:pl-[7svw] max-md:pr-8 portrait:md:pr-[7svw] scroll-pl-8 portrait:md:scroll-pl-[7svw] landscape:lg:scroll-pl-[5svh] lg:justify-center min-h-[450px]">
+<div class="relative w-full group">
+  <!-- Left Arrow Button -->
+  <button id="slide-left" class="absolute top-3 bottom-10 md:top-4 md:bottom-14 left-0 w-24 backdrop-blur-sm [mask-image:linear-gradient(to_right,black_0%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,black_0%,transparent_100%)] z-10 flex items-center justify-start pl-4 opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer focus:outline-none hidden md:flex" aria-label="Scroll left">
+    <svg class="w-10 h-10 text-darkBlue transition-all duration-300 ease-out drop-shadow-sm animate-nudge-left" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <div id="slider" role="region" aria-label="Smartsourcing features" 
+       class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-4 md:gap-5 pt-3 pb-10 md:pt-4 md:pb-14 transition-all duration-500 pl-8 portrait:md:pl-[7svw] max-md:pr-8 portrait:md:pr-[7svw] scroll-pl-8 portrait:md:scroll-pl-[7svw] landscape:lg:scroll-pl-[5svh] min-h-[450px]">
        
   <!-- 1. Strategy -->
   <article class="card group snap-start shrink-0 w-[80vw] max-w-[300px] bg-white/50 backdrop-blur-xl rounded-[24px] md:rounded-[28px] p-7 md:p-9 flex flex-col border border-darkGreen/40 shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-white/80 hover:border-darkGreen/60 relative" tabindex="0">
@@ -604,7 +662,7 @@
     <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
     <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Integration</span>
     <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">Work Delivered Inside Your Systems</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">We work directly in Xero, MYOB, BGL, and your existing workflows — ready for review and sign-off.</p>
+    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">We work directly in Xero, MYOB, BGL, and your existing workflows, ready for review and sign-off.</p>
     <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
       <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
       <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
@@ -634,7 +692,7 @@
     <div class="absolute top-0 left-6 md:left-8 right-6 md:right-8 h-[2px] bg-darkGreen origin-center scale-x-0 rounded-b-md transition-transform duration-700 group-hover:scale-x-100 z-20"></div>
     <span class="text-[12px] md:text-[13px] font-bold tracking-[0.14em] uppercase text-darkGreen mb-3 md:mb-4 block">Flexibility</span>
     <h3 class="text-xl md:text-[24px] font-extrabold leading-[1.15] tracking-tight mb-2 md:mb-3 text-darkBlue">No Lock-Ins.<br>No Exit Penalties.</h3>
-    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">We believe partnerships should continue because the work is valuable — not because contracts force them to.</p>
+    <p class="text-[14px] md:text-[15px] leading-relaxed text-darkBlue/70 flex-grow mb-6 md:mb-8">We believe partnerships should continue because the work is valuable, not because contracts force them to.</p>
     <div class="mt-auto h-32 md:h-40 relative rounded-[14px] md:rounded-[18px] overflow-hidden bg-slate-50/80 border border-darkGreen/20 shadow-[0_4px_12px_rgba(0,100,50,0.06)] transform-gpu">
       <div class="absolute -top-8 -right-8 w-32 h-32 bg-darkGreen/15 rounded-full blur-2xl pointer-events-none z-0"></div>
       <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-darkBlue/5 rounded-full blur-2xl pointer-events-none z-0"></div>
@@ -655,13 +713,21 @@
     <h3 class="text-[28px] md:text-[35px] font-extrabold leading-[1.1] tracking-tight mb-2 md:mb-3 relative z-10 text-white">Ready to<br>Elevate<br>Your Firm?</h3>
     <p class="text-[14px] md:text-[16px] leading-relaxed text-white/90 flex-grow mb-6 md:mb-8 relative z-10">Discover how Smartsourcing can transform your daily operations and scale your client delivery capacity.</p>
     <div class="mt-auto relative z-10">
-      <a href="#" class="inline-flex items-center justify-center w-full py-3.5 md:py-4 px-6 bg-darkGreen text-white rounded-4xl text-[14px] md:text-[15px] font-normal tracking-tight shadow-md transition-all duration-500 hover:bg-white hover:text-darkBlue hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0">
-        Talk to a Specialist
+      <a href="https://app.apollo.io/#/meet/managed-meetings/pia_j_8d2/gxb-b9l-5nu/30-min" class="inline-flex items-center justify-center w-full py-3.5 md:py-4 px-6 bg-darkGreen text-white rounded-4xl text-[14px] md:text-[15px] font-normal tracking-tight shadow-md transition-all duration-300 hover:bg-white hover:text-darkBlue hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0">
+        Talk to Us
       </a>
     </div>
   </article>
 
   <div id="slider-spacer" class="shrink-0 w-4 md:w-[48px]" aria-hidden="true"></div>
+  </div>
+
+  <!-- Right Arrow Button -->
+  <button id="slide-right" class="absolute top-3 bottom-10 md:top-4 md:bottom-14 right-0 w-24 backdrop-blur-sm [mask-image:linear-gradient(to_left,black_0%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,transparent_100%)] z-10 flex items-center justify-end pr-4 opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer focus:outline-none hidden md:flex" aria-label="Scroll right">
+    <svg class="w-10 h-10 text-darkBlue transition-all duration-300 ease-out drop-shadow-sm animate-nudge-right" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
 </div>
 
   <div id="slider-controls" class="max-w-[1400px] mx-auto px-6 md:px-12  items-center justify-center gap-6 md:gap-10 transition-opacity duration-500 hidden">
@@ -682,7 +748,7 @@
               Our Solutions
             </h1>
             <p class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] max-md:px-10 portrait:mb-[1svh] lg:landscape:mb-[2svh] leading-normal " aria-label="Hero Description">
-              Smartsourcing solutions built for Australian accounting firms, CPA practices and Tax agents looking for a reliable accounting outsourcing partner. Every job is handled by a qualified accountant with a minimum of three years’ Australian accounting and compliance experience, supported by detailed workpapers, reconciliations and outputs aligned with your internal processes - so each job arrives accurate, compliant and  <span class="font-medium">ready for sign-off.</span>
+              Smartsourcing solutions built for Australian accounting firms, CPA practices and Tax agents looking for a reliable outsourcing partner. Every job is handled by a qualified accountant with a minimum of three years’ Australian accounting and compliance experience, supported by detailed workpapers, reconciliations and outputs aligned with your internal processes - so each job arrives accurate, compliant and  <span class="font-medium">ready for sign-off.</span>
             </p>
             <div class="flex justify-start w-full max-md:px-8 ">
               <div class="relative justify-center antialiased" x-data="{ openAccordion: null }">
@@ -710,7 +776,7 @@
                           aria-hidden="true" 
                         />
                         <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
-                          Payroll Outsourcing & Compliance
+                          Payroll & Compliance Outsourcing
                         </span>
                       </a>
 
@@ -722,7 +788,7 @@
                           aria-hidden="true" 
                         />
                         <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
-                          Year-End Accounting & Financial Statement Preparation
+                          Year-End Accounting & Financial Statement
                         </span>
                       </a>
 
@@ -746,7 +812,7 @@
                           aria-hidden="true" 
                         />
                         <span class="text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] font-bold text-left uppercase whitespace-normal">
-                          SMSF Accounting & Compliance Outsourcing
+                          SMSF Compliance Outsourcing
                         </span>
                       </a>
 
@@ -1195,7 +1261,7 @@
             </h1>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:md:px-[7svw] max-md:px-10  font-light leading-normal "
               aria-label="Hero Description">
-              Founded in 1988 as a Chartered Accountancy firm, VJC has spent close to four decades on the partner side of the desk. Today, VJC Partners works exclusively with Australian accounting firms as their remote team — delivering smartsourcing solutions  aligned to Australian accounting standards, ATO requirements and the compliance frameworks their practice already runs on.<a
+              Founded in 1988 as a Chartered Accountancy firm, VJC has spent close to four decades on the partner side of the desk. Today, VJC Partners works exclusively with Australian accounting firms as their remote team, delivering smartsourcing solutions  aligned to Australian accounting standards, ATO requirements and the compliance frameworks their practice already runs on.<a
                 href="./about-us"
                 aria-label="Read more about our firm"
                 title="Read more about our firm"
@@ -1599,6 +1665,7 @@
         <img class="logo-img" src="./img/access-logo.png" alt="access">
         <img class="logo-img" src="./img/activeworkers-logo.svg" alt="activeworkers">
         <img class="logo-img" src="./img/bgl-logo.svg" alt="bgl">
+        <img class="logo-img" src="./img/bgl-new-logo.svg" alt="bgl new">
         <img class="logo-img" src="./img/cch-logo.webp" alt="cch">
         <img class="logo-img" src="./img/classsuper-logo.webp" alt="classsuper">
         <img class="logo-img" src="./img/dext-logo.svg" alt="dext">
@@ -1672,22 +1739,17 @@
                   WHAT IS OUTSOURCED ACCOUNTING? SERVICES, COSTS, RISKS, AND BUSINESS BENEFITS
                 </h3>
 
-                <p class="text-sm text-darkBlue mt-1">
-                  <span class="sr-only">Author: </span>
-                  By <span class="font-medium">Kate</span>
-                  <span aria-hidden="true"> &bull; </span>
-                  <time dateTime="2026-05-28" class="font-light">5/28/2026</time>
-                  <span aria-hidden="true"> &bull; </span>
-                  <span class="font-light">13 min read</span>
+                <p class="text-[13px] font-bold uppercase tracking-wide text-darkBlue mt-1">
+                  Outsourcing &bull; 13 Min Read &bull; By Kate
                 </p>
 
                 <div class="text-sm text-darkBlue mt-2 font-light line-clamp-5">
                   Running a business means dealing with a lot of numbers. Bookkeeping, payroll, tax returns…it never ends. That’s why the majority of businesses are outsourcing finance & accounting work. But, what is outsourced accounting? And how to actually find an offshore partner that understands your business and its requirements? In this article, we break down how it works, who it is for, and whether it makes sense for your business. What Is Outsourced Accounting? Outsourced accounting means handing over some or all of your finance and accounting work to an external provider instead of doing it in-house. In the accounting industry, firms often outsource bookkeeping, tax, BAS lodgements, and administrative tasks to specialised service providers. When those providers are located overseas, the arrangement is commonly referred to as offshoring.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Insights
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Insights</span>
+                </div>
               </a>
             </article>
 
@@ -1701,22 +1763,17 @@
                   HOW TO GROW YOUR ACCOUNTING PRACTICE? (PROVEN STRATEGIES AND STEPS)
                 </h3>
 
-                <p class="text-sm text-darkBlue mt-1">
-                  <span class="sr-only">Author: </span>
-                  By <span class="font-medium">Kate</span>
-                  <span aria-hidden="true"> &bull; </span>
-                  <time dateTime="2026-05-18" class="font-light">5/18/2026</time>
-                  <span aria-hidden="true"> &bull; </span>
-                  <span class="font-light">14 min read</span>
+                <p class="text-[13px] font-bold uppercase tracking-wide text-darkBlue mt-1">
+                  Practice Management &bull; 14 Min Read &bull; By Kate
                 </p>
 
                 <div class="text-sm text-darkBlue mt-2 font-light line-clamp-5">
                   For years, accounting firms could survive by simply handling BAS lodgements, tax returns, payroll, and compliance work. But things have changed. Clients want faster turnaround, specialised service and attention. So if you are wondering how to grow your accounting practice, you need more than referrals and technical skills. You need systems, positioning, and technology. How To Grow Your Accounting Practice? Every audit & accounting firm wants growth. But growth without direction equals more workload, more stress, and lower margins.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Insights
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Insights</span>
+                </div>
               </a>
             </article>
 
@@ -1730,22 +1787,17 @@
                   TAX RETURN 2026: DATES, DEADLINES, TAX REFUNDS, AND END OF FINANCIAL YEAR
                 </h3>
 
-                <p class="text-sm text-darkBlue mt-1">
-                  <span class="sr-only">Author: </span>
-                  By <span class="font-medium">Kate</span>
-                  <span aria-hidden="true"> &bull; </span>
-                  <time dateTime="2026-05-15" class="font-light">5/15/2026</time>
-                  <span aria-hidden="true"> &bull; </span>
-                  <span class="font-light">11 min read</span>
+                <p class="text-[13px] font-bold uppercase tracking-wide text-darkBlue mt-1">
+                  Tax & Compliance &bull; 11 Min Read &bull; By Kate
                 </p>
 
                 <div class="text-sm text-darkBlue mt-2 font-light line-clamp-5">
                   It’s officially the tax return 2026 season in Australia, and just like every year, the same questions have started flooding on Google: When is the end of the financial year? When is the income tax deadline? Is the income tax return extended? Honestly, we get the rush. One missed date or incorrect lodgement can delay refunds, trigger penalties, or create unnecessary stress. This guide explains the important tax filing deadlines, EOFY dates, lodgement timelines, and tips to file and check the status of your returns by yourself. Tax Return 2026 In Australia, tax season 2026 generally begins from 1 July, immediately after the end of fin year. This period is when individuals gather income statements, deduction records, bank interest summaries, and other supporting documents required for filing returns.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Insights
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Insights</span>
+                </div>
               </a>
             </article>
 
@@ -1759,7 +1811,7 @@
               Client Success Stories
             </h2>
             <p class="text-center text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mt-2 font-light max-w-4xl mx-auto text-darkBlue">
-              These are real engagements, anonymised at the client’s request. From solo practitioners to multi-partner firms &mdash; these are the Australian practices working with VJC. <a href="https://resources.vjcpartners.com#client-success-stories" class="font-bold text-darkGreen hover:text-darkBlue underline underline-offset-4 decoration-2 ml-2 whitespace-nowrap transition-colors duration-300">Read more client success stories &rarr;</a>
+              These are real engagements, anonymised at the client’s request. From solo practitioners to multi-partner firms, these are the Australian practices working with VJC. <a href="https://resources.vjcpartners.com#client-success-stories" class="font-bold text-darkGreen hover:text-darkBlue underline underline-offset-4 decoration-2 ml-2 whitespace-nowrap transition-colors duration-300">Read more client success stories &rarr;</a>
             </p>
           </div>
 
@@ -1788,9 +1840,11 @@
                   A Dedicated Task Team transformed an overwhelmed solo firm into a high-output, client-winning practice. Running a solo practice in Perth meant wearing every hat - client meetings, tax returns, bookkeeping, BAS lodgements, emails, follow-ups, and admin. There was no workflow system, no delegation structure, and no capacity to take on new clients. Jobs were piling up, lodgement deadlines were being missed, and the practice was operating in survival mode rather than growth mode. The practitioner had tried ad-hoc offshore support before, but without a structured team or dedicated management, the experience was inconsistent and ultimately abandoned. What he needed was not an extra pair of hands. It was an entire back-office operation that could run independently while he focused on advising clients and winning new business.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Case Studies
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Back-Office Operation</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Dedicated Task Team</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Solo Practitioner</span>
+                </div>
               </a>
             </article>
 
@@ -1817,9 +1871,11 @@
                   A meticulous partner with exacting standards found an offshore team that consistently exceeds expectations. This Toowoomba-based firm is led by a partner known for exacting quality standards. Every piece of work that leaves the firm must be technically precise, well-documented and presentation-ready. Previous experiences with offshore providers had been disappointing, work came back requiring extensive rework, notes were incomplete, and the partner was spending more time reviewing and correcting than if he had done the work himself. The partner was sceptical about outsourcing but recognised that without additional support, the firm’s growth would remain capped by his personal capacity.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Case Studies
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Tax & Compliance</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Managed FTE</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Small Firm</span>
+                </div>
               </a>
             </article>
 
@@ -1846,9 +1902,11 @@
                   A practitioner who had given up on outsourcing found VJC and is now planning to move his entire team offshore. This practitioner had been through it all. Three different offshore providers over five years, each promising seamless integration and quality work. The reality was different every time: inconsistent quality, high staff turnover, communication breakdowns, and the constant feeling that the offshore team was a liability rather than an asset. By the time he found VJC, the practitioner was ready to abandon outsourcing entirely and resign himself to the limitations of his local team. But with a growing client base and rising salary costs in Australia, the economics of not finding a smartsourcing partner were becoming untenable. He agreed to a trial with VJC, but with clear expectations: if it did not work within 30 days, he was done.
                 </div>
 
-                <p class="text-xs text-darkBlue mt-2">
-                  <strong class="font-semibold">Category:</strong> Case Studies
-                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Bookkeeping & Tax</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Mixed Managed FTE</span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[13px] font-bold uppercase tracking-wide bg-darkBlue/10 text-darkBlue border border-darkBlue/20">Mid-Sized Firm</span>
+                </div>
               </a>
             </article>
 
@@ -1883,7 +1941,7 @@
                         { question: 'Who prepares our jobs, and what are their qualifications?', answer: 'Every job is prepared by a qualified accountant (Chartered Accountant, postgraduate accounting degree, or equivalent professional qualification) with minimum three years’ Australian experience, who has completed 100+ hours of Australian tax and compliance training before being assigned to any client account. Workpapers, reconciliations and open queries are presented clearly so you can sign off without re-doing the working. You will not see junior output presented as anything else.' },
                         { question: 'Can you provide references or case studies?', answer: 'Check out our Resources Page for Client Success Stories' },
                         { question: 'What does the onboarding process look like?', answer: 'Once you decide to proceed, you’re assigned a dedicated Client Success Partner who guides the entire setup. We document your processes, templates, software stack and quality standards, then provision access and train our dedicated team member against your exact requirements. A structured reporting rhythm kicks in from day one: daily updates, weekly task reviews, monthly performance reviews, and quarterly strategic check-ins. Most firms are fully operational within 1–2 weeks. Your CSP stays with you throughout the engagement, ensuring every issue is addressed at its root.' },
-                        { question: 'What tech infrastructure do I need to set up before we start?', answer: 'Your existing practice stack is enough — we work inside your software, so there is nothing new to buy or migrate to. In practical terms you provide: Software seats: one licensed seat per VJC team member on the tools they will work in (for example Xero, XPM, Karbon, FYI, BGL Simple Fund 360, CCH iFirm). Secure access and communication: an email ID per team member with multi-factor authentication, plus a day-to-day channel such as Microsoft Teams, Google Chat, or email.' },
+                        { question: 'What tech infrastructure do I need to set up before we start?', answer: 'Your existing practice stack is enough - we work inside your software, so there is nothing new to buy or migrate to. In practical terms you provide: Software seats: one licensed seat per VJC team member on the tools they will work in (for example Xero, XPM, Karbon, FYI, BGL Simple Fund 360, CCH iFirm). Secure access and communication: an email ID per team member with multi-factor authentication, plus a day-to-day channel such as Microsoft Teams, Google Chat, or email.' },
                         { question: 'What are your working hours, and how do you handle the time-zone difference?', answer: 'Our delivery teams in India work 8:00 AM to 5:00 PM IST, Monday to Friday. East-coast practices (AEST) get a four-and-a-half-hour live overlap with our preparers every business day (12:30 PM to 5:00 PM AEST). West-coast practices (AWST) get a six-and-a-half-hour overlap (10:30 AM to 5:00 PM AWST). Queries you raise in your morning are answered the same day; jobs left for us at the end of your day are returned the next morning.' },
                         { question: 'How do you protect our clients’ data?', answer: 'ISO 27001:2022-certified operations, no local device storage, multi-factor authentication on every cloud tool, and a signed confidentiality deed from every team member from day one. Your data never leaves the approved environment, and we do not sub-contract any part of the engagement.' },
                         { question: 'What happens if we want to scale up, scale down, or pause?', answer: 'Every model flexes on thirty-sixty days’ written notice. Move from Job by Job to Full Time Equivalent, or from FTE back to Part Time, without minimum-term lock-ins or exit penalties. The engagement continues on the strength of the work.' }
@@ -2069,17 +2127,17 @@
                 <img class="w-24 md:w-40 opacity-80" src="./img/iso_certification_logo_w.svg" alt="ISO Certification">
                 <img class="w-24 md:w-14 opacity-80" src="./img/gdpr_logo.webp" alt="GDPR Compliant">
             </div>
-            <div class="flex gap-5 border-l border-white/20 pl-6 h-8 items-center">
+            <div class="flex gap-5 md:gap-6 border-l border-white/20 pl-6 h-8 md:h-10 items-center">
     <a href="https://in.linkedin.com/company/vjcindia" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/linkedin-circle-icon.svg" class="w-7" alt="LinkedIn">
+        <img src="./img/linkedin-circle-icon.svg" class="w-7 md:w-10" alt="LinkedIn">
     </a>
     
     <a href="https://www.facebook.com/CAVJC" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/facebook-circle-icon.svg" class="w-7" alt="Facebook">
+        <img src="./img/facebook-circle-icon.svg" class="w-7 md:w-10" alt="Facebook">
     </a>
     
     <a href="https://www.instagram.com/vjc_group/" target="_blank" class="hover:scale-110 transition-transform">
-        <img src="./img/instagram-circle-icon.svg" class="w-7" alt="Instagram">
+        <img src="./img/instagram-circle-icon.svg" class="w-7 md:w-10" alt="Instagram">
     </a>
 </div>
         </div>
@@ -2155,7 +2213,6 @@
               </button>
           </div>
       </section>
-
-    </body>
+  </body>
 
   </html>
