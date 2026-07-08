@@ -80,23 +80,27 @@
     /* Updated cubic bezier for rotation animation */
 }
 
-
-
-/* Initially hide the submenu */
-#subMenu {
+/* Initially hide the submenus */
+#subMenu,
+#aboutSubMenu,
+#resourcesSubMenu {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease-in-out;
 }
 
-/* Show the submenu */
-#subMenu.active {
+/* Show the submenus */
+#subMenu.active,
+#aboutSubMenu.active,
+#resourcesSubMenu.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Hide submenu */
-#subMenu.hidden {
+/* Hide submenus */
+#subMenu.hidden,
+#aboutSubMenu.hidden,
+#resourcesSubMenu.hidden {
     opacity: 0;
     visibility: hidden;
 }
@@ -132,10 +136,11 @@
     }
 }
 
-#subMenu.fade-in {
+#subMenu.fade-in,
+#aboutSubMenu.fade-in,
+#resourcesSubMenu.fade-in {
     animation: fadeInSubMenu 0.20s ease-in-out;
 }
-
 
 
  /**
@@ -146,124 +151,80 @@
 
 
 
- 
+/* ----------------------------------------
+ * Logo carousel animation 
+ * ---------------------------------------- */
 
-/**
- * ----------------------------------------
- * Logo carousel animation (Refactored)
- * ----------------------------------------
- */
-.marquee {
-  block-size: var(--marquee-item-height);
-  margin-block: 0;
-  mask-image: linear-gradient(
-    to right,
-    hsla(0, 0%, 0%, 0),
-    hsla(0, 0%, 0%, 1) 20%,
-    hsla(0, 0%, 0%, 1) 80%,
-    hsla(0, 0%, 0%, 0)
-  );
-  overflow: hidden; /* Prevent overflow */
+
+/* Fades the left and right edges smoothly */
+.track-outer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
-/* Common settings for both LTR and RTL marquees */
-.marquee--LTR,
-.marquee--RTL,
-.marquee--LTR-M,
-.marquee--RTL-M {
-  --marquee-item-width: 77px;
-  --marquee-item-height: 77px;
-  --marquee-items: 10;
+.fade-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
-.marquee--LTR,
-.marquee--RTL {
-  --marquee-duration: 40s;
-}
-
-.marquee--LTR-M,
-.marquee--RTL-M {
-  --marquee-duration: 30s;
-  --marquee-items: 7;
-}
-
-/* Refactored marquee item using transform */
-.marquee__item {
-  /* Define start and end offsets.
-     The original code set:
-       - start position: max(item-width * items, 100% + item-width) with an extra -50% shift
-       - end position: (item-width * -1) with the same shift.
-     We embed the -50% into our calculations. */
-  --marquee-start: calc(
-    max(
-      calc(var(--marquee-item-width) * var(--marquee-items)),
-      calc(100% + var(--marquee-item-width))
-    ) - 50%
-  );
-  --marquee-end: calc(var(--marquee-item-width) * -1 - 50%);
-  --marquee-delay: calc(
-    (var(--marquee-duration) / var(--marquee-items)) *
-      (var(--marquee-items) - var(--marquee-item-index)) * -1
-  );
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  /* Start at the computed start offset */
-  transform: translateX(var(--marquee-start));
-  animation: marquee-move linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
-  animation-play-state: paused; /* Default state; JS will toggle */
+.track-inner {
+  display: flex;
+  width: max-content;
   will-change: transform;
+  
+  /* Anti-jerk hardware acceleration locks */
+  transform: translate3d(0, 0, 0); 
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-/* Ensure the marquee container runs its child animations by default */
-.marquee {
-  animation-play-state: running;
-}
-
-/* Pause all animations on hover */
-.marquee:hover .marquee__item {
-  animation-play-state: paused;
-}
-
-/* Animation direction for LTR vs RTL */
-.marquee--LTR .marquee__item,
-.marquee--LTR-M .marquee__item {
-  animation-direction: normal;
-}
-
-.marquee--RTL .marquee__item,
-.marquee--RTL-M .marquee__item {
-  animation-direction: reverse;
-}
-
-/* Keyframes: animate transform from start to end offset */
-@keyframes marquee-move {
-  to {
-    transform: translateX(var(--marquee-end));
+/* ONLY applies pause-on-hover for devices with a precise mouse/trackpad */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .track-inner {
+    animation-play-state: paused !important;
   }
 }
 
-/* Assign an index to each item for staggered delays */
-.marquee__item {
-  --marquee-item-index: 0; /* Default value */
+.logo-set {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding-right: 64px;
+  flex-shrink: 0;
 }
 
-.marquee__item:nth-of-type(1) { --marquee-item-index: 1; }
-.marquee__item:nth-of-type(2) { --marquee-item-index: 2; }
-.marquee__item:nth-of-type(3) { --marquee-item-index: 3; }
-.marquee__item:nth-of-type(4) { --marquee-item-index: 4; }
-.marquee__item:nth-of-type(5) { --marquee-item-index: 5; }
-.marquee__item:nth-of-type(6) { --marquee-item-index: 6; }
-.marquee__item:nth-of-type(7) { --marquee-item-index: 7; }
-.marquee__item:nth-of-type(8) { --marquee-item-index: 8; }
-.marquee__item:nth-of-type(9) { --marquee-item-index: 9; }
-.marquee__item:nth-of-type(10) { --marquee-item-index: 10; }
+.logo-img {
+  height: 75px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  
+  /* Lock individual images to prevent pixel-snapping during pause */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 
+.row {
+  margin-bottom: 10px;
+}
 
+.row:last-child {
+  margin-bottom: 0;
+}
 
+/* Fix: Enforced translate3d inside keyframes to prevent GPU handoff jitter */
+@keyframes marquee-ltr {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(var(--set-width-neg), 0, 0); }
+}
 
-
+@keyframes marquee-rtl {
+  0%   { transform: translate3d(var(--set-width-neg), 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
   /**
  * --------------------------------------------------
  * Background Gradient and Transparency Mask starts
@@ -379,107 +340,63 @@
 }
 
 
+
+
 /**
  * --------------------------------------------------
- * Rotator Animation Main starts + Key Animations
+ * Modular Orbit Animation System
  * --------------------------------------------------
  */
 
-/* Keyframes */
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
-}
-
-@keyframes rotate-group {
+/* 1. Keyframes */
+@keyframes spinForward {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
-@keyframes pulsing {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
+@keyframes spinBackward {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
-/* GPU Acceleration for Animated Elements */
-[class*="rotating-icon-"],
-[class*="rotating-group-"],
-.pulser {
+@keyframes centerPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+/* 2. Base Setup & GPU Acceleration (Always active) */
+.orbit-ring, 
+.orbit-icon,
+#center-graphic {
+  will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
+  transform-box: fill-box; /* The magic property for perfect SVG centering */
 }
 
-/* Pulser animation */
-.pulser {
-  animation: pulsing 2.5s infinite ease-in-out;
-  transform-origin: center;
-  will-change: transform;
+/* Set standard origins */
+.orbit-ring { transform-origin: center; }
+.orbit-icon, #center-graphic { transform-origin: 50% 50%; }
+
+/* Soft 3D drop shadow for depth */
+.orbit-icon, #center-graphic {
+  filter: drop-shadow(0px 8px 12px rgba(1, 55, 125, 0.15));
 }
 
-/* General rule for all rotating icons when active */
-[class*="rotating-icon-"].active {
-  animation: rotate 45s linear infinite;
-  will-change: transform;
+/* 3. The Animations (ONLY fire when your JS adds .is-playing) */
+.orbit-container.is-playing .orbit-ring {
+  animation: spinForward 45s linear infinite;
 }
 
-/* Individual transform-origin settings for icons */
-.rotating-icon-1 { transform-origin: 140px 690px; }
-.rotating-icon-2 { transform-origin: 1560px 690px; }
-.rotating-icon-3 { transform-origin: 830px 160px; }
-.rotating-icon-4 { transform-origin: 1285px 1475px; }
-.rotating-icon-5 { transform-origin: 450px 1500px; }
-
-.rotating-icon-cloud-1 { transform-origin: 1277.875px 246.9165px; }
-.rotating-icon-cloud-2 { transform-origin: 2324.375px 1522.355px; }
-.rotating-icon-cloud-3 { transform-origin: 2103.055px 627.8995px; }
-.rotating-icon-cloud-4 { transform-origin: 811.776px 2247.195px; }
-.rotating-icon-cloud-5 { transform-origin: 1750.305px 2255.555px; }
-.rotating-icon-cloud-6 { transform-origin: 461.9355px 648.005px; }
-.rotating-icon-cloud-7 { transform-origin: 246.9765px 1478.465px; }
-
-.rotating-icon-vcfo-1 { transform-origin: 1239.445px 222.1165px; }
-.rotating-icon-vcfo-2 { transform-origin: 2256.61px 961.1025px; }
-.rotating-icon-vcfo-3 { transform-origin: 610.8015px 2142.69px; }
-.rotating-icon-vcfo-4 { transform-origin: 1869.11px 2156.72px; }
-.rotating-icon-vcfo-5 { transform-origin: 222.2785px 961.1025px; }
-
-.rotating-icon-audit-1 { transform-origin: 2074.36px 756.806px; }
-.rotating-icon-audit-2 { transform-origin: 222.2785px 1826.08px; }
-.rotating-icon-audit-3 { transform-origin: 1148.3205px 2360.7px; }
-.rotating-icon-audit-4 { transform-origin: 2071.98px 1826.44px; }
-.rotating-icon-audit-5 { transform-origin: 222.2785px 757.9585px; }
-.rotating-icon-audit-6 { transform-origin: 1148.3205px 222.1165px; }
-
-.rotating-icon-legal-1 { transform-origin: 1280.87px 222.1165px; }
-.rotating-icon-legal-2 { transform-origin: 702.6525px 392.1955px; }
-.rotating-icon-legal-3 { transform-origin: 222.2785px 1444.165px; }
-.rotating-icon-legal-4 { transform-origin: 1859.07px 392.1955px; }
-.rotating-icon-legal-5 { transform-origin: 2339.455px 1444.105px; }
-.rotating-icon-legal-6 { transform-origin: 979.56px 2318.055px; }
-.rotating-icon-legal-7 { transform-origin: 2253.695px 847.6795px; }
-.rotating-icon-legal-8 { transform-origin: 472.611px 1992.315px; }
-.rotating-icon-legal-9 { transform-origin: 1582.17px 2318.11px; }
-.rotating-icon-legal-10 { transform-origin: 2089.125px 1992.68px; }
-.rotating-icon-legal-11 { transform-origin: 308.0225px 847.6695px; }
-
-/* Rotating group animations */
-
-/* Groups with a center transform-origin */
-.rotating-group-landing.active,
-.rotating-group-cloud.active,
-.rotating-group-vcfo.active,
-.rotating-group-legal.active {
-  animation: rotate-group 45s linear infinite;
-  transform-origin: center;
-  will-change: transform;
+.orbit-container.is-playing .orbit-icon {
+  animation: spinBackward 45s linear infinite;
 }
 
-/* Special case: Audit group with a custom transform-origin */
-.rotating-group-audit.active {
-  animation: rotate-group 45s linear infinite;
-  transform-origin: 1148.318px 1291.436px;
-  will-change: transform;
+.orbit-container.is-playing #center-graphic {
+  animation: centerPulse 3s ease-in-out infinite;
 }
+
+
 
 
  /**
@@ -1124,5 +1041,111 @@ circle.calendarDots.active:nth-child(11) { animation-delay: 20s; }
 
 
 
+/**
+ * --------------------------------------------------
+ * Smartsourcing Slider Animation Starts
+ * --------------------------------------------------
+ */
+
+.no-scrollbar::-webkit-scrollbar { 
+  display: none; 
+}
+.no-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.is-dragging { 
+  cursor: grabbing !important; 
+  user-select: none;
+}
 
 
+/* Left-to-right reveal line */
+.card-line {
+  clip-path: inset(0 100% 0 0);
+  /* Slowed down the top border line animation */
+  transition: clip-path 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card:hover .card-line,
+.group:hover .card-line {
+  clip-path: inset(0 0% 0 0);
+}
+
+
+.cta-ghost span {
+  display: block;
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.133);
+}
+/**
+ * --------------------------------------------------
+ * Smartsourcing Slider Animation Ends
+ * --------------------------------------------------
+ */
+
+
+
+ /**
+ * --------------------------------------------------
+ * Rotator Animation Main starts + Key Animations
+ * --------------------------------------------------
+ */
+
+/* Keyframes */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes rotate-group {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulsing {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* GPU Acceleration for Animated Elements */
+[class*="rotating-icon-"],
+.rotating-group-landing,
+.pulser {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Pulser animation */
+.pulser {
+  animation: pulsing 2.5s infinite ease-in-out;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* General rule for all rotating icons when active */
+[class*="rotating-icon-"].active {
+  animation: rotate 45s linear infinite;
+  will-change: transform;
+}
+
+/* Individual transform-origin settings for main landing icons */
+.rotating-icon-1 { transform-origin: 140px 690px; }
+.rotating-icon-2 { transform-origin: 1560px 690px; }
+.rotating-icon-3 { transform-origin: 830px 160px; }
+.rotating-icon-4 { transform-origin: 1285px 1475px; }
+.rotating-icon-5 { transform-origin: 450px 1500px; }
+
+/* Rotating group animations */
+
+/* Group with a center transform-origin */
+.rotating-group-landing.active {
+  animation: rotate-group 45s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}

@@ -5,6 +5,45 @@ import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm
 
 export { THREE, Line2, LineMaterial, LineGeometry };
 
+// --- HELPER MATH FUNCTIONS ---
+function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
+  lon += 180;
+  if (lon > 180) lon -= 360;
+
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+
+  const x = -radius * Math.sin(phi) * Math.cos(theta);
+  const y = radius * Math.cos(phi);
+  const z = radius * Math.sin(phi) * Math.sin(theta);
+
+  const radians = THREE.MathUtils.degToRad(tiltAngle);
+  const cosAngle = Math.cos(radians);
+  const sinAngle = Math.sin(radians);
+
+  const tiltedY = y * cosAngle - z * sinAngle;
+  const tiltedZ = y * sinAngle + z * cosAngle;
+
+  return new THREE.Vector3(x, tiltedY, tiltedZ);
+}
+
+// --- COORDINATES ---
+const globeRadius = 1;
+const tiltAngle = 23.5;
+
+// Start Point (New Delhi, India)
+const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
+
+// End Points (Australia Cities)
+const endPoints = [
+  latLonToTiltedVector3(-27.4698, 153.0251, globeRadius, tiltAngle), // Brisbane
+  latLonToTiltedVector3(-31.9505, 115.8605, globeRadius, tiltAngle), // Perth
+  latLonToTiltedVector3(-33.8688, 151.2093, globeRadius, tiltAngle), // Sydney
+  latLonToTiltedVector3(-34.9285, 138.6007, globeRadius, tiltAngle), // Adelaide
+  latLonToTiltedVector3(-37.8136, 144.9631, globeRadius, tiltAngle), // Melbourne
+];
+
+// --- GLOBE SETUP ---
 const containerEl = document.querySelector(".globe-wrapper");
 const canvas3D = containerEl.querySelector("#globe-3d");
 
@@ -13,7 +52,7 @@ let clock, globe, globeMesh;
 let earthTexture, mapMaterial;
 let animationFrameId;
 let globeIsActive = true;
-let opacityObjects = []; // Cache for opacity updates
+let opacityObjects = []; 
 
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
@@ -67,7 +106,6 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(containerEl);
-
 initScene();
 
 function initScene() {
@@ -89,7 +127,7 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 2.8;
+let angle = Math.PI / 3.5;
 const rotationSpeed = 0.05;
 const radius = 1.5;
 
@@ -113,47 +151,86 @@ let initialSize;
 
 function createGlobe() {
   const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
+  
   mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
       uniform sampler2D u_map_tex;
       uniform float u_dot_size, u_time_since_click;
       uniform vec3 u_pointer;
+      
       varying float vOpacity;
       varying vec2 vUv;
+      varying vec3 vWorldPosition;
 
       void main() {
         vUv = uv;
+        
+        // Ensure world position accounts for globe rotation (Coordinate Fix)
+        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+        vWorldPosition = worldPos.xyz; 
+        
         gl_PointSize = u_dot_size * 0.65;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float distToCam = length(mvPosition.xyz);
         vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+        
         float t = max(0.0, u_time_since_click - 0.1);
         float dist = length(position - u_pointer);
         float damping = exp(-20.0 * t);
         float delta = 0.15 * damping * sin(5.0 * t - 3.14159) * (1.0 - smoothstep(0.8, 1.0, dist));
+        
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position * (1.0 + delta), 1.0);
       }
     `,
     fragmentShader: `
       uniform sampler2D u_map_tex;
+      uniform vec3 u_india_pos;
+      uniform vec3 u_aus_pos[5];
+      
       varying float vOpacity;
       varying vec2 vUv;
+      varying vec3 vWorldPosition;
 
       void main() {
-        float visibility = step(0.2, texture2D(u_map_tex, vUv).r);
-        if (visibility < 0.5) discard;
-        vec3 color = texture2D(u_map_tex, vUv).rgb;
-        vec3 originalTint = vec3(0.6, 0.9, 1.3);
-        color = mix(color, originalTint, 0.9);
+        // Read the color of your topological map
+        vec3 mapColor = texture2D(u_map_tex, vUv).rgb;
+        
+        // Is it ocean? 
+        if (mapColor.b > mapColor.r + 0.1 && mapColor.b > mapColor.g + 0.1) discard; 
+        
+        // Set standard color for all other landmasses
+        vec3 color = vec3(0.6, 0.9, 1.3);
+        
+        // Define our new bright green color (R: 0.1, G: 1.0, B: 0.2)
+        vec3 brightGreen = vec3(0.1, 1.0, 0.2);
+        
+        // --- INDIA HEAT MAP ---
+        float distToIndia = distance(vWorldPosition, u_india_pos);
+        float indiaGlow = 1.0 - smoothstep(0.0, 0.35, distToIndia);
+        color = mix(color, brightGreen, indiaGlow); 
+        
+        // --- AUSTRALIA HEAT MAP ---
+        float ausGlow = 0.0;
+        for(int i = 0; i < 5; i++) {
+          float distToAus = distance(vWorldPosition, u_aus_pos[i]);
+          ausGlow += 1.0 - smoothstep(0.0, 0.25, distToAus); 
+        }
+        ausGlow = clamp(ausGlow, 0.0, 1.0); 
+        color = mix(color, brightGreen, ausGlow); 
+
+        // Shape dots into circles
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
         color -= 0.1 * distToCenter;
         float dot = 1.0 - smoothstep(0.48, 0.52, distToCenter);
         if (dot < 0.5) discard;
+        
         gl_FragColor = vec4(color, dot * vOpacity);
       }
     `,
     uniforms: {
       u_map_tex: { type: "t", value: earthTexture },
+      u_india_pos: { type: "v3", value: point1 },
+      u_aus_pos: { type: "v3v", value: endPoints },
       u_dot_size: { type: "f", value: 0.01 },
       u_pointer: { type: "v3", value: new THREE.Vector3(0.0, 0.0, 1) },
       u_time_since_click: { value: 0 }
@@ -209,9 +286,9 @@ const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
 const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
-  const liftedPos = position.normalize().multiplyScalar(1 + elevation);
+  const liftedPos = position.clone().normalize().multiplyScalar(1 + elevation);
   circle.position.copy(liftedPos);
-  quaternion.setFromUnitVectors(up, liftedPos.normalize());
+  quaternion.setFromUnitVectors(up, liftedPos.clone().normalize());
   circle.setRotationFromQuaternion(quaternion);
 }
 
@@ -224,10 +301,10 @@ function createStaticAndPulsingCircles(position, isStartingPoint = false) {
 
   const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial.clone());
   alignCircleToSurface(pulsingCircle, position, elevation);
-  pulsingCircle.position.z -= 0.003;
+  pulsingCircle.translateZ(-0.003); 
 
   scene.add(staticCircle, pulsingCircle);
-  opacityObjects.push(staticCircle, pulsingCircle); // Add to opacity cache
+  opacityObjects.push(staticCircle, pulsingCircle);
 
   pulsingCircle.userData.gsapOpacity = 1;
   animatePulsingCircle(pulsingCircle);
@@ -305,12 +382,13 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
   const liftedEnds = endPoints.map((end) =>
     end.clone().normalize().multiplyScalar(liftFactor)
   );
+  
   liftedEnds.forEach((liftedEnd) => {
     createArc(liftedStart, liftedEnd);
     createStaticAndPulsingCircles(liftedEnd);
   });
 
-  return createStaticAndPulsingCircles(liftedStart);
+  return createStaticAndPulsingCircles(liftedStart, true);
 }
 
 function animateArc(points, start, end, reverse = false) {
@@ -386,56 +464,10 @@ function fadeOutArc(line, material, onComplete) {
   requestAnimationFrame(fade);
 }
 
-function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
-  lon += 180;
-  if (lon > 180) lon -= 360;
-
-  const phi = (90 - lat) * (Math.PI / 180);
-  const theta = (lon + 180) * (Math.PI / 180);
-
-  const x = -radius * Math.sin(phi) * Math.cos(theta);
-  const y = radius * Math.cos(phi);
-  const z = radius * Math.sin(phi) * Math.sin(theta);
-
-  const radians = THREE.MathUtils.degToRad(tiltAngle);
-  const cosAngle = Math.cos(radians);
-  const sinAngle = Math.sin(radians);
-
-  const tiltedY = y * cosAngle - z * sinAngle;
-  const tiltedZ = y * sinAngle + z * cosAngle;
-
-  return new THREE.Vector3(x, tiltedY, tiltedZ);
-}
-
-const globeRadius = 1;
-const tiltAngle = 23.5;
-const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
-
-const endPoints = [
-  latLonToTiltedVector3(53.3498, -6.2603, globeRadius, tiltAngle),
-  latLonToTiltedVector3(51.5074, -0.1278, globeRadius, tiltAngle),
-  latLonToTiltedVector3(46.8182, 8.2275, globeRadius, tiltAngle),
-  latLonToTiltedVector3(25.276987, 55.296249, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-37.8136, 144.9631, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-31.9505, 115.8605, globeRadius, tiltAngle),
-  latLonToTiltedVector3(40.7128, -74.0060, globeRadius, tiltAngle),
-  latLonToTiltedVector3(34.0522, -118.2437, globeRadius, tiltAngle),
-  latLonToTiltedVector3(61.3707, -152.4040, globeRadius, tiltAngle),
-  latLonToTiltedVector3(49.2827, -123.1207, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-22.9068, -43.1729, globeRadius, tiltAngle),
-  latLonToTiltedVector3(3.4372, -76.5226, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-33.9189, 18.4233, globeRadius, tiltAngle),
-  latLonToTiltedVector3(30.0444, 31.2357, globeRadius, tiltAngle),
-  latLonToTiltedVector3(-41.2865, 174.7762, globeRadius, tiltAngle),
-];
-
-createStaticAndPulsingCircles(point1, true);
-
 const baseHeightAboveGlobe = 0.1;
 const heightScaleFactor = 0.3;
 
 function initializeGlobeArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor) {
-  createStaticAndPulsingCircles(startPoint, true);
   delayInitialize(() => {
     createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor);
   }, 500);

@@ -94,12 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
     { className: "flasherObserver", childSelector: ".flasher", customClass: "active" },
     { className: "lineGraphLargeObserver", childSelector: ".lineGraphLarge", customClass: "active" },
     { className: "lineGraphObserver", childSelector: ".lineGraph", customClass: "active" },
+    { className: "orbit-container", customClass: "is-playing", threshold: 0 },
     { className: "infrastructure-trigger", childSelector: ".scaler", customClass: "active" }
   ]);
 
   /*** Logo Carousel Animation Control ***/
   const marquees = cacheElements('.marquee');
-  marquees.forEach(marquee => {SVGMarkerElement
+  marquees.forEach(marquee => {
     const items = marquee.querySelectorAll('.marquee__item');
     marquee.addEventListener('mouseenter', () => {
       items.forEach(item => (item.style.animationPlayState = 'paused'));
@@ -122,51 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.1 });
   marquees.forEach(marquee => marqueeObserver.observe(marquee));
 
-  /*** Rotating Groups Animation Control ***/
-  const groups = [
-    {
-      trigger: ".rotating-group-landing",
-      targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"]
-    },
-    {
-      trigger: ".rotating-group-cloud",
-      targets: [".rotating-icon-cloud-1", ".rotating-icon-cloud-2", ".rotating-icon-cloud-3", ".rotating-icon-cloud-4", ".rotating-icon-cloud-5", ".rotating-icon-cloud-6", ".rotating-icon-cloud-7", ".rotating-group-cloud"]
-    },
-    {
-      trigger: ".rotating-group-vcfo",
-      targets: [".rotating-icon-vcfo-1", ".rotating-icon-vcfo-2", ".rotating-icon-vcfo-3", ".rotating-icon-vcfo-4", ".rotating-icon-vcfo-5", ".rotating-group-vcfo"]
-    },
-    {
-      trigger: ".rotating-group-audit",
-      targets: [".rotating-icon-audit-1", ".rotating-icon-audit-2", ".rotating-icon-audit-3", ".rotating-icon-audit-4", ".rotating-icon-audit-5", ".rotating-icon-audit-6", ".rotating-group-audit"]
-    },
-    {
-      trigger: ".rotating-group-legal",
-      targets: [".rotating-icon-legal-1", ".rotating-icon-legal-2", ".rotating-icon-legal-3", ".rotating-icon-legal-4", ".rotating-icon-legal-5", ".rotating-icon-legal-6", ".rotating-icon-legal-7", ".rotating-icon-legal-8", ".rotating-icon-legal-9", ".rotating-icon-legal-10", ".rotating-icon-legal-11", ".rotating-group-legal"]
-    }
-  ];
-
-  function checkScrollTriggers() {
-    const threshold = window.innerHeight * 0.8;
-    groups.forEach(({ trigger, targets }) => {
-      const triggerElement = document.querySelector(trigger);
-      if (!triggerElement) return;
-
-      const rect = triggerElement.getBoundingClientRect();
-      const isActive = rect.top <= threshold && rect.bottom > 0;
-      const targetElements = cacheElements(targets.join(", "));
-      if (isActive) {
-        targetElements.forEach(el => el.classList.add("active"));
-      } else {
-        targetElements.forEach(el => el.classList.remove("active"));
-      }
-    });
-  }
-
-  const throttledScrollTriggers = throttle(checkScrollTriggers, 100);
-  window.addEventListener("scroll", throttledScrollTriggers);
-  window.addEventListener("resize", throttledScrollTriggers);
-  window.addEventListener("load", checkScrollTriggers);
+  
 
   /*** Counter Animation Control ***/
   const counterObserver = new IntersectionObserver((entries, observerInstance) => {
@@ -216,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /*** Currency Drop Animation Control ***/
   function randomFadeAndReposition() {
     const container = document.querySelector("#currencyContainer");
+    if (!container) return;
     const symbols = ["$", "€", "£", "¥", "₹", "₩", "₽", "₿", "₫", "₺", "₴", "₦"];
     const poolSize = 10;
     const pooledElements = [];
@@ -290,109 +248,507 @@ document.addEventListener("DOMContentLoaded", function () {
   randomFadeAndReposition();
 
   /*** Landing Illustration Bar and Dot Animation Control ***/
-  const barElements = ["#bar1", "#bar2", "#bar3"].map(id => document.querySelector(id));
-  const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"].map(id => document.querySelector(id));
   const animationContainer = document.querySelector("#animationContainer");
+  if (animationContainer) {
+    const barElements = ["#bar1", "#bar2", "#bar3"].map(id => document.querySelector(id));
+    const dotElements = ["#barDot1", "#barDot2", "#barDot3", "#graphDot1", "#graphDot2"].map(id => document.querySelector(id));
 
-  gsap.set(barElements, { transformOrigin: "bottom" });
+    gsap.set(barElements, { transformOrigin: "bottom" });
 
-  const animationTimeline = gsap.timeline({
-    repeat: -1,
-    yoyo: true,
-    yoyoEase: "power1.inOut"
-  })
-    .to(barElements, {
-      keyframes: [
-        { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },
-        { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },
-        { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }
-      ]
+    const animationTimeline = gsap.timeline({
+      repeat: -1,
+      yoyo: true,
+      yoyoEase: "power1.inOut"
     })
-    .to(dotElements, {
-      keyframes: [
-        { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },
-        { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },
-        { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }
-      ]
-    }, 0);
+      .to(barElements, {
+        keyframes: [
+          { scaleY: (i) => [0.6, 0.5, 0.9][i], duration: 1.5 },
+          { scaleY: (i) => [0.5, 1.0, 0.6][i], duration: 1.5 },
+          { scaleY: (i) => [1.0, 0.6, 1.0][i], duration: 1.5 }
+        ]
+      })
+      .to(dotElements, {
+        keyframes: [
+          { y: (i) => [73, 90, 17, 73, 90][i], duration: 1.5 },
+          { y: (i) => [90, 0, 73, 17, 0][i], duration: 1.5 },
+          { y: (i) => [0, 73, 0, 0, 73][i], duration: 1.5 }
+        ]
+      }, 0);
 
-  const containerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) animationTimeline.resume();
-      else animationTimeline.pause();
-    });
-  }, { threshold: 0.1 });
+    const containerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animationTimeline.resume();
+        else animationTimeline.pause();
+      });
+    }, { threshold: 0.1 });
 
-  if (animationContainer) containerObserver.observe(animationContainer);
+    containerObserver.observe(animationContainer);
+  }
 
   /*** Calendar Text Animation Control ***/
-  const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
   const textElement = document.getElementById('calendarText');
-  let currentIndex = 0;
-  let intervalId = null;
+  if (textElement) {
+    const numbers = ["25", "03", "22", "28", "04", "29", "07", "24", "06", "02", "20", "27", "09", "26", "30", "23", "08", "05"];
+    let currentIndex = 0;
+    let intervalId = null;
 
-  function updateText() {
-    textElement.textContent = numbers[currentIndex];
-    textElement.style.opacity = '1';
-    setTimeout(() => textElement.style.opacity = '0', 1000);
-    currentIndex = (currentIndex + 1) % numbers.length;
-  }
-
-  function startUpdates() {
-    if (!intervalId) {
-      intervalId = setInterval(updateText, 2000);
-      updateText();
+    function updateText() {
+      textElement.textContent = numbers[currentIndex];
+      textElement.style.opacity = '1';
+      setTimeout(() => textElement.style.opacity = '0', 1000);
+      currentIndex = (currentIndex + 1) % numbers.length;
     }
-  }
 
-  function stopUpdates() {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
+    function startUpdates() {
+      if (!intervalId) {
+        intervalId = setInterval(updateText, 2000);
+        updateText();
+      }
     }
-  }
 
-  const textObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) startUpdates();
-      else stopUpdates();
+    function stopUpdates() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    const textObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) startUpdates();
+        else stopUpdates();
+      });
     });
-  });
-  textObserver.observe(textElement);
+    textObserver.observe(textElement);
+  }
 
   /*** Cog Wheel Animation Control ***/
   const cog = document.getElementById('cog');
-  cog.style.willChange = 'transform';
+  if (cog) {
+    cog.style.willChange = 'transform';
 
-  const rotationTween = gsap.to(cog, {
-    rotation: 360,
-    duration: 4,
-    ease: 'none',
-    repeat: -1,
-    transformOrigin: '50% 50%',
-    paused: true,
-  });
+    const rotationTween = gsap.to(cog, {
+      rotation: 360,
+      duration: 4,
+      ease: 'none',
+      repeat: -1,
+      transformOrigin: '50% 50%',
+      paused: true,
+    });
 
-  function checkCogInView() {
-    const rect = cog.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    if (rect.top < 0.9 * viewportHeight && rect.bottom > 0.1 * viewportHeight) {
-      if (!rotationTween.isActive()) rotationTween.resume();
-    } else {
-      rotationTween.pause();
+    function checkCogInView() {
+      const rect = cog.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      if (rect.top < 0.9 * viewportHeight && rect.bottom > 0.1 * viewportHeight) {
+        if (!rotationTween.isActive()) rotationTween.resume();
+      } else {
+        rotationTween.pause();
+      }
     }
-  }
 
-  const throttledCogCheck = throttle(checkCogInView, 100);
-  window.addEventListener('scroll', throttledCogCheck);
-  window.addEventListener('resize', throttledCogCheck);
-  window.addEventListener('load', checkCogInView);
+    const throttledCogCheck = throttle(checkCogInView, 100);
+    window.addEventListener('scroll', throttledCogCheck);
+    window.addEventListener('resize', throttledCogCheck);
+    window.addEventListener('load', checkCogInView);
+  }
 
   /*** Float Animation Random Selector ***/
   cacheElements('.float').forEach((element, index) => {
     element.style.setProperty('--n', index + 1);
   });
+
+  /*** Rotating Groups Animation Control ***/
+  const groups = [
+    {
+      trigger: ".rotating-group-landing",
+      targets: [".rotating-icon-1", ".rotating-icon-2", ".rotating-icon-3", ".rotating-icon-4", ".rotating-icon-5", ".rotating-group-landing"]
+    }
+  ];
+
+  function checkScrollTriggers() {
+    const threshold = window.innerHeight * 0.8;
+    groups.forEach(({ trigger, targets }) => {
+      const triggerElement = document.querySelector(trigger);
+      if (!triggerElement) return;
+
+      const rect = triggerElement.getBoundingClientRect();
+      const isActive = rect.top <= threshold && rect.bottom > 0;
+      
+      const targetElements = cacheElements(targets.join(", "));
+      
+      if (isActive) {
+        targetElements.forEach(el => el.classList.add("active"));
+      } else {
+        targetElements.forEach(el => el.classList.remove("active"));
+      }
+    });
+  }
+
+  window.addEventListener('scroll', throttle(checkScrollTriggers, 100));
+  window.addEventListener('resize', throttle(checkScrollTriggers, 100));
+  checkScrollTriggers();
+
+  // Slider navigation overlays click and auto-scroll logic
+  const slideLeft = document.getElementById('slide-left');
+  const slideRight = document.getElementById('slide-right');
+  const sliderEl = document.getElementById('slider');
+
+  if (sliderEl && slideLeft && slideRight) {
+    const getScrollAmount = () => {
+      const card = sliderEl.querySelector('.card');
+      if (!card) return sliderEl.clientWidth;
+      
+      const cardWidth = card.getBoundingClientRect().width;
+      const cardStyle = window.getComputedStyle(card);
+      const marginLeft = parseFloat(cardStyle.marginLeft) || 0;
+      const marginRight = parseFloat(cardStyle.marginRight) || 0;
+      
+      const sliderStyle = window.getComputedStyle(sliderEl);
+      const gap = parseFloat(sliderStyle.columnGap) || parseFloat(sliderStyle.gap) || 0;
+      
+      return cardWidth + marginLeft + marginRight + gap;
+    };
+
+    slideLeft.addEventListener('click', (e) => {
+      e.preventDefault();
+      sliderEl.scrollBy({
+        left: -getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    slideRight.addEventListener('click', (e) => {
+      e.preventDefault();
+      sliderEl.scrollBy({
+        left: getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    // Intersection Observer for Auto-Reset and Auto-Scroll Loop
+    const section = document.getElementById('smartsourcing');
+    if (section && 'IntersectionObserver' in window) {
+      let autoScrollInterval = null;
+      let currentCardIndex = 0;
+      let holdTicks = 0;
+      const cards = sliderEl.querySelectorAll('.card');
+
+      const startAutoScrollLoop = () => {
+        stopAutoScrollLoop();
+        holdTicks = 0;
+        
+        autoScrollInterval = setInterval(() => {
+          if (cards.length === 0) return;
+          
+          const maxScrollLeft = sliderEl.scrollWidth - sliderEl.clientWidth;
+          if (maxScrollLeft <= 10) return; // Slider is not scrollable
+
+          // Check if slider is at the physical scroll limit (last card fully visible)
+          const isAtEnd = sliderEl.scrollLeft >= maxScrollLeft - 15;
+          
+          if (isAtEnd) {
+            holdTicks++;
+            if (holdTicks >= 2) { // Hold on the final card for 2 ticks (6 seconds total) before scrolling back
+              sliderEl.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+              });
+              holdTicks = 0;
+            }
+          } else {
+            holdTicks = 0;
+            
+            // Calculate approx index of the currently resting card
+            const scrollAmount = getScrollAmount();
+            const approxIndex = Math.round(sliderEl.scrollLeft / scrollAmount);
+            let nextIndex = approxIndex + 1;
+            
+            if (nextIndex >= cards.length) {
+              nextIndex = cards.length - 1;
+            }
+            
+            const targetCard = cards[nextIndex];
+            if (targetCard) {
+              const sliderPaddingLeft = parseFloat(window.getComputedStyle(sliderEl).paddingLeft) || 0;
+              sliderEl.scrollTo({
+                left: targetCard.offsetLeft - sliderPaddingLeft,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }, 3000);
+      };
+
+      const stopAutoScrollLoop = () => {
+        if (autoScrollInterval) {
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = null;
+        }
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Instantly reset the slider back to the first slide (absolute beginning)
+            sliderEl.scrollLeft = 0;
+            currentCardIndex = 0;
+            
+            // Wait 500ms and start the loop
+            setTimeout(() => {
+              if (entry.isIntersecting) {
+                startAutoScrollLoop();
+              }
+            }, 500);
+          } else {
+            // Stop/clear the auto-scroll timer immediately
+            stopAutoScrollLoop();
+            // Instantly reset the slider back to the first slide (absolute beginning)
+            sliderEl.scrollLeft = 0;
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      observer.observe(section);
+    }
+  }
+
 });
 
 
 
+const slider = document.getElementById('slider');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+
+if (slider) {
+  const cards = slider.querySelectorAll('.card');
+  const AUTO_MS = 3000;
+  const END_HOLD = 2;
+
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragScrollL = 0;
+  let draggedDist = 0;
+  let userPaused = false;
+  let endHoldCount = 0;
+  let autoTimer = null;
+
+  function updateSliderUI() {
+    if (!slider || !btnPrev || !btnNext) return;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    btnPrev.disabled = slider.scrollLeft <= 10;
+    btnNext.disabled = slider.scrollLeft >= maxScroll - 10;
+  }
+
+  function updateActiveCard() {
+    if (!slider || cards.length === 0) return;
+    const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+    const targetLine = slider.scrollLeft + sliderPaddingLeft + 20;
+
+    let closestCard = cards[0];
+    let minDistance = Infinity;
+
+    cards.forEach(card => {
+      const distance = Math.abs(card.offsetLeft - targetLine);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    cards.forEach(card => {
+      card.classList.toggle('is-active', card === closestCard);
+    });
+  }
+
+  slider.addEventListener('scroll', () => {
+    updateSliderUI();
+    updateActiveCard();
+  }, { passive: true });
+
+  setTimeout(() => {
+    updateSliderUI();
+    updateActiveCard();
+  }, 100);
+
+  slider.addEventListener('wheel', (e) => {
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5;
+    if (!isHorizontal) {
+      e.stopPropagation();
+      window.scrollBy({ top: e.deltaY, behavior: 'instant' });
+    }
+  }, { passive: false });
+
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (draggedDist > 10) return;
+      if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) return;
+
+      userPaused = true;
+      setTimeout(() => userPaused = false, 5000);
+
+      const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+      slider.scrollTo({ left: card.offsetLeft - sliderPaddingLeft, behavior: 'smooth' });
+    });
+  });
+
+  if (btnPrev && btnNext) {
+    btnNext.addEventListener('click', () => { scrollToNextCard(1); });
+    btnPrev.addEventListener('click', () => { scrollToNextCard(-1); });
+  }
+
+  function scrollToNextCard(direction = 1) {
+    if (!slider || cards.length === 0) return;
+
+    const currentCardIndex = Array.from(cards).findIndex(card => card.classList.contains('is-active'));
+    let nextIndex = currentCardIndex + direction;
+
+    if (nextIndex >= cards.length) {
+      endHoldCount++;
+      if (endHoldCount >= END_HOLD) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+        endHoldCount = 0;
+      }
+      return;
+    }
+
+    if (nextIndex < 0) nextIndex = 0;
+
+    const nextCard = cards[nextIndex];
+    const sliderPaddingLeft = parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+    slider.scrollTo({
+      left: nextCard.offsetLeft - sliderPaddingLeft,
+      behavior: 'smooth'
+    });
+    endHoldCount = 0;
+  }
+
+  function tick() {
+    if (userPaused || isDragging || slider.scrollWidth <= slider.clientWidth + 10) return;
+    scrollToNextCard(1);
+  }
+
+  function startAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(tick, AUTO_MS);
+  }
+
+  // startAuto(); // Disabled in favor of viewport auto-scroll loop
+
+
+  slider.addEventListener('touchstart', () => { userPaused = true; }, { passive: true });
+  slider.addEventListener('touchend', () => { setTimeout(() => { userPaused = false; }, 2000); }, { passive: true });
+
+  slider.addEventListener('mousedown', e => {
+    if (slider.scrollWidth <= slider.clientWidth + 10) return;
+    isDragging = true;
+    dragStartX = e.pageX - slider.offsetLeft;
+    dragScrollL = slider.scrollLeft;
+    draggedDist = 0;
+    slider.classList.add('is-dragging');
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.classList.remove('is-dragging');
+  });
+
+  window.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.classList.remove('is-dragging');
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const walk = (e.pageX - slider.offsetLeft - dragStartX) * 1.4;
+    draggedDist = Math.abs(walk);
+    slider.scrollLeft = dragScrollL - walk;
+  });
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const delay = parseFloat(entry.target.dataset.delay || 0);
+        setTimeout(() => entry.target.classList.add('is-visible'), delay);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((card, i) => {
+    card.dataset.delay = i * 80;
+    cardObserver.observe(card);
+  });
+}
+
+
+
+
+
+function cloneSet(srcId, destId) {
+  const src = document.getElementById(srcId);
+  const dest = document.getElementById(destId);
+  
+  if (!src || !dest) return;
+  
+  // 1. Populate the first cloned set (set1b / set2b)
+  dest.innerHTML = src.innerHTML;
+  
+  // 2. Create and append a third set to prevent initial gaps on wide screens for the RTL animation
+  const thirdSet = document.createElement('div');
+  thirdSet.className = 'logo-set';
+  thirdSet.setAttribute('aria-hidden', 'true');
+  thirdSet.innerHTML = src.innerHTML;
+  dest.parentNode.appendChild(thirdSet);
+}
+
+function applyAnimation(innerId, setId, direction, duration) {
+  const inner = document.getElementById(innerId);
+  const set = document.getElementById(setId);
+
+  if (!inner || !set) return;
+
+  // Force a reflow so the browser recalculates layout after clone
+  inner.getBoundingClientRect();
+
+  // Fix: Rounding the width prevents fractional sub-pixel jitter when pausing
+  const setWidth = Math.round(set.getBoundingClientRect().width); 
+  inner.style.setProperty('--set-width-neg', `-${setWidth}px`);
+  
+  // Trigger layout recalculation before applying new animation to ensure smooth start
+  inner.style.animation = 'none';
+  inner.offsetHeight; 
+  inner.style.animation = `marquee-${direction} ${duration}s linear infinite`;
+}
+
+function init(duration) {
+  cloneSet('set1a', 'set1b');
+  cloneSet('set2a', 'set2b');
+
+  // Double rAF — first frame commits the clone to DOM, second measures after layout
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      applyAnimation('inner1', 'set1a', 'ltr', duration);
+      applyAnimation('inner2', 'set2a', 'rtl', duration);
+    });
+  });
+}
+
+// Wait for all images to load before measuring widths and starting
+const allImages = document.querySelectorAll('#set1a img, #set2a img');
+if (allImages.length > 0) {
+  const imagePromises = Array.from(allImages).map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.addEventListener('load', resolve);
+      // Resolves on error so the promise doesn't hang indefinitely if an image 404s
+      img.addEventListener('error', resolve); 
+    });
+  });
+
+  // Starts the carousel. 
+  Promise.all(imagePromises).then(() => init(60));
+}
