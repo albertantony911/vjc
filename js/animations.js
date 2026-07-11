@@ -752,3 +752,128 @@ if (allImages.length > 0) {
   // Starts the carousel. 
   Promise.all(imagePromises).then(() => init(60));
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const openBtn = document.getElementById('open-apollo-modal');
+    const closeBtn = document.getElementById('close-apollo-modal');
+    const modalBackdrop = document.getElementById('apollo-modal-backdrop');
+    const modalContent = document.getElementById('apollo-modal-content');
+
+    // Store the element that had focus before opening the modal
+    let previousActiveElement;
+
+    /**
+     * Opens the modal with Tailwind animations and locks background scroll
+     */
+    const openModal = () => {
+        previousActiveElement = document.activeElement;
+
+        // Display the modal (remove display: none)
+        modalBackdrop.classList.remove('hidden');
+        modalBackdrop.classList.add('flex'); // Switch to flexbox for centering
+        
+        // Trigger a reflow so the browser registers the display change before applying transitions
+        void modalBackdrop.offsetWidth;
+
+        // Apply transition classes (Fade in and scale up)
+        modalBackdrop.classList.remove('opacity-0');
+        modalBackdrop.classList.add('opacity-100');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+
+        // Prevent body scrolling
+        document.body.style.overflow = 'hidden';
+
+        // Listen for keyboard events (Escape to close, Tab to trap focus)
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Set initial focus to the close button for accessibility
+        closeBtn.focus();
+    };
+
+    /**
+     * Closes the modal, restores scrolling, and returns focus
+     */
+    const closeModal = () => {
+        // Reverse transition classes
+        modalBackdrop.classList.remove('opacity-100');
+        modalBackdrop.classList.add('opacity-0');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+
+        // Wait for the transition duration (300ms) before hiding completely
+        setTimeout(() => {
+            modalBackdrop.classList.remove('flex');
+            modalBackdrop.classList.add('hidden');
+            
+            // Restore background scrolling
+            document.body.style.overflow = '';
+            
+            // Return focus to the CTA button
+            if (previousActiveElement) {
+                previousActiveElement.focus();
+            }
+        }, 300);
+
+        // Clean up event listeners
+        document.removeEventListener('keydown', handleKeyDown);
+    };
+
+    /**
+     * Handles keyboard events for accessibility (Focus trapping and Escape key)
+     */
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+
+        // Focus Trap Logic for accessibility
+        if (e.key === 'Tab') {
+            // Re-query focusable elements dynamically to catch Apollo's injected iframes/inputs
+            const focusableElements = modalBackdrop.querySelectorAll(
+                'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
+            );
+            
+            if (focusableElements.length === 0) return;
+
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey) { // Shift + Tab
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else { // Standard Tab
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    };
+
+    // --- Event Listeners --- //
+
+    // 1. Open on CTA click
+    if (openBtn) {
+        openBtn.addEventListener('click', openModal);
+    }
+
+    // 2. Close on (X) button click
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    // 3. Close on clicking outside the modal content
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) {
+                closeModal();
+            }
+        });
+    }
+});
