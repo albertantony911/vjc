@@ -6,6 +6,10 @@
   
   script.onload = function() {
     try {
+      var skeleton = document.getElementById('apollo-skeleton');
+      if (skeleton) {
+        skeleton.style.display = 'none';
+      }
       window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
     } catch (err) {
       console.error('[Apollo] Error initializing form builder:', err);

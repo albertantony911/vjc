@@ -45,7 +45,7 @@
   <script src="../js/apollo-engine.js" defer></script>
 </head>
 
-<body class="scroll-smooth mx-auto leading-normal">
+<body class="scroll-smooth mx-auto leading-normal min-h-screen flex flex-col">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCQ4HSZ4"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -269,7 +269,7 @@
       </nav>
     </header>
 
-    <main class="bg-darkBlue">
+    <main class="bg-darkBlue flex-grow">
       <section class="sm:pt-[15svh] sm:pb-[7svh] sm:px-[6svw] w-full mx-auto py-10 px-4 flex flex-col items-center" role="region" aria-labelledby="formSectionHeading">
         <div class="text-center mb-10 text-white">
           <h1 id="formSectionHeading" class="text-3xl sm:text-5xl font-bold uppercase tracking-wider">Schedule Your Trial</h1>
@@ -278,13 +278,48 @@
         
         <!-- Form Container (Card Design) -->
         <div class="bg-white rounded-[2.5rem] shadow-[0px_7px_20px_0px_rgba(138,43,226,0.4)] max-w-3xl mx-auto w-full p-6 md:p-10">
+          <!-- Skeleton Loader -->
+          <div id="apollo-skeleton" class="animate-pulse space-y-6">
+            <div class="h-6 bg-slate-200 rounded-md w-1/3"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <div class="h-4 bg-slate-200 rounded-md w-1/4"></div>
+                <div class="h-10 bg-slate-100 rounded-xl border border-slate-200/50"></div>
+              </div>
+              <div class="space-y-2">
+                <div class="h-4 bg-slate-200 rounded-md w-1/4"></div>
+                <div class="h-10 bg-slate-100 rounded-xl border border-slate-200/50"></div>
+              </div>
+              <div class="space-y-2">
+                <div class="h-4 bg-slate-200 rounded-md w-1/4"></div>
+                <div class="h-10 bg-slate-100 rounded-xl border border-slate-200/50"></div>
+              </div>
+              <div class="space-y-2">
+                <div class="h-4 bg-slate-200 rounded-md w-1/4"></div>
+                <div class="h-10 bg-slate-100 rounded-xl border border-slate-200/50"></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="h-4 bg-slate-200 rounded-md w-1/4"></div>
+              <div class="h-40 bg-slate-50 rounded-2xl border border-slate-200/30 flex items-center justify-center">
+                <div class="space-y-3 w-11/12">
+                  <div class="h-3 bg-slate-200 rounded-md w-full"></div>
+                  <div class="h-3 bg-slate-200 rounded-md w-5/6"></div>
+                  <div class="h-3 bg-slate-200 rounded-md w-4/5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-end pt-4">
+              <div class="h-12 bg-slate-200 rounded-full w-40"></div>
+            </div>
+          </div>
           <div id="apollo-forms"></div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="text-white bg-darkBlue border-t border-white/10 flex flex-col text-sm font-normal landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]" role="contentinfo">
+    <footer class="text-white bg-darkBlue flex flex-col text-sm font-normal landscape:xl:px-[8svh] landscape:md:px-[2svh] portrait:sm:px-[1svw]" role="contentinfo">
       <style>
           @keyframes subtle-glow {
               0%, 100% { box-shadow: 0 0 5px rgba(0, 166, 81, 0); }
