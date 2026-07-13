@@ -25,29 +25,53 @@
     observer.observe(targetNode, { childList: true });
   }
 
-  var nocache = Math.random().toString(36).substring(7);
-  var script = document.createElement('script');
-  script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
-  script.async = true;
-  
-  script.onload = function() {
-    try {
-      window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
-    } catch (err) {
-      console.error('[Apollo] Error initializing form builder:', err);
-      // Fallback: hide skeleton if init fails
+  // Load script only if #apollo-forms is present
+  if (targetNode) {
+    var nocache = Math.random().toString(36).substring(7);
+    var script = document.createElement('script');
+    script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
+    script.async = true;
+    
+    script.onload = function() {
+      try {
+        window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+      } catch (err) {
+        console.error('[Apollo] Error initializing form builder:', err);
+        if (skeleton) {
+          skeleton.style.display = 'none';
+        }
+      }
+    };
+    
+    script.onerror = function() {
+      console.error('[Apollo] Failed to load form builder script');
       if (skeleton) {
         skeleton.style.display = 'none';
       }
-    }
+    };
+    
+    document.head.appendChild(script);
+  }
+
+  // Phase 1: Expose loadApolloMeetingsWidget globally
+  window.loadApolloMeetingsWidget = function() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://assets.apollo.io/js/meetings/meetings-widget.js';
+    script.defer = true;
+    script.onload = function() {
+      if (window.ApolloMeetings && window.ApolloMeetings.initWidget) {
+        window.ApolloMeetings.initWidget({
+          appId: "6a4ba00e5236e4000c186324",
+          schedulingLink: "934-b72-m2t"
+        });
+      } else {
+        console.error('[Apollo] ApolloMeetings is not available');
+      }
+    };
+    script.onerror = function() {
+      console.error('[Apollo] Failed to load meetings widget script');
+    };
+    document.head.appendChild(script);
   };
-  
-  script.onerror = function() {
-    console.error('[Apollo] Failed to load form builder script');
-    if (skeleton) {
-      skeleton.style.display = 'none';
-    }
-  };
-  
-  document.head.appendChild(script);
 })();

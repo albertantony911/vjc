@@ -1030,6 +1030,12 @@
   .h-14 {
     height: calc(var(--spacing) * 14);
   }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
   .h-30 {
     height: calc(var(--spacing) * 30);
   }
@@ -3001,6 +3007,11 @@
       @media (hover: hover) {
         --tw-shadow-color: color-mix(in oklab, var(--color-white) 30%, transparent);
       }
+    }
+  }
+  .focus\:border-darkGreen {
+    &:focus {
+      border-color: var(--color-darkGreen);
     }
   }
   .focus\:bg-white {
