@@ -1546,6 +1546,9 @@
   .scroll-smooth {
     scroll-behavior: smooth;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
@@ -2385,6 +2388,9 @@
     &::placeholder {
       color: var(--color-gray-400);
     }
+  }
+  .accent-darkGreen {
+    accent-color: var(--color-darkGreen);
   }
   .opacity-0 {
     opacity: 0%;
@@ -3696,6 +3702,11 @@
     @media (width >= 40rem) {
       --tw-translate-y: 35%;
       translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   .sm\:flex-row {
