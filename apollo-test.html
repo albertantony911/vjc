@@ -10,27 +10,29 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WCQ4HSZ4');</script>
       <!-- End Google Tag Manager -->
-       <script>
-  (function() {
+<script>
+(function() {
     var nocache = Math.random().toString(36).substring(7);
     var script = document.createElement('script');
     script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
     script.async = true;
-    
+
     script.onload = function() {
-      try {
-        window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
-      } catch (err) {
-        console.error('[Apollo] Error initializing form builder:', err);
-      }
+        try {
+            window.ApolloInbound.forms.init({
+                appId: '6a4b71010953ed001c11dfbe'
+            });
+        } catch (err) {
+            console.error('[Apollo] Error initializing form builder:', err);
+        }
     };
-    
+
     script.onerror = function() {
-      console.error('[Apollo] Failed to load form builder script');
+        console.error('[Apollo] Failed to load form builder script');
     };
-    
+
     document.head.appendChild(script);
-  })();
+})();
 </script>
 
 
@@ -584,12 +586,9 @@
                 </p>
               </div>
               <div class="flex flex-col sm:flex-row gap-[3vw] sm:gap-[2svh] portrait:gap-[2svh] landscape:gap-[2svh]">
-                <button type="button" id="schedule-button-header-home" onclick="loadApolloForm(event)" aria-label="Schedule a Meeting with Us on Outlook" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-white hover:text-darkBlue active:bg-white active:text-darkBlue text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-100 transform bg-darkGreen rounded-full select-none delayed-link">
+                <button id="apollo-forms" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-white hover:text-darkBlue active:bg-white active:text-darkBlue text-white text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.5svw] py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[2svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] transition-transform duration-100 transform bg-darkGreen rounded-full select-none delayed-link">
                   Start Your Smartsourcing Trial
                 </button>
-                <div id="apollo-form-container" style="display: none; width: 100%; max-width: 500px; margin-top: 1rem;">
-                  <div id="apollo-forms"></div>
-                </div>
                 <a id="secondary-button-header-home" data-track="button" data-action="contact" href="./contact"
                   aria-label="Talk to Our Growth & Partnerships team" class="text-center whitespace-nowrap focus-visible:outline-2 focus-visible:outline-lightBlue 
                           hover:scale-105 active:scale-105 shadow-md hover:shadow-lg 
