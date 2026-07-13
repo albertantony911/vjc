@@ -2691,6 +2691,9 @@
   .\[mask-image\:linear-gradient\(to_right\,black_0\%\,transparent_100\%\)\] {
     mask-image: linear-gradient(to right,black 0%,transparent 100%);
   }
+  .\[x\:y\1b \] {
+    x: y;
+  }
   .select-none {
     -webkit-user-select: none;
     user-select: none;
