@@ -725,6 +725,9 @@
   .m-0 {
     margin: calc(var(--spacing) * 0);
   }
+  .m-9 {
+    margin: calc(var(--spacing) * 9);
+  }
   .m-auto {
     margin: auto;
   }
