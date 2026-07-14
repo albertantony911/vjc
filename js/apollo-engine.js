@@ -25,32 +25,41 @@
     observer.observe(targetNode, { childList: true });
   }
 
-  // Load script only if #apollo-forms is present
-  if (targetNode) {
-    var nocache = Math.random().toString(36).substring(7);
-    var script = document.createElement('script');
-    script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
-    script.async = true;
-    
-    script.onload = function() {
+  // Load script if #apollo-forms or #footer-newsletter-form is present
+  var footerForm = document.getElementById('footer-newsletter-form');
+  if (targetNode || footerForm) {
+    if (window.ApolloInbound) {
       try {
         window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
       } catch (err) {
         console.error('[Apollo] Error initializing form builder:', err);
+      }
+    } else {
+      var nocache = Math.random().toString(36).substring(7);
+      var script = document.createElement('script');
+      script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
+      script.async = true;
+      
+      script.onload = function() {
+        try {
+          window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+        } catch (err) {
+          console.error('[Apollo] Error initializing form builder:', err);
+          if (skeleton) {
+            skeleton.style.display = 'none';
+          }
+        }
+      };
+      
+      script.onerror = function() {
+        console.error('[Apollo] Failed to load form builder script');
         if (skeleton) {
           skeleton.style.display = 'none';
         }
-      }
-    };
-    
-    script.onerror = function() {
-      console.error('[Apollo] Failed to load form builder script');
-      if (skeleton) {
-        skeleton.style.display = 'none';
-      }
-    };
-    
-    document.head.appendChild(script);
+      };
+      
+      document.head.appendChild(script);
+    }
   }
 
   // Phase 1: Expose loadApolloMeetingsWidget globally

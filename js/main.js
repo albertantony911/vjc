@@ -260,4 +260,20 @@ function initCookieBanner(attempt = 0) {
     });
 }
 
-window.addEventListener('load', initCookieBanner);
+function initApolloEngine() {
+    if (!document.querySelector('script[src*="apollo-engine.js"]')) {
+        const mainScript = document.querySelector('script[src*="js/main.js"]');
+        const srcAttr = mainScript ? mainScript.getAttribute('src') : '';
+        const prefix = srcAttr.startsWith('../') ? '../' : './';
+        
+        var script = document.createElement('script');
+        script.src = prefix + 'js/apollo-engine.js';
+        script.defer = true;
+        document.head.appendChild(script);
+    }
+}
+
+window.addEventListener('load', function() {
+    initCookieBanner();
+    initApolloEngine();
+});
