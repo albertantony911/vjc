@@ -1,4 +1,46 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/about.html",
+      "destination": "/about-us.html",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-accounting-and-bookkeeping.html",
+      "destination": "/solutions/bookkeeping-outsourcing.html",
+      "permanent": true
+    },
+    {
+      "source": "/tax-planning-and-compliance.html",
+      "destination": "/solutions/tax-compliance-outsourcing.html",
+      "permanent": true
+    },
+    {
+      "source": "/virtual-chief-financial-officer.html",
+      "destination": "/solutions/year-end-financials-outsourcing.html",
+      "permanent": true
+    },
+    {
+      "source": "/audit-and-assurance-services.html",
+      "destination": "/solutions/year-end-financials-outsourcing.html",
+      "permanent": true
+    },
+    {
+      "source": "/legal-process-outsourcing.html",
+      "destination": "/about-us.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/resources",
+      "destination": "https://resources-vjcindia-9clx-omega.vercel.app/resources"
+    },
+    {
+      "source": "/resources/:match*",
+      "destination": "https://resources-vjcindia-9clx-omega.vercel.app/resources/:match*"
+    }
+  ]
 }
