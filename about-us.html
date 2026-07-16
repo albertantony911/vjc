@@ -15,8 +15,8 @@
   <meta http-equiv="Content-Language" content="en">
   <meta name="robots" content="index, follow">
 
-  <title>About Us | Smartsourcing Solutions for Australian Accountants | VJC Partners</title>
-  <meta name="description" content="VJC India provides expert offshore business solutions, including accounting, legal outsourcing, and tax compliance. Grow your business with us today.">
+  <title>About VJC Partners | Smartsourcing for Australian Firms</title>
+  <meta name="description" content="VJC Partners has supported accounting practices since 1988. Meet the leadership team and see how our Smartsourcing model works for Australian firms.">
   <link rel="canonical" href="https://www.vjcpartners.com/about-us">
 
   <!-- Blog Sitemap -->
@@ -260,7 +260,14 @@
 
     <ul id="mainMenu" class=" font-[300] shadow-md text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
       <li class="md:mt-20 mt-[10svh]"><a href="/">HOME</a></li>
-      <li class="flex flex-row items-center gap-1" id="aboutMenu"><a href="#">ABOUT US</a></li>
+      <li class="flex flex-row items-center gap-1" id="aboutMenu">
+        <a href="./about-us">ABOUT US</a>
+        <button id="aboutMenuToggle" class="p-1 cursor-pointer flex items-center justify-center" aria-label="Toggle About Us Submenu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-current opacity-70" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </li>
       <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
       <li><a href="./engagement-models">ENGAGEMENT MODELS</a></li>
       <li class="mt-10"><a href="./contact">CONTACT</a></li>
@@ -314,9 +321,9 @@
     </li>
     
     <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-      <a href="./about-us" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+      <a href="./about-us" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
         <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">About Us</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </a>
@@ -493,11 +500,12 @@
       </header>
 
     <main>
-        
-        
-
+                
         
 
+        
+
+        <h1 class="sm:text-[4.5svh] portrait:sm:text-[4svw] text-[6vw] font-bold text-center uppercase tracking-wide text-darkGreen pt-[5svh] pb-[2svh] px-10 block w-full max-w-[110rem] mx-auto">About VJC Partners</h1>
         <section id="our-journey" class="md:px-16 portrait:sm:pl-10 portrait:sm:pr-16  pr-8 pl-2 flex flex-col  pt-5  items-start">
             <div class="flex   ">
         
@@ -861,11 +869,12 @@
                 
                 
                     <div class=" flex flex-col text-darkBlue  sm:w-[50%] portrait:sm:w-[95%] justify-center w-full text-left  portrait:sm:pb-10 ">
+
                 
-                        <h1 class="sm:text-[3.5svh] uppercase  portrait:sm:text-[3.3svw] text-[5.5vw] font-bold text-left leading-normal"
+                        <h2 class="sm:text-[3.5svh] uppercase  portrait:sm:text-[3.3svw] text-[5.5vw] font-bold text-left leading-normal"
                             aria-label="Main Title">
                             38 year old legacy
-                        </h1>
+                        </h2>
                         <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                             aria-label="Hero Description">
                             VJC was established in 1988 as a Chartered Accountancy firm and has been delivering accounting, audit and tax services for nearly 40 years. Building on humble beginnings, the firm today stands as an all-inclusive institution offering wide array of solutions including accounting, auditing, taxation, corporate compliance, and business consultancy. Our journey in Australia began in 2023 with a request from an accounting firm in Perth to prepare an Australian tax return. We approached the engagement with the same commitment to quality, accuracy and professionalism that has been at the heart of VJC since day one. That one engagement led to another referral, then another, and before long we found ourselves supporting a growing number of Australian accounting practices.
@@ -1337,10 +1346,10 @@
         
                     <div class=" flex flex-col text-darkBlue  sm:w-[50%] landscape:sm:py-10 portrait:sm:pb-10  justify-center w-full text-left portrait:sm:w-[95%]">
         
-                        <h1 class="sm:text-[3.5svh] uppercase   portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left leading-normal"
+                        <h2 class="sm:text-[3.5svh] uppercase   portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left leading-normal"
                             aria-label="Main Title">
                             Smartsourcing for Australian Accountants
-                        </h1>
+                        </h2>
                         <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                             aria-label="Hero Description">
                             At VJC Partners, we believe the core compliance work of an Australian accounting firm should only be handled by qualified professionals who treat the work with the same ownership and responsibility as your internal team.
@@ -1384,10 +1393,10 @@
         
                     <div class=" flex flex-col text-darkBlue   justify-center  portrait:sm:w-full text-left ">
                     
-                        <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] uppercase font-bold text-left leading-normal"
+                        <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw] uppercase font-bold text-left leading-normal"
                             aria-label="Main Title">
                             Our Leaders
-                        </h1>
+                        </h2>
                         <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                             aria-label="Hero Description">
                             At VJC, we take pride in our team of elite financial professionals, positioning us as a premier
@@ -1465,7 +1474,7 @@
                     <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-[3px] border-white z-10 transition-colors duration-500"
                           :class="step >= 1 ? 'bg-darkGreen shadow-md' : 'bg-slate-200'"></span>
                     <div class="pl-8 md:pl-10">
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">1988 — Founded VJC</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">1988 — Founded VJC</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Founded V. Jaiswal & Co. after qualifying as one of the youngest Chartered Accountants of his time in India.</p>
                     </div>
                 </div>
@@ -1475,7 +1484,7 @@
                     <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-[3px] border-white z-10 transition-colors duration-500"
                           :class="step >= 2 ? 'bg-darkGreen shadow-md' : 'bg-slate-200'"></span>
                     <div class="pl-8 md:pl-10">
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Early Career</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Early Career</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Completed articleship with S. R. Batliboi & Co. before returning to Ambikapur to build a quality-focused accounting practice.</p>
                     </div>
                 </div>
@@ -1485,7 +1494,7 @@
                     <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-[3px] border-white z-10 transition-colors duration-500"
                           :class="step >= 3 ? 'bg-darkGreen shadow-md' : 'bg-slate-200'"></span>
                     <div class="pl-8 md:pl-10">
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Building an Institution</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Building an Institution</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Spent over 38 years building a trusted advisory-led firm focused on integrity, discipline, and long-term client relationships.</p>
                     </div>
                 </div>
@@ -1495,7 +1504,7 @@
                     <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-[3px] border-white z-10 transition-colors duration-500"
                           :class="step >= 4 ? 'bg-darkGreen shadow-md' : 'bg-slate-200'"></span>
                     <div class="pl-8 md:pl-10">
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Community & Leadership</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Community & Leadership</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Actively supports healthcare and community initiatives, including helping cardiac patients access financial assistance and treatment guidance across the region.</p>
                     </div>
                 </div>
@@ -1504,7 +1513,7 @@
                     <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-[3px] border-white z-10 transition-colors duration-500"
                           :class="step >= 5 ? 'bg-darkGreen shadow-md animate-pulse' : 'bg-slate-200'"></span>
                     <div class="pl-8 md:pl-10">
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkGreen tracking-wide uppercase mb-0.5">Today</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkGreen tracking-wide uppercase mb-0.5">Today</h4>
                         <p class="text-darkBlue/80 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Continues to mentor the next generation of professionals while guiding the vision and culture of VJC.</p>
                     </div>
                 </div>
@@ -1552,7 +1561,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Academic Excellence</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Academic Excellence</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Qualified Chartered Accountant and Company Secretary with an MBA from Narsee Monjee Institute of Management Studies, graduating as a Gold Medalist and Dean’s List recipient.</p>
                     </div>
                 </div>
@@ -1564,7 +1573,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Big Four Experience</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Big Four Experience</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Worked with Deloitte in Financial Advisory, specialising in forensic investigations, dispute advisory, and financial analysis.</p>
                     </div>
                 </div>
@@ -1576,7 +1585,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Driving Growth at VJC</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Driving Growth at VJC</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Joined VJC in 2021 and leads growth, operations, and process excellence with a focus on transparency, quality, and client experience.</p>
                     </div>
                 </div>
@@ -1588,7 +1597,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Leadership Style</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Leadership Style</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Known for combining operational discipline with empathy, mentorship, and long-term relationship building.</p>
                     </div>
                 </div>
@@ -1633,7 +1642,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Strong Financial Foundation</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Strong Financial Foundation</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Qualified Chartered Accountant and Company Secretary, with CFA Level I certification from the CFA Institute.</p>
                     </div>
                 </div>
@@ -1645,7 +1654,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Investment Banking Experience</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Investment Banking Experience</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Worked with Bank of America as an Investment Banking Analyst, focusing on valuation modelling, financial analysis, and transaction advisory.</p>
                     </div>
                 </div>
@@ -1657,7 +1666,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Consulting & Operations</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Consulting & Operations</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Leads operations at VJC with emphasis on business planning, workflow optimisation, and strategic execution.</p>
                     </div>
                 </div>
@@ -1669,7 +1678,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Beyond Work</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Beyond Work</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">An active market enthusiast who enjoys strategy, business discussions, badminton, and lawn tennis.</p>
                     </div>
                 </div>
@@ -1714,7 +1723,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Legal & Corporate Background</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Legal & Corporate Background</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Qualified lawyer with degrees from Hidayatullah National Law University and Narsee Monjee Institute of Management Studies.</p>
                     </div>
                 </div>
@@ -1726,7 +1735,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Diverse Exposure</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Diverse Exposure</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Gained experience through internships with organisations including Securities and Exchange Board of India and National Stock Exchange of India.</p>
                     </div>
                 </div>
@@ -1738,7 +1747,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">People & Culture</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">People & Culture</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Leads people operations and internal administration at VJC, helping shape a collaborative, disciplined, and people-first culture.</p>
                     </div>
                 </div>
@@ -1750,7 +1759,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Beyond the Office</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Beyond the Office</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Passionate about philosophy, music, and conversations that bring depth and perspective to everyday life.</p>
                     </div>
                 </div>
@@ -1795,7 +1804,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Client Experience Focus</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Client Experience Focus</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Works closely with Australian accounting firms to ensure smooth communication, coordination, and engagement delivery.</p>
                     </div>
                 </div>
@@ -1807,7 +1816,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Relationship Management</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Relationship Management</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Acts as a bridge between clients and internal teams, helping maintain responsiveness, clarity, and seamless collaboration.</p>
                     </div>
                 </div>
@@ -1819,7 +1828,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Team Energy</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Team Energy</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Known for her bright personality, positive attitude, and ability to make people feel comfortable and supported.</p>
                     </div>
                 </div>
@@ -1831,7 +1840,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Outside Work</h5>
+                        <h4 class="text-[3.5vw] sm:text-[1.8svh] portrait:sm:text-[1.8svw] font-bold text-darkBlue tracking-wide uppercase mb-0.5">Outside Work</h4>
                         <p class="text-darkBlue/70 text-[3.5vw] sm:text-[1.7svh] portrait:sm:text-[1.8svw] font-light leading-snug">Enjoys dance, pop culture, and creative expression that reflect her energetic and cheerful personality.</p>
                     </div>
                 </div>
@@ -2024,10 +2033,10 @@
                         <div
                             class="md:w-[60%] portrait:sm:w-full  max-md:h-[52svh]  max-md:justify-start flex flex-col  text-darkBlue  justify-center w-full text-left mx-auto">
                     
-                            <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left uppercase leading-normal"
+                            <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left uppercase leading-normal"
                                 aria-label="Main Title">
                                 Information Security
-                            </h1>
+                            </h2>
                             <p class="  text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                                 aria-label="Hero Description">
                                 At VJC Partners, security is not an afterthought, it is embedded into our infrastructure, processes, and day-to-day operations. Our framework is aligned with ISO 27001:2022 standards and operated in line with the Australian Privacy Principles (APPs) under the Privacy Act 1988 (Cth), ensuring secure and responsible handling of Australian client data. 
@@ -2495,10 +2504,10 @@
                         <div
                             class="md:w-[60%] portrait:sm:w-full  max-md:h-[30svh]  max-md:justify-start flex flex-col  text-darkBlue  justify-center w-full text-left mx-auto">
                     
-                            <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left uppercase leading-normal"
+                            <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  font-bold text-left uppercase leading-normal"
                                 aria-label="Main Title">
                                 Workforce Integrity
-                            </h1>
+                            </h2>
                             <p class="  text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                                 aria-label="Hero Description">
                                 Workforce integrity is maintained through identity verification, background screening, confidentiality commitments, and mandatory cybersecurity training for every team member. Personal devices and external storage are prohibited within production environments to strengthen APP-aligned confidentiality and access control practices. 
@@ -2959,10 +2968,10 @@
                         <div
                             class="md:w-[60%] portrait:sm:w-full  max-md:h-[32svh]  flex flex-col  text-darkBlue  justify-center w-full text-left mx-auto">
                     
-                            <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.2vw] uppercase font-bold text-left leading-normal"
+                            <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.2vw] uppercase font-bold text-left leading-normal"
                                 aria-label="Main Title">
                                 Operational Management
-                            </h1>
+                            </h2>
                             <p class="  text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                                 aria-label="Hero Description">
                                 Our operational management framework includes dedicated client oversight, workflow tracking, centralized IT management, controlled system governance, and structured delivery monitoring to ensure accountability, consistency, and seamless collaboration across teams and time zones.
@@ -3363,10 +3372,10 @@
                         <div
                             class="md:w-[60%] portrait:sm:w-full  max-md:h-[28svh]  flex flex-col  text-darkBlue  justify-center w-full text-left mx-auto">
                     
-                            <h1 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] uppercase text-[5.2vw]  font-bold text-left leading-normal"
+                            <h2 class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] uppercase text-[5.2vw]  font-bold text-left leading-normal"
                                 aria-label="Main Title">
                                 Physical Infrastructure
-                            </h1>
+                            </h2>
                             <p class="  text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal "
                                 aria-label="Hero Description">
                                 Our physical infrastructure is designed for secure and uninterrupted operations, with biometric access controls, 24/7 CCTV surveillance, access-controlled server rooms, backup power systems, and segmented network environments.

@@ -19,8 +19,8 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- SEO Meta -->
-  <title>Tax Compliance Outsourcing | Smartsourcing Solutions for Australian Accountants | VJC Partners</title>
-  <meta name="description" content="Optimize your tax strategy with VJC India’s expert tax planning and regulatory compliance services for global businesses.">
+  <title>Tax Compliance Outsourcing for Australian Accounting Firms | VJC Partners</title>
+  <meta name="description" content="VJC prepares individual, company, trust and partnership tax return workpapers for Australian accounting firms, ready for review and lodgement.">
   <link rel="canonical" href="https://www.vjcpartners.com/solutions/tax-compliance-outsourcing">
   <link rel="sitemap" type="application/xml" href="https://resources.vjcpartners.com/sitemap.xml" />
 
@@ -202,6 +202,55 @@
   ]
 }
   </script>
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you lodge tax returns on behalf of our firm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. VJC prepares lodgement-ready tax workpapers and return support. Your registered tax agent reviews, approves and lodges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What engagement models do you offer for seasonal tax compliance support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For peak lodgement periods, VJC offers Seasonal Surge Support on a job-by-job basis. This works well when your firm needs extra preparation capacity during busy periods without a fixed monthly commitment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work inside our tax software and Xero Practice Manager?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We work inside your tax software, Xero Practice Manager, templates, job stages, document trail and review process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you help with client queries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We prepare clear query lists with account references, source document gaps and tax treatment notes. Where authorised, we can also assist with client follow-up communication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you help firms avoid deadline pressure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We support tax work year-round, track open queries, maintain document trails and prepare files progressively so your firm is not forced into unnecessary extensions or deferrals."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 
 
@@ -239,7 +288,14 @@
 
     <ul id="mainMenu" class=" font-[300] shadow-md text-white z-20 flex flex-col items-center px-[15vw] justify-center h-screen gap-[2.7vw] text-[5.5vw] md:text-[3vw] landscape:sm:text-2xl antialiased">
       <li class="md:mt-20 mt-[10svh]"><a href="../">HOME</a></li>
-      <li class="flex flex-row items-center gap-1" id="aboutMenu"><a href="#">ABOUT US</a></li>
+      <li class="flex flex-row items-center gap-1" id="aboutMenu">
+        <a href="../about-us">ABOUT US</a>
+        <button id="aboutMenuToggle" class="p-1 cursor-pointer flex items-center justify-center" aria-label="Toggle About Us Submenu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-current opacity-70" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </li>
       <li class="flex flex-row items-center gap-1" id="servicesMenu"><a href="#">SOLUTIONS</a></li>
       <li><a href="../engagement-models">ENGAGEMENT MODELS</a></li>
       <li class="mt-10"><a href="../contact">CONTACT</a></li>
@@ -293,9 +349,9 @@
     </li>
     
     <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-      <a href="../about-us" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+      <a href="../about-us" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
         <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">About Us</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </a>
@@ -1165,10 +1221,10 @@
         <div class=" ">
           <div 
             class="sm:w-full  border-darkGreen border-2 flex p-6  md:py-[3.5svh] flex-col gap-1 justify-center  w-full text-center   md:rounded-[3.5rem] rounded-[3.5rem] bg-white   shadow-md mx-auto">
-            <h1 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw]  text-[5.5vw] uppercase font-bold text-center leading-normal"
+            <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw]  text-[5.5vw] uppercase font-bold text-center leading-normal"
               aria-label="Main Title">
               VJC's Smartsourcing Approach
-            </h1>
+            </h2>
             <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw]  font-light leading-normal"
               aria-label="Hero Description">
               Tax compliance is not a copy-forward exercise. <br><br>
@@ -1397,10 +1453,10 @@ VJC refers to prior-year workpapers, but every file is reviewed for current-year
 
           
 
-          <div role="heading" aria-level="2">
-            <h2 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
+          <div role="heading" aria-level="3">
+            <h3 class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.1vw] font-bold px-[2.4rem] md:px-24 text-center leading-tight uppercase">
               Frequently Asked Questions
-            </h2>
+            </h3>
             <p class="text-center text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] mt-2 font-light px-[2.4rem] md:px-24">
               Questions partners ask us before they commit. The rest, you can ask on the call.
             </p>

@@ -178,7 +178,19 @@ document.addEventListener("DOMContentLoaded", function () {
     backButton.addEventListener("click", (e) => { e.preventDefault(); goBack(subMenu); });
 
     // Event Listeners for About Us
-    aboutMenu.addEventListener("click", (e) => { e.preventDefault(); showSubMenu(aboutSubMenu); });
+    const aboutMenuToggle = document.getElementById("aboutMenuToggle");
+    if (aboutMenuToggle) {
+        aboutMenuToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showSubMenu(aboutSubMenu);
+        });
+    } else {
+        aboutMenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            showSubMenu(aboutSubMenu);
+        });
+    }
     aboutBackButton.addEventListener("click", (e) => { e.preventDefault(); goBack(aboutSubMenu); });
 
     // Event Listeners for Resources

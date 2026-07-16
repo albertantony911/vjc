@@ -725,9 +725,6 @@
   .m-0 {
     margin: calc(var(--spacing) * 0);
   }
-  .m-9 {
-    margin: calc(var(--spacing) * 9);
-  }
   .m-auto {
     margin: auto;
   }
@@ -972,6 +969,10 @@
     width: 2.5svh;
     height: 2.5svh;
   }
+  .size-\[4vw\] {
+    width: 4vw;
+    height: 4vw;
+  }
   .size-\[9rem\] {
     width: 9rem;
     height: 9rem;
@@ -987,10 +988,6 @@
   .size-\[48svh\] {
     width: 48svh;
     height: 48svh;
-  }
-  .size-\[4vw\] {
-    width: 4vw;
-    height: 4vw;
   }
   .size-\[65svh\] {
     width: 65svh;
@@ -1291,9 +1288,6 @@
   .max-w-md {
     max-width: var(--container-md);
   }
-  .max-w-sm {
-    max-width: var(--container-sm);
-  }
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
   }
@@ -1364,10 +1358,6 @@
   }
   .translate-y-4 {
     --tw-translate-y: calc(var(--spacing) * 4);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-y-10 {
-    --tw-translate-y: calc(var(--spacing) * 10);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-y-\[-12svh\] {
@@ -1647,12 +1637,6 @@
   .rounded-\[1\.5rem\] {
     border-radius: 1.5rem;
   }
-  .rounded-\[2\.5rem\] {
-    border-radius: 2.5rem;
-  }
-  .rounded-\[2\.6rem\] {
-    border-radius: 2.6rem;
-  }
   .rounded-\[10svw\] {
     border-radius: 10svw;
   }
@@ -1661,6 +1645,12 @@
   }
   .rounded-\[1rem\] {
     border-radius: 1rem;
+  }
+  .rounded-\[2\.5rem\] {
+    border-radius: 2.5rem;
+  }
+  .rounded-\[2\.6rem\] {
+    border-radius: 2.6rem;
   }
   .rounded-\[2\.7rem\] {
     border-radius: 2.7rem;
@@ -2139,6 +2129,12 @@
   .pt-12 {
     padding-top: calc(var(--spacing) * 12);
   }
+  .pt-\[5svh\] {
+    padding-top: 5svh;
+  }
+  .pt-\[12svh\] {
+    padding-top: 12svh;
+  }
   .pr-2 {
     padding-right: calc(var(--spacing) * 2);
   }
@@ -2180,6 +2176,9 @@
   }
   .pb-16 {
     padding-bottom: calc(var(--spacing) * 16);
+  }
+  .pb-\[2svh\] {
+    padding-bottom: 2svh;
   }
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
@@ -2290,6 +2289,9 @@
   .text-\[6\.5vw\] {
     font-size: 6.5vw;
   }
+  .text-\[6vw\] {
+    font-size: 6vw;
+  }
   .text-\[7vw\] {
     font-size: 7vw;
   }
@@ -2391,6 +2393,10 @@
     --tw-font-weight: var(--font-weight-thin);
     font-weight: var(--font-weight-thin);
   }
+  .tracking-\[0\.1em\] {
+    --tw-tracking: 0.1em;
+    letter-spacing: 0.1em;
+  }
   .tracking-\[0\.08em\] {
     --tw-tracking: 0.08em;
     letter-spacing: 0.08em;
@@ -2402,10 +2408,6 @@
   .tracking-\[0\.14em\] {
     --tw-tracking: 0.14em;
     letter-spacing: 0.14em;
-  }
-  .tracking-\[0\.1em\] {
-    --tw-tracking: 0.1em;
-    letter-spacing: 0.1em;
   }
   .tracking-normal {
     --tw-tracking: var(--tracking-normal);
@@ -2462,9 +2464,6 @@
   }
   .text-gray-400 {
     color: var(--color-gray-400);
-  }
-  .text-gray-600 {
-    color: var(--color-gray-600);
   }
   .text-gray-700 {
     color: var(--color-gray-700);
@@ -2892,11 +2891,6 @@
       color: color-mix(in oklab, var(--color-white) 40%, transparent);
     }
   }
-  .placeholder\:text-white\/60 {
-    &::placeholder {
-      color: color-mix(in oklab, var(--color-white) 60%, transparent);
-    }
-  }
   .last\:border-0 {
     &:last-child {
       border-style: var(--tw-border-style);
@@ -3090,13 +3084,6 @@
       }
     }
   }
-  .hover\:text-gray-600 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-600);
-      }
-    }
-  }
   .hover\:text-white {
     &:hover {
       @media (hover: hover) {
@@ -3129,14 +3116,6 @@
     &:hover {
       @media (hover: hover) {
         --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\:shadow-\[0_0_20px_rgba\(0\,255\,150\,0\.4\)\] {
-    &:hover {
-      @media (hover: hover) {
-        --tw-shadow: 0 0 20px var(--tw-shadow-color, rgba(0,255,150,0.4));
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
@@ -3215,11 +3194,6 @@
   .focus\:ring-darkGreen\/50 {
     &:focus {
       --tw-ring-color: color-mix(in oklab, var(--color-darkGreen) 50%, transparent);
-    }
-  }
-  .focus\:ring-darkGreen\/80 {
-    &:focus {
-      --tw-ring-color: color-mix(in oklab, var(--color-darkGreen) 80%, transparent);
     }
   }
   .focus\:ring-offset-2 {
@@ -3364,11 +3338,6 @@
   .disabled\:opacity-25 {
     &:disabled {
       opacity: 25%;
-    }
-  }
-  .disabled\:opacity-50 {
-    &:disabled {
-      opacity: 50%;
     }
   }
   .disabled\:opacity-60 {
@@ -4058,6 +4027,11 @@
   .sm\:py-\[6svh\] {
     @media (width >= 40rem) {
       padding-block: 6svh;
+    }
+  }
+  .sm\:pt-\[5svh\] {
+    @media (width >= 40rem) {
+      padding-top: 5svh;
     }
   }
   .sm\:pt-\[8svh\] {
@@ -4943,6 +4917,11 @@
       font-size: 2.1svh;
     }
   }
+  .md\:text-\[2vw\] {
+    @media (width >= 48rem) {
+      font-size: 2vw;
+    }
+  }
   .md\:text-\[3\.5svh\] {
     @media (width >= 48rem) {
       font-size: 3.5svh;
@@ -4976,11 +4955,6 @@
   .md\:text-\[24px\] {
     @media (width >= 48rem) {
       font-size: 24px;
-    }
-  }
-  .md\:text-\[2vw\] {
-    @media (width >= 48rem) {
-      font-size: 2vw;
     }
   }
   .md\:text-\[35px\] {
@@ -5525,13 +5499,6 @@
       }
     }
   }
-  .portrait\:sm\:px-\[3vw\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        padding-inline: 3vw;
-      }
-    }
-  }
   .portrait\:sm\:px-\[14svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
@@ -5543,6 +5510,13 @@
     @media (orientation: portrait) {
       @media (width >= 40rem) {
         padding-inline: 1svw;
+      }
+    }
+  }
+  .portrait\:sm\:px-\[3vw\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        padding-inline: 3vw;
       }
     }
   }
@@ -5725,6 +5699,13 @@
     @media (orientation: portrait) {
       @media (width >= 40rem) {
         font-size: 4.3svw;
+      }
+    }
+  }
+  .portrait\:sm\:text-\[4svw\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        font-size: 4svw;
       }
     }
   }
