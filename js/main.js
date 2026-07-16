@@ -194,7 +194,19 @@ document.addEventListener("DOMContentLoaded", function () {
     aboutBackButton.addEventListener("click", (e) => { e.preventDefault(); goBack(aboutSubMenu); });
 
     // Event Listeners for Resources
-    resourcesMenu.addEventListener("click", (e) => { e.preventDefault(); showSubMenu(resourcesSubMenu); });
+    const resourcesMenuToggle = document.getElementById("resourcesMenuToggle");
+    if (resourcesMenuToggle) {
+        resourcesMenuToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showSubMenu(resourcesSubMenu);
+        });
+    } else {
+        resourcesMenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            showSubMenu(resourcesSubMenu);
+        });
+    }
     resourcesBackButton.addEventListener("click", (e) => { e.preventDefault(); goBack(resourcesSubMenu); });
 });
 

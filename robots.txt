@@ -20,7 +20,7 @@ Allow: /
 
 # Sitemap references
 Sitemap: https://www.vjcpartners.com/sitemap.xml
-Sitemap: https://resources.vjcpartners.com/sitemap.xml
+Sitemap: https://www.vjcpartners.com/resources/sitemap.xml
 
 # Specific rules for Googlebot (optional, for fine-tuning)
 User-agent: Googlebot
