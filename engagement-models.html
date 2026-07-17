@@ -390,7 +390,7 @@
     </li>
     
     <li class="relative block " x-data="{ showChildren: false, submenuTimeout: null }" x-init="showChildren = false" @click.away="if (showChildren) { showChildren = false; clearTimeout(submenuTimeout); }">
-      <a href="https://www.vjcpartners.com/resources" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
+      <a href="https://www.vjcpartners.com/resources" aria-haspopup="true" :aria-expanded="showChildren" class="group flex items-center px-1 mx-1 text-xs leading-10 no-underline transition-all duration-300 ease-out cursor-pointer h-14 sm:px-6 md:text-base hover:no-underline hover:bg-gray-100" @mouseenter="showChildren = true; clearTimeout(submenuTimeout)" @mouseleave="submenuTimeout = setTimeout(() => showChildren = false, 250)">
         <span class="transition-transform duration-300 group-hover:-translate-y-[1px]">Resources</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 ease-out opacity-70" :class="showChildren ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" @click.prevent.stop="showChildren = !showChildren" @touchstart.prevent.stop="showChildren = !showChildren">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -938,85 +938,12 @@
 
                             <div class=" border-t w-[85%] md:w-[75%] border-lightGreen mx-auto border-1"></div>
 
-                            <div class=" w-[90%] md:w-[75%] mt-7 md:mt-5 mx-auto" >
-                                <form action="https://api.web3forms.com/submit" method="POST" id="form">
-                                    <input type="hidden" name="access_key"
-                                        value="f2f069dd-c5c9-4054-a1ec-7864c2f3bce8" />
-                                    <input type="hidden" name="subject" value="Free Trial Request" />
-                                    <input type="hidden" name="from_name" value="VJC India Website - Free Trial Form" />
-                                    <input type="checkbox" name="botcheck" id="" style="display: none;" />
-                                    <input type="hidden" name="redirect" value="https://www.vjcpartners.com/message-received.html">
-                                    <div class="flex flex-row mb-4 gap-3 justify-between">
-                                        <div class="">
-                                            <label for="name" class="text-darkBlue block mb-2 text-sm">Full Name</label>
-                                            <input type="text" name="name" id="name" placeholder="Full Name" required
-                                                class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-lightborder-lightGreen" />
-                                        </div>
-                                        <div class="">
-                                            <label for="name" class="text-darkBlue block mb-2 text-sm">Company</label>
-                                            <input type="text" name="name" id="name" placeholder="Company Name" required
-                                                class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-lightborder-lightGreen" />
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-row mb-4 gap-3 justify-between">
-                                        <div class="">
-                                            <label for="email" class="text-darkBlue block mb-2 text-sm">Email
-                                                Address</label>
-                                            <input type="email" name="email" id="email" placeholder="name@mail.com"
-                                                required
-                                                class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-lightborder-lightGreen " />
-                                        </div>
-                                        <div class="">
-                                            <label for="phone" class="text-darkBlue block mb-2 text-sm">Phone
-                                                Number</label>
-                                            <input type="text" name="phone" id="phone" placeholder="Phone Number"
-                                                required
-                                                class=" w-full h-12 px-4 py-2 text-sm text-gray-900 placeholder-gray-400 bg-gray-100  focus:bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-lightborder-lightGreen" />
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-5">
-                                        <label for="Country" class="text-darkBlue block mb-2 text-sm">Select your
-                                            country</label>
-                                        <div x-data="{ open: false }" class="relative">
-                                            <select name="Country" id="Country" required
-                                                class="appearance-none w-full h-12 px-4 py-2 pr-10 text-sm text-gray-400 bg-gray-100 focus:bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-lightborder-lightGreen"
-                                                @focus="open = true" @blur="open = false" @change="open = false">
-                                                <option value="">Choose your country</option>
-                                                <option value="United States of America">United States of America
-                                                </option>
-                                                <option value="Australia">Australia</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                                <option value="Canada">Canada</option>
-                                            </select>
-                                            <div :class="open ? 'rotate-180' : ''"
-                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                <svg class="fill-darkBlue size-4" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20">
-                                                    <path
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-                                    <div class="px-auto flex justify-center">
-                                        <button type="submit"
-                                            class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 shadow-md hover:shadow-lg hover:bg-darkGreen hover:text-white text-white text-base py-[4vw] px-[5vw] sm:px-[3svh] sm:py-[1.5svh] 2xl:py-[1svh] 2xl:px-[1.5svh] portrait:sm:px-[3svw] portrait:sm:py-[2svw] active:bg-darkGreen active:text-white  transition-transform duration-100 transform bg-darkBlue rounded-full select-none">Start Your Smartsourcing Trial</button>
-                                    </div>
-                                    <p class="text-[12px] text-slate-500 text-center mt-3 max-w-md mx-auto leading-relaxed">
-                                        By submitting this form, you agree that VJC may use the information provided to respond to your enquiry in accordance with our <a href="./privacy-policy" class="underline hover:text-darkGreen">Privacy Policy</a>.
-                                    </p>
-                                    <!-- Form Submission Result Message -->
-                                    <p class="text-dark-purple text-base text-center" id="result" aria-live="polite">
-                                    </p>
-                                </form>
+                            <div class=" w-[90%] md:w-[75%] mt-7 md:mt-5 mx-auto flex justify-center" >
+                                <a id="trial-button-pricing" data-track="button" data-action="trial_request" href="/forms/schedule-trial.html"
+                                    aria-label="Start Your Smartsourcing Workflow Trial"
+                                    class="whitespace-nowrap focus:outline-lightBlue hover:scale-105 active:scale-105 hover:shadow-2xl hover:bg-darkGreen active:bg-darkBlue active:text-white delayed-link text-white hover:text-white landscape:text-xs lg:landscape:text-base portrait:text-[3.75vw] md:portrait:text-[1.7vw] portrait:py-[4vw] portrait:px-[6vw] sm:portrait:px-[3vw] sm:portrait:py-[2vw] landscape:px-8 landscape:py-4 transition-transform duration-100 transform bg-darkBlue rounded-full select-none text-center">
+                                    Start Your Smartsourcing Trial
+                                </a>
                             </div>
                         </div>
 
