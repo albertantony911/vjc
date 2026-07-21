@@ -7,8 +7,7 @@ User-agent: *
 # Disallow low-value or private pages on the primary site
 Disallow: /login/              # Block any login pages
 Disallow: /cart/               # Block cart pages (if applicable)
-Disallow: /test.html           # Block test page (not meant for public indexing)
-Disallow: /message-received.html  # Block form confirmation page (low SEO value)
+Disallow: /message-received    # Block form confirmation page (low SEO value)
 
 # Block query parameters that create duplicate content
 Disallow: /*?utm_*             # Block UTM tracking parameters
