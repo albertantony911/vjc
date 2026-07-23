@@ -31,6 +31,36 @@
       "source": "/legal-process-outsourcing.html",
       "destination": "/about-us.html",
       "permanent": true
+    },
+    {
+      "source": "/resources/posts/optimizing-accounting-operations-growing-restaurant-chain",
+      "destination": "/resources/case-studies/optimizing-accounting-operations-growing-restaurant-chain",
+      "permanent": true
+    },
+    {
+      "source": "/resources/posts/improving-offshoring-experience-mid-scale-cpa-firm",
+      "destination": "/resources/case-studies/improving-offshoring-experience-mid-scale-cpa-firm",
+      "permanent": true
+    },
+    {
+      "source": "/resources/posts/strategic-structuring-of-operations-for-a-small-cpa-firm",
+      "destination": "/resources/case-studies/strategic-structuring-of-operations-for-a-small-cpa-firm",
+      "permanent": true
+    },
+    {
+      "source": "/resources/posts/after-3-vendors-one-finally-got-it-right",
+      "destination": "/resources/case-studies/after-3-vendors-one-finally-got-it-right",
+      "permanent": true
+    },
+    {
+      "source": "/resources/posts/ready-for-sign-off-from-day-one-a-toowoomba-firm",
+      "destination": "/resources/case-studies/ready-for-sign-off-from-day-one-a-toowoomba-firm",
+      "permanent": true
+    },
+    {
+      "source": "/resources/posts/from-drowning-to-thriving-a-perth-solo-practitioner",
+      "destination": "/resources/case-studies/from-drowning-to-thriving-a-perth-solo-practitioner",
+      "permanent": true
     }
   ],
   "rewrites": [
