@@ -54,6 +54,9 @@ let animationFrameId;
 let globeIsActive = true;
 let opacityObjects = []; 
 
+// Cached vectors for reuse in the update loop (Zero allocation)
+const tempCameraPosition = new THREE.Vector3();
+
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
   color: 0xFFFFFF,
@@ -157,22 +160,37 @@ function createGlobe() {
       uniform sampler2D u_map_tex;
       uniform float u_dot_size, u_time_since_click;
       uniform vec3 u_pointer;
+      uniform vec3 u_india_pos;
+      uniform vec3 u_aus_pos[5];
       
       varying float vOpacity;
+      varying float vIndiaGlow;
+      varying float vAusGlow;
       varying vec2 vUv;
-      varying vec3 vWorldPosition;
 
       void main() {
         vUv = uv;
         
         // Ensure world position accounts for globe rotation (Coordinate Fix)
         vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vWorldPosition = worldPos.xyz; 
+        vec3 worldPos3 = worldPos.xyz; 
         
         gl_PointSize = u_dot_size * 0.65;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float distToCam = length(mvPosition.xyz);
         vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+        
+        // --- INDIA HEAT MAP ---
+        float distToIndia = distance(worldPos3, u_india_pos);
+        vIndiaGlow = 1.0 - smoothstep(0.0, 0.35, distToIndia);
+        
+        // --- AUSTRALIA HEAT MAP ---
+        float ausGlow = 0.0;
+        for(int i = 0; i < 5; i++) {
+          float distToAus = distance(worldPos3, u_aus_pos[i]);
+          ausGlow += 1.0 - smoothstep(0.0, 0.25, distToAus); 
+        }
+        vAusGlow = clamp(ausGlow, 0.0, 1.0);
         
         float t = max(0.0, u_time_since_click - 0.1);
         float dist = length(position - u_pointer);
@@ -184,12 +202,11 @@ function createGlobe() {
     `,
     fragmentShader: `
       uniform sampler2D u_map_tex;
-      uniform vec3 u_india_pos;
-      uniform vec3 u_aus_pos[5];
       
       varying float vOpacity;
+      varying float vIndiaGlow;
+      varying float vAusGlow;
       varying vec2 vUv;
-      varying vec3 vWorldPosition;
 
       void main() {
         // Read the color of your topological map
@@ -204,19 +221,9 @@ function createGlobe() {
         // Define our new bright green color (R: 0.1, G: 1.0, B: 0.2)
         vec3 brightGreen = vec3(0.1, 1.0, 0.2);
         
-        // --- INDIA HEAT MAP ---
-        float distToIndia = distance(vWorldPosition, u_india_pos);
-        float indiaGlow = 1.0 - smoothstep(0.0, 0.35, distToIndia);
-        color = mix(color, brightGreen, indiaGlow); 
-        
-        // --- AUSTRALIA HEAT MAP ---
-        float ausGlow = 0.0;
-        for(int i = 0; i < 5; i++) {
-          float distToAus = distance(vWorldPosition, u_aus_pos[i]);
-          ausGlow += 1.0 - smoothstep(0.0, 0.25, distToAus); 
-        }
-        ausGlow = clamp(ausGlow, 0.0, 1.0); 
-        color = mix(color, brightGreen, ausGlow); 
+        // Apply glow calculated in vertex shader
+        color = mix(color, brightGreen, vIndiaGlow); 
+        color = mix(color, brightGreen, vAusGlow); 
 
         // Shape dots into circles
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
@@ -340,9 +347,8 @@ function animatePulsingCircle(pulsingCircle) {
 }
 
 function updateOpacity() {
-  const cameraPosition = new THREE.Vector3();
-  camera.getWorldPosition(cameraPosition);
-  opacityObjects.forEach((object) => updateCircleOpacity(object, cameraPosition));
+  camera.getWorldPosition(tempCameraPosition);
+  opacityObjects.forEach((object) => updateCircleOpacity(object, tempCameraPosition));
 }
 
 function updateCircleOpacity(object, cameraPosition) {
@@ -354,7 +360,6 @@ function updateCircleOpacity(object, cameraPosition) {
 
   if (material.opacity !== newOpacity) {
     material.opacity = newOpacity;
-    material.needsUpdate = true;
   }
 }
 
@@ -393,7 +398,18 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
 
 function animateArc(points, start, end, reverse = false) {
   let pointIndex = 0;
-  const line2 = new Line2(new LineGeometry(), arcMaterial.clone());
+  
+  // Pre-flatten vectors into a fast flat float array
+  const flatPoints = points.flatMap((p) => [p.x, p.y, p.z]);
+
+  // Create the geometry once with the full coordinates
+  const geometry = new LineGeometry();
+  geometry.setPositions(flatPoints);
+
+  // Start by rendering 0 instances (nothing visible yet)
+  geometry.instanceCount = 0;
+
+  const line2 = new Line2(geometry, arcMaterial.clone());
 
   function drawArc() {
     if (!globeIsActive) {
@@ -401,11 +417,9 @@ function animateArc(points, start, end, reverse = false) {
       return;
     }
     if (pointIndex < points.length) {
-      const arcGeometry = new LineGeometry().setPositions(
-        points.slice(0, pointIndex + 1).flatMap((p) => [p.x, p.y, p.z])
-      );
-      if (line2.geometry) line2.geometry.dispose();
-      line2.geometry = arcGeometry;
+      // Set instanceCount to the current segment index to draw it dynamically
+      geometry.instanceCount = pointIndex;
+
       if (!scene.children.includes(line2)) {
         scene.add(line2);
       }
@@ -467,6 +481,7 @@ function fadeOutArc(line, material, onComplete) {
 const baseHeightAboveGlobe = 0.1;
 const heightScaleFactor = 0.3;
 
+// Initialize arcs
 function initializeGlobeArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor) {
   delayInitialize(() => {
     createElevatedArcs(startPoint, endPoints, baseHeightAboveGlobe, heightScaleFactor);
