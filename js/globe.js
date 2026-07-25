@@ -1,7 +1,7 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.133.1?min";
-import { Line2 } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/Line2.js?min";
-import { LineMaterial } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineMaterial.js?min";
-import { LineGeometry } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/lines/LineGeometry.js?min";
+import * as THREE from "three";
+import { Line2 } from "./libs/Line2.js";
+import { LineMaterial } from "./libs/LineMaterial.js";
+import { LineGeometry } from "./libs/LineGeometry.js";
 
 export { THREE, Line2, LineMaterial, LineGeometry };
 
@@ -124,6 +124,8 @@ function initScene() {
 
   new THREE.TextureLoader().load("./img/map.webp", (mapTex) => {
     earthTexture = mapTex;
+    earthTexture.minFilter = THREE.NearestFilter;
+    earthTexture.magFilter = THREE.NearestFilter;
     createGlobe();
     updateSize();
     if (globeIsActive) animationFrameId = requestAnimationFrame(render);
@@ -212,8 +214,8 @@ function createGlobe() {
         // Read the color of your topological map
         vec3 mapColor = texture2D(u_map_tex, vUv).rgb;
         
-        // Is it ocean? 
-        if (mapColor.b > mapColor.r + 0.1 && mapColor.b > mapColor.g + 0.1) discard; 
+        // Is it ocean? (For black-and-white map-3.webp, ocean is black, i.e., red channel < 0.5)
+        if (mapColor.r < 0.5) discard; 
         
         // Set standard color for all other landmasses
         vec3 color = vec3(0.6, 0.9, 1.3);
