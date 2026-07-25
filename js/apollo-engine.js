@@ -1,5 +1,14 @@
 (function() {
   var targetNode = document.getElementById('apollo-forms');
+  
+  // Silently add an invisible placeholder if missing to prevent Apollo console errors
+  if (!targetNode) {
+    targetNode = document.createElement('div');
+    targetNode.id = 'apollo-forms';
+    targetNode.style.display = 'none';
+    document.body.appendChild(targetNode);
+  }
+
   var skeleton = document.getElementById('apollo-skeleton');
   var observer = null;
 
