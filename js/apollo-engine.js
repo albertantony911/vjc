@@ -30,9 +30,13 @@
   if (targetNode || footerForm) {
     if (window.ApolloInbound) {
       try {
-        window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+        if (targetNode) {
+          window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+        } else {
+          window.ApolloInbound.init({ appId: '6a4b71010953ed001c11dfbe' });
+        }
       } catch (err) {
-        console.error('[Apollo] Error initializing form builder:', err);
+        console.error('[Apollo] Error initializing:', err);
       }
     } else {
       var nocache = Math.random().toString(36).substring(7);
@@ -42,9 +46,13 @@
       
       script.onload = function() {
         try {
-          window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+          if (targetNode) {
+            window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
+          } else {
+            window.ApolloInbound.init({ appId: '6a4b71010953ed001c11dfbe' });
+          }
         } catch (err) {
-          console.error('[Apollo] Error initializing form builder:', err);
+          console.error('[Apollo] Error initializing:', err);
           if (skeleton) {
             skeleton.style.display = 'none';
           }
