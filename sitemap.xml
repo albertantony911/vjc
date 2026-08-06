@@ -21,9 +21,9 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Pricing Page -->
+  <!-- Engagement Models Page -->
   <url>
-    <loc>https://www.vjcpartners.com/pricing</loc>
+    <loc>https://www.vjcpartners.com/engagement-models</loc>
     <lastmod>2026-06-30</lastmod>
     <priority>0.8</priority>
   </url>
@@ -53,13 +53,6 @@
     <loc>https://www.vjcpartners.com/solutions/year-end-financials-outsourcing</loc>
     <lastmod>2026-06-30</lastmod>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Engagement Models Page -->
-  <url>
-    <loc>https://www.vjcpartners.com/engagement-models</loc>
-    <lastmod>2026-06-30</lastmod>
-    <priority>0.6</priority>
   </url>
 
   <!-- Privacy Policy Page -->

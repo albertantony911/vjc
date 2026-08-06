@@ -1,35 +1,102 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://assets.apollo.io https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.vjcpartners.com https://admin.vjcpartners.com https://secure.gravatar.com https://gravatar.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https: https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://assets.apollo.io https://admin.vjcpartners.com; frame-src 'self' https://www.googletagmanager.com; object-src 'none'; base-uri 'self';"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
+      "source": "/about",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
       "source": "/about.html",
-      "destination": "/about-us.html",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/engagement-models",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/engagement-models",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-accounting-and-bookkeeping",
+      "destination": "/solutions/bookkeeping-outsourcing",
       "permanent": true
     },
     {
       "source": "/cloud-accounting-and-bookkeeping.html",
-      "destination": "/solutions/bookkeeping-outsourcing.html",
+      "destination": "/solutions/bookkeeping-outsourcing",
+      "permanent": true
+    },
+    {
+      "source": "/tax-planning-and-compliance",
+      "destination": "/solutions/tax-compliance-outsourcing",
       "permanent": true
     },
     {
       "source": "/tax-planning-and-compliance.html",
-      "destination": "/solutions/tax-compliance-outsourcing.html",
+      "destination": "/solutions/tax-compliance-outsourcing",
+      "permanent": true
+    },
+    {
+      "source": "/virtual-chief-financial-officer",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/virtual-chief-financial-officer.html",
-      "destination": "/solutions/year-end-financials-outsourcing.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/audit-and-assurance-services",
+      "destination": "/solutions/year-end-financials-outsourcing",
       "permanent": true
     },
     {
       "source": "/audit-and-assurance-services.html",
-      "destination": "/solutions/year-end-financials-outsourcing.html",
+      "destination": "/solutions/year-end-financials-outsourcing",
+      "permanent": true
+    },
+    {
+      "source": "/legal-process-outsourcing",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/legal-process-outsourcing.html",
-      "destination": "/about-us.html",
+      "destination": "/",
       "permanent": true
     },
     {
