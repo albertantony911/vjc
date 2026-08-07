@@ -263,8 +263,8 @@ function createGlobe() {
   scene.add(globeMesh);
 }
 
-const PORTRAIT_RATIO = 0.9;
-const LANDSCAPE_RATIO = 0.7;
+const PORTRAIT_RATIO = 1.25;
+const LANDSCAPE_RATIO = 1.15;
 
 function updateSize() {
   const windowWidth = window.innerWidth;
@@ -277,6 +277,9 @@ function updateSize() {
     containerEl.style.cssText = `width: ${initialSize}px; height: ${initialSize}px;`;
     renderer.setSize(initialSize, initialSize);
     mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
+    if (typeof arcMaterial !== "undefined" && arcMaterial.resolution) {
+      arcMaterial.resolution.set(initialSize, initialSize);
+    }
   }
 }
 
