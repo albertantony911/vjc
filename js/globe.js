@@ -263,8 +263,8 @@ function createGlobe() {
   scene.add(globeMesh);
 }
 
-const PORTRAIT_RATIO = 1.19;
-const LANDSCAPE_RATIO = 1.09;
+const PORTRAIT_RATIO = 1.13;
+const LANDSCAPE_RATIO = 1.04;
 
 function updateSize() {
   const windowWidth = window.innerWidth;
