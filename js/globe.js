@@ -29,7 +29,7 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
 
 // --- COORDINATES ---
 const globeRadius = 1;
-const tiltAngle = 23.5;
+const tiltAngle = 30;
 
 // Start Point (New Delhi, India)
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
@@ -132,8 +132,8 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 3.5;
-const rotationSpeed = 0.05;
+let angle = Math.PI / 2.8;
+const rotationSpeed = 0.025;
 const radius = 1.5;
 
 function render() {
@@ -250,7 +250,7 @@ function createGlobe() {
   globe = new THREE.Points(globeGeometry, mapMaterial);
   scene.add(globe);
 
-  globe.rotation.x = THREE.MathUtils.degToRad(23.5);
+  globe.rotation.x = THREE.MathUtils.degToRad(tiltAngle);
 
   globeMesh = new THREE.Mesh(
     globeGeometry,
