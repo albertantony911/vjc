@@ -5116,6 +5116,18 @@
       width: 100%;
     }
   }
+  .portrait\:-translate-y-\[6\%\] {
+    @media (orientation: portrait) {
+      --tw-translate-y: calc(6% * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  .portrait\:translate-x-\[3\%\] {
+    @media (orientation: portrait) {
+      --tw-translate-x: 3%;
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
   .portrait\:translate-y-\[15\%\] {
     @media (orientation: portrait) {
       --tw-translate-y: 15%;
@@ -5865,6 +5877,18 @@
   .landscape\:w-\[53\%\] {
     @media (orientation: landscape) {
       width: 53%;
+    }
+  }
+  .landscape\:-translate-y-\[25\%\] {
+    @media (orientation: landscape) {
+      --tw-translate-y: calc(25% * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  .landscape\:translate-x-\[8\%\] {
+    @media (orientation: landscape) {
+      --tw-translate-x: 8%;
+      translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
   .landscape\:translate-x-\[25\%\] {
