@@ -5122,6 +5122,12 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
+  .portrait\:translate-x-0 {
+    @media (orientation: portrait) {
+      --tw-translate-x: calc(var(--spacing) * 0);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
   .portrait\:translate-x-\[3\%\] {
     @media (orientation: portrait) {
       --tw-translate-x: 3%;
