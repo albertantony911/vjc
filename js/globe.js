@@ -184,13 +184,13 @@ function createGlobe() {
         
         // --- INDIA HEAT MAP ---
         float distToIndia = distance(worldPos3, u_india_pos);
-        vIndiaGlow = clamp((1.0 - smoothstep(0.0, 0.45, distToIndia)) * 1.4, 0.0, 1.0);
+        vIndiaGlow = clamp((1.0 - smoothstep(0.0, 0.42, distToIndia)) * 1.3, 0.0, 1.0);
         
         // --- AUSTRALIA HEAT MAP ---
         float ausGlow = 0.0;
         for(int i = 0; i < 5; i++) {
           float distToAus = distance(worldPos3, u_aus_pos[i]);
-          ausGlow += (1.0 - smoothstep(0.0, 0.48, distToAus)) * 1.6; 
+          ausGlow += (1.0 - smoothstep(0.0, 0.45, distToAus)) * 1.5; 
         }
         vAusGlow = clamp(ausGlow, 0.0, 1.0);
         
@@ -224,8 +224,8 @@ function createGlobe() {
         vec3 brightGreen = vec3(0.1, 1.0, 0.25);
         
         // Apply glow calculated in vertex shader
-        color = mix(color, brightGreen, vIndiaGlow * 1.3); 
-        color = mix(color, brightGreen, vAusGlow * 1.4); 
+        color = mix(color, brightGreen, vIndiaGlow * 1.25); 
+        color = mix(color, brightGreen, vAusGlow * 1.33); 
 
         // Shape dots into circles
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
