@@ -59,13 +59,13 @@ const tempCameraPosition = new THREE.Vector3();
 
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0xFFFFFF,
+  color: 0x7CBA3A,
   transparent: true,
   opacity: 1,
   side: THREE.DoubleSide
 });
 const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0xFFFFFF,
+  color: 0x7CBA3A,
   transparent: true,
   opacity: 1,
   side: THREE.DoubleSide,
@@ -132,7 +132,7 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 2.25;
+let angle = Math.PI / 4.5;
 const rotationSpeed = 0.025;
 const radius = 1.5;
 
@@ -186,11 +186,11 @@ function createGlobe() {
         float distToIndia = distance(worldPos3, u_india_pos);
         vIndiaGlow = 1.0 - smoothstep(0.0, 0.35, distToIndia);
         
-        // --- AUSTRALIA HEAT MAP ---
+        // --- AUSTRALIA HEAT MAP (ENHANCED GREEN HIGHLIGHTS) ---
         float ausGlow = 0.0;
         for(int i = 0; i < 5; i++) {
           float distToAus = distance(worldPos3, u_aus_pos[i]);
-          ausGlow += 1.0 - smoothstep(0.0, 0.25, distToAus); 
+          ausGlow += (1.0 - smoothstep(0.0, 0.38, distToAus)) * 1.4; 
         }
         vAusGlow = clamp(ausGlow, 0.0, 1.0);
         
@@ -220,12 +220,12 @@ function createGlobe() {
         // Set standard color for all other landmasses
         vec3 color = vec3(0.6, 0.9, 1.3);
         
-        // Define our new bright green color (R: 0.1, G: 1.0, B: 0.2)
-        vec3 brightGreen = vec3(0.1, 1.0, 0.2);
+        // Define vibrant green color (R: 0.1, G: 1.0, B: 0.25)
+        vec3 brightGreen = vec3(0.1, 1.0, 0.25);
         
         // Apply glow calculated in vertex shader
         color = mix(color, brightGreen, vIndiaGlow); 
-        color = mix(color, brightGreen, vAusGlow); 
+        color = mix(color, brightGreen, vAusGlow * 1.2); 
 
         // Shape dots into circles
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
@@ -294,7 +294,7 @@ window.addEventListener("resize", debounce(updateSize, 200));
 
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
-const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
+const sharedGeometry = new THREE.CircleGeometry(0.038, 32);
 const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
