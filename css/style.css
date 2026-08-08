@@ -1378,6 +1378,10 @@
     --tw-translate-x: 3rem;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .translate-x-\[8\%\] {
+    --tw-translate-x: 8%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .translate-x-\[15\%\] {
     --tw-translate-x: 15%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
