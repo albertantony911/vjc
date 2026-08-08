@@ -132,7 +132,7 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 2.8;
+let angle = Math.PI / 2.25;
 const rotationSpeed = 0.025;
 const radius = 1.5;
 
