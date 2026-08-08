@@ -59,13 +59,13 @@ const tempCameraPosition = new THREE.Vector3();
 
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0x7CBA3A,
+  color: 0xFFFFFF,
   transparent: true,
   opacity: 1,
   side: THREE.DoubleSide
 });
 const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0x7CBA3A,
+  color: 0xFFFFFF,
   transparent: true,
   opacity: 1,
   side: THREE.DoubleSide,
@@ -294,7 +294,7 @@ window.addEventListener("resize", debounce(updateSize, 200));
 
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
-const sharedGeometry = new THREE.CircleGeometry(0.038, 32);
+const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
 const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
