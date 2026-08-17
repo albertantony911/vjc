@@ -116,7 +116,7 @@ function initScene() {
   renderer.setPixelRatio(2);
 
   scene = new THREE.Scene();
-  scene.position.x = 0.45; // Position 3D content horizontally (Right: +, Left: -)
+  scene.position.x = 0.55; // Position 3D content horizontally (Right: +, Left: -)
   scene.position.y = 0;    // Position 3D content vertically (Up: +, Down: -)
   camera = new THREE.OrthographicCamera(-0.96, 0.96, 0.96, -0.96, 0, 3);
   camera.position.set(-0.2, -0.2, 1.45);
