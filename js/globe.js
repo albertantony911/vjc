@@ -308,7 +308,7 @@ function updateSize() {
     camera.updateProjectionMatrix();
 
     const minSide = Math.min(width, height);
-    mapMaterial.uniforms.u_dot_size.value = 0.02 * minSide;
+    mapMaterial.uniforms.u_dot_size.value = 0.03 * minSide;
     if (typeof arcMaterial !== "undefined" && arcMaterial.resolution) {
       arcMaterial.resolution.set(width, height);
     }
