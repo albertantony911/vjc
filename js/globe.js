@@ -263,12 +263,30 @@ function createGlobe() {
   scene.add(globeMesh);
 }
 
-const PORTRAIT_RATIO = 0.9;
-const LANDSCAPE_RATIO = 1.04;
+const PORTRAIT_RATIO = 0.85;
 
 function updateSize() {
-  const width = containerEl.clientWidth || containerEl.parentElement?.clientWidth || window.innerWidth;
-  const height = containerEl.clientHeight || containerEl.parentElement?.clientHeight || window.innerHeight;
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const isPortrait = windowWidth < windowHeight;
+
+  let width, height;
+
+  if (isPortrait) {
+    // Explicit square sizing for mobile / portrait devices so container never collapses
+    const minSide = Math.min(windowWidth, windowHeight);
+    const size = Math.round(PORTRAIT_RATIO * minSide);
+    width = size;
+    height = size;
+    containerEl.style.cssText = `width: ${size}px; height: ${size}px; margin: 0 auto;`;
+  } else {
+    // Fill full right column space on landscape desktop screens
+    const parentW = containerEl.parentElement?.clientWidth || windowWidth * 0.47;
+    const parentH = containerEl.parentElement?.clientHeight || windowHeight * 1.04;
+    width = parentW > 0 ? parentW : windowWidth * 0.47;
+    height = parentH > 0 ? parentH : windowHeight * 1.04;
+    containerEl.style.cssText = `width: 100%; height: 100%;`;
+  }
 
   if (width > 0 && height > 0) {
     renderer.setSize(width, height);
@@ -280,8 +298,8 @@ function updateSize() {
     camera.top = frustumSize;
     camera.bottom = -frustumSize;
 
-    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens without DOM box clipping
-    const xShift = (window.innerWidth >= window.innerHeight) ? -width * 0.12 : 0;
+    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
+    const xShift = (!isPortrait) ? -width * 0.12 : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
 
     camera.updateProjectionMatrix();
