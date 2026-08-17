@@ -6,7 +6,7 @@ import { LineGeometry } from "./libs/LineGeometry.js";
 export { THREE, Line2, LineMaterial, LineGeometry };
 
 // --- HELPER MATH FUNCTIONS ---
-function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
+function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 30) {
   lon += 180;
   if (lon > 180) lon -= 360;
 
@@ -29,7 +29,7 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
 
 // --- COORDINATES ---
 const globeRadius = 1;
-const tiltAngle = 30;
+const tiltAngle = 38;
 
 // Start Point (New Delhi, India)
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
@@ -60,14 +60,14 @@ const tempCameraPosition = new THREE.Vector3();
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
   color: 0xFFFFFF,
-  transparent: true,
-  opacity: 1,
+  transparent: false,
+  opacity: 1.0,
   side: THREE.DoubleSide
 });
 const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0xFFFFFF,
+  color: 0x10B981, // Vibrant emerald green pulse matching arc curves
   transparent: true,
-  opacity: 1,
+  opacity: 1.0,
   side: THREE.DoubleSide,
   depthWrite: false,
   depthTest: false
@@ -116,7 +116,9 @@ function initScene() {
   renderer.setPixelRatio(2);
 
   scene = new THREE.Scene();
-  camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
+  scene.position.x = 0.45; // Position 3D content horizontally (Right: +, Left: -)
+  scene.position.y = 0;    // Position 3D content vertically (Up: +, Down: -)
+  camera = new THREE.OrthographicCamera(-0.96, 0.96, 0.96, -0.96, 0, 3);
   camera.position.set(-0.2, -0.2, 1.45);
   camera.lookAt(0, 0, 0);
 
@@ -133,7 +135,7 @@ function initScene() {
 }
 
 let angle = Math.PI / 4.75;
-const rotationSpeed = 0.025;
+const rotationSpeed = 0.01;
 const radius = 1.5;
 
 function render() {
@@ -144,7 +146,7 @@ function render() {
 
   const x = radius * Math.cos(angle);
   const z = radius * Math.sin(angle);
-  camera.position.set(x, 0, z);
+  camera.position.set(x, -0.65, z); // Lower camera height angle to view Southern Hemisphere (Australia)
   camera.lookAt(0, 0, 0);
 
   updateOpacity();
@@ -155,7 +157,7 @@ function render() {
 let initialSize;
 
 function createGlobe() {
-  const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
+  const globeGeometry = new THREE.IcosahedronGeometry(1, 46);
   
   mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
@@ -173,9 +175,8 @@ function createGlobe() {
       void main() {
         vUv = uv;
         
-        // Ensure world position accounts for globe rotation (Coordinate Fix)
-        vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vec3 worldPos3 = worldPos.xyz; 
+        // Extract rotation from modelMatrix (excludes scene translation offsets)
+        vec3 localRotatedPos = mat3(modelMatrix) * position;
         
         gl_PointSize = u_dot_size * 0.65;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
@@ -183,13 +184,13 @@ function createGlobe() {
         vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
         
         // --- INDIA HEAT MAP ---
-        float distToIndia = distance(worldPos3, u_india_pos);
+        float distToIndia = distance(localRotatedPos, u_india_pos);
         vIndiaGlow = clamp((1.0 - smoothstep(0.0, 0.42, distToIndia)) * 1.3, 0.0, 1.0);
         
         // --- AUSTRALIA HEAT MAP ---
         float ausGlow = 0.0;
         for(int i = 0; i < 5; i++) {
-          float distToAus = distance(worldPos3, u_aus_pos[i]);
+          float distToAus = distance(localRotatedPos, u_aus_pos[i]);
           ausGlow += (1.0 - smoothstep(0.0, 0.45, distToAus)) * 1.5; 
         }
         vAusGlow = clamp(ausGlow, 0.0, 1.0);
@@ -267,18 +268,24 @@ const PORTRAIT_RATIO = 0.9;
 const LANDSCAPE_RATIO = 1.04;
 
 function updateSize() {
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-  const minSide = Math.min(windowWidth, windowHeight);
-  let newSize = windowWidth < windowHeight ? PORTRAIT_RATIO * minSide : LANDSCAPE_RATIO * windowHeight;
+  const width = containerEl.clientWidth || containerEl.parentElement?.clientWidth || window.innerWidth;
+  const height = containerEl.clientHeight || containerEl.parentElement?.clientHeight || window.innerHeight;
 
-  if (initialSize !== newSize) {
-    initialSize = newSize;
-    containerEl.style.cssText = `width: ${initialSize}px; height: ${initialSize}px;`;
-    renderer.setSize(initialSize, initialSize);
-    mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
+  if (width > 0 && height > 0) {
+    renderer.setSize(width, height);
+    
+    const aspect = width / height;
+    const frustumSize = 0.75;
+    camera.left = -frustumSize * aspect;
+    camera.right = frustumSize * aspect;
+    camera.top = frustumSize;
+    camera.bottom = -frustumSize;
+    camera.updateProjectionMatrix();
+
+    const minSide = Math.min(width, height);
+    mapMaterial.uniforms.u_dot_size.value = 0.02 * minSide;
     if (typeof arcMaterial !== "undefined" && arcMaterial.resolution) {
-      arcMaterial.resolution.set(initialSize, initialSize);
+      arcMaterial.resolution.set(width, height);
     }
   }
 }
@@ -294,8 +301,10 @@ window.addEventListener("resize", debounce(updateSize, 200));
 
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
-const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
-const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
+const staticSharedGeometry = new THREE.CircleGeometry(0.013, 32);
+const staticStartingPointGeometry = new THREE.CircleGeometry(0.018, 32);
+const pulsingSharedGeometry = new THREE.CircleGeometry(0.016, 32);
+const pulsingStartingPointGeometry = new THREE.CircleGeometry(0.024, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
   const liftedPos = position.clone().normalize().multiplyScalar(1 + elevation);
@@ -305,23 +314,25 @@ function alignCircleToSurface(circle, position, elevation = 0) {
 }
 
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
-  const elevation = isStartingPoint ? 0.02 : 0.015;
-  const geometry = isStartingPoint ? startingPointGeometry : sharedGeometry;
+  const elevation = 0.045; // Harmonized surface elevation matching arc endpoints
+  const staticGeo = isStartingPoint ? staticStartingPointGeometry : staticSharedGeometry;
+  const pulsingGeo = isStartingPoint ? pulsingStartingPointGeometry : pulsingSharedGeometry;
 
-  const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial.clone());
+  const staticCircle = new THREE.Mesh(staticGeo, staticCircleMaterial.clone());
   alignCircleToSurface(staticCircle, position, elevation);
+  staticCircle.renderOrder = 3;
 
-  const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial.clone());
+  const pulsingCircle = new THREE.Mesh(pulsingGeo, pulsingCircleMaterial.clone());
   alignCircleToSurface(pulsingCircle, position, elevation);
-  pulsingCircle.translateZ(-0.003); 
+  pulsingCircle.renderOrder = 2; 
 
   scene.add(staticCircle, pulsingCircle);
-  opacityObjects.push(staticCircle, pulsingCircle);
+  // Only push pulsingCircle to opacityObjects so staticCircle stays 100% opaque
+  opacityObjects.push(pulsingCircle);
 
   pulsingCircle.userData.gsapOpacity = 1;
   animatePulsingCircle(pulsingCircle);
 
-  staticCircle.userData.distanceOpacityControl = staticCircle.material;
   pulsingCircle.userData.distanceOpacityControl = pulsingCircle.material;
 
   return { staticCircle, pulsingCircle };
@@ -330,8 +341,8 @@ function createStaticAndPulsingCircles(position, isStartingPoint = false) {
 function animatePulsingCircle(pulsingCircle) {
   pulsingCircle.userData.tweenScale = gsap.to(pulsingCircle.scale, {
     duration: 2,
-    x: 1.75,
-    y: 1.75,
+    x: 1.35,
+    y: 1.35,
     repeat: -1,
     yoyo: true,
     ease: "power1.Out",
@@ -368,7 +379,7 @@ function updateCircleOpacity(object, cameraPosition) {
   }
 }
 
-function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
+function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.045) {
   const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
   const numPoints = 50;
   const tempVector = new THREE.Vector3();
@@ -395,10 +406,13 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
   
   liftedEnds.forEach((liftedEnd) => {
     createArc(liftedStart, liftedEnd);
-    createStaticAndPulsingCircles(liftedEnd);
   });
 
-  return createStaticAndPulsingCircles(liftedStart, true);
+  endPoints.forEach((end) => {
+    createStaticAndPulsingCircles(end);
+  });
+
+  return createStaticAndPulsingCircles(startPoint, true);
 }
 
 function animateArc(points, start, end, reverse = false) {
