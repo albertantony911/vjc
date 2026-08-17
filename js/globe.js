@@ -292,34 +292,16 @@ function updateSize() {
     renderer.setSize(width, height);
     
     const aspect = width / height;
-    const screenAspect = windowWidth / windowHeight;
-
-    // Scale frustum size and horizontal view offset dynamically based on screen aspect ratio (screenAspect)
-    let frustumSize = 0.76;
-    let xShift = 0;
-
-    if (!isPortrait) {
-      if (screenAspect >= 1.6) {
-        // 16:9 / 16:10 Wide Desktop Monitors (e.g. 27" 4K Retina)
-        frustumSize = 0.76;
-        xShift = -width * 0.1;
-      } else if (screenAspect >= 1.4) {
-        // Standard Laptops & Mid-widescreen viewports
-        frustumSize = 0.80;
-        xShift = -width * 0.08;
-      } else {
-        // 4:3 Tablets (e.g. iPad Pro 12.9") & Narrower Viewports
-        frustumSize = 0.84;
-        xShift = -width * 0.02;
-      }
-    }
-
+    const frustumSize = 0.76;
     camera.left = -frustumSize * aspect;
     camera.right = frustumSize * aspect;
     camera.top = frustumSize;
     camera.bottom = -frustumSize;
 
+    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens
+    const xShift = (!isPortrait) ? -width * 0.25 : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
+
     camera.updateProjectionMatrix();
 
     const minSide = Math.min(width, height);
