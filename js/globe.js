@@ -134,7 +134,7 @@ function initScene() {
 }
 
 let angle = Math.PI / 8;
-const rotationSpeed = 0.015;
+const rotationSpeed = 0.02;
 const radius = 1.5;
 
 function render() {
@@ -264,8 +264,8 @@ function createGlobe() {
 }
 
 const PORTRAIT_RATIO = 0.85;
-const PORTRAIT_FRUSTUM_SIZE = 0.50;  // Dedicated frustum size for portrait / mobile devices
-const LANDSCAPE_FRUSTUM_SIZE = 0.76; // Dedicated frustum size for landscape desktop displays
+const PORTRAIT_FRUSTUM_SIZE = 1.1;  // Dedicated frustum size for portrait / mobile devices
+const LANDSCAPE_FRUSTUM_SIZE = 0.7; // Dedicated frustum size for landscape desktop displays
 
 function updateSize() {
   const windowWidth = window.innerWidth;
@@ -302,7 +302,7 @@ function updateSize() {
     camera.bottom = -frustumSize;
 
     // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
-    const xShift = (!isPortrait) ? -width * 0.25 : 0;
+    const xShift = (!isPortrait) ? -width * 0.3 : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
 
     camera.updateProjectionMatrix();
