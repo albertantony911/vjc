@@ -310,7 +310,7 @@ function updateSize() {
     camera.bottom = -frustumSize;
 
     // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
-    const xShift = (!isPortrait) ? -width * 0.33 : 0;
+    const xShift = (!isPortrait) ? -width * 0.35 : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
 
     camera.updateProjectionMatrix();
