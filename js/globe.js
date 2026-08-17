@@ -264,6 +264,8 @@ function createGlobe() {
 }
 
 const PORTRAIT_RATIO = 0.85;
+const PORTRAIT_FRUSTUM_SIZE = 0.88;  // Dedicated frustum size for portrait / mobile devices
+const LANDSCAPE_FRUSTUM_SIZE = 0.76; // Dedicated frustum size for landscape desktop displays
 
 function updateSize() {
   const windowWidth = window.innerWidth;
@@ -292,14 +294,15 @@ function updateSize() {
     renderer.setSize(width, height);
     
     const aspect = width / height;
-    const frustumSize = 0.76;
+    const frustumSize = isPortrait ? PORTRAIT_FRUSTUM_SIZE : LANDSCAPE_FRUSTUM_SIZE;
+
     camera.left = -frustumSize * aspect;
     camera.right = frustumSize * aspect;
     camera.top = frustumSize;
     camera.bottom = -frustumSize;
 
-    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens
-    const xShift = (!isPortrait) ? -width * 0.25 : 0;
+    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
+    const xShift = (!isPortrait) ? -width * 0.12 : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
 
     camera.updateProjectionMatrix();
