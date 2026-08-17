@@ -133,7 +133,7 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 8;
+let angle = Math.PI / 13;
 const rotationSpeed = 0.02;
 const radius = 1.5;
 
@@ -155,8 +155,13 @@ function render() {
 
 let initialSize;
 
+const PORTRAIT_GEO_DETAIL = 34;   // Dedicated dot detail level (density) for portrait / mobile devices
+const LANDSCAPE_GEO_DETAIL = 46;  // Dedicated dot detail level (density) for landscape desktop devices
+
 function createGlobe() {
-  const globeGeometry = new THREE.IcosahedronGeometry(1, 46);
+  const isPortrait = window.innerWidth < window.innerHeight;
+  const geoDetail = isPortrait ? PORTRAIT_GEO_DETAIL : LANDSCAPE_GEO_DETAIL;
+  const globeGeometry = new THREE.IcosahedronGeometry(1, geoDetail);
   
   mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
@@ -264,8 +269,11 @@ function createGlobe() {
 }
 
 const PORTRAIT_RATIO = 0.85;
-const PORTRAIT_FRUSTUM_SIZE = 1.1;  // Dedicated frustum size for portrait / mobile devices
-const LANDSCAPE_FRUSTUM_SIZE = 0.7; // Dedicated frustum size for landscape desktop displays
+const PORTRAIT_FRUSTUM_SIZE = 1.1;   // Dedicated frustum size for portrait / mobile devices
+const LANDSCAPE_FRUSTUM_SIZE = 0.7;  // Dedicated frustum size for landscape desktop displays
+
+const PORTRAIT_DOT_SIZE = 0.025;    // Dedicated dot size multiplier for portrait / mobile screens
+const LANDSCAPE_DOT_SIZE = 0.030;   // Dot size multiplier for landscape desktop screens
 
 function updateSize() {
   const windowWidth = window.innerWidth;
@@ -308,7 +316,8 @@ function updateSize() {
     camera.updateProjectionMatrix();
 
     const minSide = Math.min(width, height);
-    mapMaterial.uniforms.u_dot_size.value = 0.03 * minSide;
+    const dotSizeMultiplier = isPortrait ? PORTRAIT_DOT_SIZE : LANDSCAPE_DOT_SIZE;
+    mapMaterial.uniforms.u_dot_size.value = dotSizeMultiplier * minSide;
     if (typeof arcMaterial !== "undefined" && arcMaterial.resolution) {
       arcMaterial.resolution.set(width, height);
     }
