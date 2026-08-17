@@ -116,8 +116,7 @@ function initScene() {
   renderer.setPixelRatio(2);
 
   scene = new THREE.Scene();
-  scene.position.x = 0.55; // Position 3D content horizontally (Right: +, Left: -)
-  scene.position.y = 0;    // Position 3D content vertically (Up: +, Down: -)
+  scene.position.set(0, 0, 0); // Globe centered at origin (0,0,0) for constant distance and zero rotation distortion
   camera = new THREE.OrthographicCamera(-0.96, 0.96, 0.96, -0.96, 0, 3);
   camera.position.set(-0.2, -0.2, 1.45);
   camera.lookAt(0, 0, 0);
@@ -134,8 +133,8 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 4.75;
-const rotationSpeed = 0.01;
+let angle = Math.PI / 8;
+const rotationSpeed = 0.015;
 const radius = 1.5;
 
 function render() {
@@ -275,11 +274,16 @@ function updateSize() {
     renderer.setSize(width, height);
     
     const aspect = width / height;
-    const frustumSize = 0.75;
+    const frustumSize = 0.76;
     camera.left = -frustumSize * aspect;
     camera.right = frustumSize * aspect;
     camera.top = frustumSize;
     camera.bottom = -frustumSize;
+
+    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens without DOM box clipping
+    const xShift = (window.innerWidth >= window.innerHeight) ? -width * 0.12 : 0;
+    camera.setViewOffset(width, height, xShift, 0, width, height);
+
     camera.updateProjectionMatrix();
 
     const minSide = Math.min(width, height);

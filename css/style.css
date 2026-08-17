@@ -5783,6 +5783,12 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
+  .landscape\:translate-x-\[12\%\] {
+    @media (orientation: landscape) {
+      --tw-translate-x: 12%;
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
   .landscape\:translate-x-\[14\%\] {
     @media (orientation: landscape) {
       --tw-translate-x: 14%;
