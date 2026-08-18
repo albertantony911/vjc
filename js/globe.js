@@ -133,7 +133,7 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 13;
+let angle = Math.PI / 20;
 const rotationSpeed = 0.02;
 const radius = 1.5;
 
@@ -145,7 +145,7 @@ function render() {
 
   const x = radius * Math.cos(angle);
   const z = radius * Math.sin(angle);
-  camera.position.set(x, -0.65, z); // Lower camera height angle to view Southern Hemisphere (Australia)
+  camera.position.set(x, -0.95, z); // Lower camera height angle to view Southern Hemisphere (Australia)
   camera.lookAt(0, 0, 0);
 
   updateOpacity();
@@ -174,6 +174,7 @@ function createGlobe() {
       varying float vOpacity;
       varying float vIndiaGlow;
       varying float vAusGlow;
+      varying float vLight;
       varying vec2 vUv;
 
       void main() {
@@ -182,10 +183,15 @@ function createGlobe() {
         // Extract rotation from modelMatrix (excludes scene translation offsets)
         vec3 localRotatedPos = mat3(modelMatrix) * position;
         
+        // Directional Light Source positioned at Middle-Left Front of Camera
+        vec3 worldNormal = normalize(mat3(modelMatrix) * normal);
+        vec3 lightDir = normalize(vec3(-2, -1, 6.0)); // Middle-Left Front light direction
+        vLight = max(0.6, dot(worldNormal, lightDir)); // Minimum 42% ambient light baseline
+        
         gl_PointSize = u_dot_size * 0.65;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float distToCam = length(mvPosition.xyz);
-        vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+        vOpacity = clamp(1.0 / distToCam - 0.55, 0.08, 1.0);
         
         // --- INDIA HEAT MAP ---
         float distToIndia = distance(localRotatedPos, u_india_pos);
@@ -213,6 +219,7 @@ function createGlobe() {
       varying float vOpacity;
       varying float vIndiaGlow;
       varying float vAusGlow;
+      varying float vLight;
       varying vec2 vUv;
 
       void main() {
@@ -222,8 +229,8 @@ function createGlobe() {
         // Is it ocean? (For black-and-white map-3.webp, ocean is black, i.e., red channel < 0.5)
         if (mapColor.r < 0.5) discard; 
         
-        // Set standard color for all other landmasses
-        vec3 color = vec3(0.6, 0.9, 1.3);
+        // Set standard base color for landmasses and apply middle-left directional light
+        vec3 color = vec3(0.6, 0.9, 1.3) * vLight;
         
         // Define vibrant green color (R: 0.1, G: 1.0, B: 0.25)
         vec3 brightGreen = vec3(0.1, 1.0, 0.25);
@@ -302,7 +309,21 @@ function updateSize() {
     renderer.setSize(width, height);
     
     const aspect = width / height;
-    const frustumSize = isPortrait ? PORTRAIT_FRUSTUM_SIZE : LANDSCAPE_FRUSTUM_SIZE;
+
+    // Adapt frustum scale and horizontal offset when viewport height is constrained (short height / wide aspect ratio)
+    let frustumSize = isPortrait ? PORTRAIT_FRUSTUM_SIZE : LANDSCAPE_FRUSTUM_SIZE;
+    let xShiftFactor = -0.37;
+
+    if (!isPortrait) {
+      if (aspect > 1.75) {
+        // Short height viewport (heavy toolbars/bookmarks): Scale globe up by ~12% & pull left toward hero text
+        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.88;
+        xShiftFactor = -0.04;
+      } else if (aspect > 1.45) {
+        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.94;
+        xShiftFactor = -0.08;
+      }
+    }
 
     camera.left = -frustumSize * aspect;
     camera.right = frustumSize * aspect;
@@ -310,7 +331,7 @@ function updateSize() {
     camera.bottom = -frustumSize;
 
     // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
-    const xShift = (!isPortrait) ? -width * 0.35 : 0;
+    const xShift = (!isPortrait) ? width * xShiftFactor : 0;
     camera.setViewOffset(width, height, xShift, 0, width, height);
 
     camera.updateProjectionMatrix();

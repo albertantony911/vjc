@@ -5761,6 +5761,11 @@
       height: 100svh;
     }
   }
+  .landscape\:min-h-\[500px\] {
+    @media (orientation: landscape) {
+      min-height: 500px;
+    }
+  }
   .landscape\:w-\[50\%\] {
     @media (orientation: landscape) {
       width: 50%;
