@@ -369,7 +369,7 @@ function alignCircleToSurface(circle, position, elevation = 0) {
 }
 
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
-  const elevation = 0.018; // Snug surface elevation matching globe curvature
+  const elevation = 0.008; // Ultra-snug surface elevation closer to globe surface
   const staticGeo = isStartingPoint ? staticStartingPointGeometry : staticSharedGeometry;
   const pulsingGeo = isStartingPoint ? pulsingStartingPointGeometry : pulsingSharedGeometry;
 
@@ -434,7 +434,7 @@ function updateCircleOpacity(object, cameraPosition) {
   }
 }
 
-function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.018) {
+function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.008) {
   const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
   const numPoints = 50;
   const tempVector = new THREE.Vector3();
