@@ -29,7 +29,7 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 30) {
 
 // --- COORDINATES ---
 const globeRadius = 1;
-const tiltAngle = 38;
+const tiltAngle =20;
 
 // Start Point (New Delhi, India)
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
@@ -118,7 +118,7 @@ function initScene() {
   scene = new THREE.Scene();
   scene.position.set(0, 0, 0); // Globe centered at origin (0,0,0) for constant distance and zero rotation distortion
   camera = new THREE.OrthographicCamera(-0.96, 0.96, 0.96, -0.96, 0, 3);
-  camera.position.set(-0.2, -0.2, 1.45);
+  camera.position.set(-0.2, 0, 1.45);
   camera.lookAt(0, 0, 0);
 
   clock = new THREE.Clock();
@@ -145,7 +145,7 @@ function render() {
 
   const x = radius * Math.cos(angle);
   const z = radius * Math.sin(angle);
-  camera.position.set(x, -0.95, z); // Lower camera height angle to view Southern Hemisphere (Australia)
+  camera.position.set(x, 0, z); // Level camera height (perpendicular view)
   camera.lookAt(0, 0, 0);
 
   updateOpacity();
@@ -276,7 +276,7 @@ function createGlobe() {
 }
 
 const PORTRAIT_RATIO = 0.85;
-const PORTRAIT_FRUSTUM_SIZE = 1.1;   // Dedicated frustum size for portrait / mobile devices
+const PORTRAIT_FRUSTUM_SIZE = 1.2;   // Dedicated frustum size for portrait / mobile devices
 const LANDSCAPE_FRUSTUM_SIZE = 0.7;  // Dedicated frustum size for landscape desktop displays
 
 const PORTRAIT_DOT_SIZE = 0.025;    // Dedicated dot size multiplier for portrait / mobile screens
@@ -317,8 +317,8 @@ function updateSize() {
     if (!isPortrait) {
       if (aspect > 1.75) {
         // Short height viewport (heavy toolbars/bookmarks): Scale globe up by ~12% & pull left toward hero text
-        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.88;
-        xShiftFactor = -0.04;
+        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.9;
+        xShiftFactor = 0.0;
       } else if (aspect > 1.45) {
         frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.94;
         xShiftFactor = -0.08;
@@ -330,9 +330,14 @@ function updateSize() {
     camera.top = frustumSize;
     camera.bottom = -frustumSize;
 
-    // Shift rendered globe rightward in WebGL projection view on landscape desktop screens only
-    const xShift = (!isPortrait) ? width * xShiftFactor : 0;
-    camera.setViewOffset(width, height, xShift, 0, width, height);
+    // Shift rendered globe horizontally (xShift) and vertically (yShift) on landscape desktop screens only
+    if (!isPortrait) {
+      const xShift = width * xShiftFactor;
+      const yShift = height * 0.12;
+      camera.setViewOffset(width, height, xShift, yShift, width, height);
+    } else {
+      camera.clearViewOffset();
+    }
 
     camera.updateProjectionMatrix();
 
