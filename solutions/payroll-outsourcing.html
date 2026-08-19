@@ -59,6 +59,7 @@
   <script src="../js/libs/alpine.min.js" defer></script>
   <script src="../js/libs/gsap.min.js" defer></script>
   <script src="../js/animations.js" defer></script>
+  <script src="../js/dynamic-cards.js" defer></script>
 
   <!-- Organization Schema -->
   
@@ -1285,7 +1286,7 @@ Your firm stays in control of approval and client relationships. We reduce the p
             </p>
           </div>
 
-          <div class="mx-auto landscape:sm:px-[13svh] max-md:px-10 portrait:sm:px-[7svw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[130rem]" role="list" aria-label="Latest Insights Posts">
+          <div id="latest-insights-grid" data-dynamic-posts="insights" class="mx-auto landscape:sm:px-[13svh] max-md:px-10 portrait:sm:px-[7svw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[130rem]" role="list" aria-label="Latest Insights Posts">
 
             <article class="bg-white p-6 rounded-[2.5rem] shadow-[0px_7px_20px_0px_rgba(138,43,226,0.4)] hover:scale-105 transition-transform" role="listitem" aria-labelledby="post-title-what-is-outsourced-accounting">
               <a href="https://www.vjcpartners.com/resources/posts/what-is-outsourced-accounting-services-costs-risks-and-business-benefits" class="block focus:outline-none focus:ring-2 focus:ring-darkGreen focus:ring-offset-2 group" aria-label="Read more about WHAT IS OUTSOURCED ACCOUNTING? SERVICES, COSTS, RISKS, AND BUSINESS BENEFITS">
@@ -1374,7 +1375,7 @@ Your firm stays in control of approval and client relationships. We reduce the p
             </p>
           </div>
 
-          <div class="mx-auto landscape:sm:px-[13svh] max-md:px-10 portrait:sm:px-[7svw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[130rem]" role="list" aria-label="Client Success Stories">
+          <div id="client-success-grid" data-dynamic-posts="case-studies" class="mx-auto landscape:sm:px-[13svh] max-md:px-10 portrait:sm:px-[7svw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[130rem]" role="list" aria-label="Client Success Stories">
 
             <article class="bg-white p-6 rounded-[2.5rem] shadow-[0px_7px_20px_0px_rgba(138,43,226,0.4)] hover:scale-105 transition-transform" role="listitem" aria-labelledby="post-title-perth-solo-practitioner">
               <a href="https://www.vjcpartners.com/resources/case-studies/from-drowning-to-thriving-a-perth-solo-practitioner" class="block focus:outline-none focus:ring-2 focus:ring-darkGreen focus:ring-offset-2 group" aria-label="Read more about From Drowning to Thriving: A Perth Solo Practitioner">
