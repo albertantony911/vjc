@@ -929,9 +929,6 @@
   .aspect-\[4\/5\] {
     aspect-ratio: 4/5;
   }
-  .aspect-square {
-    aspect-ratio: 1 / 1;
-  }
   .aspect-video {
     aspect-ratio: var(--aspect-video);
   }
@@ -3490,12 +3487,6 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
-  .max-sm\:translate-y-\[0\.7rem\] {
-    @media (width < 40rem) {
-      --tw-translate-y: 0.7rem;
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-  }
   .max-sm\:gap-5 {
     @media (width < 40rem) {
       gap: calc(var(--spacing) * 5);
@@ -4970,6 +4961,11 @@
       width: calc(var(--spacing) * 72);
     }
   }
+  .\32 xl\:justify-center {
+    @media (width >= 96rem) {
+      justify-content: center;
+    }
+  }
   .\32 xl\:px-\[1\.5svh\] {
     @media (width >= 96rem) {
       padding-inline: 1.5svh;
@@ -5745,9 +5741,9 @@
       height: 75svh;
     }
   }
-  .landscape\:h-svh {
+  .landscape\:min-h-\[500px\] {
     @media (orientation: landscape) {
-      height: 100svh;
+      min-height: 500px;
     }
   }
   .landscape\:w-\[50\%\] {
@@ -5887,6 +5883,13 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         width: 40%;
+      }
+    }
+  }
+  .landscape\:sm\:w-\[47\%\] {
+    @media (orientation: landscape) {
+      @media (width >= 40rem) {
+        width: 47%;
       }
     }
   }

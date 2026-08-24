@@ -448,18 +448,18 @@
   <main>
     <!-- Hero Section -->
     <section
-      class="landscape:h-svh bg-darkBlue text-white   landscape:flex-row flex flex-col-reverse mx-auto ">
+      class="landscape:h-[75svh] landscape:min-h-[500px] min-h-[70svh] bg-darkBlue text-white landscape:flex-row flex flex-col-reverse mx-auto relative overflow-hidden">
       <div 
-        class=" landscape:w-[53%]  my-auto   portrait:pt-[2svh] portrait:pb-[10svh] portrait:md:pt-0  flex flex-col justify-center w-full portrait:px-10  portrait:sm:px-[7svw]  text-left ">
+        class=" landscape:w-[53%] my-auto portrait:pt-[2svh] portrait:pb-[10svh] portrait:md:pt-0 flex flex-col justify-center w-full portrait:px-10 portrait:sm:px-[7svw] text-left z-10">
     
-        <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh]  flex flex-col  landscape:sm:my-auto">
+        <div class="landscape:sm:pl-[13svh] landscape:sm:pr-[10svh] flex flex-col landscape:sm:my-auto">
           <div class="">
             <h1
-              class="sm:text-[3.5svh]  portrait:sm:text-[3.3svw] text-[5.5vw]  portrait:mb-[1.3svh] landscape:mb-[0.25svh]  font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw]  uppercase"
+              class="sm:text-[3.5svh] portrait:sm:text-[3.3svw] text-[5.5vw] portrait:mb-[1.3svh] landscape:mb-[0.25svh] font-bold leading-[3.5svh] portrait:leading-[5.5svw] portrait:sm:leading-[3.5svw] uppercase"
               aria-label="Main Title">
               Request Received!
             </h1>
-            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh]  font-light portrait:leading-snug leading-normal "
+            <p class=" text-[3.5vw] sm:text-[2.1svh] portrait:sm:text-[1.8svw] portrait:mb-[3svh] landscape:mb-[3svh] font-light portrait:leading-snug leading-normal "
               aria-label="Hero Description">
               Thank you for reaching out to us. We will get back to you shortly.
             </p>
@@ -483,13 +483,11 @@
     
       </div>
     
-      <div  class="landscape:sm:w-[50%]   max-sm:translate-y-[0.7rem]   flex w-full ">
-      
-        <div class="m-auto">
-          <div  class=" globe-wrapper ">
-            <canvas id="globe-3d"></canvas>
+      <div class="landscape:sm:w-[47%] flex w-full h-full relative items-center justify-center pointer-events-none">
+        <div class="w-full h-full flex items-center justify-center pointer-events-auto">
+          <div class="globe-wrapper w-full h-full">
+            <canvas class="w-full h-full block" id="globe-3d"></canvas>
           </div>
-      
         </div>
       </div>
     </section>

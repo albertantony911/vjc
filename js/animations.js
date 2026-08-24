@@ -393,6 +393,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const slideRight = document.getElementById('slide-right');
   const sliderEl = document.getElementById('slider');
 
+  const updateSliderCentering = () => {
+    const sliders = document.querySelectorAll('#slider');
+    sliders.forEach((sEl) => {
+      const isScrollable = sEl.scrollWidth > sEl.clientWidth + 10;
+      if (!isScrollable) {
+        sEl.classList.add('justify-center');
+        const parent = sEl.parentElement;
+        if (parent) {
+          const lBtn = parent.querySelector('#slide-left');
+          const rBtn = parent.querySelector('#slide-right');
+          if (lBtn) lBtn.style.display = 'none';
+          if (rBtn) rBtn.style.display = 'none';
+        }
+      } else {
+        sEl.classList.remove('justify-center');
+        const parent = sEl.parentElement;
+        if (parent) {
+          const lBtn = parent.querySelector('#slide-left');
+          const rBtn = parent.querySelector('#slide-right');
+          if (lBtn) lBtn.style.display = '';
+          if (rBtn) rBtn.style.display = '';
+        }
+      }
+    });
+  };
+
+  window.addEventListener('resize', updateSliderCentering);
+  setTimeout(updateSliderCentering, 50);
+
   if (sliderEl && slideLeft && slideRight) {
     const getScrollAmount = () => {
       const card = sliderEl.querySelector('.card');

@@ -6,7 +6,7 @@ import { LineGeometry } from "./libs/LineGeometry.js";
 export { THREE, Line2, LineMaterial, LineGeometry };
 
 // --- HELPER MATH FUNCTIONS ---
-function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
+function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 30) {
   lon += 180;
   if (lon > 180) lon -= 360;
 
@@ -29,7 +29,7 @@ function latLonToTiltedVector3(lat, lon, radius = 1, tiltAngle = 23.5) {
 
 // --- COORDINATES ---
 const globeRadius = 1;
-const tiltAngle = 23.5;
+const tiltAngle =20;
 
 // Start Point (New Delhi, India)
 const point1 = latLonToTiltedVector3(28.6139, 77.2090, globeRadius, tiltAngle);
@@ -60,14 +60,14 @@ const tempCameraPosition = new THREE.Vector3();
 // Reusable materials
 const staticCircleMaterial = new THREE.MeshBasicMaterial({
   color: 0xFFFFFF,
-  transparent: true,
-  opacity: 1,
+  transparent: false,
+  opacity: 1.0,
   side: THREE.DoubleSide
 });
 const pulsingCircleMaterial = new THREE.MeshBasicMaterial({
-  color: 0xFFFFFF,
+  color: 0x10B981, // Vibrant emerald green pulse matching arc curves
   transparent: true,
-  opacity: 1,
+  opacity: 1.0,
   side: THREE.DoubleSide,
   depthWrite: false,
   depthTest: false
@@ -116,8 +116,9 @@ function initScene() {
   renderer.setPixelRatio(2);
 
   scene = new THREE.Scene();
-  camera = new THREE.OrthographicCamera(-1.25, 1.25, 1.25, -1.25, 0, 3);
-  camera.position.set(-0.2, -0.2, 1.45);
+  scene.position.set(0, 0, 0); // Globe centered at origin (0,0,0) for constant distance and zero rotation distortion
+  camera = new THREE.OrthographicCamera(-0.96, 0.96, 0.96, -0.96, 0, 3);
+  camera.position.set(-0.2, 0, 1.45);
   camera.lookAt(0, 0, 0);
 
   clock = new THREE.Clock();
@@ -132,8 +133,8 @@ function initScene() {
   });
 }
 
-let angle = Math.PI / 3.5;
-const rotationSpeed = 0.05;
+let angle = Math.PI / 20;
+const rotationSpeed = 0.02;
 const radius = 1.5;
 
 function render() {
@@ -144,7 +145,7 @@ function render() {
 
   const x = radius * Math.cos(angle);
   const z = radius * Math.sin(angle);
-  camera.position.set(x, 0, z);
+  camera.position.set(x, 0, z); // Level camera height (perpendicular view)
   camera.lookAt(0, 0, 0);
 
   updateOpacity();
@@ -154,8 +155,13 @@ function render() {
 
 let initialSize;
 
+const PORTRAIT_GEO_DETAIL = 34;   // Dedicated dot detail level (density) for portrait / mobile devices
+const LANDSCAPE_GEO_DETAIL = 46;  // Dedicated dot detail level (density) for landscape desktop devices
+
 function createGlobe() {
-  const globeGeometry = new THREE.IcosahedronGeometry(1, 20);
+  const isPortrait = window.innerWidth < window.innerHeight;
+  const geoDetail = isPortrait ? PORTRAIT_GEO_DETAIL : LANDSCAPE_GEO_DETAIL;
+  const globeGeometry = new THREE.IcosahedronGeometry(1, geoDetail);
   
   mapMaterial = new THREE.ShaderMaterial({
     vertexShader: `
@@ -168,29 +174,34 @@ function createGlobe() {
       varying float vOpacity;
       varying float vIndiaGlow;
       varying float vAusGlow;
+      varying float vLight;
       varying vec2 vUv;
 
       void main() {
         vUv = uv;
         
-        // Ensure world position accounts for globe rotation (Coordinate Fix)
-        vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vec3 worldPos3 = worldPos.xyz; 
+        // Extract rotation from modelMatrix (excludes scene translation offsets)
+        vec3 localRotatedPos = mat3(modelMatrix) * position;
+        
+        // Directional Light Source positioned at Middle-Left Front of Camera
+        vec3 worldNormal = normalize(mat3(modelMatrix) * normal);
+        vec3 lightDir = normalize(vec3(-2, -1, 6.0)); // Middle-Left Front light direction
+        vLight = max(0.6, dot(worldNormal, lightDir)); // Minimum 42% ambient light baseline
         
         gl_PointSize = u_dot_size * 0.65;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float distToCam = length(mvPosition.xyz);
-        vOpacity = clamp(1.0 / distToCam - 0.7, 0.03, 1.0);
+        vOpacity = clamp(1.0 / distToCam - 0.55, 0.08, 1.0);
         
         // --- INDIA HEAT MAP ---
-        float distToIndia = distance(worldPos3, u_india_pos);
-        vIndiaGlow = 1.0 - smoothstep(0.0, 0.35, distToIndia);
+        float distToIndia = distance(localRotatedPos, u_india_pos);
+        vIndiaGlow = clamp((1.0 - smoothstep(0.0, 0.42, distToIndia)) * 1.3, 0.0, 1.0);
         
         // --- AUSTRALIA HEAT MAP ---
         float ausGlow = 0.0;
         for(int i = 0; i < 5; i++) {
-          float distToAus = distance(worldPos3, u_aus_pos[i]);
-          ausGlow += 1.0 - smoothstep(0.0, 0.25, distToAus); 
+          float distToAus = distance(localRotatedPos, u_aus_pos[i]);
+          ausGlow += (1.0 - smoothstep(0.0, 0.45, distToAus)) * 1.5; 
         }
         vAusGlow = clamp(ausGlow, 0.0, 1.0);
         
@@ -208,6 +219,7 @@ function createGlobe() {
       varying float vOpacity;
       varying float vIndiaGlow;
       varying float vAusGlow;
+      varying float vLight;
       varying vec2 vUv;
 
       void main() {
@@ -217,15 +229,15 @@ function createGlobe() {
         // Is it ocean? (For black-and-white map-3.webp, ocean is black, i.e., red channel < 0.5)
         if (mapColor.r < 0.5) discard; 
         
-        // Set standard color for all other landmasses
-        vec3 color = vec3(0.6, 0.9, 1.3);
+        // Set standard base color for landmasses and apply middle-left directional light
+        vec3 color = vec3(0.6, 0.9, 1.3) * vLight;
         
-        // Define our new bright green color (R: 0.1, G: 1.0, B: 0.2)
-        vec3 brightGreen = vec3(0.1, 1.0, 0.2);
+        // Define vibrant green color (R: 0.1, G: 1.0, B: 0.25)
+        vec3 brightGreen = vec3(0.1, 1.0, 0.25);
         
         // Apply glow calculated in vertex shader
-        color = mix(color, brightGreen, vIndiaGlow); 
-        color = mix(color, brightGreen, vAusGlow); 
+        color = mix(color, brightGreen, vIndiaGlow * 1.25); 
+        color = mix(color, brightGreen, vAusGlow * 1.33); 
 
         // Shape dots into circles
         float distToCenter = length(gl_PointCoord.xy - vec2(0.5));
@@ -250,7 +262,7 @@ function createGlobe() {
   globe = new THREE.Points(globeGeometry, mapMaterial);
   scene.add(globe);
 
-  globe.rotation.x = THREE.MathUtils.degToRad(23.5);
+  globe.rotation.x = THREE.MathUtils.degToRad(tiltAngle);
 
   globeMesh = new THREE.Mesh(
     globeGeometry,
@@ -263,20 +275,78 @@ function createGlobe() {
   scene.add(globeMesh);
 }
 
-const PORTRAIT_RATIO = 0.9;
-const LANDSCAPE_RATIO = 0.7;
+const PORTRAIT_RATIO = 0.85;
+const PORTRAIT_FRUSTUM_SIZE = 1.2;   // Dedicated frustum size for portrait / mobile devices
+const LANDSCAPE_FRUSTUM_SIZE = 0.7;  // Dedicated frustum size for landscape desktop displays
+
+const PORTRAIT_DOT_SIZE = 0.025;    // Dedicated dot size multiplier for portrait / mobile screens
+const LANDSCAPE_DOT_SIZE = 0.030;   // Dot size multiplier for landscape desktop screens
 
 function updateSize() {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-  const minSide = Math.min(windowWidth, windowHeight);
-  let newSize = windowWidth < windowHeight ? PORTRAIT_RATIO * minSide : LANDSCAPE_RATIO * windowHeight;
+  const isPortrait = windowWidth < windowHeight;
 
-  if (initialSize !== newSize) {
-    initialSize = newSize;
-    containerEl.style.cssText = `width: ${initialSize}px; height: ${initialSize}px;`;
-    renderer.setSize(initialSize, initialSize);
-    mapMaterial.uniforms.u_dot_size.value = 0.04 * initialSize;
+  let width, height;
+
+  if (isPortrait) {
+    // Explicit square sizing for mobile / portrait devices so container never collapses
+    const minSide = Math.min(windowWidth, windowHeight);
+    const size = Math.round(PORTRAIT_RATIO * minSide);
+    width = size;
+    height = size;
+    containerEl.style.cssText = `width: ${size}px; height: ${size}px; margin: 0 auto;`;
+  } else {
+    // Fill full right column space on landscape desktop screens
+    const parentW = containerEl.parentElement?.clientWidth || windowWidth * 0.47;
+    const parentH = containerEl.parentElement?.clientHeight || windowHeight * 1.04;
+    width = parentW > 0 ? parentW : windowWidth * 0.47;
+    height = parentH > 0 ? parentH : windowHeight * 1.04;
+    containerEl.style.cssText = `width: 100%; height: 100%;`;
+  }
+
+  if (width > 0 && height > 0) {
+    renderer.setSize(width, height);
+    
+    const aspect = width / height;
+
+    // Adapt frustum scale and horizontal offset when viewport height is constrained (short height / wide aspect ratio)
+    let frustumSize = isPortrait ? PORTRAIT_FRUSTUM_SIZE : LANDSCAPE_FRUSTUM_SIZE;
+    let xShiftFactor = -0.37;
+
+    if (!isPortrait) {
+      if (aspect > 1.75) {
+        // Short height viewport (heavy toolbars/bookmarks): Scale globe up by ~12% & pull left toward hero text
+        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.9;
+        xShiftFactor = 0.0;
+      } else if (aspect > 1.45) {
+        frustumSize = LANDSCAPE_FRUSTUM_SIZE * 0.94;
+        xShiftFactor = -0.08;
+      }
+    }
+
+    camera.left = -frustumSize * aspect;
+    camera.right = frustumSize * aspect;
+    camera.top = frustumSize;
+    camera.bottom = -frustumSize;
+
+    // Shift rendered globe horizontally (xShift) and vertically (yShift) on landscape desktop screens only
+    if (!isPortrait) {
+      const xShift = width * xShiftFactor;
+      const yShift = height * 0.12;
+      camera.setViewOffset(width, height, xShift, yShift, width, height);
+    } else {
+      camera.clearViewOffset();
+    }
+
+    camera.updateProjectionMatrix();
+
+    const minSide = Math.min(width, height);
+    const dotSizeMultiplier = isPortrait ? PORTRAIT_DOT_SIZE : LANDSCAPE_DOT_SIZE;
+    mapMaterial.uniforms.u_dot_size.value = dotSizeMultiplier * minSide;
+    if (typeof arcMaterial !== "undefined" && arcMaterial.resolution) {
+      arcMaterial.resolution.set(width, height);
+    }
   }
 }
 
@@ -291,8 +361,10 @@ window.addEventListener("resize", debounce(updateSize, 200));
 
 const up = new THREE.Vector3(0, 0, 1);
 const quaternion = new THREE.Quaternion();
-const sharedGeometry = new THREE.CircleGeometry(0.027, 32);
-const startingPointGeometry = new THREE.CircleGeometry(0.04, 32);
+const staticSharedGeometry = new THREE.CircleGeometry(0.013, 32);
+const staticStartingPointGeometry = new THREE.CircleGeometry(0.018, 32);
+const pulsingSharedGeometry = new THREE.CircleGeometry(0.016, 32);
+const pulsingStartingPointGeometry = new THREE.CircleGeometry(0.024, 32);
 
 function alignCircleToSurface(circle, position, elevation = 0) {
   const liftedPos = position.clone().normalize().multiplyScalar(1 + elevation);
@@ -302,23 +374,25 @@ function alignCircleToSurface(circle, position, elevation = 0) {
 }
 
 function createStaticAndPulsingCircles(position, isStartingPoint = false) {
-  const elevation = isStartingPoint ? 0.02 : 0.015;
-  const geometry = isStartingPoint ? startingPointGeometry : sharedGeometry;
+  const elevation = 0.008; // Ultra-snug surface elevation closer to globe surface
+  const staticGeo = isStartingPoint ? staticStartingPointGeometry : staticSharedGeometry;
+  const pulsingGeo = isStartingPoint ? pulsingStartingPointGeometry : pulsingSharedGeometry;
 
-  const staticCircle = new THREE.Mesh(geometry, staticCircleMaterial.clone());
+  const staticCircle = new THREE.Mesh(staticGeo, staticCircleMaterial.clone());
   alignCircleToSurface(staticCircle, position, elevation);
+  staticCircle.renderOrder = 3;
 
-  const pulsingCircle = new THREE.Mesh(geometry, pulsingCircleMaterial.clone());
+  const pulsingCircle = new THREE.Mesh(pulsingGeo, pulsingCircleMaterial.clone());
   alignCircleToSurface(pulsingCircle, position, elevation);
-  pulsingCircle.translateZ(-0.003); 
+  pulsingCircle.renderOrder = 2; 
 
   scene.add(staticCircle, pulsingCircle);
-  opacityObjects.push(staticCircle, pulsingCircle);
+  // Only push pulsingCircle to opacityObjects so staticCircle stays 100% opaque
+  opacityObjects.push(pulsingCircle);
 
   pulsingCircle.userData.gsapOpacity = 1;
   animatePulsingCircle(pulsingCircle);
 
-  staticCircle.userData.distanceOpacityControl = staticCircle.material;
   pulsingCircle.userData.distanceOpacityControl = pulsingCircle.material;
 
   return { staticCircle, pulsingCircle };
@@ -327,8 +401,8 @@ function createStaticAndPulsingCircles(position, isStartingPoint = false) {
 function animatePulsingCircle(pulsingCircle) {
   pulsingCircle.userData.tweenScale = gsap.to(pulsingCircle.scale, {
     duration: 2,
-    x: 1.75,
-    y: 1.75,
+    x: 1.35,
+    y: 1.35,
     repeat: -1,
     yoyo: true,
     ease: "power1.Out",
@@ -365,7 +439,7 @@ function updateCircleOpacity(object, cameraPosition) {
   }
 }
 
-function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.025) {
+function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, liftFactor = 1.008) {
   const liftedStart = startPoint.clone().normalize().multiplyScalar(liftFactor);
   const numPoints = 50;
   const tempVector = new THREE.Vector3();
@@ -392,10 +466,13 @@ function createElevatedArcs(startPoint, endPoints, baseHeight, heightScale, lift
   
   liftedEnds.forEach((liftedEnd) => {
     createArc(liftedStart, liftedEnd);
-    createStaticAndPulsingCircles(liftedEnd);
   });
 
-  return createStaticAndPulsingCircles(liftedStart, true);
+  endPoints.forEach((end) => {
+    createStaticAndPulsingCircles(end);
+  });
+
+  return createStaticAndPulsingCircles(startPoint, true);
 }
 
 function animateArc(points, start, end, reverse = false) {
