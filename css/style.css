@@ -5166,6 +5166,14 @@
       }
     }
   }
+  .portrait\:sm\:size-\[7svh\] {
+    @media (orientation: portrait) {
+      @media (width >= 40rem) {
+        width: 7svh;
+        height: 7svh;
+      }
+    }
+  }
   .portrait\:sm\:size-\[10svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
@@ -5203,14 +5211,6 @@
       @media (width >= 40rem) {
         width: 75svh;
         height: 75svh;
-      }
-    }
-  }
-  .portrait\:sm\:size-\[7svh\] {
-    @media (orientation: portrait) {
-      @media (width >= 40rem) {
-        width: 7svh;
-        height: 7svh;
       }
     }
   }
@@ -5330,10 +5330,10 @@
       }
     }
   }
-  .portrait\:sm\:px-\[7svw\] {
+  .portrait\:sm\:px-\[3vw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
-        padding-inline: 7svw;
+        padding-inline: 3vw;
       }
     }
   }
@@ -5351,10 +5351,10 @@
       }
     }
   }
-  .portrait\:sm\:px-\[3vw\] {
+  .portrait\:sm\:px-\[7svw\] {
     @media (orientation: portrait) {
       @media (width >= 40rem) {
-        padding-inline: 3vw;
+        padding-inline: 7svw;
       }
     }
   }
@@ -5751,11 +5751,6 @@
       width: 50%;
     }
   }
-  .landscape\:w-\[52\%\] {
-    @media (orientation: landscape) {
-      width: 52%;
-    }
-  }
   .landscape\:w-\[53\%\] {
     @media (orientation: landscape) {
       width: 53%;
@@ -5895,13 +5890,6 @@
     @media (orientation: landscape) {
       @media (width >= 40rem) {
         width: 47%;
-      }
-    }
-  }
-  .landscape\:sm\:w-\[48\%\] {
-    @media (orientation: landscape) {
-      @media (width >= 40rem) {
-        width: 48%;
       }
     }
   }
