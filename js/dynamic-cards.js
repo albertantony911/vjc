@@ -102,15 +102,11 @@
          </div>`
       : '';
 
-    const metaHtml = isCaseStudy
-      ? `<p class="text-sm text-darkBlue mt-1">
-           <span class="sr-only">Author: </span>
-           By <span class="font-medium">${author}</span>
-           ${dateFormatted ? `<span aria-hidden="true"> &bull; </span><time dateTime="${post.date}" class="font-light">${dateFormatted}</time>` : ''}
-         </p>`
-      : `<p class="text-[13px] font-bold uppercase tracking-wide text-darkBlue mt-1">
-           ${categories[0]?.name || 'Insights'} &bull; By ${author}
-         </p>`;
+    const metaHtml = `<p class="text-sm text-darkBlue mt-1">
+         <span class="sr-only">Author: </span>
+         By <span class="font-medium">${author}</span>
+         ${dateFormatted ? `<span aria-hidden="true"> &bull; </span><time datetime="${post.date}" class="font-light">${dateFormatted}</time>` : ''}
+       </p>`;
 
     const pillsHtml = pills.length > 0
       ? `<div class="flex flex-wrap gap-1.5 mt-3">
