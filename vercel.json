@@ -132,6 +132,10 @@
   ],
   "rewrites": [
     {
+      "source": "/sitemap.xml",
+      "destination": "https://resources-vjcindia-9clx-omega.vercel.app/resources/sitemap.xml"
+    },
+    {
       "source": "/resources",
       "destination": "https://resources-vjcindia-9clx-omega.vercel.app/resources"
     },
