@@ -297,7 +297,92 @@ function initApolloEngine() {
     }
 }
 
+function initNewsletterForm() {
+    const form = document.getElementById('footer-newsletter-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn ? submitBtn.innerText : 'Subscribe';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Subscribing...';
+        }
+
+        function restoreBtn() {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+            }
+        }
+
+        function submitNewsletter() {
+            if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+                window.ApolloMeetings.initWidget({
+                    appId: "6a0afa099eda8700201974ad",
+                    schedulingLink: "5vl-uvk-2l5"
+                });
+                window.ApolloMeetings.submit({
+                    formId: 'footer-newsletter-form',
+                    onSuccess: function() {
+                        restoreBtn();
+                        form.reset();
+                    },
+                    onError: function(err) {
+                        console.error('[Apollo] Newsletter subscription error:', err);
+                        restoreBtn();
+                    }
+                });
+            } else {
+                console.error('[Apollo] ApolloMeetings not loaded');
+                restoreBtn();
+            }
+        }
+
+        if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+            submitNewsletter();
+        } else {
+            let script = document.querySelector('script[src*="meetings-widget.js"]');
+            if (!script) {
+                script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://assets.apollo.io/js/meetings/meetings-widget.js';
+                script.defer = true;
+                script.onload = function() {
+                    if (window.ApolloMeetings && window.ApolloMeetings.initWidget) {
+                        window.ApolloMeetings.initWidget({
+                            appId: "6a0afa099eda8700201974ad",
+                            schedulingLink: "5vl-uvk-2l5"
+                        });
+                        submitNewsletter();
+                    }
+                };
+                script.onerror = function() {
+                    console.error('[Apollo] Failed to load meetings widget script');
+                    restoreBtn();
+                };
+                document.head.appendChild(script);
+            } else {
+                let attempts = 0;
+                const interval = setInterval(function() {
+                    attempts++;
+                    if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+                        clearInterval(interval);
+                        submitNewsletter();
+                    } else if (attempts >= 25) {
+                        clearInterval(interval);
+                        restoreBtn();
+                    }
+                }, 200);
+            }
+        }
+    });
+}
+
 window.addEventListener('load', function() {
     initCookieBanner();
     initApolloEngine();
+    initNewsletterForm();
 });
