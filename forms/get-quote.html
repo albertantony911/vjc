@@ -59,7 +59,14 @@
   <script src="../js/libs/alpine.min.js" defer></script>
   <script src="../js/libs/gsap.min.js" defer></script>
   <script src="../js/animations.js" defer></script>
-  <script src="../js/apollo-engine.js" defer></script>
+
+  <!-- Apollo Meetings Widget -->
+  <script
+    type="text/javascript"
+    src="https://assets.apollo.io/js/meetings/meetings-widget.js"
+    onload='window.ApolloMeetings.initWidget({appId: "6a4ba00e5236e4000c186324", schedulingLink: "934-b72-m2t"})'
+    defer
+  ></script>
 </head>
 
 <body class="scroll-smooth mx-auto leading-normal min-h-screen flex flex-col">
@@ -310,7 +317,7 @@
         <!-- Form Container (Card Design) -->
         <div class="bg-white rounded-[2.5rem] shadow-[0px_7px_20px_0px_rgba(138,43,226,0.4)] max-w-4xl mx-auto w-full p-6 md:p-10 min-h-[500px]">
           
-          <form id="quote-form" onsubmit="event.preventDefault(); window.loadApolloMeetingsWidget();">
+          <form id="quote-form">
             <!-- Full Name & Email -->
             <div class="flex flex-col md:flex-row gap-6 mb-6">
               <div class="w-full">
@@ -595,22 +602,88 @@
         var checkboxes = form.querySelectorAll('input[name="Support Required for"]');
         
         function validateCheckboxes() {
-          var hasChecked = Array.from(checkboxes).some(cb => cb.checked);
-          checkboxes.forEach(cb => {
+          var hasChecked = Array.from(checkboxes).some(function(cb) { return cb.checked; });
+          checkboxes.forEach(function(cb) {
             if (hasChecked) {
               cb.setCustomValidity('');
             } else {
               cb.setCustomValidity('Please select at least one option.');
             }
           });
+          return hasChecked;
         }
 
-        checkboxes.forEach(cb => {
+        checkboxes.forEach(function(cb) {
           cb.addEventListener('change', validateCheckboxes);
         });
 
         // Run initial validation
         validateCheckboxes();
+
+        // Handle quote form submission & Apollo Meetings router trigger
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          if (!validateCheckboxes() || !form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          var submitBtn = form.querySelector('button[type="submit"]');
+          var originalBtnText = submitBtn ? submitBtn.innerText : 'Get Quote';
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+          }
+
+          function restoreButton() {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerText = originalBtnText;
+            }
+          }
+
+          function triggerApollo() {
+            if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+              try {
+                window.ApolloMeetings.submit({
+                  formId: 'quote-form',
+                  onSuccess: function() {
+                    restoreButton();
+                  },
+                  onError: function(err) {
+                    console.error('[Apollo] Submission error:', err);
+                    restoreButton();
+                  }
+                });
+              } catch (err) {
+                console.error('[Apollo] Submit exception:', err);
+                restoreButton();
+              }
+            } else {
+              console.error('[Apollo] ApolloMeetings is not available yet.');
+              restoreButton();
+              alert('The scheduling widget is still loading. Please try again in a moment.');
+            }
+          }
+
+          if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+            triggerApollo();
+          } else {
+            // Wait briefly if Apollo Meetings widget script is still initializing
+            var attempts = 0;
+            var interval = setInterval(function() {
+              attempts++;
+              if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+                clearInterval(interval);
+                triggerApollo();
+              } else if (attempts >= 25) {
+                clearInterval(interval);
+                triggerApollo();
+              }
+            }, 200);
+          }
+        });
       });
     </script>
 </body>

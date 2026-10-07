@@ -69,24 +69,48 @@
   }
 
   // Phase 1: Expose loadApolloMeetingsWidget globally
-  window.loadApolloMeetingsWidget = function() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://assets.apollo.io/js/meetings/meetings-widget.js';
-    script.defer = true;
-    script.onload = function() {
-      if (window.ApolloMeetings && window.ApolloMeetings.initWidget) {
-        window.ApolloMeetings.initWidget({
-          appId: "6a4ba00e5236e4000c186324",
-          schedulingLink: "934-b72-m2t"
-        });
-      } else {
-        console.error('[Apollo] ApolloMeetings is not available');
+  window.loadApolloMeetingsWidget = function(formId) {
+    var targetFormId = formId || 'quote-form';
+
+    function doSubmit() {
+      if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+        window.ApolloMeetings.submit({ formId: targetFormId });
       }
-    };
-    script.onerror = function() {
-      console.error('[Apollo] Failed to load meetings widget script');
-    };
-    document.head.appendChild(script);
+    }
+
+    if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+      doSubmit();
+      return;
+    }
+
+    if (!document.querySelector('script[src*="meetings-widget.js"]')) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://assets.apollo.io/js/meetings/meetings-widget.js';
+      script.defer = true;
+      script.onload = function() {
+        if (window.ApolloMeetings && window.ApolloMeetings.initWidget) {
+          window.ApolloMeetings.initWidget({
+            appId: "6a4ba00e5236e4000c186324",
+            schedulingLink: "934-b72-m2t"
+          });
+          doSubmit();
+        } else {
+          console.error('[Apollo] ApolloMeetings is not available');
+        }
+      };
+      script.onerror = function() {
+        console.error('[Apollo] Failed to load meetings widget script');
+      };
+      document.head.appendChild(script);
+    } else {
+      var interval = setInterval(function() {
+        if (window.ApolloMeetings && typeof window.ApolloMeetings.submit === 'function') {
+          clearInterval(interval);
+          doSubmit();
+        }
+      }, 150);
+      setTimeout(function() { clearInterval(interval); }, 5000);
+    }
   };
 })();

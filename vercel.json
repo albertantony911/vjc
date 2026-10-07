@@ -132,6 +132,10 @@
   ],
   "rewrites": [
     {
+      "source": "/js/meetings-widget.js",
+      "destination": "/js/libs/meetings-widget.js"
+    },
+    {
       "source": "/js/apollo-inbound.js",
       "destination": "/js/libs/apollo-inbound.js"
     },
