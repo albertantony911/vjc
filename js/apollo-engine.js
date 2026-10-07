@@ -25,31 +25,29 @@
     observer.observe(targetNode, { childList: true });
   }
 
-  // Load script if #apollo-forms or #footer-newsletter-form is present
-  var footerForm = document.getElementById('footer-newsletter-form');
-  if (targetNode || footerForm) {
-    if (window.ApolloInbound) {
+  // Load script when #apollo-forms is present
+  if (targetNode) {
+    var apolloScript = document.querySelector('script[src*="apollo-engine.js"]');
+    var srcAttr = apolloScript ? apolloScript.getAttribute('src') : '';
+    var isFile = window.location.protocol === 'file:';
+    var prefix = isFile ? (srcAttr.startsWith('../') ? '../' : './') : '/';
+    var scriptSrc = prefix + (prefix.endsWith('/') ? '' : '/') + 'js/libs/apollo-inbound.js';
+
+    if (window.ApolloInbound && window.ApolloInbound.forms) {
       try {
-        if (targetNode) {
-          window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
-        } else {
-          window.ApolloInbound.init({ appId: '6a4b71010953ed001c11dfbe' });
-        }
+        window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
       } catch (err) {
         console.error('[Apollo] Error initializing:', err);
       }
     } else {
-      var nocache = Math.random().toString(36).substring(7);
       var script = document.createElement('script');
-      script.src = 'https://assets.apollo.io/js/apollo-inbound.js?nocache=' + nocache;
+      script.src = scriptSrc;
       script.async = true;
       
       script.onload = function() {
         try {
-          if (targetNode) {
+          if (window.ApolloInbound && window.ApolloInbound.forms) {
             window.ApolloInbound.forms.init({ appId: '6a4b71010953ed001c11dfbe' });
-          } else {
-            window.ApolloInbound.init({ appId: '6a4b71010953ed001c11dfbe' });
           }
         } catch (err) {
           console.error('[Apollo] Error initializing:', err);
